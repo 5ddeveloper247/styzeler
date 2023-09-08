@@ -24,7 +24,7 @@ return new class extends Migration
             $table->text('qualification')->nullable();
             $table->text('hero_image')->nullable();
             $table->text('gallery')->nullable();
-            $table->integer('utr_number')->nullable();
+            $table->bigInteger('utr_number')->nullable(); // Remove the '20'
             $table->string('languages')->nullable();
             $table->string('rate')->nullable();
             $table->text('zone')->nullable();

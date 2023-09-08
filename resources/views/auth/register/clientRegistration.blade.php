@@ -13,8 +13,8 @@
                 <input type="hidden" name="type" value="client">
 
                 <div class="profilePicture">
-                    <img id="blah" class="rounded-circle" src="{{ asset('template_old/images/blank.png') }}"
-                        alt="your image" /> <br>
+                    <img id="blah" class="rounded-circle" accept=".jpg, .jpeg, .png"
+                        src="{{ asset('template_old/images/blank.png') }}" alt="your image" /> <br>
 
                     <input id="owner-picture" name="owner_picture" class="my-4 col-lg-6 hidden" type='file'
                         onchange="loadFile(event);" />
@@ -93,7 +93,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <button type="button" class="btn btn-primary">Save changes</button> -->
                                     </div>
                                 </div>
                             </div>

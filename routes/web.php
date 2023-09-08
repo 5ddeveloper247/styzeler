@@ -30,6 +30,15 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         Route::get('/clientRegistration', 'FrontEndController@clientRegistration')->name('clientRegistration');
     });
 
+    Route::group(['middleware' => 'auth'], function () {
+
+        //Profile
+        Route::get('/Profile', 'FrontEndController@Profile')->name('Profile');
+        // Route::get('/ownerProfile', 'FrontEndController@ownerProfile')->name('ownerProfile');
+        Route::get('/getProfileData', 'ProfileController@getProfileData')->name('getProfileData');
+        Route::post('/ProfileImageUpdate', 'ProfileController@ProfileImageUpdate')->name('ProfileImageUpdate');
+    });
+
     Route::get('/forgetPassword', 'FrontEndController@forgetPassword')->name('forgetPassword');
 
 
@@ -56,17 +65,6 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/privacyPolicy', 'FrontEndController@privacyPolicy')->name('privacyPolicy');
     Route::get('/termAndConditions', 'FrontEndController@termAndConditions')->name('termAndConditions');
     Route::get('/webTermAndConditions', 'FrontEndController@webTermAndConditions')->name('webTermAndConditions');
-
-
-
-    Route::group(['middleware' => 'auth'], function () {
-
-        //Profile
-        Route::get('/Profile', 'FrontEndController@Profile')->name('Profile');
-        // Route::get('/ownerProfile', 'FrontEndController@ownerProfile')->name('ownerProfile');
-        Route::get('/getProfileData', 'ProfileController@getProfileData')->name('getProfileData');
-        Route::post('/ProfileImageUpdate', 'ProfileController@ProfileImageUpdate')->name('ProfileImageUpdate');
-    });
 });
 
 Route::middleware(['guest'])->group(function () {

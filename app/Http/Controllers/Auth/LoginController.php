@@ -39,7 +39,7 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        return url('/'); // Replace 'home' with the name of your home route
+        return url('/login'); // Replace 'home' with the name of your home route
     }
 
     public function __construct()

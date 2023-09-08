@@ -74,8 +74,8 @@
             <form action="{{ route('registration') }}" method="POST" id="register_form" class="my-5">
                 <input type="hidden" name="type" value="wedding">
                 <div class="profilePicture">
-                    <img id="blah" class="rounded-circle" src="{{ asset('template_old/images/blank.png') }}"
-                        alt="your image" /> <br>
+                    <img id="blah" class="rounded-circle" accept=".jpg, .jpeg, .png"
+                        src="{{ asset('template_old/images/blank.png') }}" alt="your image" /> <br>
 
                     <input id="stylist-picture" name="stylist_picture" class="my-4 col-lg-6 hidden" type='file'
                         onchange="loadFile(event);" placeholder="upload" />
@@ -673,7 +673,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <button type="button" class="btn btn-primary">Save changes</button> -->
                                     </div>
                                 </div>
                             </div>
