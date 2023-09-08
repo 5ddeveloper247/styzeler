@@ -16,8 +16,8 @@
                     <img id="blah" class="rounded-circle" src="{{ asset('template_old/images/blank.png') }}"
                         alt="your image" /> <br>
 
-                    <input id="stylist-picture" name="stylist_picture" class="my-4 col-lg-6 hidden" type='file'
-                        onchange="loadFile(event);" />
+                    <input id="stylist-picture" name="stylist_picture" accept=".jpg, .jpeg, .png"
+                        class="my-4 col-lg-6 hidden" type='file' onchange="loadFile(event);" />
                     <label for="stylist-picture">+</label>
 
                 </div>
@@ -167,7 +167,7 @@
                             </label>
                         </div>
                     </div>
-                </div> -->
+                </div>
                 <div class="form-group">
                     <label for="image_uploads" class="color-1">Upload Pictures</label>
                     <input class="form-control col-lg-6" type="file" id="image-gallery" name="image_gallery[]"
@@ -644,7 +644,7 @@
                             </div>
                             <div class="modal-footer">
                                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <button type="button" class="btn btn-primary">Save changes</button> -->
                             </div>
                         </div>
                     </div>

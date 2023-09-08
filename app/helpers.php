@@ -17,7 +17,7 @@ if (!function_exists('saveMultipleImages')) {
 
         foreach ($files as $file) {
             $filename = $file->getClientOriginalName();
-            $date_append = date("Y-m-d-His-");
+            $date_append = time();
             $file->move(public_path($path), $date_append . $filename);
 
             $savedFilePaths[] = $path . '/' . $date_append . $filename;
@@ -51,7 +51,7 @@ if (!function_exists('customView')) {
     /**
      * Get the evaluated view contents for the given view.
      */
-    function customView($freelancer_view, $owner_view, $type, $data = [], $mergeData = [])
+    function customView($freelancer_view, $owner_view, $client_view, $type, $data = [], $mergeData = [])
     {
         $freelancer_types = [
             'wedding',
@@ -71,6 +71,8 @@ if (!function_exists('customView')) {
         } elseif (in_array($type, $owner_types)) {
 
             return view($owner_view, $data, $mergeData);
+        } else {
+            return view($client_view, $data, $mergeData);
         }
     }
 }
