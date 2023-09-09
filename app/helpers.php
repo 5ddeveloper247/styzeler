@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 
@@ -16,11 +17,11 @@ if (!function_exists('saveMultipleImages')) {
         }
 
         foreach ($files as $file) {
-            $filename = $file->getClientOriginalName();
-            $date_append = time();
-            $file->move(public_path($path), $date_append . $filename);
+            $filename = $file->getClientOriginalExtension();
+            $date_append = Str::random(16);
+            $file->move(public_path($path), $date_append . '.' . $filename);
 
-            $savedFilePaths[] = $path . '/' . $date_append . $filename;
+            $savedFilePaths[] = $path . '/' . $date_append . '.' . $filename;
         }
 
         return $savedFilePaths;
@@ -36,11 +37,11 @@ if (!function_exists('saveSingleImage')) {
             File::makeDirectory(public_path($path), 0777, true);
         }
 
-        $filename = $file->getClientOriginalName();
-        $date_append = time();
-        $file->move(public_path($path), $date_append . $filename);
+        $filename = $file->getClientOriginalExtension();
+        $date_append = Str::random(16);
+        $file->move(public_path($path), $date_append . '.' . $filename);
 
-        $savedFilePaths = $path . '/' . $date_append . $filename;
+        $savedFilePaths = $path . '/' . $date_append . '.' . $filename;
 
         return $savedFilePaths;
     }
@@ -73,6 +74,30 @@ if (!function_exists('customView')) {
             return view($owner_view, $data, $mergeData);
         } else {
             return view($client_view, $data, $mergeData);
+        }
+    }
+}
+if (!function_exists('deleteImage')) {
+    function deleteImage($imagePath)
+    {
+        $imagePath = public_path($imagePath);
+
+        if (File::exists($imagePath)) {
+            File::delete($imagePath);
+        } else {
+            // Image not found
+        }
+        try {
+            // Check if the file exists before attempting to delete it
+            if (File::exists($imagePath)) {
+                // Delete the file
+                File::delete($imagePath);
+                return 'Image deleted successfully';
+            } else {
+                return 'Image not found';
+            }
+        } catch (\Exception $e) {
+            return 'Error deleting image: ' . $e->getMessage();
         }
     }
 }

@@ -37,7 +37,10 @@ class User extends Authenticatable
         'hero_image',
         'gallery',
         'utr_number',
-        'post_code'
+        'post_code',
+        'public_liability_insurance',
+        'trade_video',
+        'status'
 
     ];
 

@@ -109,14 +109,14 @@
                     <h4>Qualification</h4>
                     <div class="form-group form-check">
                         <input class="form-check-input" type="checkbox" name="qualification[]" id="nvq-level2"
-                            value="NVQ Level 2">
+                            value="Nvq Level 2">
                         <label class="form-check-label" for="nvq-level2">
                             NVQ Level 2
                         </label>
                     </div>
                     <div class="form-group form-check">
                         <input class="form-check-input" type="checkbox" name="qualification[]" id="nvq-level3"
-                            value="NVQ Level 3">
+                            value="Nvq Level 3">
                         <label class="form-check-label" for="nvq_level3">
                             NVQ Level 3
                         </label>
@@ -644,7 +644,7 @@
                             </div>
                             <div class="modal-footer">
                                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <button type="button" class="btn btn-primary">Save changes</button> -->
                             </div>
                         </div>
                     </div>
