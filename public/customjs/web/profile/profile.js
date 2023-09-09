@@ -1,4 +1,5 @@
 $(document).ready(function () {
+
     $("#showReviews").hide();
     $("#showLikes").hide();
     $("#showBook").hide();
@@ -18,7 +19,6 @@ $(document).ready(function () {
 
         $("#profile").removeClass("customBtn").addClass("customBtnSelected");
 
-
     });
 
     $("#reviews").click(function () {
@@ -35,6 +35,7 @@ $(document).ready(function () {
 
         $("#showReviewLike").empty();
     });
+
     $("#likes").click(function () {
         $("#showLikes").show();
         $("#showReviews").hide();
@@ -49,12 +50,12 @@ $(document).ready(function () {
 
         $("#showLikes").empty();
     });
+
     $("#book").click(function () {
         $("#showBook").show();
         $("#showProfile").hide();
         $("#showReviews").hide();
         $("#showLikes").hide();
-
 
         $("#profile").removeClass("customBtnSelected").addClass("customBtn");
         $("#reviews").removeClass("customBtnSelected").addClass("customBtn");
@@ -69,9 +70,7 @@ $(document).ready(function () {
 function editName() {
     $(".name-mobile-modal").modal('show');
 
-    // console.log(firstName);
 }
-
 
 function editAge() {
     $(".age-modal").modal('show');
@@ -92,7 +91,7 @@ function editWork() {
 
 function editLanguage() {
     $(".language-modal").modal('show');
-    $("#stylist-language").attr("placeholder", language).blur();
+
 }
 
 function editStatus() {
@@ -105,7 +104,6 @@ function editType() {
 
 function editQualification() {
     $(".qualification-modal").modal('show');
-    $("#utr-number").attr("placeholder", utr).blur();
 }
 
 function editProfilePic() {
@@ -237,17 +235,18 @@ function profileResponse(response) {
 
 
             // for qualification
-            qualification = data.qualification;
+            qualifications = data.qualification;
             utr_number = data.utr_number;
+            video = data.trade_video;
 
-            $('#ownerQualification').text(qualification);
+            $('#ownerQualification').text(qualifications);
             $('#ownerQualification').append('<a class="text-center btn" onclick="editQualification()" title="Edit">✎</a>');
 
-            qualification.forEach(function (qualification) {
-
-                $(`input[type="checkbox"][name="qualification[]"][value="${qualification}"]`).prop('checked', true);
+            qualifications.forEach(function (qualifi) {
+                $(`input[type="checkbox"][name="qualification[]"][value="${qualifi}"]`).prop('checked', true);
             });
             $('#utr-number').val(utr_number);
+            $('#video').val(video);
 
             // for languages
             languages = data.languages;
@@ -262,9 +261,15 @@ function profileResponse(response) {
 
             $('#ownerRate').text(formattedRate);
             $('#ownerRate').append('<a class="text-center btn" onclick="editRate()" title="Edit">✎</a>');
-
-            $(`input[name='stylist_rate'][value='${rate}']`).prop('checked', true);
-
+            if (rate != 110 && rate != 120 && rate != 130) {
+                // This block will execute if rate is NOT 110, 120, or 130
+                $(`input[type="radio"][name='stylist_rate']`).prop('checked', true);
+                $('#rateOther').val(rate);
+                $('#otherRate').show();
+            } else {
+                // This block will execute if rate is 110, 120, or 130
+                $(`input[name='stylist_rate'][value='${rate}']`).prop('checked', true);
+            }
             // for zone
             zone = data.zone;
 
@@ -325,6 +330,25 @@ function profileResponse(response) {
                 checkCheckBoxes(data, 'EyesAndBrowServices', 'EyesAndBrowServices');
                 checkCheckBoxes(data, 'EyesAndBrowProducts', 'EyesAndBrowProducts');
             }
+
+            galleryImages = data.gallery
+            if (galleryImages) {
+                var galleryContainer = $('#gallery-content');
+                galleryContainer.empty(); // Clear the container before adding images
+
+                for (var i = 0; i < galleryImages.length; i++) {
+                    var imageSrc = galleryImages[i];
+                    var imageHtml = '<div class="col-lg-4 p-4">' +
+                        '<img alt="" width="100%" height="100%" src="' + imageSrc + '">' +
+                        '<p>' +
+                        '<a class="text-center btn" onclick="deletePicture(\'' + imageSrc + '\')" title="Edit"><u>remove</u></a>' +
+                        '</p>' +
+                        '</div>';
+
+                    galleryContainer.append(imageHtml);
+                }
+            }
+
         }
     }
 
@@ -340,4 +364,227 @@ function editServiceAndProduct() {
     if (registrationMode === "beautician") {
         $(".beautician-service-product-modal").modal('show');
     }
+}
+
+//update
+
+function loadFileProfile(event) {
+    var output = document.getElementById('blah');
+
+    // Check if the event object and its target property exist
+    if (event && event.target) {
+        // Check if files were selected
+        if (event.target.files && event.target.files[0]) {
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src); // free memory
+            }
+        }
+    }
+
+}
+
+$(document).on('click', '#updateProfileImage', function (e) {
+
+    e.preventDefault();
+    let type = 'POST';
+    let url = '/updateProfileImage';
+    let message = '';
+    let form = $('#hero_image_form');
+    let data = new FormData(form[0]);
+    // if ($(this).text() == 'Submit') {
+    //     url = url;
+    // }
+
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', updateProfileImageResponse, 'spinner_button', 'submit_button');
+});
+
+function updateProfileImageResponse(response) {
+
+    // SHOWING MESSAGE ACCORDING TO RESPONSE
+    if (response.status == 200 || response.status == '200') {
+
+        getProfileData();
+        $('#hero_image_form')[0].reset();
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
+
+        $('.profile-pic-modal').modal('hide');
+    } else {
+
+        error = response.message;
+
+        toastr.error(error, '', {
+            timeOut: 3000
+        });
+    }
+
+}
+
+$(document).on('click', '#updateGalleryImages', function (e) {
+
+    e.preventDefault();
+    let type = 'POST';
+    let url = '/updateGalleryImages';
+    let message = '';
+    let form = $('#gallery_images_form');
+    let data = new FormData(form[0]);
+    // if ($(this).text() == 'Submit') {
+    //     url = url;
+    // }
+
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', updateGalleryImagesResponse, 'spinner_button', 'submit_button');
+});
+
+function updateGalleryImagesResponse(response) {
+
+    // SHOWING MESSAGE ACCORDING TO RESPONSE
+    if (response.status == 200 || response.status == '200') {
+        getProfileData();
+
+        $('#gallery_images_form')[0].reset();
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
+
+        $('.gallery-modal').modal('hide');
+
+
+    } else {
+
+        error = response.message;
+
+        toastr.error(error, '', {
+            timeOut: 3000
+        });
+    }
+
+}
+
+function deletePicture(path) {
+
+    let type = 'POST';
+    let url = '/deleteGalleryImage';
+    let message = '';
+    let form = '';
+    var data = JSON.stringify({
+        path: path
+
+    });
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', deleteGalleryImageResponse, 'spinner_button', 'submit_button');
+}
+
+function deleteGalleryImageResponse(response) {
+
+    // SHOWING MESSAGE ACCORDING TO RESPONSE
+    if (response.status == 200 || response.status == '200') {
+        getProfileData();
+
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
+
+    } else {
+
+        error = response.message;
+
+        toastr.error(error, '', {
+            timeOut: 3000
+        });
+    }
+}
+
+$(document).on('click', '.updateBasicInfoProfile', function (e) {
+
+    e.preventDefault();
+    let type = 'POST';
+    let url = '/updateBasicInfoProfile';
+    let message = '';
+    let form = $('#updateBasicInfoProfile');
+    let data = new FormData(form[0]);
+    // if ($(this).text() == 'Submit') {
+    //     url = url;
+    // }
+
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', updateBasicInfoProfileResponse, 'spinner_button', 'submit_button');
+});
+
+function updateBasicInfoProfileResponse(response) {
+
+    // SHOWING MESSAGE ACCORDING TO RESPONSE
+    if (response.status == 200 || response.status == '200') {
+        getProfileData();
+
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
+
+        // $('.modal').modal('hide');
+
+
+    } else {
+
+        // CALLING OUR FUNTION ERROR & SUCCESS HANDLING
+        error = response.responseJSON.message;
+        var is_invalid = response.responseJSON.errors;
+
+        // Loop through the error object
+        $.each(is_invalid, function (key) {
+
+            // Assuming 'key' corresponds to the form field name
+            var inputField = $('[name="' + key + '"]');
+            // Add the 'is-invalid' class to the input field's parent or any desired container
+            inputField.closest('.form-control').addClass('is-invalid');
+        });
+        // error_msg = error.split('(');
+
+        toastr.error(error, '', {
+            timeOut: 3000
+        });
+    }
+
+}
+
+$(document).on('click', '.updateProductAndServices', function (e) {
+
+    e.preventDefault();
+    let type = 'POST';
+    let url = '/updateProductAndServices';
+    let message = '';
+    let form = $('#updateProductAndServices');
+    let data = new FormData(form[0]);
+    // if ($(this).text() == 'Submit') {
+    //     url = url;
+    // }
+
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', updateProductAndServicesResponse, 'spinner_button', 'submit_button');
+});
+
+
+function updateProductAndServicesResponse(response) {
+
+    // SHOWING MESSAGE ACCORDING TO RESPONSE
+    if (response.status == 200 || response.status == '200') {
+        getProfileData();
+
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
+
+        $('.modal').modal('hide');
+
+    } else {
+
+        // CALLING OUR FUNTION ERROR & SUCCESS HANDLING
+        toastr.error(error, '', {
+            timeOut: 3000
+        });
+    }
+
 }

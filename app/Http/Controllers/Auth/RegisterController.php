@@ -152,12 +152,12 @@ class RegisterController extends Controller
                 }
             }
         }
-
+        // dd($images);
         $rate = '';
-        if ($request->otherRate == 0 || $request->otherRate == '0') {
-            $rate = $request->stylist_rate;
-        } else {
+        if ($request->stylist_rate == '') {
             $rate = $request->otherRate;
+        } else {
+            $rate = $request->stylist_rate;
         }
 
         $userData = match ($request->type) {
@@ -171,6 +171,7 @@ class RegisterController extends Controller
                 'gallery' => $images['image_gallery'] ?? '',
                 'utr_number' => $request->utr_number,
                 'hero_image' => $images['stylist_picture'],
+                'public_liability_insurance' => $images['public_liability_insurance'] ?? '',
                 'languages' => $request->stylist_language,
                 'rate' => $rate,
                 'zone' => $request->zone,
@@ -200,25 +201,9 @@ class RegisterController extends Controller
                 // Add cases for other types here...
             default => [],
         };
-        // dd($userData);
+
         User::create($userData);
 
         return response()->json(['status' => 200, 'message' => 'Registration Succsessfull!', 'data' => '']);
-    }
-
-    public function deleteHeroImage($imagePath)
-    {
-        try {
-            // Check if the file exists before attempting to delete it
-            if (File::exists($imagePath)) {
-                // Delete the file
-                File::delete($imagePath);
-                return 'Image deleted successfully';
-            } else {
-                return 'Image not found';
-            }
-        } catch (\Exception $e) {
-            return 'Error deleting image: ' . $e->getMessage();
-        }
     }
 }

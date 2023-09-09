@@ -1,18 +1,3 @@
-function loadFileProfile(event) {
-    var output = document.getElementById('blah');
-
-    // Check if the event object and its target property exist
-    if (event && event.target) {
-        // Check if files were selected
-        if (event.target.files && event.target.files[0]) {
-            output.src = URL.createObjectURL(event.target.files[0]);
-            output.onload = function () {
-                URL.revokeObjectURL(output.src); // free memory
-            }
-        }
-    }
-}
-
 function loadFile(event) {
     var output = document.getElementById('blah');
 
@@ -27,8 +12,6 @@ function loadFile(event) {
         }
     }
 }
-
-
 
 function SendAjaxRequestToServer(requestType = 'GET', url, data, dataType = 'json', callBack = '', spinner_button, submit_button) {
     // console.log(data, url, dataType);
@@ -63,6 +46,3 @@ function SendAjaxRequestToServer(requestType = 'GET', url, data, dataType = 'jso
         }
     })
 }
-
-
-

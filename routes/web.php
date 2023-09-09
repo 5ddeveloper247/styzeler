@@ -37,6 +37,11 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         // Route::get('/ownerProfile', 'FrontEndController@ownerProfile')->name('ownerProfile');
         Route::get('/getProfileData', 'ProfileController@getProfileData')->name('getProfileData');
         Route::post('/ProfileImageUpdate', 'ProfileController@ProfileImageUpdate')->name('ProfileImageUpdate');
+        Route::post('/updateProfileImage', 'ProfileController@updateProfileImage')->name('updateProfileImage');
+        Route::post('/updateGalleryImages', 'ProfileController@updateGalleryImages')->name('updateGalleryImages');
+        Route::post('/deleteGalleryImage', 'ProfileController@deleteGalleryImage')->name('deleteGalleryImage');
+        Route::post('/updateBasicInfoProfile', 'ProfileController@updateBasicInfoProfile')->name('updateBasicInfoProfile');
+        Route::post('/updateProductAndServices', 'ProfileController@updateProductAndServices')->name('updateProductAndServices');
     });
 
     Route::get('/forgetPassword', 'FrontEndController@forgetPassword')->name('forgetPassword');
@@ -74,6 +79,7 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+
 Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@register')->name('registration');
 
 
@@ -105,3 +111,6 @@ Route::group(['namespace' => 'AdminFrontEnd'], function () {
 	});
 	
 });
+
+// Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@register')->name('registration');
+

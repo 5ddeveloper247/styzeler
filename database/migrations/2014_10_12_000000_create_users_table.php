@@ -23,8 +23,10 @@ return new class extends Migration
             $table->string('profile_type')->nullable();
             $table->text('qualification')->nullable();
             $table->text('hero_image')->nullable();
+            $table->text('public_liability_insurance')->nullable();
+            $table->text('trade_video')->nullable();
             $table->text('gallery')->nullable();
-            $table->bigInteger('utr_number')->nullable(); // Remove the '20'
+            $table->bigInteger('utr_number')->nullable();
             $table->string('languages')->nullable();
             $table->string('rate')->nullable();
             $table->text('zone')->nullable();
