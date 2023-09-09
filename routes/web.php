@@ -67,6 +67,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/webTermAndConditions', 'FrontEndController@webTermAndConditions')->name('webTermAndConditions');
 });
 
+
 Route::middleware(['guest'])->group(function () {
     Route::post('/login', 'Auth\LoginController@login')->name('login');
     // Other routes that should only be accessible to guests
@@ -74,3 +75,33 @@ Route::middleware(['guest'])->group(function () {
 
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
 Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@register')->name('registration');
+
+
+
+
+Route::group(['namespace' => 'AdminFrontEnd'], function () {
+	
+	Route::group(['prefix' => 'admin'], function () {
+		Route::get('/', 'AdminFrontEndController@login')->name('/');
+		Route::get('/login', 'AdminFrontEndController@login')->name('admin.login');
+		Route::get('/reset-password', 'AdminFrontEndController@forgetPassword')->name('admin.resetPassword');
+		Route::get('/dashboard', 'AdminFrontEndController@dashboard')->name('admin.dashboard');
+		Route::get('/wedding-stylist', 'AdminFrontEndController@weddingStylist')->name('admin.weddingStylist');
+		Route::get('/see-details', 'AdminFrontEndController@seeDetails')->name('admin.seeDetails');
+		Route::get('/cv', 'AdminFrontEndController@cv')->name('admin.cv');
+		Route::get('/hair-stylist', 'AdminFrontEndController@hairstylist')->name('admin.hairstylist');
+		Route::get('/beautician', 'AdminFrontEndController@beautician')->name('admin.beautician');
+		Route::get('/barber', 'AdminFrontEndController@barber')->name('admin.barber');
+		Route::get('/hairdressing-owner', 'AdminFrontEndController@hairdressingOwner')->name('admin.hairdressingOwner');
+		Route::get('/beauty-salon-owner', 'AdminFrontEndController@beautySalonOwner')->name('admin.beautySalonOwner');
+		Route::get('/client', 'AdminFrontEndController@client')->name('admin.client');
+		Route::get('/bookings', 'AdminFrontEndController@bookings')->name('admin.bookings');
+		Route::get('/job-requests', 'AdminFrontEndController@jobRequests')->name('admin.jobRequests');
+		Route::get('/upload-jobs', 'AdminFrontEndController@uploadJobs')->name('admin.uploadJobs');
+		
+		
+		
+		
+	});
+	
+});
