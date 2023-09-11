@@ -109,7 +109,7 @@
 				</li>
 
 				<!-- Jobs and Blogs  -->
-				<li class="nav-item  {{(isset($page) && in_array($page, ['jobRequests','uploadJobs'])) ? 'menu-open' : ''}}"">
+				<li class="nav-item  {{(isset($page) && in_array($page, ['jobRequests','uploadJobs','uploadBlogs'])) ? 'menu-open' : ''}}">
 					<a href="#" class="nav-link"> 
 						<i class="nav-icon far fa-envelope"></i>
 						<p>Upload Jobs and Blogs <i class="fas fa-angle-left right"></i> </p>
@@ -128,7 +128,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a href="pages/upload-blogs.html" class="nav-link"> 
+							<a href="{{route('admin.uploadBlogs')}}" class="nav-link"> 
 								<i class="far fa-circle nav-icon"></i>
 								<p>Upload Blogs</p>
 							</a>
@@ -137,36 +137,34 @@
 				</li>
 
 				<!-- Chair -->
-				<li class="nav-item"><a href="#" class="nav-link"> <i
-						class="nav-icon far fa-envelope"></i>
-						<p>
-							Salon Chair <i class="fas fa-angle-left right"></i>
-						</p>
-				</a>
+				<li class="nav-item {{(isset($page) && in_array($page, ['hairStylistChair','chairDetails','barberChair','beautyChair'])) ? 'menu-open' : ''}}">
+					<a href="#" class="nav-link"> 
+						<i class="nav-icon far fa-envelope"></i>
+						<p>Salon Chair <i class="fas fa-angle-left right"></i> </p>
+					</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="pages/hairstylist-chair.html"
+						<li class="nav-item"><a href="{{route('admin.hairStylistChair')}}"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>Hairstylist Chair</p>
 						</a></li>
-						<li class="nav-item"><a href="pages/barber-chair.html"
+						<li class="nav-item"><a href="{{route('admin.barberChair')}}"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>Barber Chair</p>
 						</a></li>
-						<li class="nav-item"><a href="pages/beauty-chair.html"
+						<li class="nav-item"><a href="{{route('admin.beautyChair')}}"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>Beauty Therapist Chair</p>
 						</a></li>
 					</ul></li>
 
 				<!-- job applicants -->
-				<li class="nav-item"><a href="#" class="nav-link"> <i
-						class="nav-icon far fa-envelope"></i>
-						<p>
-							Job Applicants <i class="fas fa-angle-left right"></i>
-						</p>
-				</a>
+				<li class="nav-item {{(isset($page) && in_array($page, ['jobApplicants','applicant'])) ? 'menu-open' : ''}}">
+					<a href="#" class="nav-link"> 
+						<i class="nav-icon far fa-envelope"></i>
+						<p>Job Applicants <i class="fas fa-angle-left right"></i> </p>
+					</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="pages/job-applicants.html"
+						<li class="nav-item"><a href="{{route('admin.jobApplicants')}}"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>View Applicants</p>
 						</a></li>
@@ -174,14 +172,13 @@
 					</ul></li>
 
 				<!-- Enquiry -->
-				<li class="nav-item"><a href="#" class="nav-link"> <i
-						class="nav-icon far fa-envelope"></i>
-						<p>
-							Email enquiry <i class="fas fa-angle-left right"></i>
-						</p>
+				<li class="nav-item {{(isset($page) && in_array($page, ['emailEnquiry'])) ? 'menu-open' : ''}}">
+					<a href="#" class="nav-link"> 
+						<i class="nav-icon far fa-envelope"></i>
+						<p>Email enquiry <i class="fas fa-angle-left right"></i> </p>
 				</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="pages/email-enquiry.html"
+						<li class="nav-item"><a href="{{route('admin.emailEnquiry')}}"
 							class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>Email enquiry</p>
 						</a></li>

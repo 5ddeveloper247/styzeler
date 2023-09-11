@@ -101,6 +101,60 @@ class AdminFrontEndController extends Controller
     	return view('admin.uploadJobs')->with($data);
     }
     
+    public function uploadBlogs()
+    {
+    	$data['page'] = 'uploadBlogs';
+    	return view('admin.uploadBlogs')->with($data);
+    }
+    
+    public function hairStylistChair()
+    {
+    	$data['page'] = 'hairStylistChair';
+    	return view('admin.hairStylistChair')->with($data);
+    }
+    
+    public function chairDetails()
+    {
+    	$data['page'] = 'chairDetails';
+    	return view('admin.chairDetails')->with($data);
+    }
+    
+    public function barberChair()
+    {
+    	$data['page'] = 'barberChair';
+    	return view('admin.barberChair')->with($data);
+    }
+    
+    public function beautyChair()
+    {
+    	$data['page'] = 'beautyChair';
+    	return view('admin.beautyChair')->with($data);
+    }
+    
+	public function jobApplicants()
+    {
+    	$data['page'] = 'jobApplicants';
+    	return view('admin.jobApplicants')->with($data);
+    }
+    
+    public function applicant()
+    {
+    	$data['page'] = 'applicant';
+    	return view('admin.applicant')->with($data);
+    }
+    
+    public function coverLetter()
+    {
+    	$data['page'] = 'coverLetter';
+    	return view('admin.coverLetter')->with($data);
+    }
+    
+    public function emailEnquiry()
+    {
+    	$data['page'] = 'emailEnquiry';
+    	return view('admin.emailEnquiry')->with($data);
+    }
+    
     
     
    

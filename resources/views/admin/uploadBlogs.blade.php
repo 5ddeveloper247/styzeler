@@ -11,27 +11,22 @@
 	<section class="content-header">
 		<div class="container">
 
-			<form id="job-form" autocomplete="off">
+			<form id="blog-form" autocomplete="off">
 				<div class="form-group">
-					<label for="job-title">Job Title</label> <input type="text"
-						class="form-control" id="job-title" name="job_title">
+					<label for="blog-title">Blog Title</label> <input type="text"
+						class="form-control" id="blog-title" name="blog_title">
 				</div>
 				<div class="form-group">
-					<label for="job-title">Job Description</label>
+					<label for="blog-title">Blog Description</label>
 					<textarea type="text" class="form-control" id="description"
 						name="description" rows="3"></textarea>
 				</div>
 				<div class="form-group">
-					<label for="job-title">Job Start Date</label> <input
-						class="form-control" name="job_start_date"
-						placeholder="01/01/2018" id="job-start-date" />
+					<label for="image_uploads" class="color-1">Select picture</label> <input
+						class="form-control col-lg-6" type="file" id="image-gallery"
+						name="image-gallery" accept=".jpg, .jpeg, .png" multiple>
 				</div>
-				<div class="form-group">
-					<label for="job-title">Job End Date</label> <input
-						class="form-control" name="job_end_date" placeholder="01/01/2018"
-						id="job-end-date" />
-				</div>
-				<button type="button" class="btn btn-primary" onclick="uploadJob();">Submit</button>
+				<button type="button" class="btn btn-primary" onclick="uploadBlog();">Submit</button>
 			</form>
 
 		</div>
@@ -52,7 +47,7 @@
 						</button>
 					</div>
 					<div class="modal-body">
-						<p class="mt-2">Job Uploaded successfully!</p>
+						<p class="mt-2">Blog Uploaded successfully!</p>
 						<button type="button" class="btn btn-primary mt-4"
 							onclick="redirect();">Okay</button>
 
@@ -92,7 +87,7 @@
 
     	CKEDITOR.editorConfig = function (config) {	    config.language = 'es';	    config.uiColor = '#F7B42C';	    config.height = 300;	    config.toolbarCanCollapse = true;	};	CKEDITOR.replace('description');	
    	});
-    function uploadJob(){
+   	function uploadBlog(){
    		$('.upload-success').modal('show');
    	}
    	function redirect(){

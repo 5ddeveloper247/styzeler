@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
   	<meta name="viewport" content="width=device-width, initial-scale=1">
-  	<title>Styzeler Admin Login</title>
+  	<title>Styzeler</title>
 
   	<!-- Favicon -->
   	<link rel="icon" href="{{ asset('assets_admin/dist/img/favicon-logo.png') }}" type="image/png" sizes="16x16">
@@ -37,6 +37,11 @@
         #toast-container>.toast {
             width: 300px;
             /* width: 100% */
+        }
+        .txtdec-none{
+        	text-decoration: unset;
+		    color: black;
+		    cursor: pointer;
         }
     </style>
     @stack('css')

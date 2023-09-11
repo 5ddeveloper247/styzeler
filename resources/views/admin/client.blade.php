@@ -45,15 +45,15 @@
 				</div>
 				<div class="row user-details">
 					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p>Brae we</p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="37"><a href="{{ route('admin.seeDetails') }}">Click to see details</a></p></div>
+					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="37"><a class="txtdec-none" href="{{ route('admin.seeDetails') }}">Click to see details</a></p></div>
 					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_0"><a style="color: green;">Activated</a></p></div>
 					<hr>
 					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p>Brae we</p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="37"><a href="{{ route('admin.seeDetails') }}">Click to see details</a></p></div>
+					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="37"><a class="txtdec-none" href="{{ route('admin.seeDetails') }}">Click to see details</a></p></div>
 					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_0"><a style="color: green;">Activated</a></p></div>
 					<hr>
 					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p>Brae we</p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="37"><a href="{{ route('admin.seeDetails') }}">Click to see details</a></p></div><!-- onclick="getFreelancer('Wedding Stylist', 37)" -->
+					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="37"><a class="txtdec-none" href="{{ route('admin.seeDetails') }}">Click to see details</a></p></div><!-- onclick="getFreelancer('Wedding Stylist', 37)" -->
 					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_3"><a style="color:red;">Active Now</a></p></div><!-- onclick="activePeople(21);" -->
 					<hr>
 				</div>

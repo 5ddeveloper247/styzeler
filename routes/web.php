@@ -104,10 +104,15 @@ Route::group(['namespace' => 'AdminFrontEnd'], function () {
 		Route::get('/bookings', 'AdminFrontEndController@bookings')->name('admin.bookings');
 		Route::get('/job-requests', 'AdminFrontEndController@jobRequests')->name('admin.jobRequests');
 		Route::get('/upload-jobs', 'AdminFrontEndController@uploadJobs')->name('admin.uploadJobs');
-		
-		
-		
-		
+		Route::get('/upload-blogs', 'AdminFrontEndController@uploadBlogs')->name('admin.uploadBlogs');
+		Route::get('/hairstylist-chair', 'AdminFrontEndController@hairStylistChair')->name('admin.hairStylistChair');
+		Route::get('/chair-details', 'AdminFrontEndController@chairDetails')->name('admin.chairDetails');
+		Route::get('/barber-chair', 'AdminFrontEndController@barberChair')->name('admin.barberChair');
+		Route::get('/beauty-chair', 'AdminFrontEndController@beautyChair')->name('admin.beautyChair');
+		Route::get('/job-applicants', 'AdminFrontEndController@jobApplicants')->name('admin.jobApplicants');
+		Route::get('/applicant', 'AdminFrontEndController@applicant')->name('admin.applicant');
+		Route::get('/cover-letter', 'AdminFrontEndController@coverLetter')->name('admin.coverLetter');
+		Route::get('/email-enquiry', 'AdminFrontEndController@emailEnquiry')->name('admin.emailEnquiry');
 	});
 	
 });
