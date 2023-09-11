@@ -11,15 +11,15 @@
                 <div class="col-10 col-md-7 ">
 
                     <div class="login-body py-5 px-3 p-sm-5">
-                        <form class="p-md-5" id="login-form">
+                        <form class="p-md-5" id="login_form">
                             <div class="form-group p-md-2">
-                              <input type="input" class="form-control" id="user-name" aria-describedby="emailHelp" placeholder="Username" required>
+                              <input type="input" class="form-control" id="user-email" name="email" placeholder="Username" required>
                             </div>
                             <div class="form-group p-md-2">
-                              <input type="password" class="form-control" id="user-password" placeholder="Password" required>                             
+                              <input type="password" class="form-control" id="user-password" name="password" placeholder="Password" required>                             
                             </div>
                            
-                            <button type="button" class="p-2 "  id="loginbtn">Login</button><br/>
+                            <button type="submit" id="submit_button" class="p-2 ">Login</button>
                             <a href="{{ route('admin.resetPassword') }}" class="nav-link">Reset Password</a>
                                 
     
@@ -122,10 +122,78 @@
     <script src="{{ asset('customjs/web/register/common.js') }}"></script>
     <script>
     var dashboardUrl = "{{route('admin.dashboard')}}";
-    $(document).on('click', '#loginbtn', function(e) {
+//     $(document).on('click', '#loginbtn', function(e) {
 
-    	window.location.href = dashboardUrl;
+//     	window.location.href = dashboardUrl;
 
-    });
+//     });
+    </script>
+    
+    <script>
+        $(function() {
+            $.ajaxSetup({
+                headers: {
+                    "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+                }
+            });
+        });
+        $(document).on('click', '#submit_button', function(e) {
+
+            e.preventDefault();
+
+            let type = 'POST';
+            let url = '';
+            let message = '';
+            let form = $('#login_form');
+            let data = new FormData(form[0]);
+//             if ($(this).text() == 'Submit') {
+                url = '{{ route('admin.adminLogin') }}';
+//             }
+
+
+            // PASSING DATA TO FUNCTION
+            $('[name]').removeClass('is-invalid');
+            SendAjaxRequestToServer(type, url, data, '', loginResponse, 'spinner_button', 'submit_button');
+
+        });
+
+        function loginResponse(response) {
+
+            // SHOWING MESSAGE ACCORDING TO RESPONSE
+            if (response.status == 200) {
+                toastr.success(response.message, '', {
+                    timeOut: 3000
+                });
+
+                setTimeout(function() {
+                    window.location.href = '{{ route('admin.dashboard') }}';
+                }, 3000);
+            } else {
+                if (response.status == 422) {
+                    toastr.error(response.message, '', {
+                        timeOut: 3000
+                    });
+                    return false
+                }
+                // CALLING OUR FUNTION ERROR & SUCCESS HANDLING
+                error = response.responseJSON.message;
+                var is_invalid = response.responseJSON.errors;
+
+                // Loop through the error object
+                $.each(is_invalid, function(key) {
+
+                    // Assuming 'key' corresponds to the form field name
+                    var inputField = $('[name="' + key + '"]');
+                    // Add the 'is-invalid' class to the input field's parent or any desired container
+                    inputField.closest('.form-control').addClass('is-invalid');
+                });
+                // error_msg = error.split('(');
+
+                toastr.error(error, '', {
+                    timeOut: 3000
+                });
+            }
+
+        }
     </script>
 @endpush

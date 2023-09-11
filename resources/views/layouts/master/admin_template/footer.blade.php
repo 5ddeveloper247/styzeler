@@ -28,13 +28,17 @@
 	<script src="{{ asset('assets_admin/plugins/jsgrid/demos/db.js') }}"></script>
 	<script src="{{ asset('assets_admin/plugins/jsgrid/jsgrid.min.js') }}"></script>
 	<script src="{{ asset('assets_admin/dist/js/adminlte.js') }}"></script>
-	<script src="{{ asset('assets_admin/dist/js/demo.js') }}"></script>
+	<script src="{{ asset('template_new/assets/js/toastr.min.js') }}"></script>
 <!-- 	<script src="{{ asset('assets_admin/dist/js/pages/dashboard.js') }}"></script> -->
 
  <script>
      $(".dropdown-toggle").click(function() {
          $('.dropdown-menu').toggleClass('show')
      });
+     $("#logout-btn").click(function() {
+         $('#logoutForm-btn').click();
+     });
+     
  </script>
  <!-- Favicon -->
  @stack('script')

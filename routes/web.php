@@ -75,6 +75,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
 
 Route::middleware(['guest'])->group(function () {
     Route::post('/login', 'Auth\LoginController@login')->name('login');
+    Route::post('/admin/adminLogin', 'Auth\LoginController@adminLogin')->name('admin.adminLogin');
     // Other routes that should only be accessible to guests
 });
 
@@ -87,11 +88,17 @@ Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@regis
 
 Route::group(['namespace' => 'AdminFrontEnd'], function () {
 	
+	
 	Route::group(['prefix' => 'admin'], function () {
+		
+		Route::group(['middleware' => ['AdminAuth']], function(){
+			Route::get('/dashboard', 'AdminFrontEndController@dashboard')->name('admin.dashboard');
+		});
+		
 		Route::get('/', 'AdminFrontEndController@login')->name('/');
 		Route::get('/login', 'AdminFrontEndController@login')->name('admin.login');
 		Route::get('/reset-password', 'AdminFrontEndController@forgetPassword')->name('admin.resetPassword');
-		Route::get('/dashboard', 'AdminFrontEndController@dashboard')->name('admin.dashboard');
+		
 		Route::get('/wedding-stylist', 'AdminFrontEndController@weddingStylist')->name('admin.weddingStylist');
 		Route::get('/see-details', 'AdminFrontEndController@seeDetails')->name('admin.seeDetails');
 		Route::get('/cv', 'AdminFrontEndController@cv')->name('admin.cv');

@@ -61,4 +61,19 @@ class LoginController extends Controller
         // Authentication failed
         return response()->json(['status' => '422', 'message' => 'Invalid login credentials']);
     }
+    
+    public function adminLogin(LoginValidationRequest $request)
+    {
+    
+    	$credentials = $request->only('email', 'password');
+    
+    	if (Auth::attempt($credentials)) {
+    
+    		// Authentication passed
+    		return response()->json(['status' => '200', 'message' => 'Login successful!']);
+    	}
+    
+    	// Authentication failed
+    	return response()->json(['status' => '422', 'message' => 'Invalid login credentials']);
+    }
 }
