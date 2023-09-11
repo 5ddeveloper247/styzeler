@@ -4,10 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use Countable;
 use App\Models\User;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\File;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -193,8 +190,7 @@ class RegisterController extends Controller
                 'password' => $request->owner_password,
                 'type' => $request->type,
                 'data' => array_merge(
-                    $request->except($commonFields),
-                    ['images' => $images]
+                    $request->except($commonFields)
                 ),
             ],
 
