@@ -755,6 +755,7 @@
             }
 
             // PASSING DATA TO FUNCTION
+            $('[name]').removeClass('is-invalid');
             SendAjaxRequestToServer(type, url, data, '', registrationResponse, 'spinner_button', 'submit_button');
 
         });

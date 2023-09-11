@@ -336,7 +336,7 @@
                         <label class="form-check-label" for="loreal-professionnel">L'Oréal Professionnel</label>
                     </div>
                 </div>
-        </div> -->
+        </div>
         <div class="terms-conditions text-center">
             <div class="terms my-5 btn ">
 
@@ -378,7 +378,7 @@
                             </div>
                             <div class="modal-footer">
                                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <button type="button" class="btn btn-primary">Save changes</button> -->
                             </div>
                         </div>
                     </div>
@@ -456,6 +456,7 @@
             }
 
             // PASSING DATA TO FUNCTION
+            $('[name]').removeClass('is-invalid');
             SendAjaxRequestToServer(type, url, data, '', registrationResponse, 'spinner_button', 'submit_button');
 
         });

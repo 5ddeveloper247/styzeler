@@ -78,7 +78,6 @@ function editAge() {
 
 function editResume() {
     $(".resume-modal").modal('show');
-    $("#stylist-resume").attr("placeholder", resume).blur();
 }
 
 function editRate() {
@@ -209,6 +208,12 @@ function profileResponse(response) {
             profilename = data.name;
             surname = data.surname;
             phone = data.phone;
+
+            // if (phone) {
+            //     var cleanedPhone = phone.replace(/\D/g, '');
+            // } else {
+            //     var cleanedPhone = '-'
+            // }
 
             $('#ownerName').text(profilename + ' ' + surname);
             $('#ownerName').append('<a class="text-center btn" onclick="editName()" title="Edit">✎</a>');

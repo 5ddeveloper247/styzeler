@@ -34,6 +34,13 @@ class UpdateProfileBasicInfoValidationRequest extends FormRequest
             'utr_number' => 'required_if:type,wedding,hairStylist,beautician,barber',
             'zone' => 'required_if:type,wedding,hairStylist,beautician,barber',
             'stylist_language' => 'required_if:type,wedding,hairStylist,beautician,barber',
+
+            'owner_name' => 'required_if:type,hairdressingSalon,beautySalon,client',
+            'owner_surname' => 'required_if:type,hairdressingSalon,beautySalon,client',
+            'owner_address' => 'required_if:type,hairdressingSalon,beautySalon,client',
+            'owner_postcode' => 'required_if:type,hairdressingSalon,beautySalon,client',
+            'owner_telephone' => 'required_if:type,hairdressingSalon,beautySalon,client',
+
         ];
     }
     public function messages()
@@ -50,7 +57,13 @@ class UpdateProfileBasicInfoValidationRequest extends FormRequest
             'qualification.required_if' => 'Please Select Qualification',
             'stylist_language.required_if' => 'Languages is required!',
             'zone.required_if' => 'Zone of London open to work is required!',
-            'video.url' => 'The video must be a valid URL.'
+            'video.url' => 'The video must be a valid URL.',
+
+            'owner_name.required_if' => 'Name is required!',
+            'owner_surname.required_if' => 'Surname is required!',
+            'owner_address.required_if' => 'Address is required!',
+            'owner_postcode.required_if' => 'PostCode is required!',
+            'owner_telephone.required_if' => 'Mobile Number is required!',
         ];
     }
 }

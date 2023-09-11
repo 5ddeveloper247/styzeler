@@ -457,7 +457,7 @@
                                 aria-describedby="stylist-surname" placeholder="Surname">
                         </div>
                         <div class="form-group">
-                            <input type="number" class="form-control " id="stylist-mobile" name="stylist_mobile"
+                            <input type="tel" class="form-control " id="stylist-mobile" name="stylist_mobile"
                                 aria-describedby="stylist-mobile" placeholder="Mobile">
                         </div>
                         </p>

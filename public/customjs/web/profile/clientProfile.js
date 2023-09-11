@@ -142,3 +142,113 @@ function profileResponse(response) {
     }
 
 }
+
+//update
+
+function loadFileProfile(event) {
+    var output = document.getElementById('blah');
+
+    // Check if the event object and its target property exist
+    if (event && event.target) {
+        // Check if files were selected
+        if (event.target.files && event.target.files[0]) {
+            output.src = URL.createObjectURL(event.target.files[0]);
+            output.onload = function () {
+                URL.revokeObjectURL(output.src); // free memory
+            }
+        }
+    }
+
+}
+
+$(document).on('click', '#updateProfileImage', function (e) {
+
+    e.preventDefault();
+    let type = 'POST';
+    let url = '/updateProfileImage';
+    let message = '';
+    let form = $('#hero_image_form');
+    let data = new FormData(form[0]);
+    // if ($(this).text() == 'Submit') {
+    //     url = url;
+    // }
+
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', updateProfileImageResponse, 'spinner_button', 'submit_button');
+});
+
+function updateProfileImageResponse(response) {
+
+    // SHOWING MESSAGE ACCORDING TO RESPONSE
+    if (response.status == 200 || response.status == '200') {
+
+        getProfileData();
+        $('#hero_image_form')[0].reset();
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
+
+        $('.profile-pic-modal').modal('hide');
+    } else {
+
+        error = response.message;
+
+        toastr.error(error, '', {
+            timeOut: 3000
+        });
+    }
+
+}
+
+$(document).on('click', '.updateBasicInfoProfile', function (e) {
+
+    e.preventDefault();
+    let type = 'POST';
+    let url = '/updateBasicInfoProfile';
+    let message = '';
+    let form = $('#updateBasicInfoProfile');
+    let data = new FormData(form[0]);
+    // if ($(this).text() == 'Submit') {
+    //     url = url;
+    // }
+    $('[name]').removeClass('is-invalid');
+
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', updateBasicInfoProfileResponse, 'spinner_button', 'submit_button');
+});
+
+function updateBasicInfoProfileResponse(response) {
+
+    // SHOWING MESSAGE ACCORDING TO RESPONSE
+    if (response.status == 200 || response.status == '200') {
+        getProfileData();
+
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
+
+        $('.modal').modal('hide');
+
+
+    } else {
+
+        // CALLING OUR FUNTION ERROR & SUCCESS HANDLING
+        error = response.responseJSON.message;
+        var is_invalid = response.responseJSON.errors;
+
+        // Loop through the error object
+        $.each(is_invalid, function (key) {
+
+            // Assuming 'key' corresponds to the form field name
+            var inputField = $('[name="' + key + '"]');
+            // Add the 'is-invalid' class to the input field's parent or any desired container
+            inputField.closest('.form-control').addClass('is-invalid');
+        });
+        // error_msg = error.split('(');
+
+        toastr.error(error, '', {
+            timeOut: 3000
+        });
+    }
+
+}

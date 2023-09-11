@@ -7,7 +7,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\RegisterValidationRequest;
 use App\Http\Requests\UpdateProfileBasicInfoValidationRequest;
 
 class ProfileController extends Controller
@@ -150,13 +149,12 @@ class ProfileController extends Controller
             'hairdressingSalon', 'beautySalon', 'client' => [
                 'name' => $request->owner_name,
                 'surname' => $request->owner_surname,
-                'email' => $request->owner_email,
                 'phone' => $request->owner_telephone,
                 'post_code' => $request->owner_postcode,
+                'status' => $request->owner_status,
                 'utr_number' => $request->utr_number,
                 'address' => $request->owner_address,
                 'password' => $request->owner_password,
-                'type' => $request->type,
 
             ],
 

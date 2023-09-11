@@ -25,6 +25,7 @@ return new class extends Migration
             $table->text('hero_image')->nullable();
             $table->text('public_liability_insurance')->nullable();
             $table->text('trade_video')->nullable();
+            $table->text('post_code')->nullable();
             $table->text('gallery')->nullable();
             $table->bigInteger('utr_number')->nullable();
             $table->string('languages')->nullable();
