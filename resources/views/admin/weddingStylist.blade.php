@@ -22,7 +22,7 @@
 		</div>
 		<!-- /.container-fluid -->
 	</section>
-
+	
 	<!-- Main content -->
 	<section class="content">
 		<div class="card">
@@ -44,18 +44,23 @@
 					</div>
 				</div>
 				<div class="row user-details">
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p>Brae we</p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="37"><a class="txtdec-none" href="{{ route('admin.seeDetails') }}">Click to see details</a></p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_0"><a style="color: green;">Activated</a></p></div>
-					<hr>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p>Brae we</p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="37"><a class="txtdec-none" href="{{ route('admin.seeDetails') }}">Click to see details</a></p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_0"><a style="color: green;">Activated</a></p></div>
-					<hr>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p>Brae we</p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="37"><a class="txtdec-none" href="{{ route('admin.seeDetails') }}">Click to see details</a></p></div><!-- onclick="getFreelancer('Wedding Stylist', 37)" -->
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_3"><a style="color:red;">Active Now</a></p></div><!-- onclick="activePeople(21);" -->
-					<hr>
+					
+					@if(count($users))
+					@foreach($users as $user)
+						<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p>{{$user->name}} {{$user->surname}}</p></div>
+						<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="{{$user->id}}"><a class="txtdec-none" href="{{ route('admin.seeDetails') }}/{{$user->id}}">Click to see details</a></p></div>
+						
+						@if($user->status == 'Active')
+							<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="user_{{$user->id}}"><a class="txtdec-none" href="{{route('admin.changeUserStatusInActive')}}/{{$user->id}}" style="color: green;">Activated</a></p></div>
+						@else
+							<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="user_{{$user->id}}"><a class="txtdec-none" href="{{route('admin.changeUserStatusActive')}}/{{$user->id}}" style="color: red;">Active Now</a></p></div>
+						@endif
+						<hr>
+					@endforeach
+					@else
+						<div class="col-12 pt-2 text-center" style="border-top: 1px solid grey;"><p>No Record Found...</p></div><hr>
+					@endif
+				
 				</div>
 
 				
@@ -70,9 +75,8 @@
 			<div class="modal-dialog " role="document">
 				<div class="modal-content text-center">
 					<div class="modal-body">
-						<p class="mt-2">User activated!</p>
-						<button type="button" class="btn btn-primary mt-4"
-							onclick="redirect();">Okay</button>
+						<p class="mt-2" id="successMessage"></p>
+						<button type="button" class="btn btn-primary mt-4 closeModal">Okay</button>
 
 					</div>
 					<div class="modal-footer text-center"></div>
@@ -88,5 +92,16 @@
 
 @push('script')
     <script src="{{ asset('customjs/web/register/common.js') }}"></script>
+    <script>
+
+    $(".closeModal").click(function () {
+    	$(".activated-modal").modal('hide');
+    });
     
+	@if(session('success'))
+		$("#successMessage").text("{{session('success')}}");
+		$(".activated-modal").modal('show');
+	@endif
+	
+    </script>
 @endpush

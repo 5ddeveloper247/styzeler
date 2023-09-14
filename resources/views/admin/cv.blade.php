@@ -18,7 +18,7 @@
 	    var h = window.innerHeight;
 	    var w = window.innerWidth;
 
-	    $(".showCv").append('<embed src="{{ asset("pdf/wedding/Stuart-Sim-Allan-CV.pdf")}}" width="'+w+'" height="'+h+'">');
+	    $(".showCv").append('<embed src="{{ asset(isset($userDetails->cv) ? $userDetails->cv : 'pdf/wedding/Stuart-Sim-Allan-CV.pdf')}}" width="'+w+'" height="'+h+'">');
     </script>
 
 </body>

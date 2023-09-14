@@ -53,9 +53,18 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials)) {
-
-            // Authentication passed
-            return response()->json(['status' => '200', 'message' => 'Login successful!']);
+			
+        	if (Auth::user()->type === 'admin') {
+        		// Log out the user
+        		Auth::logout();
+        		
+        		return response()->json(['status' => '422', 'message' => 'Invalid login credentials']);
+        	}else{
+        		
+        		// Authentication passed
+        		return response()->json(['status' => '200', 'message' => 'Login successful!']);
+        	}
+            
         }
 
         // Authentication failed
@@ -69,8 +78,16 @@ class LoginController extends Controller
     
     	if (Auth::attempt($credentials)) {
     
-    		// Authentication passed
-    		return response()->json(['status' => '200', 'message' => 'Login successful!']);
+    		if (Auth::user()->type !== 'admin') {
+        		// Log out the user
+        		Auth::logout();
+        		
+        		return response()->json(['status' => '422', 'message' => 'Invalid login credentials']);
+        	}else{
+        		
+        		// Authentication passed
+        		return response()->json(['status' => '200', 'message' => 'Login successful!']);
+        	}
     	}
     
     	// Authentication failed

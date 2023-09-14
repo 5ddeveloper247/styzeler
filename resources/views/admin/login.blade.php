@@ -167,7 +167,7 @@
 
                 setTimeout(function() {
                     window.location.href = '{{ route('admin.dashboard') }}';
-                }, 3000);
+                }, 2000);
             } else {
                 if (response.status == 422) {
                     toastr.error(response.message, '', {

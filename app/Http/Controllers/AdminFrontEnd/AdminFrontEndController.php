@@ -12,14 +12,22 @@ class AdminFrontEndController extends Controller
   
     public function login()
     {	
-    	$data['page'] = 'login';
-        return view('admin.login')->with($data);
+    	if(!Auth::user()){
+    		$data['page'] = 'login';
+    		return view('admin.login')->with($data);
+    	}else{
+    		return redirect(route('admin.dashboard'));
+    	}
     }
 
     public function forgetPassword()
     {
-    	$data['page'] = 'login';
-        return view('admin.resetPassword')->with($data);
+    	if(!Auth::user()){
+	    	$data['page'] = 'login';
+	        return view('admin.resetPassword')->with($data);
+        }else{
+        	return redirect(route('admin.dashboard'));
+        }
     }
     
     public function dashboard()
@@ -30,55 +38,73 @@ class AdminFrontEndController extends Controller
     
 	public function weddingStylist()
     {
+    	
+    	$data['users'] = User::where('type','wedding')->get();
     	$data['page'] = 'wedding-stylist';
     	return view('admin.weddingStylist')->with($data);
     }
     
-	public function seeDetails()
+	public function seeDetails(Request $request, $id='')
     {
-    	$data['page'] = 'see-details';
-    	return view('admin.seeDetails')->with($data);
+		if($id != ''){
+			$data['userDetails'] = User::find($id);
+			$data['page'] = 'see-details';
+			return view('admin.seeDetails')->with($data);
+		}else{
+			return abort(404);
+		}
     }
     
     
-	public function cv()
+	public function cv(Request $request, $id='')
     {
-    	$data['page'] = 'cv';
-    	return view('admin.cv')->with($data);
+    	if($id != ''){
+    		$data['userDetails'] = User::find($id);
+	    	$data['page'] = 'cv';
+	    	return view('admin.cv')->with($data);
+    	}else{
+    		return abort(404);
+    	}
     }
     
     public function hairstylist()
     {
+    	$data['users'] = User::where('type','hairStylist')->get();
     	$data['page'] = 'hairStylist';
     	return view('admin.hairStylist')->with($data);
     }
     
     public function beautician()
     {
+    	$data['users'] = User::where('type','beautician')->get();
     	$data['page'] = 'beautician';
     	return view('admin.beautician')->with($data);
     }
     
     public function barber()
     {
+    	$data['users'] = User::where('type','barber')->get();
     	$data['page'] = 'barber';
     	return view('admin.barber')->with($data);
     }
     
     public function hairdressingOwner()
     {
+    	$data['users'] = User::where('type','hairdressingSalon')->get();
     	$data['page'] = 'hairdressingOwner';
     	return view('admin.hairdressingOwner')->with($data);
     }
     
     public function beautySalonOwner()
     {
+    	$data['users'] = User::where('type','beautySalon')->get();
     	$data['page'] = 'beautySalonOwner';
     	return view('admin.beautySalonOwner')->with($data);
     }
     
     public function client()
     {
+    	$data['users'] = User::where('type','client')->get();
     	$data['page'] = 'client';
     	return view('admin.client')->with($data);
     }
@@ -153,6 +179,34 @@ class AdminFrontEndController extends Controller
     {
     	$data['page'] = 'emailEnquiry';
     	return view('admin.emailEnquiry')->with($data);
+    }
+    
+    
+    
+    public function changeUserStatusActive(Request $request, $id='')
+    {
+    	if($id != ''){
+    		$user = User::find($id);
+    		$user->status = 'Active';
+    		$user->update();
+    		session()->flash('success', 'User Activated Successfully!');
+    		return redirect()->back();
+    	}else{
+    		return abort(404);
+    	}
+    }
+    public function changeUserStatusInActive(Request $request, $id='')
+    {
+    	if($id != ''){
+    		$user = User::find($id);
+    		$user->status = 'Disabled';
+    		$user->update();
+    		session()->flash('success', 'User Deactivated Successfully!!');
+    		return redirect()->back();
+    	}else{
+    		return abort(404);
+    	}
+    	
     }
     
     
