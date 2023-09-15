@@ -456,13 +456,13 @@
      <div class="img-box d-none d-md-block">
        <img src="{{ asset('template_new/assets/images/categ_bg_main.jpg') }}" alt="" />
        <div class="cta">
-         <a class="site_btn" href="https://beta.styzeler.co.uk/hairstylist.html">Read More</a>
+         <a class="site_btn" href="{{route('hairstylist')}}">Read More</a><!-- https://beta.styzeler.co.uk/hairstylist.html -->
        </div>
        <div class="cta1">
-         <a class="site_btn" href="https://beta.styzeler.co.uk/barber.html">Read More</a>
+         <a class="site_btn" href="{{route('barber')}}">Read More</a><!-- https://beta.styzeler.co.uk/barber.html -->
        </div>
        <div class="cta2">
-         <a class="site_btn" href="https://beta.styzeler.co.uk/beautician.html">Read More</a>
+         <a class="site_btn" href="{{route('beautician')}}">Read More</a><!-- https://beta.styzeler.co.uk/beautician.html -->
        </div>
      </div>
  

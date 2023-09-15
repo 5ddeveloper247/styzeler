@@ -114,6 +114,22 @@ class FrontEndController extends Controller
         return view('web.homeServices');
     }
     
+	public function barber()
+    {
+        return view('web.barber');
+    }
+    
+    public function hairstylist()
+    {
+    	return view('web.hairstylist');
+    }
+    
+    public function beautician()
+    {
+    	return view('web.beautician');
+    }
+    
+    
     public function Profile()
     {
         $data = User::findOrFail(Auth::user()->id);

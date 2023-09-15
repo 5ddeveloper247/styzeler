@@ -73,6 +73,11 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/privacyPolicy', 'FrontEndController@privacyPolicy')->name('privacyPolicy');
     Route::get('/termAndConditions', 'FrontEndController@termAndConditions')->name('termAndConditions');
     Route::get('/webTermAndConditions', 'FrontEndController@webTermAndConditions')->name('webTermAndConditions');
+    
+    
+    Route::get('/barber', 'FrontEndController@barber')->name('barber');
+    Route::get('/hairstylist', 'FrontEndController@hairstylist')->name('hairstylist');
+    Route::get('/beautician', 'FrontEndController@beautician')->name('beautician');
 });
 
 
