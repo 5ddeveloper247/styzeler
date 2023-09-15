@@ -31,6 +31,7 @@ return new class extends Migration
             $table->string('languages')->nullable();
             $table->string('rate')->nullable();
             $table->text('zone')->nullable();
+            $table->text('cv')->nullable();
             $table->text('resume')->nullable();
             $table->json('data')->nullable();
             $table->string('phone')->nullable();
