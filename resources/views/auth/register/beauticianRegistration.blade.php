@@ -206,7 +206,11 @@
                     </div>
                 </div>
                 <div class="rate my-5">
-                    <h4>Rate</h4>
+                    <div class="d-flex align-items-baseline" style="gap: 2rem;color: #c4b9b0;">
+                        <h4>Rate </h4>
+                        <span><b>N/A For Home Service</b></span>
+
+                    </div>
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="radio" name="stylist_rate" id="110"
                             value="110" onclick="$('div[id=otherRate]').hide();">
@@ -285,8 +289,8 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="pregnancy-massage" value="Pregnancy Massage"
                             name="massageServices[]">
-                        <label class="form-check-label" for="pregnancy-massage">Pregnancy Massage</label><span
-                            class="ms-3"> N/A For Home Service</span>
+                        <label class="form-check-label" for="pregnancy-massage">Pregnancy Massage</label>
+                        <span class="ms-3"> <b>N/A For Home Service</b></span>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="thai-massage" value="Thai massage"
@@ -338,7 +342,7 @@
                     </div>
                 </div>
                 <div class="hair-removal my-5">
-                    <h4>Hair Removal Permanent<span class="ms-3 fs-14">N/A For Home Service</span></h4>
+                    <h4>Hair Removal Permanent <span class="ms-3 fs-14"><b>N/A For Home Service</b></span></h4>
                     <h5><u>Services</u></h5>
                     <div class="form-check">
                         <input type="hidden" name="hairRemovalPermanentServices[heading]"

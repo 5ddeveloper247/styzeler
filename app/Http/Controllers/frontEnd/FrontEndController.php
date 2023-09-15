@@ -109,6 +109,11 @@ class FrontEndController extends Controller
         return view('web.privacyPolicy');
     }
 
+	public function homeServices()
+    {
+        return view('web.homeServices');
+    }
+    
     public function Profile()
     {
         $data = User::findOrFail(Auth::user()->id);

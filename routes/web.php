@@ -51,6 +51,9 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/aboutUs', 'FrontEndController@aboutUs')->name('aboutUs');
     Route::get('/contactUs', 'FrontEndController@contactUs')->name('contactUs');
 
+    // home services
+    Route::get('/homeServices', 'FrontEndController@homeServices')->name('home_service');
+    
     // businessOwner
     Route::get('/businessOwner', 'FrontEndController@businessOwner')->name('businessOwner');
 

@@ -284,40 +284,22 @@
        </div>
        <ul class="btn_list">
          <li>
-           <a
-             href="home-service.html"
-             class="shadow_btn"
-             style="
-               font-size: 1.7rem;
-               padding: 0 1rem;
-               justify-content: space-between;
-             "
-             >Home Services <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""
-           /></a>
+           	<a href="{{route('home_service')}}" class="shadow_btn"
+             	style=" font-size: 1.7rem; padding: 0 1rem; justify-content: space-between; " >Home Services 
+              	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
+           	</a>
          </li>
          <li>
-           <a
-             href="business.html"
-             class="shadow_btn"
-             style="
-               font-size: 1.7rem;
-               padding: 0 1rem;
-               justify-content: space-between;
-             "
-             >Business Owner <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""
-           /></a>
+           	<a href="{{route('businessOwner')}}" class="shadow_btn"
+             	style="font-size: 1.7rem; padding: 0 1rem; justify-content: space-between;">Business Owner 
+             	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
+            </a>
          </li>
          <li>
-           <a
-             href="candidates.html"
-             class="shadow_btn"
-             style="
-               font-size: 1.7rem;
-               padding: 0 1rem;
-               justify-content: space-between;
-             "
-             >Freelancer / job seeker <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""
-           /></a>
+           	<a href="{{route('candidate')}}" class="shadow_btn"
+             	style="font-size: 1.7rem; padding: 0 1rem; justify-content: space-between; " >Freelancer / job seeker 
+             	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
+             </a>
          </li>
        </ul>
        <h2 class="h2_01">
@@ -326,8 +308,7 @@
        </h2>
        <div
          class="line"
-         style="background-image: url('{{ asset('template_new/assets/images/browse_bg.jpg') }}'"
-       >
+         style="background-image: url('{{ asset('template_new/assets/images/browse_bg.jpg') }}'" >
          <p style="margin: 10px 0px 11px 13px">
            Styzeler a leading Hair & Beauty digital agency providing expert
            freelancers for temporary work or permanent employment for Hair

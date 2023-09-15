@@ -246,7 +246,7 @@
                   </ul>
                 </div>
                 <div class="btn_blk">
-                  <a href="booking.html" class="site_bimgtn">Buy</a>
+                  <a href="booking.html" class="site_btn">Buy</a>
                   <a href="javascript:void(0)" class="eye_btn popup-pkg2"><img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
                 </div>
               </div>
