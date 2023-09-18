@@ -65,67 +65,23 @@
                     <div class="line line-4"></div>
                     <div class="line line-5"></div>
                 </div>
-                <div class="content-category-people row my-5">
-                  <div class="col-sm-6 col-lg-4">
-                    <a href="freelancer-profile.html">
-                    <h4 class="color-1">Amilka</h4>
-                      <div class="category-people py-3">
-                        <div class="picture">
-                          <img src="{{ asset('template_old/images/pro-pic.png') }}" alt="" width="100%">
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <a href="freelancer-profile.html">
-                    <h4 class="color-1">Amilka</h4>
-                      <div class="category-people py-3">
-                        <div class="picture">
-                          <img src="{{ asset('template_old/images/pro-pic.png') }}" alt="" width="100%">
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <a href="freelancer-profile.html">
-                    <h4 class="color-1">Amilka</h4>
-                      <div class="category-people py-3">
-                        <div class="picture">
-                          <img src="{{ asset('template_old/images/pro-pic.png') }}" alt="" width="100%">
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <a href="freelancer-profile.html">
-                    <h4 class="color-1">Amilka</h4>
-                      <div class="category-people py-3">
-                        <div class="picture">
-                          <img src="{{ asset('template_old/images/pro-pic.png') }}" alt="" width="100%">
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <a href="freelancer-profile.html">
-                    <h4 class="color-1">Amilka</h4>
-                      <div class="category-people py-3">
-                        <div class="picture">
-                          <img src="{{ asset('template_old/images/pro-pic.png') }}" alt="" width="100%">
-                        </div>
-                      </div>
-                    </a>
-                  </div>
-                  <div class="col-sm-6 col-lg-4">
-                    <a href="freelancer-profile.html">
-                    <h4 class="color-1">Amilka</h4>
-                      <div class="category-people py-3">
-                        <div class="picture">
-                          <img src="{{ asset('template_old/images/pro-pic.png') }}" alt="" width="100%">
-                        </div>
-                      </div>
-                    </a>
-                  </div>
+                <div class="content-category-people row my-5">	
+                	
+                  @if(isset($users))
+                	@foreach($users as $row)
+                	<div class="col-sm-6 col-lg-4">
+                		<a id="{{$row->id}}" ><!-- onclick="getFreelancer('Hairdressing Owner', 59)" -->
+                			<h4 class="color-1">{{$row->name}} {{$row->surname}}</h4>
+                			<div class="category-people py-3">
+                				<div class="picture">
+                					<img id="profile-image-id-0" alt="" width="100%" height="100%" src="{{ asset(isset($row->hero_image) ? $row->hero_image : 'template_old/images/blank.png') }}">
+                				</div>
+                			</div>
+                		</a>
+                	</div>
+                	@endforeach
+                	@endif
+                  
                 </div>
             </div>
             

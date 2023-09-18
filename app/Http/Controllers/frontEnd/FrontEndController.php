@@ -116,17 +116,20 @@ class FrontEndController extends Controller
     
 	public function barber()
     {
-        return view('web.barber');
+    	$data['users'] = User::whereIn('type',['barber'])->get();
+        return view('web.barber')->with($data);
     }
     
     public function hairstylist()
     {
-    	return view('web.hairstylist');
+    	$data['users'] = User::whereIn('type',['hairStylist'])->get();
+    	return view('web.hairstylist')->with($data);
     }
     
     public function beautician()
     {
-    	return view('web.beautician');
+    	$data['users'] = User::whereIn('type',['beautician'])->get();
+    	return view('web.beautician')->with($data);
     }
     
     public function packagesDescription()
@@ -136,9 +139,20 @@ class FrontEndController extends Controller
     
     public function weddingStylist()
     {
-    	return view('web.weddingStylist');
+    	$data['users'] = User::whereIn('type',['wedding'])->get();
+    	return view('web.weddingStylist')->with($data);
     }
     
+    public function salonOwner()
+    {
+    	$data['users'] = User::whereIn('type',['hairdressingSalon','beautySalon'])->get();
+    	return view('web.salonOwner')->with($data);
+    }
+    
+	public function rentLet()
+    {
+    	return view('web.rentLet');
+    }
     
     public function Profile()
     {

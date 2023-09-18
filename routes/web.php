@@ -80,6 +80,8 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/beautician', 'FrontEndController@beautician')->name('beautician');
     Route::get('/packages-description', 'FrontEndController@packagesDescription')->name('packagesDescription');
     Route::get('/wedding-stylist', 'FrontEndController@weddingStylist')->name('weddingStylist');
+    Route::get('/salon-owner', 'FrontEndController@salonOwner')->name('salonOwner');
+    
 });
 
 
