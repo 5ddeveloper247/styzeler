@@ -129,6 +129,16 @@ class FrontEndController extends Controller
     	return view('web.beautician');
     }
     
+    public function packagesDescription()
+    {
+    	return view('web.packagesDescription');
+    }
+    
+    public function weddingStylist()
+    {
+    	return view('web.weddingStylist');
+    }
+    
     
     public function Profile()
     {

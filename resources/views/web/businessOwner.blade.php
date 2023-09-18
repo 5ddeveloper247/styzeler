@@ -116,35 +116,35 @@
           <div class="item">
             <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
             <div class="in">
-              <h4><a href="pakages-description.html">Freelancer</a></h4>
+              <h4><a href="{{route('packagesDescription')}}">Freelancer</a></h4>
               <p>for temporary work or full/part-time position</p>
             </div>
           </div>
           <div class="item">
             <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
             <div class="in">
-              <h4><a href="pakages-description.html">Rent & let:</a></h4>
+              <h4><a href="{{route('packagesDescription')}}">Rent & let:</a></h4>
               <p>Chair rental, maximise on an empty chair</p>
             </div>
           </div>
           <div class="item">
             <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
             <div class="in">
-              <h4><a href="pakages-description.html">Job posting:</a></h4>
+              <h4><a href="{{route('packagesDescription')}}">Job posting:</a></h4>
               <p>Invite candidate to apply for a vacancy</p>
             </div>
           </div>
           <div class="item">
             <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
             <div class="in">
-              <h4><a href="pakages-description.html">Wedding Stylistes</a></h4>
+              <h4><a href="{{route('packagesDescription')}}">Wedding Stylistes</a></h4>
               <p>Take advantage and upgrade your services</p>
             </div>
           </div>
           <div class="item">
             <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
             <div class="in">
-              <h4><a href="pakages-description.html">Events</a></h4>
+              <h4><a href="{{route('packagesDescription')}}">Events</a></h4>
               <p>Festivals, photo shooting, presentations Job posting:</p>
             </div>
           </div>
