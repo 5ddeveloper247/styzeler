@@ -106,7 +106,7 @@
                   </div>
                   <div class="col-lg-6">
                       <p class="color-1">
-                          <u><a href="contact-us.html" class="color-1">For more info on Rent & Let contact styzeler agency</a></u>
+                          <u><a href="{{route('contactUs')}}" class="color-1">For more info on Rent & Let contact styzeler agency</a></u>
                       </p>
                   </div>
                   <div class="col-lg-6 text-right"  >

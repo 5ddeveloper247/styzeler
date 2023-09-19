@@ -27,10 +27,11 @@ return new class extends Migration
             $table->text('trade_video')->nullable();
             $table->text('post_code')->nullable();
             $table->text('gallery')->nullable();
-            $table->bigInteger('utr_number')->nullable();
+            $table->string('utr_number')->nullable();
             $table->string('languages')->nullable();
             $table->string('rate')->nullable();
             $table->text('zone')->nullable();
+            $table->text('cv')->nullable();
             $table->text('resume')->nullable();
             $table->json('data')->nullable();
             $table->string('phone')->nullable();

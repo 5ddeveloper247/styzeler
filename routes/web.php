@@ -53,6 +53,9 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/aboutUs', 'FrontEndController@aboutUs')->name('aboutUs');
     Route::get('/contactUs', 'FrontEndController@contactUs')->name('contactUs');
 
+    // home services
+    Route::get('/homeServices', 'FrontEndController@homeServices')->name('home_service');
+    
     // businessOwner
     Route::get('/businessOwner', 'FrontEndController@businessOwner')->name('businessOwner');
 
@@ -72,6 +75,15 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/privacyPolicy', 'FrontEndController@privacyPolicy')->name('privacyPolicy');
     Route::get('/termAndConditions', 'FrontEndController@termAndConditions')->name('termAndConditions');
     Route::get('/webTermAndConditions', 'FrontEndController@webTermAndConditions')->name('webTermAndConditions');
+    
+    
+    Route::get('/barber', 'FrontEndController@barber')->name('barber');
+    Route::get('/hairstylist', 'FrontEndController@hairstylist')->name('hairstylist');
+    Route::get('/beautician', 'FrontEndController@beautician')->name('beautician');
+    Route::get('/packages-description', 'FrontEndController@packagesDescription')->name('packagesDescription');
+    Route::get('/wedding-stylist', 'FrontEndController@weddingStylist')->name('weddingStylist');
+    Route::get('/salon-owner', 'FrontEndController@salonOwner')->name('salonOwner');
+    
 });
 
 

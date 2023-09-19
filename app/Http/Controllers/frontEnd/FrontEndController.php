@@ -109,6 +109,51 @@ class FrontEndController extends Controller
         return view('web.privacyPolicy');
     }
 
+	public function homeServices()
+    {
+        return view('web.homeServices');
+    }
+    
+	public function barber()
+    {
+    	$data['users'] = User::whereIn('type',['barber'])->get();
+        return view('web.barber')->with($data);
+    }
+    
+    public function hairstylist()
+    {
+    	$data['users'] = User::whereIn('type',['hairStylist'])->get();
+    	return view('web.hairstylist')->with($data);
+    }
+    
+    public function beautician()
+    {
+    	$data['users'] = User::whereIn('type',['beautician'])->get();
+    	return view('web.beautician')->with($data);
+    }
+    
+    public function packagesDescription()
+    {
+    	return view('web.packagesDescription');
+    }
+    
+    public function weddingStylist()
+    {
+    	$data['users'] = User::whereIn('type',['wedding'])->get();
+    	return view('web.weddingStylist')->with($data);
+    }
+    
+    public function salonOwner()
+    {
+    	$data['users'] = User::whereIn('type',['hairdressingSalon','beautySalon'])->get();
+    	return view('web.salonOwner')->with($data);
+    }
+    
+	public function rentLet()
+    {
+    	return view('web.rentLet');
+    }
+    
     public function Profile()
     {
         $data = User::findOrFail(Auth::user()->id);
