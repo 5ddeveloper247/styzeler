@@ -89,7 +89,7 @@
 	                <div class="col-sm-3 col-6 mb-5">
 	                	<ul class="btn_list">
 	                		<li class="li-100">
-	                    		<a href="javascript:;" class="shadow_btn">News Feed
+	                    		<a href="{{route('news')}}" class="shadow_btn">News Feed
 		                    		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
 		                    	</a>
 		                    </li>
