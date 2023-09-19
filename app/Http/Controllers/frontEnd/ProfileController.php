@@ -27,7 +27,7 @@ class ProfileController extends Controller
 
     public function updateProfileImage(Request $request)
     {
-        // dd($request->all());
+
         $previous_image = User::where('id', Auth::user()->id)->value('hero_image');
 
         $req_file = 'stylist_picture';
@@ -229,50 +229,37 @@ class ProfileController extends Controller
     {
 
         $request = json_decode(file_get_contents('php://input'), true);
-        $booking = Bookings::where('date', $request['availableDays'])->first();
+        $availableDays = $request['availableDays'];
+        $status = $request['Status'];
 
-        if ($request['Status'] == 'Cancel' && !empty($booking)) {
+        $booking = Bookings::where('date', $availableDays)->first();
 
+        if ($status == 'Cancel' && $booking) {
             $booking->delete();
-
-            return response()->json(
-                [
-                    'status' => 200,
-                    'message' => 'Booking deleted Successfully on ' . $booking->date,
-                    'data' => $request['Status']
-                ]
-            );
-        }
-
-        if (!empty($booking) && $booking->date == $request['availableDays']) {
-
-            $booking->update([
-                'status' => $request['Status'],
+            $message = 'Booking Deleted Successfully on ' . $availableDays;
+        } else {
+            $data = [
+                'date' => $availableDays,
+                'status' => $status,
                 'user_id' => Auth::user()->id,
-            ]);
+            ];
 
-            return response()->json(
-                [
-                    'status' => 200,
-                    'message' => 'Status Updated Successfully on ' . $booking->date,
-                    'data' => $request['Status']
-                ]
-            );
+            if ($booking) {
+                $booking->update($data);
+                $message = 'Status Updated Successfully on ' . $availableDays;
+            } else {
+                Bookings::create($data);
+                $message = 'Booking Date Added Successfully on ' . $availableDays;
+            }
         }
 
-        Bookings::create([
-            'date' => $request['availableDays'],
-            'status' => $request['Status'],
-            'user_id' => Auth::user()->id,
-        ]);
+        $responseData = [
+            'status' => 200,
+            'message' => $message,
+            'data' => $status
+        ];
 
-        return response()->json(
-            [
-                'status' => 200,
-                'message' => 'Booking Date Added Successfully on ' . $request['availableDays'],
-                'data' => $request['Status']
-            ]
-        );
+        return response()->json($responseData);
     }
 
     public function showAppointmentDates()

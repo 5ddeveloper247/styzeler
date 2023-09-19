@@ -1,4 +1,3 @@
-<!-- Header -->
 <header>
     <section class="header">
         <nav class="navbar navbar-expand-lg navbar-light ">

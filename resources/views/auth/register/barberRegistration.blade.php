@@ -6,8 +6,7 @@
 @section('content')
     <div class="newProfile container my-5">
         <div class="newProfile-header">
-            <h4>Barber Profile Building </h4>
-
+            <h4>Barber Profile Building</h4>
         </div>
         <div>
             <form id="register_form" class="my-5">
@@ -334,6 +333,11 @@
                 <label class="form-check-label" for="scissors-cut">Scissors Cut</label>
             </div>
             <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="barberMaleGroomingServices[]"
+                    id="clipperandscissors-cut" value="Clipper And Scissors Cut">
+                <label class="form-check-label" for="clipperandscissors-cut">Clipper & Scissors Cut</label>
+            </div>
+            <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="barberMaleGroomingServices[]" id="clipper-cut"
                     value="Clipper Cut">
                 <label class="form-check-label" for="clipper-cut">Clipper Cut</label>
@@ -644,7 +648,7 @@
                             </div>
                             <div class="modal-footer">
                                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <button type="button" class="btn btn-primary">Save changes</button> -->
                             </div>
                         </div>
                     </div>

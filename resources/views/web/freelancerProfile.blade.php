@@ -976,6 +976,11 @@
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="barberMaleGroomingServices[]"
+                                        id="clipper-cut" value="Clipper And Scissors Cut">
+                                    <label class="form-check-label" for="clipper-cut">Clipper & Scissors Cut</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="barberMaleGroomingServices[]"
                                         id="clipper-cut" value="Clipper Cut">
                                     <label class="form-check-label" for="clipper-cut">Clipper Cut</label>
                                 </div>
@@ -2439,6 +2444,11 @@
                                     <input class="form-check-input" type="checkbox" id="up-do" value="Up-do"
                                         name="hairColorServices[]">
                                     <label class="form-check-label" for="up-do">Up-do</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="hair-bridal"
+                                        value="Hair Bridal" name="hairColorServices[]">
+                                    <label class="form-check-label" for="hair-bridal">Hair Bridal</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="hair-extension"
