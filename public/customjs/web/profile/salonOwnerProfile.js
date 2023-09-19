@@ -76,10 +76,10 @@ function getProfileData() {
     // e.preventDefault();
 
     let type = 'GET';
-    let url = 'getProfileData';
+    let url = 'getProfileDataView';
     let message = '';
     let form = '';
-    let data = '';
+    let data = userId != '' ? 'id='+userId : '';
     // if ($(this).text() == 'Submit') {
     //     url = url;
     // }

@@ -84,7 +84,7 @@
 	                	@foreach($users as $row)
 	                	@if($row->type == 'hairdressingSalon')
 	                	<div class="col-sm-6 col-lg-4">
-	                		<a id="{{$row->id}}" onclick="getFreelancer({{$row->id}})">
+	                		<a id="{{$row->id}}" href="{{ route('salonOwnerProfile') }}?id={{$row->id}}">
 	                			<h4 class="color-1">{{$row->name}} {{$row->surname}}</h4>
 	                			<div class="category-people py-3">
 	                				<div class="picture">
@@ -103,7 +103,7 @@
 	                	@foreach($users as $row)
 	                	@if($row->type == 'beautySalon')
 	                	<div class="col-sm-6 col-lg-4">
-	                		<a id="{{$row->id}}" onclick="getFreelancer({{$row->id}})">
+	                		<a id="{{$row->id}}" href="{{ route('salonOwnerProfile') }}?id={{$row->id}}">
 	                			<h4 class="color-1">{{$row->name}} {{$row->surname}}</h4>
 	                			<div class="category-people py-3">
 	                				<div class="picture">
@@ -122,10 +122,6 @@
 	    </div>
 	</div>
 	
-	<form class="" id="salonOwnerProfileForm" method="POST" action="{{ route('salonOwnerProfile') }}" enctype="multipart/form-data" style="display:none;">
-	    {{ csrf_field() }}
-	    <input type="hidden" class="userId" id="userId" name="userId" value="">
-	</form>
 @endsection
 
 @push('script')
@@ -147,11 +143,6 @@ function showBeautyOwner(){
 	$('#hairdressing_container').hide();
 	$('#beautyspa_container').show();
 }
-function getFreelancer(id){
-	$("#userId").val(id);
-	setTimeout(function(){
-		$("#salonOwnerProfileForm").submit();
-	},500);
-}
+
 </script>
 @endpush

@@ -1,6 +1,8 @@
 @extends('layouts.master.template_old.master')
+
 <script>
     const baseURL = "{{ request()->root() }}";
+   	const userId = "{{@$data->id}}";
 </script>
 
 @push('css')
@@ -230,7 +232,7 @@
                     <div class="modal-body">
                         <h5 class="text-center">Edit Profile Picture</h5>
                         <form id="hero_image_form">
-                            <input type="hidden" name="type" value="{{ Auth::user()->type }}">
+                            <input type="hidden" name="type" value="{{ @$data->type }}">
                             <p>
                             <div class="profilePicture">
                                 <img id="blah" src="images/blank.png" alt="your image"> <br>
@@ -255,7 +257,7 @@
         <!-- edit name  -->
 
         <form action="" id="updateBasicInfoProfile">
-            <input type="hidden" name="type" value="{{ Auth::user()->type }}">
+            <input type="hidden" name="type" value="{{ @$data->type }}">
             <div class="modal name-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
                 <div class="modal-dialog " role="document">
                     <div class="modal-content bg-dark">
