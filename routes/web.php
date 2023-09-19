@@ -81,7 +81,11 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/packages-description', 'FrontEndController@packagesDescription')->name('packagesDescription');
     Route::get('/wedding-stylist', 'FrontEndController@weddingStylist')->name('weddingStylist');
     Route::get('/salon-owner', 'FrontEndController@salonOwner')->name('salonOwner');
-    
+    Route::get('/chair-rental', 'FrontEndController@chairRental')->name('chairRental');
+    Route::post('/salon-owner-profile', 'FrontEndController@salonOwnerProfile')->name('salonOwnerProfile');
+    Route::get('/salon-owner-profile', function () {
+    	abort();
+    });
 });
 
 

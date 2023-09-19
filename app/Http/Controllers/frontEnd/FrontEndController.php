@@ -149,18 +149,32 @@ class FrontEndController extends Controller
     	return view('web.salonOwner')->with($data);
     }
     
-	public function rentLet()
+	public function chairRental()
     {
-    	return view('web.rentLet');
+    	return view('web.chairRental');
     }
+    
     
     public function Profile()
     {
-        $data = User::findOrFail(Auth::user()->id);
+    	$data = User::findOrFail(Auth::user()->id);
+    
+    	return customView(
+    			'web.freelancerProfile',
+    			'web.ownerProfile',
+    			'web.clientProfile',
+    			$data->type,
+    			get_defined_vars()
+    			);
+    }
+    public function salonOwnerProfile(Request $request)
+    {
+    	
+        $data = User::findOrFail($request->userId);
 
         return customView(
             'web.freelancerProfile',
-            'web.ownerProfile',
+            'web.salonOwnerProfile',
             'web.clientProfile',
             $data->type,
             get_defined_vars()
