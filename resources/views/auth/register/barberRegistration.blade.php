@@ -212,8 +212,8 @@
                 </label>
             </div>
             <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="stylist_rate" id="other"
-                    value="$('input[id=rateOther]').val();" onclick="$('div[id=otherRate]').show();">
+                <input class="form-check-input" type="radio" name="stylist_rate" id="other" value=""
+                    onclick="$('div[id=otherRate]').show();">
                 <label class="form-check-label" for="other"> Other <span
                         style="font-size: 11px; color: #e1dede; font-style: italic;">(In
                         British pounds)</span>
@@ -644,7 +644,7 @@
                             </div>
                             <div class="modal-footer">
                                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <button type="button" class="btn btn-primary">Save changes</button> -->
                             </div>
                         </div>
                     </div>

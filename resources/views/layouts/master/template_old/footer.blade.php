@@ -16,16 +16,20 @@
 </footer>
 
 <!--Bootstrap CDN-->
-<script src="{{ asset('template_old/bootstrap/jquery/jquery-3.5.1.js') }}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="{{ asset('template_old/bootstrap/popper/popper.min.js') }}"></script>
 <script src="{{ asset('template_old/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('template_new/assets/js/toastr.min.js') }}"></script>
 
-
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
 <!-- Animation CDN -->
 <script src="{{ asset('template_old/js/aos/aos.js') }}"></script>
 
 <script src="{{ asset('template_old/js/main.js') }}"></script>
+
 <script>
     $(document).on({
         ajaxStart: function() {

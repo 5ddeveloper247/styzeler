@@ -149,7 +149,7 @@ class RegisterController extends Controller
                 }
             }
         }
-//         dd($images);
+        //         dd($images);
         $rate = '';
         if ($request->stylist_rate == '') {
             $rate = $request->otherRate;
@@ -163,12 +163,13 @@ class RegisterController extends Controller
                 'surname' => $request->stylist_surname,
                 'email' => $request->stylist_email,
                 'age' => $request->stylist_age,
+                'cv' => $request->cv,
                 'profile_type' => $request->stylist_type,
                 'qualification' => $request->qualification,
                 'gallery' => $images['image_gallery'] ?? '',
                 'utr_number' => $request->utr_number,
                 'hero_image' => $images['stylist_picture'],
-            	'cv' => isset($images['cv']) ? $images['cv'] : '',
+                'cv' => isset($images['cv']) ? $images['cv'] : '',
                 'public_liability_insurance' => $images['public_liability_insurance'] ?? '',
                 'languages' => $request->stylist_language,
                 'rate' => $rate,
@@ -186,7 +187,7 @@ class RegisterController extends Controller
                 'phone' => $request->owner_telephone,
                 'post_code' => $request->owner_postcode,
                 'hero_image' => $images['owner_picture'],
-            	'cv' => isset($images['cv']) ? $images['cv'] : '',
+                'cv' => isset($images['cv']) ? $images['cv'] : '',
                 'utr_number' => $request->utr_number,
                 'address' => $request->owner_address,
                 'password' => $request->owner_password,
@@ -200,7 +201,7 @@ class RegisterController extends Controller
             default => [],
         };
 
-//         dd($userData);
+        //         dd($userData);
         User::create($userData);
 
         return response()->json(['status' => 200, 'message' => 'Registration Succsessfull!', 'data' => '']);

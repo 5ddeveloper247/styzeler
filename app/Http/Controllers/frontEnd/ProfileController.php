@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\frontEnd;
 
 use Countable;
+use Carbon\Carbon;
 use App\Models\User;
+use App\Models\Bookings;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +17,12 @@ class ProfileController extends Controller
     {
         $data = User::where('id', Auth::user()->id)->first();
 
-        return response()->json(['data' => $data, 'status' => 200]);
+        return response()->json(
+            [
+                'data' => $data,
+                'status' => 200
+            ]
+        );
     }
 
     public function updateProfileImage(Request $request)
@@ -37,9 +44,21 @@ class ProfileController extends Controller
                 ['hero_image' => $savedImage]
             );
 
-            return response()->json(['status' => 200, 'message' => 'Profile Updated Succesfully!', 'data' => '']);
+            return response()->json(
+                [
+                    'status' => 200,
+                    'message' => 'Profile Updated Succesfully!',
+                    'data' => ''
+                ]
+            );
         }
-        return response()->json(['status' => 422, 'message' => 'Please upload image!', 'data' => '']);
+        return response()->json(
+            [
+                'status' => 422,
+                'message' => 'Please Upload Image!',
+                'data' => ''
+            ]
+        );
     }
 
     public function updateGalleryImages(Request $request)
@@ -59,9 +78,21 @@ class ProfileController extends Controller
 
             Auth::user()->update(['gallery' => $combinedImages]);
 
-            return response()->json(['status' => 200, 'message' => 'Gallery Images Added Successfully!', 'data' => '']);
+            return response()->json(
+                [
+                    'status' => 200,
+                    'message' => 'Gallery Images Added Successfully!',
+                    'data' => ''
+                ]
+            );
         }
-        return response()->json(['status' => 422, 'message' => 'Please Upload Image!', 'data' => '']);
+        return response()->json(
+            [
+                'status' => 422,
+                'message' => 'Please Upload Image!',
+                'data' => ''
+            ]
+        );
     }
 
     public function deleteGalleryImage()
@@ -85,7 +116,13 @@ class ProfileController extends Controller
 
         deleteImage($galleryImage);
 
-        return response()->json(['status' => 200, 'message' => 'Gallery Image Delete Successfully!', 'data' => '']);
+        return response()->json(
+            [
+                'status' => 200,
+                'message' => 'Gallery Image Delete Successfully!',
+                'data' => ''
+            ]
+        );
     }
 
     public function updateBasicInfoProfile(UpdateProfileBasicInfoValidationRequest $request)
@@ -122,6 +159,7 @@ class ProfileController extends Controller
         }
 
         $rate = '';
+
         if ($request->stylist_rate == '') {
             $rate = $request->otherRate;
         } else {
@@ -163,7 +201,13 @@ class ProfileController extends Controller
 
         Auth::user()->update($userData);
 
-        return response()->json(['status' => 200, 'message' => 'Profile Updated Successfully!', 'data' => '']);
+        return response()->json(
+            [
+                'status' => 200,
+                'message' => 'Profile Updated Successfully!',
+                'data' => ''
+            ]
+        );
     }
 
     public function updateProductAndServices(Request $request)
@@ -172,6 +216,75 @@ class ProfileController extends Controller
             'data' => $request->all(),
         ]);
 
-        return response()->json(['status' => 200, 'message' => 'Product or Services Updated Successfully!', 'data' => '']);
+        return response()->json(
+            [
+                'status' => 200,
+                'message' => 'Product or Services Updated Successfully!',
+                'data' => ''
+            ]
+        );
+    }
+
+    public function saveAvaibleDate(Request $request)
+    {
+
+        $request = json_decode(file_get_contents('php://input'), true);
+        $booking = Bookings::where('date', $request['availableDays'])->first();
+
+        if ($request['Status'] == 'Cancel' && !empty($booking)) {
+
+            $booking->delete();
+
+            return response()->json(
+                [
+                    'status' => 200,
+                    'message' => 'Booking deleted Successfully on ' . $booking->date,
+                    'data' => $request['Status']
+                ]
+            );
+        }
+
+        if (!empty($booking) && $booking->date == $request['availableDays']) {
+
+            $booking->update([
+                'status' => $request['Status'],
+                'user_id' => Auth::user()->id,
+            ]);
+
+            return response()->json(
+                [
+                    'status' => 200,
+                    'message' => 'Status Updated Successfully on ' . $booking->date,
+                    'data' => $request['Status']
+                ]
+            );
+        }
+
+        Bookings::create([
+            'date' => $request['availableDays'],
+            'status' => $request['Status'],
+            'user_id' => Auth::user()->id,
+        ]);
+
+        return response()->json(
+            [
+                'status' => 200,
+                'message' => 'Booking Date Added Successfully on ' . $request['availableDays'],
+                'data' => $request['Status']
+            ]
+        );
+    }
+
+    public function showAppointmentDates()
+    {
+        $bookings = Bookings::User()->IsNotCancelled()->get();
+
+        return response()->json(
+            [
+                'status' => 200,
+                'message' => 'Date Created Successfully!',
+                'data' => $bookings
+            ]
+        );
     }
 }

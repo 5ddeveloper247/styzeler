@@ -1,7 +1,5 @@
 @extends('layouts.master.template_old.master')
-<script>
-    const baseURL = "{{ request()->root() }}";
-</script>
+
 @push('css')
     <style>
         .option {
@@ -46,6 +44,9 @@
 @endpush
 
 @section('content')
+    <script>
+        const baseURL = "{{ request()->root() }}";
+    </script>
     {{-- @dd($data) --}}
     <!-- Content -->
     <div class="profile container">
@@ -357,7 +358,7 @@
 
                     <div class="appointment-status text-center">
 
-                        <h3 id="status"></h3>
+                        <h3 id="p_status"></h3>
 
                     </div>
                 </div>
@@ -366,22 +367,22 @@
 
                     <div class="book-available col-6 col-md-4 col-lg-2 text-center">
                         <div class="option available customBtnNotSelected">
-                            <a onClick="avaliableAppointmentDate()">Available</a>
+                            <a onClick="avaliableAppointmentDate('Available')">Available</a>
                         </div>
                     </div>
                     <div class="book-off col-6 col-md-4 col-lg-2 text-center">
                         <div class="option off customBtnNotSelected">
-                            <a onClick="offAppointmentDate()">Off</a>
+                            <a onClick="avaliableAppointmentDate('Off')">Off</a>
                         </div>
                     </div>
                     <div class="book-on-call col-6 col-md-4 col-lg-2 text-center">
                         <div class="option on-call customBtnNotSelected">
-                            <a onClick="onCallAppointmentDate()">On Call</a>
+                            <a onClick="avaliableAppointmentDate('On Call')">On Call</a>
                         </div>
                     </div>
                     <div class="book-cancel col-6 col-md-4 col-lg-2 text-center">
                         <div class="option cancel customBtnNotSelected">
-                            <a onClick="cancelAppointmentDate()">Cancel</a>
+                            <a onClick="avaliableAppointmentDate('Cancel')">Cancel</a>
                         </div>
                     </div>
 
@@ -2640,5 +2641,6 @@
         });
     </script>
     <script src="{{ asset('customjs/web/register/common.js') }}"></script>
+    <script src="{{ asset('template_old/js/freelancer-calendar.js') }}"></script>
     <script src="{{ asset('customjs/web/profile/profile.js') }}"></script>
 @endpush
