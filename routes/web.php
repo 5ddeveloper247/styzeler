@@ -42,6 +42,8 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         Route::post('/deleteGalleryImage', 'ProfileController@deleteGalleryImage')->name('deleteGalleryImage');
         Route::post('/updateBasicInfoProfile', 'ProfileController@updateBasicInfoProfile')->name('updateBasicInfoProfile');
         Route::post('/updateProductAndServices', 'ProfileController@updateProductAndServices')->name('updateProductAndServices');
+        Route::post('/saveAvaibleDate', 'ProfileController@saveAvaibleDate')->name('saveAvaibleDate');
+        Route::post('/showAppointmentDates', 'ProfileController@showAppointmentDates')->name('showAppointmentDates');
     });
 
     Route::get('/forgetPassword', 'FrontEndController@forgetPassword')->name('forgetPassword');
@@ -87,46 +89,44 @@ Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@regis
 
 
 Route::group(['namespace' => 'AdminFrontEnd'], function () {
-	
-	
-	Route::group(['prefix' => 'admin'], function () {
-		
-		Route::get('/', 'AdminFrontEndController@login')->name('/');
-		Route::get('/login', 'AdminFrontEndController@login')->name('admin.login');
-		Route::get('/reset-password', 'AdminFrontEndController@forgetPassword')->name('admin.resetPassword');
-		
-		Route::group(['middleware' => ['AdminAuth']], function(){
-			Route::get('/dashboard', 'AdminFrontEndController@dashboard')->name('admin.dashboard');
-			Route::get('/wedding-stylist', 'AdminFrontEndController@weddingStylist')->name('admin.weddingStylist');
-			Route::get('/see-details/{id?}', 'AdminFrontEndController@seeDetails')->name('admin.seeDetails');
-			Route::get('/cv/{id?}', 'AdminFrontEndController@cv')->name('admin.cv');
-			Route::get('/hair-stylist', 'AdminFrontEndController@hairstylist')->name('admin.hairstylist');
-			Route::get('/beautician', 'AdminFrontEndController@beautician')->name('admin.beautician');
-			Route::get('/barber', 'AdminFrontEndController@barber')->name('admin.barber');
-			Route::get('/hairdressing-owner', 'AdminFrontEndController@hairdressingOwner')->name('admin.hairdressingOwner');
-			Route::get('/beauty-salon-owner', 'AdminFrontEndController@beautySalonOwner')->name('admin.beautySalonOwner');
-			Route::get('/client', 'AdminFrontEndController@client')->name('admin.client');
-			Route::get('/bookings', 'AdminFrontEndController@bookings')->name('admin.bookings');
-			Route::get('/job-requests', 'AdminFrontEndController@jobRequests')->name('admin.jobRequests');
-			Route::get('/upload-jobs', 'AdminFrontEndController@uploadJobs')->name('admin.uploadJobs');
-			Route::get('/upload-blogs', 'AdminFrontEndController@uploadBlogs')->name('admin.uploadBlogs');
-			Route::get('/hairstylist-chair', 'AdminFrontEndController@hairStylistChair')->name('admin.hairStylistChair');
-			Route::get('/chair-details', 'AdminFrontEndController@chairDetails')->name('admin.chairDetails');
-			Route::get('/barber-chair', 'AdminFrontEndController@barberChair')->name('admin.barberChair');
-			Route::get('/beauty-chair', 'AdminFrontEndController@beautyChair')->name('admin.beautyChair');
-			Route::get('/job-applicants', 'AdminFrontEndController@jobApplicants')->name('admin.jobApplicants');
-			Route::get('/applicant', 'AdminFrontEndController@applicant')->name('admin.applicant');
-			Route::get('/cover-letter', 'AdminFrontEndController@coverLetter')->name('admin.coverLetter');
-			Route::get('/email-enquiry', 'AdminFrontEndController@emailEnquiry')->name('admin.emailEnquiry');
-			
-			
-			
-			Route::get('/changeUserStatusActive/{id?}', 'AdminFrontEndController@changeUserStatusActive')->name('admin.changeUserStatusActive');
-			Route::get('/changeUserStatusInActive/{id?}', 'AdminFrontEndController@changeUserStatusInActive')->name('admin.changeUserStatusInActive');
-		});
-	});
-	
+
+
+    Route::group(['prefix' => 'admin'], function () {
+
+        Route::get('/', 'AdminFrontEndController@login')->name('/');
+        Route::get('/login', 'AdminFrontEndController@login')->name('admin.login');
+        Route::get('/reset-password', 'AdminFrontEndController@forgetPassword')->name('admin.resetPassword');
+
+        Route::group(['middleware' => ['AdminAuth']], function () {
+            Route::get('/dashboard', 'AdminFrontEndController@dashboard')->name('admin.dashboard');
+            Route::get('/wedding-stylist', 'AdminFrontEndController@weddingStylist')->name('admin.weddingStylist');
+            Route::get('/see-details/{id?}', 'AdminFrontEndController@seeDetails')->name('admin.seeDetails');
+            Route::get('/cv/{id?}', 'AdminFrontEndController@cv')->name('admin.cv');
+            Route::get('/hair-stylist', 'AdminFrontEndController@hairstylist')->name('admin.hairstylist');
+            Route::get('/beautician', 'AdminFrontEndController@beautician')->name('admin.beautician');
+            Route::get('/barber', 'AdminFrontEndController@barber')->name('admin.barber');
+            Route::get('/hairdressing-owner', 'AdminFrontEndController@hairdressingOwner')->name('admin.hairdressingOwner');
+            Route::get('/beauty-salon-owner', 'AdminFrontEndController@beautySalonOwner')->name('admin.beautySalonOwner');
+            Route::get('/client', 'AdminFrontEndController@client')->name('admin.client');
+            Route::get('/bookings', 'AdminFrontEndController@bookings')->name('admin.bookings');
+            Route::get('/job-requests', 'AdminFrontEndController@jobRequests')->name('admin.jobRequests');
+            Route::get('/upload-jobs', 'AdminFrontEndController@uploadJobs')->name('admin.uploadJobs');
+            Route::get('/upload-blogs', 'AdminFrontEndController@uploadBlogs')->name('admin.uploadBlogs');
+            Route::get('/hairstylist-chair', 'AdminFrontEndController@hairStylistChair')->name('admin.hairStylistChair');
+            Route::get('/chair-details', 'AdminFrontEndController@chairDetails')->name('admin.chairDetails');
+            Route::get('/barber-chair', 'AdminFrontEndController@barberChair')->name('admin.barberChair');
+            Route::get('/beauty-chair', 'AdminFrontEndController@beautyChair')->name('admin.beautyChair');
+            Route::get('/job-applicants', 'AdminFrontEndController@jobApplicants')->name('admin.jobApplicants');
+            Route::get('/applicant', 'AdminFrontEndController@applicant')->name('admin.applicant');
+            Route::get('/cover-letter', 'AdminFrontEndController@coverLetter')->name('admin.coverLetter');
+            Route::get('/email-enquiry', 'AdminFrontEndController@emailEnquiry')->name('admin.emailEnquiry');
+
+
+
+            Route::get('/changeUserStatusActive/{id?}', 'AdminFrontEndController@changeUserStatusActive')->name('admin.changeUserStatusActive');
+            Route::get('/changeUserStatusInActive/{id?}', 'AdminFrontEndController@changeUserStatusInActive')->name('admin.changeUserStatusInActive');
+        });
+    });
 });
 
 // Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@register')->name('registration');
-

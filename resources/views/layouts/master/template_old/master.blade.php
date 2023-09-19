@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <!-- Animation -->
+    <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}" />
     <link rel="stylesheet" href="{{ asset('template_old/css/aos/aos.css') }}">
 
     <!--Custom CSS-->

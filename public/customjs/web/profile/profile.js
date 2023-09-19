@@ -1,3 +1,7 @@
+var tomorrow = currentdate.toJSON().slice(0, 10);
+var currentHour = currentdate.getHours();
+let onCall;
+
 $(document).ready(function () {
 
     $("#showReviews").hide();
@@ -62,6 +66,9 @@ $(document).ready(function () {
         $("#likes").removeClass("customBtnSelected").addClass("customBtn");
 
         $("#book").removeClass("customBtn").addClass("customBtnSelected");
+        onCall = tomorrow;
+        // localStorage.removeItem(SELECTEDSTATUSDATE);
+        // $("#calendar").fullCalendar('refetchEvents');
 
     });
 
@@ -587,6 +594,91 @@ function updateProductAndServicesResponse(response) {
     } else {
 
         // CALLING OUR FUNTION ERROR & SUCCESS HANDLING
+        toastr.error(error, '', {
+            timeOut: 3000
+        });
+    }
+
+}
+
+function avaliableAppointmentDate(status) {
+
+    var availableDate = localStorage.getItem(SELECTEDSTATUSDATE);
+    let type = 'POST';
+    let url = '/saveAvaibleDate';
+    let message = '';
+    let form = '';
+    let data = JSON.stringify({
+        Status: status,
+        IsActive: "1",
+        availableDays: availableDate
+    });
+
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', saveAvaibleDate, 'spinner_button', 'submit_button');
+
+
+
+}
+function saveAvaibleDate(response) {
+
+    // SHOWING MESSAGE ACCORDING TO RESPONSE
+    if (response.status == 200 || response.status == '200') {
+        var availableDate = localStorage.getItem(SELECTEDSTATUSDATE);
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
+
+        if (response.data == "Available") {
+            $("#p_status").text("Available");
+            $(".appointment-status").show();
+            $("#calendar").fullCalendar('refetchEvents');
+            $(".cancel").removeClass("customBtnNotSelected");
+            $(".available").addClass("customBtnNotSelected");
+            $(".off").addClass("customBtnNotSelected");
+            $(".on-call").addClass("customBtnNotSelected");
+            $(".avaliable-modal").modal('show');
+
+        } else if (response.data == "Off") {
+            console.log(response.data);
+            $("#p_status").text("Off");
+            $(".appointment-status").show();
+            $("#calendar").fullCalendar('refetchEvents');
+            $(".cancel").removeClass("customBtnNotSelected");
+            $(".available").addClass("customBtnNotSelected");
+            $(".off").addClass("customBtnNotSelected");
+            $(".on-call").addClass("customBtnNotSelected");
+            $(".avaliable-modal").modal('show');
+
+        } else if (response.data == "On Call") {
+            $("#p_status").text("On Call");
+            $(".appointment-status").show();
+            $("#calendar").fullCalendar('refetchEvents');
+            $(".cancel").removeClass("customBtnNotSelected");
+            $(".available").addClass("customBtnNotSelected");
+            $(".off").addClass("customBtnNotSelected");
+            $(".on-call").addClass("customBtnNotSelected");
+            $(".avaliable-modal").modal('show');
+
+        } else if (response.data == "Cancel") {
+            $("#calendar").fullCalendar('refetchEvents');
+            $(".appointment-status").hide();
+            $(".cancel").addClass("customBtnNotSelected");
+            $(".available").removeClass("customBtnNotSelected");
+            $(".off").removeClass("customBtnNotSelected");
+
+            if (availableDate === onCall) {
+
+                // if (currentHour > 18) {
+                $(".on-call").removeClass("customBtnNotSelected");
+                // }
+
+            }
+        }
+
+    } else {
+
+        // CALLING OUR FUNCTION ERROR & SUCCESS HANDLING
         toastr.error(error, '', {
             timeOut: 3000
         });
