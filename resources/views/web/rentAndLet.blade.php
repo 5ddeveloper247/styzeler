@@ -77,7 +77,7 @@
                       </p>
                   </div>
                   <div class="col-lg-6 text-right"  data-aos="fade-up">
-                      <a href="chair-rental.html" class="btn customBtn">List Space</a>
+                      <a href="{{route('chairRental')}}" class="btn customBtn">List Space</a><!-- chair-rental.html -->
   
                   </div>
               </div>

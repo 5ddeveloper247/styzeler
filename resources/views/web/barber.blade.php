@@ -54,7 +54,7 @@
                 	@if(isset($users))
                 	@foreach($users as $row)
                 	<div class="col-sm-6 col-lg-4">
-                		<a id="{{$row->id}}" ><!-- onclick="getFreelancer('Hairdressing Owner', 59)" -->
+                		<a id="{{$row->id}}" href="{{ route('freelancerProfile') }}?id={{$row->id}}">
                 			<h4 class="color-1">{{$row->name}} {{$row->surname}}</h4>
                 			<div class="category-people py-3">
                 				<div class="picture">

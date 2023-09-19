@@ -13,10 +13,14 @@ use App\Http\Requests\UpdateProfileBasicInfoValidationRequest;
 
 class ProfileController extends Controller
 {
-    public function getProfileData()
+    public function getProfileData(Request $request)
     {
-        $data = User::where('id', Auth::user()->id)->first();
-
+    	if(isset($request->id) && $request->id != ''){
+    		$data = User::where('id', $request->id)->first();
+    	}else{
+    		$data = User::where('id', Auth::user()->id)->first();
+    	}
+        
         return response()->json(
             [
                 'data' => $data,
@@ -24,7 +28,22 @@ class ProfileController extends Controller
             ]
         );
     }
-
+    public function getProfileDataView(Request $request)
+    {
+    	if(isset($request->id) && $request->id != ''){
+    		$data = User::where('id', $request->id)->first();
+    	}else{
+    		$data = User::where('id', Auth::user()->id)->first();
+    	}
+    
+    	return response()->json(
+    			[
+    					'data' => $data,
+    					'status' => 200
+    			]
+    			);
+    }
+    
     public function updateProfileImage(Request $request)
     {
 

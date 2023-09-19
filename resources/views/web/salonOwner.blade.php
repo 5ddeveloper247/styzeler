@@ -84,7 +84,7 @@
 	                	@foreach($users as $row)
 	                	@if($row->type == 'hairdressingSalon')
 	                	<div class="col-sm-6 col-lg-4">
-	                		<a id="{{$row->id}}" ><!-- onclick="getFreelancer('Hairdressing Owner', 59)" -->
+	                		<a id="{{$row->id}}" href="{{ route('salonOwnerProfile') }}?id={{$row->id}}">
 	                			<h4 class="color-1">{{$row->name}} {{$row->surname}}</h4>
 	                			<div class="category-people py-3">
 	                				<div class="picture">
@@ -103,7 +103,7 @@
 	                	@foreach($users as $row)
 	                	@if($row->type == 'beautySalon')
 	                	<div class="col-sm-6 col-lg-4">
-	                		<a id="{{$row->id}}" ><!-- onclick="getFreelancer('Hairdressing Owner', 59)" -->
+	                		<a id="{{$row->id}}" href="{{ route('salonOwnerProfile') }}?id={{$row->id}}">
 	                			<h4 class="color-1">{{$row->name}} {{$row->surname}}</h4>
 	                			<div class="category-people py-3">
 	                				<div class="picture">
@@ -121,7 +121,7 @@
 	        </div>
 	    </div>
 	</div>
-
+	
 @endsection
 
 @push('script')
@@ -143,5 +143,6 @@ function showBeautyOwner(){
 	$('#hairdressing_container').hide();
 	$('#beautyspa_container').show();
 }
+
 </script>
 @endpush

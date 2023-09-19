@@ -83,7 +83,14 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/packages-description', 'FrontEndController@packagesDescription')->name('packagesDescription');
     Route::get('/wedding-stylist', 'FrontEndController@weddingStylist')->name('weddingStylist');
     Route::get('/salon-owner', 'FrontEndController@salonOwner')->name('salonOwner');
+    Route::get('/chair-rental', 'FrontEndController@chairRental')->name('chairRental');
     
+    // routes for profile view non editable
+    Route::get('/salon-owner-profile', 'FrontEndController@salonOwnerProfile')->name('salonOwnerProfile');
+    
+    Route::get('/freelancer-profile', 'FrontEndController@salonOwnerProfile')->name('freelancerProfile');
+    Route::get('/getProfileDataView', 'ProfileController@getProfileDataView')->name('getProfileDataView');
+   
 });
 
 
