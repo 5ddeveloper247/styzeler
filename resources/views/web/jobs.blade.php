@@ -31,10 +31,12 @@
 			<div class="col-12 mt-4"><div class="card card-body color-1">
 				<h4>BEAUTICIANS, COLOURISTS, HAIRDRESSERS, BARBERS</h4>
 				<p>Styzeler Hair &amp; Beauty Agency is looking for creative, friendly, and dynamic Freelancers to join our team 
-				We are looking for Beauticians of all levels Hair-stylists, colourists and  Barbers / Male grooming of all levels. You must be amazing at what you do, love your job, and be customer-focused in your approach. You’ll be expected to integrate into a specialist team of experienced Freelancers 
-				A cover letter and CV is a must to apply for any position at STYZELER.
-				</p><p>Job Types: Temporary, Contract, &pound;25,000.00-&pound;30,000.00+ per year</p>
-				<p></p><a id="1" onclick="getJobId(1)" class="btn customBtn">Apply</a></div></div>
+						We are looking for Beauticians of all levels Hair-stylists, colourists and  Barbers / Male grooming of all levels. You must be amazing at what you do, love your job, and be customer-focused in your approach. You’ll be expected to integrate into a specialist team of experienced Freelancers 
+						A cover letter and CV is a must to apply for any position at STYZELER.
+				</p>
+				<p>Job Types: Temporary, Contract, &pound;25,000.00-&pound;30,000.00+ per year</p>
+				
+				<a id="1" href="{{route('jobApply')}}" class="btn customBtn">Apply</a></div></div>
            	
                 
 		</div>

@@ -35,7 +35,7 @@
 			</div>
 			<div class="btn_blk"
 				style="background-image: url('{{ asset('template_new/assets/images/news_btn_bg.jpg ') }}')">
-				<a href="?" class="site_btn">Styzeler News Feed</a>
+				<a href="{{route('blogs')}}" class="site_btn">Styzeler News Feed</a>
 			</div>
 		</div>
 	</div>
