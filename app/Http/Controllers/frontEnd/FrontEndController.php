@@ -110,96 +110,96 @@ class FrontEndController extends Controller
         return view('web.privacyPolicy');
     }
 
-	public function homeServices()
+    public function homeServices()
     {
         return view('web.homeServices');
     }
-    
-	public function barber()
+
+    public function barber()
     {
-    	$data['users'] = User::whereIn('type',['barber'])->get();
+        $data['users'] = User::whereIn('type', ['barber'])->get();
         return view('web.barber')->with($data);
     }
-    
+
     public function hairstylist()
     {
-    	$data['users'] = User::whereIn('type',['hairStylist'])->get();
-    	return view('web.hairstylist')->with($data);
+        $data['users'] = User::whereIn('type', ['hairStylist'])->get();
+        return view('web.hairstylist')->with($data);
     }
-    
+
     public function beautician()
     {
-    	$data['users'] = User::whereIn('type',['beautician'])->get();
-    	return view('web.beautician')->with($data);
+        $data['users'] = User::whereIn('type', ['beautician'])->get();
+        return view('web.beautician')->with($data);
     }
-    
+
     public function packagesDescription()
     {
-    	return view('web.packagesDescription');
+        return view('web.packagesDescription');
     }
-    
+
     public function weddingStylist()
     {
-    	$data['users'] = User::whereIn('type',['wedding'])->get();
-    	return view('web.weddingStylist')->with($data);
+        $data['users'] = User::whereIn('type', ['wedding'])->get();
+        return view('web.weddingStylist')->with($data);
     }
-    
+
     public function salonOwner()
     {
-    	$data['users'] = User::whereIn('type',['hairdressingSalon','beautySalon'])->get();
-    	return view('web.salonOwner')->with($data);
+        $data['users'] = User::whereIn('type', ['hairdressingSalon', 'beautySalon'])->get();
+        return view('web.salonOwner')->with($data);
     }
-    
-	public function chairRental()
+
+    public function chairRental()
     {
-    	return view('web.chairRental');
+        return view('web.chairRental');
     }
-    
+
     public function rentLetHairstylist()
     {
-    	$data['rentLetList'] = Rent_let::whereIn('category', ['Hairdressing Chair','Barber Chair'])->get();
-    	$data['page'] = 'hairstylist';
-    	return view('web.rentLetList')->with($data);
+        $data['rentLetList'] = Rent_let::whereIn('category', ['Hairdressing Chair', 'Barber Chair'])->get();
+        $data['page'] = 'hairstylist';
+        return view('web.rentLetList')->with($data);
     }
     public function rentLetBeautyTherapist()
     {
-    	$data['rentLetList'] = Rent_let::whereIn('category', ['Beauty Chair'])->get();
-    	$data['page'] = 'beauty-therapist';
-    	return view('web.rentLetList')->with($data);
+        $data['rentLetList'] = Rent_let::whereIn('category', ['Beauty Chair'])->get();
+        $data['page'] = 'beauty-therapist';
+        return view('web.rentLetList')->with($data);
     }
-    
+
     public function jobs()
     {
-    	return view('web.jobs');
+        return view('web.jobs');
     }
-    
+
     public function jobApply()
     {
-    	return view('web.jobApply');
+        return view('web.jobApply');
     }
-    
+
     public function blogs()
     {
-    	return view('web.blogs');
+        return view('web.blogs');
     }
-    
-    
+
+
     public function Profile()
     {
-    	$data = User::findOrFail(Auth::user()->id);
-    
-    	return customView(
-    			'web.freelancerProfile',
-    			'web.ownerProfile',
-    			'web.clientProfile',
-    			$data->type,
-    			get_defined_vars()
-    			);
+        $data = User::findOrFail(Auth::user()->id);
+
+        return customView(
+            'web.freelancerProfile',
+            'web.ownerProfile',
+            'web.clientProfile',
+            $data->type,
+            get_defined_vars()
+        );
     }
     public function salonOwnerProfile(Request $request)
     {
-    	$data = User::findOrFail($request->id);
-        
+        $data = User::findOrFail($request->id);
+
         return customView(
             'web.freelancerProfileView',
             'web.salonOwnerProfile',
