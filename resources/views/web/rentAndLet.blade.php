@@ -113,8 +113,8 @@
                     <div class="dropdown rent-let-dropdown">
                       <h5 class="btn customBtn"><a class="dropbtn" data-aos="fade-up">Search</a></h5>
                       <div class="dropdown-content text-center">
-                        <a href="rent-let-hairstylist.html">Hairstylist / Barber chair </a>
-                        <a href="rent-let-beauty-therapist.html">Beauty therapist  chair </a>
+                        <a href="{{route('rentLetHairstylist')}}">Hairstylist / Barber chair </a><!-- rent-let-hairstylist.html -->
+                        <a href="{{route('rentLetHairstylist')}}">Beauty therapist  chair </a><!-- rent-let-beauty-therapist.html -->
                       </div>
                     </div>
                   </div>

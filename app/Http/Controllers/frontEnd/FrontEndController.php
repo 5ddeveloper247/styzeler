@@ -154,6 +154,26 @@ class FrontEndController extends Controller
     	return view('web.chairRental');
     }
     
+    public function rentLetHairstylist()
+    {
+    	return view('web.rentLetHairstylist');
+    }
+    
+    public function jobs()
+    {
+    	return view('web.jobs');
+    }
+    
+    public function jobApply()
+    {
+    	return view('web.jobApply');
+    }
+    
+    public function blogs()
+    {
+    	return view('web.blogs');
+    }
+    
     
     public function Profile()
     {
