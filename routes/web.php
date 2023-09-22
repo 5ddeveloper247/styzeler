@@ -44,6 +44,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         Route::post('/updateProductAndServices', 'ProfileController@updateProductAndServices')->name('updateProductAndServices');
         Route::post('/saveAvaibleDate', 'ProfileController@saveAvaibleDate')->name('saveAvaibleDate');
         Route::post('/showAppointmentDates', 'ProfileController@showAppointmentDates')->name('showAppointmentDates');
+        Route::post('/saveRentAndLetDetails', 'RentLetController@saveRentAndLetDetails')->name('saveRentAndLetDetails');
     });
 
     Route::get('/forgetPassword', 'FrontEndController@forgetPassword')->name('forgetPassword');
@@ -85,6 +86,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/salon-owner', 'FrontEndController@salonOwner')->name('salonOwner');
     Route::get('/chair-rental', 'FrontEndController@chairRental')->name('chairRental');
     Route::get('/rent-let-hairstylist', 'FrontEndController@rentLetHairstylist')->name('rentLetHairstylist');
+    Route::get('/rent-let-beauty-therapist', 'FrontEndController@rentLetBeautyTherapist')->name('rentLetBeautyTherapist');
     Route::get('/jobs', 'FrontEndController@jobs')->name('jobs');
     Route::get('/apply-job', 'FrontEndController@jobApply')->name('jobApply');
     Route::get('/blogs', 'FrontEndController@blogs')->name('blogs');
@@ -134,10 +136,12 @@ Route::group(['namespace' => 'AdminFrontEnd'], function () {
             Route::get('/job-requests', 'AdminFrontEndController@jobRequests')->name('admin.jobRequests');
             Route::get('/upload-jobs', 'AdminFrontEndController@uploadJobs')->name('admin.uploadJobs');
             Route::get('/upload-blogs', 'AdminFrontEndController@uploadBlogs')->name('admin.uploadBlogs');
+            
             Route::get('/hairstylist-chair', 'AdminFrontEndController@hairStylistChair')->name('admin.hairStylistChair');
-            Route::get('/chair-details', 'AdminFrontEndController@chairDetails')->name('admin.chairDetails');
             Route::get('/barber-chair', 'AdminFrontEndController@barberChair')->name('admin.barberChair');
             Route::get('/beauty-chair', 'AdminFrontEndController@beautyChair')->name('admin.beautyChair');
+            Route::get('/chair-details/{id?}', 'AdminFrontEndController@chairDetails')->name('admin.chairDetails');
+            
             Route::get('/job-applicants', 'AdminFrontEndController@jobApplicants')->name('admin.jobApplicants');
             Route::get('/applicant', 'AdminFrontEndController@applicant')->name('admin.applicant');
             Route::get('/cover-letter', 'AdminFrontEndController@coverLetter')->name('admin.coverLetter');
@@ -147,6 +151,9 @@ Route::group(['namespace' => 'AdminFrontEnd'], function () {
 
             Route::get('/changeUserStatusActive/{id?}', 'AdminFrontEndController@changeUserStatusActive')->name('admin.changeUserStatusActive');
             Route::get('/changeUserStatusInActive/{id?}', 'AdminFrontEndController@changeUserStatusInActive')->name('admin.changeUserStatusInActive');
+            
+            Route::get('/changeRentLetStatusActive/{id?}', 'AdminFrontEndController@changeRentLetStatusActive')->name('admin.changeRentLetStatusActive');
+            Route::get('/changeRentLetStatusInActive/{id?}', 'AdminFrontEndController@changeRentLetStatusInActive')->name('admin.changeRentLetStatusInActive');
         });
     });
 });

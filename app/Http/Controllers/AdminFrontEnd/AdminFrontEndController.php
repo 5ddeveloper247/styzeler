@@ -5,6 +5,7 @@ namespace App\Http\Controllers\adminFrontend;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Rent_let;
 use Illuminate\Support\Facades\Auth;
 
 class AdminFrontEndController extends Controller
@@ -135,24 +136,33 @@ class AdminFrontEndController extends Controller
     
     public function hairStylistChair()
     {
+    	$data['rentLetList'] = Rent_let::where('category', 'Hairdressing Chair')->get();
     	$data['page'] = 'hairStylistChair';
     	return view('admin.hairStylistChair')->with($data);
     }
     
-    public function chairDetails()
+    public function chairDetails(Request $request, $id='')
     {
-    	$data['page'] = 'chairDetails';
-    	return view('admin.chairDetails')->with($data);
+    	
+    	if($id != ''){
+    		$data['rentLetDetail'] = Rent_let::find($id);
+    		$data['page'] = 'chairDetails';
+    		return view('admin.chairDetails')->with($data);
+    	}else{
+    		return abort(404);
+    	}
     }
     
     public function barberChair()
     {
+    	$data['rentLetList'] = Rent_let::where('category', 'Barber Chair')->get();
     	$data['page'] = 'barberChair';
     	return view('admin.barberChair')->with($data);
     }
     
     public function beautyChair()
     {
+    	$data['rentLetList'] = Rent_let::where('category', 'Beauty Chair')->get();
     	$data['page'] = 'beautyChair';
     	return view('admin.beautyChair')->with($data);
     }
@@ -206,7 +216,32 @@ class AdminFrontEndController extends Controller
     	}else{
     		return abort(404);
     	}
-    	
+    }
+    
+    
+    public function changeRentLetStatusActive(Request $request, $id='')
+    {
+    	if($id != ''){
+    		$rent_let = Rent_let::find($id);
+    		$rent_let->status = 'active';
+    		$rent_let->update();
+    		session()->flash('success', 'Record Activated Successfully!');
+    		return redirect()->back();
+    	}else{
+    		return abort(404);
+    	}
+    }
+    public function changeRentLetStatusInActive(Request $request, $id='')
+    {
+    	if($id != ''){
+    		$rent_let = Rent_let::find($id);
+    		$rent_let->status = 'inactive';
+    		$rent_let->update();
+    		session()->flash('success', 'Record Deactivated Successfully!!');
+    		return redirect()->back();
+    	}else{
+    		return abort(404);
+    	}
     }
     
     
