@@ -5,6 +5,7 @@ namespace App\Http\Controllers\frontEnd;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
+use App\Models\Rent_let;
 use Illuminate\Support\Facades\Auth;
 
 class FrontEndController extends Controller
@@ -156,7 +157,15 @@ class FrontEndController extends Controller
     
     public function rentLetHairstylist()
     {
-    	return view('web.rentLetHairstylist');
+    	$data['rentLetList'] = Rent_let::whereIn('category', ['Hairdressing Chair','Barber Chair'])->get();
+    	$data['page'] = 'hairstylist';
+    	return view('web.rentLetList')->with($data);
+    }
+    public function rentLetBeautyTherapist()
+    {
+    	$data['rentLetList'] = Rent_let::whereIn('category', ['Beauty Chair'])->get();
+    	$data['page'] = 'beauty-therapist';
+    	return view('web.rentLetList')->with($data);
     }
     
     public function jobs()

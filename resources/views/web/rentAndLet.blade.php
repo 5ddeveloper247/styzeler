@@ -114,7 +114,7 @@
                       <h5 class="btn customBtn"><a class="dropbtn" data-aos="fade-up">Search</a></h5>
                       <div class="dropdown-content text-center">
                         <a href="{{route('rentLetHairstylist')}}">Hairstylist / Barber chair </a><!-- rent-let-hairstylist.html -->
-                        <a href="{{route('rentLetHairstylist')}}">Beauty therapist  chair </a><!-- rent-let-beauty-therapist.html -->
+                        <a href="{{route('rentLetBeautyTherapist')}}">Beauty therapist  chair </a><!-- rent-let-beauty-therapist.html -->
                       </div>
                     </div>
                   </div>
