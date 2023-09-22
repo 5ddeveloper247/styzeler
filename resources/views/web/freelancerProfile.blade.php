@@ -2,6 +2,14 @@
 
 @push('css')
     <style>
+        .timeSlots .option:hover {
+            background: #c4b9b0;
+            color: black;
+            font-weight: bold;
+            border: 1px solid #c4b9b0;
+            cursor: pointer;
+        }
+
         .option {
             width: 100%;
             border: 1px solid #c4b9b0;
@@ -23,7 +31,8 @@
             text-decoration: none;
         }
 
-        .edit_pro_pic {
+        .edit_pro_pic,
+        .addTimeSlots {
             margin: 20px 0;
             padding: 5px 15px;
             background-color: transparent;
@@ -77,7 +86,7 @@
 
         </div>
 
-        <div class="row mb-5 justify-content-center">
+        <div class="row justify-content-center">
             <div class="showProfile col-10 text-left mt-4" id="showProfile" style="">
 
                 <div class="name row ">
@@ -375,7 +384,7 @@
                             <a onClick="avaliableAppointmentDate('Off')">Off</a>
                         </div>
                     </div>
-                    <div class="book-on-call col-6 col-md-4 col-lg-2 text-center">
+                    {{-- <div class="book-on-call col-6 col-md-4 col-lg-2 text-center">
                         <div class="option on-call customBtnNotSelected">
                             <a onClick="avaliableAppointmentDate('On Call')">On Call</a>
                         </div>
@@ -384,14 +393,18 @@
                         <div class="option cancel customBtnNotSelected">
                             <a onClick="avaliableAppointmentDate('Cancel')">Cancel</a>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
+                <p class="text-center"><a class="text-center btn addTimeSlots d-none" onclick="addTimeSlots()"
+                        title="Add Slot">+</a></p>
 
                 <!-- end of new calendar ---------------------------------------------------- -->
             </div>
         </div>
+        <div class="row timeSlots">
 
+        </div>
 
     </div>
 
@@ -2636,6 +2649,36 @@
                 </div>
                 <div class="modal-footer text-center">
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal slots-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+
+                </div>
+                <form action="" id="add-slots-form">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input type="hidden" id="slot_id" name="slot_id">
+                                <label for="start_time" class="color-1">Start Time</label>
+                                <input class="form-control" type="time" id="start_time" name="start_time"
+                                    required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="end_time" class="color-1">End Time</label>
+                                <input class="form-control" type="time" id="end_time" name="end_time" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer text-center">
+                        <button type="button" class="btn customBtn add-slots" id="add-slots">Add</button>
+                        <button type="button" class="btn customBtn" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

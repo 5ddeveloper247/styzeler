@@ -6,21 +6,23 @@ use Countable;
 use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Bookings;
+use App\Models\BookingSlots;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UpdateProfileBasicInfoValidationRequest;
 
 class ProfileController extends Controller
 {
     public function getProfileData(Request $request)
     {
-    	if(isset($request->id) && $request->id != ''){
-    		$data = User::where('id', $request->id)->first();
-    	}else{
-    		$data = User::where('id', Auth::user()->id)->first();
-    	}
-        
+        if (isset($request->id) && $request->id != '') {
+            $data = User::where('id', $request->id)->first();
+        } else {
+            $data = User::where('id', Auth::user()->id)->first();
+        }
+
         return response()->json(
             [
                 'data' => $data,
@@ -30,20 +32,20 @@ class ProfileController extends Controller
     }
     public function getProfileDataView(Request $request)
     {
-    	if(isset($request->id) && $request->id != ''){
-    		$data = User::where('id', $request->id)->first();
-    	}else{
-    		$data = User::where('id', Auth::user()->id)->first();
-    	}
-    
-    	return response()->json(
-    			[
-    					'data' => $data,
-    					'status' => 200
-    			]
-    			);
+        if (isset($request->id) && $request->id != '') {
+            $data = User::where('id', $request->id)->first();
+        } else {
+            $data = User::where('id', Auth::user()->id)->first();
+        }
+
+        return response()->json(
+            [
+                'data' => $data,
+                'status' => 200
+            ]
+        );
     }
-    
+
     public function updateProfileImage(Request $request)
     {
 
@@ -248,6 +250,7 @@ class ProfileController extends Controller
     {
 
         $request = json_decode(file_get_contents('php://input'), true);
+
         $availableDays = $request['availableDays'];
         $status = $request['Status'];
 
@@ -283,8 +286,7 @@ class ProfileController extends Controller
 
     public function showAppointmentDates()
     {
-        $bookings = Bookings::User()->IsNotCancelled()->get();
-
+        $bookings = Bookings::User()->IsNotCancelled()->with('bookingTimeSlots')->withCount('bookingTimeSlots')->get();
         return response()->json(
             [
                 'status' => 200,
@@ -292,5 +294,101 @@ class ProfileController extends Controller
                 'data' => $bookings
             ]
         );
+    }
+    public function saveAvaibleSlots(Request $request)
+    {
+
+        $validator =  Validator::make($request->all(), [
+            'start_time' => 'required',
+            'end_time' => 'required',
+
+        ]);
+
+        if ($validator->fails()) {
+            // Return a JSON response with validation errors
+            $firstError = $validator->errors()->first();
+            return response()->json([
+                'status' => 422,
+                'message' => $firstError,
+            ]);
+        }
+
+        $availableDays = $request->availableDate;
+        $startTime  = $request->start_time;
+        $endTime  = $request->end_time;
+        $status = 'Available';
+
+        $startDateTime = Carbon::createFromFormat('Y-m-d H:i', $availableDays . ' ' . $startTime);
+        $endDateTime = Carbon::createFromFormat('Y-m-d H:i', $availableDays . ' ' . $endTime);
+
+        //Check if 'start time' is less then 'end time'
+        if ($startDateTime > $endDateTime) {
+
+            $message = 'End Time must be greater than Start Time';
+            return response()->json([
+                'status' => 422,
+                'message' => $message,
+            ]);
+        }
+
+        // getting booking date from request
+        $booking = Bookings::where('date', $availableDays)->first();
+        $existingBooking = [];
+
+        if ($booking) {
+            $existingBooking = BookingSlots::where('booking_id', $booking->id)
+                ->whereNotIn('id', [$request->slot_id])
+                ->where(function ($query) use ($startDateTime, $endDateTime) {
+                    $query->where(function ($query) use ($startDateTime, $endDateTime) {
+                        $query->whereBetween('start_time', [$startDateTime, $endDateTime])
+                            ->orWhereBetween('end_time', [$startDateTime, $endDateTime]);
+                    });
+                })->first();
+        }
+
+        // check booking is already created with in given time frame
+        if ($existingBooking) {
+            // Time range overlap found, return an error response
+            $message = 'Time range already booked on the specified date';
+            return response()->json([
+                'status' => 422,
+                'message' => $message,
+            ]);
+        }
+
+        $data = [
+            'date' => $availableDays,
+            'status' => $status,
+            'user_id' => Auth::user()->id,
+        ];
+
+        //check if booking is there while creating booking slot
+        if (!$booking) {
+            $newBooking = Bookings::create($data);
+        } else {
+            $newBooking = $booking;
+        }
+        // if booking is there then 
+        $newBookingId = $newBooking->id;
+
+        $data = [
+            'booking_id' => $newBookingId,
+            'start_time' => $startTime,
+            'end_time' => $endTime
+        ];
+
+
+        $bookingSlot = BookingSlots::updateOrCreate(['id' => $request->slot_id], $data);
+
+        if ($bookingSlot->wasRecentlyCreated) {
+            $message = 'Time Slot Created Successfully! Against ' . $availableDays;
+        } else {
+            $message = 'Time Slot Updated Successfully! Against ' . $availableDays;
+        }
+
+        return response()->json([
+            'status' => 200,
+            'message' => $message,
+        ]);
     }
 }

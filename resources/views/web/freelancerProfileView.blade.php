@@ -1,7 +1,7 @@
 @extends('layouts.master.template_old.master')
 <script>
     const baseURL = "{{ request()->root() }}";
-   	const userId = "{{@$data->id}}";
+    const userId = "{{ @$data->id }}";
 </script>
 @push('css')
     <style>
@@ -43,13 +43,102 @@
             max-height: calc(100vh - 200px);
             overflow-y: auto;
         }
+
+        .customSubmit,
+        .customLike {
+            width: 100px;
+        }
+
+        .book-appointment,
+        .on-Hold,
+        .cancel {
+            width: 100%;
+            /*border: 1px solid #c4b9b0;*/
+            text-align: center;
+            padding: 10px;
+            margin: 10px 0;
+
+        }
+
+
+        .option a {
+            color: #c4b9b0;
+
+        }
+
+        .option a:hover {
+            background-color: #c4b9b0;
+            color: white;
+            text-decoration: none;
+        }
+
+        .customBtnProfile {
+            width: 100px;
+            margin-top: 20px;
+
+        }
+
+        .defaultStatus {
+            pointer-events: none !important;
+        }
+
+        .appointment-status_b {
+            border: 2px solid #c4b9b0 !important;
+            padding: 4px 10px 3px 10px;
+            color: #ffdb59;
+            margin-left: 29px;
+            margin-bottom: 4px;
+        }
+
+        .appointment-status_b>h3 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .form-control {
+            display: block;
+            width: 100%;
+            padding: .375rem .75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            color: #495057;
+            background-color: transparent !important;
+            /* background-clip: padding-box; */
+            border: 1px solid #ced4da;
+            border-radius: .25rem;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+
+
+        @media screen and (max-width: 411px) {
+            .customBtnProfile {
+                width: 120px;
+                font-size: 14px;
+            }
+        }
+
+        @media screen and (max-width: 500px) {
+            #calendar {
+                height: 550px;
+            }
+
+            .status-div {
+                margin-top: 150px;
+            }
+        }
+
+
+        .fc-scroller {
+            overflow-y: hidden !important;
+        }
     </style>
 @endpush
 
 @section('content')
-    <script>
+    {{-- <script>
         const baseURL = "{{ request()->root() }}";
-    </script>
+    </script> --}}
     {{-- @dd($data) --}}
     <!-- Content -->
     <div class="profile container">
@@ -308,8 +397,8 @@
                 <div class="gallery">
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY <!-- <a class="text-right btn uploadBtn"
-                            style="font-size:1vw;" onclick="updateGallery()"
-                            title="Upload new image/images"><u>(Upload)</u></a> --></h1>
+                                            style="font-size:1vw;" onclick="updateGallery()"
+                                            title="Upload new image/images"><u>(Upload)</u></a> --></h1>
 
                     <hr>
                     <hr>
@@ -368,24 +457,19 @@
 
                 <div class="row justify-content-center status-div">
 
-                    <div class="book-available col-6 col-md-4 col-lg-2 text-center">
-                        <div class="option available customBtnNotSelected">
-                            <a onClick="avaliableAppointmentDate('Available')">Available</a>
+                    <div class="col-6 col-md-6 col-lg-2 text-center">
+                        <div class="">
+                            <a href="" class="book-appointment btn customBtn defaultStatus">Book</a>
                         </div>
                     </div>
-                    <div class="book-off col-6 col-md-4 col-lg-2 text-center">
-                        <div class="option off customBtnNotSelected">
-                            <a onClick="avaliableAppointmentDate('Off')">Off</a>
+                    <div class="col-6 col-md-6 col-lg-2 text-center">
+                        <div class="">
+                            <a class="on-Hold btn customBtn defaultStatus" href="">On Hold</a>
                         </div>
                     </div>
-                    <div class="book-on-call col-6 col-md-4 col-lg-2 text-center">
-                        <div class="option on-call customBtnNotSelected">
-                            <a onClick="avaliableAppointmentDate('On Call')">On Call</a>
-                        </div>
-                    </div>
-                    <div class="book-cancel col-6 col-md-4 col-lg-2 text-center">
-                        <div class="option cancel customBtnNotSelected">
-                            <a onClick="avaliableAppointmentDate('Cancel')">Cancel</a>
+                    <div class="col-6 col-md-6 col-lg-2 text-center">
+                        <div class="">
+                            <a class="cancel btn customBtn defaultStatus" href="">Cancel</a>
                         </div>
                     </div>
 
@@ -2644,6 +2728,6 @@
         });
     </script>
     <script src="{{ asset('customjs/web/register/common.js') }}"></script>
-    <script src="{{ asset('template_old/js/freelancer-calendar.js') }}"></script>
+    <script src="{{ asset('template_old/js/freelancer-profile-calendar.js') }}"></script>
     <script src="{{ asset('customjs/web/profile/profileView.js') }}"></script>
 @endpush

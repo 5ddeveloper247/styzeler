@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\BookingSlots;
 use App\Http\Traits\HasFactoryTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
@@ -18,8 +19,8 @@ class Bookings extends Model
 
     ];
 
-    // protected $casts = [
-    //     'date' => 'json',
-
-    // ];
+    public function bookingTimeSlots()
+    {
+        return $this->hasMany(BookingSlots::class, 'booking_id');
+    }
 }

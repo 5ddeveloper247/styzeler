@@ -78,6 +78,14 @@ function editName() {
     $(".name-mobile-modal").modal('show');
 
 }
+function addTimeSlots() {
+    $('#slot_id').val('');
+    $('#start_time').val('');
+    $('#end_time').val('');
+    $('#add-slots').html('Add');
+    $(".slots-modal").modal('show');
+
+}
 
 function editAge() {
     $(".age-modal").modal('show');
@@ -617,8 +625,6 @@ function avaliableAppointmentDate(status) {
     // PASSING DATA TO FUNCTION
     SendAjaxRequestToServer(type, url, data, '', saveAvaibleDate, 'spinner_button', 'submit_button');
 
-
-
 }
 function saveAvaibleDate(response) {
 
@@ -634,18 +640,19 @@ function saveAvaibleDate(response) {
             $(".appointment-status").show();
             $("#calendar").fullCalendar('refetchEvents');
             $(".cancel").removeClass("customBtnNotSelected");
+            $(".addTimeSlots").removeClass("d-none");
             $(".available").addClass("customBtnNotSelected");
-            $(".off").addClass("customBtnNotSelected");
+            $(".off").removeClass("customBtnNotSelected");
             $(".on-call").addClass("customBtnNotSelected");
             $(".avaliable-modal").modal('show');
 
         } else if (response.data == "Off") {
-            console.log(response.data);
             $("#p_status").text("Off");
             $(".appointment-status").show();
+            $(".addTimeSlots").removeClass("d-none");
             $("#calendar").fullCalendar('refetchEvents');
             $(".cancel").removeClass("customBtnNotSelected");
-            $(".available").addClass("customBtnNotSelected");
+            $(".available").removeClass("customBtnNotSelected");
             $(".off").addClass("customBtnNotSelected");
             $(".on-call").addClass("customBtnNotSelected");
             $(".avaliable-modal").modal('show');
@@ -654,6 +661,7 @@ function saveAvaibleDate(response) {
             $("#p_status").text("On Call");
             $(".appointment-status").show();
             $("#calendar").fullCalendar('refetchEvents');
+            $(".addTimeSlots").addClass("d-none");
             $(".cancel").removeClass("customBtnNotSelected");
             $(".available").addClass("customBtnNotSelected");
             $(".off").addClass("customBtnNotSelected");
@@ -662,6 +670,7 @@ function saveAvaibleDate(response) {
 
         } else if (response.data == "Cancel") {
             $("#calendar").fullCalendar('refetchEvents');
+            $(".addTimeSlots").addClass("d-none");
             $(".appointment-status").hide();
             $(".cancel").addClass("customBtnNotSelected");
             $(".available").removeClass("customBtnNotSelected");
@@ -685,3 +694,53 @@ function saveAvaibleDate(response) {
     }
 
 }
+
+
+$(document).on('click', '#add-slots', function (e) {
+
+    e.preventDefault();
+    var availableDate = localStorage.getItem(SELECTEDSTATUSDATE);
+    let type = 'POST';
+    let url = '/saveAvaibleSlots';
+    let message = '';
+    let form = $('#add-slots-form');
+
+    let data = new FormData(form[0])
+    data.append('availableDate', availableDate)
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', saveAvaibleSlots, 'spinner_button', 'submit_button');
+});
+
+function saveAvaibleSlots(response) {
+
+    // SHOWING MESSAGE ACCORDING TO RESPONSE
+    if (response.status == 200 || response.status == '200') {
+        // $("#calendar").fullCalendar('refetchEvents');
+        $('#add-slots-form')[0].reset();
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
+        $("#calendar").fullCalendar('refetchEvents');
+        $('.slots-modal').modal('hide');
+    } else {
+
+        error = response.message;
+
+        toastr.error(error, '', {
+            timeOut: 3000
+        });
+    }
+
+}
+
+function changeSlotDate(id, start_time, end_time) {
+
+    $('#slot_id').val(id);
+    $('#start_time').val(start_time);
+    $('#end_time').val(end_time);
+    $('#add-slots').html('Update');
+
+    $('.slots-modal').modal('show');
+
+}
+

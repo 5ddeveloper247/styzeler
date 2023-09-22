@@ -44,6 +44,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         Route::post('/updateProductAndServices', 'ProfileController@updateProductAndServices')->name('updateProductAndServices');
         Route::post('/saveAvaibleDate', 'ProfileController@saveAvaibleDate')->name('saveAvaibleDate');
         Route::post('/showAppointmentDates', 'ProfileController@showAppointmentDates')->name('showAppointmentDates');
+        Route::post('/saveAvaibleSlots', 'ProfileController@saveAvaibleSlots')->name('saveAvaibleSlots');
     });
 
     Route::get('/forgetPassword', 'FrontEndController@forgetPassword')->name('forgetPassword');
@@ -55,7 +56,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
 
     // home services
     Route::get('/homeServices', 'FrontEndController@homeServices')->name('home_service');
-    
+
     // businessOwner
     Route::get('/businessOwner', 'FrontEndController@businessOwner')->name('businessOwner');
 
@@ -75,8 +76,8 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/privacyPolicy', 'FrontEndController@privacyPolicy')->name('privacyPolicy');
     Route::get('/termAndConditions', 'FrontEndController@termAndConditions')->name('termAndConditions');
     Route::get('/webTermAndConditions', 'FrontEndController@webTermAndConditions')->name('webTermAndConditions');
-    
-    
+
+
     Route::get('/barber', 'FrontEndController@barber')->name('barber');
     Route::get('/hairstylist', 'FrontEndController@hairstylist')->name('hairstylist');
     Route::get('/beautician', 'FrontEndController@beautician')->name('beautician');
@@ -84,13 +85,12 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/wedding-stylist', 'FrontEndController@weddingStylist')->name('weddingStylist');
     Route::get('/salon-owner', 'FrontEndController@salonOwner')->name('salonOwner');
     Route::get('/chair-rental', 'FrontEndController@chairRental')->name('chairRental');
-    
+
     // routes for profile view non editable
     Route::get('/salon-owner-profile', 'FrontEndController@salonOwnerProfile')->name('salonOwnerProfile');
-    
+
     Route::get('/freelancer-profile', 'FrontEndController@salonOwnerProfile')->name('freelancerProfile');
     Route::get('/getProfileDataView', 'ProfileController@getProfileDataView')->name('getProfileDataView');
-   
 });
 
 
