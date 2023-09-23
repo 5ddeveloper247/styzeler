@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Rent_let;
+use App\Models\Job_request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FrontEndController extends Controller
 {
@@ -170,7 +172,10 @@ class FrontEndController extends Controller
 
     public function jobs()
     {
-        return view('web.jobs');
+    	$currentDate = now()->toDateString();
+    	$data['jobs'] =	DB::table('job_request')->where('start_date','<=', $currentDate)->where('end_date','>=', $currentDate)->get();
+    	
+        return view('web.jobs')->with($data);
     }
 
     public function jobApply()

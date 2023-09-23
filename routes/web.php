@@ -46,6 +46,8 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         Route::post('/showAppointmentDates', 'ProfileController@showAppointmentDates')->name('showAppointmentDates');
         Route::post('/saveAvaibleSlots', 'ProfileController@saveAvaibleSlots')->name('saveAvaibleSlots');
         Route::post('/saveRentAndLetDetails', 'RentLetController@saveRentAndLetDetails')->name('saveRentAndLetDetails');
+        Route::post('/saveJobRequestDetails', 'JobRequestController@saveJobRequestDetails')->name('saveJobRequestDetails');
+        
     });
 
     Route::get('/forgetPassword', 'FrontEndController@forgetPassword')->name('forgetPassword');
@@ -96,6 +98,8 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/salon-owner-profile', 'FrontEndController@salonOwnerProfile')->name('salonOwnerProfile');
     Route::get('/freelancer-profile', 'FrontEndController@salonOwnerProfile')->name('freelancerProfile');
     Route::get('/getProfileDataView', 'ProfileController@getProfileDataView')->name('getProfileDataView');
+    
+    
 });
 
 
@@ -112,10 +116,12 @@ Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@regis
 
 
 
-Route::group(['namespace' => 'AdminFrontEnd'], function () {
 
 
-    Route::group(['prefix' => 'admin'], function () {
+
+Route::group(['prefix' => 'admin'], function () {
+    	
+    Route::group(['namespace' => 'AdminFrontEnd'], function () {
 
         Route::get('/', 'AdminFrontEndController@login')->name('/');
         Route::get('/login', 'AdminFrontEndController@login')->name('admin.login');
@@ -154,8 +160,21 @@ Route::group(['namespace' => 'AdminFrontEnd'], function () {
 
             Route::get('/changeRentLetStatusActive/{id?}', 'AdminFrontEndController@changeRentLetStatusActive')->name('admin.changeRentLetStatusActive');
             Route::get('/changeRentLetStatusInActive/{id?}', 'AdminFrontEndController@changeRentLetStatusInActive')->name('admin.changeRentLetStatusInActive');
+            
+            Route::get('/changeJobReqStatusActive/{id?}', 'AdminFrontEndController@changeJobReqStatusActive')->name('admin.changeJobReqStatusActive');
+            Route::get('/changeJobReqStatusInActive/{id?}', 'AdminFrontEndController@changeJobReqStatusInActive')->name('admin.changeJobReqStatusInActive');
+            
+            
         });
     });
+    Route::group(['namespace' => 'FrontEnd'], function () {
+    	Route::group(['middleware' => ['AdminAuth']], function () {
+    		
+    		Route::get('/getJobRequestDetail', 'JobRequestController@getJobRequestDetail')->name('getJobRequestDetail');
+    	});
+    });
 });
+
+	
 
 // Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@register')->name('registration');

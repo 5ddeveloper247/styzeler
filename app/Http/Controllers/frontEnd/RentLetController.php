@@ -76,4 +76,5 @@ class RentLetController extends Controller
 	
 		return response()->json(['status' => 200, 'message' => 'Rent & Let details submitted succsessfully!', 'data' => '']);
 	}
+	
 }

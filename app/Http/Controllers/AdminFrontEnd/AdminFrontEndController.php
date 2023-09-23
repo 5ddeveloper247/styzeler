@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Rent_let;
+use App\Models\Job_request;
 use Illuminate\Support\Facades\Auth;
 
 class AdminFrontEndController extends Controller
@@ -118,6 +119,7 @@ class AdminFrontEndController extends Controller
     
     public function jobRequests()
     {
+    	$data['jobReqList'] = Job_request::where('type', 'owner')->get();
     	$data['page'] = 'jobRequests';
     	return view('admin.jobRequests')->with($data);
     }
@@ -244,7 +246,30 @@ class AdminFrontEndController extends Controller
     	}
     }
     
-    
+    public function changeJobReqStatusActive(Request $request, $id='')
+    {
+    	if($id != ''){
+    		$job = Job_request::find($id);
+    		$job->status = 'active';
+    		$job->update();
+    		session()->flash('success', 'Record Activated Successfully!');
+    		return redirect()->back();
+    	}else{
+    		return abort(404);
+    	}
+    }
+    public function changeJobReqStatusInActive(Request $request, $id='')
+    {
+    	if($id != ''){
+    		$job = Job_request::find($id);
+    		$job->status = 'inactive';
+    		$job->update();
+    		session()->flash('success', 'Record Deactivated Successfully!!');
+    		return redirect()->back();
+    	}else{
+    		return abort(404);
+    	}
+    }
     
    
 }

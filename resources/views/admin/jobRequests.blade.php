@@ -48,21 +48,22 @@
             </div>
         </div>
         <div class="row user-details">
-            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p>Senior Web Developer</p></div>
-            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p>Barry Reed</p></div>
-            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p style="cursor:pointer;" id="5" onclick="getJobdetails(this)">Click to see details</p></div>
-            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_0" style="cursor:pointer;"><a style="color: green;">Activated</a></p></div>
-            <hr>
-            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p>Senior Web Developer</p></div>
-            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p>Barry Reed</p></div>
-            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p style="cursor:pointer;" id="5" onclick="getJobdetails(this)">Click to see details</p></div>
-            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_0" style="cursor:pointer;"><a style="color: green;">Activated</a></p></div>
-            <hr>
-            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p>Senior Web Developer</p></div>
-            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p>Barry Reed</p></div>
-            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p style="cursor:pointer;" id="5" onclick="getJobdetails(this)">Click to see details</p></div>
-            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_2" style="cursor:pointer;"><a style="color:red;">Active Now</a></p></div>
-            <hr>
+        	@if(count($jobReqList))
+        	@foreach($jobReqList as $row)
+        		<div class="col-3 pt-2" style="border-top: 1px solid grey;"><p>{{$row->job_title}}</p></div>
+	            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p>{{$row->user->name}} {{$row->user->surname}}</p></div>
+	            <div class="col-3 pt-2" style="border-top: 1px solid grey;"><p style="cursor:pointer;" id="{{$row->id}}" onclick="getJobdetails({{$row->id}})">Click to see details</p></div>
+	            
+				@if($row->status == 'active')
+					<div class="col-3 pt-2" style="border-top: 1px solid grey;"><p id="req_{{$row->id}}"><a class="txtdec-none" href="{{route('admin.changeJobReqStatusInActive')}}/{{$row->id}}" style="color: green;">Activated</a></p></div>
+				@else
+					<div class="col-3 pt-2" style="border-top: 1px solid grey;"><p id="req_{{$row->id}}"><a class="txtdec-none" href="{{route('admin.changeJobReqStatusActive')}}/{{$row->id}}" style="color: red;">Active Now</a></p></div>
+				@endif
+	            <hr>
+        	@endforeach
+        	@endif
+            
+            
         </div>
            
 
@@ -99,35 +100,35 @@
             <p>
             	<div class="form-group">
                     <label for="job-title">Company Name</label>
-                    <input type="text" class="form-control" id="company_name" name="company_name">
+                    <input type="text" class="form-control" id="company_name" name="company_name" disabled>
                 </div>
                 <div class="form-group">
                     <label for="job-title">Job Title</label>
-                    <input type="text" class="form-control" id="job-title" name="job_title">
+                    <input type="text" class="form-control" id="job-title" name="job_title" disabled>
                 </div>
                 <div class="form-group">
                     <label for="job-title">Job Description & benefits</label>
-                    <textarea type="text" class="form-control" id="description" name="description" rows="3"></textarea>
+                    <textarea type="text" class="form-control" id="description" name="description" rows="3" disabled></textarea>
                 </div>
                 <div class="form-group">
                     <label for="job-title">Salary</label>
-                    <input type="text" class="form-control" id="salary" name="salary">
+                    <input type="text" class="form-control" id="salary" name="salary" disabled>
                 </div>
                 <div class="form-group">
                     <label for="job-title">Location</label>
-                    <input type="text" class="form-control" id="location" name="location">
+                    <input type="text" class="form-control" id="location" name="location" disabled>
                 </div>
                 <div class="form-group">
                     <label for="job-title">Email Address</label>
-                    <input type="text" class="form-control" id="email" name="email">
+                    <input type="text" class="form-control" id="email" name="email" disabled>
                 </div>
                 <div class="form-group">
                     <label for="job-title">Job Start Date</label>
-                    <input  class="form-control" name="job_start_date" placeholder="01/01/2018" id="job-start-date"/>                    
+                    <input type="date" class="form-control" name="job_start_date" id="job-start-date" disabled/>                    
                 </div>
                 <div class="form-group">
                     <label for="job-title">Job End Date</label>
-                    <input  class="form-control" name="job_end_date" placeholder="01/01/2018" id="job-end-date"/>                    
+                    <input type="date" class="form-control" name="job_end_date" id="job-end-date" disabled/>                    
                 </div>
             </p>
             <button type="button" class="btn customBtn" data-dismiss="modal" style="color: white;border: 1px solid;float: right;">Close</button>
@@ -148,30 +149,15 @@
 
 @push('script')
     <script src="{{ asset('customjs/web/register/common.js') }}"></script>
+	<script src="{{ asset('customjs/web/jobrequest/jobRequest.js') }}"></script>
     <script>
-    function getJobdetails(element) {
-    	$('div.post-job-modal').modal('show');
-    }
-    $(function () {
-        $("#jsGrid1").jsGrid({
-            height: "100%",
-            width: "100%",
-
-            sorting: true,
-            paging: true,
-
-            data: db.clients,
-
-            fields: [
-                { name: "Name", type: "text", width: 150 },
-                { name: "Age", type: "number", width: 50 },
-                { name: "Address", type: "text", width: 200 },
-                { name: "Country", type: "select", items: db.countries, valueField: "Id", textField: "Name" },
-                { name: "Married", type: "checkbox", title: "Is Married" },
-                { name: "Married", type: "checkbox", title: "Is Married" }
-
-            ]
+    $(function() {
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+            }
         });
-      });
+    });
+    
     </script>
 @endpush
