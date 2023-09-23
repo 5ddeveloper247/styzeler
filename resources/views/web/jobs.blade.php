@@ -38,10 +38,10 @@
 				<div class="col-12 mt-4">
 					<div class="card card-body color-1">
 						<h4>{{@$row->job_title}}</h4>
-						<p>{{@$row->description}}</p>
+						<div><?php echo $row->description;?></div>
 <!-- 						<p>Job Types: Temporary, Contract, &pound;25,000.00-&pound;30,000.00+ per year</p> -->
 						
-						<a id="1" href="{{route('jobApply')}}" class="btn customBtn">Apply</a>
+						<a id="1" href="javascript:;" class="btn customBtn" onclick="applyJob({{$row->id}});">Apply</a>
 					</div>
 				</div>
 			@endforeach
@@ -124,6 +124,10 @@
 		</div>
 	</div>
 </div>
+<form class="" id="jobApplyForm" method="POST" action="{{ route('jobApply') }}" enctype="multipart/form-data" style="display:none;">
+    {{ csrf_field() }}
+    <input type="hidden" class="jobId" id="jobId" name="jobId" value="">
+</form>
 
 @endsection
 
@@ -138,7 +142,12 @@ $(function() {
         }
     });
 });
-
+function applyJob(id){
+	$("#jobId").val(id);
+	setTimeout(function(){
+		$("#jobApplyForm").submit();
+	}, 500);
+}
 function postNewJob(){
 	$(".post-job-modal").modal('show');
 }

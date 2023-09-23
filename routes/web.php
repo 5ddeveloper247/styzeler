@@ -91,7 +91,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/rent-let-hairstylist', 'FrontEndController@rentLetHairstylist')->name('rentLetHairstylist');
     Route::get('/rent-let-beauty-therapist', 'FrontEndController@rentLetBeautyTherapist')->name('rentLetBeautyTherapist');
     Route::get('/jobs', 'FrontEndController@jobs')->name('jobs');
-    Route::get('/apply-job', 'FrontEndController@jobApply')->name('jobApply');
+    
     Route::get('/blogs', 'FrontEndController@blogs')->name('blogs');
 
     // routes for profile view non editable for guest users
@@ -99,7 +99,11 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/freelancer-profile', 'FrontEndController@salonOwnerProfile')->name('freelancerProfile');
     Route::get('/getProfileDataView', 'ProfileController@getProfileDataView')->name('getProfileDataView');
     
-    
+    Route::post('/apply-job', 'FrontEndController@jobApply')->name('jobApply');
+    Route::get('/apply-job', function () {
+    	return abort(404);
+    });
+    Route::post('/saveJobApplyDetails', 'JobRequestController@saveJobApplyDetails')->name('saveJobApplyDetails');	
 });
 
 
@@ -110,7 +114,6 @@ Route::middleware(['guest'])->group(function () {
 });
 
 Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
-
 Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@register')->name('registration');
 
 
@@ -149,28 +152,30 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/chair-details/{id?}', 'AdminFrontEndController@chairDetails')->name('admin.chairDetails');
 
             Route::get('/job-applicants', 'AdminFrontEndController@jobApplicants')->name('admin.jobApplicants');
-            Route::get('/applicant', 'AdminFrontEndController@applicant')->name('admin.applicant');
-            Route::get('/cover-letter', 'AdminFrontEndController@coverLetter')->name('admin.coverLetter');
+            Route::get('/applicant/{id?}', 'AdminFrontEndController@applicant')->name('admin.applicant');
+            Route::get('/applicant-cover-letter/{id?}', 'AdminFrontEndController@applicantCoverLetter')->name('admin.applicantCl');
+            Route::get('/applicant-resume/{id?}', 'AdminFrontEndController@applicantResume')->name('admin.applicantCv');
             Route::get('/email-enquiry', 'AdminFrontEndController@emailEnquiry')->name('admin.emailEnquiry');
-
 
 
             Route::get('/changeUserStatusActive/{id?}', 'AdminFrontEndController@changeUserStatusActive')->name('admin.changeUserStatusActive');
             Route::get('/changeUserStatusInActive/{id?}', 'AdminFrontEndController@changeUserStatusInActive')->name('admin.changeUserStatusInActive');
-
-            Route::get('/changeRentLetStatusActive/{id?}', 'AdminFrontEndController@changeRentLetStatusActive')->name('admin.changeRentLetStatusActive');
-            Route::get('/changeRentLetStatusInActive/{id?}', 'AdminFrontEndController@changeRentLetStatusInActive')->name('admin.changeRentLetStatusInActive');
-            
-            Route::get('/changeJobReqStatusActive/{id?}', 'AdminFrontEndController@changeJobReqStatusActive')->name('admin.changeJobReqStatusActive');
-            Route::get('/changeJobReqStatusInActive/{id?}', 'AdminFrontEndController@changeJobReqStatusInActive')->name('admin.changeJobReqStatusInActive');
-            
             
         });
     });
     Route::group(['namespace' => 'FrontEnd'], function () {
     	Route::group(['middleware' => ['AdminAuth']], function () {
     		
+    		Route::get('/changeRentLetStatusActive/{id?}', 'RentLetController@changeRentLetStatusActive')->name('admin.changeRentLetStatusActive');
+    		Route::get('/changeRentLetStatusInActive/{id?}', 'RentLetController@changeRentLetStatusInActive')->name('admin.changeRentLetStatusInActive');
+    		
+    		Route::get('/changeJobReqStatusActive/{id?}', 'JobRequestController@changeJobReqStatusActive')->name('admin.changeJobReqStatusActive');
+    		Route::get('/changeJobReqStatusInActive/{id?}', 'JobRequestController@changeJobReqStatusInActive')->name('admin.changeJobReqStatusInActive');
+    		
     		Route::get('/getJobRequestDetail', 'JobRequestController@getJobRequestDetail')->name('getJobRequestDetail');
+    		
+    		
+    		Route::post('/saveBlogDetails', 'BlogController@saveBlogDetails')->name('saveBlogDetails');
     	});
     });
 });

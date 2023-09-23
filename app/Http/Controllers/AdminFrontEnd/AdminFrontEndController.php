@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Rent_let;
 use App\Models\Job_request;
+use App\Models\Job_apply;
 use Illuminate\Support\Facades\Auth;
 
 class AdminFrontEndController extends Controller
@@ -171,19 +172,34 @@ class AdminFrontEndController extends Controller
     
 	public function jobApplicants()
     {
+    	$data['applicants'] = Job_apply::with('jobRequest')->get();
     	$data['page'] = 'jobApplicants';
     	return view('admin.jobApplicants')->with($data);
     }
     
-    public function applicant()
+    public function applicant(Request $request, $id='')
     {
-    	$data['page'] = 'applicant';
-    	return view('admin.applicant')->with($data);
+    	if($id != ''){
+    		$data['applicantDetail'] = Job_apply::where('id', $id)->first();
+	    	$data['page'] = 'applicant';
+	    	return view('admin.applicant')->with($data);
+    	}else{
+    		return abort(404);
+    	}
     }
     
-    public function coverLetter()
+    public function applicantCoverLetter(Request $request, $id='')
     {
+    	$data['applicantDetail'] = Job_apply::where('id', $id)->first();
     	$data['page'] = 'coverLetter';
+    	$data['type'] = 'cover_letter';
+    	return view('admin.coverLetter')->with($data);
+    }
+    public function applicantResume(Request $request, $id='')
+    {
+    	$data['applicantDetail'] = Job_apply::where('id', $id)->first();
+    	$data['page'] = 'coverLetter';
+    	$data['type'] = 'resume';
     	return view('admin.coverLetter')->with($data);
     }
     
@@ -221,55 +237,9 @@ class AdminFrontEndController extends Controller
     }
     
     
-    public function changeRentLetStatusActive(Request $request, $id='')
-    {
-    	if($id != ''){
-    		$rent_let = Rent_let::find($id);
-    		$rent_let->status = 'active';
-    		$rent_let->update();
-    		session()->flash('success', 'Record Activated Successfully!');
-    		return redirect()->back();
-    	}else{
-    		return abort(404);
-    	}
-    }
-    public function changeRentLetStatusInActive(Request $request, $id='')
-    {
-    	if($id != ''){
-    		$rent_let = Rent_let::find($id);
-    		$rent_let->status = 'inactive';
-    		$rent_let->update();
-    		session()->flash('success', 'Record Deactivated Successfully!!');
-    		return redirect()->back();
-    	}else{
-    		return abort(404);
-    	}
-    }
     
-    public function changeJobReqStatusActive(Request $request, $id='')
-    {
-    	if($id != ''){
-    		$job = Job_request::find($id);
-    		$job->status = 'active';
-    		$job->update();
-    		session()->flash('success', 'Record Activated Successfully!');
-    		return redirect()->back();
-    	}else{
-    		return abort(404);
-    	}
-    }
-    public function changeJobReqStatusInActive(Request $request, $id='')
-    {
-    	if($id != ''){
-    		$job = Job_request::find($id);
-    		$job->status = 'inactive';
-    		$job->update();
-    		session()->flash('success', 'Record Deactivated Successfully!!');
-    		return redirect()->back();
-    	}else{
-    		return abort(404);
-    	}
-    }
+    
+    
     
    
 }

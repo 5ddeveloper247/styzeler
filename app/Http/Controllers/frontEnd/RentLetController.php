@@ -77,4 +77,29 @@ class RentLetController extends Controller
 		return response()->json(['status' => 200, 'message' => 'Rent & Let details submitted succsessfully!', 'data' => '']);
 	}
 	
+	public function changeRentLetStatusActive(Request $request, $id='')
+	{
+		if($id != ''){
+			$rent_let = Rent_let::find($id);
+			$rent_let->status = 'active';
+			$rent_let->update();
+			session()->flash('success', 'Record Activated Successfully!');
+			return redirect()->back();
+		}else{
+			return abort(404);
+		}
+	}
+	public function changeRentLetStatusInActive(Request $request, $id='')
+	{
+		if($id != ''){
+			$rent_let = Rent_let::find($id);
+			$rent_let->status = 'inactive';
+			$rent_let->update();
+			session()->flash('success', 'Record Deactivated Successfully!!');
+			return redirect()->back();
+		}else{
+			return abort(404);
+		}
+	}
+	
 }

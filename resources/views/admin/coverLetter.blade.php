@@ -18,7 +18,13 @@
 	    var h = window.innerHeight;
 	    var w = window.innerWidth;
 
-	    $(".showCv").append('<embed src="{{ asset("pdf/wedding/Stuart-Sim-Allan-CV.pdf")}}" width="'+w+'" height="'+h+'">');
+	    @if(@$type == 'cover_letter')
+	    	$(".showCv").append('<embed src="{{ asset(isset($applicantDetail->applicant_cover_letter) ? $applicantDetail->applicant_cover_letter : '')}}" width="'+w+'" height="'+h+'">');
+		@elseif(@$type == 'resume')
+			$(".showCv").append('<embed src="{{ asset(isset($applicantDetail->applicant_resume) ? $applicantDetail->applicant_resume : '')}}" width="'+w+'" height="'+h+'">');
+		@endif
+	    
+	    
     </script>
 
 </body>
