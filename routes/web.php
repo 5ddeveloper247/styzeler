@@ -103,7 +103,10 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/apply-job', function () {
     	return abort(404);
     });
-    Route::post('/saveJobApplyDetails', 'JobRequestController@saveJobApplyDetails')->name('saveJobApplyDetails');	
+    Route::post('/saveJobApplyDetails', 'JobRequestController@saveJobApplyDetails')->name('saveJobApplyDetails');
+    Route::post('/saveGuestUserDetails', 'ChatController@saveGuestUserDetails')->name('saveGuestUserDetails');
+    Route::post('/sendMessage', 'ChatController@sendMessage')->name('sendMessage');
+    Route::get('/getAnswer', 'ChatController@getAnswer')->name('getAnswer');
 });
 
 
