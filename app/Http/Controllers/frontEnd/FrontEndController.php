@@ -198,6 +198,7 @@ class FrontEndController extends Controller
     }
     public function salonOwnerProfile(Request $request)
     {
+
         $data = User::findOrFail($request->id);
 
         return customView(

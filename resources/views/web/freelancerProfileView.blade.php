@@ -5,13 +5,30 @@
 </script>
 @push('css')
     <style>
+        table {
+            text-align: center
+        }
+
+        .time_active {
+            background-color: #c4b9b0;
+            color: black;
+        }
+
+        .timeSlots .option:hover {
+            background: #c4b9b0;
+            color: black;
+            font-weight: bold;
+            border: 1px solid #c4b9b0;
+            cursor: pointer;
+        }
+
         .option {
             width: 100%;
             border: 1px solid #c4b9b0;
             text-align: center;
             padding: 10px;
             margin: 10px 0;
-
+            transition: 1s all ease;
         }
 
 
@@ -396,9 +413,11 @@
 
                 <div class="gallery">
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
-                    <h1 class="color-1 col-lg-12 text-center">GALLERY <!-- <a class="text-right btn uploadBtn"
-                                            style="font-size:1vw;" onclick="updateGallery()"
-                                            title="Upload new image/images"><u>(Upload)</u></a> --></h1>
+                    <h1 class="color-1 col-lg-12 text-center">GALLERY
+                        <!-- <a class="text-right btn uploadBtn"
+                                                                                                                                                                            style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                            title="Upload new image/images"><u>(Upload)</u></a> -->
+                    </h1>
 
                     <hr>
                     <hr>
@@ -462,11 +481,11 @@
                             <a href="" class="book-appointment btn customBtn defaultStatus">Book</a>
                         </div>
                     </div>
-                    <div class="col-6 col-md-6 col-lg-2 text-center">
+                    {{-- <div class="col-6 col-md-6 col-lg-2 text-center">
                         <div class="">
                             <a class="on-Hold btn customBtn defaultStatus" href="">On Hold</a>
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="col-6 col-md-6 col-lg-2 text-center">
                         <div class="">
                             <a class="cancel btn customBtn defaultStatus" href="">Cancel</a>
@@ -474,7 +493,9 @@
                     </div>
 
                 </div>
+                <div class="row timeSlots">
 
+                </div>
                 <!-- end of new calendar ---------------------------------------------------- -->
             </div>
         </div>
@@ -2713,6 +2734,36 @@
                 </div>
                 <div class="modal-footer text-center">
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal slots-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+        <div class="modal-dialog " role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+
+                </div>
+                <form id="book_slots_form">
+                    <div class="modal-body">
+                        <input type="hidden" id="slot_book_id" name="slot_book_id">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <h4 style="color: #ffde59 ">Are you sure to book slot?</h4>
+                                <h6><strong>Time: </strong><span id="book_slot_start"></span> - <span
+                                        id="book_slot_end"></span> on <strong>Date:</strong>
+                                    <span id="book_slot_date"></span>
+                                </h6>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer text-center">
+                        <button type="button" class="btn customBtn book-slots" id="book-slots">Add</button>
+                        <button type="button" class="btn customBtn" data-dismiss="modal">Close</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

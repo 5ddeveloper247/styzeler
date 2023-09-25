@@ -8,7 +8,11 @@ trait HasFactoryTrait
 {
     public function scopeUser($query)
     {
-        return $query->where('user_id', Auth::user()->id);
+        return $query->where('user_id', Auth::id());
+    }
+    public function scopeFreelancerUser($query, $id)
+    {
+        return $query->where('user_id', $id);
     }
     public function scopeIsNotCancelled($query)
     {

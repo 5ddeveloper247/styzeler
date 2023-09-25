@@ -6,10 +6,11 @@ var tomorrow = currentdate.toJSON().slice(0, 10);
 var calHeight = 600;
 var currentHour = currentdate.getHours();
 var availableSelectDate = localStorage.getItem(SELECTEDSTATUSDATE);
+
 // check eligibility for on call 
 function optionBtns(selectedDate) {
 
-  // console.log(tomorrow);
+
   if (selectedDate === tomorrow) {
     $(".on-call").removeClass("customBtnNotSelected");
   }
@@ -96,12 +97,12 @@ function convert(dateText) {
           url: '/showAppointmentDates',
           data: {},
           success: function (showResponse) {
+
             var events = [];
             var changeSlot = '';
             var html = '';
             $(".timeSlots").empty();
-            console.log(showResponse.data);
-
+            var profileStatus = showResponse.userprofile['profile_type'];
             $.each(showResponse.data, function (i) {
               var status = showResponse.data[i]["status"];
 
@@ -124,8 +125,9 @@ function convert(dateText) {
                 allDay: true,
               });
 
-
+              var availableSelectDate = localStorage.getItem(SELECTEDSTATUSDATE);
               if (showResponse.data[i]["date"] === convert(availableSelectDate)) {
+
                 $('.fc-title').html('');
                 evezz.push({
                   //   title: 'B',
@@ -143,7 +145,6 @@ function convert(dateText) {
                 $("#calendar").fullCalendar("addEventSource", evezz);
                 evezz = [];
                 var status = showResponse.data[i]["status"];
-                console.log(status, 'before');
                 if (status == 'Off') {
 
                   changeSlot = 'customBtnNotSelected';
@@ -157,13 +158,19 @@ function convert(dateText) {
                   $(".addTimeSlots").removeClass('d-none');
 
                 }
-                $.each(showResponse.data[i]["booking_time_slots"], function (j) {
-                  var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
-                  var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
+                if (profileStatus == 'Freelancer') {
+                  $(".addTimeSlots").addClass('d-none');
+                }
+                if (showResponse.data[i]["booking_time_slots"] && profileStatus != 'Freelancer') {
+                  $.each(showResponse.data[i]["booking_time_slots"], function (j) {
+                    var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
+                    var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
 
-                  html += `<div title="Edit Slot" class="` + changeSlot + ` option col-md-3 mr-2" onclick = changeSlotDate(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
-                  // count++
-                });
+                    html += `<div title="Edit Slot" class="` + changeSlot + ` option col-md-3 mr-2" onclick = changeSlotDate(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
+
+                  });
+                }
+
                 changeSlot = '';
               }
 
@@ -195,13 +202,12 @@ function convert(dateText) {
         };
         //   alert(convert(dateText));
 
-        // console.log(today);
         localStorage.setItem(SELECTEDSTATUSDATE, convert(dateText));
 
         // $("#options").show();
         optionBtns(convert(dateText));
         let d = convert(dateText);
-        // console.log(d);
+        console.log(d);
         evezz.push({
           //   title: 'B',
           // color: "#0decfc",
@@ -231,20 +237,20 @@ function convert(dateText) {
           url: '/showAppointmentDates',
           data: JSON.stringify({}),
           success: function (showResponse) {
-
-            console.log(showResponse);
-
-
+            // console.log(showResponse)
+            var profileStatus = showResponse.userprofile['profile_type'];
             $.each(showResponse.data, function (i) {
               if (showResponse.data[i]["date"] === convert(dateText)) {
 
-                if (showResponse.data[i]["booking_time_slots"]) {
+                if (showResponse.data[i]["booking_time_slots"] != '' && profileStatus != 'Freelancer') {
+
                   var status = showResponse.data[i]["status"];
 
                   if (status == 'Off') {
 
                     changeSlot = 'customBtnNotSelected'
                   }
+
                   $.each(showResponse.data[i]["booking_time_slots"], function (j) {
                     var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
                     var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
@@ -264,26 +270,38 @@ function convert(dateText) {
                   // showResponse.data[i]["status"] === "On Call" ||
                   // showResponse.data[i]["status"] === "Off"
                 ) {
+                  if (profileStatus == 'Freelancer') {
+                    $(".addTimeSlots").addClass('d-none');
+                  } else {
+                    $(".addTimeSlots").removeClass('d-none');
 
+                  }
 
                   $(".available").addClass("customBtnNotSelected");
                   // $(".on-call").addClass("customBtnNotSelected");
                   $(".off").removeClass("customBtnNotSelected");
-                  $(".addTimeSlots").removeClass('d-none');
+                  // $(".addTimeSlots").removeClass('d-none');
                   // $(".cancel").removeClass("customBtnNotSelected");
                 } else {
                   $(".available").removeClass("customBtnNotSelected");
                   $(".off").addClass("customBtnNotSelected");
-                  $(".addTimeSlots").addClass('d-none');
+                  // $(".addTimeSlots").addClass('d-none');
 
                 }
+
               }
               // else {
               //   $(".appointment-status").hide();
               // }
+
             });
             if (!found) {
-              $(".addTimeSlots").removeClass('d-none');
+              if (profileStatus == 'Freelancer') {
+                $(".addTimeSlots").addClass('d-none');
+              } else {
+                $(".addTimeSlots").removeClass('d-none');
+
+              }
               $("#p_status").text("-");
               // $(".cancel").addClass("customBtnNotSelected");
               $(".available").removeClass("customBtnNotSelected");
@@ -295,6 +313,7 @@ function convert(dateText) {
 
               }
             }
+
           },
         });
 

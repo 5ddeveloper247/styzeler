@@ -103,6 +103,13 @@
                             Jobseeker
                         </label>
                     </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="stylist_type" id="home_service"
+                            value="Home Service">
+                        <label class="form-check-label" for="home_service">
+                            Home Service
+                        </label>
+                    </div>
                 </div>
                 <div class="qualification my-5">
                     <h4>Qualification</h4>
@@ -648,7 +655,7 @@
                             </div>
                             <div class="modal-footer">
                                 <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <button type="button" class="btn btn-primary">Save changes</button> -->
                             </div>
                         </div>
                     </div>

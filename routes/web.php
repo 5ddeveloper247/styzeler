@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -50,6 +49,8 @@ Route::group(['namespace' => 'FrontEnd'], function () {
 
     Route::get('/forgetPassword', 'FrontEndController@forgetPassword')->name('forgetPassword');
 
+    Route::post('/showAppointmentDatesFreelancer', 'ProfileController@showAppointmentDatesFreelancer')->name('showAppointmentDatesFreelancer');
+    Route::post('/bookSlots', 'ProfileController@bookSlots')->name('bookSlots');
 
     // About
     Route::get('/aboutUs', 'FrontEndController@aboutUs')->name('aboutUs');
