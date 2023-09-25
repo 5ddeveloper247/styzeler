@@ -1,5 +1,5 @@
 @extends('layouts.master.template_old.master')
-
+{{-- @dd(Auth::user()) --}}
 @push('css')
     <style>
         .timeSlots .option:hover {

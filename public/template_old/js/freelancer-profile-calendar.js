@@ -1,10 +1,12 @@
 let SELECTEDSTATUSDATE = "selectedstatusdate";
 
 var currentdate = new Date();
-currentdate.setDate(currentdate.getDate() + 3);
+currentdate.setDate(currentdate.getDate() + 1);
 var tomorrow = currentdate.toJSON().slice(0, 10);
 var calHeight = 600;
-
+var currentHour = currentdate.getHours();
+var availableSelectDate = localStorage.getItem(SELECTEDSTATUSDATE);
+localStorage.removeItem('selectedstatusdate');
 
 var evezz = [];
 var today = today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
@@ -13,8 +15,7 @@ var endCalender = new Date(new Date().getFullYear(), (new Date().getMonth()) + 3
 
 function optionBtns(selectedDate) {
 
-  console.log(tomorrow);
-  console.log(selectedDate > tomorrow);
+
   if (selectedDate >= tomorrow) {
     $(".on-Hold").removeClass("defaultStatus");
   }
@@ -22,8 +23,27 @@ function optionBtns(selectedDate) {
     $(".on-Hold").addClass("defaultStatus");
   }
 }
+function convertTo12HourFormat(time24) {
+  // Split the time string into hours and minutes
+  const [hours, minutes] = time24.split(':');
 
+  // Determine if it's AM or PM
+  const period = hours >= 12 ? 'PM' : 'AM';
 
+  // Convert hours to 12-hour format
+  const hours12 = hours % 12 || 12;
+
+  // Create the 12-hour time string
+  const time12 = `${hours12}:${minutes} ${period}`;
+
+  return time12;
+}
+function convert(dateText) {
+  var date = new Date(dateText),
+    mnth = ("0" + (date.getMonth() + 1)).slice(-2),
+    day = ("0" + date.getDate()).slice(-2);
+  return [date.getFullYear(), mnth, day].join("-");
+}
 jQuery(document).ready(function () {
   jQuery('.datetimepicker').datepicker({
     timepicker: true,
@@ -35,7 +55,6 @@ jQuery(document).ready(function () {
 });
 
 
-
 (function () {
   "use strict";
   // ------------------------------------------------------- //
@@ -44,10 +63,10 @@ jQuery(document).ready(function () {
 
   // $("#options").hide();
   // $("#status").text("-");
-  $(".appointment-status_b").hide();
+  $(".appointment-status").hide();
   jQuery(function () {
 
-    // page is ready
+    // page is read
     jQuery("#calendar").fullCalendar({
       themeSystem: "bootstrap4",
       // emphasizes business hours
@@ -70,13 +89,16 @@ jQuery(document).ready(function () {
 
         $.ajax({
           type: "post",
-          url: '/showAppointmentDates',
+          url: '/showAppointmentDatesFreelancer',
           data: {
-
+            "id": userId
           },
           success: function (showResponse) {
             var events = [];
-            console.log(showResponse.data);
+            var changeSlot = '';
+            var html = '';
+            $(".timeSlots").empty();
+            var profileStatus = showResponse.userprofile['profile_type'];
             $.each(showResponse.data, function (i) {
               var status = showResponse.data[i]["status"];
 
@@ -89,7 +111,6 @@ jQuery(document).ready(function () {
               };
 
               var title = statusToTitle[status] || status; // Use the mapping or the status as the title
-
               events.push({
                 title: title,
                 color: "#000",
@@ -100,8 +121,60 @@ jQuery(document).ready(function () {
                 allDay: true,
               });
 
+
+              if (showResponse.data[i]["date"] === convert(availableSelectDate)) {
+                $('.fc-title').html('');
+                evezz.push({
+                  //   title: 'B',
+                  // color: "#0decfc",
+                  // textColor: "#0decfc",
+                  id: '123',
+                  start: availableSelectDate,
+                  end: availableSelectDate,
+                  className: 'customClass',
+                  icon: "circle",
+                  allDay: true,
+                });
+                $("#calendar").fullCalendar('removeEvents', [123]);
+
+                $("#calendar").fullCalendar("addEventSource", evezz);
+                evezz = [];
+                var status = showResponse.data[i]["status"];
+
+                if (status == 'Off') {
+
+                  changeSlot = 'customBtnNotSelected';
+                  $(".book-appointment").removeClass("defaultStatus");
+                  $(".off").addClass("defaultStatus");
+
+
+                } else {
+                  $(".book-appointment").addClass("defaultStatus");
+                  $(".off").removeClass("defaultStatus");
+
+
+                }
+                if (profileStatus == 'Freelancer') {
+                  $(".addTimeSlots").addClass('d-none');
+                }
+                if (showResponse.data[i]["booking_time_slots"] && profileStatus != 'Freelancer') {
+                  $.each(showResponse.data[i]["booking_time_slots"], function (j) {
+                    var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
+                    var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
+
+                    html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-3 mr-2" onclick = changeSlotDate(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
+                    // count++
+                  });
+                  changeSlot = '';
+                }
+
+              }
+
+              $("#p_status").text(showResponse.data[i]["status"]);
               $("[data-date=" + showResponse.data[i]["date"] + "]").css("color", "#ffdb59");
             });
+
+            $(".timeSlots").append(html);
             callback(events);
           }
 
@@ -124,10 +197,8 @@ jQuery(document).ready(function () {
             day = ("0" + date.getDate()).slice(-2);
           return [date.getFullYear(), mnth, day].join("-");
         };
-        //   alert(convert(dateText));
 
-        // console.log(today);
-        localStorage.setItem(SELECTEDSTATUSDATE, convert(dateText));
+        // localStorage.setItem(SELECTEDSTATUSDATE, convert(dateText));
         optionBtns(convert(dateText));
 
         // $("#options").show();
@@ -149,46 +220,83 @@ jQuery(document).ready(function () {
 
         $("#calendar").fullCalendar("addEventSource", evezz);
         evezz = [];
-
+        var html = '';
         //Check the status
         let found = false;
-        $(".appointment-status_b").hide();
+        var changeSlot = '';
+        $(".timeSlots").empty();
+        $(".appointment-status").hide();
 
         $.ajax({
           type: "post",
-          url: '/showAppointmentDates',
-          data: JSON.stringify({
-
-
-          }),
+          url: '/showAppointmentDatesFreelancer',
+          data: {
+            "id": userId
+          },
           success: function (showResponse) {
-            console.log(showResponse);
+            var profileStatus = showResponse.userprofile['profile_type'];
             $.each(showResponse.data, function (i) {
               if (showResponse.data[i]["date"] === convert(dateText)) {
+
+                if (showResponse.data[i]["booking_time_slots"] != '') {
+                  var status = showResponse.data[i]["status"];
+
+                  if (status == 'Off') {
+
+                    changeSlot = 'defaultStatus'
+                  }
+
+                  $.each(showResponse.data[i]["booking_time_slots"], function (j) {
+                    var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
+                    var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
+
+                    html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-3 mr-2" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
+                    // count++
+                  });
+                  changeSlot = '';
+
+                }
+                //  else {
+
+                //   $(".book-appointment").removeClass("defaultStatus");
+                // }
+
+                if (status != 'Off') {
+
+                  $(".timeSlots").append(html);
+                } else {
+                  $(".timeSlots").empty();
+                }
+
                 $("#p_status").text(showResponse.data[i]["status"]);
-                $(".appointment-status_b").show();
-
-                if (showResponse.data[i]["status"] === "Available" ||
-                  showResponse.data[i]["status"] === "On Call") {
-
-                  $(".book-appointment").removeClass("defaultStatus");
-                  // $(".on-Hold").removeClass("defaultStatus");
-                  optionBtns(convert(dateText));
-                  found = true;
-
-                }
-                else {
-                  $(".book-appointment").addClass("defaultStatus");
-                  $(".on-Hold").addClass("defaultStatus");
-                }
-              }
-              if (!found) {
-                $("#p_status").text("-");
+                $(".appointment-status").show();
+                found = true;
                 $(".book-appointment").addClass("defaultStatus");
-                $(".on-Hold").addClass("defaultStatus");
-              }
 
+
+              }
+              // else {
+              //   $(".appointment-status").hide();
+              // }
             });
+            if (!found) {
+
+              $(".addTimeSlots").addClass('d-none');
+              $(".book-appointment").addClass("defaultStatus");
+
+              $("#p_status").text("-");
+              $(".timeSlots").empty();
+
+              // $(".cancel").addClass("customBtnNotSelected");
+              $(".availbook-appointmentable").removeClass("defaultStatus");
+              // $(".off").removeClass("defaultStatus");
+              // if (d === tomorrow) {
+              //   if (currentHour > 18) {
+              //     $(".on-call").removeClass("defaultStatus");
+              //   }
+
+              // }
+            }
           },
         });
 

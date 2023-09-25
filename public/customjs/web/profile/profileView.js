@@ -135,7 +135,7 @@ function getProfileData() {
     let url = 'getProfileDataView';
     let message = '';
     let form = '';
-    let data = userId != '' ? 'id='+userId : '';
+    let data = userId != '' ? 'id=' + userId : '';
     // if ($(this).text() == 'Submit') {
     //     url = url;
     // }
@@ -223,7 +223,7 @@ function profileResponse(response) {
             // }
 
             $('#ownerName').text(profilename + ' ' + surname);
-//            $('#ownerName').append('<a class="text-center btn" onclick="editName()" title="Edit">✎</a>');
+            //            $('#ownerName').append('<a class="text-center btn" onclick="editName()" title="Edit">✎</a>');
 
             $('#stylist-name').val(profilename);
             $('#stylist-surname').val(surname);
@@ -233,7 +233,7 @@ function profileResponse(response) {
             age = data.age
 
             $('#ownerAge').text(age);
-//            $('#ownerAge').append('<a class="text-center btn" onclick = "editAge()" title = "Edit" >✎</a >');
+            //            $('#ownerAge').append('<a class="text-center btn" onclick = "editAge()" title = "Edit" >✎</a >');
 
             $(`input[name='stylist_age'][value='${age}']`).prop('checked', true);
 
@@ -241,7 +241,7 @@ function profileResponse(response) {
             profile_type = data.profile_type
 
             $('#profiletype').text(profile_type);
-//            $('#profiletype').append('<a class="text-center btn" onclick="editType();" title="Edit">✎</a>');
+            //            $('#profiletype').append('<a class="text-center btn" onclick="editType();" title="Edit">✎</a>');
 
             $('#profile_type').val(profile_type);
 
@@ -252,7 +252,7 @@ function profileResponse(response) {
             video = data.trade_video;
 
             $('#ownerQualification').text(qualifications);
-//            $('#ownerQualification').append('<a class="text-center btn" onclick="editQualification()" title="Edit">✎</a>');
+            //            $('#ownerQualification').append('<a class="text-center btn" onclick="editQualification()" title="Edit">✎</a>');
 
             qualifications.forEach(function (qualifi) {
                 $(`input[type="checkbox"][name="qualification[]"][value="${qualifi}"]`).prop('checked', true);
@@ -264,7 +264,7 @@ function profileResponse(response) {
             languages = data.languages;
 
             $('#ownerLanguage').text(languages);
-//            $('#ownerLanguage').append('<a class="text-center btn" onclick="editLanguage()" title="Edit">✎</a>');
+            //            $('#ownerLanguage').append('<a class="text-center btn" onclick="editLanguage()" title="Edit">✎</a>');
             $('#stylist-language').val(languages);
 
             // for rate
@@ -272,7 +272,7 @@ function profileResponse(response) {
             formattedRate = formatRate(rate);
 
             $('#ownerRate').text(formattedRate);
-//            $('#ownerRate').append('<a class="text-center btn" onclick="editRate()" title="Edit">✎</a>');
+            //            $('#ownerRate').append('<a class="text-center btn" onclick="editRate()" title="Edit">✎</a>');
             if (rate != 110 && rate != 120 && rate != 130) {
                 // This block will execute if rate is NOT 110, 120, or 130
                 $(`input[type="radio"][name='stylist_rate']`).prop('checked', true);
@@ -286,7 +286,7 @@ function profileResponse(response) {
             zone = data.zone;
 
             $('#ownerWork').text(zone);
-//            $('#ownerWork').append('<a class="text-center btn" onclick="editWork()" title="Edit">✎</a>');
+            //            $('#ownerWork').append('<a class="text-center btn" onclick="editWork()" title="Edit">✎</a>');
 
             zone.forEach(function (zone) {
 
@@ -297,7 +297,7 @@ function profileResponse(response) {
             resume = data.resume;
 
             $('#ownerResume').text(resume);
-//            $('#ownerResume').append('<a class="text-center btn" onclick="editResume()" title="Edit">✎</a>');
+            //            $('#ownerResume').append('<a class="text-center btn" onclick="editResume()" title="Edit">✎</a>');
             $('#stylist-resume').val(resume);
 
             // for email
@@ -308,7 +308,7 @@ function profileResponse(response) {
             // for status
             profile_status = data.status;
             $('#status').text(profile_status);
-//            $('#status').append('<a class="text-center btn" onclick="editStatus();" title="Edit">✎</a>');
+            //            $('#status').append('<a class="text-center btn" onclick="editStatus();" title="Edit">✎</a>');
             $('#stylist_status').val(profile_status);
 
 
@@ -353,7 +353,7 @@ function profileResponse(response) {
                     var imageHtml = '<div class="col-lg-4 p-4">' +
                         '<img alt="" width="100%" height="100%" src="' + imageSrc + '">' +
                         '<p>' +
-//                        '<a class="text-center btn" onclick="deletePicture(\'' + imageSrc + '\')" title="Edit"><u>remove</u></a>' +
+                        //                        '<a class="text-center btn" onclick="deletePicture(\'' + imageSrc + '\')" title="Edit"><u>remove</u></a>' +
                         '</p>' +
                         '</div>';
 
@@ -682,6 +682,92 @@ function saveAvaibleDate(response) {
         toastr.error(error, '', {
             timeOut: 3000
         });
+    }
+
+}
+
+function changeSlotDate(id, start_time, end_time) {
+    alert(id);
+    $('#slot_id').val(id);
+    $('#start_time').val(start_time);
+    $('#end_time').val(end_time);
+    $('#add-slots').html('Book');
+
+    // $('.slots-modal').modal('show');
+
+}
+function convertTo12HourFormat(time24) {
+    // Split the time string into hours and minutes
+    const [hours, minutes] = time24.split(':');
+
+    // Determine if it's AM or PM
+    const period = hours >= 12 ? 'PM' : 'AM';
+
+    // Convert hours to 12-hour format
+    const hours12 = hours % 12 || 12;
+
+    // Create the 12-hour time string
+    const time12 = `${hours12}:${minutes} ${period}`;
+
+    return time12;
+}
+function selectSlot(id, start_time, end_time, date) {
+
+    var starttimeAMPM = convertTo12HourFormat(start_time);
+    var endtimeAMPM = convertTo12HourFormat(end_time);
+    $('#slot_book_id').val(id);
+    $('#book_slot_start').html(starttimeAMPM);
+    $('#book_slot_end').html(endtimeAMPM);
+    $('#book_slot_date').html(date);
+    $('#book-slots').html('Book');
+}
+
+$(document).on('click', '.select_option', function (e) {
+
+    e.preventDefault();
+    $('.select_option').removeClass('time_active')
+    $(this).addClass('time_active')
+    $(".book-appointment").removeClass("defaultStatus");
+
+
+});
+
+$(document).on('click', '.book-appointment', function (e) {
+
+    e.preventDefault();
+    $('.slots-modal').modal('show');
+
+});
+$(document).on('click', '#book-slots', function (e) {
+
+    e.preventDefault();
+    let type = 'POST';
+    let url = '/bookSlots';
+    let message = '';
+    let form = $('#book_slots_form');
+    let data = new FormData(form[0]);
+    console.log(data);
+
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', bookSlotsResponse, 'spinner_button', 'submit_button');
+});
+
+function bookSlotsResponse(response) {
+
+    // SHOWING MESSAGE ACCORDING TO RESPONSE
+    if (response.status == 200 || response.status == '200') {
+
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
+        $('.slots-modal').modal('hide');
+
+    } else {
+        toastr.error(response.message, '', {
+            timeOut: 3000
+        });
+        $('.slots-modal').modal('hide');
+
     }
 
 }

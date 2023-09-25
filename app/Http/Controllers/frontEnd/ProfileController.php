@@ -12,6 +12,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UpdateProfileBasicInfoValidationRequest;
+use App\Models\Appointments;
 
 class ProfileController extends Controller
 {
@@ -270,7 +271,17 @@ class ProfileController extends Controller
                 $booking->update($data);
                 $message = 'Status Updated Successfully on ' . $availableDays;
             } else {
-                Bookings::create($data);
+
+                $book_id = Bookings::create($data);
+                if (Auth::user()->profile_type == 'Freelancer') {
+                    BookingSlots::create([
+
+                        'booking_id' => $book_id->id,
+                        'start_time' => '00:01',
+                        'end_time' => '23:59'
+
+                    ]);
+                }
                 $message = 'Booking Date Added Successfully on ' . $availableDays;
             }
         }
@@ -284,16 +295,73 @@ class ProfileController extends Controller
         return response()->json($responseData);
     }
 
-    public function showAppointmentDates()
+    public function showAppointmentDates(Request $req)
     {
-        $bookings = Bookings::User()->IsNotCancelled()->with('bookingTimeSlots')->withCount('bookingTimeSlots')->get();
+
+        $bookings = Bookings::where('user_id', Auth::id())->IsNotCancelled()->with('bookingTimeSlots')->get();
+        $userprofile = User::where('id', Auth::id())->first();
+
         return response()->json(
             [
                 'status' => 200,
                 'message' => 'Date Created Successfully!',
-                'data' => $bookings
+                'data' => $bookings,
+                'userprofile' => $userprofile
             ]
         );
+    }
+    public function showAppointmentDatesFreelancer(Request $req)
+    {
+
+        $bookings = Bookings::FreelancerUser($req->id)->IsNotCancelled()->with('bookingTimeSlots')->withCount('bookingTimeSlots')->get();
+        $userprofile = User::where('id', $req->id)->first();
+        return response()->json(
+            [
+                'status' => 200,
+                'message' => 'Date Created Successfully!',
+                'data' => $bookings,
+                'userprofile' => $userprofile
+            ]
+        );
+    }
+    public function bookSlots(Request $request)
+    {
+        // Check if the user is not logged in
+        if (!Auth::check()) {
+            return response()->json([
+                'status' => 422,
+                'message' => 'Please log in to book a slot.',
+            ]);
+        }
+
+        // Check if the user is not allowed to book a slot
+        $allowedUserTypes = ['client', 'hairdressingSalon', 'beautySalon'];
+        if (!in_array(Auth::user()->type, $allowedUserTypes)) {
+            return response()->json([
+                'status' => 422,
+                'message' => 'Only salon owners or clients can book slots.',
+            ]);
+        }
+
+        // Check if the slot is already booked
+        $checkSlot = Appointments::where('booking_slot_id', $request->slot_book_id)->first();
+        if ($checkSlot) {
+            return response()->json([
+                'status' => 422,
+                'message' => 'Slot is already booked.',
+            ]);
+        }
+
+        // Create a new appointment
+        Appointments::create([
+            'booking_slot_id' => $request->slot_book_id,
+            'booking_user_id' => Auth::id(),
+        ]);
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Slot booked successfully!',
+        ]);
     }
     public function saveAvaibleSlots(Request $request)
     {
