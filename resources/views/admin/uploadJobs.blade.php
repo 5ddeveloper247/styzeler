@@ -11,7 +11,8 @@
 	<section class="content-header">
 		<div class="container">
 
-			<form id="job-form" autocomplete="off">
+			<form id="post_job" autocomplete="off">
+				<input type="hidden" name="type" id="type" value="admin">
 				<div class="form-group">
 					<label for="job-title">Job Title</label> <input type="text"
 						class="form-control" id="job-title" name="job_title">
@@ -31,7 +32,7 @@
 						class="form-control" name="job_end_date" placeholder="01/01/2018"
 						id="job-end-date" />
 				</div>
-				<button type="button" class="btn btn-primary" onclick="uploadJob();">Submit</button>
+				<button type="button" class="btn btn-primary" id="postJob">Submit</button>
 			</form>
 
 		</div>
@@ -42,19 +43,17 @@
 	<section class="content">
 
 		<!-- Upload success -->
-		<div class="modal upload-success" tabindex="-1" role="dialog">
+		<div class="modal success-modal" tabindex="-1" role="dialog">
 			<div class="modal-dialog " role="document">
 				<div class="modal-content text-center">
 					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+<!-- 							<span aria-hidden="true">&times;</span> -->
 						</button>
 					</div>
 					<div class="modal-body">
 						<p class="mt-2">Job Uploaded successfully!</p>
-						<button type="button" class="btn btn-primary mt-4"
-							onclick="redirect();">Okay</button>
+						<a href="{{route('admin.uploadJobs')}}" class="btn btn-primary mt-4">Okay</a>
 
 					</div>
 					<div class="modal-footer text-center"></div>
@@ -74,8 +73,15 @@
 	<script src="https://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
 	
     <script src="{{ asset('customjs/web/register/common.js') }}"></script>
+    <script src="{{ asset('customjs/web/jobrequest/jobRequest.js') }}"></script>
     <script>
-
+    $(function() {
+        $.ajaxSetup({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
+            }
+        });
+    });
   	let today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
         
     $("#job-start-date").datepicker({ 
@@ -89,14 +95,19 @@
         minDate: today
   	});
     $(function(){
-
-    	CKEDITOR.editorConfig = function (config) {	    config.language = 'es';	    config.uiColor = '#F7B42C';	    config.height = 300;	    config.toolbarCanCollapse = true;	};	CKEDITOR.replace('description');	
+    	CKEDITOR.editorConfig = function (config) {	    
+										        	config.language = 'es';	    
+										        	config.uiColor = '#F7B42C';	    
+										        	config.height = 300;	    
+										        	config.toolbarCanCollapse = true;	
+										       	};	
+										       	CKEDITOR.replace('description');	
    	});
-    function uploadJob(){
-   		$('.upload-success').modal('show');
-   	}
-   	function redirect(){
-   		$('.upload-success').modal('hide');
-   	}
+//     function uploadJob(){
+//    		$('.upload-success').modal('show');
+//    	}
+//    	function redirect(){
+//    		$('.upload-success').modal('hide');
+//    	}
     </script>
 @endpush

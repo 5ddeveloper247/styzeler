@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Models\Rent_let;
+use App\Models\Job_request;
+use App\Models\Blog;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class FrontEndController extends Controller
 {
@@ -170,17 +173,27 @@ class FrontEndController extends Controller
 
     public function jobs()
     {
-        return view('web.jobs');
+    	$currentDate = now()->toDateString();
+    	$data['jobs'] =	DB::table('job_request')->where('start_date','<=', $currentDate)->where('end_date','>=', $currentDate)->get();
+    	
+        return view('web.jobs')->with($data);
     }
 
-    public function jobApply()
+    public function jobApply(Request $request)
     {
-        return view('web.jobApply');
+    	if(isset($request->jobId)){
+    		$data['jobDetail'] = Job_request::where('id', $request->jobId)->first();
+    		return view('web.jobApply')->with($data);
+    	}else{
+    		return abort(404);
+    	}
+        
     }
 
     public function blogs()
     {
-        return view('web.blogs');
+    	$data['blogs'] = Blog::where('status', 'active')->get();
+    	return view('web.blogs')->with($data);;
     }
 
 

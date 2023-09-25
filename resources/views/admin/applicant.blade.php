@@ -15,7 +15,7 @@
 				<div class="col-sm-6">
 					<ol class="breadcrumb float-sm-right">
 						<li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
-						<li class="breadcrumb-item active" id="reg_mode"></li>
+						<li class="breadcrumb-item active" id="reg_mode">Applicant Detail</li>
 					</ol>
 				</div>
 			</div>
@@ -41,31 +41,36 @@
 
 				<div class="showProfile col-10 text-left mt-4" id="showProfile">
 					<div class="name row ">
+						<label class="color-1 col-lg-2">Job Title : </label>
+						<p class="col-lg-10" id="ownerName">{{@$applicantDetail->jobRequest->job_title}}</p>
+					</div>
+					
+					<div class="name row ">
 						<label class="color-1 col-lg-2">Name : </label>
-						<p class="col-lg-10" id="ownerName">Abigale powell</p>
+						<p class="col-lg-10" id="ownerName">{{@$applicantDetail->applicant_name}}</p>
 					</div>
 
 					<div class="email row">
 						<label class="color-1 col-lg-2">Email : </label>
-						<p class="col-lg-10" id="ownerEmail">abigalepowell12s@gmail.com</p>
+						<p class="col-lg-10" id="ownerEmail">{{@$applicantDetail->applicant_email}}</p>
 					</div>
 
 					<div class="mobile row">
 						<label class="color-1 col-lg-2">Mobile : </label>
-						<p class="col-lg-10" id="ownerMobile">+18764509951</p>
+						<p class="col-lg-10" id="ownerMobile">+{{@$applicantDetail->applicant_phone}}</p>
 					</div>
 
 					<div class="resume row">
 						<label class="color-1 col-lg-2">Resume : </label>
 						<p class="col-lg-10" id="ownerResume">
-							<a href="{{route('admin.cv')}}" target="_blank" rel="noopener noreferrer">View</a>
+							<a href="{{route('admin.applicantCv')}}/{{@$applicantDetail->id}}" target="_blank" rel="noopener noreferrer">View</a>
 						</p>
 					</div>
 
 					<div class="cv row">
 						<label class="color-1 col-lg-2">Cover Letter : </label>
 						<p class="col-lg-10" id="ownerCv">
-							<a href="{{route('admin.coverLetter')}}" target="_blank"
+							<a href="{{route('admin.applicantCl')}}/{{@$applicantDetail->id}}" target="_blank"
 								rel="noopener noreferrer">View</a>
 						</p>
 					</div>

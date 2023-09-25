@@ -48,20 +48,14 @@
 				</div>
 				<div class="row user-details">
 					
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p>BEAUTICIANS, COLOURISTS, HAIRDRESSERS, BARBERS</p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_0">Abigale powell</p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p><a class="txtdec-none" href="{{route('admin.applicant')}}">Click to see details</a></p></div>
-					<hr>
-					
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p>BEAUTICIANS, COLOURISTS, HAIRDRESSERS, BARBERS</p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_0">Abigale powell</p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p><a class="txtdec-none" href="{{route('admin.applicant')}}">Click to see details</a></p></div>
-					<hr>
-					
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p>BEAUTICIANS, COLOURISTS, HAIRDRESSERS, BARBERS</p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_0">Abigale powell</p></div>
-					<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p><a class="txtdec-none" href="{{route('admin.applicant')}}">Click to see details</a></p></div>
-					<hr>
+					@if(count($applicants))
+					@foreach($applicants as $row)
+						<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p>{{@$row->jobRequest->job_title}}</p></div>
+						<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p id="freelancer_0">{{@$row->applicant_name}}</p></div>
+						<div class="col-4 pt-2" style="border-top: 1px solid grey;"><p><a class="txtdec-none" href="{{route('admin.applicant')}}/{{$row->id}}">Click to see details</a></p></div>
+						<hr>
+					@endforeach
+					@endif
 					
 				</div>
 
