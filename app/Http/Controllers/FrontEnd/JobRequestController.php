@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\frontEnd;
+namespace App\Http\Controllers\FrontEnd;
 
 use Countable;
 use Carbon\Carbon;
