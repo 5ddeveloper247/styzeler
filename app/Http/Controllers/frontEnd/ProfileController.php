@@ -255,7 +255,7 @@ class ProfileController extends Controller
         $availableDays = $request['availableDays'];
         $status = $request['Status'];
 
-        $booking = Bookings::where('date', $availableDays)->first();
+        $booking = Bookings::where(['date' => $availableDays, 'user_id' => Auth::id()])->first();
 
         if ($status == 'Cancel' && $booking) {
             $booking->delete();
