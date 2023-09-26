@@ -13,14 +13,26 @@
     <link rel="stylesheet" href="{{ asset('template_new/assets/css/responsive.css') }}" />
     <link rel="icon" href="{{ asset('template_old/images/favicon-logo.png') }}" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="{{ asset('template_new/assets/css/toastr.min.css') }}">
+    <!-- chat links -->
+    <link rel="stylesheet" href="{{ asset('template_new/assets/css/chat_style.css') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- <link type="image/png" rel="icon" href="{{ asset('template_new/assets/images/fav') }}" /> --}}
     <style>
+    .pointer{
+    	cursor:pointer;
+    }
         #toast-container>.toast {
             width: 300px;
             /* width: 100% */
         }
+        
+
+
+		
+		
     </style>
     @stack('css')
 </head>

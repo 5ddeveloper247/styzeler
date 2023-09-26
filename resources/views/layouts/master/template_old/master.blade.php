@@ -24,11 +24,20 @@
     <!--Custom CSS-->
     <link rel="stylesheet" href="{{ asset('template_old/css/style.css') }}" />
     <link rel="stylesheet" href="{{ asset('template_new/assets/css/toastr.min.css') }}">
+    
+    <!-- chat links -->
+    <link rel="stylesheet" href="{{ asset('template_new/assets/css/chat_style.css') }}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,400,1,0" />
     <style>
+    	.pointer{
+	    	cursor:pointer;
+	    }
         #toast-container>.toast {
             width: 300px;
             /* width: 100% */
         }
+        
     </style>
     <style>
         .overlay {
