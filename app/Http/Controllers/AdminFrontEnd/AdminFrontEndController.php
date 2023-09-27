@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\Rent_let;
 use App\Models\Job_request;
 use App\Models\Job_apply;
+use App\Models\Guest_user;
+use App\Models\Chat;
+use App\Models\Chat_questions;
 use Illuminate\Support\Facades\Auth;
 
 class AdminFrontEndController extends Controller
@@ -112,6 +115,13 @@ class AdminFrontEndController extends Controller
     	return view('admin.client')->with($data);
     }
     
+    public function guestUsers()
+    {
+    	$data['users'] = Guest_user::all();
+    	$data['page'] = 'client';
+    	return view('admin.guestUsers')->with($data);
+    }
+    
     public function bookings()
     {
     	$data['page'] = 'bookings';
@@ -207,6 +217,20 @@ class AdminFrontEndController extends Controller
     {
     	$data['page'] = 'emailEnquiry';
     	return view('admin.emailEnquiry')->with($data);
+    }
+    
+    public function chatQuestions()
+    {
+    	$data['questions'] = Chat_questions::all();
+    	$data['page'] = 'chatQuestions';
+    	return view('admin.chatQuestions')->with($data);
+    }
+    
+    public function chatFaqs()
+    {
+    	$data['questions'] = Chat::all();
+    	$data['page'] = 'chatFaqs';
+    	return view('admin.chatFaqs')->with($data);
     }
     
     

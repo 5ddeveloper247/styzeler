@@ -94,7 +94,22 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/jobs', 'FrontEndController@jobs')->name('jobs');
     
     Route::get('/blogs', 'FrontEndController@blogs')->name('blogs');
-
+    
+    // all routes for services pages
+    // routes beauty services
+    Route::get('/services-body-waxing', 'FrontEndController@servicesBodywaxing')->name('servicesBodywaxing');
+    Route::get('/services-eye-brows', 'FrontEndController@servicesEyebrows')->name('servicesEyebrows');
+    Route::get('/services-mani-pedi', 'FrontEndController@servicesManiPedi')->name('servicesManiPedi');
+    Route::get('/services-facial', 'FrontEndController@servicesFacial')->name('servicesFacial');
+    // routes massage services
+    Route::get('/services-massage', 'FrontEndController@servicesMassage')->name('servicesMassage');
+    // routes hair&makeup services
+    Route::get('/services-ladies', 'FrontEndController@servicesLadies')->name('servicesLadies');
+    Route::get('/services-makeup', 'FrontEndController@servicesMakeup')->name('servicesMakeup');
+    Route::get('/services-gents', 'FrontEndController@servicesGents')->name('servicesGents');
+    
+    
+    
     // routes for profile view non editable for guest users
     Route::get('/salon-owner-profile', 'FrontEndController@salonOwnerProfile')->name('salonOwnerProfile');
     Route::get('/freelancer-profile', 'FrontEndController@salonOwnerProfile')->name('freelancerProfile');
@@ -145,6 +160,7 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/hairdressing-owner', 'AdminFrontEndController@hairdressingOwner')->name('admin.hairdressingOwner');
             Route::get('/beauty-salon-owner', 'AdminFrontEndController@beautySalonOwner')->name('admin.beautySalonOwner');
             Route::get('/client', 'AdminFrontEndController@client')->name('admin.client');
+            Route::get('/guest-users', 'AdminFrontEndController@guestUsers')->name('admin.guestUsers');
             Route::get('/bookings', 'AdminFrontEndController@bookings')->name('admin.bookings');
             Route::get('/job-requests', 'AdminFrontEndController@jobRequests')->name('admin.jobRequests');
             Route::get('/upload-jobs', 'AdminFrontEndController@uploadJobs')->name('admin.uploadJobs');
@@ -160,7 +176,10 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/applicant-cover-letter/{id?}', 'AdminFrontEndController@applicantCoverLetter')->name('admin.applicantCl');
             Route::get('/applicant-resume/{id?}', 'AdminFrontEndController@applicantResume')->name('admin.applicantCv');
             Route::get('/email-enquiry', 'AdminFrontEndController@emailEnquiry')->name('admin.emailEnquiry');
-
+            
+            Route::get('/chat-questions', 'AdminFrontEndController@chatQuestions')->name('admin.chatQuestions');
+            Route::get('/chat-faq', 'AdminFrontEndController@chatFaqs')->name('admin.chatFaqs');
+            
 
             Route::get('/changeUserStatusActive/{id?}', 'AdminFrontEndController@changeUserStatusActive')->name('admin.changeUserStatusActive');
             Route::get('/changeUserStatusInActive/{id?}', 'AdminFrontEndController@changeUserStatusInActive')->name('admin.changeUserStatusInActive');
@@ -180,6 +199,15 @@ Route::group(['prefix' => 'admin'], function () {
     		
     		
     		Route::post('/saveBlogDetails', 'BlogController@saveBlogDetails')->name('saveBlogDetails');
+    		
+    		Route::post('/saveChatQuestionDetails', 'ChatController@saveChatQuestionDetails')->name('saveChatQuestionDetails');
+    		Route::get('/getQuestiondetail', 'ChatController@getChatQuestiondetail')->name('getQuestiondetail');
+    		Route::get('/changeQuestionStatusActive/{id?}', 'ChatController@changeQuestionStatusActive')->name('admin.changeQuestionStatusActive');
+    		Route::get('/changeQuestionStatusInActive/{id?}', 'ChatController@changeQuestionStatusInActive')->name('admin.changeQuestionStatusInActive');
+    		
+    		Route::get('/getFaqQuestiondetail', 'ChatController@getFaqQuestiondetail')->name('getFaqQuestiondetail');
+    		Route::post('/saveChatReplyDetails', 'ChatController@saveChatReplyDetails')->name('saveChatReplyDetails');
+    		
     	});
     });
 });
