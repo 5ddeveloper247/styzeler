@@ -241,15 +241,17 @@ function convert(dateText) {
             var profileStatus = showResponse.userprofile['profile_type'];
             $.each(showResponse.data, function (i) {
               if (showResponse.data[i]["date"] === convert(dateText)) {
+                var status = showResponse.data[i]["status"];
+                console.log(status);
 
+                if (status == 'Off') {
+
+                  changeSlot = 'customBtnNotSelected';
+                  $(".addTimeSlots").addClass('d-none');
+
+                }
                 if (showResponse.data[i]["booking_time_slots"] != '' && profileStatus != 'Freelancer') {
 
-                  var status = showResponse.data[i]["status"];
-
-                  if (status == 'Off') {
-
-                    changeSlot = 'customBtnNotSelected'
-                  }
 
                   $.each(showResponse.data[i]["booking_time_slots"], function (j) {
                     var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);

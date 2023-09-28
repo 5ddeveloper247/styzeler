@@ -173,27 +173,26 @@ class FrontEndController extends Controller
 
     public function jobs()
     {
-    	$currentDate = now()->toDateString();
-    	$data['jobs'] =	DB::table('job_request')->where('start_date','<=', $currentDate)->where('end_date','>=', $currentDate)->get();
-    	
+        $currentDate = now()->toDateString();
+        $data['jobs'] =    DB::table('job_request')->where('start_date', '<=', $currentDate)->where('end_date', '>=', $currentDate)->get();
+
         return view('web.jobs')->with($data);
     }
 
     public function jobApply(Request $request)
     {
-    	if(isset($request->jobId)){
-    		$data['jobDetail'] = Job_request::where('id', $request->jobId)->first();
-    		return view('web.jobApply')->with($data);
-    	}else{
-    		return abort(404);
-    	}
-        
+        if (isset($request->jobId)) {
+            $data['jobDetail'] = Job_request::where('id', $request->jobId)->first();
+            return view('web.jobApply')->with($data);
+        } else {
+            return abort(404);
+        }
     }
 
     public function blogs()
     {
-    	$data['blogs'] = Blog::where('status', 'active')->get();
-    	return view('web.blogs')->with($data);;
+        $data['blogs'] = Blog::where('status', 'active')->get();
+        return view('web.blogs')->with($data);
     }
 
 
@@ -221,5 +220,13 @@ class FrontEndController extends Controller
             $data->type,
             get_defined_vars()
         );
+    }
+    public function freelancerBooking()
+    {
+        return view('web.freelancerBooking');
+    }
+    public function freelancerBookingHistory()
+    {
+        return view('web.freelancerBookingHistory');
     }
 }

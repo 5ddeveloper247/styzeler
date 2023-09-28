@@ -33,6 +33,8 @@ Route::group(['namespace' => 'FrontEnd'], function () {
 
         //Profile
         Route::get('/Profile', 'FrontEndController@Profile')->name('Profile');
+        Route::get('/freelancerBooking', 'FrontEndController@freelancerBooking')->name('freelancerBooking');
+        Route::get('/freelancerBookingHistory', 'FrontEndController@freelancerBookingHistory')->name('freelancerBookingHistory');
         // Route::get('/ownerProfile', 'FrontEndController@ownerProfile')->name('ownerProfile');
         Route::get('/getProfileData', 'ProfileController@getProfileData')->name('getProfileData');
         Route::post('/ProfileImageUpdate', 'ProfileController@ProfileImageUpdate')->name('ProfileImageUpdate');
@@ -44,9 +46,10 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         Route::post('/saveAvaibleDate', 'ProfileController@saveAvaibleDate')->name('saveAvaibleDate');
         Route::post('/showAppointmentDates', 'ProfileController@showAppointmentDates')->name('showAppointmentDates');
         Route::post('/saveAvaibleSlots', 'ProfileController@saveAvaibleSlots')->name('saveAvaibleSlots');
+        Route::post('/getfreelancerBooking', 'ProfileController@getfreelancerBooking')->name('getfreelancerBooking');
+        Route::post('/freelancerBookingHistory', 'ProfileController@getfreelancerBookingHistory')->name('freelancerBookingHistory');
         Route::post('/saveRentAndLetDetails', 'RentLetController@saveRentAndLetDetails')->name('saveRentAndLetDetails');
         Route::post('/saveJobRequestDetails', 'JobRequestController@saveJobRequestDetails')->name('saveJobRequestDetails');
-        
     });
 
     Route::get('/forgetPassword', 'FrontEndController@forgetPassword')->name('forgetPassword');
@@ -92,17 +95,17 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/rent-let-hairstylist', 'FrontEndController@rentLetHairstylist')->name('rentLetHairstylist');
     Route::get('/rent-let-beauty-therapist', 'FrontEndController@rentLetBeautyTherapist')->name('rentLetBeautyTherapist');
     Route::get('/jobs', 'FrontEndController@jobs')->name('jobs');
-    
+
     Route::get('/blogs', 'FrontEndController@blogs')->name('blogs');
 
     // routes for profile view non editable for guest users
     Route::get('/salon-owner-profile', 'FrontEndController@salonOwnerProfile')->name('salonOwnerProfile');
     Route::get('/freelancer-profile', 'FrontEndController@salonOwnerProfile')->name('freelancerProfile');
     Route::get('/getProfileDataView', 'ProfileController@getProfileDataView')->name('getProfileDataView');
-    
+
     Route::post('/apply-job', 'FrontEndController@jobApply')->name('jobApply');
     Route::get('/apply-job', function () {
-    	return abort(404);
+        return abort(404);
     });
     Route::post('/saveJobApplyDetails', 'JobRequestController@saveJobApplyDetails')->name('saveJobApplyDetails');
     Route::post('/saveGuestUserDetails', 'ChatController@saveGuestUserDetails')->name('saveGuestUserDetails');
@@ -127,7 +130,7 @@ Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@regis
 
 
 Route::group(['prefix' => 'admin'], function () {
-    	
+
     Route::group(['namespace' => 'AdminFrontEnd'], function () {
 
         Route::get('/', 'AdminFrontEndController@login')->name('/');
@@ -164,23 +167,22 @@ Route::group(['prefix' => 'admin'], function () {
 
             Route::get('/changeUserStatusActive/{id?}', 'AdminFrontEndController@changeUserStatusActive')->name('admin.changeUserStatusActive');
             Route::get('/changeUserStatusInActive/{id?}', 'AdminFrontEndController@changeUserStatusInActive')->name('admin.changeUserStatusInActive');
-            
         });
     });
     Route::group(['namespace' => 'FrontEnd'], function () {
-    	Route::group(['middleware' => ['AdminAuth']], function () {
-    		
-    		Route::get('/changeRentLetStatusActive/{id?}', 'RentLetController@changeRentLetStatusActive')->name('admin.changeRentLetStatusActive');
-    		Route::get('/changeRentLetStatusInActive/{id?}', 'RentLetController@changeRentLetStatusInActive')->name('admin.changeRentLetStatusInActive');
-    		
-    		Route::get('/changeJobReqStatusActive/{id?}', 'JobRequestController@changeJobReqStatusActive')->name('admin.changeJobReqStatusActive');
-    		Route::get('/changeJobReqStatusInActive/{id?}', 'JobRequestController@changeJobReqStatusInActive')->name('admin.changeJobReqStatusInActive');
-    		
-    		Route::get('/getJobRequestDetail', 'JobRequestController@getJobRequestDetail')->name('getJobRequestDetail');
-    		
-    		
-    		Route::post('/saveBlogDetails', 'BlogController@saveBlogDetails')->name('saveBlogDetails');
-    	});
+        Route::group(['middleware' => ['AdminAuth']], function () {
+
+            Route::get('/changeRentLetStatusActive/{id?}', 'RentLetController@changeRentLetStatusActive')->name('admin.changeRentLetStatusActive');
+            Route::get('/changeRentLetStatusInActive/{id?}', 'RentLetController@changeRentLetStatusInActive')->name('admin.changeRentLetStatusInActive');
+
+            Route::get('/changeJobReqStatusActive/{id?}', 'JobRequestController@changeJobReqStatusActive')->name('admin.changeJobReqStatusActive');
+            Route::get('/changeJobReqStatusInActive/{id?}', 'JobRequestController@changeJobReqStatusInActive')->name('admin.changeJobReqStatusInActive');
+
+            Route::get('/getJobRequestDetail', 'JobRequestController@getJobRequestDetail')->name('getJobRequestDetail');
+
+
+            Route::post('/saveBlogDetails', 'BlogController@saveBlogDetails')->name('saveBlogDetails');
+        });
     });
 });
 

@@ -26,10 +26,9 @@ class RegisterValidationRequest extends FormRequest
      */
     public function rules()
     {
-
         return [
             //for wedding
-            'stylist_picture' => 'required_if:type,wedding,hairStylist,beautician,barber|mimes:jpg, png, jpeg',
+            'stylist_picture' => 'required_if:type,wedding,hairStylist,beautician,barber|mimes:jpg,png,jpeg',
             'stylist_name' => 'required_if:type,wedding,hairStylist,beautician,barber',
             'stylist_surname' => 'required_if:type,wedding,hairStylist,beautician,barber',
             'stylist_resume' => 'required_if:type,wedding,hairStylist,beautician,barber',

@@ -43,9 +43,11 @@
                                     <img src="{{ asset('template_new/assets/images/heart_icon.jpg') }}" alt="">
                                     <div class="dropdown-menu position-absolute" aria-labelledby="navbarDropdown">
                                         {{-- <div class="user-profile"></div> --}}
-                                        <a class="dropdown-item" href="booking-history.html">Your Booking History</a>
+                                        <a class="dropdown-item" href="{{ route('freelancerBookingHistory') }}">Your
+                                            Booking History</a>
                                         <a class="dropdown-item" href="{{ route('Profile') }}">Profile</a>
-                                        <a class="dropdown-item" href="freelancer-booking.html">Your Booking</a>
+                                        <a class="dropdown-item" href="{{ route('freelancerBooking') }}">Your
+                                            Booking</a>
                                         <a class="dropdown-item" href="terms-conditions.html">Terms & Conditions</a>
                                         <a class="dropdown-item" href="privacy-notice.html">Privacy Policy</a>
                                         <a class="dropdown-item" href="webstite-terms-condition.html">Website Terms &

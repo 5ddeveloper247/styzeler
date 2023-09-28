@@ -18,7 +18,7 @@ if (!function_exists('saveMultipleImages')) {
 
         foreach ($files as $file) {
             $filename = $file->getClientOriginalExtension();
-            $date_append = Str::random(16);
+            $date_append = Str::random(32);
             $file->move(public_path($path), $date_append . '.' . $filename);
 
             $savedFilePaths[] = $path . '/' . $date_append . '.' . $filename;
@@ -38,7 +38,7 @@ if (!function_exists('saveSingleImage')) {
         }
 
         $filename = $file->getClientOriginalExtension();
-        $date_append = Str::random(16);
+        $date_append = Str::random(32);
         $file->move(public_path($path), $date_append . '.' . $filename);
 
         $savedFilePaths = $path . '/' . $date_append . '.' . $filename;
