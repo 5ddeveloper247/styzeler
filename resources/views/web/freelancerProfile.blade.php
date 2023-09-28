@@ -2665,11 +2665,12 @@
                                 <input type="hidden" id="slot_id" name="slot_id">
                                 <label for="start_time" class="color-1">Start Time</label>
                                 <input class="form-control" type="time" id="start_time" name="start_time"
-                                    required>
+                                    min="07:00" max="19:00" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="end_time" class="color-1">End Time</label>
-                                <input class="form-control" type="time" id="end_time" name="end_time" required>
+                                <input class="form-control" type="time" id="end_time" name="end_time"
+                                    min="07:00" max="19:00" required>
                             </div>
                         </div>
                     </div>
@@ -2690,6 +2691,34 @@
                 headers: {
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
                 }
+            });
+
+            const timePickerStart = $('#start_time');
+            const timePickerLast = $('#end_time');
+
+            // Get the current time as a JavaScript Date object
+            // Set the minimum and maximum allowed times
+            const minTime = '07:00';
+            const maxTime = '19:00';
+
+            // Function to handle time input validation for both fields
+            function handleTimeInput(timePicker) {
+                const selectedTime = timePicker.val();
+                if (selectedTime < minTime || selectedTime > maxTime) {
+                    toastr.warning('Please select a time between 07:00 AM and 07:00 PM.', '', {
+                        timeOut: 3000
+                    });
+                    timePicker.val('07:00'); // Reset to the minimum allowed time
+                }
+            }
+
+            // Attach the same input event handler to both fields
+            timePickerStart.on('input', function() {
+                handleTimeInput(timePickerStart);
+            });
+
+            timePickerLast.on('input', function() {
+                handleTimeInput(timePickerLast);
             });
         });
     </script>

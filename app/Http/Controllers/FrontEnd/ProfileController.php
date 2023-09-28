@@ -277,8 +277,8 @@ class ProfileController extends Controller
                     BookingSlots::create([
 
                         'booking_id' => $book_id->id,
-                        'start_time' => '00:01',
-                        'end_time' => '23:59'
+                        'start_time' => '07:00',
+                        'end_time' => '19:00'
 
                     ]);
                 }
@@ -313,16 +313,20 @@ class ProfileController extends Controller
     public function showAppointmentDatesFreelancer(Request $req)
     {
 
-        $bookings = Bookings::FreelancerUser($req->id)->IsNotCancelled()->with('bookingTimeSlots')->withCount('bookingTimeSlots')->get();
+        $bookings = Bookings::FreelancerUser($req->id)
+            ->IsNotCancelled()
+            ->with(['bookingTimeSlots' => function ($query) {
+                $query->whereDoesntHave('appointments');
+            }])
+            ->get();
+
         $userprofile = User::where('id', $req->id)->first();
-        return response()->json(
-            [
-                'status' => 200,
-                'message' => 'Date Created Successfully!',
-                'data' => $bookings,
-                'userprofile' => $userprofile
-            ]
-        );
+        return response()->json([
+            'status' => 200,
+            'message' => 'Date Created Successfully!',
+            'data' => $bookings,
+            'userprofile' => $userprofile
+        ]);
     }
     public function bookSlots(Request $request)
     {
@@ -400,7 +404,8 @@ class ProfileController extends Controller
         }
 
         // getting booking date from request
-        $booking = Bookings::where('date', $availableDays)->first();
+        $booking = Bookings::where(['date' => $availableDays, 'user_id' => Auth::id()])->first();
+
         $existingBooking = [];
 
         if ($booking) {
@@ -457,6 +462,43 @@ class ProfileController extends Controller
         return response()->json([
             'status' => 200,
             'message' => $message,
+        ]);
+    }
+
+    public function getfreelancerBooking()
+    {
+        $currentDate = now()->toDateString();
+
+        $getProfileData = Bookings::where(
+            [
+                ['user_id', '=', Auth::id()],
+                ['date', '>=', $currentDate]
+            ]
+
+        )->with(['user', 'bookingTimeSlots', 'appointment_s', 'appointment_s.userAppointment'])
+            ->get();
+
+        return response()->json([
+            'status' => 200,
+            'appointments' => $getProfileData,
+        ]);
+    }
+    public function getfreelancerBookingHistory()
+    {
+        $currentDate = now()->toDateString();
+
+        $getProfileData = Bookings::where(
+            [
+                ['user_id', '=', Auth::id()],
+                ['date', '<', $currentDate]
+            ]
+
+        )->with(['user', 'bookingTimeSlots', 'appointment_s', 'appointment_s.userAppointment'])
+            ->get();
+
+        return response()->json([
+            'status' => 200,
+            'appointments' => $getProfileData,
         ]);
     }
 }

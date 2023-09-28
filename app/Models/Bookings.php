@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Bookings extends Model
 {
@@ -20,11 +21,20 @@ class Bookings extends Model
 
     ];
 
+    // Define the relationship with BookingSlots that don't have appointments
     public function bookingTimeSlots()
     {
-        return $this->hasMany(BookingSlots::class, 'booking_id');
+        return $this->hasOne(BookingSlots::class, 'bookings_id');
     }
-
+    /**
+     * Get all of the comments for the Bookings
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
+     */
+    public function appointment_s(): HasManyThrough
+    {
+        return $this->hasOneThrough(Appointments::class, BookingSlots::class);
+    }
     /**
      * Get the user that owns the Bookings
      *

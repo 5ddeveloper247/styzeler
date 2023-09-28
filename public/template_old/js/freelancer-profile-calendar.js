@@ -7,7 +7,6 @@ var calHeight = 600;
 var currentHour = currentdate.getHours();
 var availableSelectDate = localStorage.getItem(SELECTEDSTATUSDATE);
 localStorage.removeItem('selectedstatusdate');
-
 var evezz = [];
 var today = today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
 var endCalender = new Date(new Date().getFullYear(), (new Date().getMonth()) + 3, new Date().getDate());
@@ -237,14 +236,15 @@ jQuery(document).ready(function () {
             var profileStatus = showResponse.userprofile['profile_type'];
             $.each(showResponse.data, function (i) {
               if (showResponse.data[i]["date"] === convert(dateText)) {
+                var status = showResponse.data[i]["status"];
+
+                if (status == 'Off') {
+                  changeSlot = 'defaultStatus';
+                  $(".addTimeSlots").addClass('d-none');
+                }
 
                 if (showResponse.data[i]["booking_time_slots"] != '') {
-                  var status = showResponse.data[i]["status"];
 
-                  if (status == 'Off') {
-
-                    changeSlot = 'defaultStatus'
-                  }
 
                   $.each(showResponse.data[i]["booking_time_slots"], function (j) {
                     var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);

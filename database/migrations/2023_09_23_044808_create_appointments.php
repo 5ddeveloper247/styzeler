@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('appointments', function (Blueprint $table) {
             $table->id();
-            $table->integer('booking_slot_id')->nullable();
+            $table->integer('booking_slots_id')->nullable();
             $table->integer('booking_user_id')->nullable();
             $table->timestamps();
         });
