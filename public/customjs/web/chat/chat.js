@@ -107,17 +107,21 @@ function sendMessageResponse(response){
 			
 			var html = '';
 			var i=0;
-			$.each(data, function(key, value) {
-				
-				html += '<li class="chat incoming mt-2">';
-				if(i==0){
-					html += `<span class="material-symbols-outlined">smart_toy</span>`;
-				}	
-				html += `<p class="m-2 pointer" onclick="getAnswer(${value.id})">${value.question}</p>`;
-				html += `</li>`;
-				i++;
-	        });
-			html += `<li class="chat incoming"><p class="m-2 pointer" onclick="getAnswer('other')">Other</p></li>`;
+			if(data.length > 0){
+				$.each(data, function(key, value) {
+					
+					html += '<li class="chat incoming mt-2">';
+					if(i==0){
+						html += `<span class="material-symbols-outlined">smart_toy</span>`;
+					}	
+					html += `<p class="m-2 pointer" onclick="getAnswer(${value.id})">${value.question}</p>`;
+					html += `</li>`;
+					i++;
+		        });
+				html += `<li class="chat incoming"><p class="m-2 pointer" onclick="getAnswer('other')">Other</p></li>`;
+			}else{
+				html += `<li class="chat incoming"><span class="material-symbols-outlined">smart_toy</span><p class="m-2 pointer" onclick="getAnswer('other')">Other</p></li>`;
+			}
 			
 			$(".chatbox").append(html);
 			

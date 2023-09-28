@@ -58,7 +58,7 @@
 								<li><a href="{{ route('register') }}" class="shadow_btn">Client</a></li>
 							</ul>
 						</li>
-						<li><a href="javascript:void(0)" class="shadow_btn">Price List <img
+						<li><a href="#booking" class="shadow_btn">Price List <img
 								src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a></li>
 					</ul>
 				</div>
@@ -148,17 +148,17 @@
 			<div class="column1">
 				<h4>Price list</h4>
 				<div class="btn_blk">
-					<a href="services-beauty1.html" class="shadow_btn">Beauty 
+					<a href="{{route('servicesBodywaxing')}}" class="shadow_btn">Beauty <!-- services-beauty1.html -->
 						<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
 					</a>
 				</div>
 				<div class="btn_blk">
-					<a href="services-massage1.html" class="shadow_btn">Massage 
+					<a href="{{route('servicesMassage')}}" class="shadow_btn">Massage 
 						<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
 					</a>
 				</div>
 				<div class="btn_blk">
-					<a href="services-hairmakeup1.html" class="shadow_btn">Hair & Make-Up 
+					<a href="{{route('servicesLadies')}}" class="shadow_btn">Hair & Make-Up 
 						<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
 					</a>
 				</div>
@@ -228,7 +228,7 @@
 							<img src="{{ asset('template_new/assets/images/package_01.jpg') }}" alt="">
 						</div>
 						<div class="btn_blk">
-							<a href="booking.html" class="site_btn">Buy</a> 
+							<a href="#booking" class="site_btn">Buy</a> 
 							<a href="javascript:void(0)" class="eye_btn popup-pkg1">
 								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
 							</a>
@@ -255,7 +255,7 @@
 							<img src="{{ asset('template_new/assets/images/package_02.jpg') }}" alt="">
 						</div>
 						<div class="btn_blk">
-							<a href="booking.html" class="site_btn">Buy</a> 
+							<a href="#booking" class="site_btn">Buy</a> 
 							<a href="javascript:void(0)" class="eye_btn popup-pkg2">
 								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
 							</a>
@@ -282,7 +282,7 @@
 							<img src="{{ asset('template_new/assets/images/package_03.jpg') }}" alt="">
 						</div>
 						<div class="btn_blk">
-							<a href="booking.html" class="site_btn">Buy</a> 
+							<a href="#booking" class="site_btn">Buy</a> 
 							<a href="javascript:void(0)" class="eye_btn popup-pkg3">
 								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
 							</a>

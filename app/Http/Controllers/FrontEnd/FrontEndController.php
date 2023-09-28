@@ -194,8 +194,48 @@ class FrontEndController extends Controller
         $data['blogs'] = Blog::where('status', 'active')->get();
         return view('web.blogs')->with($data);
     }
-
-
+    
+    public function servicesBodywaxing()
+    {
+    	return view('web.servicesBodywaxing');
+    }
+    public function servicesEyebrows()
+    {
+    	return view('web.servicesEyebrows');
+    }
+    
+    public function servicesManiPedi()
+    {
+    	return view('web.servicesManiPedi');
+    }
+    
+    public function servicesFacial()
+    {
+    	return view('web.servicesFacial');
+    }
+    
+    public function servicesMassage()
+    {
+    	return view('web.servicesMassage');
+    }
+    
+    public function servicesLadies()
+    {
+    	return view('web.servicesLadies');
+    }
+    
+    public function servicesMakeup()
+    {
+    	return view('web.servicesMakeup');
+    }
+    
+    public function servicesGents()
+    {
+    	return view('web.servicesGents');
+    }
+    
+    
+    
     public function Profile()
     {
         $data = User::findOrFail(Auth::user()->id);

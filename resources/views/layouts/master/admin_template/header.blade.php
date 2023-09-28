@@ -65,34 +65,54 @@
 						<p>Users <i class="fas fa-angle-left right"></i> </p>
 					</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="{{ route('admin.weddingStylist') }}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+						<li class="nav-item">
+							<a href="{{ route('admin.weddingStylist') }}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
 								<p>Wedding Stylist</p>
-						</a></li>
-						<li class="nav-item"><a href="{{route('admin.hairstylist')}}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.hairstylist')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
 								<p>Hairstylist</p>
-						</a></li>
-						<li class="nav-item"><a href="{{route('admin.beautician')}}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.beautician')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
 								<p>Beautician</p>
-						</a></li>
-						<li class="nav-item"><a href="{{route('admin.barber')}}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.barber')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
 								<p>Barber</p>
-						</a></li>
-						<li class="nav-item"><a href="{{route('admin.hairdressingOwner')}}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.hairdressingOwner')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
 								<p>Hairdressing Owner</p>
-						</a></li>
-						<li class="nav-item"><a href="{{route('admin.beautySalonOwner')}}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.beautySalonOwner')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
 								<p>Beauty Salon Owner</p>
-						</a></li>
-						<li class="nav-item"><a href="{{route('admin.client')}}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.client')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
 								<p>Client</p>
-						</a></li>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.guestUsers')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
+								<p>Guest Users</p>
+							</a>
+						</li>
 					</ul>
 				</li>
 
@@ -147,19 +167,25 @@
 						<p>Salon Chair <i class="fas fa-angle-left right"></i> </p>
 					</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="{{route('admin.hairStylistChair')}}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+						<li class="nav-item">
+							<a href="{{route('admin.hairStylistChair')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
 								<p>Hairstylist Chair</p>
-						</a></li>
-						<li class="nav-item"><a href="{{route('admin.barberChair')}}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.barberChair')}}" class="nav-link"> <i class="far fa-circle nav-icon"></i>
 								<p>Barber Chair</p>
-						</a></li>
-						<li class="nav-item"><a href="{{route('admin.beautyChair')}}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.beautyChair')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
 								<p>Beauty Therapist Chair</p>
-						</a></li>
-					</ul></li>
+							</a>
+						</li>
+					</ul>
+				</li>
 
 				<!-- job applicants -->
 				<li class="nav-item {{(isset($page) && in_array($page, ['jobApplicants','applicant'])) ? 'menu-open' : ''}}">
@@ -168,26 +194,52 @@
 						<p>Job Applicants <i class="fas fa-angle-left right"></i> </p>
 					</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="{{route('admin.jobApplicants')}}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+						<li class="nav-item">
+							<a href="{{route('admin.jobApplicants')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
 								<p>View Applicants</p>
-						</a></li>
-
-					</ul></li>
+							</a>
+						</li>
+					</ul>
+				</li>
 
 				<!-- Enquiry -->
 				<li class="nav-item {{(isset($page) && in_array($page, ['emailEnquiry'])) ? 'menu-open' : ''}}">
 					<a href="#" class="nav-link"> 
 						<i class="nav-icon far fa-envelope"></i>
 						<p>Email enquiry <i class="fas fa-angle-left right"></i> </p>
-				</a>
+					</a>
 					<ul class="nav nav-treeview">
-						<li class="nav-item"><a href="{{route('admin.emailEnquiry')}}"
-							class="nav-link"> <i class="far fa-circle nav-icon"></i>
+						<li class="nav-item">
+							<a href="{{route('admin.emailEnquiry')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
 								<p>Email enquiry</p>
-						</a></li>
-
-					</ul></li>
+							</a>
+						</li>
+					</ul>
+				</li>
+				
+				<!-- Chat -->
+				<li class="nav-item {{(isset($page) && in_array($page, ['chatQuestions','chatFaqs'])) ? 'menu-open' : ''}}">
+					<a href="#" class="nav-link"> 
+						<i class="nav-icon far fa-envelope"></i>
+						<p>Chat <i class="fas fa-angle-left right"></i> </p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="{{route('admin.chatQuestions')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
+								<p>Chat Questions</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.chatFaqs')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
+								<p>Chat FAQ's</p>
+							</a>
+						</li>
+					</ul>
+				</li>
 				
 			</ul>
 		</nav>

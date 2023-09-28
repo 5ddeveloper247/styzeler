@@ -11,6 +11,9 @@ class Chat extends Model
     
     protected $table = 'chat';
 
-    
+    public function chat_guest_user()
+    {
+    	return $this->belongsTo(Guest_user::class, 'guest_user_id');
+    }
 
 }
