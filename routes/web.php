@@ -47,6 +47,8 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         Route::post('/saveRentAndLetDetails', 'RentLetController@saveRentAndLetDetails')->name('saveRentAndLetDetails');
         Route::post('/saveJobRequestDetails', 'JobRequestController@saveJobRequestDetails')->name('saveJobRequestDetails');
         
+        Route::post('/addToCart', 'CartController@saveAddToCartDetails')->name('addToCart');
+        Route::get('/book-freelancer', 'FrontEndController@bookFreelancer')->name('bookFreelancer');
     });
 
     Route::get('/forgetPassword', 'FrontEndController@forgetPassword')->name('forgetPassword');

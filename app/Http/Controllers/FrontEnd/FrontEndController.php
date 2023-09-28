@@ -8,6 +8,8 @@ use App\Models\User;
 use App\Models\Rent_let;
 use App\Models\Job_request;
 use App\Models\Blog;
+use App\Models\Cart;
+use App\Models\Cart_line;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
@@ -233,6 +235,58 @@ class FrontEndController extends Controller
     public function servicesGents()
     {
     	return view('web.servicesGents');
+    }
+    
+    public function bookFreelancer()
+    {
+    	if(!isset(Auth::user()->id)){
+			return redirect()->back();;
+		}
+		
+		$cart = Cart::with('cart_lines')->where('user_id', Auth::user()->id)->where('status', 'active')->first();
+		
+		$cartLines = isset($cart->cart_lines) ? $cart->cart_lines : '';
+		
+    	
+    	$types = array();
+    	$filterUser = array();
+    	
+    	if(!empty($cartLines) && $cartLines != ''){
+    		foreach ($cartLines as $row){
+    			$types[] = $row->item_service;
+    		}
+    	}
+    	
+    	$users = User::where('type','!=' , 'admin')->get();
+    	
+    	if(!empty($users)){
+    		foreach ($users as $user){
+    			
+    			$userdata = $user->data;
+    			
+    			if(!empty($userdata)){
+    				
+    				foreach ($userdata as $row){
+    					
+    					if(count($types) > 0){
+    						
+    						foreach ($types as $type){
+    							
+    							if(in_array($type, $row)){
+    								if(!in_array($user->id, $filterUser)){
+    									$filterUser[] = $user->id;
+    								}
+    							}
+    						}
+    					}
+    				}
+    			}
+    		}
+    	}
+    	
+    	$data['users'] = User::whereIn('id', $filterUser)->get();
+    	
+    	return view('web.bookFreelancer')->with($data);
     }
     
     

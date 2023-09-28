@@ -15,6 +15,9 @@
 			height: 3rem; 
 			 width: 100%;
 		}
+		.input_box{
+			cursor:pointer;
+		}
     </style>
 @endpush
 
@@ -63,28 +66,28 @@
 									<button type="button" class="shadow_btn">Eyelash Extensions</button>
 								   <ul class="sub_btns">
 										<li>
-											<button type="button" class="shadow_btn"  onclick="caseCat('Ckassic_full')">Classic full <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+											<button type="button" class="shadow_btn"  onclick="caseCat('Ckassic_full','Eyelash Extensions')">Classic full <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 										</li>
 										<li>
-											<button type="button" class="shadow_btn"  onclick="caseCat('Classic_Half')">Classic Half <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+											<button type="button" class="shadow_btn"  onclick="caseCat('Classic_Half','Eyelash Extensions')">Classic Half <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 										</li>
 										<li>
-											<button type="button" class="shadow_btn" onclick="caseCat('Clamourous_Volume_Full')">Clamourous Volume Full <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+											<button type="button" class="shadow_btn" onclick="caseCat('Clamourous_Volume_Full','Eyelash Extensions')">Clamourous Volume Full <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 										</li>
 										<li>
-											<button type="button" class="shadow_btn" onclick="caseCat('Clamourous_Volume_Half')">Clamourous Volume Half <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+											<button type="button" class="shadow_btn" onclick="caseCat('Clamourous_Volume_Half','Eyelash Extensions')">Clamourous Volume Half <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 										</li>
 										<li>
-											<button type="button" class="shadow_btn" onclick="caseCat('Hybrid_full_set')">Hybrid full set <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+											<button type="button" class="shadow_btn" onclick="caseCat('Hybrid_full_set','Eyelash Extensions')">Hybrid full set <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 										</li>
 										<li>
-											<button type="button" class="shadow_btn"  onclick="caseCat('Hybrid_half_set')">Hybrid half set <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+											<button type="button" class="shadow_btn"  onclick="caseCat('Hybrid_half_set','Eyelash Extensions')">Hybrid half set <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 										</li>
 										<li>
-											<button type="button" class="shadow_btn"  onclick="caseCat('Eyelash_Infilt')">Eyelash Infil <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+											<button type="button" class="shadow_btn"  onclick="caseCat('Eyelash_Infilt','Eyelash Extensions')">Eyelash Infil <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 										</li>
 										<li>
-											<button type="button" class="shadow_btn"  onclick="caseCat('Eyelash_Removal')">Eyelash Removal <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+											<button type="button" class="shadow_btn"  onclick="caseCat('Eyelash_Removal','Eyelash Extensions')">Eyelash Removal <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 										</li>
 									</ul>
 								 </li>
@@ -97,20 +100,17 @@
 													<div class="row">
 														<div id="top_1" class="col-md-4 mb-4">
 															<div class="input_box_wrap">
-<!-- 																<input type="text" class="input_box" value=""> -->
-																<p class="input_box"></p>
+																<p class="input_box add_to_cart" data-time="" data-price="" data-type="" data-subtype="" data-service=""></p>
 															</div>
 														</div>
 														<div id="top_2" class="col-md-4 mb-4">
 															<div class="input_box_wrap">
-<!-- 																<input type="text" class="input_box" value=""> -->
-																<p class="input_box"></p>
+																<p class="input_box add_to_cart" data-time="" data-price="" data-type="" data-subtype="" data-service=""></p>
 															</div>
 														</div>
 														<div id="top_3" class="col-md-4 mb-4">
 															<div class="input_box_wrap">
-<!-- 																<input type="text" class="input_box" value=""> -->
-																<p class="input_box"></p>
+																<p class="input_box add_to_cart" data-time="" data-price="" data-type="" data-subtype="" data-service=""></p>
 															</div>
 														</div>
 													</div>
@@ -133,6 +133,15 @@
 											</ul>
 										</div>
 									</form>
+									<form id="addtocart_form" style="display: none;">
+										<input type="hidden" id="userId" name="userId" value="{{@Auth::user()->id}}">
+										<input type="hidden" id="item_text" name="item_text" value="">
+										<input type="hidden" id="item_time" name="item_time" value="">
+										<input type="hidden" id="item_price" name="item_price" value="">
+										<input type="hidden" id="item_type" name="item_type" value="">
+										<input type="hidden" id="item_subtype" name="item_subtype" value="">
+										<input type="hidden" id="item_service" name="item_service" value="">
+									</form>
 								</div>
 						</div>
 					</div>
@@ -146,7 +155,7 @@
 @endsection
 
 @push('script')
-<!-- <script src="{{ asset('template_new/assets/js/main.js') }}"></script> -->
+<script src="{{ asset('customjs/web/cart/addtocart.js') }}"></script>
 <script>
 	$(window).on("load", function () {
 		$(document).on("click", ".btn_list .shadow_btn", function () {
@@ -157,54 +166,48 @@
 			$(this).parent().find(".sub_btns").slideToggle();
 		});
 		$(document).on("click", ".sub_btns > li > button", function () {
-			$(this).parents(".text_list_inner").find(".txt_wrap").fadeToggle();
+			$(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();//.fadeToggle();
 		});
 		$(document).on("click", ".shadowbtn", function () {
-			$(this).parents(".text_list_inner").find(".txt_wrap").fadeToggle();
+			$(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();//.fadeToggle();
 		});
 				
 	});
 
-	function caseCat(i)
+	var addtocartType = 'Eyes & Brows';	
+	function caseCat(i, subtype='')
 	  {
 		if(i=='Brow_Lamination'){
 			$("#top_1").show();
-			$("#top_1 p").html('145 Minuts &pound;  48');
+			$("#top_1 p").html('145 Minuts &pound;  48').attr('data-time', '145').attr('data-price', '48').attr('data-service', 'Brow Lamination').attr('data-subtype', subtype);
 			$("#top_2,#top_3").hide();
 			$("#description").text('Brow lamination involves straightening and lifting the hairs using a chemical solution, which allows the hairs to have more flexibility to move them into your desired shape, therefore covering any gaps or stray areas, lasting around six weeks. the treatment is often paired with a brow tint for a bolder enhanced look 48 hours patch test required');
 		} 
 
 		if(i=='Eyebrow_Threading'){
 			$("#top_1").show();
-			$("#top_1 p").html('15 Minuts &pound; 14');
-			$("#top_2,#top_3").hide();
-			$("#description").text('Eyebrow threading is the purest form of hair removal there is no chemical used in the threading process of removing eyebrow hair a piece of thread is used');
-		} 
-
-		if(i=='Eyebrow_Threading'){
-			$("#top_1").show();
-			$("#top_1 p").html('15 Minuts &pound; 14');
+			$("#top_1 p").html('15 Minuts &pound; 14').attr('data-time', '15').attr('data-price', '14').attr('data-service', 'Eyebrow Threading').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text('Eyebrow threading is the purest form of hair removal there is no chemical used in the threading process of removing eyebrow hair a piece of thread is used');
 		} 
 
 		if(i=='Eyebrow_Tint'){
 			$("#top_1").show();
-			$("#top_1 p").html('15 Minuts &pound; 10');
+			$("#top_1 p").html('15 Minuts &pound; 10').attr('data-time', '15').attr('data-price', '10').attr('data-service', 'Eyebrow Tint').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text('Eyebrow tinting involves smoothing semi-permanent dye over your eyebrows to make them appear fuller and slightly darker than normal');
 		} 
 
 		if(i=='Lash_Lifting'){
 			$("#top_1").show();
-			$("#top_1 p").html('45 Minuts &pound; 50');
+			$("#top_1 p").html('45 Minuts &pound; 50').attr('data-time', '45').attr('data-price', '50').attr('data-service', 'Lash Lifting').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text('An eyelash lift enhances the appearance of your natural lashes, to make them appear longer and fuller while maintaining a natural look.Be advised this service requires a 24 hours patch test before the appointment can be carried out');
 		} 
 
 		if(i=='Eyelash_Tint'){
 			$("#top_1").show();
-			$("#top_1 p").html('15 Minuts &pound; 16');
+			$("#top_1 p").html('15 Minuts &pound; 16').attr('data-time', '15').attr('data-price', '16').attr('data-service', 'Eyelash  Tint').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text('Eyelash Tinting is applying a safe, semi-permanent vegetable dye to your eyelashes. This is done to make your dull lashes appear not only darker but also longer and fuller');
 		} 
@@ -212,21 +215,21 @@
 
 		if(i=='Eyelash_Extensions'){
 			$("#top_1").show();
-			$("#top_1 p").html('120 Minuts &pound; 90');
+			$("#top_1 p").html('120 Minuts &pound; 90').attr('data-time', '120').attr('data-price', '90').attr('data-service', 'Eyelash Extensions').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text('Classic Full Set is 1:1 lash application. One extension is applied to each one of your natural lashes, extending the length and appearance of your eyelashes. Classic lashes are suitable for clients who have a good amount of natural lashes');
 		} 
 	      
 		if(i=='Ckassic_full'){ 
 			$("#top_1").show();
-			$("#top_1 p").html('120 Minuts &pound; 90');
+			$("#top_1 p").html('120 Minuts &pound; 90').attr('data-time', '120').attr('data-price', '90').attr('data-service', 'Classic full').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text('Classic Full Set is 1:1 lash application. One extension is applied to each one of your natural lashes, extending the length and appearance of your eyelashes. Classic lashes are suitable for clients who have a good amount of natural lashes');
 		} 
 
 		if(i=='Classic_Half'){ 
 			$("#top_1").show();
-			$("#top_1 p").html('90 Minuts &pound; 65');
+			$("#top_1 p").html('90 Minuts &pound; 65').attr('data-time', '90').attr('data-price', '65').attr('data-service', 'Classic Half').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text('Half-set eyelash extension would be half of a full set. What does this mean exactly? It means that instead of an eyelash extension for every natural lash, you get an eyelash extension put in for every second or third natural lash,Half sets are great places to start if you are a beginner and are a bit nervous about your first treatment');
 		} 
@@ -234,7 +237,7 @@
 		
 		if(i=='Clamourous_Volume_Full'){ 
 			$("#top_1").show();
-			$("#top_1 p").html('120 Minuts &pound; 130');
+			$("#top_1 p").html('120 Minuts &pound; 130').attr('data-time', '120').attr('data-price', '130').attr('data-service', 'Clamourous Volume Full').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text('What are glam volume lashes? Volume lashing is where the technician takes 2-6 very thin eyelash extensions and makes them into a fan shape before applying to the natural eyelash. All the fans are hand made during each lash set using different lengths, curls and thickness to suit each individual client');
 		} 
@@ -242,35 +245,35 @@
 		
 		if(i=='Clamourous_Volume_Half'){ 
 			$("#top_1").show();
-			$("#top_1 p").html('120 Minuts &pound; 110');
+			$("#top_1 p").html('120 Minuts &pound; 110').attr('data-time', '120').attr('data-price', '110').attr('data-service', 'Clamourous Volume Half').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text('Glamourous Volume lashing is where the technician takes 2-6 very thin eyelash extensions and makes them into a fan shape before applying to the natural eyelash. All the fans are handmade during each lash set using different lengths, curls and thicknesses to suit each individual client <Half set you to get an eyelash extension put in for every second or third natural lash>');
 		} 
 
 		if(i=='Hybrid_full_set'){ 
 			$("#top_1").show();
-			$("#top_1 p").html('120 Minuts &pound; 100');
+			$("#top_1 p").html('120 Minuts &pound; 100').attr('data-time', '120').attr('data-price', '100').attr('data-service', 'Hybrid full set').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text('Hybrid full set Hybrid lashes are a 70-30 mixture of both classic lashes and volume lashes. Choosing hybrid eyelash extensions gives you the best of both worlds.');
 		} 
 
 		if(i=='Hybrid_half_set'){ 
 			$("#top_1").show();
-			$("#top_1 p").html('120 Minuts &pound; 80');
+			$("#top_1 p").html('120 Minuts &pound; 80').attr('data-time', '120').attr('data-price', '80').attr('data-service', 'Hybrid half set').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text("Hybrid Half set Hybrid lashes are a 70-30 mixture of both classic lashes and volume lashes. Choosing hybrid eyelash extensions gives you the best of both worlds.<Half set you get an eyelash extension put in for every second or third natural lash>");
 		} 
 
 		if(i=='Eyelash_Infilt'){ 
 			$("#top_1").show();
-			$("#top_1 p").html('60 Minuts &pound; 50');
+			$("#top_1 p").html('60 Minuts &pound; 50').attr('data-time', '60').attr('data-price', '50').attr('data-service', 'Eyelash Infil').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text('Eyelash infills are individual lashes or fans that fill in the gaps in your lash extensions which can appear after 2-3 weeks, due to natural shedding.');
 		} 
 
 		if(i=='Eyelash_Removal'){ 
 			$("#top_1").show();
-			$("#top_1 p").html('15 Minuts &pound; 15');
+			$("#top_1 p").html('15 Minuts &pound; 15').attr('data-time', '15').attr('data-price', '15').attr('data-service', 'Eyelash Removal').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#description").text('The therapist will run the gel remover through the lashes. let it set for three to five minutes, while doing so we want to make sure our client has their eyes closed tightly.');
 		} 		
