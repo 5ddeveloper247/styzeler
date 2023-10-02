@@ -88,6 +88,16 @@
                     <p class="col-lg-9" id="status"></p>
 
                 </div>
+                <div class="status row">
+                    <label class="color-1 col-lg-3">Total Tokens : </label>
+                    <p class="col-lg-9" id="total_tokens"></p>
+
+                </div>
+                <div class="status row">
+                    <label class="color-1 col-lg-3">Remaining Tokens : </label>
+                    <p class="col-lg-9" id="remaining_tokens"></p>
+
+                </div>
             </div>
         </div>
         <!-- modals -->
@@ -172,7 +182,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn" data-dismiss="modal">
-                                                                                                                                                        Okay</button>--><!-- </form>-->
+                                                                                                                                                                            Okay</button>--><!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
                     </div>
@@ -194,7 +204,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn" data-dismiss="modal">
-                                                                                                                                                            Okay</button>--><!-- </form>-->
+                                                                                                                                                                                Okay</button>--><!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
                     </div>
@@ -219,7 +229,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn" data-dismiss="modal">
-                                                                                                                                                                Okay</button>--><!-- </form>-->
+                                                                                                                                                                                    Okay</button>--><!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
                     </div>
@@ -243,7 +253,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn"
-                                                                                                                                                                    data-dismiss="modal">Okay</button>-->
+                                                                                                                                                                                        data-dismiss="modal">Okay</button>-->
                             <!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>

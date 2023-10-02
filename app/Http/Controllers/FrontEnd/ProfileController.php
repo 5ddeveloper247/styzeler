@@ -43,7 +43,7 @@ class ProfileController extends Controller
             [
                 'data' => $data,
                 'status' => 200
-            ]
+            ],
         );
     }
 

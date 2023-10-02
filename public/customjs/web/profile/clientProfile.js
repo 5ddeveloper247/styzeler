@@ -113,6 +113,7 @@ function profileResponse(response) {
             $('#profiletype').append('<a class="text-center btn" onclick="editType();" title="Edit">✎</a>');
 
             $('#profile_type').val(profile_type);
+
             // for languages
             languages = data.languages;
 
@@ -138,6 +139,9 @@ function profileResponse(response) {
             $('#status').append('<a class="text-center btn" onclick="editStatus();" title="Edit">✎</a>');
             $('#stylist_status').val(profile_status);
 
+            // for tokens
+            $('#total_tokens').text(data.tokens);
+            $('#remaining_tokens').text(data.total_tokens);
         }
     }
 

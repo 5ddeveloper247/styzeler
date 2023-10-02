@@ -58,11 +58,11 @@ $(window).on("load", function () {
 		if (w > 767) {
 			let svc_btn_width = $("#services .btn_list .shadow_btn").outerWidth()
 			final_svc_btn_width = svc_btn_width / 10
-			console.log(final_svc_btn_width);
+			// console.log(final_svc_btn_width);
 			let txt_wrap_width = svc_btn_width * 3
 			final_txt_wrap_width = (txt_wrap_width + 40 + 12) / 10
 			$("#services .text_list .btns .shadow_btn").each(function () {
-				$(this).outerWidth(final_svc_btn_width+0.1 + "rem")
+				$(this).outerWidth(final_svc_btn_width + 0.1 + "rem")
 			})
 			$("#services .text_list .txt_wrap form").outerWidth(final_txt_wrap_width + "rem")
 		}

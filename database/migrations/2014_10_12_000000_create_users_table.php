@@ -31,6 +31,8 @@ return new class extends Migration
             $table->string('languages')->nullable();
             $table->string('rate')->nullable();
             $table->text('zone')->nullable();
+            $table->string('tokens')->nullable();
+            $table->string('total_tokens')->nullable();
             $table->text('cv')->nullable();
             $table->text('resume')->nullable();
             $table->json('data')->nullable();

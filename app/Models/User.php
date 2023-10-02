@@ -27,13 +27,13 @@ class User extends Authenticatable
         'type',
         'address',
         'age',
-    	'surname',
+        'surname',
         'profile_type',
         'qualification',
         'languages',
         'rate',
         'zone',
-    	'cv',
+        'cv',
         'resume',
         'hero_image',
         'gallery',
@@ -41,7 +41,9 @@ class User extends Authenticatable
         'post_code',
         'public_liability_insurance',
         'trade_video',
-        'status'
+        'status',
+        'tokens',
+        'total_tokens'
 
     ];
 
@@ -73,19 +75,19 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = Hash::make($password);
     }
-    
+
     public function scopeHasTypes($query, $types)
     {
-    	return $query->whereJsonContains('data->massageServices', $types)
-    		->orWhereJsonContains('data->hairRemovalPermanentServices', $types)
-    		->orWhereJsonContains('data->ladyWaxingServices', $types)
-    		->orWhereJsonContains('data->maleWaxingServices', $types)
-    		->orWhereJsonContains('data->manicurePedicureServices', $types)
-    		->orWhereJsonContains('data->salonFacialServices', $types)
-    		->orWhereJsonContains('data->homeServiceFacialServices', $types)
-    		->orWhereJsonContains('data->bodyTreatmentServices', $types)
-    	->orWhereJsonContains('data->EyesAndBrowServices', $types)
-    	->orWhereJsonContains('data->bodyTreatmentServices', $types)
-    	->orWhereJsonContains('data->bodyTreatmentServices', $types);
+        return $query->whereJsonContains('data->massageServices', $types)
+            ->orWhereJsonContains('data->hairRemovalPermanentServices', $types)
+            ->orWhereJsonContains('data->ladyWaxingServices', $types)
+            ->orWhereJsonContains('data->maleWaxingServices', $types)
+            ->orWhereJsonContains('data->manicurePedicureServices', $types)
+            ->orWhereJsonContains('data->salonFacialServices', $types)
+            ->orWhereJsonContains('data->homeServiceFacialServices', $types)
+            ->orWhereJsonContains('data->bodyTreatmentServices', $types)
+            ->orWhereJsonContains('data->EyesAndBrowServices', $types)
+            ->orWhereJsonContains('data->bodyTreatmentServices', $types)
+            ->orWhereJsonContains('data->bodyTreatmentServices', $types);
     }
 }
