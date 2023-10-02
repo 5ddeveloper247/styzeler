@@ -276,7 +276,7 @@ class ProfileController extends Controller
                 if (Auth::user()->profile_type == 'Freelancer') {
                     BookingSlots::create([
 
-                        'booking_id' => $book_id->id,
+                        'bookings_id' => $book_id->id,
                         'start_time' => '07:00',
                         'end_time' => '19:00'
 
@@ -409,7 +409,7 @@ class ProfileController extends Controller
         $existingBooking = [];
 
         if ($booking) {
-            $existingBooking = BookingSlots::where('booking_id', $booking->id)
+            $existingBooking = BookingSlots::where('bookings_id', $booking->id)
                 ->whereNotIn('id', [$request->slot_id])
                 ->where(function ($query) use ($startDateTime, $endDateTime) {
                     $query->where(function ($query) use ($startDateTime, $endDateTime) {
@@ -445,7 +445,7 @@ class ProfileController extends Controller
         $newBookingId = $newBooking->id;
 
         $data = [
-            'booking_id' => $newBookingId,
+            'bookings_id' => $newBookingId,
             'start_time' => $startTime,
             'end_time' => $endTime
         ];

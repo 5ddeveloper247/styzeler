@@ -49,7 +49,7 @@
                     @if(isset($users))
                 	@foreach($users as $row)
                 	<div class="col-sm-6 col-lg-4">
-                		<a id="{{$row->id}}" href="{{ route('freelancerProfile') }}?id={{$row->id}}">
+                		<a class="toUserProfile" id="{{$row->id}}" href="javascript:;"><!-- {{ route('freelancerProfile') }}?id={{$row->id}} -->
                 			<h4 class="color-1">{{$row->name}} {{$row->surname}}</h4>
                 			<div class="category-people py-3">
                 				<div class="picture">
@@ -71,5 +71,25 @@
 @endsection
 
 @push('script')
+<script>
+$(document).ready(function () {
 
+	localStorage.setItem('bookType', 'cart_book');
+	
+	var userprofileroute = "{{route('freelancerProfile')}}";
+	var cart_exist = "{{$cart_exist}}";
+	
+	$(document).on('click', '.toUserProfile', function (e) {
+
+		if(cart_exist == 'true'){
+			var route = userprofileroute+'?id='+$(this).attr('id');
+			window.location.href = route;
+		}else{
+
+			toastr.error('First add service in cart then proceed...', '', {timeOut: 3000});
+			return;
+		}
+	});
+});
+</script>
 @endpush

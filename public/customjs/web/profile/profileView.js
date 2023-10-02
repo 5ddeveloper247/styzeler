@@ -205,7 +205,9 @@ function profileResponse(response) {
 
         if (data != null || data != '') {
 
-            // For profile image
+           
+        	$("#user_id").val(data.id);
+        	// For profile image
             hero_image = data.hero_image;
 
             $('#profile-image-id').attr('src', baseURL + hero_image);

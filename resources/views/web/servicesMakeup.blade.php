@@ -11,6 +11,9 @@
 		.shadow_btn{
 			padding: 0 2rem;
 		}
+		.input_box {
+            cursor: pointer;
+        }
     </style>
 @endpush
 
@@ -57,19 +60,25 @@
 												<div id="top_1" class="col-md-3 mb-4">
 													<div class="input_box_wrap">
 <!-- 														<input type="text" class="input_box" value=""> -->
-														<p class="input_box"></p>
+														<p class="input_box add_to_cart" data-time=""
+                                                          	data-price="" data-type="" data-subtype=""
+                                                         	data-service=""></p>
 													</div>
 												</div>
 												<div id="top_2" class="col-md-3 mb-4">
 													<div class="input_box_wrap">
 <!-- 														<input type="text" class="input_box" value=""> -->
-														<p class="input_box"></p>
+														<p class="input_box add_to_cart" data-time=""
+                                                          	data-price="" data-type="" data-subtype=""
+                                                         	data-service=""></p>
 													</div>
 												</div>
 												<div id="top_3" class="col-md-3 mb-4">
 													<div class="input_box_wrap">
 <!-- 														<input type="text" class="input_box" value=""> -->
-														<p class="input_box"></p>
+														<p class="input_box add_to_cart" data-time=""
+                                                          	data-price="" data-type="" data-subtype=""
+                                                         	data-service=""></p>
 													</div>
 												</div>
 											</div>
@@ -81,7 +90,9 @@
 											<img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
 										</div>
 										<div class="btn_block">
-											<button type="button" class="book_freelance_btn"><img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer</button>
+											<a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
+												<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
+											</a>
 											<ul class="check_list">
 												<li><img src="{{ asset('template_new/assets/images/tick2.svg') }}" alt=""> All candidates are DBS verified</li>
 												<li><img src="{{ asset('template_new/assets/images/tick2.svg') }}" alt=""> At - Home service 24/7</li>
@@ -89,6 +100,16 @@
 											</ul>
 										</div>
 									</form>
+									<form id="addtocart_form" style="display: none;">
+                                        <input type="hidden" id="userId" name="userId" value="{{ @Auth::user()->id }}">
+                                        <input type="hidden" id="userType" name="userType" value="{{ @Auth::user()->type }}">
+                                        <input type="hidden" id="item_text" name="item_text" value="">
+                                        <input type="hidden" id="item_time" name="item_time" value="">
+                                        <input type="hidden" id="item_price" name="item_price" value="">
+                                        <input type="hidden" id="item_type" name="item_type" value="">
+                                        <input type="hidden" id="item_subtype" name="item_subtype" value="">
+                                        <input type="hidden" id="item_service" name="item_service" value="">
+                                    </form>
 								</div>
 							</div>
 						</div>
@@ -102,6 +123,7 @@
 @endsection
 
 @push('script')
+<script src="{{ asset('customjs/web/cart/addtocart.js') }}"></script>
 <script src="https://kit.fontawesome.com/8389fcfe36.js" crossorigin="anonymous"></script>
 <script>
 	$(window).on("load", function () {
@@ -113,18 +135,22 @@
 			$(this).parent().find(".sub_btns").slideToggle();
 		});
 		$(document).on("click", ".sub_btns > li > button", function () {
-			$(this).parents(".text_list_inner").find(".txt_wrap").fadeToggle();
+			$(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
 		});
 		$(document).on("click", ".shadowbtn", function () {
-			$(this).parents(".text_list_inner").find(".txt_wrap").fadeToggle();
+			$(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
 		});
 		
 	});
-	function caseCat(i) { 
+
+	var addtocartType = 'Make-up';
+	
+	function caseCat(i, subtype = '') { 
 		
 		 if(i=='Makeup_Blowdry') { 
 		  $("#top_1").show();
-		  $("#top_1 p").html('90 mints  &pound;100');
+		  $("#top_1 p").html('90 mints  &pound;100').attr('data-time', '90').attr('data-price', '100').attr(
+                  'data-service', 'Make -up & Blow-dry').attr('data-subtype', subtype);
 		  $("#top_2,#top_3").hide();
 		  $("#description").text('This package combines two of the most requested treatments for a special night out or event. Styzeler Hair & Makeup Freelancers  will provide the Make-up and   a Blow-dry of your choice');
 	    }  
@@ -132,22 +158,26 @@
 		
 		if(i=='Make_up_Up_do') { 
 			$("#top_1").show();
-		    $("#top_1 p").html('80 mints  &pound;90');	
+		    $("#top_1 p").html('80 mints  &pound;90').attr('data-time', '80').attr('data-price', '90').attr(
+	                  'data-service', 'Make-up & Up-do').attr('data-subtype', subtype);	
 			$("#top_2,#top_3").hide();
 	        $("#description").text('This package combines two of the most requested treatments for a special night out or event. Styzeler Hair & Makeup Freelancers  will provide the Make-up and   Up-do of your choice,');
 	    }  
 	  		
 		if(i=='Make_up') {   
 			$("#top_1").show();
-		    $("#top_1 p").html('60 mints  &pound;50');	
+		    $("#top_1 p").html('60 mints  &pound;50').attr('data-time', '60').attr('data-price', '50').attr(
+	                  'data-service', 'Make-up').attr('data-subtype', subtype);	
 			$("#top_2,#top_3").hide();
 	        $("#description").text('Our Freelancer can create the perfect makeup that is most suitable to your facial features for a night out with friends, or for special events');
 	    }   
 	    
 		
 		if(i=='Bridal_Make_up') {
-	  	   $("#top_1,#top_3,#top_3").hide();
-	       $("#description").text('the bridal makeup needs to be linked with the bridal page');
+	  	   	$("#top_1,#top_3,#top_3").hide();
+	  	 	$("#top_1 p").html('').attr('data-time', '').attr('data-price', '').attr(
+                 'data-service', 'Bridal Make-up').attr('data-subtype', subtype);	
+	       	$("#description").text('the bridal makeup needs to be linked with the bridal page');
 	    }
 	}
 	

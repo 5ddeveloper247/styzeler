@@ -256,7 +256,7 @@ class FrontEndController extends Controller
     		}
     	}
     	
-    	$users = User::where('type','!=' , 'admin')->get();
+    	$users = User::where('type','!=' , 'admin')->where('status', 'Active')->get();
     	
     	if(!empty($users)){
     		foreach ($users as $user){
@@ -284,6 +284,7 @@ class FrontEndController extends Controller
     	}
     	
     	$data['users'] = User::whereIn('id', $filterUser)->get();
+    	$data['cart_exist'] = isset($cart->cart_lines) ? 'true' : 'false';
     	
     	return view('web.bookFreelancer')->with($data);
     }

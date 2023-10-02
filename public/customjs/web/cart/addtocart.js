@@ -6,14 +6,14 @@ $(document).ready(function () {
 
 });
 
-
-
-
-
 $(document).on('click', '.add_to_cart', function (e) {
 
 	if($("#userId").val() == ''){
 		toastr.error('Kindly login first...', '', {timeOut: 3000});
+		return;
+	}
+	if($("#userType").val() != 'client'){
+		toastr.error('Kindly login with client user then proceed...', '', {timeOut: 3000});
 		return;
 	}
 	

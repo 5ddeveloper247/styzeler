@@ -11,6 +11,9 @@
 		.shadow_btn{
 			padding: 0 2rem;
 		}
+		.input_box {
+            cursor: pointer;
+        }
     </style>
 @endpush
 
@@ -60,19 +63,25 @@
 											<div id="top_1" class="col-md-3 mb-4">
 												<div class="input_box_wrap">
 <!-- 													<input type="text" class="input_box" value=""> -->
-													<p class="input_box"></p>
+													<p class="input_box add_to_cart" data-time=""
+                                                      	data-price="" data-type="" data-subtype=""
+                                                       	data-service=""></p>
 												</div>
 											</div>
 											<div id="top_2" class="col-md-3 mb-4">
 												<div class="input_box_wrap">
 <!-- 													<input type="text" class="input_box" value=""> -->
-													<p class="input_box"></p>
+													<p class="input_box add_to_cart" data-time=""
+                                                      	data-price="" data-type="" data-subtype=""
+                                                       	data-service=""></p>
 												</div>
 											</div>
 											<div id="top_3" class="col-md-3 mb-4">
 												<div class="input_box_wrap">
 <!-- 													<input type="text" class="input_box" value=""> -->
-													<p class="input_box"></p>
+													<p class="input_box add_to_cart" data-time=""
+                                                      	data-price="" data-type="" data-subtype=""
+                                                       	data-service=""></p>
 												</div>
 											</div>
 										</div>
@@ -84,7 +93,9 @@
 										<img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
 									</div>
 									<div class="btn_block">
-										<button type="button" class="book_freelance_btn"><img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer</button>
+										<a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
+											<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
+										</a>
 										<ul class="check_list">
 											<li><img src="{{ asset('template_new/assets/images/tick2.svg') }}" alt=""> All candidates are DBS verified</li>
 											<li><img src="{{ asset('template_new/assets/images/tick2.svg') }}" alt=""> At - Home service 24/7</li>
@@ -92,6 +103,16 @@
 										</ul>
 									</div>
 								</form>
+								<form id="addtocart_form" style="display: none;">
+                                	<input type="hidden" id="userId" name="userId" value="{{ @Auth::user()->id }}">
+                                   	<input type="hidden" id="userType" name="userType" value="{{ @Auth::user()->type }}">
+                                   	<input type="hidden" id="item_text" name="item_text" value="">
+                                   	<input type="hidden" id="item_time" name="item_time" value="">
+                                   	<input type="hidden" id="item_price" name="item_price" value="">
+                                   	<input type="hidden" id="item_type" name="item_type" value="">
+                                   	<input type="hidden" id="item_subtype" name="item_subtype" value="">
+                                   	<input type="hidden" id="item_service" name="item_service" value="">
+                               	</form>
 							</div>
 						</div>
 					</div>
@@ -105,6 +126,7 @@
 @endsection
 
 @push('script')
+<script src="{{ asset('customjs/web/cart/addtocart.js') }}"></script>
 <script src="https://kit.fontawesome.com/8389fcfe36.js" crossorigin="anonymous"></script>
 <script>
 	$(window).on("load", function () {
@@ -116,32 +138,38 @@
 			$(this).parent().find(".sub_btns").slideToggle();
 		});
 		$(document).on("click", ".sub_btns > li > button", function () {
-			$(this).parents(".text_list_inner").find(".txt_wrap").fadeToggle();
+			$(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
 		});
 		$(document).on("click", ".shadowbtn", function () {
-			$(this).parents(".text_list_inner").find(".txt_wrap").fadeToggle();
+			$(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
 		});
 		
 	});
-	function caseCat(i) {
+
+	var addtocartType = 'Gents Services';
+	
+	function caseCat(i, subtype = '') {
 
 		if (i == 'Scissors_Cut') {
 			$("#top_1").show();
-			$("#top_1 p").html('40 Mints &pound;35');
+			$("#top_1 p").html('40 Mints &pound;35').attr('data-time', '40').attr('data-price', '35').attr(
+	                  'data-service', 'Scissors Cut').attr('data-subtype', subtype);;
 			$("#top_2,#top_3").hide();
 			$("#category_description").text("A scissors cut is a more 'natural' cut. It contours to the head better than a clipper cut, The hair blends in better with a scissors cut, and the hair grows in more naturally.");
 		}
 
 		if (i == 'Cliper_Scissors_Cut') {
 			$("#top_1").show();
-			$("#top_1 p").html('30 Mints &pound;30');
+			$("#top_1 p").html('30 Mints &pound;30').attr('data-time', '30').attr('data-price', '30').attr(
+	                  'data-service', 'Cliper & Scissors Cut').attr('data-subtype', subtype);
 			$("#top_2,#top_3").hide();
 			$("#category_description").text("The  back and side will be cut with a clipper for a sharper look and the top finished with the scissors for a softer finish");
 		}
 
 		if (i == 'Clipper_Cut') {
 			$("#top_1").show();
-			$("#top_1 p").html('20 Mints &pound;20');
+			$("#top_1 p").html('20 Mints &pound;20').attr('data-time', '20').attr('data-price', '20').attr(
+	                  'data-service', 'Clipper Cut').attr('data-subtype', subtype);
 			$("#top_2,#top_3").hide();
 			$("#category_description").text('Hair Clippers are distinctly different for its sharpennes from other hair cutting methods like scissors or razors');
 		}
@@ -149,7 +177,8 @@
 
 		if (i == 'Skin_Fade') {
 			$("#top_1").show();
-			$("#top_1 p").html('45 Mints &pound;40');
+			$("#top_1 p").html('45 Mints &pound;40').attr('data-time', '45').attr('data-price', '40').attr(
+	                  'data-service', 'Skin Fade').attr('data-subtype', subtype);
 			$("#top_2,#top_3").hide();
 			$("#category_description").text("The hair is gradual transition from skin fade to bold on the back and sides to longer hair on the top the head");
 		}
@@ -157,7 +186,8 @@
 
 		if (i == 'Beard_Shaped') {
 			$("#top_1").show();
-			$("#top_1 p").html('20 Mints &pound;15');
+			$("#top_1 p").html('20 Mints &pound;15').attr('data-time', '20').attr('data-price', '15').attr(
+	                  'data-service', 'Beard Shaped').attr('data-subtype', subtype);
 			$("#top_2,#top_3").hide();
 			$("#category_description").text('A shape-up is a groming style that involves "line-up and shape-up" with the goal of creating a perfectly straight edge');
 		}

@@ -61,7 +61,7 @@
                                 Services</a>
 
                         </div>
-                        <div class="text_list" data-id="ladies-services">
+                        <div class="text_list" data-id="ladies-services" style="display: block;">
                             <div class="text_list_inner">
                                 <ul class="btns scrollbar">
 
@@ -300,9 +300,9 @@
                                             <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
                                         </div>
                                         <div class="btn_block">
-                                            <button type="button" class="book_freelance_btn"><img
-                                                    src="{{ asset('template_new/assets/images/eye.svg') }}"
-                                                    alt=""> Book a Freelancer</button>
+                                            <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
+												<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
+											</a>
                                             <ul class="check_list">
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> All candidates are DBS verified</li>
@@ -314,8 +314,8 @@
                                         </div>
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
-                                        <input type="hidden" id="userId" name="userId"
-                                            value="{{ @Auth::user()->id }}">
+                                        <input type="hidden" id="userId" name="userId" value="{{ @Auth::user()->id }}">
+                                        <input type="hidden" id="userType" name="userType" value="{{ @Auth::user()->type }}">
                                         <input type="hidden" id="item_text" name="item_text" value="">
                                         <input type="hidden" id="item_time" name="item_time" value="">
                                         <input type="hidden" id="item_price" name="item_price" value="">
@@ -355,7 +355,10 @@
             });
 
         });
-        var addtocartType = 'Ladies Service';
+
+        var bookFrelancerRoute = "{{route('bookFreelancer')}}";
+        
+        var addtocartType = 'Ladies Services';
 
         function caseCat(i, subtype = '') {
             if (i == 'Cut_Blowdry') {

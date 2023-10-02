@@ -240,13 +240,13 @@
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> At - Home service 24/7</li>
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
-                                                        alt=""> Minimum call out �30</li>
+                                                        alt=""> Minimum call out &pound;30</li>
                                             </ul>
                                         </div>
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
-                                        <input type="hidden" id="userId" name="userId"
-                                            value="{{ @Auth::user()->id }}">
+                                        <input type="hidden" id="userId" name="userId" value="{{ @Auth::user()->id }}">
+                                        <input type="hidden" id="userType" name="userType" value="{{ @Auth::user()->type }}">
                                         <input type="hidden" id="item_text" name="item_text" value="">
                                         <input type="hidden" id="item_time" name="item_time" value="">
                                         <input type="hidden" id="item_price" name="item_price" value="">

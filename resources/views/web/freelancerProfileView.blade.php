@@ -2745,6 +2745,8 @@
                 </div>
                 <form id="book_slots_form">
                     <div class="modal-body">
+                        <input type="hidden" id="user_id" name="user_id">
+                        <input type="hidden" id="book_type" name="book_type">
                         <input type="hidden" id="slot_book_id" name="slot_book_id">
 
                         <div class="row">
@@ -2770,7 +2772,7 @@
 @endsection
 @push('script')
     <script>
-        $(function() {
+    	$(function() {
             $.ajaxSetup({
                 headers: {
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")

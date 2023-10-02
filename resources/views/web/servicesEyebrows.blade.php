@@ -199,8 +199,8 @@
                                         </div>
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
-                                        <input type="hidden" id="userId" name="userId"
-                                            value="{{ @Auth::user()->id }}">
+                                        <input type="hidden" id="userId" name="userId" value="{{ @Auth::user()->id }}">
+                                       	<input type="hidden" id="userType" name="userType" value="{{ @Auth::user()->type }}">
                                         <input type="hidden" id="item_text" name="item_text" value="">
                                         <input type="hidden" id="item_time" name="item_time" value="">
                                         <input type="hidden" id="item_price" name="item_price" value="">

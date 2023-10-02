@@ -37,6 +37,7 @@ jQuery(document).ready(function () {
 });
 
 function convertTo12HourFormat(time24) {
+	console.log(time24);
   // Split the time string into hours and minutes
   const [hours, minutes] = time24.split(':');
 
