@@ -44,4 +44,8 @@ class Bookings extends Model
     {
         return $this->belongsTo(User::class, 'user_id', 'id')->where('id', Auth::id());
     }
+    public function FreelancerUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

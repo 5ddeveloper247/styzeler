@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use App\Models\Bookings;
 use App\Models\Appointments;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class BookingSlots extends Model
 {
@@ -20,5 +24,15 @@ class BookingSlots extends Model
     public function appointments()
     {
         return $this->hasMany(Appointments::class, 'booking_slots_id');
+    }
+
+    /**
+     * Get all of the comments for the BookingSlots
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookings(): HasOne
+    {
+        return $this->hasOne(Bookings::class, 'id');
     }
 }

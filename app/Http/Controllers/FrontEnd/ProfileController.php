@@ -332,7 +332,7 @@ class ProfileController extends Controller
     }
     public function bookSlots(Request $request)
     {
-    	// Check if the user is not logged in
+        // Check if the user is not logged in
         if (!Auth::check()) {
             return response()->json([
                 'status' => 422,
@@ -340,78 +340,76 @@ class ProfileController extends Controller
             ]);
         }
 
-        if(isset($request->book_type) && $request->book_type == 'cart_book'){  // of cart booking then this code execution
-        	$userDetails = User::where('id', Auth::user()->id)->first();
-        	
-        	$tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
-        	
-        	$cartExist = Cart::where('slot_date', $request->book_date)->count();
-        
-        	if($tokens == 0 && $cartExist == 0){
-        		return response()->json([
-        				'status' => 422,
-        				'message' => 'No enough tokens, first buy package.',
-        		]);
-        	}
-        	
-        	$active_cart = Cart::where('user_id', Auth::user()->id)->where('status', 'active')->first();
-        	
-        	if(isset($active_cart->id)){
-        			
-        		$cart = Cart::find($active_cart->id);
-				$cart->client_id = $request->user_id;
-				$cart->slot_id = $request->slot_book_id;
-				$cart->slot_date = $request->book_date;
-				$cart->status = 'checkout';
-				$cart->update();
-				
-				if($cartExist == 0){
-					$user = User::find(Auth::user()->id);
-					$user->tokens = $tokens-1;
-					$user->update();
-				}
-				
-				return response()->json([
-						'status' => 200,
-						'message' => 'Slot booked successfully.',
-				]);
-				
-        	}else{
-        		return response()->json([
-        				'status' => 422,
-        				'message' => 'First add service in cart then proceed.',
-        		]);
-        	}
-        	
-        }else{	
-        	// Check if the user is not allowed to book a slot
-        	$allowedUserTypes = ['client', 'hairdressingSalon', 'beautySalon'];
-        	if (!in_array(Auth::user()->type, $allowedUserTypes)) {
-        		return response()->json([
-        				'status' => 422,
-        				'message' => 'Only salon owners or clients can book slots.',
-        		]);
-        	}
-        	 
-        	// Check if the slot is already booked
-        	$checkSlot = Appointments::where('booking_slots_id', $request->slot_book_id)->first();
-        	if ($checkSlot) {
-        		return response()->json([
-        				'status' => 422,
-        				'message' => 'Slot is already booked.',
-        		]);
-        	}
-        	 
-        	// Create a new appointment
-        	Appointments::create([
-        			'booking_slots_id' => $request->slot_book_id,
-        			'booking_user_id' => Auth::id(),
-        	]);
-        	 
-        	return response()->json([
-        			'status' => 200,
-        			'message' => 'Slot booked successfully!',
-        	]);
+        if (isset($request->book_type) && $request->book_type == 'cart_book') {  // of cart booking then this code execution
+            $userDetails = User::where('id', Auth::user()->id)->first();
+
+            $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
+
+            $cartExist = Cart::where('slot_date', $request->book_date)->count();
+
+            if ($tokens == 0 && $cartExist == 0) {
+                return response()->json([
+                    'status' => 422,
+                    'message' => 'No enough tokens, first buy package.',
+                ]);
+            }
+
+            $active_cart = Cart::where('user_id', Auth::user()->id)->where('status', 'active')->first();
+
+            if (isset($active_cart->id)) {
+
+                $cart = Cart::find($active_cart->id);
+                $cart->client_id = $request->user_id;
+                $cart->slot_id = $request->slot_book_id;
+                $cart->slot_date = $request->book_date;
+                $cart->status = 'checkout';
+                $cart->update();
+
+                if ($cartExist == 0) {
+                    $user = User::find(Auth::user()->id);
+                    $user->tokens = $tokens - 1;
+                    $user->update();
+                }
+
+                return response()->json([
+                    'status' => 200,
+                    'message' => 'Slot booked successfully.',
+                ]);
+            } else {
+                return response()->json([
+                    'status' => 422,
+                    'message' => 'First add service in cart then proceed.',
+                ]);
+            }
+        } else {
+            // Check if the user is not allowed to book a slot
+            $allowedUserTypes = ['client', 'hairdressingSalon', 'beautySalon'];
+            if (!in_array(Auth::user()->type, $allowedUserTypes)) {
+                return response()->json([
+                    'status' => 422,
+                    'message' => 'Only salon owners or clients can book slots.',
+                ]);
+            }
+
+            // Check if the slot is already booked
+            $checkSlot = Appointments::where('booking_slots_id', $request->slot_book_id)->first();
+            if ($checkSlot) {
+                return response()->json([
+                    'status' => 422,
+                    'message' => 'Slot is already booked.',
+                ]);
+            }
+
+            // Create a new appointment
+            Appointments::create([
+                'booking_slots_id' => $request->slot_book_id,
+                'booking_user_id' => Auth::id(),
+            ]);
+
+            return response()->json([
+                'status' => 200,
+                'message' => 'Slot booked successfully!',
+            ]);
         }
     }
     public function saveAvaibleSlots(Request $request)
@@ -515,15 +513,29 @@ class ProfileController extends Controller
     public function getfreelancerBooking()
     {
         $currentDate = now()->toDateString();
+        if (Auth::user()->type == 'client') {
+            $getProfileData = Appointments::where(
+                [
+                    ['booking_user_id', Auth::id()],
+                    ['created_at', '>=', $currentDate]
+                ]
 
-        $getProfileData = Bookings::where(
-            [
-                ['user_id', '=', Auth::id()],
-                ['date', '>=', $currentDate]
-            ]
+            )
+                ->with(['clientUser', 'userBookingSlots', 'userBookingSlots.bookings', 'userBookingSlots.bookings.FreelancerUser'])
+                ->get();
+        } else {
+            $getProfileData = Bookings::where(
+                [
+                    ['user_id', '=', Auth::id()],
+                    ['date', '>=', $currentDate]
+                ]
 
-        )->with(['user', 'bookingTimeSlots', 'appointment_s', 'appointment_s.userAppointment'])
-            ->get();
+            )
+                ->with(['user', 'bookingTimeSlots', 'appointment_s', 'appointment_s.userAppointment'])
+                ->get();
+        }
+
+
 
         return response()->json([
             'status' => 200,
