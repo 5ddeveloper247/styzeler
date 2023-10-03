@@ -343,7 +343,7 @@
             </div>
 
             <!-- for desktop -->
-            <div class="reg_line d-none d-md-block">
+            <div class="reg_line d-none d-md-block none-modal">
                 <div class="d-flex justify-content-between">
                     <p>Freelancers Help Small Businesses Grow</p>
                     <a href="{{ route('register') }}" class="site_btn" style="border: #000000">Register <img
@@ -377,7 +377,8 @@
                     </span>
                 </h2>
                 <h1>To Hire</h1>
-                <a type="button" href="{{ route('businessOwner') }}"> <!-- packages2.html -->
+
+                <a type="button" href="{{ route('businessOwner') . '#inr' }}"> <!-- packages2.html -->
                     <img src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="" />
                 </a>
             </div>
@@ -419,16 +420,16 @@
 
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <!-- <div class="flexRow">
-                                       <div class="col">
-                                           <img src="assets/images/categ_bg_main_01.jpg" alt="">
-                                       </div>
-                                       <div class="col">
-                                           <img src="assets/images/categ_bg_main_02.jpg" alt="">
-                                       </div>
-                                       <div class="col">
-                                           <img src="assets/images/categ_bg_main_03.jpg" alt="">
-                                       </div>
-                                   </div> -->
+                                                                                                                                                                           <div class="col">
+                                                                                                                                                                               <img src="assets/images/categ_bg_main_01.jpg" alt="">
+                                                                                                                                                                           </div>
+                                                                                                                                                                           <div class="col">
+                                                                                                                                                                               <img src="assets/images/categ_bg_main_02.jpg" alt="">
+                                                                                                                                                                           </div>
+                                                                                                                                                                           <div class="col">
+                                                                                                                                                                               <img src="assets/images/categ_bg_main_03.jpg" alt="">
+                                                                                                                                                                           </div>
+                                                                                                                                                                       </div> -->
             <div class="flexRow" style="padding: 0px 38px">
                 <div class="col">
                     <div class="inner"
@@ -530,7 +531,8 @@
                         with valuable abilities that can take any business forward</p>
                 </div>
                 <div class="col col2" style="text-align: center">
-                    <a href="packages2.html" type="button"
+
+                    <a href="{{ route('businessOwner') . '#to_hire' }}" type="button"
                         style="background: transparent; border: 0; margin-top: 134px"> <img
                             src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="" />
                     </a>
@@ -589,21 +591,21 @@
         </div>
 
         <!-- <img src="assets/images/126-minr.jpg" alt="">
-                               <div class="row">
-                                   <div class="col-3 col-md-3 col-sm-3 ps-4">
-                                       <p>There are many reasons companies are turning to freelancers rather than hiring full-time staff.
-                                       </p>
-                                       <p>Freelancers are increasingly seen as highly skilled professionals with valuable abilities that
-                                           can take any business forward</p>
-                                   </div>
-                                   <div class="col-5 col-md-5 col-sm-5">
-                         
-                                   </div>
-                                   <div class="col-3 col-md-3 col-sm-3">
-                                       <p>Freelancers create an opportunity to expand the diversity of your company. Diversity helps
-                                           increase the flow of ideas and often leads to better business solutions.</p>
-                                   </div>
-                               </div> -->
+                                                                                                                                                                   <div class="row">
+                                                                                                                                                                       <div class="col-3 col-md-3 col-sm-3 ps-4">
+                                                                                                                                                                           <p>There are many reasons companies are turning to freelancers rather than hiring full-time staff.
+                                                                                                                                                                           </p>
+                                                                                                                                                                           <p>Freelancers are increasingly seen as highly skilled professionals with valuable abilities that
+                                                                                                                                                                               can take any business forward</p>
+                                                                                                                                                                       </div>
+                                                                                                                                                                       <div class="col-5 col-md-5 col-sm-5">
+                                                                                                                                                             
+                                                                                                                                                                       </div>
+                                                                                                                                                                       <div class="col-3 col-md-3 col-sm-3">
+                                                                                                                                                                           <p>Freelancers create an opportunity to expand the diversity of your company. Diversity helps
+                                                                                                                                                                               increase the flow of ideas and often leads to better business solutions.</p>
+                                                                                                                                                                       </div>
+                                                                                                                                                                   </div> -->
     </section>
     <!-- membership -->
     <section id="get_job">
@@ -618,18 +620,18 @@
             </div>
         </div>
         <!-- <div class="modal fade bd-example-modal-md" id="popupInfo-modal" role="dialog">
-                                   <div class="modal-dialog modal-md">
-                                       <div class="modal-content" style=" background-color: black; color: white; max-height:400px; overflow-y:auto; margin-top: 30%;">
-                                           <div class="modal-header" style=" border-bottom: 5px solid #766d48; ">
-                                               <h4 class="modal-title">Alert</h4>
-                                               <i class="close-modal" style="font-size:2rem;cursor:pointer;"><b>&times;</b></i>
-                                           </div>
-                                           <div class="modal-body my-5">
-                                               <p>To continue browsing the pages please chose a category</p>
-                                           </div>
-                                       </div>
-                                   </div>
-                               </div> -->
+                                                                                                                                                                       <div class="modal-dialog modal-md">
+                                                                                                                                                                           <div class="modal-content" style=" background-color: black; color: white; max-height:400px; overflow-y:auto; margin-top: 30%;">
+                                                                                                                                                                               <div class="modal-header" style=" border-bottom: 5px solid #766d48; ">
+                                                                                                                                                                                   <h4 class="modal-title">Alert</h4>
+                                                                                                                                                                                   <i class="close-modal" style="font-size:2rem;cursor:pointer;"><b>&times;</b></i>
+                                                                                                                                                                               </div>
+                                                                                                                                                                               <div class="modal-body my-5">
+                                                                                                                                                                                   <p>To continue browsing the pages please chose a category</p>
+                                                                                                                                                                               </div>
+                                                                                                                                                                           </div>
+                                                                                                                                                                       </div>
+                                                                                                                                                                   </div> -->
         <div class="modal fade bd-example-modal-md" id="popupInfo-modal" role="dialog">
             <div class="modal-dialog modal-md" style="width: 350px">
                 <div class="modal-content border border-warning"
@@ -651,6 +653,11 @@
     @endsection @push('script')
     <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
     <script>
+        $(function() {
+            $("#popupInfo-modal").modal("show");
+        });
+
+
         function isScrolledToClass(className) {
             var scrollPosition =
                 window.pageYOffset || document.documentElement.scrollTop;
@@ -668,17 +675,21 @@
         }
 
         // Usage
-        var targetClass = "mylogodiv";
+        var targetClass = "none-modal";
         var flag = "0";
         window.addEventListener("scroll", function() {
+
             if (isScrolledToClass(targetClass)) {
+
                 if (flag == "0") {
-                    if ($("#popupInfo-modal").is(":visible")) {} else {
-                        $("#popupInfo-modal").modal("show");
+
+                    if ($("#popupInfo-modal").is(":visible")) {
+                        $("#popupInfo-modal").modal("hide");
                         flag = "1";
                     }
                 }
             }
+            // if (isScrolledToClass(targetClass))
         });
         $(document).on("click", ".close-modal", function() {
             $(".modal").modal("hide");
