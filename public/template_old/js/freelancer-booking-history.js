@@ -32,8 +32,9 @@ $(function () {
             var freelancer_email = '';
             var freelancer_mobile = '';
             var freelancer_status = '';
-
+            var client_email = '';
             var client_name = '';
+            var client_phone = '';
             if (response && response.message && response.message.length === 0) {
                 $(".appointment-row").append('<div class="col-12 text-center">You have no bookings!</div>');
             } else {
@@ -49,16 +50,19 @@ $(function () {
                         response.appointments[i]["status"] === "cancel by Freelancer" ||
                         response.appointments[i]["status"] === "CANCELLED due to Expired Time") {
                         if (response.appointments[i]["appointment_s"] != null) {
-                            if (response.appointments[i]["appointment_s"]['user_appointment'] != null) {
-                                freelancer_name = response.appointments[i]["appointment_s"]['user_appointment']['name'];
-                                freelancer_email = response.appointments[i]["appointment_s"]['user_appointment']['email'];
-                                freelancer_mobile = response.appointments[i]["appointment_s"]['user_appointment']['phone'];
-                                freelancer_status = response.appointments[i]["status"];
+                            $.each(response.appointments[i]["appointment_s"], function (j) {
+                                if (response.appointments[i]["appointment_s"][j]['user_appointment'] != null) {
+                                    freelancer_name = response.appointments[i]["appointment_s"][j]['user_appointment']['name'];
+                                    freelancer_email = response.appointments[i]["appointment_s"][j]['user_appointment']['email'];
+                                    freelancer_mobile = response.appointments[i]["appointment_s"][j]['user_appointment']['phone'];
+                                    freelancer_status = response.appointments[i]["status"];
 
-                                client_name = response.appointments[i]["user"]['name'];
-                                client_email = response.appointments[i]["user"]['email'];
-                                client_phone = response.appointments[i]["user"]['phone'];
-                            }
+                                    client_name = response.appointments[i]["user"]['name'];
+                                    client_email = response.appointments[i]["user"]['email'];
+                                    client_phone = response.appointments[i]["user"]['phone'];
+                                }
+                            })
+
 
                         }
                         $(".appointment-row")

@@ -32,14 +32,16 @@
                             <a class="dropdown-item" href="{{ route('Profile') }}">Profile</a>
                             <a class="dropdown-item" href="{{ route('freelancerBooking') }}">Your
                                 Booking</a>
-                            <a class="dropdown-item" href="terms-conditions.html">Terms & Conditions</a>
-                            <a class="dropdown-item" href="privacy-notice.html">Privacy Policy</a>
-                            <a class="dropdown-item" href="webstite-terms-condition.html">Website Terms &
+                            <a class="dropdown-item" href="{{ route('termAndConditions') }}">Terms &
                                 Conditions</a>
-                            <a class="dropdown-item" href="freelancer-terms-conditions.html">Freelancer
+                            <a class="dropdown-item" href="{{ route('privacyPolicy') }}">Privacy Policy</a>
+                            <a class="dropdown-item" href="{{ route('webTermAndConditions') }}">Website
                                 Terms &
                                 Conditions</a>
-                            <a class="dropdown-item" href="faq.html">FAQ</a>
+                            <a class="dropdown-item" href="{{ route('freelancerTermAndConditions') }}">Freelancer
+                                Terms &
+                                Conditions</a>
+                            <a class="dropdown-item" href="{{ route('faqs') }}">FAQ</a>
                         </div>
                     </button>
                 @else

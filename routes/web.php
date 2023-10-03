@@ -86,6 +86,8 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/privacyPolicy', 'FrontEndController@privacyPolicy')->name('privacyPolicy');
     Route::get('/termAndConditions', 'FrontEndController@termAndConditions')->name('termAndConditions');
     Route::get('/webTermAndConditions', 'FrontEndController@webTermAndConditions')->name('webTermAndConditions');
+    Route::get('/freelancerTermAndConditions', 'FrontEndController@freelancerTermAndConditions')->name('freelancerTermAndConditions');
+    Route::get('/faqs', 'FrontEndController@faqs')->name('faqs');
 
 
     Route::get('/barber', 'FrontEndController@barber')->name('barber');

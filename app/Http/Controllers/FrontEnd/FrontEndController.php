@@ -12,6 +12,7 @@ use App\Models\Cart;
 use App\Models\Cart_line;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class FrontEndController extends Controller
 {
@@ -104,6 +105,10 @@ class FrontEndController extends Controller
     {
         return view('web.webTermAndConditions');
     }
+    public function freelancerTermAndConditions()
+    {
+        return view('web.freelancerTermAndConditions');
+    }
 
     public function termAndConditions()
     {
@@ -113,6 +118,10 @@ class FrontEndController extends Controller
     public function privacyPolicy()
     {
         return view('web.privacyPolicy');
+    }
+    public function faqs()
+    {
+        return view('web.faqs');
     }
 
     public function homeServices()
@@ -196,101 +205,101 @@ class FrontEndController extends Controller
         $data['blogs'] = Blog::where('status', 'active')->get();
         return view('web.blogs')->with($data);
     }
-    
+
     public function servicesBodywaxing()
     {
-    	return view('web.servicesBodywaxing');
+        return view('web.servicesBodywaxing');
     }
     public function servicesEyebrows()
     {
-    	return view('web.servicesEyebrows');
+        return view('web.servicesEyebrows');
     }
-    
+
     public function servicesManiPedi()
     {
-    	return view('web.servicesManiPedi');
+        return view('web.servicesManiPedi');
     }
-    
+
     public function servicesFacial()
     {
-    	return view('web.servicesFacial');
+        return view('web.servicesFacial');
     }
-    
+
     public function servicesMassage()
     {
-    	return view('web.servicesMassage');
+        return view('web.servicesMassage');
     }
-    
+
     public function servicesLadies()
     {
-    	return view('web.servicesLadies');
+        return view('web.servicesLadies');
     }
-    
+
     public function servicesMakeup()
     {
-    	return view('web.servicesMakeup');
+        return view('web.servicesMakeup');
     }
-    
+
     public function servicesGents()
     {
-    	return view('web.servicesGents');
+        return view('web.servicesGents');
     }
-    
+
     public function bookFreelancer()
     {
-    	if(!isset(Auth::user()->id)){
-			return redirect()->back();;
-		}
-		
-		$cart = Cart::with('cart_lines')->where('user_id', Auth::user()->id)->where('status', 'active')->first();
-		
-		$cartLines = isset($cart->cart_lines) ? $cart->cart_lines : '';
-		
-    	
-    	$types = array();
-    	$filterUser = array();
-    	
-    	if(!empty($cartLines) && $cartLines != ''){
-    		foreach ($cartLines as $row){
-    			$types[] = $row->item_service;
-    		}
-    	}
-    	
-    	$users = User::where('type','!=' , 'admin')->where('status', 'Active')->get();
-    	
-    	if(!empty($users)){
-    		foreach ($users as $user){
-    			
-    			$userdata = $user->data;
-    			
-    			if(!empty($userdata)){
-    				
-    				foreach ($userdata as $row){
-    					
-    					if(count($types) > 0){
-    						
-    						foreach ($types as $type){
-    							
-    							if(in_array($type, $row)){
-    								if(!in_array($user->id, $filterUser)){
-    									$filterUser[] = $user->id;
-    								}
-    							}
-    						}
-    					}
-    				}
-    			}
-    		}
-    	}
-    	
-    	$data['users'] = User::whereIn('id', $filterUser)->get();
-    	$data['cart_exist'] = isset($cart->cart_lines) ? 'true' : 'false';
-    	
-    	return view('web.bookFreelancer')->with($data);
+        if (!isset(Auth::user()->id)) {
+            return redirect()->back();;
+        }
+
+        $cart = Cart::with('cart_lines')->where('user_id', Auth::user()->id)->where('status', 'active')->first();
+
+        $cartLines = isset($cart->cart_lines) ? $cart->cart_lines : '';
+
+
+        $types = array();
+        $filterUser = array();
+
+        if (!empty($cartLines) && $cartLines != '') {
+            foreach ($cartLines as $row) {
+                $types[] = $row->item_service;
+            }
+        }
+
+        $users = User::where('type', '!=', 'admin')->where('status', 'Active')->get();
+
+        if (!empty($users)) {
+            foreach ($users as $user) {
+
+                $userdata = $user->data;
+
+                if (!empty($userdata)) {
+
+                    foreach ($userdata as $row) {
+
+                        if (count($types) > 0) {
+
+                            foreach ($types as $type) {
+
+                                if (in_array($type, $row)) {
+                                    if (!in_array($user->id, $filterUser)) {
+                                        $filterUser[] = $user->id;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        $data['users'] = User::whereIn('id', $filterUser)->get();
+        $data['cart_exist'] = isset($cart->cart_lines) ? 'true' : 'false';
+
+        return view('web.bookFreelancer')->with($data);
     }
-    
-    
-    
+
+
+
     public function Profile()
     {
         $data = User::findOrFail(Auth::user()->id);
