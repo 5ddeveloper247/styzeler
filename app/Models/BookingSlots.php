@@ -19,6 +19,6 @@ class BookingSlots extends Model
 
     public function appointments()
     {
-        return $this->hasMany(Appointments::class, 'booking_slot_id');
+        return $this->hasMany(Appointments::class, 'booking_slots_id');
     }
 }

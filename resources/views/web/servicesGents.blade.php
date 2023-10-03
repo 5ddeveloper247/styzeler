@@ -93,9 +93,15 @@
 										<img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
 									</div>
 									<div class="btn_block">
-										<a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
-											<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
-										</a>
+										@if(@$tokens>0)
+											<a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
+												<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
+											</a>
+										@else
+											<a href="javascript:;" class="book_freelance_btn error-booking">
+												<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
+											</a>
+										@endif
 										<ul class="check_list">
 											<li><img src="{{ asset('template_new/assets/images/tick2.svg') }}" alt=""> All candidates are DBS verified</li>
 											<li><img src="{{ asset('template_new/assets/images/tick2.svg') }}" alt=""> At - Home service 24/7</li>
@@ -120,6 +126,22 @@
 			</div>
 		</div>
 	</div>
+	<!-- Booking Fail Message-->
+	<div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
+    	<div class="modal-dialog modal-md" style="width: 350px">
+        	<div class="modal-content border border-warning"
+            	style="background-color: black; color: white; max-height: 1000px; overflow-y: auto; margin-top: 30%; margin-left: 10%;">
+            	<div class="modal-header" style="border-bottom: 5px solid #766d48">
+                	<h4 class="modal-title fs-1">Alert</h4>
+                    <i class="close-modal" style="font-size: 2rem; cursor: pointer"><b>&times;</b></i>
+              	</div>
+             	<div class="modal-body my-5">
+                	<p class="fs-2">To continue book freelancer first buy package.</p>
+             	</div>
+          	</div>
+      	</div>
+  	</div>
+	
 	
 </section>
 

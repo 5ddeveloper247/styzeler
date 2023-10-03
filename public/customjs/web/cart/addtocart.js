@@ -1,8 +1,14 @@
 $(document).ready(function () {
-
 	
-
 	
+	
+	
+	$(document).on('click', '.close-modal', function (e) {
+		$("#fail-modal").modal('hide');
+	});
+	$(document).on('click', '.error-booking', function (e) {
+		$("#fail-modal").modal('show');
+	});
 
 });
 
