@@ -75,5 +75,9 @@
 @endsection
 
 @push('script')
-
+<script>
+$(document).ready(function () {
+	localStorage.removeItem('bookType');
+});
+</script>
 @endpush

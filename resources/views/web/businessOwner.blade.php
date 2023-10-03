@@ -2,6 +2,86 @@
 
 @push('css')
     <style>
+    	#packages .modal {
+            --bs-modal-width: 57rem;
+        }
+
+        /* Style the entire payment form container */
+        #payment-form {
+            max-width: 55rem;
+            margin: 0 auto;
+            padding: 20px;
+            color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            background-color: transparent;
+        }
+
+        .InputElement {
+            color: #fff;
+        }
+
+        /* Style the card element container */
+        #card-element {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background: lavender;
+        }
+
+        /* Style the card error message */
+        #card-errors {
+            color: #ff0000;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+
+        #pay_btn {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-transform: capitalize;
+            width: 100%
+        }
+
+        #pay_btn:hover {
+            background-color: #0056b3;
+        }
+
+        .btn1 {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .customBtn {
+            color: #c4b9b0 !important;
+            border: 1px solid #c4b9b0;
+            border-radius: 0;
+            font-size: 18px;
+            transition-duration: 0.3s;
+            cursor: pointer;
+        }
         .site_btn {
             border: 0.2rem solid #000000;
         }
@@ -216,7 +296,7 @@
                                     </ul>
                                 </div>
                                 <div class="btn_blk">
-                                    <a href="booking.html" class="site_btn">Buy</a>
+                                    <a href="javascript:;" class="site_btn" onclick="paymentModal('16','1')">Buy</a>
                                     <a href="javascript:void(0)" class="eye_btn popup-pkg1"><img
                                             src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
                                 </div>
@@ -267,7 +347,7 @@
                                     </ul>
                                 </div>
                                 <div class="btn_blk">
-                                    <a href="booking.html" class="site_btn">Buy</a>
+                                    <a href="javascript:;" class="site_btn" onclick="paymentModal('96','8')">Buy</a>
                                     <a href="javascript:void(0)" class="eye_btn popup-pkg2"><img
                                             src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
                                 </div>
@@ -322,7 +402,7 @@
                                     </ul>
                                 </div>
                                 <div class="btn_blk">
-                                    <a href="booking.html" class="site_btn">Buy</a>
+                                    <a href="javascript:;" class="site_btn" onclick="paymentModal('125','12')">Buy</a>
                                     <a href="javascript:void(0)" class="eye_btn popup-pkg3"><img
                                             src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
                                 </div>
@@ -333,8 +413,7 @@
             </div>
         </section>
 
-        <div class="token"
-            style="background-image: url('{{ asset('template_new/assets/images/business_owner_main3.jpg') }}')">
+        <div class="token" style="background-image: url('{{ asset('template_new/assets/images/business_owner_main3.jpg') }}')">
             <div class="contain" data-aos="fade-up" data-aos-duration="1000">
                 <!-- <div class="btn_blk">
                     <a href="registration.html" class="site_btn"
@@ -360,27 +439,58 @@
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="btm_block">
                 <ul class="btn_list">
-                    <li>
-                        <a href="?" class="shadow_btn"
-                            style="
-                  font-size: 1.7rem;
-                  padding: 0 1rem;
-                  justify-content: space-between;
-                ">Hairdressing
-                            / Babers <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" /></a>
-                    </li>
-                    <li>
-                        <a href="?" class="shadow_btn"
-                            style="
-                  font-size: 1.7rem;
-                  padding: 0 1rem;
-                  justify-content: space-between;
-                ">Beauty
-                            / Spa <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" /></a>
-                    </li>
-                </ul>
+					<li>
+						<a href="javascript:;" class="shadow_btn" onclick="showHairdressingOwner();" style="font-size: 1.7rem; padding: 0 1rem; justify-content: space-between;">
+							Hairdressing / Babers 
+							<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
+						</a>
+					</li>
+					<li>
+						<a href="javascript:;" class="shadow_btn"  onclick="showBeautyOwner();" style="font-size: 1.7rem; padding: 0 1rem; justify-content: space-between;">
+							Beauty / Spa 
+							<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
+						</a>
+					</li>
+				</ul>
                 <img src="{{ asset('assets/images/business_lines.jpg') }}" alt="" />
             </div>
+            <div class="content-category-people row my-5" id="hairdressing_container">
+            	@if(isset($users))
+              	@foreach($users as $row)
+              	@if($row->type == 'hairdressingSalon')
+              		<div class="col-sm-4 col-lg-3">
+                		<a class="text-center" id="{{$row->id}}" href="{{ route('salonOwnerProfile') }}?id={{$row->id}}" style="color:gray;">
+                			<h2 class="color-1">{{$row->name}} {{$row->surname}}</h2>
+                			<div class="category-people py-3">
+                				<div class="picture">
+                					<img id="profile-image-id-0" alt="" width="100%" height="100%" src="{{ asset(isset($row->hero_image) ? $row->hero_image : 'template_old/images/blank.png') }}">
+                				</div>
+                			</div>
+                		</a>
+                	</div>
+             	@endif
+             	@endforeach
+            	@endif
+          	</div>
+              	
+          	<div class="content-category-people row my-5" id="beautyspa_container" style="display:none;">
+              	@if(isset($users))
+           		@foreach($users as $row)
+               	@if($row->type == 'beautySalon')
+                	<div class="col-sm-4 col-lg-3">
+                		<a class="text-center" id="{{$row->id}}" href="{{ route('salonOwnerProfile') }}?id={{$row->id}}" style="color:gray;">
+                			<h2 class="color-1">{{$row->name}} {{$row->surname}}</h2>
+                			<div class="category-people py-3">
+                				<div class="picture">
+                					<img id="profile-image-id-0" alt="" width="100%" height="100%" src="{{ asset(isset($row->hero_image) ? $row->hero_image : 'template_old/images/blank.png') }}">
+                				</div>
+                			</div>
+                		</a>
+                	</div>
+             	@endif
+             	@endforeach
+            	@endif
+        	</div>
         </div>
         <div class="modal fade bd-example-modal-md" id="popup-pkg1" role="dialog">
             <div class="modal-dialog modal-md">
@@ -491,9 +601,134 @@
 
             </div>
         </div>
+        <div class="modal fade bd-example-modal-md" id="payment_modal" role="dialog">
+            <div class="modal-dialog modal-md ">
+                <div class="modal-content border border-warning"
+                    style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                    <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                        <h4 class="modal-title">Payment</h4>
+                        <i class="close-modal" style="font-size: 2rem;"><b>&times;</b></i>
+                    </div>
+                    <div class="modal-body">
+                        <form action="{{ route('stripe.charge') }}" method="post" id="payment-form">
+                            @csrf
+                            <div class="form-group">
+                                <input type="hidden" name="payment_amount" id="payment_amount">
+                                <input type="hidden" name="payment_tokens" id="payment_tokens">
+                                <label for="card-element">
+                                    Credit or Debit card
+                                </label>
+                                <div id="card-element">
+                                    <!-- A Stripe Element will be inserted here. -->
+                                </div>
+
+                                <!-- Used to display form errors. -->
+                                <div id="card-errors" role="alert"></div>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="pay_btn">Pay</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade bd-example-modal-md" id="register_modal" role="dialog">
+            <div class="modal-dialog modal-md ">
+                <div class="modal-content border border-warning"
+                    style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                    <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                        <h4 class="modal-title">Registeration is Free</h4>
+                        <i class="close-modal" style="font-size: 2rem;"><b>&times;</b></i>
+                    </div>
+                    <div class="modal-body">
+                        Do you want to register your self?
+                    </div>
+                    <div class="modal-footer text-center">
+                        <a type="" href="{{ route('registration') }}" class="btn1 customBtn">Ok</a>
+                        <a type="button" class="btn1 customBtn" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
     <!-- business -->
 @endsection
 
 @push('script')
+	<script src="https://js.stripe.com/v3/"></script>
+	<script>
+        const stripe = Stripe('{{ config('keys.STRIPE_PUBLISHABLE_KEY') }}');
+        const elements = stripe.elements();
+
+        const cardElement = elements.create('card');
+        cardElement.mount('#card-element');
+
+        const form = document.getElementById('payment-form');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const {
+                token,
+                error
+            } = await stripe.createToken(cardElement);
+
+            if (error) {
+                const errorElement = document.getElementById('card-errors');
+                errorElement.textContent = error.message;
+            } else {
+                const tokenInput = document.createElement('input');
+                tokenInput.setAttribute('type', 'hidden');
+                tokenInput.setAttribute('name', 'stripeToken');
+                tokenInput.setAttribute('value', token.id);
+                form.appendChild(tokenInput);
+
+                form.submit();
+            }
+        });
+	</script>
+	<script>
+	  $(document).on("click", ".popup-pkg1", function () {
+	    $('#popup-pkg1').modal('show');
+	  });
+	  $(document).on("click", ".popup-pkg2", function () {
+	    $('#popup-pkg2').modal('show');
+	  });
+	  $(document).on("click", ".popup-pkg3", function () {
+	    $('#popup-pkg3').modal('show');
+	  });
+	  $(document).on("click", ".close-modal", function () {
+	    $('.modal').modal('hide');
+	  });
+	  $(document).on("click", ".show_message", function() {
+          $('#register_modal').modal('show');
+      });
+      function paymentModal(amount, tokens) {
+	  	$('#payment_amount').val(amount);
+	    $('#payment_tokens').val(tokens);
+	    $('#payment_modal').modal('show');
+	  }
+
+	  function showHairdressingOwner(){
+		$('#hairdressing_container').show();
+		$('#beautyspa_container').hide();
+			
+	  }
+	  function showBeautyOwner(){
+			
+		$('#hairdressing_container').hide();
+		$('#beautyspa_container').show();
+	  }
+  	</script>
+  	<script>
+        // Check if the 'error' key is present in the session data
+        @if (session('error'))
+            // Display Toastr notification
+            toastr.error("{{ session('error') }}");
+        @endif
+        @if (session('success'))
+            // Display Toastr notification
+            toastr.success("{{ session('success') }}");
+        @endif
+    </script>
 @endpush

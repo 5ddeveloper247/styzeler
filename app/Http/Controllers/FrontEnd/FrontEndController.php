@@ -10,6 +10,7 @@ use App\Models\Job_request;
 use App\Models\Blog;
 use App\Models\Cart;
 use App\Models\Cart_line;
+use App\Models\Membership;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
@@ -78,7 +79,8 @@ class FrontEndController extends Controller
 
     public function businessOwner()
     {
-        return view('web.businessOwner');
+    	$data['users'] = User::whereIn('type', ['hairdressingSalon', 'beautySalon'])->get();
+        return view('web.businessOwner')->with($data);
     }
 
     public function candidate()
@@ -319,7 +321,11 @@ class FrontEndController extends Controller
     public function Profile()
     {
         $data = User::findOrFail(Auth::user()->id);
-
+        if(isset(Auth::user()->id)){
+        	$membership = Membership::where('user_id', Auth::user()->id)->count();
+        }else{
+        	$membership = 0;
+        }
         return customView(
             'web.freelancerProfile',
             'web.ownerProfile',
@@ -332,7 +338,11 @@ class FrontEndController extends Controller
     {
 
         $data = User::findOrFail($request->id);
-
+        if(isset(Auth::user()->id)){
+        	$membership = Membership::where('user_id', Auth::user()->id)->count();
+        }else{
+        	$membership = 0;
+        }
         return customView(
             'web.freelancerProfileView',
             'web.salonOwnerProfile',

@@ -15,18 +15,30 @@
     <div class="contain">
         <div class="candidate_logo"><img src="{{ asset('template_new/assets/images/candidate_logo.jpg') }}" alt=""></div>
         <ul class="btn_list" data-aos="fade-up" data-aos-duration="1000">
-            <li><a href="?" class="shadow_btn" style="font-size: 1.7rem;
-                padding: 0 1rem;
-                justify-content: space-between;text-align: left;">Hair Stylistes <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a></li>
-            <li><a href="?" class="shadow_btn" style="font-size: 1.7rem;
-                padding: 0 1rem;
-                justify-content: space-between;text-align: left;">Beauticians <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a></li>
-            <li><a href="?" class="shadow_btn" style="font-size: 1.7rem;
-                padding: 0 1rem;
-                justify-content: space-between;text-align: left;">Barbers <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a></li>
-            <li><a href="?" class="shadow_btn" style="font-size: 1.7rem;
-                padding: 0 1rem;
-                justify-content: space-between;text-align: left;">Wedding Stylistes <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a></li>
+            <li>
+            	<a href="{{route('hairstylist')}}" class="shadow_btn" style="font-size: 1.7rem; padding: 0 1rem;
+                	justify-content: space-between;text-align: left;">Hair Stylistes 
+                	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                </a>
+          	</li>
+            <li>
+            	<a href="{{route('beautician')}}" class="shadow_btn" style="font-size: 1.7rem; padding: 0 1rem;
+                	justify-content: space-between;text-align: left;">Beauticians 
+                	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                </a>
+           	</li>
+            <li>
+            	<a href="{{route('barber')}}" class="shadow_btn" style="font-size: 1.7rem; padding: 0 1rem;
+                	justify-content: space-between;text-align: left;">Barbers 
+                	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                </a>
+           	</li>
+            <li>
+            	<a href="{{route('weddingStylist')}}" class="shadow_btn" style="font-size: 1.7rem; padding: 0 1rem;
+                	justify-content: space-between;text-align: left;">Wedding Stylistes 
+                	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                </a>
+          	</li>
         </ul>
         <div class="flexBlocks" data-aos="fade-up" data-aos-duration="1000">
             <div class="column">

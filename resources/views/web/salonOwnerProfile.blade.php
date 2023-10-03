@@ -72,7 +72,7 @@
             <div class="showProfile col-10 text-left mt-4" id="showProfile">
                 <div class="name row ">
                     <label class="color-1 col-lg-3">Owner's Name : </label>
-                    <p class="col-lg-9" id="ownerName"></p>
+                    	<p class="col-lg-9" id="ownerName"></p>
                 </div>
                 <div class="Address row ">
                     <label class="color-1 col-lg-3">Owner's Address : </label>

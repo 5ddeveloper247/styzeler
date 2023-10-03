@@ -192,7 +192,9 @@
 
                 <div class="name row ">
                     <label class="color-1 col-lg-2">Name : </label>
+                    @if(@$membership > 0)
                     <p class="col-lg-10" id="ownerName"></p>
+                    @endif
                 </div>
 
                 <div class="age row">
@@ -234,7 +236,9 @@
 
                 <div class="email row">
                     <label class="color-1 col-lg-2">Email : </label>
+                    @if(@$membership > 0)
                     <p class="col-lg-10" id="ownerEmail"></p>
+                    @endif
                 </div>
 
                 <div class="status row">

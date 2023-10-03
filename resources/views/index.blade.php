@@ -653,6 +653,9 @@
     @endsection @push('script')
     <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
     <script>
+	    $(document).ready(function () {
+	    	localStorage.removeItem('bookType');
+	    });
         $(function() {
             $("#popupInfo-modal").modal("show");
         });
