@@ -217,7 +217,7 @@ $(function () {
 
                 $.each(response.appointments, function (i) {
 
-                    if (response.appointments[i]["appointment_s"] != null && response.appointments[i]["status"] !== "cancel"
+                    if (response.appointments[i]["appointment_s"] != '' && response.appointments[i]["status"] !== "cancel"
                         && response.appointments[i]["status"] !== "CANCELLED"
                         && response.appointments[i]["status"] !== "CANCELLED by Salon Owner"
                         && response.appointments[i]["status"] !== "cancel by Freelancer"
@@ -228,13 +228,17 @@ $(function () {
                         let appDate = response.appointments[i]["_AppointmentDate"];
                         // refinedAvaliableDate(response.appointments[i]["availableDays"]);
 
-                        if (response.appointments[i]["appointment_s"] != null) {
-                            if (response.appointments[i]["appointment_s"]['user_appointment'] != null) {
-                                client_name = response.appointments[i]["appointment_s"]['user_appointment']['name'];
-                                client_email = response.appointments[i]["appointment_s"]['user_appointment']['email'];
-                                client_mobile = response.appointments[i]["appointment_s"]['user_appointment']['phone'];
-                                client_status = response.appointments[i]["status"];
-                            }
+                        if (response.appointments[i]["appointment_s"] != '') {
+                            console.log(response.appointments[i]["appointment_s"])
+                            $.each(response.appointments[i]["appointment_s"], function (j) {
+                                if (response.appointments[i]["appointment_s"][j]['user_appointment'] != '') {
+                                    freelancer_name = response.appointments[i]["appointment_s"][j]['user_appointment']['name'];
+                                    freelancer_email = response.appointments[i]["appointment_s"][j]['user_appointment']['email'];
+                                    freelancer_mobile = response.appointments[i]["appointment_s"][j]['user_appointment']['phone'];
+                                    freelancer_status = response.appointments[i]['status'];
+                                }
+                            })
+
 
                         }
 
@@ -245,16 +249,16 @@ $(function () {
                                 '</span>' + '</div>' + '</a>' +
                                 '<div class="col-8 " id="details' + id + '">' +
                                 '<span class="name_' + i + '" style="overflow-wrap: break-word;">' + '<p><strong>Salon Owner/Client: </strong>' +
-                                client_name + '</p>' +
+                                freelancer_name + '</p>' +
                                 '</span>' + '<div class="collapse" id="collapse_' + i + '">' +
                                 '<span class="email_' + i + '" style="overflow-wrap: break-word;">' + '<p><strong>Email: </strong>' +
-                                client_email + '</p>' +
+                                freelancer_email + '</p>' +
                                 '</span>' +
                                 '<span class="mobile_' + i + '">' + '<p><strong>Mobile: </strong>' +
-                                client_mobile + '</p>' +
+                                freelancer_mobile + '</p>' +
                                 '</span>' +
                                 '<span class="status_' + i + '">' + '<p><strong>Status: </strong>' +
-                                client_status + '</p>' +
+                                freelancer_status + '</p>' +
                                 '</span>' + '<div id="show' + i + '">' +
                                 // '<p id="show-dates'+i+'"><strong>Avaliable Dates: </strong>' +
                                 //  '</p>' +

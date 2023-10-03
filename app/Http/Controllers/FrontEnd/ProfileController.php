@@ -524,6 +524,7 @@ class ProfileController extends Controller
                 ->with(['clientUser', 'userBookingSlots', 'userBookingSlots.bookings', 'userBookingSlots.bookings.FreelancerUser'])
                 ->get();
         } else {
+
             $getProfileData = Bookings::where(
                 [
                     ['user_id', '=', Auth::id()],
