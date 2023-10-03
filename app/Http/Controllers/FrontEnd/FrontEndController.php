@@ -199,41 +199,57 @@ class FrontEndController extends Controller
     
     public function servicesBodywaxing()
     {
-    	return view('web.servicesBodywaxing');
+    	$user = User::where('id', Auth::user()->id)->first();
+    	$data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+    	return view('web.servicesBodywaxing')->with($data);
     }
     public function servicesEyebrows()
     {
-    	return view('web.servicesEyebrows');
+    	$user = User::where('id', Auth::user()->id)->first();
+    	$data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+    	return view('web.servicesEyebrows')->with($data);
     }
     
     public function servicesManiPedi()
     {
-    	return view('web.servicesManiPedi');
+    	$user = User::where('id', Auth::user()->id)->first();
+    	$data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+    	return view('web.servicesManiPedi')->with($data);
     }
     
     public function servicesFacial()
     {
-    	return view('web.servicesFacial');
+    	$user = User::where('id', Auth::user()->id)->first();
+    	$data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+    	return view('web.servicesFacial')->with($data);
     }
     
     public function servicesMassage()
     {
-    	return view('web.servicesMassage');
+    	$user = User::where('id', Auth::user()->id)->first();
+    	$data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+    	return view('web.servicesMassage')->with($data);
     }
     
     public function servicesLadies()
     {
-    	return view('web.servicesLadies');
+    	$user = User::where('id', Auth::user()->id)->first();
+    	$data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+    	return view('web.servicesLadies')->with($data);
     }
     
     public function servicesMakeup()
     {
-    	return view('web.servicesMakeup');
+    	$user = User::where('id', Auth::user()->id)->first();
+    	$data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+    	return view('web.servicesMakeup')->with($data);
     }
     
     public function servicesGents()
     {
-    	return view('web.servicesGents');
+    	$user = User::where('id', Auth::user()->id)->first();
+    	$data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+    	return view('web.servicesGents')->with($data);
     }
     
     public function bookFreelancer()

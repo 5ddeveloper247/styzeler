@@ -171,113 +171,112 @@
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="row">
-                                                        <div id="top_1" class="col-md-7 mb-4 add_to_cart"
-                                                            data-time="" data-price="" data-type="" data-subtype=""
-                                                            data-service="">
+                                                        <div id="top_1" class="col-md-7 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!-- 																<input type="text" class="input_box" value="" >  -->
                                                                 <p class="input_box "></p>
-                                                                <span><i class="fas fa-plus my-1"
-                                                                        style="color: #9f866d;cursor:pointer;"></i></span>
+                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
+                                                                	data-subtype="" data-service="">
+                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="row">
-                                                        <div id="top_2" class="col-md-7 mb-4 add_to_cart"
-                                                            data-time="" data-price="" data-type="" data-subtype=""
-                                                            data-service="">
+                                                        <div id="top_2" class="col-md-7 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!-- 																<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box "></p>
-                                                                <span><i class="fas fa-plus my-1 "
-                                                                        style="color: #9f866d;cursor:pointer;"></i></span>
+                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
+                                                                	data-subtype="" data-service="">
+                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="row">
-                                                        <div id="top_3" class="col-md-7 mb-4 add_to_cart"
-                                                            data-time="" data-price="" data-type="" data-subtype=""
-                                                            data-service="">
+                                                        <div id="top_3" class="col-md-7 mb-4 ">
+                                                            <div class="input_box_wrap d-flex">
+                                                                <p class="input_box "></p>
+                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
+                                                                	data-subtype="" data-service="">
+                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                </span>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <div class="row">
+                                                        <div id="top_4" class="col-md-7 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!-- 																<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box "></p>
-                                                                <span><i class="fas fa-plus my-1"
-                                                                        style="color: #9f866d;cursor:pointer;"></i></span>
+                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
+                                                                	data-subtype="" data-service="">
+                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="row">
-                                                        <div id="top_4" class="col-md-7 mb-4 add_to_cart"
-                                                            data-time="" data-price="" data-type="" data-subtype=""
-                                                            data-service="">
+                                                        <div id="top_5" class="col-md-7 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!-- 																<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box "></p>
-                                                                <span><i class="fas fa-plus my-1 "
-                                                                        style="color: #9f866d;cursor:pointer;"></i></span>
+                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
+                                                                	data-subtype="" data-service="">
+                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="row">
-                                                        <div id="top_5" class="col-md-7 mb-4 add_to_cart"
-                                                            data-time="" data-price="" data-type="" data-subtype=""
-                                                            data-service="">
+                                                        <div id="top_6" class="col-md-7 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!-- 																<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box "></p>
-                                                                <span><i class="fas fa-plus my-1 "
-                                                                        style="color: #9f866d;cursor:pointer;"></i></span>
+                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
+                                                                	data-subtype="" data-service="">
+                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="row">
-                                                        <div id="top_6" class="col-md-7 mb-4 add_to_cart"
-                                                            data-time="" data-price="" data-type="" data-subtype=""
-                                                            data-service="">
+                                                        <div id="top_7" class="col-md-7 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!-- 																<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box "></p>
-                                                                <span><i class="fas fa-plus my-1"
-                                                                        style="color: #9f866d;cursor:pointer;"></i></span>
+                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
+                                                                	data-subtype="" data-service="">
+                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-12">
                                                     <div class="row">
-                                                        <div id="top_7" class="col-md-7 mb-4 add_to_cart"
-                                                            data-time="" data-price="" data-type="" data-subtype=""
-                                                            data-service="">
-                                                            <div class="input_box_wrap d-flex">
-                                                                <!-- 																<input type="text" class="input_box" value=""> -->
-                                                                <p class="input_box "></p>
-                                                                <span><i class="fas fa-plus my-1 "
-                                                                        style="color: #9f866d;cursor:pointer;"></i></span>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="col-12">
-                                                    <div class="row">
-                                                        <div id="top_8" class="col-md-7 mb-4 add_to_cart"
-                                                            data-time="" data-price="" data-type="" data-subtype=""
-                                                            data-service="">
+                                                        <div id="top_8" class="col-md-7 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!--
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box "></p>
-                                                                <span><i class="fas fa-plus my-1 "
-                                                                        style="color: #9f866d;cursor:pointer;"></i></span>
+                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
+                                                                	data-subtype="" data-service="">
+                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -300,9 +299,15 @@
                                             <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
                                         </div>
                                         <div class="btn_block">
-                                            <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
-												<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
-											</a>
+                                            @if(@$tokens>0)
+												<a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
+													<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
+												</a>
+											@else
+												<a href="javascript:;" class="book_freelance_btn error-booking">
+													<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
+												</a>
+											@endif
                                             <ul class="check_list">
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> All candidates are DBS verified</li>
@@ -330,6 +335,21 @@
                 </div>
             </div>
         </div>
+        <!-- Booking Fail Message-->
+		<div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
+	    	<div class="modal-dialog modal-md" style="width: 350px">
+	        	<div class="modal-content border border-warning"
+	            	style="background-color: black; color: white; max-height: 1000px; overflow-y: auto; margin-top: 30%; margin-left: 10%;">
+	            	<div class="modal-header" style="border-bottom: 5px solid #766d48">
+	                	<h4 class="modal-title fs-1">Alert</h4>
+	                    <i class="close-modal" style="font-size: 2rem; cursor: pointer"><b>&times;</b></i>
+	              	</div>
+	             	<div class="modal-body my-5">
+	                	<p class="fs-2">To continue book freelancer first buy package.</p>
+	             	</div>
+	          	</div>
+	      	</div>
+	  	</div>
 
     </section>
 @endsection
@@ -363,16 +383,16 @@
         function caseCat(i, subtype = '') {
             if (i == 'Cut_Blowdry') {
                 $("#top_1,#top_2,#top_3").show();
-                $("#top_1 p").html('Short  60 mints  &pound; 40');
-                $("#top_1").attr('data-time', '60').attr('data-price', '40').attr(
+                $("#top_1 p").html('Short  60 mints  &pound; 40').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '60').attr('data-price', '40').attr(
                     'data-service', 'Cut Blowdry').attr('data-subtype', subtype);
 
-                $("#top_2 p").html('Medium 60 mints  &pound;48');
-                $("#top_2").attr('data-time', '60').attr('data-price', '48').attr(
+                $("#top_2 p").html('Medium 60 mints  &pound;48').attr('onclick', "");
+                $("#top_2 span").show().attr('data-time', '60').attr('data-price', '48').attr(
                     'data-service', 'Cut Blowdry').attr('data-subtype', subtype);
 
-                $("#top_3 p").html('Long 60 mints  &pound; 56')
-                $("#top_3").attr('data-time', '60').attr('data-price', '56').attr(
+                $("#top_3 p").html('Long 60 mints  &pound; 56').attr('onclick', "");
+                $("#top_3 span").show().attr('data-time', '60').attr('data-price', '56').attr(
                     'data-service', 'Cut Blowdry').attr('data-subtype', subtype);
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -381,17 +401,18 @@
 
             if (i == 'Blowdry') {
                 $("#top_1,#top_2,#top_3").show();
-                $("#top_1 p").html('Medium 45 mints &pound;35');
-                $("#top_1").attr('data-time', '45').attr('data-price', '35').attr(
+                $("#top_1 p").html('Medium 45 mints &pound;35').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '45').attr('data-price', '35').attr(
                     'data-service', 'Blowdry').attr('data-subtype', subtype);
 
-                $("#top_2 p").html('Long 60 mints  &pound; 40');
-                $("#top_2").attr('data-time', '60').attr('data-price', '40').attr(
+                $("#top_2 p").html('Long 60 mints  &pound; 40').attr('onclick', "");
+                $("#top_2 span").show().attr('data-time', '60').attr('data-price', '40').attr(
                     'data-service', 'Blowdry').attr('data-subtype', subtype);
 
-                $("#top_3").attr('data-time', '90').attr('data-price', '72').attr(
+                $("#top_3 p").html('B+Updo 90 mints &pound; 72').attr('onclick', "");
+                $("#top_3 span").show().attr('data-time', '90').attr('data-price', '72').attr(
                     'data-service', 'Blowdry').attr('data-subtype', subtype);
-                $("#top_3 p").html('B+Updo 90 mints &pound; 72');
+                
 
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -402,20 +423,20 @@
             if (i == 'Color') {
                 $("#top_1,#top_2,#top_3,#top_4").show();
                 $("#description").hide();
-                $("#top_1 p").html('Roots +Length  90 mints  &pound; 48');
-                $("#top_1").attr('data-time', '90').attr('data-price', '48')
+                $("#top_1 p").html('Roots +Length  90 mints  &pound; 48').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '90').attr('data-price', '48')
                     .attr('data-service', 'Color').attr('data-subtype', subtype);
 
-                $("#top_2 p").html('Roots  60 mints   &pound; 40');
-                $("#top_2").attr('data-time', '60').attr('data-price', '40').attr(
+                $("#top_2 p").html('Roots  60 mints   &pound; 40').attr('onclick', "");
+                $("#top_2 span").show().attr('data-time', '60').attr('data-price', '40').attr(
                     'data-service', 'Color').attr('data-subtype', subtype);
 
-                $("#top_3 p").html('+ Blow-Dry');
-                $("#top_3").attr('data-time', '').attr('data-price', '').attr(
+                $("#top_3 p").html('+ Blow-Dry').attr('onclick', "caseCat('Blowdry')");
+                $("#top_3 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Color').attr('data-subtype', subtype);
 
-                $("#top_4 p").html('+ Cut- Blow-Dry');
-                $("#top_4 p").attr('data-time', '').attr('data-price', '').attr(
+                $("#top_4 p").html('+ Cut- Blow-Dry').attr('onclick', "caseCat('Cut_Blowdry')");
+                $("#top_4 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Color').attr('data-subtype', subtype);
 
                 $("#top_5,#top_6,#top_7,#top_8").hide();
@@ -425,32 +446,32 @@
             if (i == 'Highlights') {
                 $("#top_1,#top_2,#top_3,#top_4,#top_5,#top_6,#top_7").show();
 
-                $("#top_1 p").html('T-sectiom 60 mints  &pound; 48');
-                $("#top_1").attr('data-time', '60').attr('data-price', '48').attr(
+                $("#top_1 p").html('T-sectiom 60 mints  &pound; 48').attr('onclick', "");;
+                $("#top_1 span").show().attr('data-time', '60').attr('data-price', '48').attr(
                     'data-service', 'Highlights').attr('data-subtype', subtype);
 
-                $("#top_2 p").html('Half Head  90 minuts  &pound;88');
-                $("#top_2").attr('data-time', '90').attr('data-price', '88').attr(
+                $("#top_2 p").html('Half Head  90 minuts  &pound;88').attr('onclick', "");;
+                $("#top_2 span").show().attr('data-time', '90').attr('data-price', '88').attr(
                     'data-service', 'Highlights').attr('data-subtype', subtype);
 
-                $("#top_3 p").html('Full Head 120 mints &pound; 104');
-                $("#top_3").attr('data-time', '120').attr('data-price', '104')
+                $("#top_3 p").html('Full Head 120 mints &pound; 104').attr('onclick', "");;
+                $("#top_3 span").show().attr('data-time', '120').attr('data-price', '104')
                     .attr('data-service', 'Highlights').attr('data-subtype', subtype);
 
-                $("#top_4 p").html('+ Toner  10 ninuts  &pound; 15');
-                $("#top_4").attr('data-time', '10').attr('data-price', '15').attr(
+                $("#top_4 p").html('+ Toner  10 ninuts  &pound; 15').attr('onclick', "");;
+                $("#top_4 span").show().attr('data-time', '10').attr('data-price', '15').attr(
                     'data-service', 'Highlights').attr('data-subtype', subtype);
 
-                $("#top_5 p").html('+ Colour 30 ninuts  &pound; 30');
-                $("#top_5 p").attr('data-time', '30').attr('data-price', '30').attr(
+                $("#top_5 p").html('+ Colour 30 ninuts  &pound; 30').attr('onclick', "");;
+                $("#top_5 span").show().attr('data-time', '30').attr('data-price', '30').attr(
                     'data-service', 'Highlights').attr('data-subtype', subtype);
 
-                $("#top_6 p").html('+ Blow-Dry');
-                $("#top_6 p").attr('data-time', '').attr('data-price', '').attr(
+                $("#top_6 p").html('+ Blow-Dry').attr('onclick', "caseCat('Blowdry')");
+                $("#top_6  span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Highlights').attr('data-subtype', subtype);
 
-                $("#top_7 p").html('+ Cut- blow-ry');
-                $("#top_7").attr('data-price', '').attr(
+                $("#top_7 p").html('+ Cut- blow-ry').attr('onclick', "caseCat('Cut_Blowdry')");
+                $("#top_7 span").hide().attr('data-price', '').attr(
                     'data-service', 'Highlights').attr('data-subtype', subtype);
 
                 $("#top_8").hide();
@@ -461,32 +482,32 @@
             if (i == 'Balayage') {
                 $("#top_1,#top_2,#top_3,#top_4,#top_5,#top_6,#top_7").show();
 
-                $("#top_1 p").html('Half Head  60 mints  &pound; 96');
-                $("#top_1").attr('data-time', '60').attr('data-price', '96').attr(
+                $("#top_1 p").html('Half Head  60 mints  &pound; 96').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '60').attr('data-price', '96').attr(
                     'data-service', 'Balayage').attr('data-subtype', subtype);
 
-                $("#top_2 p").html('Full Head  90 mints  &pound; 112');
-                $("#top_2").attr('data-time', '90').attr('data-price', '112')
+                $("#top_2 p").html('Full Head  90 mints  &pound; 112').attr('onclick', "");
+                $("#top_2 span").show().attr('data-time', '90').attr('data-price', '112')
                     .attr('data-service', 'Balayage').attr('data-subtype', subtype);
 
-                $("#top_3 p").html('+ Root shadow 30 ninuts  &pound; 30');
-                $("#top_3").attr('data-time', '30').attr('data-price', '30')
+                $("#top_3 p").html('+ Root shadow 30 ninuts  &pound; 30').attr('onclick', "");
+                $("#top_3 span").show().attr('data-time', '30').attr('data-price', '30')
                     .attr('data-service', 'Balayage').attr('data-subtype', subtype);
 
-                $("#top_4 p").html('+ Toner  &pound; 15');
-                $("#top_4").attr('data-time', '').attr('data-price', '15').attr(
+                $("#top_4 p").html('+ Toner  &pound; 15').attr('onclick', "");
+                $("#top_4 span").show().attr('data-time', '').attr('data-price', '15').attr(
                     'data-service', 'Balayage').attr('data-subtype', subtype);
 
-                $("#top_5 p").html('+ Colour');
-                $("#top_5").attr('data-price', '').attr(
+                $("#top_5 p").html('+ Colour').attr('onclick', "caseCat('Color')");
+                $("#top_5 span").hide().attr('data-price', '').attr(
                     'data-service', 'Balayage').attr('data-subtype', subtype);
 
-                $("#top_6 p").html('+ Blow-Dry');
-                $("#top_6").attr('data-time', '').attr('data-price', '').attr(
+                $("#top_6 p").html('+ Blow-Dry').attr('onclick', "caseCat('Blowdry')");
+                $("#top_6 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Balayage').attr('data-subtype', subtype);
 
-                $("#top_7 p").html('+ Cut-Blow-Dry');
-                $("#top_7").attr('data-time', '').attr('data-price', '').attr(
+                $("#top_7 p").html('+ Cut-Blow-Dry').attr('onclick', "caseCat('Cut_Blowdry')");
+                $("#top_7 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Balayage').attr('data-subtype', subtype);
 
                 $("#top_8").hide();
@@ -498,35 +519,36 @@
             if (i == 'Full_Head_Bleach') {
 
                 $("#top_1,#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").show();
-                $("#top_1 p").html('Short  90 mints  &pound; 80');
-                $("#top_1").attr('data-time', '90').attr('data-price', '80').attr(
+                $("#top_1 p").html('Short  90 mints  &pound; 80').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '90').attr('data-price', '80').attr(
                     'data-service', 'Full Head Bleach').attr('data-subtype', subtype);
 
-                $("#top_2 p").html('Medium 90 mints  &pound;100');
-                $("#top_2").attr('data-time', '90').attr('data-price', '100').attr(
+                $("#top_2 p").html('Medium 90 mints  &pound;100').attr('onclick', "");
+                $("#top_2 span").show().attr('data-time', '90').attr('data-price', '100').attr(
                     'data-service', 'Full Head Bleach').attr('data-subtype', subtype);
 
-                $("#top_3 p").html('Long 120 mints  &pound; 140');
-                $("#top_3").attr('data-time', '120').attr('data-price', '140').attr(
+                $("#top_3 p").html('Long 120 mints  &pound; 140').attr('onclick', "");
+                $("#top_3 span").show().attr('data-time', '120').attr('data-price', '140').attr(
                     'data-service', 'Full Head Bleach').attr('data-subtype', subtype);
 
-                $("#top_4 p").html('Roots Bleach  90 mints  &pound; 50');
-                $("#top_4").attr('data-time', '90').attr('data-price', '50')
+                $("#top_4 p").html('Roots Bleach  90 mints  &pound; 50').attr('onclick', "");
+                $("#top_4 span").show().attr('data-time', '90').attr('data-price', '50')
                     .attr('data-service', 'Full Head Bleach').attr('data-subtype', subtype);
 
-                $("#top_5 p").html('+ Rots  Toner  15 mints  &pound;16').attr('data-time', '15').attr('data-price', '16')
+                $("#top_5 p").html('+ Rots  Toner  15 mints  &pound;16').attr('onclick', "");
+                $("#top_5 span").show().attr('data-time', '15').attr('data-price', '16')
+                .attr('data-service', 'Full Head Bleach').attr('data-subtype', subtype);
+
+                $("#top_6 p").html('+ Full Head Toner 45 mints  &pound;40').attr('onclick', "");
+                $("#top_6 span").show().attr('data-time', '45').attr('data-price', '40')
                     .attr('data-service', 'Full Head Bleach').attr('data-subtype', subtype);
 
-                $("#top_6 p").html('+ Full Head Toner 45 mints  &pound;40');
-                $("#top_6").attr('data-time', '45').attr('data-price', '40')
-                    .attr('data-service', 'Full Head Bleach').attr('data-subtype', subtype);
-
-                $("#top_7 p").html('+ Cut-Blow Dry');
-                $("#top_7").attr('data-time', '').attr('data-price', '').attr(
+                $("#top_7 p").html('+ Cut-Blow Dry').attr('onclick', "caseCat('Cut_Blowdry')");
+                $("#top_7 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Full Head Bleach').attr('data-subtype', subtype);
 
-                $("#top_8 p").html('+ Blow Dry');
-                $("#top_8").attr('data-time', '').attr('data-price', '').attr(
+                $("#top_8 p").html('+ Blow Dry').attr('onclick', "caseCat('Blowdry')");
+                $("#top_8 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Full Head Bleach').attr('data-subtype', subtype);
 
                 $("#descHeading").hide().text('');
@@ -536,15 +558,15 @@
             if (i == 'Colour_Correction') {
                 $("#top_1,#top_2,#top_3").show();
                 $("#top_1 p").html('To be quoted &pound;.........');
-                $("#top_1").attr('data-time', '').attr('data-price', '').attr(
+                $("#top_1 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Colour Correction').attr('data-subtype', subtype);
 
-                $("#top_2 p").html('+ Cut-Blow Dry');
-                $("#top_2").attr('data-time', '').attr('data-price', '').attr(
+                $("#top_2 p").html('+ Cut-Blow Dry').attr('onclick', "caseCat('Cut_Blowdry')");
+                $("#top_2 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Colour Correction').attr('data-subtype', subtype);
 
-                $("#top_3 p").html('+ Blow Dry');
-                $("#top_3").attr('data-time', '').attr('data-price', '').attr(
+                $("#top_3 p").html('+ Blow Dry').attr('onclick', "caseCat('Blowdry')");
+                $("#top_3 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Colour Correction').attr('data-subtype', subtype);
 
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
@@ -554,26 +576,25 @@
 
             if (i == 'Perm') {
                 $("#top_1,#top_2,#top_3,#top_4,#top_5").show();
-                $("#top_1 p").html('Short  60 minutes  &pound; 64');
-                $("#top_1").attr('data-time', '60').attr('data-price', '64').attr(
+                $("#top_1 p").html('Short  60 minutes  &pound; 64').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '60').attr('data-price', '64').attr(
                     'data-service', 'Perm').attr('data-subtype', subtype);
 
 
-                $("#top_2 p").html('Medium 60 minutes  &pound;88');
-                $("#top_2").attr('data-time', '60').attr('data-price', '88').attr(
+                $("#top_2 p").html('Medium 60 minutes  &pound;88').attr('onclick', "");
+                $("#top_2 span").show().attr('data-time', '60').attr('data-price', '88').attr(
                     'data-service', 'Perm').attr('data-subtype', subtype);
 
-                $("#top_3 p").html('Long 90 minutes  &pound; 104');
-                $("#top_3").attr('data-time', '90').attr('data-price', '104').attr(
+                $("#top_3 p").html('Long 90 minutes  &pound; 104').attr('onclick', "");
+                $("#top_3 span").show().attr('data-time', '90').attr('data-price', '104').attr(
                     'data-service', 'Perm').attr('data-subtype', subtype);
 
-                $("#top_4 p").html('+ Cut-Blow Dry');
-                $("#top_4").attr('data-time', '').attr('data-price', '').attr(
+                $("#top_4 p").html('+ Cut-Blow Dry').attr('onclick', "caseCat('Cut_Blowdry')");
+                $("#top_4 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Perm').attr('data-subtype', subtype);
 
-                $("#top_5 p").attr('data-price', '').attr(
-                    'data-service', 'Perm').attr('data-subtype', subtype);
-                $("#top_5").attr('data-time', '').attr('data-price', '').attr(
+                $("#top_5 p").html('+ Blow Dry').attr('onclick', "caseCat('Blowdry')");
+                $("#top_5 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Perm').attr('data-subtype', subtype);
 
                 $("#top_6,#top_7,#top_8").hide();
@@ -584,16 +605,16 @@
             if (i == 'Brazilian_Blow_Dry') {
                 $("#top_1,#top_2,#top_3,#description").show();
 
-                $("#top_1 p").html('Short  60 mints  &pound; 70');
-                $("#top_1").attr('data-time', '60').attr('data-price', '70').attr(
+                $("#top_1 p").html('Short  60 mints  &pound; 70').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '60').attr('data-price', '70').attr(
                     'data-service', 'Brazilian Blow Dry').attr('data-subtype', subtype);
 
-                $("#top_2 p").html('Medium 60 mints  &pound;90');
-                $("#top_2").attr('data-time', '60').attr('data-price', '90').attr(
+                $("#top_2 p").html('Medium 60 mints  &pound;90').attr('onclick', "");
+                $("#top_2 span").show().attr('data-time', '60').attr('data-price', '90').attr(
                     'data-service', 'Brazilian Blow Dry').attr('data-subtype', subtype);
 
-                $("#top_3 p").html('Long 60 mints  &pound; 100');
-                $("#top_3").attr('data-time', '60').attr('data-price', '100').attr(
+                $("#top_3 p").html('Long 60 mints  &pound; 100').attr('onclick', "");
+                $("#top_3 span").show().attr('data-time', '60').attr('data-price', '100').attr(
                     'data-service', 'Brazilian Blow Dry').attr('data-subtype', subtype);
 
                 $("#descHeading").hide().text('');
@@ -607,16 +628,16 @@
 
             if (i == 'keratin_Treatment') {
                 $("#top_1,#top_2,#top_3").show();
-                $("#top_1 p").html('Short  90 mints  &pound; 80');
-                $("#top_1").attr('data-time', '90').attr('data-price', '80').attr(
+                $("#top_1 p").html('Short  90 mints  &pound; 80').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '90').attr('data-price', '80').attr(
                     'data-service', 'Keratin Treatment').attr('data-subtype', subtype);
 
-                $("#top_2 p").html('Medium 120 mints  &pound;120');
-                $("#top_2").attr('data-time', '120').attr('data-price', '120').attr(
+                $("#top_2 p").html('Medium 120 mints  &pound;120').attr('onclick', "");
+                $("#top_2 span").show().attr('data-time', '120').attr('data-price', '120').attr(
                     'data-service', 'Keratin Treatment').attr('data-subtype', subtype);
 
-                $("#top_3 p").html('Long 150 mints  &pound; 140');
-                $("#top_3").attr('data-time', '150').attr('data-price', '140').attr(
+                $("#top_3 p").html('Long 150 mints  &pound; 140').attr('onclick', "");
+                $("#top_3 span").show().attr('data-time', '150').attr('data-price', '140').attr(
                     'data-service', 'Keratin Treatment').attr('data-subtype', subtype);
 
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
@@ -629,12 +650,12 @@
 
             if (i == 'Olaplex') {
                 $("#top_1,#top_2").show();
-                $("#top_1 p").html('Add-on &pound; 20');
-                $("#top_1").attr('data-time', '').attr('data-price', '20').attr(
+                $("#top_1 p").html('Add-on &pound; 20').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '').attr('data-price', '20').attr(
                     'data-service', 'Olaplex').attr('data-subtype', subtype);
 
-                $("#top_2 p").html('Stand alone service &pound; 40');
-                $("#top_2").attr('data-time', '').attr('data-price', '40').attr(
+                $("#top_2 p").html('Stand alone service &pound; 40').attr('onclick', "");
+                $("#top_2 span").show().attr('data-time', '').attr('data-price', '40').attr(
                     'data-service', 'Olaplex').attr('data-subtype', subtype);
 
                 $("#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
@@ -647,8 +668,8 @@
 
             if (i == 'Up_do') {
                 $("#top_1").show();
-                $("#top_1 p").html('60 mints  &pound; 50');
-                $("#top_1").attr('data-time', '60').attr('data-price', '50').attr(
+                $("#top_1 p").html('60 mints  &pound; 50').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '60').attr('data-price', '50').attr(
                     'data-service', 'Up do').attr('data-subtype', subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
@@ -660,6 +681,7 @@
 
 
             if (i == 'Bridal_Hair') {
+            	$("#top_1,#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#description").show();
                 $("#descHeading").hide().text('');
                 $("#description").show().text('Hair Bridal should be connected with the wedding page');
@@ -667,8 +689,8 @@
             if (i == 'Tape_in_Hair') {
 
                 $("#top_1").show();
-                $("#top_1 p").html('From &pound;350');
-                $("#top_1").attr('data-time', '').attr('data-price', '350').attr(
+                $("#top_1 p").html('From &pound;350').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '').attr('data-price', '350').attr(
                     'data-service', 'Tape in Hair').attr('data-subtype', subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
@@ -680,8 +702,8 @@
             if (i == 'Bonded_Hair') {
 
                 $("#top_1").show();
-                $("#top_1 p").html('From &pound;650');
-                $("#top_1").attr('data-time', '').attr('data-price', '650').attr(
+                $("#top_1 p").html('From &pound;650').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '').attr('data-price', '650').attr(
                     'data-service', 'Bonded Hair').attr('data-subtype', subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
@@ -693,8 +715,8 @@
             if (i == 'Micro_Ring') {
 
                 $("#top_1").show();
-                $("#top_1 p").html('From &pound;450');
-                $("#top_1").attr('data-time', '').attr('data-price', '450').attr(
+                $("#top_1 p").html('From &pound;450').attr('onclick', "");
+                $("#top_1 span").show().attr('data-time', '').attr('data-price', '450').attr(
                     'data-service', 'Micro Ring').attr('data-subtype', subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();

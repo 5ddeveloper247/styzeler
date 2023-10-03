@@ -345,7 +345,9 @@ class ProfileController extends Controller
         	
         	$tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
         	
-        	if($tokens == 0){
+        	$cartExist = Cart::where('slot_date', $request->book_date)->count();
+        
+        	if($tokens == 0 && $cartExist == 0){
         		return response()->json([
         				'status' => 422,
         				'message' => 'No enough tokens, first buy package.',
@@ -363,9 +365,11 @@ class ProfileController extends Controller
 				$cart->status = 'checkout';
 				$cart->update();
 				
-				$user = User::find(Auth::user()->id);
-				$user->tokens = $tokens-1;
-				$user->update();
+				if($cartExist == 0){
+					$user = User::find(Auth::user()->id);
+					$user->tokens = $tokens-1;
+					$user->update();
+				}
 				
 				return response()->json([
 						'status' => 200,
@@ -390,7 +394,7 @@ class ProfileController extends Controller
         	}
         	 
         	// Check if the slot is already booked
-        	$checkSlot = Appointments::where('booking_slot_id', $request->slot_book_id)->first();
+        	$checkSlot = Appointments::where('booking_slots_id', $request->slot_book_id)->first();
         	if ($checkSlot) {
         		return response()->json([
         				'status' => 422,
@@ -400,7 +404,7 @@ class ProfileController extends Controller
         	 
         	// Create a new appointment
         	Appointments::create([
-        			'booking_slot_id' => $request->slot_book_id,
+        			'booking_slots_id' => $request->slot_book_id,
         			'booking_user_id' => Auth::id(),
         	]);
         	 

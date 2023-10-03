@@ -15,14 +15,14 @@ return new class extends Migration
     {
         Schema::create('cart_line', function (Blueprint $table) {
             $table->id();
-            $table->integer('cart_id')->nullable()->default(null);
-            $table->string('item_text')->nullable()->default(null);
-            $table->string('item_time_min')->nullable()->default(null);
-            $table->string('item_price')->nullable()->default(null);
-            $table->string('item_type')->nullable()->default(null);
-            $table->string('item_sub_type')->nullable()->default(null);
-            $table->string('item_service')->nullable()->default(null);
-            $table->date('date')->nullable()->default(null);
+            $table->integer('cart_id')->nullable();
+            $table->string('item_text')->nullable();
+            $table->string('item_time_min')->nullable();
+            $table->string('item_price')->nullable();
+            $table->string('item_type')->nullable();
+            $table->string('item_sub_type')->nullable();
+            $table->string('item_service')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

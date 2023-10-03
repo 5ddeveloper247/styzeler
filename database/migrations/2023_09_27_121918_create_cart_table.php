@@ -15,11 +15,11 @@ return new class extends Migration
     {
         Schema::create('cart', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable()->default(null);
-            $table->integer('client_id')->nullable()->default(null);
-            $table->integer('slot_id')->nullable()->default(null);
-            $table->date('slot_date')->nullable()->default(null);
-            $table->string('status', 20)->nullable()->default(null);
+            $table->integer('user_id')->nullable();
+            $table->integer('client_id')->nullable();
+            $table->integer('slot_id')->nullable();
+            $table->date('slot_date')->nullable();
+            $table->string('status', 20)->nullable();
             $table->timestamps();
         });
     }
