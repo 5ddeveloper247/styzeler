@@ -205,7 +205,6 @@ $(function () {
         url: '/getfreelancerBooking',
         data: {},
         success: function (response) {
-            console.log(typeof (response));
             var client_name = '';
             var client_email = '';
             var client_mobile = '';
@@ -214,42 +213,35 @@ $(function () {
                 $(".appointment-row").append('<div class="col-12 text-center">You have no bookings!</div>');
             }
             else {
-
+                console.log(response.appointments);
                 $.each(response.appointments, function (i) {
 
-                    if (response.appointments[i]["appointment_s"] != '' && response.appointments[i]["status"] !== "cancel"
+                    if (response.appointments[i]["status"] !== "cancel"
                         && response.appointments[i]["status"] !== "CANCELLED"
                         && response.appointments[i]["status"] !== "CANCELLED by Salon Owner"
                         && response.appointments[i]["status"] !== "cancel by Freelancer"
                         && response.appointments[i]["status"] !== "CANCELLED due to Expired Time") {
 
                         let id = response.appointments[i]["id"];
+                        let freelancer_user = response.appointments[i]["user_booking_slots"]["bookings"]["freelancer_user"];
+                        let freelancer_username = freelancer_user['name'] + ' ' + freelancer_user['surname'];
+                        let freelancer_email = freelancer_user['name'] + ' ' + freelancer_user['email'];
+                        let freelancer_mobile = freelancer_user['name'] + ' ' + freelancer_user['phone'];
+                        let booking_status = response.appointments[i]["user_booking_slots"]["bookings"]['status'];
+                        let timestamp = response.appointments[i]["created_at"];
+                        let dateOnly = timestamp.split("T")[0];
+
                         let emailId = response.appointments[i]["_SalonEmail"];
-                        let appDate = response.appointments[i]["_AppointmentDate"];
-                        // refinedAvaliableDate(response.appointments[i]["availableDays"]);
-
-                        if (response.appointments[i]["appointment_s"] != '') {
-                            console.log(response.appointments[i]["appointment_s"])
-                            $.each(response.appointments[i]["appointment_s"], function (j) {
-                                if (response.appointments[i]["appointment_s"][j]['user_appointment'] != '') {
-                                    freelancer_name = response.appointments[i]["appointment_s"][j]['user_appointment']['name'];
-                                    freelancer_email = response.appointments[i]["appointment_s"][j]['user_appointment']['email'];
-                                    freelancer_mobile = response.appointments[i]["appointment_s"][j]['user_appointment']['phone'];
-                                    freelancer_status = response.appointments[i]['status'];
-                                }
-                            })
-
-
-                        }
+                        let appDate = response.appointments[i]["user_booking_slots"];
 
                         $(".appointment-row")
                             .append('<div class="col-4">' +
                                 '<span class="date_' + i + '">' + '<a data-toggle="collapse" data-parent="#accordion" href="#collapse_' + i + '">' + '<p><strong>Date: </strong> ' +
-                                response.appointments[i]["date"] + '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></p>' +
+                                dateOnly + '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></p>' +
                                 '</span>' + '</div>' + '</a>' +
                                 '<div class="col-8 " id="details' + id + '">' +
-                                '<span class="name_' + i + '" style="overflow-wrap: break-word;">' + '<p><strong>Salon Owner/Client: </strong>' +
-                                freelancer_name + '</p>' +
+                                '<span class="name_' + i + '" style="overflow-wrap: break-word;">' + '<p><strong>Freelancer Name: </strong>' +
+                                freelancer_username + '</p>' +
                                 '</span>' + '<div class="collapse" id="collapse_' + i + '">' +
                                 '<span class="email_' + i + '" style="overflow-wrap: break-word;">' + '<p><strong>Email: </strong>' +
                                 freelancer_email + '</p>' +
@@ -258,7 +250,7 @@ $(function () {
                                 freelancer_mobile + '</p>' +
                                 '</span>' +
                                 '<span class="status_' + i + '">' + '<p><strong>Status: </strong>' +
-                                freelancer_status + '</p>' +
+                                booking_status + '</p>' +
                                 '</span>' + '<div id="show' + i + '">' +
                                 // '<p id="show-dates'+i+'"><strong>Avaliable Dates: </strong>' +
                                 //  '</p>' +

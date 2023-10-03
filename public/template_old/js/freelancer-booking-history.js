@@ -44,14 +44,15 @@ $(function () {
 
                     let id = response.appointments[i]["id"];
 
-                    if (response.appointments[i]["appointment_s"] != null || response.appointments[i]["status"] === "cancel" ||
+                    if (response.appointments[i]["appointment_s"] != '' || response.appointments[i]["status"] === "cancel" ||
                         response.appointments[i]["status"] === "CANCELLED" ||
                         response.appointments[i]["status"] === "CANCELLED by Salon Owner" ||
                         response.appointments[i]["status"] === "cancel by Freelancer" ||
                         response.appointments[i]["status"] === "CANCELLED due to Expired Time") {
-                        if (response.appointments[i]["appointment_s"] != null) {
+                        if (response.appointments[i]["appointment_s"] != '') {
+                            console.log(response.appointments[i]["appointment_s"])
                             $.each(response.appointments[i]["appointment_s"], function (j) {
-                                if (response.appointments[i]["appointment_s"][j]['user_appointment'] != null) {
+                                if (response.appointments[i]["appointment_s"][j]['user_appointment'] != '') {
                                     freelancer_name = response.appointments[i]["appointment_s"][j]['user_appointment']['name'];
                                     freelancer_email = response.appointments[i]["appointment_s"][j]['user_appointment']['email'];
                                     freelancer_mobile = response.appointments[i]["appointment_s"][j]['user_appointment']['phone'];

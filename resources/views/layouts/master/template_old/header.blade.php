@@ -43,8 +43,11 @@
                                     <img src="{{ asset('template_new/assets/images/heart_icon.jpg') }}" alt="">
                                     <div class="dropdown-menu position-absolute" aria-labelledby="navbarDropdown">
                                         {{-- <div class="user-profile"></div> --}}
-                                        <a class="dropdown-item" href="{{ route('freelancerBookingHistory') }}">Your
-                                            Booking History</a>
+                                        @if (auth()->user()->type != 'client')
+                                            <a class="dropdown-item" href="{{ route('freelancerBookingHistory') }}">Your
+                                                Booking
+                                                History</a>
+                                        @endif
                                         <a class="dropdown-item" href="{{ route('Profile') }}">Profile</a>
                                         <a class="dropdown-item" href="{{ route('freelancerBooking') }}">Your
                                             Booking</a>

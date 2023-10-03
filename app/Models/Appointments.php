@@ -2,9 +2,13 @@
 
 namespace App\Models;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class Appointments extends Model
 {
@@ -22,4 +26,20 @@ class Appointments extends Model
     {
         return $this->hasOne(User::class, 'id', 'booking_user_id');
     }
+    public function userBookingSlots(): BelongsTo
+    {
+        return $this->belongsTo(BookingSlots::class, 'booking_slots_id', 'id');
+    }
+    public function clientUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'booking_user_id', 'id')->where('id', Auth::id());
+    }
+    // public function bookings(): HasMany
+    // {
+    //     return $this->hasMany(Bookings::class, BookingSlots::class, 'bookings_id', 'id');
+    // }
+    // public function user(): BelongsTo
+    // {
+    //     return $this->belongsTo(User::class, 'user_id', 'id')->where('id', Auth::id());
+    // }
 }
