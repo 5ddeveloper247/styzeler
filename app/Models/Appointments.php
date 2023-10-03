@@ -34,12 +34,4 @@ class Appointments extends Model
     {
         return $this->belongsTo(User::class, 'booking_user_id', 'id')->where('id', Auth::id());
     }
-    // public function bookings(): HasMany
-    // {
-    //     return $this->hasMany(Bookings::class, BookingSlots::class, 'bookings_id', 'id');
-    // }
-    // public function user(): BelongsTo
-    // {
-    //     return $this->belongsTo(User::class, 'user_id', 'id')->where('id', Auth::id());
-    // }
 }

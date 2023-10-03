@@ -520,9 +520,12 @@ class ProfileController extends Controller
                     ['created_at', '>=', $currentDate]
                 ]
 
-            )
-                ->with(['clientUser', 'userBookingSlots', 'userBookingSlots.bookings', 'userBookingSlots.bookings.FreelancerUser'])
-                ->get();
+            )->with([
+                'clientUser',
+                'userBookingSlots',
+                'userBookingSlots.bookings',
+                'userBookingSlots.bookings.FreelancerUser'
+            ])->get();
         } else {
 
             $getProfileData = Bookings::where(
@@ -531,13 +534,13 @@ class ProfileController extends Controller
                     ['date', '>=', $currentDate]
                 ]
 
-            )
-                ->with(['user', 'bookingTimeSlots', 'appointment_s', 'appointment_s.userAppointment'])
-                ->get();
+            )->with([
+                'user',
+                'bookingTimeSlots',
+                'appointment_s',
+                'appointment_s.userAppointment'
+            ])->get();
         }
-
-
-
         return response()->json([
             'status' => 200,
             'appointments' => $getProfileData,
@@ -553,8 +556,12 @@ class ProfileController extends Controller
                 ['date', '<', $currentDate]
             ]
 
-        )->with(['user', 'bookingTimeSlots', 'appointment_s', 'appointment_s.userAppointment'])
-            ->get();
+        )->with([
+            'user',
+            'bookingTimeSlots',
+            'appointment_s',
+            'appointment_s.userAppointment'
+        ])->get();
 
         return response()->json([
             'status' => 200,
