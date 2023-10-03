@@ -207,6 +207,7 @@ function profileResponse(response) {
 
            
         	$("#user_id").val(data.id);
+        	$("#book_type").val(localStorage.getItem('bookType'));
         	// For profile image
             hero_image = data.hero_image;
 
@@ -718,6 +719,8 @@ function selectSlot(id, start_time, end_time, date) {
     var starttimeAMPM = convertTo12HourFormat(start_time);
     var endtimeAMPM = convertTo12HourFormat(end_time);
     $('#slot_book_id').val(id);
+    $('#book_date').val(date);
+    
     $('#book_slot_start').html(starttimeAMPM);
     $('#book_slot_end').html(endtimeAMPM);
     $('#book_slot_date').html(date);

@@ -24,7 +24,7 @@ class Bookings extends Model
     // Define the relationship with BookingSlots that don't have appointments
     public function bookingTimeSlots()
     {
-        return $this->hasOne(BookingSlots::class, 'bookings_id');
+        return $this->hasMany(BookingSlots::class, 'bookings_id');
     }
     /**
      * Get all of the comments for the Bookings
@@ -33,7 +33,7 @@ class Bookings extends Model
      */
     public function appointment_s(): HasManyThrough
     {
-        return $this->hasOneThrough(Appointments::class, BookingSlots::class);
+        return $this->hasManyThrough(Appointments::class, BookingSlots::class);
     }
     /**
      * Get the user that owns the Bookings

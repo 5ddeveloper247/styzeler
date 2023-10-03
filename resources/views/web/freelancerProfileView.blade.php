@@ -1,3 +1,4 @@
+
 @extends('layouts.master.template_old.master')
 <script>
     const baseURL = "{{ request()->root() }}";
@@ -2748,6 +2749,7 @@
                         <input type="hidden" id="user_id" name="user_id">
                         <input type="hidden" id="book_type" name="book_type">
                         <input type="hidden" id="slot_book_id" name="slot_book_id">
+                        <input type="hidden" id="book_date" name="book_date">
 
                         <div class="row">
                             <div class="col-md-12">

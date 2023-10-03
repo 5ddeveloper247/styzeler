@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->integer('user_id')->nullable()->default(null);
             $table->integer('client_id')->nullable()->default(null);
+            $table->integer('slot_id')->nullable()->default(null);
+            $table->date('slot_date')->nullable()->default(null);
             $table->string('status', 20)->nullable()->default(null);
             $table->timestamps();
         });
