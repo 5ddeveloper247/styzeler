@@ -129,5 +129,5 @@
         });
     </script>
 
-    <script src="{{ asset('template_old/js/freelancer-booking-history.js') }}"></script>
+    <script src="{{ asset('template_old/js/freelancer-booking-history.js') }}?v={{time()}}"></script>
 @endpush

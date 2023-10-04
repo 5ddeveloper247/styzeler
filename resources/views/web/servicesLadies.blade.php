@@ -356,7 +356,7 @@
 
 @push('script')
     <script src="https://kit.fontawesome.com/8389fcfe36.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('customjs/web/cart/addtocart.js') }}"></script>
+    <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{time()}}"></script>
 
     <script>
         $(window).on("load", function() {

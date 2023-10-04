@@ -306,6 +306,6 @@
             });
         });
     </script>
-    <script src="{{ asset('customjs/web/register/common.js') }}"></script>
-    <script src="{{ asset('customjs/web/profile/clientProfile.js') }}"></script>
+    <script src="{{ asset('customjs/web/register/common.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('customjs/web/profile/clientProfile.js') }}?v={{time()}}"></script>
 @endpush

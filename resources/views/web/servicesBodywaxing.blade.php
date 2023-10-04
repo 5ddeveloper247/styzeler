@@ -287,7 +287,7 @@
 @endsection
 
 @push('script')
-    <script src="{{ asset('customjs/web/cart/addtocart.js') }}"></script>
+    <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{time()}}"></script>
     <script>
         $(window).on("load", function() {
             $(document).on("click", ".btn_list .shadow_btn", function() {

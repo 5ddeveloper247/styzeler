@@ -250,7 +250,7 @@
 @endsection
 
 @push('script')
-    <script src="{{ asset('customjs/web/cart/addtocart.js') }}"></script>
+    <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{time()}}"></script>
     <!-- <script src="{{ asset('template_new/assets/js/main.js') }}"></script> -->
     <script>
         $(window).on("load", function() {

@@ -86,7 +86,7 @@
 @endsection
 
 @push('script')
-    <script src="{{ asset('customjs/web/register/common.js') }}"></script>
+    <script src="{{ asset('customjs/web/register/common.js') }}?v={{time()}}"></script>
     <script>
 
     $(".closeModal").click(function () {
