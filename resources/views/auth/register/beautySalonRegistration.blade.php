@@ -602,7 +602,7 @@
                                                 rel="noopener noreferrer">Privacy Policy</a><br>
                                             <a href="{{ route('webTermAndConditions') }}" target="_blank"
                                                 rel="noopener noreferrer">Website Terms & Conditions</a><br>
-                                            <a href="{{ route('termAndConditions') }}" target="_blank"
+                                            <a href="{{ route('freelancerTermAndConditions') }}" target="_blank"
                                                 rel="noopener noreferrer">Freelancer Terms & Conditions</a><br>
                                             <input class="form-check-input btn customBtn" type="checkbox"
                                                 id="terms-and-conditions" value="1" name="agree">
@@ -616,7 +616,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <button type="button" class="btn btn-primary">Save changes</button> -->
                                     </div>
                                 </div>
                             </div>

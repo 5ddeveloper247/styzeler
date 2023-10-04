@@ -1,10 +1,11 @@
-
 @extends('layouts.master.template_old.master')
 <script>
     const baseURL = "{{ request()->root() }}";
     const userId = "{{ @$data->id }}";
 </script>
 @push('css')
+    <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}" />
+
     <style>
         table {
             text-align: center
@@ -192,8 +193,8 @@
 
                 <div class="name row ">
                     <label class="color-1 col-lg-2">Name : </label>
-                    @if(@$membership > 0)
-                    <p class="col-lg-10" id="ownerName"></p>
+                    @if (@$membership > 0)
+                        <p class="col-lg-10" id="ownerName"></p>
                     @endif
                 </div>
 
@@ -236,8 +237,8 @@
 
                 <div class="email row">
                     <label class="color-1 col-lg-2">Email : </label>
-                    @if(@$membership > 0)
-                    <p class="col-lg-10" id="ownerEmail"></p>
+                    @if (@$membership > 0)
+                        <p class="col-lg-10" id="ownerEmail"></p>
                     @endif
                 </div>
 
@@ -420,8 +421,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="text-right btn uploadBtn"
-                                                                                                                                                                            style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                            title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>
@@ -2778,7 +2779,7 @@
 @endsection
 @push('script')
     <script>
-    	$(function() {
+        $(function() {
             $.ajaxSetup({
                 headers: {
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
