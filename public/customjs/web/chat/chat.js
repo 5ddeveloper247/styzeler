@@ -42,11 +42,39 @@ function addGuestUserResponse(response) {
         toastr.success(response.message, '', {
             timeOut: 3000
         });
+        var data = response.data;
+        var questions = data['questions'];
         
-        $("#guestUserId").val(response.data);
+        $("#guestUserId").val(data['id']);
         $('#guest_form').hide();
         $('#chat_continer').show();
 
+        setTimeout(function(){
+        	var html = '';
+    		var i=0;
+    		if(questions.length > 0){
+    			$.each(questions, function(key, value) {
+    				
+    				html += '<li class="chat incoming mt-2">';
+    				if(i==0){
+    					html += `<span class="material-symbols-outlined">smart_toy</span>`;
+    				}	
+    				html += `<p class="m-2 pointer" onclick="getAnswer(${value.id})">${value.question}</p>`;
+    				html += `</li>`;
+    				i++;
+    	        });
+    			html += `<li class="chat incoming"><p class="m-2 pointer" onclick="getAnswer('other')">Other</p></li>`;
+    		}else{
+    			html += `<li class="chat incoming"><span class="material-symbols-outlined">smart_toy</span><p class="m-2 pointer" onclick="getAnswer('other')">Other</p></li>`;
+    		}
+    		
+    		$(".chatbox").append(html);
+    		
+    		toastr.success('Choose a question to get an answer...', '', {
+                timeOut: 6000
+            });
+        }, 3000);
+		
     } else {
 
     	error = response.responseJSON.message;
