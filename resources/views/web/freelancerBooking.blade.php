@@ -127,8 +127,8 @@
         });
     </script>
     @if (auth()->user()->type == 'client')
-        <script src="{{ asset('template_old/js/client-booking.js') }}"></script>
+        <script src="{{ asset('template_old/js/client-booking.js') }}?v={{time()}}"></script>
     @else
-        <script src="{{ asset('template_old/js/freelancer-booking.js') }}"></script>
+        <script src="{{ asset('template_old/js/freelancer-booking.js') }}?v={{time()}}"></script>
     @endif
 @endpush
