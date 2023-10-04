@@ -29,6 +29,7 @@ class ChatController extends Controller
 			$guest_user->name = $request->username;
 			$guest_user->email = $request->email;
 			$guest_user->phone = $request->phone;
+			$guest_user->date = date('Y-m-d');
 			
 			$guest_user->save();
 			
@@ -55,6 +56,7 @@ class ChatController extends Controller
 			$chat->guest_user_id = $guestUserId;
 			$chat->question = $message;
 			$chat->type = 'other';
+			$chat->date = date('Y-m-d');
 			$chat->save();
 			
 			return response()->json(
@@ -116,6 +118,7 @@ class ChatController extends Controller
 			$chat_questions->question = $request->chat_question;
 			$chat_questions->answer = $request->chat_answer;
 			$chat_questions->status = 'active';
+			$chat_questions->date = date('Y-m-d');
 			
 			$chat_questions->save();
 			

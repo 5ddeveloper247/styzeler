@@ -72,6 +72,8 @@ class RentLetController extends Controller
 		$rent_let->image3 = isset($images['chairPicture3']) ? $images['chairPicture3'] : '';
 		$rent_let->status = 'inactive';
 		$rent_let->user_id = Auth::user()->id;
+		$rent_let->date = date('Y-m-d');
+		
 		$rent_let->save();
 	
 		return response()->json(['status' => 200, 'message' => 'Rent & Let details submitted succsessfully!', 'data' => '']);

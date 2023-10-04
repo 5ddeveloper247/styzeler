@@ -41,7 +41,7 @@ class BlogController extends Controller
 		$blog->blog_title = $request->blog_title;
 		$blog->description = $request->description;
 		$blog->blog_image = isset($images['image-gallery']) ? $images['image-gallery'] : null;
-		
+		$blog->date = date('Y-m-d');
 		
 		$blog->status = 'active';
 		

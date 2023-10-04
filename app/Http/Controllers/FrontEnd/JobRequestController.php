@@ -36,6 +36,7 @@ class JobRequestController extends Controller
 		}else{
 			$job->status = 'active';
 		}
+		$job->date = date('Y-m-d');
 		
 		$job->save();
 	
@@ -118,7 +119,7 @@ class JobRequestController extends Controller
 		$job_apply->applicant_phone = $request->applicant_phone;
 		$job_apply->applicant_cover_letter = isset($images['applicant_cl']) ? $images['applicant_cl'] : '';
 		$job_apply->applicant_resume = isset($images['applicant_cv']) ? $images['applicant_cv'] : '';
-		
+		$job_apply->date = date('Y-m-d');
 		$job_apply->status = 'inactive';
 	
 		$job_apply->save();
