@@ -12,6 +12,7 @@ use App\Models\Guest_user;
 use App\Models\Chat;
 use App\Models\Chat_questions;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Appointments;
 
 class AdminFrontEndController extends Controller
 {
@@ -124,6 +125,14 @@ class AdminFrontEndController extends Controller
     
     public function bookings()
     {
+    	$getProfileData = Appointments::with([
+    					'adminClientUser',
+    					'userBookingSlots',
+    					'userBookingSlots.bookings',
+    					'userBookingSlots.bookings.FreelancerUser'
+    			])->get();
+    	$data['appointments'] = $getProfileData;
+//     	dd($getProfileData);
     	$data['page'] = 'bookings';
     	return view('admin.bookings')->with($data);
     }

@@ -149,96 +149,61 @@
 								</div>
 							</div>
 							<div class="row confirm-appointment p-3 text-left">
-								<div class="col-4">
-									<span>
-										<div>
-											<a onclick="showToggle(2);">
-												<p style="cursor: pointer;">
-													<strong>Date: </strong> 21-12-2021&nbsp;&nbsp;
-													<i class="fa fa-eye" aria-hidden="true"></i>
-												</p>
-											</a>
-										</div>
-									</span>
-								</div>
-								<div class="col-8">
-									<div>
-										<span style="overflow-wrap: break-word;">
-											<p><strong>Salon Owner: </strong>Nik Hudson</p>
+								@if(@count($appointments))
+								@foreach($appointments as $row)
+									@php
+										$creationDate = date('d-M-Y', strtotime(@$row->created_at));
+									@endphp
+									
+									<div class="col-4">
+										<span>
 											<div>
-												<p><strong>Freelancer Name: </strong> carlo Berardinucci</p>
+												<a onclick="showToggle({{$row->id}});">
+													<p style="cursor: pointer;">
+														<strong>Date: </strong> {{@$creationDate}}&nbsp;&nbsp;
+														<i class="fa fa-eye" aria-hidden="true"></i>
+													</p>
+												</a>
 											</div>
 										</span>
-										<div id="toggle2" style="display: none;">
-											<div>
-												<p style="overflow-wrap: break-word;"> <strong>Freelancer Category: </strong> Hairstylist</p> 
-											</div>
-											<div>
-												<p style="overflow-wrap: break-word;"> <strong>Freelancer Email: </strong> carlo_berardinucci@yahoo.co.uk </p> 
-											</div>
-											<div>
-												<p style="overflow-wrap: break-word;"><strong>Freelancer Mobile: </strong> 07830536184</p> 
-											</div>
-											<div>
-												<p style="overflow-wrap: break-word;"><strong>Salon Category: </strong> Hairdressing Owner</p> 
-											</div>
-											<div>
-												<p style="overflow-wrap: break-word;"><strong>Salon Email: </strong> scar_lostesting@yahoo.co.uk</p> 
-											</div>
-											<div>
-												<p style="overflow-wrap: break-word;"><strong>Salon Mobile: </strong> 02075663979</p> 
-											</div>
-											<div>
-												<p style="overflow-wrap: break-word;"><strong>Booking Status: </strong> CONFIRMED</p> 
+									</div>
+									<div class="col-8">
+										<div>
+											<span style="overflow-wrap: break-word;">
+												<p><strong>Client Name: </strong>{{@$row['adminClientUser']->name}} {{@$row['adminClientUser']->surname}}</p>
+												<div>
+													<p><strong>Freelancer Name: </strong>{{@$row['userBookingSlots']['bookings']['FreelancerUser']->name}} {{@$row['userBookingSlots']['bookings']['FreelancerUser']->surname}} </p>
+												</div>
+											</span>
+											<div id="toggle{{$row->id}}" style="display: none;">
+												<div>
+													<p style="overflow-wrap: break-word;"> <strong>Freelancer Category: </strong> {{@$row['userBookingSlots']['bookings']['FreelancerUser']->type}}</p> 
+												</div>
+												<div>
+													<p style="overflow-wrap: break-word;"> <strong>Freelancer Email: </strong> {{@$row['userBookingSlots']['bookings']['FreelancerUser']->email}}</p> 
+												</div>
+												<div>
+													<p style="overflow-wrap: break-word;"><strong>Freelancer Mobile: </strong> {{@$row['userBookingSlots']['bookings']['FreelancerUser']->phone}}</p> 
+												</div>
+												<div>
+													<p style="overflow-wrap: break-word;"><strong>Client Category: </strong> {{@$row['adminClientUser']->type}}</p> 
+												</div>
+												<div>
+													<p style="overflow-wrap: break-word;"><strong>Client Email: </strong> {{@$row['adminClientUser']->email}}</p> 
+												</div>
+												<div>
+													<p style="overflow-wrap: break-word;"><strong>Client Mobile: </strong> {{@$row['adminClientUser']->phone}}</p> 
+												</div>
+												<div>
+													<p style="overflow-wrap: break-word;"><strong>Booking Status: </strong> {{@$row['userBookingSlots']['bookings']->status}}</p> 
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div class="col-4">
-									<span>
-										<div>
-											<a onclick="showToggle(22);">
-												<p style="cursor: pointer;">
-													<strong>Date: </strong> 21-12-2021&nbsp;&nbsp;
-													<i class="fa fa-eye" aria-hidden="true"></i>
-												</p>
-											</a>
-										</div>
-									</span>
-								</div>
-								<div class="col-8">
-									<div>
-										<span style="overflow-wrap: break-word;">
-											<p><strong>Salon Owner: </strong>Nik Hudson</p>
-											<div>
-												<p><strong>Freelancer Name: </strong> carlo Berardinucci</p>
-											</div>
-										</span>
-										<div id="toggle22" style="display: none;">
-											<div>
-												<p style="overflow-wrap: break-word;"> <strong>Freelancer Category: </strong> Hairstylist</p> 
-											</div>
-											<div>
-												<p style="overflow-wrap: break-word;"> <strong>Freelancer Email: </strong> carlo_berardinucci@yahoo.co.uk </p> 
-											</div>
-											<div>
-												<p style="overflow-wrap: break-word;"><strong>Freelancer Mobile: </strong> 07830536184</p> 
-											</div>
-											<div>
-												<p style="overflow-wrap: break-word;"><strong>Salon Category: </strong> Hairdressing Owner</p> 
-											</div>
-											<div>
-												<p style="overflow-wrap: break-word;"><strong>Salon Email: </strong> scar_lostesting@yahoo.co.uk</p> 
-											</div>
-											<div>
-												<p style="overflow-wrap: break-word;"><strong>Salon Mobile: </strong> 02075663979</p> 
-											</div>
-											<div>
-												<p style="overflow-wrap: break-word;"><strong>Booking Status: </strong> CONFIRMED</p> 
-											</div>
-										</div>
-									</div>
-								</div>
+								@endforeach
+								@endif
+								
+								
 							</div>
 						</div>
 					</div>
