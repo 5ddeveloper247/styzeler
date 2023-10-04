@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('chat_questions', function (Blueprint $table) {
             $table->id();
-            $table->text('question')->nullable()->default(null);
-            $table->text('answer')->nullable()->default(null);
-            $table->string('status',20)->nullable()->default(null);
-            $table->date('date')->default(now());
+            $table->text('question')->nullable();
+            $table->text('answer')->nullable();
+            $table->string('status',20)->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

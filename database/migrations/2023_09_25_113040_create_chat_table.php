@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('chat', function (Blueprint $table) {
             $table->id();
-            $table->integer('guest_user_id')->nullable()->default(null);
-            $table->text('question')->nullable()->default(null);
-            $table->string('type')->nullable()->default(null);
-            $table->date('date')->default(now());
+            $table->integer('guest_user_id')->nullable();
+            $table->text('question')->nullable();
+            $table->string('type')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

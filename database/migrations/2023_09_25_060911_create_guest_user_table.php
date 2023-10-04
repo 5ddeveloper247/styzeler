@@ -15,10 +15,10 @@ return new class extends Migration
     {
         Schema::create('guest_user', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable()->default(null);
-            $table->string('email')->nullable()->default(null);
-            $table->string('phone',15)->nullable()->default(null);
-            $table->date('date')->default(now());
+            $table->string('name')->nullable();
+            $table->string('email')->nullable();
+            $table->string('phone',15)->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

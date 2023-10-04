@@ -16,17 +16,17 @@ return new class extends Migration
         Schema::create('job_request', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->string('type', 20)->nullable()->default(null);
-            $table->string('company_name')->nullable()->default(null);
-            $table->string('job_title')->nullable()->default(null);
-            $table->text('description')->nullable()->default(null);
-            $table->float('salary')->default(0.0)->nullable()->default(null);
-            $table->string('location')->nullable()->default(null);
-            $table->string('email')->nullable()->default(null);
-            $table->date('start_date')->nullable()->default(null);
-            $table->date('end_date')->nullable()->default(null);
-            $table->string('status')->nullable()->default(null);
-            $table->date('date')->default(now());
+            $table->string('type', 20)->nullable();
+            $table->string('company_name')->nullable();
+            $table->string('job_title')->nullable();
+            $table->text('description')->nullable();
+            $table->float('salary')->default(0.0)->nullable();
+            $table->string('location')->nullable();
+            $table->string('email')->nullable();
+            $table->date('start_date')->nullable();
+            $table->date('end_date')->nullable();
+            $table->string('status')->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }

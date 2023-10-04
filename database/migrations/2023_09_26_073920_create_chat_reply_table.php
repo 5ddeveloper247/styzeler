@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('chat_reply', function (Blueprint $table) {
             $table->id();
-            $table->integer('chat_id')->nullable()->default(null);
-            $table->text('reply')->nullable()->default(null);
+            $table->integer('chat_id')->nullable();
+            $table->text('reply')->nullable();
             $table->timestamps();
         });
     }

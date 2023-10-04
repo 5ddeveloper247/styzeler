@@ -15,15 +15,15 @@ return new class extends Migration
     {
         Schema::create('job_apply', function (Blueprint $table) {
             $table->id();
-            $table->integer('user_id')->nullable()->default(null);
-            $table->integer('job_id')->nullable()->default(null);
-            $table->string('applicant_name')->nullable()->default(null);
-            $table->string('applicant_email')->nullable()->default(null);
-            $table->string('applicant_phone', 20)->nullable()->default(null);
-            $table->string('applicant_cover_letter')->nullable()->default(null);
-            $table->string('applicant_resume')->nullable()->default(null);
-            $table->string('status', 20)->nullable()->default(null);
-            $table->date('date')->default(now());
+            $table->integer('user_id')->nullable();
+            $table->integer('job_id')->nullable();
+            $table->string('applicant_name')->nullable();
+            $table->string('applicant_email')->nullable();
+            $table->string('applicant_phone', 20)->nullable();
+            $table->string('applicant_cover_letter')->nullable();
+            $table->string('applicant_resume')->nullable();
+            $table->string('status', 20)->nullable();
+            $table->date('date')->nullable();
             $table->timestamps();
         });
     }
