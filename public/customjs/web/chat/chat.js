@@ -52,27 +52,28 @@ function addGuestUserResponse(response) {
         setTimeout(function(){
         	var html = '';
     		var i=0;
+    		
     		if(questions.length > 0){
     			$.each(questions, function(key, value) {
     				
     				html += '<li class="chat incoming mt-2">';
     				if(i==0){
-    					html += `<span class="material-symbols-outlined">smart_toy</span>`;
+//    					html += `<span class="material-symbols-outlined">smart_toy</span>`;
     				}	
-    				html += `<p class="m-2 pointer" onclick="getAnswer(${value.id})">${value.question}</p>`;
+    				html += `<p class="m-2 pointer" onclick="getAnswer(${value.id})" style="border-radius:30px;padding: 6px 16px;background: #353534;color:#fdd431;">${value.question}</p>`;
     				html += `</li>`;
     				i++;
     	        });
-    			html += `<li class="chat incoming"><p class="m-2 pointer" onclick="getAnswer('other')">Other</p></li>`;
+    			html += `<li class="chat incoming"><p class="m-2 pointer" onclick="getAnswer('other')" style="border-radius:30px;padding: 6px 16px;background: #353534;color:#fdd431;">Other</p></li>`;
     		}else{
-    			html += `<li class="chat incoming"><span class="material-symbols-outlined">smart_toy</span><p class="m-2 pointer" onclick="getAnswer('other')">Other</p></li>`;
+    			html += `<li class="chat incoming"><p class="m-2 pointer" onclick="getAnswer('other')" style="border-radius:30px;padding: 6px 16px;background: #353534;color:#fdd431;">Other</p></li>`;
     		}
     		
     		$(".chatbox").append(html);
     		
-    		toastr.success('Choose a question to get an answer...', '', {
-                timeOut: 6000
-            });
+//    		toastr.success('Choose a question to get an answer...', '', {
+//                timeOut: 6000
+//            });
         }, 3000);
 		
     } else {
@@ -127,7 +128,7 @@ function sendMessageResponse(response){
 			    chatbox.scrollTo(0, chatbox.scrollHeight);
 		    }, 2000);
 			setTimeout(function(){
-		    	chatbox.appendChild(createChatLi('Thanks', "incoming"));
+				chatbox.appendChild(createChatLi('Thanks', "incoming"));
 			    chatbox.scrollTo(0, chatbox.scrollHeight);
 		    }, 3000);
 			
@@ -135,20 +136,23 @@ function sendMessageResponse(response){
 			
 			var html = '';
 			var i=0;
+			
+			html += `<li class="chat incoming"><span class="material-symbols-outlined">smart_toy</span><p class="m-2 pointer">For further assistance please choose the following...</p></li>`;
+			
 			if(data.length > 0){
 				$.each(data, function(key, value) {
 					
 					html += '<li class="chat incoming mt-2">';
 					if(i==0){
-						html += `<span class="material-symbols-outlined">smart_toy</span>`;
+//						html += `<span class="material-symbols-outlined">smart_toy</span>`;
 					}	
-					html += `<p class="m-2 pointer" onclick="getAnswer(${value.id})">${value.question}</p>`;
+					html += `<p class="m-2 pointer" onclick="getAnswer(${value.id})" style="border-radius:30px;padding: 6px 16px;background: #353534;color:#fdd431;">${value.question}</p>`;
 					html += `</li>`;
 					i++;
 		        });
-				html += `<li class="chat incoming"><p class="m-2 pointer" onclick="getAnswer('other')">Other</p></li>`;
+				html += `<li class="chat incoming"><p class="m-2 pointer" onclick="getAnswer('other')" style="border-radius:30px;padding: 6px 16px;background: #353534;color:#fdd431;">Other</p></li>`;
 			}else{
-				html += `<li class="chat incoming"><span class="material-symbols-outlined">smart_toy</span><p class="m-2 pointer" onclick="getAnswer('other')">Other</p></li>`;
+				html += `<li class="chat incoming"><p class="m-2 pointer" onclick="getAnswer('other')" style="border-radius:30px;padding: 6px 16px;background: #353534;color:#fdd431;">Other</p></li>`;
 			}
 			
 			$(".chatbox").append(html);
@@ -165,6 +169,8 @@ function getAnswer(value){
 	
 	if(value == 'other'){
 		$("#msgType").val('other');
+		
+		$("#message_area").prop('disabled', false);
 		
 		chatbox.appendChild(createChatLi('Other', "outgoing"));
 	    chatbox.scrollTo(0, chatbox.scrollHeight);

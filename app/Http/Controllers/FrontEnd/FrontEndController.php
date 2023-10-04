@@ -345,7 +345,7 @@ class FrontEndController extends Controller
         }
         return customView(
             'web.freelancerProfileView',
-            'web.salonOwnerProfile',
+            'web.salonOwnerProfileView',
             'web.clientProfile',
             $data->type,
             get_defined_vars()

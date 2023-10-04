@@ -72,15 +72,15 @@ class ChatController extends Controller
 			
 		}else{
 			
-		$questions = Chat_questions::where('status', 'active')->get();	
-			
-		return response()->json(
-            [
-            	'data' => $questions,
-                'type' => $msgType,
-                'status' => 200
-            ]
-        );
+			$questions = Chat_questions::where('status', 'active')->get();	
+				
+			return response()->json(
+	            [
+	            	'data' => $questions,
+	                'type' => $msgType,
+	                'status' => 200
+	            ]
+	        );
 			
 		}
 	}
