@@ -149,10 +149,14 @@
 								</div>
 							</div>
 							<div class="row confirm-appointment p-3 text-left">
+								
 								@if(@count($appointments))
 								@foreach($appointments as $row)
 									@php
 										$creationDate = date('d-M-Y', strtotime(@$row->created_at));
+										$bookDate = date('d-M-Y', strtotime(@$row['userBookingSlots']['bookings']->date));
+										$bookStime = date('h:i A', strtotime(@$row['userBookingSlots']->start_time));
+										$bookEtime = date('h:i A', strtotime(@$row['userBookingSlots']->end_time));
 									@endphp
 									
 									<div class="col-4">
@@ -162,6 +166,12 @@
 													<p style="cursor: pointer;">
 														<strong>Date: </strong> {{@$creationDate}}&nbsp;&nbsp;
 														<i class="fa fa-eye" aria-hidden="true"></i>
+													</p>
+													<p style="cursor: pointer;">
+														<strong>Book Date: </strong> {{@$bookDate}}
+													</p>
+													<p style="cursor: pointer;">
+														<strong>Slot Time: </strong> {{@$bookStime}}-{{@$bookEtime}}
 													</p>
 												</a>
 											</div>
@@ -174,11 +184,12 @@
 												<div>
 													<p><strong>Freelancer Name: </strong>{{@$row['userBookingSlots']['bookings']['FreelancerUser']->name}} {{@$row['userBookingSlots']['bookings']['FreelancerUser']->surname}} </p>
 												</div>
-											</span>
-											<div id="toggle{{$row->id}}" style="display: none;">
 												<div>
 													<p style="overflow-wrap: break-word;"> <strong>Freelancer Category: </strong> {{@$row['userBookingSlots']['bookings']['FreelancerUser']->type}}</p> 
 												</div>
+											</span>
+											<div id="toggle{{$row->id}}" style="display: none;">
+												
 												<div>
 													<p style="overflow-wrap: break-word;"> <strong>Freelancer Email: </strong> {{@$row['userBookingSlots']['bookings']['FreelancerUser']->email}}</p> 
 												</div>

@@ -405,17 +405,17 @@ class ProfileController extends Controller
                 ]);
             }
             
-            // check user tokens
-            $userDetails = User::where('id', Auth::user()->id)->first();
+//             // check user tokens
+//             $userDetails = User::where('id', Auth::user()->id)->first();
             
-            $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
+//             $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
             
-            if ($tokens == 0) {
-            	return response()->json([
-            			'status' => 422,
-            			'message' => 'No enough tokens, first buy package.',
-            	]);
-            }
+//             if ($tokens == 0) {
+//             	return response()->json([
+//             			'status' => 422,
+//             			'message' => 'No enough tokens, first buy package.',
+//             	]);
+//             }
             
             // Create a new appointment
             Appointments::create([
