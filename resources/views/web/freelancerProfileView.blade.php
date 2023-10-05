@@ -198,7 +198,7 @@
                 <div class="likes btn customBtn" id="likes">Likes</div>
             </div>
             <div class="col-3 text-center">
-                <div class="book btn customBtn {{@$class}}" id="{{@$bookid}}">Book</div>
+                <div class="book btn customBtn" id="book">Book</div>
             </div>
 
         </div>

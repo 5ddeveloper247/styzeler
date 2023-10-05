@@ -66,6 +66,14 @@ function addToCartResponse(response) {
         toastr.success(response.message, '', {
             timeOut: 3000
         });
+        
+        $("#item_text").val('');
+		$("#item_time").val('');
+		$("#item_price").val('');
+		$("#item_type").val('');
+		$("#item_subtype").val('');
+		$("#item_service").val('');
+		$("#cartConfirm_modal").modal('hide');
        
     } else {
 

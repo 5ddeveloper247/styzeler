@@ -365,6 +365,11 @@ class ProfileController extends Controller
                 $cart->status = 'checkout';
                 $cart->update();
 
+                Appointments::create([
+                		'booking_slots_id' => $request->slot_book_id,
+                		'booking_user_id' => Auth::id(),
+                ]);
+                
                 if ($cartExist == 0) {
                     $user = User::find(Auth::user()->id);
                     $user->tokens = $tokens - 1;
@@ -383,11 +388,11 @@ class ProfileController extends Controller
             }
         } else {
             // Check if the user is not allowed to book a slot
-            $allowedUserTypes = ['client', 'hairdressingSalon', 'beautySalon'];
+            $allowedUserTypes = ['hairdressingSalon', 'beautySalon'];//'client', 
             if (!in_array(Auth::user()->type, $allowedUserTypes)) {
                 return response()->json([
                     'status' => 422,
-                    'message' => 'Only salon owners or clients can book slots.',
+                    'message' => 'Only salon owners can book slots.',
                 ]);
             }
 
@@ -399,7 +404,19 @@ class ProfileController extends Controller
                     'message' => 'Slot is already booked.',
                 ]);
             }
-
+            
+            // check user tokens
+            $userDetails = User::where('id', Auth::user()->id)->first();
+            
+            $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
+            
+            if ($tokens == 0) {
+            	return response()->json([
+            			'status' => 422,
+            			'message' => 'No enough tokens, first buy package.',
+            	]);
+            }
+            
             // Create a new appointment
             Appointments::create([
                 'booking_slots_id' => $request->slot_book_id,
