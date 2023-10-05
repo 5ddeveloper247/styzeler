@@ -330,8 +330,9 @@ function profileResponse(response) {
                 checkCheckBoxes(data, 'hairColorServices', 'hairColorServices');
                 checkCheckBoxes(data, 'makeupServives', 'makeupServives');
                 checkCheckBoxes(data, 'salonMaleGroomingServices', 'salonMaleGroomingServices');
-                checkCheckBoxes(data, 'homeServiceMaleGroomingServices', 'homeServiceMaleGroomingServices');
                 checkCheckBoxes(data, 'hairColorBrands', 'hairColorBrands');
+                // checkCheckBoxes(data, 'homeMaleGroomingServices', 'homeMaleGroomingServices');
+                checkCheckBoxes(data, 'homeServiceMaleGroomingServices', 'homeServiceMaleGroomingServices');
             }
 
             if (type == 'beautician') {

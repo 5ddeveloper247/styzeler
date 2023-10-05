@@ -215,6 +215,11 @@
 
                         </div>
                         <div class="text-left">
+                            <h4 class="font-weight-bold" id="homeServiceMaleGroomingServicesheading"></h4>
+                            <p id="homeServiceMaleGroomingServicesPara"></p>
+
+                        </div>
+                        <div class="text-left">
                             <h4 class="font-weight-bold" id="chemicalTreatmentServicesheading"></h4>
                             <p id="chemicalTreatmentServicesPara"></p>
 
@@ -228,11 +233,7 @@
                             <p id="salonMaleGroomingServicesPara"></p>
 
                         </div>
-                        <div class="text-left">
-                            <h4 class="font-weight-bold" id="homeServiceMaleGroomingServicesheading"></h4>
-                            <p id="homeServiceMaleGroomingServicesPara"></p>
 
-                        </div>
                         <div class="text-left">
                             <h4 class="font-weight-bold" id="bodyWaxingProductsheading"></h4>
                             <p id="bodyWaxingProductsPara"></p>
@@ -1028,6 +1029,40 @@
                                     <input class="form-check-input" type="checkbox" name="barberMaleGroomingServices[]"
                                         id="gray-blending" value="Gray Blending">
                                     <label class="form-check-label" for="gray-blending">Gray Blending</label>
+                                </div>
+                            </div>
+                            <div class="home-styles my-5">
+                                <h4>Home Service Male Grooming</h4>
+                                <h5><u>Services</u></h5>
+                                <div class="form-check">
+                                    <input type="hidden" name="homeServiceMaleGroomingServices[heading]"
+                                        value="Home Service Male Grooming">
+                                    <input type="hidden" name="homeServiceMaleGroomingServices[subHeading]"
+                                        value="Services">
+                                    <input class="form-check-input" type="checkbox" id="scissors-cut"
+                                        value="Scissors Cut" name="homeServiceMaleGroomingServices[]">
+                                    <label class="form-check-label" for="scissors-cut">Scissors Cut</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="cliper-scissors-cut"
+                                        value="Clipper & Scissors Cut" name="homeServiceMaleGroomingServices[]">
+                                    <label class="form-check-label" for="cliper-scissors-cut">Clipper & Scissors
+                                        Cut</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="clipper=cut" value="Clipper Cut"
+                                        name="homeServiceMaleGroomingServices[]">
+                                    <label class="form-check-label" for="clipper=cut">Clipper Cut</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="skin-fade" value="Skin Fade"
+                                        name="homeServiceMaleGroomingServices[]">
+                                    <label class="form-check-label" for="skin-fade">Skin Fade</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="beard-shaped"
+                                        value="Beard Shaped" name="homeServiceMaleGroomingServices[]">
+                                    <label class="form-check-label" for="beard-shaped">Beard Shaped</label>
                                 </div>
                             </div>
                             <div class="styling-products my-5">
@@ -2724,7 +2759,7 @@
             });
         });
     </script>
-    <script src="{{ asset('customjs/web/register/common.js') }}?v={{time()}}"></script>
-    <script src="{{ asset('template_old/js/freelancer-calendar.js') }}?v={{time()}}"></script>
-    <script src="{{ asset('customjs/web/profile/profile.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('customjs/web/register/common.js') }}?v={{ time() }}"></script>
+    <script src="{{ asset('template_old/js/freelancer-calendar.js') }}?v={{ time() }}"></script>
+    <script src="{{ asset('customjs/web/profile/profile.js') }}?v={{ time() }}"></script>
 @endpush

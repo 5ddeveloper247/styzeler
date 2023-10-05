@@ -37,7 +37,7 @@ jQuery(document).ready(function () {
 });
 
 function convertTo12HourFormat(time24) {
-	console.log(time24);
+  console.log(time24);
   // Split the time string into hours and minutes
   const [hours, minutes] = time24.split(':');
 
@@ -162,7 +162,7 @@ function convert(dateText) {
                 if (profileStatus == 'Freelancer') {
                   $(".addTimeSlots").addClass('d-none');
                 }
-                if (showResponse.data[i]["booking_time_slots"] && profileStatus != 'Freelancer') {
+                if (showResponse.data[i]["booking_time_slots"]) {
                   $.each(showResponse.data[i]["booking_time_slots"], function (j) {
                     var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
                     var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
@@ -251,7 +251,7 @@ function convert(dateText) {
                   $(".addTimeSlots").addClass('d-none');
 
                 }
-                if (showResponse.data[i]["booking_time_slots"] != '' && profileStatus != 'Freelancer') {
+                if (showResponse.data[i]["booking_time_slots"] != '') {
 
 
                   $.each(showResponse.data[i]["booking_time_slots"], function (j) {

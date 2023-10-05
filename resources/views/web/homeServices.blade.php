@@ -543,7 +543,7 @@
                     </div>
                     <div class="modal-footer text-center">
                         <a type="" href="{{ route('registration') }}" class="btn1 customBtn">Ok</a>
-                        <a type="button" class="btn1 customBtn" data-dismiss="modal">Close</a>
+                        <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
                     </div>
                 </div>
             </div>
