@@ -1,6 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
 
 Route::get('/', function () {
     return view('index');
@@ -9,6 +13,7 @@ Route::get('/', function () {
 Route::get('/old', function () {
     return view('index_old');
 });
+
 
 // Auth::routes();
 
@@ -218,6 +223,6 @@ Route::group(['prefix' => 'admin'], function () {
     });
 });
 
-	
 
+Route::get('mail/send', 'App\Http\Controllers\MailController@send');
 // Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@register')->name('registration');
