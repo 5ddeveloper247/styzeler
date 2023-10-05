@@ -315,7 +315,7 @@ class ProfileController extends Controller
     public function showAppointmentDatesFreelancer(Request $req)
     {
 
-        $bookings = Bookings::FreelancerUser($req->id)
+        $bookings = Bookings::where('user_id', $req->id)
             ->IsNotCancelled()
             ->with(['bookingTimeSlots' => function ($query) {
                 $query->whereDoesntHave('appointments');
