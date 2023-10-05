@@ -1,6 +1,8 @@
 @extends('layouts.master.template_old.master')
+
 <script>
     const baseURL = "{{ request()->root() }}";
+   	const userId = "{{@$data->id}}";
 </script>
 
 @push('css')
@@ -50,7 +52,7 @@
 
         <div class="profile-pic text-center" data-aos="fade-up">
             <img id="profile-image-id" alt="">
-            <p><a class="text-center btn edit_pro_pic" onclick="editProfilePic()" title="Edit">+</a></p>
+            {{-- <p><a class="text-center btn edit_pro_pic" onclick="editProfilePic()" title="Edit">+</a></p> --}}
         </div>
 
         <div class="row my-4">
@@ -70,7 +72,7 @@
             <div class="showProfile col-10 text-left mt-4" id="showProfile">
                 <div class="name row ">
                     <label class="color-1 col-lg-3">Owner's Name : </label>
-                    <p class="col-lg-9" id="ownerName"></p>
+                    	<p class="col-lg-9" id="ownerName"></p>
                 </div>
                 <div class="Address row ">
                     <label class="color-1 col-lg-3">Owner's Address : </label>
@@ -94,7 +96,7 @@
             </div>
             <div class="showProducts col-10 text-center mt-5" id="showProducts">
                 <div class="text-left mt-4">
-                    <h3>Products <a class="text-center btn" onclick="editServiceAndProduct();" title="Edit">✎</a>
+                    <h3>Products <!-- <a class="text-center btn" onclick="editServiceAndProduct();" title="Edit">✎</a> -->
                     </h3>
                     <div class="text-left">
                         <h4 class="font-weight-bold" id="stylingProductsheading"></h4>
@@ -143,7 +145,7 @@
             </div>
             <div class="showService col-10 text-center mt-5" id="showService">
                 <div class="text-left  mt-4">
-                    <h3>Services <a class="text-center btn" onclick="editServiceAndProduct();" title="Edit">✎</a>
+                    <h3>Services <!-- <a class="text-center btn" onclick="editServiceAndProduct();" title="Edit">✎</a> -->
                     </h3>
 
                     <div class="text-left">
@@ -230,7 +232,7 @@
                     <div class="modal-body">
                         <h5 class="text-center">Edit Profile Picture</h5>
                         <form id="hero_image_form">
-                            <input type="hidden" name="type" value="{{ Auth::user()->type }}">
+                            <input type="hidden" name="type" value="{{ @$data->type }}">
                             <p>
                             <div class="profilePicture">
                                 <img id="blah" src="images/blank.png" alt="your image"> <br>
@@ -255,7 +257,7 @@
         <!-- edit name  -->
 
         <form action="" id="updateBasicInfoProfile">
-            <input type="hidden" name="type" value="{{ Auth::user()->type }}">
+            <input type="hidden" name="type" value="{{ @$data->type }}">
             <div class="modal name-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
                 <div class="modal-dialog " role="document">
                     <div class="modal-content bg-dark">
@@ -1323,5 +1325,5 @@
         });
     </script>
     <script src="{{ asset('customjs/web/register/common.js') }}?v={{time()}}"></script>
-    <script src="{{ asset('customjs/web/profile/ownerProfile.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('customjs/web/profile/salonOwnerProfileView.js') }}?v={{time()}}"></script>
 @endpush

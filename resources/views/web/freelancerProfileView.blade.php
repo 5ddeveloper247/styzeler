@@ -2787,7 +2787,7 @@
             });
         });
     </script>
-    <script src="{{ asset('customjs/web/register/common.js') }}"></script>
-    <script src="{{ asset('template_old/js/freelancer-profile-calendar.js') }}"></script>
-    <script src="{{ asset('customjs/web/profile/profileView.js') }}"></script>
+    <script src="{{ asset('customjs/web/register/common.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('template_old/js/freelancer-profile-calendar.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('customjs/web/profile/profileView.js') }}?v={{time()}}"></script>
 @endpush

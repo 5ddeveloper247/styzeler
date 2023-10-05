@@ -66,8 +66,8 @@
 	<script src="{{ asset('assets_admin/plugins/jquery-ui/jquery-ui.js') }}"></script>
 	<script src="https://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
 	
-    <script src="{{ asset('customjs/web/register/common.js') }}"></script>
-    <script src="{{ asset('customjs/admin/blog/blogs.js') }}"></script>
+    <script src="{{ asset('customjs/web/register/common.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('customjs/admin/blog/blogs.js') }}?v={{time()}}"></script>
     <script>
 
     $(function() {

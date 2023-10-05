@@ -24,7 +24,7 @@
                     <button href="javascript:void(0)" class="logon_btn heart_btn dropdown-toggle position-relative"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                         id="navbarDropdown">
-                        <img src="{{ asset('template_new/assets/images/heart_icon.jpg') }}" alt="">
+                        <img src="{{ asset('template_new/assets/images/user-icon.png') }}" alt="" style="width:28px;"><!-- heart_icon.jpg -->
                         <div class="dropdown-menu position-absolute" aria-labelledby="navbarDropdown">
                             {{-- <div class="user-profile"></div> --}}
                             @if (auth()->user()->type != 'client')

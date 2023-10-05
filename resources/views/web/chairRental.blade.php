@@ -335,8 +335,8 @@
 
 @push('script')
 <script src="{{ asset('template_old/js/jquery-captcha.min.js') }}"></script>
-<script src="{{ asset('customjs/web/register/common.js') }}"></script>
-<script src="{{ asset('customjs/web/rentlet/rentLet.js') }}"></script>
+<script src="{{ asset('customjs/web/register/common.js') }}?v={{time()}}"></script>
+<script src="{{ asset('customjs/web/rentlet/rentLet.js') }}?v={{time()}}"></script>
 <script>
 		$(function() {
 		    $.ajaxSetup({

@@ -20,7 +20,7 @@
 	<span class="material-symbols-rounded">mode_comment</span> <span
 		class="material-symbols-outlined">close</span>
 </button>
-<div class="chatbot">
+<div class="chatbot" style="z-index: 100;">
 	<header>
 		<h2>Chatbot</h2>
 		<span class="close-btn material-symbols-outlined">close</span>
@@ -51,7 +51,8 @@
 		<ul class="chatbox">
 			<li class="chat incoming">
 				<span class="material-symbols-outlined">smart_toy</span>
-				<p>Hi there 👋<br>How can I help you today? </p>
+<!-- 				<p>Hi there 👋<br>How can I help you today? </p> -->
+				<p>Hi 👋  Welcome to Styzeler!!!<br>For assistance please choose the following... </p>
 			</li>
 <!-- 			<li class="chat outgoing"><p>asdfadsf</p></li> -->
 		</ul>
@@ -60,7 +61,7 @@
 			<input type="hidden" id="guestUserId" name="guest_userid" value="">
 			<div class="chat-input">
 				
-					<textarea id="message_area" name="message" placeholder="Enter a message..." spellcheck="false" required></textarea>
+					<textarea id="message_area" name="message" placeholder="Enter a message..." spellcheck="false" required disabled></textarea>
 					<span id="send-btn" class="material-symbols-rounded">send</span>
 				
 				
@@ -76,8 +77,8 @@
  <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
  <script src="{{ asset('template_new/assets/js/main.js') }}"></script>
  <script src="{{ asset('template_new/assets/js/toastr.min.js') }}"></script>
- <script src="{{ asset('customjs/web/register/common.js') }}"></script>
- <script src="{{ asset('customjs/web/chat/chat.js') }}"></script>
+ <script src="{{ asset('customjs/web/register/common.js') }}?v={{time()}}"></script>
+ <script src="{{ asset('customjs/web/chat/chat.js') }}?v={{time()}}"></script>
  <script>
      $(".dropdown-toggle").click(function() {
          $('.dropdown-menu').toggleClass('show')

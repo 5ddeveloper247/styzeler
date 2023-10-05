@@ -105,7 +105,7 @@ if(isset($userDetails->type)){
 	
 	                <div class="rate row">
 	                    <label class="color-1 col-lg-2">Daily rate : </label>
-	                    <p class="col-lg-10" id="ownerRate">$ {{@$userDetails->rate != null ? $userDetails->rate : 0}}</p>
+	                    <p class="col-lg-10" id="ownerRate"> {{@$userDetails->rate != null ? '$'.$userDetails->rate : 'To be quoted'}}</p>
 	                </div>
 	
 	                <div class="work row">
@@ -139,7 +139,7 @@ if(isset($userDetails->type)){
 	                <div class="cv row">
 	                  	<label class="color-1 col-lg-2">CV : </label>
 	                	<p class="col-lg-10" id="ownerCv">
-	                  	@if(@$userDetails->trade_video != null)
+	                  	@if(@$userDetails->cv != null)
 	                  	<a href="{{ route('admin.cv') }}/{{@$userDetails->id}}" target="_blank" rel="noopener noreferrer">View</a>
 	                  	@endif
 	                  </p>
@@ -313,7 +313,7 @@ if(isset($userDetails->type)){
 @endsection
 
 @push('script')
-    <script src="{{ asset('customjs/web/register/common.js') }}"></script>
+    <script src="{{ asset('customjs/web/register/common.js') }}?v={{time()}}"></script>
     <script>
 
     $(document).ready(function () {

@@ -79,7 +79,7 @@ class FrontEndController extends Controller
 
     public function businessOwner()
     {
-    	$data['users'] = User::whereIn('type', ['hairdressingSalon', 'beautySalon'])->get();
+    	$data['users'] = User::where('status', 'Active')->whereIn('type', ['hairdressingSalon', 'beautySalon'])->get();
         return view('web.businessOwner')->with($data);
     }
 
@@ -133,19 +133,19 @@ class FrontEndController extends Controller
 
     public function barber()
     {
-        $data['users'] = User::whereIn('type', ['barber'])->get();
+        $data['users'] = User::where('status', 'Active')->whereIn('type', ['barber'])->get();
         return view('web.barber')->with($data);
     }
 
     public function hairstylist()
     {
-        $data['users'] = User::whereIn('type', ['hairStylist'])->get();
+        $data['users'] = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->get();
         return view('web.hairstylist')->with($data);
     }
 
     public function beautician()
     {
-        $data['users'] = User::whereIn('type', ['beautician'])->get();
+        $data['users'] = User::where('status', 'Active')->whereIn('type', ['beautician'])->get();
         return view('web.beautician')->with($data);
     }
 
@@ -156,13 +156,13 @@ class FrontEndController extends Controller
 
     public function weddingStylist()
     {
-        $data['users'] = User::whereIn('type', ['wedding'])->get();
+        $data['users'] = User::where('status', 'Active')->whereIn('type', ['wedding'])->get();
         return view('web.weddingStylist')->with($data);
     }
 
     public function salonOwner()
     {
-        $data['users'] = User::whereIn('type', ['hairdressingSalon', 'beautySalon'])->get();
+        $data['users'] = User::where('status', 'Active')->whereIn('type', ['hairdressingSalon', 'beautySalon'])->get();
         return view('web.salonOwner')->with($data);
     }
 
@@ -345,7 +345,7 @@ class FrontEndController extends Controller
         }
         return customView(
             'web.freelancerProfileView',
-            'web.salonOwnerProfile',
+            'web.salonOwnerProfileView',
             'web.clientProfile',
             $data->type,
             get_defined_vars()

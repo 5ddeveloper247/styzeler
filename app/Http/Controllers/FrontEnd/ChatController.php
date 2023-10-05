@@ -39,7 +39,10 @@ class ChatController extends Controller
 			$id = $existing->id;
 		}
 		
-		return response()->json(['status' => 200, 'message' => 'Details submitted succsessfully!', 'data' => $id]);
+		$arrRes['id'] = $id;
+		$arrRes['questions'] = Chat_questions::where('status', 'active')->get();
+		
+		return response()->json(['status' => 200, 'message' => 'Details submitted succsessfully!', 'data' => $arrRes]);
 	}
 	
 	public function sendMessage(Request $request)
@@ -69,15 +72,15 @@ class ChatController extends Controller
 			
 		}else{
 			
-		$questions = Chat_questions::where('status', 'active')->get();	
-			
-		return response()->json(
-            [
-            	'data' => $questions,
-                'type' => $msgType,
-                'status' => 200
-            ]
-        );
+			$questions = Chat_questions::where('status', 'active')->get();	
+				
+			return response()->json(
+	            [
+	            	'data' => $questions,
+	                'type' => $msgType,
+	                'status' => 200
+	            ]
+	        );
 			
 		}
 	}
