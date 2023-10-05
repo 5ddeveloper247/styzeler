@@ -15,7 +15,7 @@
     </div>
 </footer>
 
-<button class="chatbot-toggler">
+<button class="chatbot-toggler" style="z-index: 100;">
 	<span class="material-symbols-rounded">mode_comment</span> <span
 		class="material-symbols-outlined">close</span>
 </button>

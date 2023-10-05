@@ -71,6 +71,15 @@ $(document).ready(function () {
         // $("#calendar").fullCalendar('refetchEvents');
 
     });
+    
+    
+    $(".show_message").click(function () {
+      	$('#register_modal').modal('show');
+  	});
+    $(".tokens_message").click(function () {
+      	$('#tokens_modal').modal('show');
+  	});
+    
 
 });
 

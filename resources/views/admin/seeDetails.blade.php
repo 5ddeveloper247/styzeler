@@ -125,7 +125,7 @@ if(isset($userDetails->type)){
 	                <div class="video row">
 	                 	<label class="color-1 col-lg-2">Test Video : </label>
 	                  	<p class="col-lg-10" id="ownerVideo">
-	                  	@if(@$userDetails->trade_video != null)
+	                  	@if(@$userDetails->trade_video != 'null' && @$userDetails->trade_video != '')
 	                  	<a href="{{@$userDetails->trade_video}}" target="_blank">Open Video</a>
 	                  	@endif
 	                  	</p>
@@ -139,7 +139,7 @@ if(isset($userDetails->type)){
 	                <div class="cv row">
 	                  	<label class="color-1 col-lg-2">CV : </label>
 	                	<p class="col-lg-10" id="ownerCv">
-	                  	@if(@$userDetails->cv != null)
+	                  	@if(@$userDetails->cv != 'null' && @$userDetails->cv != '')
 	                  	<a href="{{ route('admin.cv') }}/{{@$userDetails->id}}" target="_blank" rel="noopener noreferrer">View</a>
 	                  	@endif
 	                  </p>

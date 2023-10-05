@@ -38,8 +38,8 @@ $(document).ready(function () {
 
         $("#service").removeClass("customBtn").addClass("customBtnSelected");
     });
-
-
+    
+    
 });
 function editProfilePic() {
     $(".profile-pic-modal").modal("show");

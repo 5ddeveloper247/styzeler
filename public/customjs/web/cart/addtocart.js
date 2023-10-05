@@ -3,6 +3,16 @@ $(document).ready(function () {
 	
 	
 	
+	$(document).on('click', '.closeCartConfirm', function (e) {
+		$("#item_text").val('');
+		$("#item_time").val('');
+		$("#item_price").val('');
+		$("#item_type").val('');
+		$("#item_subtype").val('');
+		$("#item_service").val('');
+		$("#cartConfirm_modal").modal('hide');
+	});
+	
 	$(document).on('click', '.close-modal', function (e) {
 		$("#fail-modal").modal('hide');
 	});
@@ -30,7 +40,12 @@ $(document).on('click', '.add_to_cart', function (e) {
 	$("#item_subtype").val($(this).attr('data-subtype'));
 	$("#item_service").val($(this).attr('data-service'));
 	
-	e.preventDefault();
+	$("#cartConfirm_modal").modal('show');
+});
+
+function addToCartConfirm(){
+	
+//	e.preventDefault();
 	let type = 'POST';
 	let url = '/addToCart';
 	let message = '';
@@ -41,7 +56,7 @@ $(document).on('click', '.add_to_cart', function (e) {
 //	$('[name]').removeClass('is-invalid');
 	SendAjaxRequestToServer(type, url, data, '', addToCartResponse, 'spinner_button', 'submit_button');
 	
-});
+}
 
 function addToCartResponse(response) {
 
@@ -54,8 +69,8 @@ function addToCartResponse(response) {
        
     } else {
 
-    	error = response.responseJSON.message;
-        var is_invalid = response.responseJSON.errors;
+    	error = response.message;
+        var is_invalid = response.errors;
 
         // Loop through the error object
         $.each(is_invalid, function(key) {

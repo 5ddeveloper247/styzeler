@@ -22,6 +22,32 @@
         .input_box {
             cursor: pointer;
         }
+        .btn1 {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+        .customBtn {
+		    color: #c4b9b0 !important;
+		    border: 1px solid #c4b9b0;
+		    border-radius: 0;
+		    font-size: 18px;
+		    transition-duration: 0.3s;
+		    cursor: pointer;
+		}
     </style>
 @endpush
 
@@ -221,7 +247,10 @@
                 </div>
             </div>
 			<!-- Booking Fail Message-->
-			<div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
+			
+
+    </section>
+    <div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
 		    	<div class="modal-dialog modal-md" style="width: 350px">
 		        	<div class="modal-content border border-warning"
 		            	style="background-color: black; color: white; max-height: 1000px; overflow-y: auto; margin-top: 30%; margin-left: 10%;">
@@ -230,13 +259,29 @@
 		                    <i class="close-modal" style="font-size: 2rem; cursor: pointer"><b>&times;</b></i>
 		              	</div>
 		             	<div class="modal-body my-5">
-		                	<p class="fs-2">To continue book freelancer first buy package.</p>
+		                	<p class="fs-2">Insufficient tokens, first buy package!</p>
 		             	</div>
 		          	</div>
 		      	</div>
 		  	</div>
-
-    </section>
+		  	<div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
+	            <div class="modal-dialog modal-md ">
+	                <div class="modal-content border border-warning"
+	                    style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+	                    <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+	                        <h4 class="modal-title">Confirmation</h4>
+	                        <i class="close-modal closeCartConfirm" style="font-size: 2rem;cursor:pointer;"><b>&times;</b></i>
+	                    </div>
+	                    <div class="modal-body">
+	                        Are you sure you want to add this service in cart?
+	                    </div>
+	                    <div class="modal-footer text-center">
+	                        <a type="" href="javascript:;" class="btn1 customBtn" onclick="addToCartConfirm();">Yes</a>
+	                        <a type="button" class="btn1 customBtn closeCartConfirm" data-dismiss="modal">Close</a>
+	                    </div>
+	                </div>
+	            </div>
+	        </div>
 @endsection
 
 @push('script')
