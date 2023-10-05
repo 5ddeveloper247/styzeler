@@ -55,7 +55,7 @@
             {{-- <p><a class="text-center btn edit_pro_pic" onclick="editProfilePic()" title="Edit">+</a></p> --}}
         </div>
 
-        <div class="row my-4">
+		<div class="row my-4">
             <div class="col-4 text-center">
                 <div class="profile btn customBtn" id="profile">Profile</div>
             </div>
@@ -72,7 +72,9 @@
             <div class="showProfile col-10 text-left mt-4" id="showProfile">
                 <div class="name row ">
                     <label class="color-1 col-lg-3">Owner's Name : </label>
+                    	@if (@$membership > 0)
                     	<p class="col-lg-9" id="ownerName"></p>
+                    	@endif
                 </div>
                 <div class="Address row ">
                     <label class="color-1 col-lg-3">Owner's Address : </label>
@@ -89,7 +91,9 @@
 
                 <div class="email row">
                     <label class="color-1 col-lg-3">Email : </label>
+                    @if (@$membership > 0)
                     <p class="col-lg-9" id="owner-email"></p>
+                    @endif
                 </div>
 
 
@@ -1310,7 +1314,7 @@
         </div>
 
         <!-- Footer -->
-
+        
     </div>
 @endsection
 

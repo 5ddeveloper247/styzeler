@@ -136,6 +136,8 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::post('/saveGuestUserDetails', 'ChatController@saveGuestUserDetails')->name('saveGuestUserDetails');
     Route::post('/sendMessage', 'ChatController@sendMessage')->name('sendMessage');
     Route::get('/getAnswer', 'ChatController@getAnswer')->name('getAnswer');
+    
+    Route::post('/saveContactUsEnquiry', 'ContactController@saveContactUsEnquiry')->name('saveContactUsEnquiry');
 });
 
 

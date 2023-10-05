@@ -318,6 +318,10 @@ function profileResponse(response) {
             $('#status').text(profile_status);
             $('#status').append('<a class="text-center btn" onclick="editStatus();" title="Edit">✎</a>');
             $('#stylist_status').val(profile_status);
+            
+            // for tokens
+            $('#remaining_tokens').text((data.tokens != null && data.tokens != '')  ? data.tokens : '0');
+            $('#total_tokens').text((data.total_tokens != null && data.total_tokens != '') ? data.total_tokens : '0');
 
 
             if (type == 'wedding' || type == 'hairStylist' || type == 'barber') {

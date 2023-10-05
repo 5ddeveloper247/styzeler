@@ -21,6 +21,14 @@ class CartController extends Controller
 			return response()->json(['status' => 500, 'message' => 'Kindly login first!', 'data' => '']);
 		}
 		
+		$userDetail = User::where('id', Auth::user()->id)->first();
+		
+		$tokens = (isset($userDetail->tokens) && $userDetail->tokens != null) ? $userDetail->tokens : 0;
+		
+		if($tokens <= 0){
+			return response()->json(['status' => 500, 'message' => 'Insufficient tokens, first buy package!', 'data' => '']);
+		}
+		
 		$active_cart = Cart::where('user_id', Auth::user()->id)->where('status', 'active')->first();
 		
 		if(isset($active_cart->id)){

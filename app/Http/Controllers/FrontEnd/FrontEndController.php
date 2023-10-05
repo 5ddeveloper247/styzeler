@@ -322,7 +322,9 @@ class FrontEndController extends Controller
     {
         $data = User::findOrFail(Auth::user()->id);
         if(isset(Auth::user()->id)){
-        	$membership = Membership::where('user_id', Auth::user()->id)->count();
+//         	$membership = Membership::where('user_id', Auth::user()->id)->count();
+        	$user = User::where('id', Auth::user()->id)->first();
+        	$membership = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
         }else{
         	$membership = 0;
         }
@@ -339,7 +341,9 @@ class FrontEndController extends Controller
 
         $data = User::findOrFail($request->id);
         if(isset(Auth::user()->id)){
-        	$membership = Membership::where('user_id', Auth::user()->id)->count();
+//         	$membership = Membership::where('user_id', Auth::user()->id)->count();
+        	$user = User::where('id', Auth::user()->id)->first();
+        	$membership = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
         }else{
         	$membership = 0;
         }

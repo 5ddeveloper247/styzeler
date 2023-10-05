@@ -171,7 +171,22 @@
 
             <!-- <p><a class="text-center btn edit_pro_pic" onclick="editProfilePic()" title="Edit">+</a></p> -->
         </div>
-
+        @php
+	        $class = '';
+	        $bookid = '';
+	        if(@!Auth::user()){
+	        	$class = 'show_message';
+	        	$bookid = '';
+	        }
+	        else if(@$membership == 0){
+	        	$class = 'tokens_message';
+	        	$bookid = '';
+	        }else{
+	        	$class = '';
+	        	$bookid = 'book';
+	        }
+        @endphp
+		
         <div class="row my-4 justify-content-center">
             <div class="col-3 text-center">
                 <div class="profile btn customBtn" id="profile">Profile</div>
@@ -183,7 +198,7 @@
                 <div class="likes btn customBtn" id="likes">Likes</div>
             </div>
             <div class="col-3 text-center">
-                <div class="book btn customBtn" id="book">Book</div>
+                <div class="book btn customBtn {{@$class}}" id="{{@$bookid}}">Book</div>
             </div>
 
         </div>
@@ -193,9 +208,9 @@
 
                 <div class="name row ">
                     <label class="color-1 col-lg-2">Name : </label>
-                    @if (@$membership > 0)
+                    {{--@if (@$membership > 0)--}}
                         <p class="col-lg-10" id="ownerName"></p>
-                    @endif
+                    {{--@endif--}}
                 </div>
 
                 <div class="age row">
@@ -237,9 +252,9 @@
 
                 <div class="email row">
                     <label class="color-1 col-lg-2">Email : </label>
-                    @if (@$membership > 0)
+                    {{--@if (@$membership > 0)--}}
                         <p class="col-lg-10" id="ownerEmail"></p>
-                    @endif
+                    {{--@endif--}}
                 </div>
 
                 <div class="status row">
@@ -2776,6 +2791,42 @@
             </div>
         </div>
     </div>
+    <div class="modal fade bd-example-modal-md" id="register_modal" role="dialog">
+    	<div class="modal-dialog modal-md ">
+         	<div class="modal-content border border-warning"
+              	style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+             	<div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                	<h4 class="modal-title">Registeration is Free</h4>
+                   	<i class="close-modal" data-dismiss="modal" style="font-size: 2rem;"><b>&times;</b></i>
+             	</div>
+            	<div class="modal-body">
+                   	Do you want to register your self?
+               	</div>
+             	<div class="modal-footer text-center">
+                  	<a type="" href="{{ route('registration') }}" class="btn customBtn">Ok</a>
+                  	<a type="button" class="btn customBtn close-modal" data-dismiss="modal">Close</a>
+             	</div>
+         	</div>
+       	</div>
+   	</div>
+   	<div class="modal fade bd-example-modal-md" id="tokens_modal" role="dialog">
+    	<div class="modal-dialog modal-md ">
+         	<div class="modal-content border border-warning"
+              	style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+             	<div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                	<h4 class="modal-title">Buy Package</h4>
+                   	<i class="close-modal" data-dismiss="modal" style="font-size: 2rem;"><b>&times;</b></i>
+             	</div>
+            	<div class="modal-body">
+                   	Insufficient tokens you need to buy package!
+               	</div>
+             	<div class="modal-footer text-center">
+                  	<a type="" href="{{ route('businessOwner') }}#packages" class="btn customBtn">Ok</a>
+                  	<a type="button" class="btn customBtn close-modal" data-dismiss="modal">Close</a>
+             	</div>
+         	</div>
+       	</div>
+   	</div>
 @endsection
 @push('script')
     <script>

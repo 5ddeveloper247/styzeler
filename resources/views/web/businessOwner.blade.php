@@ -201,41 +201,61 @@
                     <div class="item">
                         <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
                         <div class="in">
-                            <h4><a href="{{ route('packagesDescription') }}">Freelancer</a></h4>
+                            <h4>
+                            	<a class="{{ @!Auth::user() ? 'show_message' : '' }}"
+                            		href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Freelancer
+                            	</a>
+                            </h4>
                             <p>for temporary work or full/part-time position</p>
                         </div>
                     </div>
                     <div class="item">
                         <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
                         <div class="in">
-                            <h4><a href="{{ route('packagesDescription') }}">Rent & let:</a></h4>
+                            <h4>
+                            	<a class="{{ @!Auth::user() ? 'show_message' : '' }}"
+                            		href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Rent & let:
+                            	</a>
+                            </h4>
                             <p>Chair rental, maximise on an empty chair</p>
                         </div>
                     </div>
                     <div class="item">
                         <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
                         <div class="in">
-                            <h4><a href="{{ route('packagesDescription') }}">Job posting:</a></h4>
+                            <h4>
+	                            <a class="{{ @!Auth::user() ? 'show_message' : '' }}"
+	                            	href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Job posting:
+	                            </a>
+                            </h4>
                             <p>Invite candidate to apply for a vacancy</p>
                         </div>
                     </div>
                     <div class="item">
                         <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
                         <div class="in">
-                            <h4><a href="{{ route('packagesDescription') }}">Wedding Stylistes</a></h4>
+                            <h4>
+	                            <a class="{{ @!Auth::user() ? 'show_message' : '' }}"
+	                            	href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Wedding Stylistes:
+	                            </a>
+                            </h4>
                             <p>Take advantage and upgrade your services</p>
                         </div>
                     </div>
                     <div class="item">
                         <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
                         <div class="in">
-                            <h4><a href="{{ route('packagesDescription') }}">Events</a></h4>
-                            <p>Festivals, photo shooting, presentations Job posting:</p>
+                            <h4>
+                            	<a class="{{ @!Auth::user() ? 'show_message' : '' }}" 
+                            		href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Events:
+                            	</a>
+                            </h4>
+                            <p>Festivals, photo shooting, presentations Job posting</p>
                         </div>
                     </div>
                 </div>
                 <div class="btn_blk">
-                    <a href="registration.html" class="site_btn">Register <img
+                    <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}" class="site_btn">Register <img
                             src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" /></a>
                 </div>
             </div>
@@ -645,7 +665,7 @@
                     </div>
                     <div class="modal-footer text-center">
                         <a type="" href="{{ route('registration') }}" class="btn1 customBtn">Ok</a>
-                        <a type="button" class="btn1 customBtn" data-dismiss="modal">Close</a>
+                        <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
                     </div>
                 </div>
             </div>
@@ -688,37 +708,51 @@
         });
 	</script>
 	<script>
-	  $(document).on("click", ".popup-pkg1", function () {
-	    $('#popup-pkg1').modal('show');
-	  });
-	  $(document).on("click", ".popup-pkg2", function () {
-	    $('#popup-pkg2').modal('show');
-	  });
-	  $(document).on("click", ".popup-pkg3", function () {
-	    $('#popup-pkg3').modal('show');
-	  });
-	  $(document).on("click", ".close-modal", function () {
-	    $('.modal').modal('hide');
-	  });
-	  $(document).on("click", ".show_message", function() {
-          $('#register_modal').modal('show');
-      });
-      function paymentModal(amount, tokens) {
-	  	$('#payment_amount').val(amount);
-	    $('#payment_tokens').val(tokens);
-	    $('#payment_modal').modal('show');
-	  }
+	  	$(document).on("click", ".popup-pkg1", function () {
+	  		@if(@!Auth::user())
+	    		$('#register_modal').modal('show'); return;
+	       	@endif
+	    	$('#popup-pkg1').modal('show');
+	  	});
+	  	$(document).on("click", ".popup-pkg2", function () {
+	  		@if(@!Auth::user())
+	    		$('#register_modal').modal('show'); return;
+	       	@endif
+	    	$('#popup-pkg2').modal('show');
+	  	});
+	  	$(document).on("click", ".popup-pkg3", function () {
+		  	@if(@!Auth::user())
+	    		$('#register_modal').modal('show'); return;
+	       	@endif
+	    	$('#popup-pkg3').modal('show');
+	  	});
+	  	$(document).on("click", ".close-modal", function () {
+	    	$('.modal').modal('hide');
+	  	});
+	  	$(document).on("click", ".show_message", function() {
+          	$('#register_modal').modal('show');
+      	});
+      	function paymentModal(amount, tokens) {
 
-	  function showHairdressingOwner(){
-		$('#hairdressing_container').show();
-		$('#beautyspa_container').hide();
+	    	@if(@!Auth::user())
+	    		$('#register_modal').modal('show');
+				return;
+	       	@endif
+		  	$('#payment_amount').val(amount);
+		    $('#payment_tokens').val(tokens);
+		    $('#payment_modal').modal('show');
+	  	}
+
+	  	function showHairdressingOwner(){
+			$('#hairdressing_container').show();
+			$('#beautyspa_container').hide();
 			
-	  }
-	  function showBeautyOwner(){
+	  	}
+	  	function showBeautyOwner(){
 			
-		$('#hairdressing_container').hide();
-		$('#beautyspa_container').show();
-	  }
+			$('#hairdressing_container').hide();
+			$('#beautyspa_container').show();
+	  	}
   	</script>
   	<script>
         // Check if the 'error' key is present in the session data

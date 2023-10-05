@@ -129,9 +129,9 @@
                                     Register<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                                 </button>
                                 <ul class="sub_list">
-                                    <li><a href="{{ route('register') }}" class="shadow_btn">Freelancer</a>
+                                    <li><a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}" class="shadow_btn">Freelancer</a>
                                     </li>
-                                    <li><a href="{{ route('register') }}" class="shadow_btn">Client</a></li>
+                                    <li><a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}" class="shadow_btn">Client</a></li>
                                 </ul>
                             </li>
                             <li><a href="#booking" class="shadow_btn">Price List <img
@@ -200,7 +200,7 @@
                 </div>
             </div>
             <div class="btn_blk mt-5 d-flex justify-content-end">
-                <a href="{{ route('register') }}" class="site_btn">Register <img
+                <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}" class="site_btn">Register <img
                         src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
             </div>
             <div class="content">

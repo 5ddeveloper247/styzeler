@@ -36,13 +36,13 @@
 					<div class="col-3">
 						<p>Name</p>
 					</div>
-					<div class="col-2">
+					<div class="col-3">
 						<p>Email</p>
 					</div>
 					<div class="col-2">
 						<p>Phone</p>
 					</div>
-					<div class="col-3">
+					<div class="col-4">
 						<p>Message</p>
 					</div>
 					<!-- <div class="col-2">
@@ -51,35 +51,19 @@
 				</div>
 				<div class="row email-details">
 					
-					<div class="col-3" style="border-top: 1px solid grey;"><p>Jenny </p></div>
-					<div class="col-2" style="border-top: 1px solid grey;"><p>jennifer@pimpsandpinups.com</p></div>
-					<div class="col-2" style="border-top: 1px solid grey;"><p>02074262121</p></div>
-					<div class="col-3" style="border-top: 1px solid grey;">
-						<p>Hi, 
-							We are looking to either have stylists in for the day as freelance, or look at recruiting a permanent freelance stylist. 
-							
-							Could you please let me know how to go about this and your rates 
-							
-							Kind regards
-							Jenny 
-						</p>
-					</div>
-					<hr>
-					
-					<div class="col-3" style="border-top: 1px solid grey;"><p>Jenny </p></div>
-					<div class="col-2" style="border-top: 1px solid grey;"><p>jennifer@pimpsandpinups.com</p></div>
-					<div class="col-2" style="border-top: 1px solid grey;"><p>02074262121</p></div>
-					<div class="col-3" style="border-top: 1px solid grey;">
-						<p>Hi, 
-							We are looking to either have stylists in for the day as freelance, or look at recruiting a permanent freelance stylist. 
-							
-							Could you please let me know how to go about this and your rates 
-							
-							Kind regards
-							Jenny 
-						</p>
-					</div>
-					<hr>
+					@if(@count($enquiries))
+					@foreach($enquiries as $row)
+						
+						<div class="col-3" style="border-top: 1px solid grey;"><p>{{@$row->name}} </p></div>
+						<div class="col-3" style="border-top: 1px solid grey;"><p>{{@$row->email}}</p></div>
+						<div class="col-2" style="border-top: 1px solid grey;"><p>{{@$row->phone}}</p></div>
+						<div class="col-4" style="border-top: 1px solid grey;">
+							<p>{{@$row->message}}</p>
+						</div>
+						<hr>
+						
+					@endforeach
+					@endif
 					
 				</div>
 
