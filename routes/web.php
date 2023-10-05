@@ -14,6 +14,26 @@ Route::get('/old', function () {
     return view('index_old');
 });
 
+Route::get('/testEmail', function () {
+
+    // Server settings
+    $mail_val = [
+        'send_to_name' => "send_to_name",
+        'send_to' => 'ar5555789@gmail.com',
+        'email_from' => 'noreply@my.com',
+        // 'email_from' => 'noreply@styzeler.co.uk',
+        'email_from_name' => 'Styzeler',
+        'subject' => 'Styzeler subject',
+    ];
+    Mail::send('emails.mail', ['body' => 'this is test'], function ($send) use ($mail_val) {
+        $send->from($mail_val['email_from'], $mail_val['email_from_name']);
+        $send->replyto($mail_val['email_from'], $mail_val['email_from_name']);
+        $send->to($mail_val['send_to'], $mail_val['send_to_name'])->subject($mail_val['subject']);
+    });
+    // foreach (['taylor@example.com', 'dries@example.com'] as $recipient) {
+    //     Mail::to($recipient)->send(new OrderShipped($order));
+    // }
+});
 
 // Auth::routes();
 
@@ -136,8 +156,6 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::post('/saveGuestUserDetails', 'ChatController@saveGuestUserDetails')->name('saveGuestUserDetails');
     Route::post('/sendMessage', 'ChatController@sendMessage')->name('sendMessage');
     Route::get('/getAnswer', 'ChatController@getAnswer')->name('getAnswer');
-    
-    Route::post('/saveContactUsEnquiry', 'ContactController@saveContactUsEnquiry')->name('saveContactUsEnquiry');
 });
 
 
