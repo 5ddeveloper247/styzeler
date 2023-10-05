@@ -11,6 +11,7 @@ use App\Models\Job_apply;
 use App\Models\Guest_user;
 use App\Models\Chat;
 use App\Models\Chat_questions;
+use App\Models\Email_enquiry;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Appointments;
 
@@ -224,6 +225,7 @@ class AdminFrontEndController extends Controller
     
     public function emailEnquiry()
     {
+    	$data['enquiries'] = Email_enquiry::all();
     	$data['page'] = 'emailEnquiry';
     	return view('admin.emailEnquiry')->with($data);
     }

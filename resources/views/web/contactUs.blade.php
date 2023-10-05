@@ -159,29 +159,29 @@
                 </div>
                 <div class="form_block">
                     <h3>Enquiry Form</h3>
-                    <form action="" method="post">
+                    <form id="contact_form">
                         <div class="input_block">
                             <label for="">Your Name</label>
-                            <input type="text" name="" id="" class="input_text"
+                            <input type="text" name="name" id="name" class="input_text"
                                 style="background-image: url('{{ asset('template_new/assets/images/input_name.jpg') }}');">
                         </div>
                         <div class="input_block">
                             <label for="">Email</label>
-                            <input type="text" name="" id="" class="input_text"
+                            <input type="text" name="email" id="email" class="input_text"
                                 style="background-image: url('{{ asset('template_new/assets/images/input_email.jpg') }}');">
                         </div>
                         <div class="input_block">
                             <label for="">Tel</label>
-                            <input type="text" name="" id="" class="input_text"
+                            <input type="number" name="phone" id="phone" class="input_text" maxlength="15"
                                 style="background-image: url('{{ asset('template_new/assets/images/input_tel.jpg') }}');">
                         </div>
                         <div class="input_block">
                             <label for="">Message</label>
-                            <textarea name="" id="" rows="5" class="input_text"
+                            <textarea name="message" id="message" rows="5" class="input_text"
                                 style="background-image: url('{{ asset('template_new/assets/images/input_message.jpg') }}');"></textarea>
                         </div>
                         <div class="btn_blk">
-                            <button type="submit" class="site_btn">Submit</button>
+                            <button type="button" class="site_btn" id="enquiry_form_submit">Submit</button>
                         </div>
                     </form>
                 </div>
@@ -192,4 +192,5 @@
 @endsection
 
 @push('script')
+<script src="{{ asset('customjs/web/contact/contactUs.js') }}?v={{time()}}"></script>
 @endpush
