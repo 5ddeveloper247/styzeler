@@ -139,6 +139,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/getAnswer', 'ChatController@getAnswer')->name('getAnswer');
     
     Route::post('/saveContactUsEnquiry', 'ContactController@saveContactUsEnquiry')->name('saveContactUsEnquiry');
+    Route::get('/getClientTokens', 'ProfileController@getClientTokens')->name('getClientTokens');
 });
 
 

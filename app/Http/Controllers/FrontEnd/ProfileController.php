@@ -623,4 +623,16 @@ class ProfileController extends Controller
             'appointments' => $getProfileData,
         ]);
     }
+
+    public function getClientTokens(Request $request)
+    {
+
+        if (!isset(Auth::user()->id)) {
+            return response()->json(['status' => 500, 'message' => 'Login with client user first!', 'data' => '']);
+        }
+
+        $userDetails = User::where('id', Auth::user()->id)->first();
+
+        return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
+    }
 }

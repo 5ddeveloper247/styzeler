@@ -68,6 +68,40 @@
 	</div>
 	
 </div>
+
+<div class="modal fade bd-example-modal-md" id="showTokens_modal" role="dialog">
+ 	<div class="modal-dialog modal-md ">
+    	<div class="modal-content border border-warning"
+             style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+         	<div class="modal-header" style="border-bottom: 5px solid #766d48;">
+              	<h4 class="modal-title">Tokens</h4>
+           		<i class="close-modal" data-dismiss="modal" style="font-size: 2rem;cursor:pointer;"><b>&times;</b></i>
+         	</div>
+         	<div class="modal-body">
+            	<div class="row">
+            		<div class="col-6 text-left">
+            			<label>Total Tokens:</label>
+            		</div>
+            		<div class="col-6 text-left">
+            			<p id="clientTotalTokens">0</p>
+            		</div>
+            		
+            		<div class="col-6 text-left">
+            			<label>Remaining Tokens:</label>
+            		</div>
+            		<div class="col-6 text-left">
+            			<p id="clientRemTokens">0</p>
+            		</div>
+            	
+            	</div>
+          	</div>
+<!--        		<div class="modal-footer text-center"> -->
+<!--            		<a type="" href="javascript:;" class="btn1 customBtn">Ok</a> -->
+<!--              	<a type="button" class="btn customBtn close-modal" data-dismiss="modal">Close</a> -->
+<!--          	</div> -->
+        </div>
+    </div>
+</div>
 <!--Bootstrap CDN-->
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>

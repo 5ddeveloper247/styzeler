@@ -46,3 +46,50 @@ function SendAjaxRequestToServer(requestType = 'GET', url, data, dataType = 'jso
         }
     })
 }
+
+function getClientTokens(){
+	
+//	e.preventDefault();
+	let type = 'GET';
+	let url = '/getClientTokens';
+	let message = '';
+//	let form = $('#blog-form');
+	let data = '';//new FormData(form[0]);
+	
+	// PASSING DATA TO FUNCTION
+	$('[name]').removeClass('is-invalid');
+	SendAjaxRequestToServer(type, url, data, '', getClientTokensResponse, 'spinner_button', 'submit_button');
+}
+
+function getClientTokensResponse(response){
+	// SHOWING MESSAGE ACCORDING TO RESPONSE
+    if (response.status == 200 || response.status == '200') {
+      
+    	var details = response.data;
+    	
+    	$("#clientRemTokens").text((details.tokens != 'null' && details.tokens != '') ? details.tokens : '0' );
+    	$("#clientTotalTokens").text((details.total_tokens != 'null' && details.total_tokens != '') ? details.total_tokens : '0');
+    	
+        $('#showTokens_modal').modal('show');
+
+    } else {
+
+    	error = response.message;
+        var is_invalid = response.errors;
+
+        // Loop through the error object
+//        $.each(is_invalid, function(key) {
+//
+//            // Assuming 'key' corresponds to the form field name
+//            var inputField = $('[name="' + key + '"]');
+//            // Add the 'is-invalid' class to the input field's parent or any desired container
+//            inputField.closest('.form-control').addClass('is-invalid');
+//        });
+        // error_msg = error.split('(');
+
+        toastr.error(error, '', {
+            timeOut: 3000
+        });
+        
+    }
+}

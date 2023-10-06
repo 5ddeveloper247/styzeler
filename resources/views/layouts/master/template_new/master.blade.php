@@ -29,6 +29,33 @@
             /* width: 100% */
         }
         
+        .btn1 {
+            display: inline-block;
+            font-weight: 400;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: 0.375rem 0.75rem;
+            font-size: 1rem;
+            line-height: 1.5;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+        }
+
+        .customBtn {
+            color: #c4b9b0 !important;
+            border: 1px solid #c4b9b0;
+            border-radius: 0;
+            font-size: 18px;
+            transition-duration: 0.3s;
+            cursor: pointer;
+        }
 
 
 		
