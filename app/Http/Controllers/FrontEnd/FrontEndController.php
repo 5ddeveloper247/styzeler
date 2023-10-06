@@ -283,7 +283,7 @@ class FrontEndController extends Controller
             }
         }
 
-        $users = User::where('type', '!=', 'admin')->where('status', 'Active')->get();
+        $users = User::where('type', '!=', 'admin')->where('profile_type', 'Home Service')->where('status', 'Active')->get();
 
         if (!empty($users)) {
             foreach ($users as $user) {

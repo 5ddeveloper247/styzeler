@@ -365,10 +365,10 @@ class ProfileController extends Controller
                 $cart->status = 'checkout';
                 $cart->update();
 
-                Appointments::create([
-                    'booking_slots_id' => $request->slot_book_id,
-                    'booking_user_id' => Auth::id(),
-                ]);
+//                 Appointments::create([
+//                     'booking_slots_id' => $request->slot_book_id,
+//                     'booking_user_id' => Auth::id(),
+//                 ]);
 
                 if ($cartExist == 0) {
                     $user = User::find(Auth::user()->id);
@@ -581,6 +581,7 @@ class ProfileController extends Controller
                 'userBookingSlots.bookings',
                 'userBookingSlots.bookings.FreelancerUser'
             ])->get();
+//             dd($getProfileData);
         } else {
 
             $getProfileData = Bookings::where(

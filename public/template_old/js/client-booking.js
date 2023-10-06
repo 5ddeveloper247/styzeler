@@ -223,7 +223,7 @@ $(function () {
                         && response.appointments[i]["status"] !== "CANCELLED due to Expired Time") {
 
                         let id = response.appointments[i]["id"];
-                        let freelancer_user = response.appointments[i]["user_booking_slots"]["bookings"]["freelancer_user"];
+                        let freelancer_user = response.appointments[i]["user_booking_slots"]["bookings"]["FreelancerUser"];
                         let freelancer_username = freelancer_user['name'] + ' ' + freelancer_user['surname'];
                         let freelancer_email = freelancer_user['name'] + ' ' + freelancer_user['email'];
                         let freelancer_mobile = freelancer_user['name'] + ' ' + freelancer_user['phone'];
