@@ -366,10 +366,10 @@ class ProfileController extends Controller
                 $cart->update();
 
                 Appointments::create([
-                		'booking_slots_id' => $request->slot_book_id,
-                		'booking_user_id' => Auth::id(),
+                    'booking_slots_id' => $request->slot_book_id,
+                    'booking_user_id' => Auth::id(),
                 ]);
-                
+
                 if ($cartExist == 0) {
                     $user = User::find(Auth::user()->id);
                     $user->tokens = $tokens - 1;
@@ -388,7 +388,7 @@ class ProfileController extends Controller
             }
         } else {
             // Check if the user is not allowed to book a slot
-            $allowedUserTypes = ['hairdressingSalon', 'beautySalon'];//'client', 
+            $allowedUserTypes = ['hairdressingSalon', 'beautySalon']; //'client', 
             if (!in_array(Auth::user()->type, $allowedUserTypes)) {
                 return response()->json([
                     'status' => 422,
@@ -404,19 +404,19 @@ class ProfileController extends Controller
                     'message' => 'Slot is already booked.',
                 ]);
             }
-            
-//             // check user tokens
-//             $userDetails = User::where('id', Auth::user()->id)->first();
-            
-//             $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
-            
-//             if ($tokens == 0) {
-//             	return response()->json([
-//             			'status' => 422,
-//             			'message' => 'No enough tokens, first buy package.',
-//             	]);
-//             }
-            
+
+            //             // check user tokens
+            //             $userDetails = User::where('id', Auth::user()->id)->first();
+
+            //             $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
+
+            //             if ($tokens == 0) {
+            //             	return response()->json([
+            //             			'status' => 422,
+            //             			'message' => 'No enough tokens, first buy package.',
+            //             	]);
+            //             }
+
             // Create a new appointment
             Appointments::create([
                 'booking_slots_id' => $request->slot_book_id,
@@ -572,7 +572,7 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(
                 [
                     ['booking_user_id', Auth::id()],
-                    ['created_at', '>=', $currentDate]
+                    // ['created_at', '>=', $currentDate]
                 ]
 
             )->with([
@@ -623,16 +623,16 @@ class ProfileController extends Controller
             'appointments' => $getProfileData,
         ]);
     }
-    
+
     public function getClientTokens(Request $request)
     {
-    
-    	if(!isset(Auth::user()->id)){
-    		return response()->json(['status' => 500, 'message' => 'Login with client user first!', 'data' => '']);
-    	}
-    	
-    	$userDetails = User::where('id', Auth::user()->id)->first();
-    	
-    	return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
+
+        if (!isset(Auth::user()->id)) {
+            return response()->json(['status' => 500, 'message' => 'Login with client user first!', 'data' => '']);
+        }
+
+        $userDetails = User::where('id', Auth::user()->id)->first();
+
+        return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
     }
 }
