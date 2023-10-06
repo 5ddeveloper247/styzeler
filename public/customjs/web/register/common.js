@@ -93,3 +93,14 @@ function getClientTokensResponse(response){
         
     }
 }
+
+
+$(document).ready(function () {
+
+    $(".oldredirect").click(function () {
+        var url = $(this).attr('href');
+        window.location.href = url;
+    });
+
+
+});

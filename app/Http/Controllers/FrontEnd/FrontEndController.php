@@ -211,55 +211,55 @@ class FrontEndController extends Controller
     public function servicesBodywaxing()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+        $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
         return view('web.servicesBodywaxing')->with($data);
     }
     public function servicesEyebrows()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+        $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
         return view('web.servicesEyebrows')->with($data);
     }
 
     public function servicesManiPedi()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+        $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
         return view('web.servicesManiPedi')->with($data);
     }
 
     public function servicesFacial()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+        $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
         return view('web.servicesFacial')->with($data);
     }
 
     public function servicesMassage()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+        $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
         return view('web.servicesMassage')->with($data);
     }
 
     public function servicesLadies()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+        $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
         return view('web.servicesLadies')->with($data);
     }
 
     public function servicesMakeup()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+        $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
         return view('web.servicesMakeup')->with($data);
     }
 
     public function servicesGents()
     {
         $user = User::where('id', Auth::user()->id)->first();
-        $data['tokens'] = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+        $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
         return view('web.servicesGents')->with($data);
     }
 
@@ -283,10 +283,13 @@ class FrontEndController extends Controller
             }
         }
 
-        $users = User::whereIn('type', ['wedding','hairStylist','beautician','barber'])
-        				->orWhere('profile_type', 'Home Service')
+        $users1 = User::whereIn('type', ['hairStylist','beautician','barber'])
+        				->where('profile_type', 'Home Service')
         				->where('status', 'Active')->get();
+        $users2 = User::whereIn('type', ['wedding'])->where('status', 'Active')->get();
 
+        $users = $users1->concat($users2);
+        				
         if (!empty($users)) {
             foreach ($users as $user) {
 

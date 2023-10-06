@@ -216,7 +216,7 @@
 													<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
 												</a>
 											@else
-												<a href="{{ route('bookFreelancer') }}" class="book_freelance_btn "><!-- error-booking -->
+												<a href="javascript:;" class="book_freelance_btn error-booking">
 													<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
 												</a>
 											@endif

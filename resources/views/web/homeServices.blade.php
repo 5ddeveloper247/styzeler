@@ -597,12 +597,21 @@
     </script>
     <script>
         $(document).on("click", ".popup-pkg1", function() {
+        	@if(@!Auth::user())
+	    		$('#register_modal').modal('show'); return;
+	       	@endif
             $('#popup-pkg1').modal('show');
         });
         $(document).on("click", ".popup-pkg2", function() {
+        	@if(@!Auth::user())
+	    		$('#register_modal').modal('show'); return;
+	       	@endif
             $('#popup-pkg2').modal('show');
         });
         $(document).on("click", ".popup-pkg3", function() {
+        	@if(@!Auth::user())
+	    		$('#register_modal').modal('show'); return;
+	       	@endif
             $('#popup-pkg3').modal('show');
         });
         $(document).on("click", ".close-modal", function() {
@@ -613,13 +622,17 @@
         });
 
         function paymentModal(amount, tokens) {
+        	@if(@!Auth::user())
+	    		$('#register_modal').modal('show');
+				return;
+	       	@endif
             $('#payment_amount').val(amount);
             $('#payment_tokens').val(tokens);
             $('#payment_modal').modal('show');
         }
     </script>
     <script>
-        var user = '{{ auth()->user()->type }}';
+        var user = '{{ @Auth::user()->type }}';
 
         function clientLink($btn) {
             if (user == 'client') {
