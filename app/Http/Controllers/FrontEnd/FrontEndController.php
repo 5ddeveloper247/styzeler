@@ -283,7 +283,7 @@ class FrontEndController extends Controller
             }
         }
 
-        $users = User::whereIn('type', ['wedding','beautician','barber'])
+        $users = User::whereIn('type', ['wedding','hairStylist','beautician','barber'])
         				->orWhere('profile_type', 'Home Service')
         				->where('status', 'Active')->get();
 
