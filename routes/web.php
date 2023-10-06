@@ -1,10 +1,6 @@
 <?php
 
-use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
 Route::get('/', function () {
     return view('index');
@@ -137,7 +133,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::post('/saveGuestUserDetails', 'ChatController@saveGuestUserDetails')->name('saveGuestUserDetails');
     Route::post('/sendMessage', 'ChatController@sendMessage')->name('sendMessage');
     Route::get('/getAnswer', 'ChatController@getAnswer')->name('getAnswer');
-    
+
     Route::post('/saveContactUsEnquiry', 'ContactController@saveContactUsEnquiry')->name('saveContactUsEnquiry');
     Route::get('/getClientTokens', 'ProfileController@getClientTokens')->name('getClientTokens');
 });
@@ -228,5 +224,5 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-Route::get('mail/send', 'App\Http\Controllers\MailController@send');
+Route::get('mail/send', 'App\Http\Controllers\MailController@sendEmail');
 // Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@register')->name('registration');

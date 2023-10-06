@@ -18,4 +18,9 @@ class MailController extends Controller
 
         Mail::to("ar5555789@gmail.com", 'Receiver name')->send(new DemoEmail($objDemo));
     }
+
+    public function sendEmail()
+    {
+        sendMail('receiver_name', 'ar5555789@gmail.com', 'Registration', 'Registration sub', 'this is body');
+    }
 }

@@ -201,9 +201,25 @@ class RegisterController extends Controller
             default => [],
         };
 
-        //         dd($userData);
+        // dd($userData);
+
         User::create($userData);
 
+        $body = "<table>
+                <tr>
+                    <td>Name:</td>
+                    <td>" . $userData['name'] . "</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>" . $userData['email'] . "</td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td>" . $userData['password'] . "</td>
+                </tr>
+                </table>";
+        sendMail($userData['name'], $userData['email'], 'Registration', 'Registration Email', $body);
         return response()->json(['status' => 200, 'message' => 'Registration Succsessfull!', 'data' => '']);
     }
 }
