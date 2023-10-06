@@ -44,6 +44,9 @@
                             <a class="dropdown-item" href="{{ route('freelancerTermAndConditions') }}">Freelancer
                                 Terms &
                                 Conditions</a>
+                            @if (auth()->user()->type == 'client')
+                                <a class="dropdown-item" href="javascript:;" onclick="getClientTokens();">Tokens</a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('faqs') }}">FAQ</a>
                         </div>
                     </button>

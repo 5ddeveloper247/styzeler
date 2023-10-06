@@ -70,6 +70,39 @@
 	</div>
 	
 </div>
+<div class="modal fade bd-example-modal-md" id="showTokens_modal" role="dialog">
+ 	<div class="modal-dialog modal-md ">
+    	<div class="modal-content border border-warning"
+             style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+         	<div class="modal-header" style="border-bottom: 5px solid #766d48;">
+              	<h4 class="modal-title">Tokens</h4>
+           		<i class="close-modal" style="font-size: 2rem;cursor:pointer;"><b>&times;</b></i>
+         	</div>
+         	<div class="modal-body">
+            	<div class="row">
+            		<div class="col-4">
+            			<label>Total Tokens:</label>
+            		</div>
+            		<div class="col-8">
+            			<p id="clientTotalTokens">10</p>
+            		</div>
+            		
+            		<div class="col-4">
+            			<label>Remaining Tokens:</label>
+            		</div>
+            		<div class="col-8">
+            			<p id="clientRemTokens">10</p>
+            		</div>
+            	
+            	</div>
+          	</div>
+<!--        		<div class="modal-footer text-center"> -->
+<!--            		<a type="" href="javascript:;" class="btn1 customBtn">Ok</a> -->
+<!--              	<a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a> -->
+<!--          	</div> -->
+        </div>
+    </div>
+</div>
 
  <!-- JS Files -->
  <script src="{{ asset('template_new/assets/js/jquery.min.js') }}"></script>
