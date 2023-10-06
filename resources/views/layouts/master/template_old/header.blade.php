@@ -45,30 +45,29 @@
                                     <div class="dropdown-menu position-absolute" aria-labelledby="navbarDropdown">
                                         {{-- <div class="user-profile"></div> --}}
                                         @if (auth()->user()->type != 'client')
-                                            <a class="dropdown-item" href="{{ route('freelancerBookingHistory') }}">Your
-                                                Booking
-                                                History</a>
+                                            <a class="dropdown-item oldredirect" href="{{ route('freelancerBookingHistory') }}">Your
+                                                Booking History</a>
                                         @endif
-                                        <a class="dropdown-item" href="{{ route('Profile') }}">Profile</a>
+                                        <a class="dropdown-item oldredirect" href="{{ route('Profile') }}">Profile</a>
                                         @if (auth()->user()->type == 'client')
-				                            <a class="dropdown-item" href="{{ route('clientBooking') }}">Your
+				                            <a class="dropdown-item oldredirect" href="{{ route('clientBooking') }}">Your
 				                                Booking</a>
 				                        @else
-				                        	<a class="dropdown-item" href="{{ route('freelancerBooking') }}">Your
+				                        	<a class="dropdown-item oldredirect" href="{{ route('freelancerBooking') }}">Your
 				                                Booking</a>
 			                            @endif
-                                        <a class="dropdown-item" href="{{ route('termAndConditions') }}">Terms &
+                                        <a class="dropdown-item oldredirect" href="{{ route('termAndConditions') }}">Terms &
                                             Conditions</a>
-                                        <a class="dropdown-item" href="{{ route('privacyPolicy') }}">Privacy Policy</a>
-                                        <a class="dropdown-item" href="{{ route('webTermAndConditions') }}">Website
+                                        <a class="dropdown-item oldredirect" href="{{ route('privacyPolicy') }}">Privacy Policy</a>
+                                        <a class="dropdown-item oldredirect" href="{{ route('webTermAndConditions') }}">Website
                                             Terms &
                                             Conditions</a>
-                                        <a class="dropdown-item" href="{{ route('freelancerTermAndConditions') }}">
+                                        <a class="dropdown-item oldredirect" href="{{ route('freelancerTermAndConditions') }}">
                                             Freelancer Terms & Conditions</a>
                                       	@if (auth()->user()->type == 'client')
 			                                <a class="dropdown-item" href="javascript:;" onclick="getClientTokens();">Tokens</a>
 			                            @endif
-                                        <a class="dropdown-item" href="{{ route('faqs') }}">FAQ</a>
+                                        <a class="dropdown-item oldredirect" href="{{ route('faqs') }}">FAQ</a>
                                     </div>
                                 </button>
                             @else

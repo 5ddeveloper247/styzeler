@@ -263,7 +263,15 @@
             }
         }
     </style>
-    @endpush @section('content')
+    <script>
+    var scrollPosition = window.scrollY;
+
+    // Restore the scroll position when the page is reloaded
+    
+    
+    </script>
+    @endpush 
+    @section('content')
     <!-- header -->
     <section class="d-none d-md-block" id="banner"
         style="background-image: url('{{ asset('template_new/assets/images/banner.jpg') }}')">
@@ -654,9 +662,20 @@
     <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
     <script>
 	    $(document).ready(function () {
+	    	
 	    	localStorage.removeItem('bookType');
+
+	    	window.scrollTo(0, scrollPosition);
+	        
+	        setTimeout(function(){
+	        	flag = "0";
+	        	$("html").css({
+		            "overflow": "auto"
+		        });
+		    }, 1500);
 	    });
         $(function() {
+        	
             $("#popupInfo-modal").modal("show");
         });
 
@@ -680,6 +699,7 @@
         // Usage
         var targetClass = "none-modal";
         var flag = "0";
+        
         window.addEventListener("scroll", function() {
 
             if (isScrolledToClass(targetClass)) {
@@ -696,7 +716,7 @@
                 }
             }
             // if (isScrolledToClass(targetClass))
-        });
+        });	
         $(document).on("click", ".close-modal, body", function() {
         	$("html").css({
                 "overflow": "auto"

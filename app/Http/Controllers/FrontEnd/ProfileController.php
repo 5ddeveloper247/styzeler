@@ -345,8 +345,8 @@ class ProfileController extends Controller
 
             $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
 
-            $cartExist = Cart::where('slot_date', $request->book_date)->count();
-
+            $cartExist = Cart::where('user_id', Auth::user()->id)->where('slot_date', $request->book_date)->count();
+            
             if ($tokens == 0 && $cartExist == 0) {
                 return response()->json([
                     'status' => 422,
