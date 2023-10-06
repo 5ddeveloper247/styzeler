@@ -196,12 +196,14 @@
             <div class="col-3 text-center">
                 <div class="likes btn customBtn" id="likes">Likes</div>
             </div>
+            @auth
 
-            @if (auth()->user()->type != 'client')
-                <div class="col-3 text-center">
+                <div class="col-3 text-center book_client">
                     <div class="book btn customBtn" id="book">Book</div>
                 </div>
-            @endif
+
+            @endauth
+
 
 
         </div>
@@ -439,8 +441,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="text-right btn uploadBtn"
-                                                                                                                                                                                    style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                                    title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                                                                                                                    style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                                                                                                                    title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>
@@ -2844,4 +2846,16 @@
     <script src="{{ asset('customjs/web/register/common.js') }}?v={{ time() }}"></script>
     <script src="{{ asset('template_old/js/freelancer-profile-calendar.js') }}?v={{ time() }}"></script>
     <script src="{{ asset('customjs/web/profile/profileView.js') }}?v={{ time() }}"></script>
+    <script>
+        const cart_book = localStorage.getItem('bookType');
+        var user = '{{ auth()->user()->type }}';
+        console.log(user);
+        if (user == 'client') {
+            $('.book_client').addClass('d-none');
+
+            if (cart_book == 'cart_book') {
+                $('.book_client').removeClass('d-none');
+            }
+        }
+    </script>
 @endpush
