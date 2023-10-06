@@ -2,8 +2,10 @@
 
 use App\Models\User;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 
 if (!function_exists('saveMultipleImages')) {
 
@@ -98,6 +100,38 @@ if (!function_exists('deleteImage')) {
             }
         } catch (\Exception $e) {
             return 'Error deleting image: ' . $e->getMessage();
+        }
+    }
+}
+
+if (!function_exists('sendMail')) {
+    function sendMail($send_to_name, $send_to_email, $email_from_name, $subject, $body)
+    {
+
+        try {
+            $mail_val = [
+                'send_to_name' => $send_to_name,
+                'send_to' => $send_to_email,
+                'email_from' => 'noreply@styzeler.co.uk',
+                'email_from_name' => $email_from_name,
+                'subject' => $subject,
+            ];
+
+            Mail::send('emails.mail', ['body' => $body], function ($send) use ($mail_val) {
+                $send->from($mail_val['email_from'], $mail_val['email_from_name']);
+                $send->replyto($mail_val['email_from'], $mail_val['email_from_name']);
+                $send->to($mail_val['send_to'], $mail_val['send_to_name'])->subject($mail_val['subject']);
+            });
+            // $emails = [$send_to_email, 'kamrandevs@gmail.com'];
+
+            // Mail::send('emails.mail', ['body' => $body], function ($message) use ($emails) {
+            //     $message->to($emails)->subject('This is test e-mail');
+            // });
+            return true;
+        } catch (\Exception $e) {
+            Log::error($e->getMessage());
+            echo "An error occurred while sending the email: " . $e->getMessage();
+            return false;
         }
     }
 }
