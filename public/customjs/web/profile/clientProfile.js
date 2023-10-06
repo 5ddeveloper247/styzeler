@@ -140,8 +140,8 @@ function profileResponse(response) {
             $('#stylist_status').val(profile_status);
 
             // for tokens
-            $('#total_tokens').text(data.tokens);
-            $('#remaining_tokens').text(data.total_tokens);
+            $('#remaining_tokens').text(data.tokens);
+            $('#total_tokens').text(data.total_tokens);
         }
     }
 

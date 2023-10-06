@@ -45,6 +45,8 @@ $(document).on('click', '.add_to_cart', function (e) {
 
 function addToCartConfirm(){
 	
+	$("#cartConfirm_modal").modal('hide');
+	
 //	e.preventDefault();
 	let type = 'POST';
 	let url = '/addToCart';

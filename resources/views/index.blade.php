@@ -309,7 +309,7 @@
                 Specialist in Hair & Beauty Recruitmen, London & Uk <br /> Permanent
                 & Temporary position
             </h2>
-            <div class="line" style="background-image: url('{{ asset('template_new/assets/images/browse_bg.jpg') }}'">
+            <div class="line none-modal" style="background-image: url('{{ asset('template_new/assets/images/browse_bg.jpg') }}'">
                 <p style="margin: 10px 0px 11px 13px">Styzeler a leading Hair &
                     Beauty digital agency providing expert freelancers for temporary
                     work or permanent employment for Hair Beauty & Spa businesses</p>
@@ -343,7 +343,7 @@
             </div>
 
             <!-- for desktop -->
-            <div class="reg_line d-none d-md-block none-modal">
+            <div class="reg_line d-none d-md-block ">
                 <div class="d-flex justify-content-between">
                     <p>Freelancers Help Small Businesses Grow</p>
                     <a href="{{ route('register') }}" class="site_btn" style="border: #000000">Register <img
@@ -687,14 +687,20 @@
                 if (flag == "0") {
 
                     if ($("#popupInfo-modal").is(":visible")) {
-                        $("#popupInfo-modal").modal("hide");
+//                         $("#popupInfo-modal").modal("hide");
                         flag = "1";
+                        $("html").css({
+                            "overflow": "hidden"
+                        });
                     }
                 }
             }
             // if (isScrolledToClass(targetClass))
         });
-        $(document).on("click", ".close-modal", function() {
+        $(document).on("click", ".close-modal, body", function() {
+        	$("html").css({
+                "overflow": "auto"
+            });
             $(".modal").modal("hide");
         });
     </script>

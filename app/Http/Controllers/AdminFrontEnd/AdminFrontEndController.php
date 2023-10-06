@@ -14,6 +14,8 @@ use App\Models\Chat_questions;
 use App\Models\Email_enquiry;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Appointments;
+use App\Models\Cart;
+use App\Models\Cart_line;
 
 class AdminFrontEndController extends Controller
 {
@@ -137,6 +139,21 @@ class AdminFrontEndController extends Controller
     	$data['page'] = 'bookings';
     	return view('admin.bookings')->with($data);
     }
+    
+    public function clientBookings()
+    {
+    	$getProfileData = Cart::where('status', 'checkout')
+						    	->with([
+						    			'user',
+						    			'booked_user',
+						    			'userBookingSlots',
+						    		])->get();
+    	$data['appointments'] = $getProfileData;
+    	//     	dd($getProfileData);
+    	$data['page'] = 'bookings';
+    	return view('admin.clientBookings')->with($data);
+    }
+    
     
     public function jobRequests()
     {

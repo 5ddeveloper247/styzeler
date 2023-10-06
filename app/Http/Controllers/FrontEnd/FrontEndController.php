@@ -283,7 +283,9 @@ class FrontEndController extends Controller
             }
         }
 
-        $users = User::where('type', '!=', 'admin')->where('status', 'Active')->get();
+        $users = User::whereIn('type', ['wedding','hairStylist','beautician','barber'])
+        				->orWhere('profile_type', 'Home Service')
+        				->where('status', 'Active')->get();
 
         if (!empty($users)) {
             foreach ($users as $user) {
@@ -357,7 +359,7 @@ class FrontEndController extends Controller
     }
     public function freelancerBooking()
     {
-        return view('web.freelancerBooking');
+    	return view('web.freelancerBooking');
     }
     public function freelancerBookingHistory()
     {

@@ -365,10 +365,10 @@ class ProfileController extends Controller
                 $cart->status = 'checkout';
                 $cart->update();
 
-                Appointments::create([
-                    'booking_slots_id' => $request->slot_book_id,
-                    'booking_user_id' => Auth::id(),
-                ]);
+//                 Appointments::create([
+//                     'booking_slots_id' => $request->slot_book_id,
+//                     'booking_user_id' => Auth::id(),
+//                 ]);
 
                 if ($cartExist == 0) {
                     $user = User::find(Auth::user()->id);
@@ -569,18 +569,25 @@ class ProfileController extends Controller
     {
         $currentDate = now()->toDateString();
         if (Auth::user()->type == 'client') {
-            $getProfileData = Appointments::where(
-                [
-                    ['booking_user_id', Auth::id()],
-                    // ['created_at', '>=', $currentDate]
-                ]
+//             $getProfileData = Appointments::where(
+//                 [
+//                     ['booking_user_id', Auth::id()],
+//                     // ['created_at', '>=', $currentDate]
+//                 ]
 
-            )->with([
-                'clientUser',
-                'userBookingSlots',
-                'userBookingSlots.bookings',
-                'userBookingSlots.bookings.FreelancerUser'
-            ])->get();
+//             )->with([
+//                 'clientUser',
+//                 'userBookingSlots',
+//                 'userBookingSlots.bookings',
+//                 'userBookingSlots.bookings.FreelancerUser'
+//             ])->get();
+
+        	$getProfileData = Cart::where('user_id', Auth::user()->id)->where('status', 'checkout')
+						    	->with([
+						    			'user',
+						    			'booked_user',
+						    			'userBookingSlots',
+						    		])->get();
         } else {
 
             $getProfileData = Bookings::where(
