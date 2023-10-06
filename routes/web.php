@@ -40,6 +40,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         //Profile
         Route::get('/Profile', 'FrontEndController@Profile')->name('Profile');
         Route::get('/freelancerBooking', 'FrontEndController@freelancerBooking')->name('freelancerBooking');
+        Route::get('/clientBooking', 'FrontEndController@freelancerBooking')->name('clientBooking');
         Route::get('/freelancerBookingHistory', 'FrontEndController@freelancerBookingHistory')->name('freelancerBookingHistory');
         // Route::get('/ownerProfile', 'FrontEndController@ownerProfile')->name('ownerProfile');
         Route::get('/getProfileData', 'ProfileController@getProfileData')->name('getProfileData');
@@ -178,7 +179,8 @@ Route::group(['prefix' => 'admin'], function () {
             Route::get('/beauty-salon-owner', 'AdminFrontEndController@beautySalonOwner')->name('admin.beautySalonOwner');
             Route::get('/client', 'AdminFrontEndController@client')->name('admin.client');
             Route::get('/guest-users', 'AdminFrontEndController@guestUsers')->name('admin.guestUsers');
-            Route::get('/bookings', 'AdminFrontEndController@bookings')->name('admin.bookings');
+            Route::get('/ownerBookings', 'AdminFrontEndController@bookings')->name('admin.bookings');
+            Route::get('/clientBookings', 'AdminFrontEndController@clientBookings')->name('admin.clientBookings');
             Route::get('/job-requests', 'AdminFrontEndController@jobRequests')->name('admin.jobRequests');
             Route::get('/upload-jobs', 'AdminFrontEndController@uploadJobs')->name('admin.uploadJobs');
             Route::get('/upload-blogs', 'AdminFrontEndController@uploadBlogs')->name('admin.uploadBlogs');

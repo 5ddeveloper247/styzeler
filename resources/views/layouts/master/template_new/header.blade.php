@@ -33,8 +33,14 @@
                             @endif
 
                             <a class="dropdown-item" href="{{ route('Profile') }}">Profile</a>
-                            <a class="dropdown-item" href="{{ route('freelancerBooking') }}">Your
-                                Booking</a>
+                            @if (auth()->user()->type == 'client')
+	                            <a class="dropdown-item" href="{{ route('clientBooking') }}">Your
+	                                Booking</a>
+	                        @else
+	                        	<a class="dropdown-item" href="{{ route('freelancerBooking') }}">Your
+	                                Booking</a>
+                            @endif
+                            
                             <a class="dropdown-item" href="{{ route('termAndConditions') }}">Terms &
                                 Conditions</a>
                             <a class="dropdown-item" href="{{ route('privacyPolicy') }}">Privacy Policy</a>

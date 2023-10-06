@@ -61,7 +61,7 @@
 				<a class="nav-link active" href="#panel0" data-toggle="tab"> Pending Bookings </a>
 			</li>--}}
 			<li class="col-lg-3 nav-item">
-				<a class="nav-link active" href="#panel1" data-toggle="tab"> Owner Bookings </a>
+				<a class="nav-link active" href="#panel1" data-toggle="tab"> Client Bookings </a>
 			</li>
 			{{-- <li class="col-lg-3 nav-item">
 				<a class="nav-link" href="#panel2" data-toggle="tab"> On Hold Bookings </a>
@@ -137,7 +137,7 @@
 			</div> --}}
 			<div id="panel1" class="tab-pane active">
 				<div class="container">
-					<h2 class="color-1 my-4 text-center">All Owner Bookings</h2>
+					<h2 class="color-1 my-4 text-center">All Client Bookings</h2>
 					<div class="row justify-content-center">
 						<div class="booking-box col-lg-8">
 							<div class="row text-center">
@@ -154,7 +154,7 @@
 								@foreach($appointments as $row)
 									@php
 										$creationDate = date('d-M-Y', strtotime(@$row->created_at));
-										$bookDate = date('d-M-Y', strtotime(@$row['userBookingSlots']['bookings']->date));
+										$bookDate = date('d-M-Y', strtotime(@$row->slot_date));
 										$bookStime = date('h:i A', strtotime(@$row['userBookingSlots']->start_time));
 										$bookEtime = date('h:i A', strtotime(@$row['userBookingSlots']->end_time));
 									@endphp
@@ -180,33 +180,33 @@
 									<div class="col-8">
 										<div>
 											<span style="overflow-wrap: break-word;">
-												<p><strong>Client Name: </strong>{{@$row['adminClientUser']->name}} {{@$row['adminClientUser']->surname}}</p>
+												<p><strong>Client Name: </strong>{{@$row['user']->name}} {{@$row['user']->surname}}</p>
 												<div>
-													<p><strong>Freelancer Name: </strong>{{@$row['userBookingSlots']['bookings']['FreelancerUser']->name}} {{@$row['userBookingSlots']['bookings']['FreelancerUser']->surname}} </p>
+													<p><strong>Freelancer Name: </strong>{{@$row['booked_user']->name}} {{@$row['booked_user']->surname}} </p>
 												</div>
 												<div>
-													<p style="overflow-wrap: break-word;"> <strong>Freelancer Category: </strong> {{@$row['userBookingSlots']['bookings']['FreelancerUser']->type}}</p> 
+													<p style="overflow-wrap: break-word;"> <strong>Freelancer Category: </strong> {{@$row['booked_user']->profile_type}}</p> 
 												</div>
 											</span>
 											<div id="toggle{{$row->id}}" style="display: none;">
 												
 												<div>
-													<p style="overflow-wrap: break-word;"> <strong>Freelancer Email: </strong> {{@$row['userBookingSlots']['bookings']['FreelancerUser']->email}}</p> 
+													<p style="overflow-wrap: break-word;"> <strong>Freelancer Email: </strong> {{@$row['booked_user']->email}}</p> 
 												</div>
 												<div>
-													<p style="overflow-wrap: break-word;"><strong>Freelancer Mobile: </strong> {{@$row['userBookingSlots']['bookings']['FreelancerUser']->phone}}</p> 
+													<p style="overflow-wrap: break-word;"><strong>Freelancer Mobile: </strong> {{@$row['booked_user']->phone}}</p> 
 												</div>
 												<div>
-													<p style="overflow-wrap: break-word;"><strong>Client Category: </strong> {{@$row['adminClientUser']->type}}</p> 
+													<p style="overflow-wrap: break-word;"><strong>Client Category: </strong> {{@$row['user']->type}}</p> 
 												</div>
 												<div>
-													<p style="overflow-wrap: break-word;"><strong>Client Email: </strong> {{@$row['adminClientUser']->email}}</p> 
+													<p style="overflow-wrap: break-word;"><strong>Client Email: </strong> {{@$row['user']->email}}</p> 
 												</div>
 												<div>
-													<p style="overflow-wrap: break-word;"><strong>Client Mobile: </strong> {{@$row['adminClientUser']->phone}}</p> 
+													<p style="overflow-wrap: break-word;"><strong>Client Mobile: </strong> {{@$row['user']->phone}}</p> 
 												</div>
 												<div>
-													<p style="overflow-wrap: break-word;"><strong>Booking Status: </strong> {{@$row['userBookingSlots']['bookings']->status}}</p> 
+													<p style="overflow-wrap: break-word;"><strong>Booking Status: </strong> Confirm</p> 
 												</div>
 											</div>
 										</div>

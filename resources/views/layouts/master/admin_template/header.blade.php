@@ -126,7 +126,13 @@
 						<li class="nav-item">
 							<a href="{{route('admin.bookings')}}" class="nav-link"> 
 								<i class="far fa-circle nav-icon"></i>
-								<p>View Bookings</p>
+								<p>Owner Bookings</p>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="{{route('admin.clientBookings')}}" class="nav-link"> 
+								<i class="far fa-circle nav-icon"></i>
+								<p>Client Bookings</p>
 							</a>
 						</li>
 					</ul>

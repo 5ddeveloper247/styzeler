@@ -223,35 +223,70 @@ $(function () {
                         && response.appointments[i]["status"] !== "CANCELLED due to Expired Time") {
 
                         let id = response.appointments[i]["id"];
-                        let freelancer_user = response.appointments[i]["user_booking_slots"]["bookings"]["FreelancerUser"];
+                        let client_user = response.appointments[i]["user"];
+                        let client_username = client_user['name']+ ' ' + client_user['surname'];
+                        let client_email = client_user['email'];
+                        let client_mobile = client_user['phone'];
+                        let client_category = client_user['type'];
+                        
+                        let freelancer_user = response.appointments[i]["booked_user"];
                         let freelancer_username = freelancer_user['name'] + ' ' + freelancer_user['surname'];
-                        let freelancer_email = freelancer_user['name'] + ' ' + freelancer_user['email'];
-                        let freelancer_mobile = freelancer_user['name'] + ' ' + freelancer_user['phone'];
-                        let booking_status = response.appointments[i]["user_booking_slots"]["bookings"]['status'];
+                        let freelancer_email = freelancer_user['email'];
+                        let freelancer_mobile = freelancer_user['phone'];
+                        let freelancer_category = freelancer_user['profile_type'];
+                        let booking_status = 'Confirm';//response.appointments[i]["user_booking_slots"]["bookings"]['status'];
                         let timestamp = response.appointments[i]["created_at"];
                         let dateOnly = timestamp.split("T")[0];
+                        let bookDate = response.appointments[i]["slot_date"];
+                        let bookStime = response.appointments[i]["user_booking_slots"]['start_time'];
+                        let bookEtime = response.appointments[i]["user_booking_slots"]['end_time'];
 
                         let emailId = response.appointments[i]["_SalonEmail"];
                         let appDate = response.appointments[i]["user_booking_slots"];
 
                         $(".appointment-row")
                             .append('<div class="col-4">' +
-                                '<span class="date_' + i + '">' + '<a data-toggle="collapse" data-parent="#accordion" href="#collapse_' + i + '">' + '<p><strong>Date: </strong> ' +
+                                '<span class="date_' + i + '">' + '<a data-toggle="collapse" data-parent="#accordion" href="#collapse_' + i + '">' + 
+                                '<p><strong>Date: </strong> ' +
                                 dateOnly + '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></p>' +
+                                '<p><strong>Book Date: </strong> ' +
+                                bookDate + '&nbsp;&nbsp;</p>' +
+                                '<p><strong>Slot Time: </strong> ' +
+                                bookStime + '-' + bookEtime + '</p>' +
                                 '</span>' + '</div>' + '</a>' +
+                                
                                 '<div class="col-8 " id="details' + id + '">' +
+                                '<span class="name_' + i + '" style="overflow-wrap: break-word;">' + '<p><strong>Client Name: </strong>' +
+                                client_username + '</p>' +
+                                '</span>' + 
+                                
                                 '<span class="name_' + i + '" style="overflow-wrap: break-word;">' + '<p><strong>Freelancer Name: </strong>' +
                                 freelancer_username + '</p>' +
-                                '</span>' + '<div class="collapse" id="collapse_' + i + '">' +
-                                '<span class="email_' + i + '" style="overflow-wrap: break-word;">' + '<p><strong>Email: </strong>' +
+                                '</span>' + 
+                                
+                                '<span class="name_' + i + '" style="overflow-wrap: break-word;">' + '<p><strong>Freelancer Category: </strong>' +
+                                freelancer_category + '</p>' +
+                                '</span>' + 
+                                
+                                '<div class="collapse" id="collapse_' + i + '">' +
+                                '<span class="email_' + i + '" style="overflow-wrap: break-word;">' + '<p><strong>Freelancer Email: </strong>' +
                                 freelancer_email + '</p>' +
                                 '</span>' +
-                                '<span class="mobile_' + i + '">' + '<p><strong>Mobile: </strong>' +
+                                '<span class="mobile_' + i + '">' + '<p><strong>Freelancer  Mobile: </strong>' +
                                 freelancer_mobile + '</p>' +
+                                '</span>' +
+                                '<span class="mobile_' + i + '">' + '<p><strong>Client  Category: </strong>' +
+                                client_category + '</p>' +
+                                '</span>' +
+                                '<span class="mobile_' + i + '">' + '<p><strong>Client  Email: </strong>' +
+                                client_email + '</p>' +
+                                '</span>' +
+                                '<span class="mobile_' + i + '">' + '<p><strong>Client  Phone: </strong>' +
+                                client_mobile + '</p>' +
                                 '</span>' +
                                 '<span class="status_' + i + '">' + '<p><strong>Status: </strong>' +
                                 booking_status + '</p>' +
-                                '</span>' + '<div id="show' + i + '">' +
+                                '</span>' + '<div id="show' + i + '">'
                                 // '<p id="show-dates'+i+'"><strong>Avaliable Dates: </strong>' +
                                 //  '</p>' +
                                 // '</span>' +
@@ -262,16 +297,17 @@ $(function () {
                                 // '</div>' +
                                 // '<div class=" text-center customBtn onHold_btn' + i + '" onClick="onHoldAppointment(\'' + emailId + '\' , ' + id + ',\'' + appDate + '\')">' + '<a>Confirm On Hold</a>' +
                                 // '</div>' +
-                                '<div class=" text-center customBtn" onClick="cancelAppointment(\'' + emailId + '\' , ' + id + ',\'' + appDate + '\')">' + '<a>Cancel</a>' +
-                                '</div>' + '</div>' + '</div>' +
-                                '</div>');
+//                                '<div class=" text-center customBtn" onClick="cancelAppointment(\'' + emailId + '\' , ' + id + ',\'' + appDate + '\')">' + '<a>Cancel</a>' +
+//                                '</div>' + '</div>' + '</div>' +
+//                                '</div>'
+                                );
 
-                        if (response.appointments[i]["status"] === "Cancel" || response.appointments[i]["status"] === "CANCELLED" || response.appointments[i]["status"] === "CANCELLED by Salon Owner" || response.appointments[i]["status"] === "cancel by Freelancer") {
-
-                            $("#show" + i).hide();
-                            $("#details" + id).css("background-color", "#2222");
-
-                        }
+//                        if (response.appointments[i]["status"] === "Cancel" || response.appointments[i]["status"] === "CANCELLED" || response.appointments[i]["status"] === "CANCELLED by Salon Owner" || response.appointments[i]["status"] === "cancel by Freelancer") {
+//
+//                            $("#show" + i).hide();
+//                            $("#details" + id).css("background-color", "#2222");
+//
+//                        }
 
                         if (response.appointments[i]["status"] === "CONFIRMED by Salon Owner" || response.appointments[i]["status"] === "CONFIRMED" || response.appointments[i]["status"] === "Confirmed" || response.appointments[i]["status"] === "confirmed"
                             || response.appointments[i]["status"] === "on hold" || response.appointments[i]["status"] === "on hold confirmed by freelancer") {
