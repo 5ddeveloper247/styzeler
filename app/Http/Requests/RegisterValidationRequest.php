@@ -116,7 +116,6 @@ class RegisterValidationRequest extends FormRequest
             'owner_email.required_if' => 'Email is required!',
             'owner_email.unique' => 'Email is already taken!',
             'owner_password.required_if' => 'The password field is required!',
-
         ];
     }
 }

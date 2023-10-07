@@ -10,22 +10,8 @@ use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Password Reset Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller is responsible for handling password reset emails and
-    | includes a trait which assists in sending these notifications from
-    | your application to your users. Feel free to explore this trait.
-    |
-    */
-
-    // use SendsPasswordResetEmails;
-
     function forgetPasswordReset(Request $request)
     {
-
         if ($request->has('password_otp')) {
 
             $validator =  Validator::make($request->all(), [
@@ -33,7 +19,6 @@ class ForgotPasswordController extends Controller
             ]);
 
             if ($validator->fails()) {
-
                 $firstError = $validator->errors()->first();
                 return response()->json([
                     'status' => 422,
@@ -50,8 +35,8 @@ class ForgotPasswordController extends Controller
                 ]);
             }
 
-            $user = $user_update->update(['password' => $request->password]);
-            dd($user);
+            $user_update->update(['password' => $request->password_otp, 'remember_token' => null]);
+
             return response()->json([
                 'status' => 200,
                 'message' => 'Password Changed Successfully!',
@@ -62,7 +47,6 @@ class ForgotPasswordController extends Controller
         $validator =  Validator::make($request->all(), [
             'email' => 'required',
             'password' => 'required',
-
         ]);
 
         if ($validator->fails()) {
@@ -89,14 +73,13 @@ class ForgotPasswordController extends Controller
         User::where('email', $request->email)->update(['remember_token' => $otp_random_number]);
 
         $body = "<table>
-
         				<tr>
         					<td>Your Otp is " . $otp_random_number . "</td>
         				</tr>
         			</table>";
         $sendEmail = [$request->email];
 
-        sendMail($check_email->name, $sendEmail, 'Chat', 'Chat Email', $body);
+        sendMail($check_email->name, $sendEmail, 'Forget Password', 'Forget Password Email', $body);
 
         return response()->json([
             'status' => 200,

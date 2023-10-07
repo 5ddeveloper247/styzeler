@@ -5,11 +5,11 @@
 
 @section('content')
     <div class="login">
-        <section class="container content-body ">
-            <div class="row text-center justify-content-center" data-aos="fade-up">
-                <div class="col-10 col-md-7 ">
+        <section class="content-body container">
+            <div class="row justify-content-center text-center" data-aos="fade-up">
+                <div class="col-10 col-md-7">
 
-                    <div class="login-body py-5 px-3 p-sm-5">
+                    <div class="login-body p-sm-5 px-3 py-5">
                         <form class="p-md-5" id="forgot-password-form">
                             <div class="form-group p-md-2">
                                 <label for="user-email">Enter your email</label>
@@ -24,23 +24,21 @@
                                 <input type="checkbox" class="text-left" onclick="showPassword()">&nbsp;Show Password
                             </div>
 
-                            <button type="submit" id="submit_button" class="p-2 submit_button">Get otp</button>
+                            <button type="submit" id="submit_button" class="submit_button p-2">Get otp</button>
 
-                            <!--<div class=" my-2 my-sm-3 my-lg-5">-->
+                            <!--<div class="my-sm-3 my-lg-5 my-2">-->
                             <!--    <span><a onclick="forgetPassword();">Forgot password?</a></span>-->
 
                             <!--</div>-->
 
                         </form>
                     </div>
-
-
                 </div>
             </div>
 
             <!-- Login Email Error Message-->
             <div class="modal invalid-email-modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -62,7 +60,7 @@
             <!-- Login Password Error Message-->
             <div class="modal invalid-password-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -83,7 +81,7 @@
 
             <!-- Password Change Success -->
             <div class="modal password-change-success" tabindex="-1" role="dialog">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -98,9 +96,9 @@
                                         aria-describedby="otp" placeholder="OTP" required>
                                 </div>
 
-                                <button type="submit" class="p-2 submit_button">Change Password</button>
+                                <button type="submit" class="submit_button p-2">Change Password</button>
 
-                                <!--<div class=" my-2 my-sm-3 my-lg-5">-->
+                                <!--<div class="my-sm-3 my-lg-5 my-2">-->
                                 <!--    <span><a onclick="forgetPassword();">Forgot password?</a></span>-->
 
                                 <!--</div>-->
@@ -117,7 +115,7 @@
             <!-- Password Change Error -->
             <div class="modal password-change-error" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -138,7 +136,7 @@
 
             <!-- Success -->
             <div class="modal success" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -193,23 +191,21 @@
             let type = 'POST';
             let url = '{{ route('forgetPasswordReset') }}';
             let message = '';
-            let form = $('#forgot-password-form');
             if (password_otp == '') {
-                data = new FormData(form[0]);
+                data = new FormData($('#forgot-password-form')[0]);
             } else {
                 data = new FormData($('#otp-form')[0]);
                 data.append('password_otp', password_otp);
                 data.append('user_id', user_id);
             }
-
             // PASSING DATA TO FUNCTION
             // $('[name]').removeClass('is-invalid');
-            SendAjaxRequestToServer(type, url, data, '', forgetPasswordReset, 'spinner_button', 'submit_button');
+            SendAjaxRequestToServer(type, url, data, '', forgetPasswordResetResponse, 'spinner_button',
+                'submit_button');
 
         });
 
-        function forgetPasswordReset(response) {
-
+        function forgetPasswordResetResponse(response) {
             // SHOWING MESSAGE ACCORDING TO RESPONSE
             if (response.status == 200) {
                 toastr.success(response.message, '', {
@@ -225,7 +221,6 @@
                         window.location.href = '{{ url('/login') }}';
                     }, 3000);
                 }
-
             } else {
                 if (response.status == 422) {
                     toastr.error(response.message, '', {

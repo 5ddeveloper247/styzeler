@@ -6,11 +6,11 @@
 @section('content')
     <!-- Content -->
     <div class="login">
-        <section class="container content-body ">
-            <div class="row text-center justify-content-center" data-aos="fade-up">
-                <div class="col-10 col-md-7 ">
+        <section class="content-body container">
+            <div class="row justify-content-center text-center" data-aos="fade-up">
+                <div class="col-10 col-md-7">
 
-                    <div class="login-body py-5 px-3 p-sm-5">
+                    <div class="login-body p-sm-5 px-3 py-5">
                         <form class="p-md-5" id="login_form">
                             <div class="form-group p-md-2">
                                 <input type="email" class="form-control" id="user-email" aria-describedby="emailHelp"
@@ -22,9 +22,9 @@
                                 <br><input type="checkbox" class="text-left" onclick="showPassword()">&nbsp;Show Password
                             </div>
 
-                            <button type="submit" id="submit_button" class="p-2 ">Continue</button>
+                            <button type="submit" id="submit_button" class="p-2">Continue</button>
 
-                            <div class=" my-2 my-sm-3 my-lg-5">
+                            <div class="my-sm-3 my-lg-5 my-2">
                                 <span><a href="{{ route('forgetPassword') }}">Forgot password?</a></span>
 
                             </div>
@@ -37,7 +37,7 @@
             <!-- Login Email Error Message-->
             <div class="modal invalid-email-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -59,7 +59,7 @@
             <!-- Login Password Error Message-->
             <div class="modal invalid-password-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -81,7 +81,7 @@
             <!-- Password Change Success -->
             <div class="modal password-change-success" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -102,7 +102,7 @@
             <!-- Password Change Error -->
             <div class="modal password-change-error" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
