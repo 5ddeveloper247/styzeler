@@ -157,10 +157,13 @@
 
 @section('content')
     <section id="business">
-        <img src="{{ asset('template_new/assets/images/styzeler-business-owner-banner.JPG') }}" alt=""
-            class="top_banner" />
+<!--         <img src="{{ asset('template_new/assets/images/styzeler-business-owner-banner.JPG') }}" alt="" class="top_banner" /> -->
+        
+        <img src="{{ asset('template_new/assets/images/businessowner-banner.PNG') }}" alt="" class="top_banner" />
+        
         <div class="contain">
             <div class="text_wrap_blk" data-aos="fade-up" data-aos-duration="1000">
+            	
                 <h2 class="h2_01">Styzeler ''United to succeed'' Membership</h2>
                 <div class="data_01"
                     style="background-image: url('{{ asset('template_new/assets/images/business_bg_01.jpg') }}')">
@@ -316,7 +319,7 @@
                                     </ul>
                                 </div>
                                 <div class="btn_blk">
-                                    <a href="javascript:;" class="site_btn" onclick="paymentModal('16','1')">Buy</a>
+                                    <a href="javascript:void(0)" class="site_btn" onclick="paymentModal('16','1')">Buy</a>
                                     <a href="javascript:void(0)" class="eye_btn popup-pkg1"><img
                                             src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
                                 </div>
@@ -774,6 +777,13 @@
 	  	}
   	</script>
   	<script>
+	  	if (window.location.hash === '#packages') {
+	        // Scroll to the "packages" div
+	        var packagesDiv = document.getElementById('packages');
+	        if (packagesDiv) {
+	            packagesDiv.scrollIntoView();
+	        }
+	    }
         // Check if the 'error' key is present in the session data
         @if (session('error'))
             // Display Toastr notification

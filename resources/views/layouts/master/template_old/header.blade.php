@@ -107,10 +107,10 @@
                             <img src="{{ asset('template_old/images/header-hr.png') }}" class="header-hr" />
                             <ul class="sub">
                                 <li>
-                                    <a href="{{ route('candidate') }}">Freelance</a>
+                                    <a href="{{ route('candidate') }}?type=Freelancer">Freelance</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('candidate') }}">Job Seeker</a>
+                                    <a href="{{ route('candidate') }}?type=Jobseeker">Job Seeker</a>
                                 </li>
                             </ul>
                         </div>

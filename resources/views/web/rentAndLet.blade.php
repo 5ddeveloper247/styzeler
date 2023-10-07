@@ -79,7 +79,9 @@
                   <div class="col-lg-6 text-right"  data-aos="fade-up">
                       @if(!@Auth::user())
                       		<a href="javascript:;" class="btn customBtn show_message">List Space</a>
-                      @elseif(@$userDetails->tokens == null || userDetails == 0)
+                      @elseif(!in_array(@Auth::user()->type, ['hairdressingSalon','beautySalon']))
+                      		<a href="javascript:;" class="btn customBtn show_message1">List Space</a>
+                      @elseif(@$userDetails->tokens == null || @$userDetails->tokens == 0)
                       		<a href="javascript:;" class="btn customBtn tokens_message">List Space</a>
                       @else
                       		<a href="{{route('chairRental')}}" class="btn customBtn">List Space</a>
@@ -120,8 +122,17 @@
                     <div class="dropdown rent-let-dropdown">
                       <h5 class="btn customBtn"><a class="dropbtn" data-aos="fade-up">Search</a></h5>
                       <div class="dropdown-content text-center">
-                        <a href="{{route('rentLetHairstylist')}}">Hairstylist / Barber chair </a><!-- rent-let-hairstylist.html -->
-                        <a href="{{route('rentLetBeautyTherapist')}}">Beauty therapist  chair </a><!-- rent-let-beauty-therapist.html -->
+                       	  @if(!@Auth::user())
+                       	  		<a href="javascript:;" class="show_message">Hairstylist / Barber chair </a>
+                        		<a href="javascript:;" class="show_message">Beauty therapist  chair </a>
+                      	  @elseif(@$userDetails->tokens == null || @$userDetails->tokens == 0)
+	                      		<a href="javascript:;" class="tokens_message">Hairstylist / Barber chair </a>
+                        		<a href="javascript:;" class="tokens_message">Beauty therapist  chair </a>
+	                      @else
+	                      		<a href="{{route('rentLetHairstylist')}}">Hairstylist / Barber chair </a>
+                        		<a href="{{route('rentLetBeautyTherapist')}}">Beauty therapist  chair </a>
+	                      @endif
+                        
                       </div>
                     </div>
                   </div>
@@ -148,6 +159,24 @@
                 </div>
             </div>
         </div>
+        <div class="modal fade bd-example-modal-md" id="ownerregister_modal" role="dialog">
+            <div class="modal-dialog modal-md ">
+                <div class="modal-content border border-warning"
+                    style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                    <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                        <h4 class="modal-title">Alert</h4>
+                        <i class="close-modal" style="font-size: 2rem;"><b>&times;</b></i>
+                    </div>
+                    <div class="modal-body">
+                        Unable to proceed, Login as salon owner!
+                    </div>
+                    <div class="modal-footer text-center">
+                        <a type="" href="{{ route('rentAndLet') }}" class="btn customBtn">Ok</a>
+                        <a type="button" class="btn customBtn close-modal" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         
         <div class="modal fade bd-example-modal-md" id="tokens_modal" role="dialog">
             <div class="modal-dialog modal-md ">
@@ -161,8 +190,8 @@
                         Insufficient tokens, first buy package!
                     </div>
                     <div class="modal-footer text-center">
-                        <a type="" href="{{ route('businessOwner') }}" class="btn1 customBtn">Ok</a>
-                        <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
+                        <a type="" href="{{ route('businessOwner') }}#packages" class="btn customBtn">Ok</a>
+                        <a type="button" class="btn customBtn close-modal" data-dismiss="modal">Close</a>
                     </div>
                 </div>
             </div>
@@ -175,6 +204,9 @@
 <script>
 $(document).on("click", ".show_message", function() {
 	$('#register_modal').modal('show');
+});
+$(document).on("click", ".show_message1", function() {
+	$('#ownerregister_modal').modal('show');
 });
 $(document).on("click", ".tokens_message", function() {
 	$('#tokens_modal').modal('show');

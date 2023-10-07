@@ -10,25 +10,29 @@
 
 @section('content')
 <section id="candidates">
-    <img src="{{ asset('template_new/assets/images/candidate_main.jpg') }}" alt="" class="main_img desktop">
-    <img src="{{ asset('template_new/assets/images/styzeler-candidate-banner.JPG') }}" alt="" class="main_img mobile">
+    <!-- <img src="{{ asset('template_new/assets/images/candidate_main.jpg') }}" alt="" class="main_img desktop">
+    <img src="{{ asset('template_new/assets/images/styzeler-candidate-banner.JPG') }}" alt="" class="main_img mobile"> -->
+    
+    <img src="{{ asset('template_new/assets/images/candidate-banner.PNG') }}" alt="" class="main_img desktop">
+    <img src="{{ asset('template_new/assets/images/candidate-banner-mb.PNG') }}" alt="" class="main_img mobile">
+    
     <div class="contain">
         <div class="candidate_logo"><img src="{{ asset('template_new/assets/images/candidate_logo.jpg') }}" alt=""></div>
         <ul class="btn_list" data-aos="fade-up" data-aos-duration="1000">
             <li>
-            	<a href="{{@Auth::user() ? route('hairstylist') : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
+            	<a href="{{@Auth::user() ? route('hairstylist').'?type='.$type : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
                 	justify-content: space-between;text-align: left;">Hair Stylistes 
                 	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                 </a>
           	</li>
             <li>
-            	<a href="{{@Auth::user() ? route('beautician') : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
+            	<a href="{{@Auth::user() ? route('beautician').'?type='.$type : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
                 	justify-content: space-between;text-align: left;">Beauticians 
                 	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                 </a>
            	</li>
             <li>
-            	<a href="{{@Auth::user() ? route('barber') : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
+            	<a href="{{@Auth::user() ? route('barber').'?type='.$type : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
                 	justify-content: space-between;text-align: left;">Barbers 
                 	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                 </a>

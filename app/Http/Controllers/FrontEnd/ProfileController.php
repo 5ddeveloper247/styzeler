@@ -672,6 +672,7 @@ class ProfileController extends Controller
                 'appointment_s.userAppointment'
             ])->get();
         }
+//         dd($getProfileData);
         return response()->json([
             'status' => 200,
             'appointments' => $getProfileData,

@@ -17,14 +17,14 @@
 
 @section('content')
 <section id="news">
-	<div class="top_banner"
-		style="background-image: url('{{ asset('template_new/assets/images/news_main.jpg ') }}')">
+	<!-- <div class="top_banner" style="background-image: url('{{ asset('template_new/assets/images/news_main.jpg ') }}')"> -->
+	<div class="top_banner" style="min-height:56rem;background-image: url('{{ asset('template_new/assets/images/newsfeed-banner.PNG') }}')">
 		<div class="contain" data-aos="fade-up" data-aos-duration="1000">
-			<div class="txt">
-				<h1>Styzeler News Feed</h1>
-				<p class="mt-0 mt-md-5">Styzeler news feed around the world follow
-					us for a daily update on Beauty, Hair, Fashion, Jobs, & more</p>
-			</div>
+<!-- 			<div class="txt"> -->
+<!-- 				<h1>Styzeler News Feed</h1> -->
+<!-- 				<p class="mt-0 mt-md-5">Styzeler news feed around the world follow -->
+<!-- 					us for a daily update on Beauty, Hair, Fashion, Jobs, & more</p> -->
+<!-- 			</div> -->
 		</div>
 	</div>
 	<div class="contain" data-aos="fade-up" data-aos-duration="1000">

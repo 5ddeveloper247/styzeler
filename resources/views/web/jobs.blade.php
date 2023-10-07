@@ -136,7 +136,7 @@
             	Insufficient tokens, first buy package!
           	</div>
           	<div class="modal-footer text-center">
-            	<a type="" href="{{ route('businessOwner') }}" class="btn customBtn">Ok</a>
+            	<a type="" href="{{ route('businessOwner') }}#packages" class="btn customBtn">Ok</a>
               	<a type="button" class="btn customBtn close-modal" data-dismiss="modal">Close</a>
          	</div>
       	</div>

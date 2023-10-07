@@ -82,8 +82,10 @@
                 <li class="drop">
                     <a href="{{ route('candidate') }}">Candidate</a>
                     <ul class="sub">
-                        <li><a href="{{ route('candidate') }}">Freelance</a></li>
-                        <li><a href="{{ route('candidate') }}">Job Seeker</a></li>
+                        
+                        <li><a href="{{ route('candidate') }}?type=freelancer">Freelance</a></li>
+                        <li><a href="{{ route('candidate') }}?type=jobseeker">Job Seeker</a></li>
+                        
                     </ul>
                 </li>
                 <li class="drop">
