@@ -791,25 +791,25 @@ function bookSlotsResponse(response) {
 
 }
 
-function useOwnerTokens(){
+function useOwnerToken(){
 	
 	let type = 'GET';
     let url = '/useOwnerTokens';
     let message = '';
 //    let form = $('#form');
-    let data = '';//new FormData(form[0]);
+    let data = 'freelancerId='+userId;//new FormData(form[0]);
 
     // PASSING DATA TO FUNCTION
     SendAjaxRequestToServer(type, url, data, '', useOwnerTokensResponse, 'spinner_button', 'submit_button');
 }
 
-function useOwnerTokensResponse(){
+function useOwnerTokensResponse(response){
 	
 	if (response.status == 200 || response.status == '200') {
 
-        toastr.success(response.message, '', {
-            timeOut: 3000
-        });
+//        toastr.success(response.message, '', {
+//            timeOut: 3000
+//        });
 
     } else {
         toastr.error(response.message, '', {

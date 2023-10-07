@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('used_tokens', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->nullable();
+            $table->integer('freelancer_id')->nullable();
             $table->date('date')->nullable();
             $table->timestamps();
         });

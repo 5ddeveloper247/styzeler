@@ -471,7 +471,7 @@
                             freelancer for a short period time or for an unlimited time can
                             offer a full-time position to a freelancer that suits the company
                             policy or directly contacts a candidate looking that suits the
-                            company policy ordirectley contact any freelancer looking for a
+                            company policy or directley contact any job seeker candidate looking for a
                             permanent position</p>
 
                         <h3 class="subheading">Rent & Let</h3>

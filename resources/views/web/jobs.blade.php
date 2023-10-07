@@ -27,7 +27,7 @@
 	<div class="container">
 		<h1 class="text-center text-uppercase color-1" style="margin-left: 10px;">Jobs</h1>
 
-		@if(@Auth::user()->type == 'hairdressingSalon' || @Auth::user()->type == 'beautySalon')
+		@if(in_array(@Auth::user()->type, ['hairdressingSalon','beautySalon']))
 		<a id="postjob" onclick="postNewJob();" class="btn"
 			style="width: 100%; margin-top: 5px; background: url({{ asset('template_old/images/postjob.png') }}); no-repeat scroll -2px 0 transparent; background-position: center; height: 80px; border: none;"></a>
 		@endif
@@ -124,6 +124,24 @@
 		</div>
 	</div>
 </div>
+<div class="modal fade bd-example-modal-md" id="register_modal" role="dialog">
+	<div class="modal-dialog modal-md ">
+    	<div class="modal-content border border-warning"
+           	style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+        	<div class="modal-header" style="border-bottom: 5px solid #766d48;">
+            	<h4 class="modal-title">Alert</h4>
+              	<i class="close-modal" style="font-size: 2rem;"><b>&times;</b></i>
+            </div>
+         	<div class="modal-body">
+            	Insufficient tokens, first buy package!
+          	</div>
+          	<div class="modal-footer text-center">
+            	<a type="" href="{{ route('businessOwner') }}" class="btn customBtn">Ok</a>
+              	<a type="button" class="btn customBtn close-modal" data-dismiss="modal">Close</a>
+         	</div>
+      	</div>
+   	</div>
+</div>
 <form class="" id="jobApplyForm" method="POST" action="{{ route('jobApply') }}" enctype="multipart/form-data" style="display:none;">
     {{ csrf_field() }}
     <input type="hidden" class="jobId" id="jobId" name="jobId" value="">
@@ -149,6 +167,9 @@ function applyJob(id){
 	}, 500);
 }
 function postNewJob(){
+	@if(@$userDetails->tokens == null || @$userDetails->tokens == 0)
+		$("#register_modal").modal('show');return;
+	@endif
 	$(".post-job-modal").modal('show');
 }
 </script>

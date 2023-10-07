@@ -718,14 +718,26 @@ class ProfileController extends Controller
     	if (!isset(Auth::user()->id)) {
     		return response()->json(['status' => 500, 'message' => 'Login with client user first!', 'data' => '']);
     	}
-    
-    	$count = Used_tokens::where('user_id', Auth::user()->id)->where('date', date('Y-m-d'))->count();
     	
-    	if($count <= 0){
-    		User::where('id', Auth::user()->id)->first();
+    	$userDetails = User::where('id', Auth::user()->id)->first();
+    	$remainingTokens = (isset($userDetails->tokens) && $userDetails->tokens != null) ? $userDetails->tokens : 0;
+    	$count = Used_tokens::where('user_id', Auth::user()->id)->where('freelancer_id', $request->freelancerId)->where('date', date('Y-m-d'))->count();
+    	
+    	if( $count <= 0){
+    		
+    		$tokens = (isset($userDetails->tokens) && $userDetails->tokens != null) ? $userDetails->tokens : 0;
+    		
+    		$used_tokens = new Used_tokens();
+    		$used_tokens->user_id = Auth::user()->id;
+    		$used_tokens->freelancer_id = $request->freelancerId;
+    		$used_tokens->date = date('Y-m-d');
+    		$used_tokens->save();
+    		
+    		$user = User::find(Auth::user()->id);
+    		$user->tokens = $tokens - 1;
+    		$user->update();
     	}
     	
-    
     	return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
     }
 }

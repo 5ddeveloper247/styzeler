@@ -14,6 +14,7 @@ use App\Models\Membership;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Collection;
+use App\Models\Used_tokens;
 
 class FrontEndController extends Controller
 {
@@ -100,7 +101,12 @@ class FrontEndController extends Controller
 
     public function rentAndLet()
     {
-        return view('web.rentAndLet');
+    	if(isset(Auth::user()->id)){
+    		$data['userDetails'] = User::where('id', Auth::user()->id)->first();
+    	}else{
+    		$data['userDetails'] = '';
+    	}
+        return view('web.rentAndLet')->with($data);
     }
 
     public function webTermAndConditions()
@@ -221,7 +227,12 @@ class FrontEndController extends Controller
     {
         $currentDate = now()->toDateString();
         $data['jobs'] =    DB::table('job_request')->where('start_date', '<=', $currentDate)->where('end_date', '>=', $currentDate)->get();
-
+        if(isset(Auth::user()->id)){
+        	$data['userDetails'] = User::where('id', Auth::user()->id)->first();
+        }else{
+        	$data['userDetails'] = '';
+        }
+        
         return view('web.jobs')->with($data);
     }
 
@@ -382,9 +393,12 @@ class FrontEndController extends Controller
 //         	$membership = Membership::where('user_id', Auth::user()->id)->count();
         	$user = User::where('id', Auth::user()->id)->first();
         	$membership = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+        	$todayUseToken = Used_tokens::where('user_id', Auth::user()->id)->where('freelancer_id', $request->id)->where('date', date('Y-m-d'))->count();
         }else{
         	$membership = 0;
+        	$todayUseToken = 0;
         }
+       
         return customView(
             'web.freelancerProfileView',
             'web.salonOwnerProfileView',

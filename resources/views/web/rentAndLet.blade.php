@@ -77,7 +77,14 @@
                       </p>
                   </div>
                   <div class="col-lg-6 text-right"  data-aos="fade-up">
-                      <a href="{{route('chairRental')}}" class="btn customBtn">List Space</a><!-- chair-rental.html -->
+                      @if(!@Auth::user())
+                      		<a href="javascript:;" class="btn customBtn show_message">List Space</a>
+                      @elseif(@$userDetails->tokens == null || userDetails == 0)
+                      		<a href="javascript:;" class="btn customBtn tokens_message">List Space</a>
+                      @else
+                      		<a href="{{route('chairRental')}}" class="btn customBtn">List Space</a>
+                      @endif
+                      
   
                   </div>
               </div>
@@ -122,8 +129,58 @@
           </div>
           
       </div>
+      
+      <div class="modal fade bd-example-modal-md" id="register_modal" role="dialog">
+            <div class="modal-dialog modal-md ">
+                <div class="modal-content border border-warning"
+                    style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                    <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                        <h4 class="modal-title">Registeration is Free</h4>
+                        <i class="close-modal" style="font-size: 2rem;"><b>&times;</b></i>
+                    </div>
+                    <div class="modal-body">
+                        Do you want to register your self?
+                    </div>
+                    <div class="modal-footer text-center">
+                        <a type="" href="{{ route('registration') }}" class="btn customBtn">Ok</a>
+                        <a type="button" class="btn customBtn close-modal" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal fade bd-example-modal-md" id="tokens_modal" role="dialog">
+            <div class="modal-dialog modal-md ">
+                <div class="modal-content border border-warning"
+                    style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                    <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                        <h4 class="modal-title">Alert</h4>
+                        <i class="close-modal" style="font-size: 2rem;"><b>&times;</b></i>
+                    </div>
+                    <div class="modal-body">
+                        Insufficient tokens, first buy package!
+                    </div>
+                    <div class="modal-footer text-center">
+                        <a type="" href="{{ route('businessOwner') }}" class="btn1 customBtn">Ok</a>
+                        <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+      
 @endsection
 
 @push('script')
-    
+<script>
+$(document).on("click", ".show_message", function() {
+	$('#register_modal').modal('show');
+});
+$(document).on("click", ".tokens_message", function() {
+	$('#tokens_modal').modal('show');
+});
+$(document).on("click", ".close-modal", function() {
+	$('.modal').modal('close');
+});
+</script>
 @endpush

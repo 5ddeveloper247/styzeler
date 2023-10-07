@@ -217,7 +217,9 @@
 
                 <div class="name row ">
                     <label class="color-1 col-lg-2">Name : </label>
-                    @if ((@Auth::user()->type == 'hairdressingSalon' || @Auth::user()->type == 'beautySalon') && @$membership > 0)
+                    @if ((in_array(@Auth::user()->type, ['hairdressingSalon','beautySalon'])) && (@$membership > 0 || $todayUseToken > 0))
+                    <p class="col-lg-10" id="ownerName"></p>
+                    @elseif(@Auth::user()->type == 'client' && @$membership > 0)
                     <p class="col-lg-10" id="ownerName"></p>
                     @endif
                 </div>
@@ -261,7 +263,9 @@
 
                 <div class="email row">
                     <label class="color-1 col-lg-2">Email : </label>
-                    @if ((@Auth::user()->type == 'hairdressingSalon' || @Auth::user()->type == 'beautySalon') && @$membership > 0)
+                    @if ((in_array(@Auth::user()->type, ['hairdressingSalon','beautySalon'])) && (@$membership > 0 || $todayUseToken > 0))
+                    <p class="col-lg-10" id="ownerEmail"></p>
+                    @elseif(@Auth::user()->type == 'client' && @$membership > 0)
                     <p class="col-lg-10" id="ownerEmail"></p>
                     @endif
                 </div>
