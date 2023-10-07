@@ -1,5 +1,18 @@
 @extends('layouts.master.template_new.master') @push('css')
     <style>
+        #categ-0 .col-4 h2 {
+            margin: 6rem 0 0 0;
+            font-size: 3rem;
+            /* color: #c4b9b0; */
+            font-weight: bold
+        }
+
+        #categ-0 .col-4 p {
+            color: #cecfaa;
+            font-size: 2.4rem;
+            line-height: 1.4;
+        }
+
         #overlay {
             position: fixed;
             /* Sit on top of the page content */
@@ -478,9 +491,89 @@
             </div>
         </div>
     </section> --}}
-    <section id="categ" style="background-image: url('{{ asset('template_new/assets/images/sec_bg_1.png ') }}'">
-        assaasddsasa
+    <section id="categ-0" class="mt-5"
+        style="background-image: url('{{ asset('template_new/assets/images/sec_bg_1.png') }}');">
+        <div class="contain" data-aos="fade-up" data-aos-duration="1000">
+            <div class="row">
+                <div class="col-4">
+                    <h2>Male Grooming</h2>
+                    <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_01.jpg') }}"
+                        alt="" width="100" height="200" style="width: 300px;object-fit: cover;">
+                </div>
+                <div class="col-4">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed non ex esse sapiente deserunt ipsa
+                        eligendi incidunt natus. Temporibus, ea nisi iure nesciunt consectetur eveniet harum sed cum
+                        asperiores? Officiis et facilis ipsum atque veniam perferendis aliquam sit laboriosam saepe natus
+                        nesciunt quia iure aperiam velit ad quo, quas modi tempora, illo, incidunt recusandae quibusdam. Quo
+                        numquam ex maiores quam possimus quas? Quisquam voluptas molestiae odit nihil, mollitia id
+                        voluptates nam excepturi, sapiente iste pariatur voluptatem dicta quaerat a omnis corrupti quo
+                        cupiditate dolore fugit perferendis magnam labore in, laudantium asperiores! Repellat quibusdam sit
+                        ullam praesentium consequuntur! Non obcaecati repellendus deleniti iste quam ut commodi, error nemo
+                        eveniet? Nisi perspiciatis optio ex distinctio, ipsam quis ut molestiae delectus? Dignissimos,
+                        mollitia provident corporis repudiandae voluptatibus sed, animi totam aperiam laborum ex,
+                        accusantium inventore sint eaque placeat quibusdam deserunt iste modi consectetur magni quia in
+                        doloribus? Ad nemo voluptate culpa, vero iure quas a corporis.</p>
+                </div>
+                <div class="col-4">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed non ex esse sapiente deserunt ipsa
+                        eligendi incidunt natus. Temporibus, ea nisi iure nesciunt consectetur eveniet harum sed cum
+                        asperiores? Officiis et facilis ipsum atque veniam perferendis aliquam sit laboriosam saepe natus
+                        nesciunt quia iure aperiam velit ad quo, quas modi tempora, illo, incidunt recusandae quibusdam. Quo
+                        numquam ex maiores quam possimus quas? Quisquam voluptas molestiae odit nihil, mollitia id
+                        voluptates nam excepturi, sapiente iste pariatur voluptatem dicta quaerat a omnis corrupti quo
+                        cupiditate dolore fugit perferendis magnam labore in, laudantium asperiores! Repellat quibusdam sit
+                        ullam praesentium consequuntur! Non obcaecati repellendus deleniti iste quam ut commodi, error nemo
+                        eveniet? Nisi perspiciatis optio ex distinctio, ipsam quis ut molestiae delectus? Dignissimos,
+                        mollitia provident corporis repudiandae voluptatibus sed, animi totam aperiam laborum ex,
+                        accusantium inventore sint eaque placeat quibusdam deserunt iste modi consectetur magni quia in
+                        doloribus? Ad nemo voluptate culpa, vero iure quas a corporis.</p>
+                </div>
+            </div>
+        </div>
     </section>
+    {{-- <section id="categ-0" class="mt-5"
+        style="background-image: url('{{ asset('template_new/assets/images/sec_bg_1.png') }}'); background-size: 100% 100%;">
+        <div class="contain" data-aos="fade-up" data-aos-duration="1000">
+            <div class="row">
+                <div class="col-4">
+                    <h2>Male Grooming</h2>
+                    <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_01.jpg') }}"
+                        alt="" width="100" height="200" style="width: 300px;object-fit: cover;">
+                    <p>Styzeler is the leading male
+                        grooming agency across London &
+                        UK we offer master barbers to craft art for our clients</p>
+                </div>
+                <div class="col-4">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed non ex esse sapiente deserunt ipsa
+                        eligendi incidunt natus. Temporibus, ea nisi iure nesciunt consectetur eveniet harum sed cum
+                        asperiores? Officiis et facilis ipsum atque veniam perferendis aliquam sit laboriosam saepe natus
+                        nesciunt quia iure aperiam velit ad quo, quas modi tempora, illo, incidunt recusandae quibusdam. Quo
+                        numquam ex maiores quam possimus quas? Quisquam voluptas molestiae odit nihil, mollitia id
+                        voluptates nam excepturi, sapiente iste pariatur voluptatem dicta quaerat a omnis corrupti quo
+                        cupiditate dolore fugit perferendis magnam labore in, laudantium asperiores! Repellat quibusdam sit
+                        ullam praesentium consequuntur! Non obcaecati repellendus deleniti iste quam ut commodi, error nemo
+                        eveniet? Nisi perspiciatis optio ex distinctio, ipsam quis ut molestiae delectus? Dignissimos,
+                        mollitia provident corporis repudiandae voluptatibus sed, animi totam aperiam laborum ex,
+                        accusantium inventore sint eaque placeat quibusdam deserunt iste modi consectetur magni quia in
+                        doloribus? Ad nemo voluptate culpa, vero iure quas a corporis.</p>
+                </div>
+                <div class="col-4">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sed non ex esse sapiente deserunt ipsa
+                        eligendi incidunt natus. Temporibus, ea nisi iure nesciunt consectetur eveniet harum sed cum
+                        asperiores? Officiis et facilis ipsum atque veniam perferendis aliquam sit laboriosam saepe natus
+                        nesciunt quia iure aperiam velit ad quo, quas modi tempora, illo, incidunt recusandae quibusdam. Quo
+                        numquam ex maiores quam possimus quas? Quisquam voluptas molestiae odit nihil, mollitia id
+                        voluptates nam excepturi, sapiente iste pariatur voluptatem dicta quaerat a omnis corrupti quo
+                        cupiditate dolore fugit perferendis magnam labore in, laudantium asperiores! Repellat quibusdam sit
+                        ullam praesentium consequuntur! Non obcaecati repellendus deleniti iste quam ut commodi, error nemo
+                        eveniet? Nisi perspiciatis optio ex distinctio, ipsam quis ut molestiae delectus? Dignissimos,
+                        mollitia provident corporis repudiandae voluptatibus sed, animi totam aperiam laborum ex,
+                        accusantium inventore sint eaque placeat quibusdam deserunt iste modi consectetur magni quia in
+                        doloribus? Ad nemo voluptate culpa, vero iure quas a corporis.</p>
+                </div>
+            </div>
+        </div>
+    </section> --}}
     <!-- categ -->
     <section id="startup">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
@@ -592,21 +685,21 @@
         </div>
 
         <!-- <img src="assets/images/126-minr.jpg" alt="">
-                                                                                                                                                                                           <div class="row">
-                                                                                                                                                                                               <div class="col-3 col-md-3 col-sm-3 ps-4">
-                                                                                                                                                                                                   <p>There are many reasons companies are turning to freelancers rather than hiring full-time staff.
-                                                                                                                                                                                                   </p>
-                                                                                                                                                                                                   <p>Freelancers are increasingly seen as highly skilled professionals with valuable abilities that
-                                                                                                                                                                                                       can take any business forward</p>
-                                                                                                                                                                                               </div>
-                                                                                                                                                                                               <div class="col-5 col-md-5 col-sm-5">
-                                                                                                                                                                                     
-                                                                                                                                                                                               </div>
-                                                                                                                                                                                               <div class="col-3 col-md-3 col-sm-3">
-                                                                                                                                                                                                   <p>Freelancers create an opportunity to expand the diversity of your company. Diversity helps
-                                                                                                                                                                                                       increase the flow of ideas and often leads to better business solutions.</p>
-                                                                                                                                                                                               </div>
-                                                                                                                                                                                           </div> -->
+                                                                                                                                                                                                                                                                                                                                                                               <div class="row">
+                                                                                                                                                                                                                                                                                                                                                                                   <div class="col-3 col-md-3 col-sm-3 ps-4">
+                                                                                                                                                                                                                                                                                                                                                                                       <p>There are many reasons companies are turning to freelancers rather than hiring full-time staff.
+                                                                                                                                                                                                                                                                                                                                                                                       </p>
+                                                                                                                                                                                                                                                                                                                                                                                       <p>Freelancers are increasingly seen as highly skilled professionals with valuable abilities that
+                                                                                                                                                                                                                                                                                                                                                                                           can take any business forward</p>
+                                                                                                                                                                                                                                                                                                                                                                                   </div>
+                                                                                                                                                                                                                                                                                                                                                                                   <div class="col-5 col-md-5 col-sm-5">
+                                                                                                                                                                                                                                                                                                                                                                         
+                                                                                                                                                                                                                                                                                                                                                                                   </div>
+                                                                                                                                                                                                                                                                                                                                                                                   <div class="col-3 col-md-3 col-sm-3">
+                                                                                                                                                                                                                                                                                                                                                                                       <p>Freelancers create an opportunity to expand the diversity of your company. Diversity helps
+                                                                                                                                                                                                                                                                                                                                                                                           increase the flow of ideas and often leads to better business solutions.</p>
+                                                                                                                                                                                                                                                                                                                                                                                   </div>
+                                                                                                                                                                                                                                                                                                                                                                               </div> -->
     </section>
     <!-- membership -->
     <section id="get_job">
@@ -621,18 +714,18 @@
             </div>
         </div>
         <!-- <div class="modal fade bd-example-modal-md" id="popupInfo-modal" role="dialog">
-                                                                                                                                                                                               <div class="modal-dialog modal-md">
-                                                                                                                                                                                                   <div class="modal-content" style=" background-color: black; color: white; max-height:400px; overflow-y:auto; margin-top: 30%;">
-                                                                                                                                                                                                       <div class="modal-header" style=" border-bottom: 5px solid #766d48; ">
-                                                                                                                                                                                                           <h4 class="modal-title">Alert</h4>
-                                                                                                                                                                                                           <i class="close-modal" style="font-size:2rem;cursor:pointer;"><b>&times;</b></i>
-                                                                                                                                                                                                       </div>
-                                                                                                                                                                                                       <div class="modal-body my-5">
-                                                                                                                                                                                                           <p>To continue browsing the pages please chose a category</p>
-                                                                                                                                                                                                       </div>
-                                                                                                                                                                                                   </div>
-                                                                                                                                                                                               </div>
-                                                                                                                                                                                           </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                   <div class="modal-dialog modal-md">
+                                                                                                                                                                                                                                                                                                                                                                                       <div class="modal-content" style=" background-color: black; color: white; max-height:400px; overflow-y:auto; margin-top: 30%;">
+                                                                                                                                                                                                                                                                                                                                                                                           <div class="modal-header" style=" border-bottom: 5px solid #766d48; ">
+                                                                                                                                                                                                                                                                                                                                                                                               <h4 class="modal-title">Alert</h4>
+                                                                                                                                                                                                                                                                                                                                                                                               <i class="close-modal" style="font-size:2rem;cursor:pointer;"><b>&times;</b></i>
+                                                                                                                                                                                                                                                                                                                                                                                           </div>
+                                                                                                                                                                                                                                                                                                                                                                                           <div class="modal-body my-5">
+                                                                                                                                                                                                                                                                                                                                                                                               <p>To continue browsing the pages please chose a category</p>
+                                                                                                                                                                                                                                                                                                                                                                                           </div>
+                                                                                                                                                                                                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                                                                                                                                                                                                   </div>
+                                                                                                                                                                                                                                                                                                                                                                               </div> -->
         <div class="modal fade bd-example-modal-md" id="popupInfo-modal" role="dialog">
             <div class="modal-dialog modal-md" style="width: 350px">
                 <div class="modal-content border border-warning"
@@ -654,19 +747,19 @@
     @endsection @push('script')
     <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
     <script>
-        $(document).ready(function() {
+        // $(document).ready(function() {
 
-            localStorage.removeItem('bookType');
+        //     localStorage.removeItem('bookType');
 
-            window.scrollTo(0, scrollPosition);
+        //     window.scrollTo(0, scrollPosition);
 
-            setTimeout(function() {
-                flag = "0";
-                $("html").css({
-                    "overflow": "auto"
-                });
-            }, 1500);
-        });
+        //     setTimeout(function() {
+        //         flag = "0";
+        //         $("html").css({
+        //             "overflow": "auto"
+        //         });
+        //     }, 1500);
+        // });
         $(function() {
 
             $("#popupInfo-modal").modal("show");
