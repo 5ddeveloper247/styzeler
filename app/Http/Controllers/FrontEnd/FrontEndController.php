@@ -133,19 +133,49 @@ class FrontEndController extends Controller
 
     public function barber()
     {
-        $data['users'] = User::where('status', 'Active')->whereIn('type', ['barber'])->get();
+    	if(in_array(Auth::user()->type, ['hairdressingSalon','beautySalon','wedding','hairStylist','beautician','barber'])){
+    		 
+    		$users = User::where('status', 'Active')->whereIn('type', ['barber'])->where('profile_type', '!=', 'Home Service')->get();
+    		 
+    	}
+    	else if(in_array(Auth::user()->type, ['client'])){
+    		 
+    		$users = User::where('status', 'Active')->whereIn('type', ['barber'])->where('profile_type', 'Home Service')->get();
+    	}
+    	
+    	$data['users'] = $users;
         return view('web.barber')->with($data);
     }
 
     public function hairstylist()
     {
-        $data['users'] = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->get();
+    	if(in_array(Auth::user()->type, ['hairdressingSalon','beautySalon','wedding','hairStylist','beautician','barber'])){
+    		
+    		$users = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->where('profile_type', '!=', 'Home Service')->get();
+    		
+    	}
+    	else if(in_array(Auth::user()->type, ['client'])){
+    		
+    		$users = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->where('profile_type', 'Home Service')->get();
+    	}
+        
+    	$data['users'] = $users;
         return view('web.hairstylist')->with($data);
     }
 
     public function beautician()
     {
-        $data['users'] = User::where('status', 'Active')->whereIn('type', ['beautician'])->get();
+    	if(in_array(Auth::user()->type, ['hairdressingSalon','beautySalon','wedding','hairStylist','beautician','barber'])){
+    	
+    		$users = User::where('status', 'Active')->whereIn('type', ['beautician'])->where('profile_type', '!=', 'Home Service')->get();
+    	
+    	}
+    	else if(in_array(Auth::user()->type, ['client'])){
+    	
+    		$users = User::where('status', 'Active')->whereIn('type', ['beautician'])->where('profile_type', 'Home Service')->get();
+    	}
+    	
+    	$data['users'] = $users;
         return view('web.beautician')->with($data);
     }
 
@@ -156,7 +186,10 @@ class FrontEndController extends Controller
 
     public function weddingStylist()
     {
-        $data['users'] = User::where('status', 'Active')->whereIn('type', ['wedding'])->get();
+    	 
+    	$users = User::where('status', 'Active')->whereIn('type', ['wedding'])->get();
+    	 
+    	$data['users'] = $users;
         return view('web.weddingStylist')->with($data);
     }
 

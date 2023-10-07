@@ -17,10 +17,17 @@ class PaymentController extends Controller
     {
         if (!Auth::check()) {
             return back()->with('error', 'Please Login First');
-        } else if (Auth::user()->type != 'client') {
-            return back()->with('error', 'Please Login As a Client');
+        } 
+        if($request->payment_type == 'homeServices'){
+        	if (Auth::user()->type != 'client') {
+        		return back()->with('error', 'Please Login As a Client');
+        	}
         }
-
+        if($request->payment_type == 'businessOwner'){
+        	if (!in_array(Auth::user()->type, ['hairdressingSalon','beautySalon'])) {
+        		return back()->with('error', 'Please Login As a Salon Owner');
+        	}
+        }
         // Set your secret Stripe API key
         Stripe::setApiKey(config('keys.STRIPE_SECRET_KEY'));
 

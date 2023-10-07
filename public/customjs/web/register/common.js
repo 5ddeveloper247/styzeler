@@ -67,8 +67,8 @@ function getClientTokensResponse(response){
       
     	var details = response.data;
     	
-    	$("#clientRemTokens").text((details.tokens != 'null' && details.tokens != '') ? details.tokens : '0' );
-    	$("#clientTotalTokens").text((details.total_tokens != 'null' && details.total_tokens != '') ? details.total_tokens : '0');
+    	$("#clientRemTokens").text(details.tokens != null ? details.tokens : '0' );
+    	$("#clientTotalTokens").text(details.total_tokens != null ? details.total_tokens : '0');
     	
         $('#showTokens_modal').modal('show');
 

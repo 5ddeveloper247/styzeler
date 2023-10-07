@@ -50,7 +50,7 @@
                             <a class="dropdown-item" href="{{ route('freelancerTermAndConditions') }}">Freelancer
                                 Terms &
                                 Conditions</a>
-                            @if (auth()->user()->type == 'client')
+                            @if (auth()->user()->type == 'client' || auth()->user()->type == 'hairdressingSalon' || auth()->user()->type == 'beautySalon')
                                 <a class="dropdown-item" href="javascript:;" onclick="getClientTokens();">Tokens</a>
                             @endif
                             <a class="dropdown-item" href="{{ route('faqs') }}">FAQ</a>

@@ -16,25 +16,25 @@
         <div class="candidate_logo"><img src="{{ asset('template_new/assets/images/candidate_logo.jpg') }}" alt=""></div>
         <ul class="btn_list" data-aos="fade-up" data-aos-duration="1000">
             <li>
-            	<a href="{{route('hairstylist')}}" class="shadow_btn" style="font-size: 1.7rem; padding: 0 1rem;
+            	<a href="{{@Auth::user() ? route('hairstylist') : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
                 	justify-content: space-between;text-align: left;">Hair Stylistes 
                 	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                 </a>
           	</li>
             <li>
-            	<a href="{{route('beautician')}}" class="shadow_btn" style="font-size: 1.7rem; padding: 0 1rem;
+            	<a href="{{@Auth::user() ? route('beautician') : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
                 	justify-content: space-between;text-align: left;">Beauticians 
                 	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                 </a>
            	</li>
             <li>
-            	<a href="{{route('barber')}}" class="shadow_btn" style="font-size: 1.7rem; padding: 0 1rem;
+            	<a href="{{@Auth::user() ? route('barber') : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
                 	justify-content: space-between;text-align: left;">Barbers 
                 	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                 </a>
            	</li>
             <li>
-            	<a href="{{route('weddingStylist')}}" class="shadow_btn" style="font-size: 1.7rem; padding: 0 1rem;
+            	<a href="{{@Auth::user() ? route('weddingStylist') : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
                 	justify-content: space-between;text-align: left;">Wedding Stylistes 
                 	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                 </a>
@@ -65,9 +65,35 @@
     </div>
     <img src="{{ asset('template_new/assets/images/candidate_main2.jpg') }}" alt="">
 </section>
+<div class="modal fade bd-example-modal-md" id="register_modal" role="dialog">
+            <div class="modal-dialog modal-md ">
+                <div class="modal-content border border-warning"
+                    style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                    <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                        <h4 class="modal-title">Registeration is Free</h4>
+                        <i class="close-modal" style="font-size: 2rem;"><b>&times;</b></i>
+                    </div>
+                    <div class="modal-body">
+                        Do you want to register your self?
+                    </div>
+                    <div class="modal-footer text-center">
+                        <a type="" href="{{ route('registration') }}" class="btn1 customBtn">Ok</a>
+                        <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
 <!-- candidates -->
 @endsection
 
 @push('script')
-    
+<script>
+$(".show_message").click(function () {
+	$("#register_modal").modal('show');
+});
+$(".close-modal").click(function () {
+	$("#register_modal").modal('hide');
+});
+	
+</script>
 @endpush

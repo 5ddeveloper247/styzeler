@@ -197,11 +197,15 @@
                 <div class="likes btn customBtn" id="likes">Likes</div>
             </div>
             @auth
-
-                <div class="col-3 text-center book_client">
-                    <div class="book btn customBtn" id="book">Book</div>
-                </div>
-
+            	@if(Auth::user()->type == 'client')
+				<div class="col-3 text-center book_client">
+                 	<div class="book btn customBtn" id="book">Book</div>
+               	</div>
+               	@else
+               	<div class="col-3 text-center book_client">
+                 	<div class="book btn customBtn {{@$class}}" id="{{@$bookid}}">Book</div>
+               	</div>
+               	@endif
             @endauth
 
 
@@ -213,9 +217,9 @@
 
                 <div class="name row ">
                     <label class="color-1 col-lg-2">Name : </label>
-                    {{-- @if (@$membership > 0) --}}
+                    @if ((@Auth::user()->type == 'hairdressingSalon' || @Auth::user()->type == 'beautySalon') && @$membership > 0)
                     <p class="col-lg-10" id="ownerName"></p>
-                    {{-- @endif --}}
+                    @endif
                 </div>
 
                 <div class="age row">
@@ -257,9 +261,9 @@
 
                 <div class="email row">
                     <label class="color-1 col-lg-2">Email : </label>
-                    {{-- @if (@$membership > 0) --}}
+                    @if ((@Auth::user()->type == 'hairdressingSalon' || @Auth::user()->type == 'beautySalon') && @$membership > 0)
                     <p class="col-lg-10" id="ownerEmail"></p>
-                    {{-- @endif --}}
+                    @endif
                 </div>
 
                 <div class="status row">
@@ -2848,8 +2852,8 @@
     <script src="{{ asset('customjs/web/profile/profileView.js') }}?v={{ time() }}"></script>
     <script>
         const cart_book = localStorage.getItem('bookType');
-        var user = '{{ auth()->user()->type }}';
-        console.log(user);
+        var user = '{{ @Auth::user()->type }}';
+        
         if (user == 'client') {
             $('.book_client').addClass('d-none');
 
@@ -2857,5 +2861,6 @@
                 $('.book_client').removeClass('d-none');
             }
         }
+
     </script>
 @endpush

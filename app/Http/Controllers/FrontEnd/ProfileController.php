@@ -15,6 +15,7 @@ use App\Http\Requests\UpdateProfileBasicInfoValidationRequest;
 use App\Models\Appointments;
 use App\Models\Cart;
 use App\Models\Cart_line;
+use App\Models\Used_tokens;
 
 class ProfileController extends Controller
 {
@@ -709,5 +710,22 @@ class ProfileController extends Controller
         $userDetails = User::where('id', Auth::user()->id)->first();
 
         return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
+    }
+    
+    public function useOwnerTokens(Request $request)
+    {
+    
+    	if (!isset(Auth::user()->id)) {
+    		return response()->json(['status' => 500, 'message' => 'Login with client user first!', 'data' => '']);
+    	}
+    
+    	$count = Used_tokens::where('user_id', Auth::user()->id)->where('date', date('Y-m-d'))->count();
+    	
+    	if($count <= 0){
+    		User::where('id', Auth::user()->id)->first();
+    	}
+    	
+    
+    	return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
     }
 }
