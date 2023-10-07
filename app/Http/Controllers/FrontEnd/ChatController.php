@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\FrontEnd;
 
-use App\Models\Guest_user;
-use App\Models\Chat_questions;
 use App\Models\Chat;
 use App\Models\Chat_reply;
+use App\Models\Guest_user;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
+use App\Models\Chat_questions;
+use App\Events\EmailSendingEvent;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\GuestUserValidationRequest;
 use App\Http\Requests\ChatQuestionValidationRequest;
 
@@ -67,8 +68,9 @@ class ChatController extends Controller
 							<td>Your question sent to admin, we will get back to you...</td>
 						</tr>
 					</table>";
+			$sendEmail = [$existing->email, 'admin@styzeler.co.uk'];
 
-			sendMail($existing->name, $existing->email, 'Chat', 'Chat Email', $body);
+			sendMail($existing->name, $sendEmail, 'Chat', 'Chat Email', $body);
 
 			return response()->json(
 				[
@@ -204,15 +206,17 @@ class ChatController extends Controller
 		$chat_reply->save();
 		$body = "<table>
 					<tr>
-						<td>" . $request->chat_reply . "</td>
+						<td>Question:" . $guest_user->question . " </td>
 					</tr>
 					<tr>
-						<td></td>
+						<td>Answer:" . $request->chat_reply . "</td>
 					</tr>
+					
 				</table>";
 
-		sendMail($guest_user->chat_guest_user->name, $guest_user->chat_guest_user->email, 'Chat Reply', 'Chat Email', $body);
+		$sendEmail = [$guest_user->chat_guest_user->email];
 
+		sendMail($guest_user->chat_guest_user->name, $sendEmail, 'Chat Reply', 'Chat Email', $body);
 		return response()->json(['status' => 200, 'message' => 'Question details submitted succsessfully!', 'data' => '']);
 	}
 }

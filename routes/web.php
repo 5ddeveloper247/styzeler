@@ -142,6 +142,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
 
 Route::middleware(['guest'])->group(function () {
     Route::post('/login', 'Auth\LoginController@login')->name('login');
+    Route::post('/forgetPasswordReset', 'Auth\ForgotPasswordController@forgetPasswordReset')->name('forgetPasswordReset');
     Route::post('/admin/adminLogin', 'Auth\LoginController@adminLogin')->name('admin.adminLogin');
     // Other routes that should only be accessible to guests
 });
