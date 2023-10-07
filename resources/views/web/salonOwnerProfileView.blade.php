@@ -72,9 +72,9 @@
             <div class="showProfile col-10 text-left mt-4" id="showProfile">
                 <div class="name row ">
                     <label class="color-1 col-lg-3">Owner's Name : </label>
-                    	@if (@$membership > 0)
+                    	{{--@if (@$membership > 0)--}}
                     	<p class="col-lg-9" id="ownerName"></p>
-                    	@endif
+                    	{{--@endif--}}
                 </div>
                 <div class="Address row ">
                     <label class="color-1 col-lg-3">Owner's Address : </label>
@@ -91,9 +91,9 @@
 
                 <div class="email row">
                     <label class="color-1 col-lg-3">Email : </label>
-                    @if (@$membership > 0)
+                    {{--@if (@$membership > 0) --}}
                     <p class="col-lg-9" id="owner-email"></p>
-                    @endif
+                    {{--@endif--}}
                 </div>
 
 

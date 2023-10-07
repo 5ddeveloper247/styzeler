@@ -62,6 +62,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
 
     Route::post('/showAppointmentDatesFreelancer', 'ProfileController@showAppointmentDatesFreelancer')->name('showAppointmentDatesFreelancer');
     Route::post('/bookSlots', 'ProfileController@bookSlots')->name('bookSlots');
+    Route::get('/useOwnerTokens', 'ProfileController@useOwnerTokens')->name('useOwnerTokens');
 
     // About
     Route::get('/aboutUs', 'FrontEndController@aboutUs')->name('aboutUs');

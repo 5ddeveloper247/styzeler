@@ -635,6 +635,7 @@
                             <div class="form-group">
                                 <input type="hidden" name="payment_amount" id="payment_amount">
                                 <input type="hidden" name="payment_tokens" id="payment_tokens">
+                                <input type="hidden" name="payment_type" id="payment_type" value="businessOwner">
                                 <label for="card-element">
                                     Credit or Debit card
                                 </label>
@@ -665,6 +666,23 @@
                     </div>
                     <div class="modal-footer text-center">
                         <a type="" href="{{ route('registration') }}" class="btn1 customBtn">Ok</a>
+                        <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade bd-example-modal-md" id="userType_message" role="dialog">
+            <div class="modal-dialog modal-md ">
+                <div class="modal-content border border-warning"
+                    style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                    <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                        <h4 class="modal-title">Alert</h4>
+                        <i class="close-modal" style="font-size: 2rem;"><b>&times;</b></i>
+                    </div>
+                    <div class="modal-body">
+                        Kindly login with Salon Owner!
+                    </div>
+                    <div class="modal-footer text-center">
                         <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
                     </div>
                 </div>
@@ -735,8 +753,9 @@
       	function paymentModal(amount, tokens) {
 
 	    	@if(@!Auth::user())
-	    		$('#register_modal').modal('show');
-				return;
+	    		$('#register_modal').modal('show');return;
+	    	@elseif(!in_array(@Auth::user()->type, ['hairdressingSalon','beautySalon']))
+				$('#userType_message').modal('show');return;
 	       	@endif
 		  	$('#payment_amount').val(amount);
 		    $('#payment_tokens').val(tokens);
