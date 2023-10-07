@@ -342,7 +342,7 @@ class ProfileController extends Controller
 
         if (isset($request->book_type) && $request->book_type == 'cart_book') {  // of cart booking then this code execution
             $userDetails = User::where('id', Auth::user()->id)->first();
-
+            
             $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
 
             $cartExist = Cart::where('user_id', Auth::user()->id)->where('slot_date', $request->book_date)->count();
@@ -375,6 +375,40 @@ class ProfileController extends Controller
                     $user->tokens = $tokens - 1;
                     $user->update();
                 }
+                
+                $bookedUserDetails = User::where('id', $request->user_id)->first();
+                $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
+                
+                $slotStartTime = date('h:i A', strtotime($slotDetails->start_time));
+                $slotEndTime = date('h:i A', strtotime($slotDetails->end_time));
+                
+                $body = "<table>
+			                <tr>
+			                    <td>Username:</td>
+			                    <td>" . $userDetails['name'] . "</td>
+			                </tr>
+			              	<tr>
+			                    <td>Booked Username:</td>
+			                    <td>" . $bookedUserDetails['name'] . "</td>
+			                </tr>
+			                <tr>
+			                    <td>Email:</td>
+			                    <td>" . $userDetails['email'] . "</td>
+			                </tr>
+			                <tr>
+			                    <td>Book Date:</td>
+			                    <td>" . date('d-M-Y', strtotime($request->book_date)) . "</td>
+			                </tr>
+			              	<tr>
+			                    <td>Slot Time:</td>
+			                    <td>" . $slotStartTime . "-" . $slotEndTime ."</td>
+			                </tr>
+			           	</table>";
+                $userEmailsSend[] = $userDetails['email'];
+                $userEmailsSend[] = $bookedUserDetails['email'];
+                $userEmailsSend[] = 'admin@styzeler.co.uk';
+                
+                sendMail($userDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
 
                 return response()->json([
                     'status' => 200,
@@ -422,6 +456,40 @@ class ProfileController extends Controller
                 'booking_slots_id' => $request->slot_book_id,
                 'booking_user_id' => Auth::id(),
             ]);
+            
+            $bookedUserDetails = User::where('id', $request->user_id)->first();
+            $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
+            
+            $slotStartTime = date('h:i A', strtotime($slotDetails->start_time));
+            $slotEndTime = date('h:i A', strtotime($slotDetails->end_time));
+            
+            $body = "<table>
+			                <tr>
+			                    <td>Username:</td>
+			                    <td>" . $userDetails['name'] . "</td>
+			                </tr>
+			              	<tr>
+			                    <td>Booked Username:</td>
+			                    <td>" . $bookedUserDetails['name'] . "</td>
+			                </tr>
+			                <tr>
+			                    <td>Email:</td>
+			                    <td>" . $userDetails['email'] . "</td>
+			                </tr>
+			                <tr>
+			                    <td>Book Date:</td>
+			                    <td>" . date('d-M-Y', strtotime($request->book_date)) . "</td>
+			                </tr>
+			              	<tr>
+			                    <td>Slot Time:</td>
+			                    <td>" . $slotStartTime . "-" . $slotEndTime ."</td>
+			                </tr>
+			           	</table>";
+            $userEmailsSend[] = $userDetails['email'];
+            $userEmailsSend[] = $bookedUserDetails['email'];
+            $userEmailsSend[] = 'admin@styzeler.co.uk';
+            
+            sendMail($userDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
 
             return response()->json([
                 'status' => 200,
