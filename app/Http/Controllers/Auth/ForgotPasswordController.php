@@ -50,8 +50,8 @@ class ForgotPasswordController extends Controller
                 ]);
             }
 
-            $user = $user_update->update(['password' => $request->password]);
-            dd($user);
+            $user_update->update(['password' => $request->password_otp]);
+
             return response()->json([
                 'status' => 200,
                 'message' => 'Password Changed Successfully!',

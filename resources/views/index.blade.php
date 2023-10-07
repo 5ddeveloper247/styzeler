@@ -264,14 +264,12 @@
         }
     </style>
     <script>
-    var scrollPosition = window.scrollY;
+        var scrollPosition = window.scrollY;
 
-    // Restore the scroll position when the page is reloaded
-    
-    
+        // Restore the scroll position when the page is reloaded
     </script>
-    @endpush 
-    @section('content')
+@endpush
+@section('content')
     <!-- header -->
     <section class="d-none d-md-block" id="banner"
         style="background-image: url('{{ asset('template_new/assets/images/banner.jpg') }}')">
@@ -317,7 +315,8 @@
                 Specialist in Hair & Beauty Recruitmen, London & Uk <br /> Permanent
                 & Temporary position
             </h2>
-            <div class="line none-modal" style="background-image: url('{{ asset('template_new/assets/images/browse_bg.jpg') }}'">
+            <div class="line none-modal"
+                style="background-image: url('{{ asset('template_new/assets/images/browse_bg.jpg') }}'">
                 <p style="margin: 10px 0px 11px 13px">Styzeler a leading Hair &
                     Beauty digital agency providing expert freelancers for temporary
                     work or permanent employment for Hair Beauty & Spa businesses</p>
@@ -409,7 +408,7 @@
         </div>
     </section>
     <!-- hire -->
-    <section id="categ">
+    {{-- <section id="categ">
         <div class="img-box d-none d-md-block">
             <img src="{{ asset('template_new/assets/images/categ_bg_main.jpg') }}" alt="" />
             <div class="cta">
@@ -427,16 +426,7 @@
         </div>
 
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
-            <!-- <div class="flexRow">
-                                                                                                                                                                           <div class="col">
-                                                                                                                                                                               <img src="assets/images/categ_bg_main_01.jpg" alt="">
-                                                                                                                                                                           </div>
-                                                                                                                                                                           <div class="col">
-                                                                                                                                                                               <img src="assets/images/categ_bg_main_02.jpg" alt="">
-                                                                                                                                                                           </div>
-                                                                                                                                                                           <div class="col">
-                                                                                                                                                                               <img src="assets/images/categ_bg_main_03.jpg" alt="">
-                                                                                                                                                                           </div>
+            <!-- <div class="flexRow">                                                                                                                                                           </div>
                                                                                                                                                                        </div> -->
             <div class="flexRow" style="padding: 0px 38px">
                 <div class="col">
@@ -487,6 +477,9 @@
                 </a>
             </div>
         </div>
+    </section> --}}
+    <section id="categ" style="background-image: url('{{ asset('template_new/assets/images/sec_bg_1.png ') }}'">
+        assaasddsasa
     </section>
     <!-- categ -->
     <section id="startup">
@@ -599,21 +592,21 @@
         </div>
 
         <!-- <img src="assets/images/126-minr.jpg" alt="">
-                                                                                                                                                                   <div class="row">
-                                                                                                                                                                       <div class="col-3 col-md-3 col-sm-3 ps-4">
-                                                                                                                                                                           <p>There are many reasons companies are turning to freelancers rather than hiring full-time staff.
-                                                                                                                                                                           </p>
-                                                                                                                                                                           <p>Freelancers are increasingly seen as highly skilled professionals with valuable abilities that
-                                                                                                                                                                               can take any business forward</p>
-                                                                                                                                                                       </div>
-                                                                                                                                                                       <div class="col-5 col-md-5 col-sm-5">
-                                                                                                                                                             
-                                                                                                                                                                       </div>
-                                                                                                                                                                       <div class="col-3 col-md-3 col-sm-3">
-                                                                                                                                                                           <p>Freelancers create an opportunity to expand the diversity of your company. Diversity helps
-                                                                                                                                                                               increase the flow of ideas and often leads to better business solutions.</p>
-                                                                                                                                                                       </div>
-                                                                                                                                                                   </div> -->
+                                                                                                                                                                                           <div class="row">
+                                                                                                                                                                                               <div class="col-3 col-md-3 col-sm-3 ps-4">
+                                                                                                                                                                                                   <p>There are many reasons companies are turning to freelancers rather than hiring full-time staff.
+                                                                                                                                                                                                   </p>
+                                                                                                                                                                                                   <p>Freelancers are increasingly seen as highly skilled professionals with valuable abilities that
+                                                                                                                                                                                                       can take any business forward</p>
+                                                                                                                                                                                               </div>
+                                                                                                                                                                                               <div class="col-5 col-md-5 col-sm-5">
+                                                                                                                                                                                     
+                                                                                                                                                                                               </div>
+                                                                                                                                                                                               <div class="col-3 col-md-3 col-sm-3">
+                                                                                                                                                                                                   <p>Freelancers create an opportunity to expand the diversity of your company. Diversity helps
+                                                                                                                                                                                                       increase the flow of ideas and often leads to better business solutions.</p>
+                                                                                                                                                                                               </div>
+                                                                                                                                                                                           </div> -->
     </section>
     <!-- membership -->
     <section id="get_job">
@@ -628,18 +621,18 @@
             </div>
         </div>
         <!-- <div class="modal fade bd-example-modal-md" id="popupInfo-modal" role="dialog">
-                                                                                                                                                                       <div class="modal-dialog modal-md">
-                                                                                                                                                                           <div class="modal-content" style=" background-color: black; color: white; max-height:400px; overflow-y:auto; margin-top: 30%;">
-                                                                                                                                                                               <div class="modal-header" style=" border-bottom: 5px solid #766d48; ">
-                                                                                                                                                                                   <h4 class="modal-title">Alert</h4>
-                                                                                                                                                                                   <i class="close-modal" style="font-size:2rem;cursor:pointer;"><b>&times;</b></i>
-                                                                                                                                                                               </div>
-                                                                                                                                                                               <div class="modal-body my-5">
-                                                                                                                                                                                   <p>To continue browsing the pages please chose a category</p>
-                                                                                                                                                                               </div>
-                                                                                                                                                                           </div>
-                                                                                                                                                                       </div>
-                                                                                                                                                                   </div> -->
+                                                                                                                                                                                               <div class="modal-dialog modal-md">
+                                                                                                                                                                                                   <div class="modal-content" style=" background-color: black; color: white; max-height:400px; overflow-y:auto; margin-top: 30%;">
+                                                                                                                                                                                                       <div class="modal-header" style=" border-bottom: 5px solid #766d48; ">
+                                                                                                                                                                                                           <h4 class="modal-title">Alert</h4>
+                                                                                                                                                                                                           <i class="close-modal" style="font-size:2rem;cursor:pointer;"><b>&times;</b></i>
+                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                       <div class="modal-body my-5">
+                                                                                                                                                                                                           <p>To continue browsing the pages please chose a category</p>
+                                                                                                                                                                                                       </div>
+                                                                                                                                                                                                   </div>
+                                                                                                                                                                                               </div>
+                                                                                                                                                                                           </div> -->
         <div class="modal fade bd-example-modal-md" id="popupInfo-modal" role="dialog">
             <div class="modal-dialog modal-md" style="width: 350px">
                 <div class="modal-content border border-warning"
@@ -661,21 +654,21 @@
     @endsection @push('script')
     <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
     <script>
-	    $(document).ready(function () {
-	    	
-	    	localStorage.removeItem('bookType');
+        $(document).ready(function() {
 
-	    	window.scrollTo(0, scrollPosition);
-	        
-	        setTimeout(function(){
-	        	flag = "0";
-	        	$("html").css({
-		            "overflow": "auto"
-		        });
-		    }, 1500);
-	    });
+            localStorage.removeItem('bookType');
+
+            window.scrollTo(0, scrollPosition);
+
+            setTimeout(function() {
+                flag = "0";
+                $("html").css({
+                    "overflow": "auto"
+                });
+            }, 1500);
+        });
         $(function() {
-        	
+
             $("#popupInfo-modal").modal("show");
         });
 
@@ -699,7 +692,7 @@
         // Usage
         var targetClass = "none-modal";
         var flag = "0";
-        
+
         window.addEventListener("scroll", function() {
 
             if (isScrolledToClass(targetClass)) {
@@ -707,7 +700,7 @@
                 if (flag == "0") {
 
                     if ($("#popupInfo-modal").is(":visible")) {
-//                         $("#popupInfo-modal").modal("hide");
+                        //                         $("#popupInfo-modal").modal("hide");
                         flag = "1";
                         $("html").css({
                             "overflow": "hidden"
@@ -716,9 +709,9 @@
                 }
             }
             // if (isScrolledToClass(targetClass))
-        });	
+        });
         $(document).on("click", ".close-modal, body", function() {
-        	$("html").css({
+            $("html").css({
                 "overflow": "auto"
             });
             $(".modal").modal("hide");
