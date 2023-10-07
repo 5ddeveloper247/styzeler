@@ -17,19 +17,14 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next)
     {
-    	if(!isset(Auth::user()->id)){
-    		 
-    		return redirect('admin');
-
-    	}
-    	else if(isset(Auth::user()->type) && Auth::user()->type != 'admin'){
-    		 
-    		return redirect('login');
-    	
-    	}
-//     	else{
-//     		return redirect('admin');
-//     	}
+        if (!isset(Auth::user()->id)) {
+            return redirect('admin');
+        } else if (isset(Auth::user()->type) && Auth::user()->type != 'admin') {
+            return redirect('login');
+        }
+        //     	else{
+        //     		return redirect('admin');
+        //     	}
 
         return $next($request);
     }

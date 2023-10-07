@@ -122,11 +122,6 @@ if (!function_exists('sendMail')) {
                 $send->replyto($mail_val['email_from'], $mail_val['email_from_name']);
                 $send->to($mail_val['send_to'], $mail_val['send_to_name'])->subject($mail_val['subject']);
             });
-            // $emails = [$send_to_email, 'kamrandevs@gmail.com'];
-
-            // Mail::send('emails.mail', ['body' => $body], function ($message) use ($emails) {
-            //     $message->to($emails)->subject('This is test e-mail');
-            // });
             return true;
         } catch (\Exception $e) {
             Log::error($e->getMessage());
