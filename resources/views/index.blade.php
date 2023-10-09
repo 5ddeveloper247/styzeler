@@ -461,8 +461,8 @@
         </div>
     </section>
     <!-- hire -->
-    {{-- <section id="categ">
-        <div class="img-box d-none d-md-block">
+    <section id="categ">
+        {{-- <div class="img-box d-none d-md-block">
             <img src="{{ asset('template_new/assets/images/categ_bg_main.jpg') }}" alt="" />
             <div class="cta">
                 <a class="site_btn" href="{{ route('hairstylist') }}">Read More</a>
@@ -476,11 +476,11 @@
                 <a class="site_btn" href="{{ route('beautician') }}">Read More</a>
                 <!-- https://beta.styzeler.co.uk/beautician.html -->
             </div>
-        </div>
+        </div> --}}
 
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <!-- <div class="flexRow">                                                                                                                                                           </div>
-                                                                                                                                                                       </div> -->
+                                                                                                                                                                                           </div> -->
             <div class="flexRow" style="padding: 0px 38px">
                 <div class="col">
                     <div class="inner"
@@ -530,7 +530,7 @@
                 </a>
             </div>
         </div>
-    </section> --}}
+    </section>
     <section id="categ-0" class="mt-5 d-none d-md-block">
         <div class="contain px-4" data-aos="fade-up" data-aos-duration="1000"
             style="background-image: url('{{ asset('template_new/assets/images/sec_bg_1.png') }}');background-size:100% 100%">
@@ -551,16 +551,16 @@
                         alt="" width="100" height="200" style="width: 300px;object-fit: cover;">
                     <p class="mt-2">Freelancers focus on getting a good review and expanding their portfolio, they strive
                         to maintain industry- standard quality aligned with your expectations
-                        <a class="link-light btn-read-more btn-sm" href="{{ route('barber') }}">Read more</a>
+                        <a class="link-light btn-read-more btn-sm" href="{{ route('hairstylist') }}">Read more</a>
                     </p>
                 </div>
                 <div class="col-4">
-                    <h2>Beauticans</h2>
+                    <h2>Beauticians</h2>
                     <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_03.jpg') }}"
                         alt="" width="100" height="200" style="width: 300px;object-fit: cover;">
                     <p class="mt-2">Spending hours freelancing across various roles you can learn new skills and enrich
                         your CV
-                        <a class="link-light btn-read-more btn-sm" href="{{ route('barber') }}">Read more</a>
+                        <a class="link-light btn-read-more btn-sm" href="{{ route('beautician') }}">Read more</a>
                     </p>
                 </div>
             </div>
@@ -677,7 +677,7 @@
         </div>
 
         <!-- <img src="assets/images/126-minr.jpg" alt="">
-                                                                                                                                                                                                                                                                         </div> -->
+                                                                                                                                                                                                                                                                                             </div> -->
     </section>
     <!-- membership -->
     <section id="get_job">
