@@ -325,7 +325,7 @@
                     </a></li>
             </ul>
             <h2 class="h2_01">
-                Specialist in Hair & Beauty Recruitmen, London & Uk <br /> Permanent
+                Specialist in Hair & Beauty Recruitment, London & Uk <br /> Permanent
                 & Temporary position
             </h2>
             <div class="line none-modal"
@@ -421,7 +421,7 @@
         </div>
     </section>
     <!-- hire -->
-    {{-- <section id="categ">
+    <section id="categ">
         <div class="img-box d-none d-md-block">
             <img src="{{ asset('template_new/assets/images/categ_bg_main.jpg') }}" alt="" />
             <div class="cta">
@@ -490,8 +490,8 @@
                 </a>
             </div>
         </div>
-    </section> --}}
-    <section id="categ-0" class="mt-5"
+    </section>
+    {{-- <section id="categ-0" class="mt-5"
         style="background-image: url('{{ asset('template_new/assets/images/sec_bg_1.png') }}');">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="row">
@@ -530,7 +530,7 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> --}}
     {{-- <section id="categ-0" class="mt-5"
         style="background-image: url('{{ asset('template_new/assets/images/sec_bg_1.png') }}'); background-size: 100% 100%;">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
@@ -765,19 +765,19 @@
     @endsection @push('script')
     <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
     <script>
-        // $(document).ready(function() {
+        $(document).ready(function() {
 
-        //     localStorage.removeItem('bookType');
+            localStorage.removeItem('bookType');
 
-        //     window.scrollTo(0, scrollPosition);
+            window.scrollTo(0, scrollPosition);
 
-        //     setTimeout(function() {
-        //         flag = "0";
-        //         $("html").css({
-        //             "overflow": "auto"
-        //         });
-        //     }, 1500);
-        // });
+            setTimeout(function() {
+                flag = "0";
+                $("html").css({
+                    "overflow": "auto"
+                });
+            }, 1500);
+        });
 
 
         $(function() {
