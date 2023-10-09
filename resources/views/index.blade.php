@@ -677,7 +677,7 @@
         </div>
 
         <!-- <img src="assets/images/126-minr.jpg" alt="">
-                                                                                                                                                                                                                                                                     </div> -->
+                                                                                                                                                                                                                                                                         </div> -->
     </section>
     <!-- membership -->
     <section id="get_job">
@@ -713,19 +713,19 @@
     @endsection @push('script')
     <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
     <script>
-        // $(document).ready(function() {
+        $(document).ready(function() {
 
-        //     localStorage.removeItem('bookType');
+            localStorage.removeItem('bookType');
 
-        //     window.scrollTo(0, scrollPosition);
+            window.scrollTo(0, scrollPosition);
 
-        //     setTimeout(function() {
-        //         flag = "0";
-        //         $("html").css({
-        //             "overflow": "auto"
-        //         });
-        //     }, 1500);
-        // });
+            setTimeout(function() {
+                flag = "0";
+                $("html").css({
+                    "overflow": "auto"
+                });
+            }, 1500);
+        });
 
 
         $(function() {
