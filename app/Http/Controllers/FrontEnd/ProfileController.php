@@ -343,11 +343,11 @@ class ProfileController extends Controller
 
         if (isset($request->book_type) && $request->book_type == 'cart_book') {  // of cart booking then this code execution
             $userDetails = User::where('id', Auth::user()->id)->first();
-            
+
             $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
 
             $cartExist = Cart::where('user_id', Auth::user()->id)->where('slot_date', $request->book_date)->count();
-            
+
             if ($tokens == 0 && $cartExist == 0) {
                 return response()->json([
                     'status' => 422,
@@ -366,23 +366,23 @@ class ProfileController extends Controller
                 $cart->status = 'checkout';
                 $cart->update();
 
-//                 Appointments::create([
-//                     'booking_slots_id' => $request->slot_book_id,
-//                     'booking_user_id' => Auth::id(),
-//                 ]);
+                Appointments::create([
+                    'booking_slots_id' => $request->slot_book_id,
+                    'booking_user_id' => Auth::id(),
+                ]);
 
                 if ($cartExist == 0) {
                     $user = User::find(Auth::user()->id);
                     $user->tokens = $tokens - 1;
                     $user->update();
                 }
-                
+
                 $bookedUserDetails = User::where('id', $request->user_id)->first();
                 $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
-                
+
                 $slotStartTime = date('h:i A', strtotime($slotDetails->start_time));
                 $slotEndTime = date('h:i A', strtotime($slotDetails->end_time));
-                
+
                 $body = "<table>
 			                <tr>
 			                    <td>Username:</td>
@@ -402,13 +402,13 @@ class ProfileController extends Controller
 			                </tr>
 			              	<tr>
 			                    <td>Slot Time:</td>
-			                    <td>" . $slotStartTime . "-" . $slotEndTime ."</td>
+			                    <td>" . $slotStartTime . "-" . $slotEndTime . "</td>
 			                </tr>
 			           	</table>";
                 $userEmailsSend[] = $userDetails['email'];
                 $userEmailsSend[] = $bookedUserDetails['email'];
                 $userEmailsSend[] = 'admin@styzeler.co.uk';
-                
+
                 sendMail($userDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
 
                 return response()->json([
@@ -441,7 +441,7 @@ class ProfileController extends Controller
             }
 
             //             // check user tokens
-            //             $userDetails = User::where('id', Auth::user()->id)->first();
+            $userDetails = User::where('id', Auth::user()->id)->first();
 
             //             $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
 
@@ -457,21 +457,21 @@ class ProfileController extends Controller
                 'booking_slots_id' => $request->slot_book_id,
                 'booking_user_id' => Auth::id(),
             ]);
-            
+
             $bookedUserDetails = User::where('id', $request->user_id)->first();
             $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
-            
+
             $slotStartTime = date('h:i A', strtotime($slotDetails->start_time));
             $slotEndTime = date('h:i A', strtotime($slotDetails->end_time));
-            
+
             $body = "<table>
 			                <tr>
 			                    <td>Username:</td>
-			                    <td>" . $userDetails['name'] . "</td>
+			                    <td>" . $bookedUserDetails['name'] . "</td>
 			                </tr>
 			              	<tr>
 			                    <td>Booked Username:</td>
-			                    <td>" . $bookedUserDetails['name'] . "</td>
+			                    <td>" . $userDetails['name'] . "</td>
 			                </tr>
 			                <tr>
 			                    <td>Email:</td>
@@ -483,14 +483,14 @@ class ProfileController extends Controller
 			                </tr>
 			              	<tr>
 			                    <td>Slot Time:</td>
-			                    <td>" . $slotStartTime . "-" . $slotEndTime ."</td>
+			                    <td>" . $slotStartTime . "-" . $slotEndTime . "</td>
 			                </tr>
 			           	</table>";
-            $userEmailsSend[] = $userDetails['email'];
+            $userEmailsSend[] = $bookedUserDetails['email'];
             $userEmailsSend[] = $bookedUserDetails['email'];
             $userEmailsSend[] = 'admin@styzeler.co.uk';
-            
-            sendMail($userDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
+
+            sendMail($bookedUserDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
 
             return response()->json([
                 'status' => 200,
@@ -637,42 +637,59 @@ class ProfileController extends Controller
     public function getfreelancerBooking()
     {
         $currentDate = now()->toDateString();
-        if (Auth::user()->type == 'client') {
-//             $getProfileData = Appointments::where(
-//                 [
-//                     ['booking_user_id', Auth::id()],
-//                     // ['created_at', '>=', $currentDate]
-//                 ]
+        // if (Auth::user()->type == 'client') {
+        //     //             $getProfileData = Appointments::where(
+        //     //                 [
+        //     //                     ['booking_user_id', Auth::id()],
+        //     //                     // ['created_at', '>=', $currentDate]
+        //     //                 ]
 
-//             )->with([
-//                 'clientUser',
-//                 'userBookingSlots',
-//                 'userBookingSlots.bookings',
-//                 'userBookingSlots.bookings.FreelancerUser'
-//             ])->get();
+        //     //             )->with([
+        //     //                 'clientUser',
+        //     //                 'userBookingSlots',
+        //     //                 'userBookingSlots.bookings',
+        //     //                 'userBookingSlots.bookings.FreelancerUser'
+        //     //             ])->get();
+        //     dd(Auth::user()->id);
+        //     $getProfileData = Cart::where('user_id', Auth::user()->id)->where('status', 'checkout')
+        //         ->with([
+        //             'user',
+        //             'booked_user',
+        //             'userBookingSlots',
+        //         ])->get();
+        // } else {
+        // dd(Auth::id());
+        $getProfileData = Appointments::where(
+            [
+                ['booking_user_id', Auth::id()],
+                ['created_at', '>=', $currentDate]
+            ]
 
-        	$getProfileData = Cart::where('user_id', Auth::user()->id)->where('status', 'checkout')
-						    	->with([
-						    			'user',
-						    			'booked_user',
-						    			'userBookingSlots',
-						    		])->get();
-        } else {
+        )->with([
+            'clientUser',
+            'userBookingSlots',
+            'userBookingSlots.bookings',
+            'userBookingSlots.bookings.FreelancerUser'
+        ])->get();
+        // $getProfileData = 
 
-            $getProfileData = Bookings::where(
-                [
-                    ['user_id', '=', Auth::id()],
-                    ['date', '>=', $currentDate]
-                ]
 
-            )->with([
-                'user',
-                'bookingTimeSlots',
-                'appointment_s',
-                'appointment_s.userAppointment'
-            ])->get();
-        }
-//         dd($getProfileData);
+        // Bookings::where(
+        //     [
+        //         ['user_id', '=', Auth::id()],
+        //         // ['date', '>=', $currentDate]
+        //     ]
+
+        // )
+        //     // ->with([
+        //     //     'user',
+        //     //     'bookingTimeSlots',
+        //     //     'appointment_s',
+        //     //     'appointment_s.userAppointment'
+        //     // ])
+        //     ->get();
+        // }
+        // dd($getProfileData);
         return response()->json([
             'status' => 200,
             'appointments' => $getProfileData,
@@ -681,19 +698,31 @@ class ProfileController extends Controller
     public function getfreelancerBookingHistory()
     {
         $currentDate = now()->toDateString();
-
-        $getProfileData = Bookings::where(
+        $getProfileData = Appointments::where(
             [
-                ['user_id', '=', Auth::id()],
-                ['date', '<', $currentDate]
+                ['booking_user_id', Auth::id()],
+                ['created_at', '<', $currentDate]
             ]
 
         )->with([
-            'user',
-            'bookingTimeSlots',
-            'appointment_s',
-            'appointment_s.userAppointment'
+            'clientUser',
+            'userBookingSlots',
+            'userBookingSlots.bookings',
+            'userBookingSlots.bookings.FreelancerUser'
         ])->get();
+
+        // $getProfileData = Bookings::where(
+        //     [
+        //         ['user_id', '=', Auth::id()],
+        //         ['date', '<', $currentDate]
+        //     ]
+
+        // )->with([
+        //     'user',
+        //     'bookingTimeSlots',
+        //     'appointment_s',
+        //     'appointment_s.userAppointment'
+        // ])->get();
 
         return response()->json([
             'status' => 200,
@@ -712,33 +741,33 @@ class ProfileController extends Controller
 
         return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
     }
-    
+
     public function useOwnerTokens(Request $request)
     {
-    
-    	if (!isset(Auth::user()->id)) {
-    		return response()->json(['status' => 500, 'message' => 'Login with client user first!', 'data' => '']);
-    	}
-    	
-    	$userDetails = User::where('id', Auth::user()->id)->first();
-    	$remainingTokens = (isset($userDetails->tokens) && $userDetails->tokens != null) ? $userDetails->tokens : 0;
-    	$count = Used_tokens::where('user_id', Auth::user()->id)->where('freelancer_id', $request->freelancerId)->where('date', date('Y-m-d'))->count();
-    	
-    	if( $count <= 0){
-    		
-    		$tokens = (isset($userDetails->tokens) && $userDetails->tokens != null) ? $userDetails->tokens : 0;
-    		
-    		$used_tokens = new Used_tokens();
-    		$used_tokens->user_id = Auth::user()->id;
-    		$used_tokens->freelancer_id = $request->freelancerId;
-    		$used_tokens->date = date('Y-m-d');
-    		$used_tokens->save();
-    		
-    		$user = User::find(Auth::user()->id);
-    		$user->tokens = $tokens - 1;
-    		$user->update();
-    	}
-    	
-    	return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
+
+        if (!isset(Auth::user()->id)) {
+            return response()->json(['status' => 500, 'message' => 'Login with client user first!', 'data' => '']);
+        }
+
+        $userDetails = User::where('id', Auth::user()->id)->first();
+        $remainingTokens = (isset($userDetails->tokens) && $userDetails->tokens != null) ? $userDetails->tokens : 0;
+        $count = Used_tokens::where('user_id', Auth::user()->id)->where('freelancer_id', $request->freelancerId)->where('date', date('Y-m-d'))->count();
+
+        if ($count <= 0) {
+
+            $tokens = (isset($userDetails->tokens) && $userDetails->tokens != null) ? $userDetails->tokens : 0;
+
+            $used_tokens = new Used_tokens();
+            $used_tokens->user_id = Auth::user()->id;
+            $used_tokens->freelancer_id = $request->freelancerId;
+            $used_tokens->date = date('Y-m-d');
+            $used_tokens->save();
+
+            $user = User::find(Auth::user()->id);
+            $user->tokens = $tokens - 1;
+            $user->update();
+        }
+
+        return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
     }
 }
