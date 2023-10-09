@@ -4,7 +4,7 @@
     const userId = "{{ @$data->id }}";
 </script>
 @push('css')
-    <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}?v={{time()}}" />
 
     <style>
         table {

@@ -31,6 +31,6 @@ class BookingSlots extends Model
      */
     public function bookings(): HasOne
     {
-        return $this->hasOne(Bookings::class, 'id');
+        return $this->hasOne(Bookings::class, 'id', 'bookings_id');
     }
 }

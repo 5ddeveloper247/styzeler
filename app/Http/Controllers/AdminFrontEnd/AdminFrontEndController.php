@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Appointments;
 use App\Models\Cart;
 use App\Models\Cart_line;
+use App\Models\Bookings;
+use App\Models\BookingSlots;
 
 class AdminFrontEndController extends Controller
 {
@@ -135,6 +137,7 @@ class AdminFrontEndController extends Controller
     					'userBookingSlots.bookings.FreelancerUser'
     			])->get();
     	$data['appointments'] = $getProfileData;
+
 //     	dd($getProfileData);
     	$data['page'] = 'bookings';
     	return view('admin.bookings')->with($data);

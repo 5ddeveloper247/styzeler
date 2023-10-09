@@ -1,7 +1,7 @@
 @extends('layouts.master.template_old.master')
 {{-- @dd(Auth::user()) --}}
 @push('css')
-    <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}" />
+    <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}?v={{time()}}" />
 
     <style>
         .timeSlots .option:hover {

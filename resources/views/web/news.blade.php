@@ -6,11 +6,17 @@
       max-width: unset;
       padding: 4rem 0;
     }
+    .top_banner{
+    	min-height:70rem !important;
+    }
     @media only screen and (max-width: 600px) {
       #news .top_banner .txt {
         max-width: unset;
         padding: 4rem 0;
       }
+      .top_banner{
+	    	min-height:18rem;
+	    }
     }
   </style>
 @endpush
@@ -18,7 +24,7 @@
 @section('content')
 <section id="news">
 	<!-- <div class="top_banner" style="background-image: url('{{ asset('template_new/assets/images/news_main.jpg ') }}')"> -->
-	<div class="top_banner" style="min-height:56rem;background-image: url('{{ asset('template_new/assets/images/newsfeed-banner.png') }}')">
+	<div class="top_banner" style="background-image: url('{{ asset('template_new/assets/images/newsfeed-banner.png') }}')">
 		<div class="contain" data-aos="fade-up" data-aos-duration="1000">
 <!-- 			<div class="txt"> -->
 <!-- 				<h1>Styzeler News Feed</h1> -->
