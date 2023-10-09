@@ -50,7 +50,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         Route::post('/showAppointmentDates', 'ProfileController@showAppointmentDates')->name('showAppointmentDates');
         Route::post('/saveAvaibleSlots', 'ProfileController@saveAvaibleSlots')->name('saveAvaibleSlots');
         Route::post('/getfreelancerBooking', 'ProfileController@getfreelancerBooking')->name('getfreelancerBooking');
-        Route::post('/getfreelancerBookingHistory', 'ProfileController@getfreelancerBookingHistory')->name('freelancerBookingHistory');
+        Route::post('/getfreelancerBookingHistory', 'ProfileController@getfreelancerBookingHistory')->name('getfreelancerBookingHistory');
         Route::post('/saveRentAndLetDetails', 'RentLetController@saveRentAndLetDetails')->name('saveRentAndLetDetails');
         Route::post('/saveJobRequestDetails', 'JobRequestController@saveJobRequestDetails')->name('saveJobRequestDetails');
 

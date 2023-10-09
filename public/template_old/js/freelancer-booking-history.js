@@ -218,7 +218,7 @@ $(function () {
     //Ajax call - getappointments
     $.ajax({
         type: 'post',
-        url: '/getfreelancerBookingHistory',
+        url: '/freelancerBookingHistory',
         data: {},
         success: function (response) {
 
