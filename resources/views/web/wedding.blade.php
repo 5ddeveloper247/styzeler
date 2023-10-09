@@ -24,7 +24,7 @@
 
 @section('content')
 <section id="wedding">
-    
+    <a href="#view"></a>
     <img src="{{ asset('template_new/assets/images/wedding_main.jpg') }}" alt="" class="main_img" />
     
     <div class="contain" data-aos="fade-up" data-aos-duration="1000">
@@ -129,7 +129,7 @@
               for the final quotation contact any of our wedding stylists
             </p><!-- https://beta.styzeler.co.uk/ -->
             
-            <button onclick="location.href='{{route('weddingStylist')}}'"
+            <button onclick="location.href='{{route('weddingStylist')}}'" id="view"
               	type="button" class="price"
               	style=" background-image: url('{{ asset('template_new/assets/images/wedding_btn_01.jpg') }}'); " >
               	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" /> View
@@ -143,5 +143,8 @@
 @endsection
 
 @push('script')
-    
+    <script>
+localStorage.setItem('bookType', 'cart_book');
+
+</script>
 @endpush

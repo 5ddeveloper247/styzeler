@@ -75,7 +75,8 @@
 										<button type="button" class="shadow_btn shadowbtn"   onclick="caseCat('Make_up')">Make-up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 									</li>
 									<li>
-										<a href="{{route('wedding')}}" class="shadow_btn shadowbtn" onclick="caseCat('Bridal_Make_up')">Bridal Make-up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
+										<button type="button" class="shadow_btn shadowbtn"   onclick="caseCat('Bridal_Make_up')">Bridal Make-up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+										<!-- <a href="{{route('wedding')}}" class="shadow_btn shadowbtn" onclick="caseCat('Bridal_Make_up')">Bridal Make-up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a> -->
 									</li>
 								</ul>
 								<div class="txt_wrap scrollbar" id="showbox">
@@ -207,6 +208,7 @@
 	});
 
 	var addtocartType = 'Make-up';
+	var weddingRoute = "{{route('wedding')}}";
 	
 	function caseCat(i, subtype = '') { 
 		
@@ -237,8 +239,9 @@
 	    
 		
 		if(i=='Bridal_Make_up') {
-	  	   	$("#top_1,#top_2,#top_3").hide();
-	  	 	$("#top_1 p").html('').attr('data-time', '').attr('data-price', '').attr(
+			$("#top_1").show();
+	  	   	$("#top_2,#top_3").hide();
+	  	 	$("#top_1 p").html('service &pound;20').attr('data-time', '').attr('data-price', '20').attr(
                  'data-service', 'Bridal Make-up').attr('data-subtype', subtype);	
 	       	$("#description").text('the bridal makeup needs to be linked with the bridal page');
 	    }
