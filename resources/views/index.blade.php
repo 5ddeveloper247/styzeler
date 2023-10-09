@@ -365,7 +365,7 @@
                     </a></li>
             </ul>
             <h2 class="h2_01">
-                Specialist in Hair & Beauty Recruitmen, London & Uk <br /> Permanent
+                Specialist in Hair & Beauty Recruitment, London & Uk <br /> Permanent
                 & Temporary position
             </h2>
             <div class="line none-modal"
@@ -461,7 +461,7 @@
         </div>
     </section>
     <!-- hire -->
-    {{-- <section id="categ">
+    <section id="categ">
         <div class="img-box d-none d-md-block">
             <img src="{{ asset('template_new/assets/images/categ_bg_main.jpg') }}" alt="" />
             <div class="cta">
@@ -480,7 +480,7 @@
 
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <!-- <div class="flexRow">                                                                                                                                                           </div>
-                                                                                                                                                                       </div> -->
+                                                                                                                                                                               </div> -->
             <div class="flexRow" style="padding: 0px 38px">
                 <div class="col">
                     <div class="inner"
@@ -530,10 +530,10 @@
                 </a>
             </div>
         </div>
-    </section> --}}
-    <section id="categ-0" class="mt-5 d-none d-md-block">
-        <div class="contain px-4" data-aos="fade-up" data-aos-duration="1000"
-            style="background-image: url('{{ asset('template_new/assets/images/sec_bg_1.png') }}');background-size:100% 100%">
+    </section>
+    {{-- <section id="categ-0" class="mt-5"
+        style="background-image: url('{{ asset('template_new/assets/images/sec_bg_1.png') }}');">
+        <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="row">
                 <div class="col-4">
                     <h2>Male Grooming</h2>
@@ -545,26 +545,26 @@
                     </p>
                 </div>
                 {{-- <div class="col-1"></div> --}}
-                <div class="col-4">
-                    <h2>Hairdressers</h2>
-                    <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_02.jpg') }}"
-                        alt="" width="100" height="200" style="width: 300px;object-fit: cover;">
-                    <p class="mt-2">Freelancers focus on getting a good review and expanding their portfolio, they strive
-                        to maintain industry- standard quality aligned with your expectations
-                        <a class="link-light btn-read-more btn-sm" href="{{ route('barber') }}">Read more</a>
-                    </p>
-                </div>
-                <div class="col-4">
-                    <h2>Beauticans</h2>
-                    <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_03.jpg') }}"
-                        alt="" width="100" height="200" style="width: 300px;object-fit: cover;">
-                    <p class="mt-2">Spending hours freelancing across various roles you can learn new skills and enrich
-                        your CV
-                        <a class="link-light btn-read-more btn-sm" href="{{ route('barber') }}">Read more</a>
-                    </p>
-                </div>
-            </div>
-        </div>
+    <div class="col-4">
+        <h2>Hairdressers</h2>
+        <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_02.jpg') }}" alt=""
+            width="100" height="200" style="width: 300px;object-fit: cover;">
+        <p class="mt-2">Freelancers focus on getting a good review and expanding their portfolio, they strive
+            to maintain industry- standard quality aligned with your expectations
+            <a class="link-light btn-read-more btn-sm" href="{{ route('barber') }}">Read more</a>
+        </p>
+    </div>
+    <div class="col-4">
+        <h2>Beauticans</h2>
+        <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_03.jpg') }}" alt=""
+            width="100" height="200" style="width: 300px;object-fit: cover;">
+        <p class="mt-2">Spending hours freelancing across various roles you can learn new skills and enrich
+            your CV
+            <a class="link-light btn-read-more btn-sm" href="{{ route('barber') }}">Read more</a>
+        </p>
+    </div>
+    </div>
+    </div>
     </section>
     <!-- categ -->
     <section id="startup">
@@ -678,21 +678,21 @@
 
         <!-- <img src="assets/images/126-minr.jpg" alt="">
 
-                                                                                                                                                                                                                                                                        <div class="row">
-                                                                                                                                                                                                                                                                            <div class="col-3 col-md-3 col-sm-3 ps-4">
-                                                                                                                                                                                                                                                                                <p>There are many reasons companies are turning to freelancers rather than hiring full-time staff.
-                                                                                                                                                                                                                                                                                </p>
-                                                                                                                                                                                                                                                                                <p>Freelancers are increasingly seen as highly skilled professionals with valuable abilities that
-                                                                                                                                                                                                                                                                                    can take any business forward</p>
-                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                            <div class="col-5 col-md-5 col-sm-5">
+                                                                                                                                                                                                                                                                                <div class="row">
+                                                                                                                                                                                                                                                                                    <div class="col-3 col-md-3 col-sm-3 ps-4">
+                                                                                                                                                                                                                                                                                        <p>There are many reasons companies are turning to freelancers rather than hiring full-time staff.
+                                                                                                                                                                                                                                                                                        </p>
+                                                                                                                                                                                                                                                                                        <p>Freelancers are increasingly seen as highly skilled professionals with valuable abilities that
+                                                                                                                                                                                                                                                                                            can take any business forward</p>
+                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                    <div class="col-5 col-md-5 col-sm-5">
 
-                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                            <div class="col-3 col-md-3 col-sm-3">
-                                                                                                                                                                                                                                                                                <p>Freelancers create an opportunity to expand the diversity of your company. Diversity helps
-                                                                                                                                                                                                                                                                                    increase the flow of ideas and often leads to better business solutions.</p>
-                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                        </div> -->
+                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                    <div class="col-3 col-md-3 col-sm-3">
+                                                                                                                                                                                                                                                                                        <p>Freelancers create an opportunity to expand the diversity of your company. Diversity helps
+                                                                                                                                                                                                                                                                                            increase the flow of ideas and often leads to better business solutions.</p>
+                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                </div> -->
     </section>
     <!-- membership -->
     <section id="get_job">
@@ -728,19 +728,19 @@
     @endsection @push('script')
     <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
     <script>
-        // $(document).ready(function() {
+        $(document).ready(function() {
 
-        //     localStorage.removeItem('bookType');
+            localStorage.removeItem('bookType');
 
-        //     window.scrollTo(0, scrollPosition);
+            window.scrollTo(0, scrollPosition);
 
-        //     setTimeout(function() {
-        //         flag = "0";
-        //         $("html").css({
-        //             "overflow": "auto"
-        //         });
-        //     }, 1500);
-        // });
+            setTimeout(function() {
+                flag = "0";
+                $("html").css({
+                    "overflow": "auto"
+                });
+            }, 1500);
+        });
 
 
         $(function() {

@@ -18,7 +18,7 @@
 @section('content')
 <section id="news">
 	<!-- <div class="top_banner" style="background-image: url('{{ asset('template_new/assets/images/news_main.jpg ') }}')"> -->
-	<div class="top_banner" style="min-height:56rem;background-image: url('{{ asset('template_new/assets/images/newsfeed-banner.PNG') }}')">
+	<div class="top_banner" style="min-height:56rem;background-image: url('{{ asset('template_new/assets/images/newsfeed-banner.png') }}')">
 		<div class="contain" data-aos="fade-up" data-aos-duration="1000">
 <!-- 			<div class="txt"> -->
 <!-- 				<h1>Styzeler News Feed</h1> -->

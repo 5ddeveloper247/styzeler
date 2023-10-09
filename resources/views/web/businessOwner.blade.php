@@ -159,7 +159,7 @@
     <section id="business">
 <!--         <img src="{{ asset('template_new/assets/images/styzeler-business-owner-banner.JPG') }}" alt="" class="top_banner" /> -->
         
-        <img src="{{ asset('template_new/assets/images/businessowner-banner.PNG') }}" alt="" class="top_banner" />
+        <img src="{{ asset('template_new/assets/images/businessowner-banner.png') }}" alt="" class="top_banner" />
         
         <div class="contain">
             <div class="text_wrap_blk" data-aos="fade-up" data-aos-duration="1000">

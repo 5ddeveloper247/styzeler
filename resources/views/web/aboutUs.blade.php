@@ -83,7 +83,7 @@
 @section('content')
 <section id="about">
 <!--     <img src="{{ asset('template_new/assets/images/about-us-page- banner.JPG') }}" alt="" class="main_bg"/> -->
-	<img src="{{ asset('template_new/assets/images/about-us-banner.PNG') }}" alt="" class="main_bg"/>
+	<img src="{{ asset('template_new/assets/images/about-us-banner.png') }}" alt="" class="main_bg"/>
     <div class="contain">
       <div class="content" data-aos="fade-up" data-aos-duration="1000">
         <h3>
