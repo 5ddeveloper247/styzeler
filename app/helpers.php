@@ -113,6 +113,7 @@ if (!function_exists('sendMail')) {
                 'send_to_name' => $send_to_name,
                 'send_to' => $send_to_email,
                 'email_from' => 'noreply@styzeler.co.uk',
+                // 'email_from' => 'misterkamran93@gmail.com',
                 'email_from_name' => $email_from_name,
                 'subject' => $subject,
             ];
@@ -128,5 +129,26 @@ if (!function_exists('sendMail')) {
             echo "An error occurred while sending the email: " . $e->getMessage();
             return false;
         }
+    }
+}
+
+if (!function_exists('formatUserType')) {
+    function formatUserType($type)
+    {
+        preg_match('/\((.*?)\)/', $type, $matches);
+
+        if (isset($matches[1])) {
+            return ucwords($matches[1]) . " " . ucwords(preg_replace('/([a-z])([A-Z])/', '$1 $2', substr($type, 0, -strlen($matches[0]))));
+        }
+
+        if (mb_strtolower(substr($type, -5)) === 'salon') {
+            return ucwords(preg_replace('/([a-z])([A-Z])/', '$1 $2', $type)) . " Owner";
+        }
+
+        if ($type === 'wedding') {
+            return "Wedding Stylist";
+        }
+
+        return ucwords(preg_replace('/([a-z])([A-Z])/', '$1 $2', $type));
     }
 }

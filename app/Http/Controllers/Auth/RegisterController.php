@@ -205,7 +205,30 @@ class RegisterController extends Controller
 
         User::create($userData);
 
-        $body = "<table>
+        $sending_email_to = [$userData['email'], 'admin@styzeler.co.uk'];
+
+        foreach ($sending_email_to as $email) {
+            if ($email == 'admin@styzeler.co.uk') {
+                $body = "<h4>A New User Has Been Successfully Registered !</h4><br>
+                            <p>User Creadentials are:</p>";
+                $user_type = " <td>Type:</td>
+                    <td>" . formatUserType($userData['type']) . "</td>";
+                $email_send_to = 'admin@styzeler.co.uk';
+                $user_profile_type = $userData['profile_type'] ?? '';
+                $email_for = "New User Registration";
+                $email_subject = "New User Registration Email";
+            } else {
+                $body = "<h4>Your Registration Successfully Completed !</h4><br>
+                            <p>Your Creadentials are:</p>";
+                $user_type = " <td>Password:</td>
+                    <td>" . $userData['password'] . "</td>";
+                $email_send_to = $userData['email'];
+                $user_profile_type = $userData['profile_type'] ?? '';
+                $email_for = "New Registration";
+                $email_subject = "Registration Email";
+            }
+
+            $body .= "<table>
                 <tr>
                     <td>Name:</td>
                     <td>" . $userData['name'] . "</td>
@@ -214,12 +237,19 @@ class RegisterController extends Controller
                     <td>Email:</td>
                     <td>" . $userData['email'] . "</td>
                 </tr>
+                <tr>$user_type</tr>
+                ";
+            if (!empty($user_profile_type)) {
+                $body .= "
                 <tr>
-                    <td>Password:</td>
-                    <td>" . $userData['password'] . "</td>
-                </tr>
-                </table>";
-        sendMail($userData['name'], $userData['email'], 'Registration', 'Registration Email', $body);
+                    <td>Profle Type:</td>
+                    <td>$user_profile_type</td>
+                </tr>";
+            }
+            $body .= "</table>";
+
+            sendMail($userData['name'], $email_send_to, $email_for, $email_subject, $body);
+        }
         return response()->json(['status' => 200, 'message' => 'Registration Succsessfull!', 'data' => '']);
     }
 }

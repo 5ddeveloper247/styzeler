@@ -14,7 +14,7 @@ class Appointments extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'booking_slots_id', 'booking_user_id'
+        'booking_slots_id', 'booking_user_id', 'freelancer_user_id'
     ];
 
     /**
@@ -30,12 +30,16 @@ class Appointments extends Model
     {
         return $this->belongsTo(BookingSlots::class, 'booking_slots_id', 'id');
     }
+    public function freelancerUser(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'freelancer_user_id', 'id')->where('id', Auth::id());
+    }
     public function clientUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'booking_user_id', 'id')->where('id', Auth::id());
     }
     public function adminClientUser(): BelongsTo
     {
-    	return $this->belongsTo(User::class, 'booking_user_id', 'id');
+        return $this->belongsTo(User::class, 'booking_user_id', 'id');
     }
 }

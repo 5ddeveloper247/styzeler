@@ -318,9 +318,9 @@ function profileResponse(response) {
             $('#status').text(profile_status);
             $('#status').append('<a class="text-center btn" onclick="editStatus();" title="Edit">✎</a>');
             $('#stylist_status').val(profile_status);
-            
+
             // for tokens
-            $('#remaining_tokens').text((data.tokens != null && data.tokens != '')  ? data.tokens : '0');
+            $('#remaining_tokens').text((data.tokens != null && data.tokens != '') ? data.tokens : '0');
             $('#total_tokens').text((data.total_tokens != null && data.total_tokens != '') ? data.total_tokens : '0');
 
 
@@ -354,6 +354,8 @@ function profileResponse(response) {
                 checkCheckBoxes(data, 'bodyTreatmentServices', 'bodyTreatmentServices');
                 checkCheckBoxes(data, 'EyesAndBrowServices', 'EyesAndBrowServices');
                 checkCheckBoxes(data, 'EyesAndBrowProducts', 'EyesAndBrowProducts');
+                checkCheckBoxes(data, 'makeupServives', 'makeupServives');
+
             }
 
             galleryImages = data.gallery

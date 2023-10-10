@@ -177,12 +177,12 @@
                     </div>
 
                     <!-- <div class="form-group">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="tool-div col-lg-6">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <label for="video" class="color-1" >Trade test Video</label><span style="float: right"><i class="fa fa-exclamation-circle exclamation ml-2" aria-hidden="true" data-toggle="tooltip" title="Styzeler Hair and Beauty agency requires a trade test video to assess each freelancer’s skills and personality for Fair use and fair dealing. 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <div class="tool-div col-lg-6">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <label for="video" class="color-1" >Trade test Video</label><span style="float: right"><i class="fa fa-exclamation-circle exclamation ml-2" aria-hidden="true" data-toggle="tooltip" title="Styzeler Hair and Beauty agency requires a trade test video to assess each freelancer’s skills and personality for Fair use and fair dealing. 
                     We require a Seated back massage a mini facial, and a gel manicure or eyelashes extension" ></i></span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <input class="form-control col-lg-6" type="url" id="video" name="video" placeholder="Video Link">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        <input class="form-control col-lg-6" type="url" id="video" name="video" placeholder="Video Link">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div> -->
 
                     <div class="form-group">
                         <label for="image_uploads" class="color-1">Upload Pictures</label>
@@ -208,7 +208,7 @@
                 <div class="rate my-5">
                     <div class="d-flex align-items-baseline" style="gap: 2rem;color: #c4b9b0;">
                         <h4>Rate </h4>
-                        <span><b>N/A For Home Service</b></span>
+                        <span style="font-size: 11px; color: red; font-style: italic;">(N/A For Home Service)</span>
 
                     </div>
                     <div class="form-check form-check-inline">
@@ -290,7 +290,7 @@
                         <input class="form-check-input" type="checkbox" id="pregnancy-massage" value="Pregnancy Massage"
                             name="massageServices[]">
                         <label class="form-check-label" for="pregnancy-massage">Pregnancy Massage</label>
-                        <span class="ms-3"> <b>N/A For Home Service</b></span>
+                        <span style="font-size: 11px; color: red; font-style: italic;">(N/A For Home Service)</span>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="thai-massage" value="Thai massage"
@@ -342,7 +342,8 @@
                     </div>
                 </div>
                 <div class="hair-removal my-5">
-                    <h4>Hair Removal Permanent <span class="ms-3 fs-14"><b>N/A For Home Service</b></span></h4>
+                    <h4>Hair Removal Permanent <span style="font-size: 11px; color: red; font-style: italic;">(N/A For Home
+                            Service)</span></h4>
                     <h5><u>Services</u></h5>
                     <div class="form-check">
                         <input type="hidden" name="hairRemovalPermanentServices[heading]"
@@ -821,7 +822,8 @@
                     </div>
                 </div>
                 <div class="body-treatments my-5">
-                    <h4>Body Treatment <span class="ms-3 fs-14">N/A For Home Service</span></h4>
+                    <h4>Body Treatment <span style="font-size: 11px; color: red; font-style: italic;">(N/A For Home
+                            Service)</span></h4>
                     <h5><u>Services</u></h5>
                     <div class="form-check">
                         <input type="hidden" name="bodyTreatmentServices[heading]" value="Body Treatment">
@@ -877,20 +879,20 @@
                         <label class="form-check-label" for="brow-lamination">Brow Lamination</label>
                     </div>
 
-                    <div class="form-check">
+                    {{-- <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="eyelash-extensions"
                             value="Eyelash Extensions" name="EyesAndBrowServices[]">
                         <label class="form-check-label" for="eyelash-extensions">Eyelash Extensions</label>
+                    </div> --}}
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="classic-full"
+                            value="Eyelash Extensions Classic Full" name="EyesAndBrowServices[]">
+                        <label class="form-check-label" for="classic-full">Eyelash Extensions Classic Full</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="classic-full" value="Classic Full"
-                            name="EyesAndBrowServices[]">
-                        <label class="form-check-label" for="classic-full">Classic Full</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="classic-half" value="Classic Half"
-                            name="EyesAndBrowServices[]">
-                        <label class="form-check-label" for="classic-half">Classic Half</label>
+                        <input class="form-check-input" type="checkbox" id="classic-half"
+                            value="Eyelash Extensions Classic Half" name="EyesAndBrowServices[]">
+                        <label class="form-check-label" for="classic-half">Eyelash Extensions Classic Half</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="clamourous-volume-full"
@@ -958,6 +960,32 @@
                     </div>
 
                 </div>
+                <div class="makeup-styles my-5">
+                    <h4>Make-Up</h4>
+                    <h5><u>Services</u></h5>
+                    <div class="form-check">
+                        <input type="hidden" name="makeupServives[heading]" value="Make-Up">
+                        <input type="hidden" name="makeupServives[subHeading]" value="Services">
+                        <input class="form-check-input" type="checkbox" id="blow-dry-makeup"
+                            value="Blow-dry & Make-up" name="makeupServives[]">
+                        <label class="form-check-label" for="blow-dry-makeup">Blow-dry & Make-up</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="up-do-makeup" value="Up-do & Make-up"
+                            name="makeupServives[]">
+                        <label class="form-check-label" for="up-do-makeup">Up-do & Make-up</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="make-up" value="Make-up"
+                            name="makeupServives[]">
+                        <label class="form-check-label" for="make-up">Make-up</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="bridal-makeup" value="Bridal Make-up"
+                            name="makeupServives[]">
+                        <label class="form-check-label" for="bridal-makeup">Bridal Make-up</label>
+                    </div>
+                </div>
 
                 <div class="terms-conditions text-center">
                     <div class="terms my-5 btn ">
@@ -1002,7 +1030,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <button type="button" class="btn btn-primary">Save changes</button> -->
                                     </div>
                                 </div>
                             </div>

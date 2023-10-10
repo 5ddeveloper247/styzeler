@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('booking_slots_id')->nullable();
             $table->integer('booking_user_id')->nullable();
+            $table->integer('freelancer_user_id')->nullable();
             $table->timestamps();
         });
     }

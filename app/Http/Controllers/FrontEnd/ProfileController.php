@@ -333,6 +333,7 @@ class ProfileController extends Controller
     }
     public function bookSlots(Request $request)
     {
+        // $request->dd();
         // Check if the user is not logged in
         if (!Auth::check()) {
             return response()->json([
@@ -370,6 +371,7 @@ class ProfileController extends Controller
 
                 Appointments::create([
                     'booking_slots_id' => $request->slot_book_id,
+                    'freelancer_user_id' => $request->user_id,
                     'booking_user_id' => Auth::id(),
                 ]);
 
@@ -463,6 +465,7 @@ class ProfileController extends Controller
             // Create a new appointment
             Appointments::create([
                 'booking_slots_id' => $request->slot_book_id,
+                'freelancer_user_id' => $request->user_id,
                 'booking_user_id' => Auth::id(),
             ]);
 
@@ -673,18 +676,37 @@ class ProfileController extends Controller
         //         ])->get();
         // } else {
         // dd(Auth::id());
-        $getProfileData = Appointments::where(
-            [
-                ['booking_user_id', Auth::id()],
-                ['created_at', '>=', $currentDate]
-            ]
+        $allowedTypes = ['client', 'beautySalon', 'hairdressingSalon'];
 
-        )->with([
-            'clientUser',
-            'userBookingSlots',
-            'userBookingSlots.bookings',
-            'userBookingSlots.bookings.FreelancerUser'
-        ])->get();
+        if (in_array(Auth::user()->type, $allowedTypes)) {
+
+            $getProfileData = Appointments::where(
+                [
+                    ['booking_user_id', Auth::id()],
+                    ['created_at', '>=', $currentDate]
+                ]
+
+            )->with([
+                'clientUser',
+                'userBookingSlots',
+                'userBookingSlots.bookings',
+                'userBookingSlots.bookings.FreelancerUser'
+            ])->get();
+        } else {
+            $getProfileData = Appointments::where(
+                [
+                    ['freelancer_user_id', Auth::id()],
+                    ['created_at', '>=', $currentDate]
+                ]
+
+            )->with([
+                'freelancerUser',
+                'userBookingSlots',
+                'userBookingSlots.bookings',
+                'userBookingSlots.bookings.FreelancerUser'
+            ])->get();
+        }
+
         // $getProfileData = 
 
 
@@ -712,18 +734,36 @@ class ProfileController extends Controller
     public function getfreelancerBookingHistory()
     {
         $currentDate = now()->toDateString();
-        $getProfileData = Appointments::where(
-            [
-                ['booking_user_id', Auth::id()],
-                ['created_at', '<', $currentDate]
-            ]
+        $allowedTypes = ['client', 'beautySalon', 'hairdressingSalon'];
 
-        )->with([
-            'clientUser',
-            'userBookingSlots',
-            'userBookingSlots.bookings',
-            'userBookingSlots.bookings.FreelancerUser'
-        ])->get();
+        if (in_array(Auth::user()->type, $allowedTypes)) {
+
+            $getProfileData = Appointments::where(
+                [
+                    ['booking_user_id', Auth::id()],
+                    ['created_at', '>=', $currentDate]
+                ]
+
+            )->with([
+                'clientUser',
+                'userBookingSlots',
+                'userBookingSlots.bookings',
+                'userBookingSlots.bookings.FreelancerUser'
+            ])->get();
+        } else {
+            $getProfileData = Appointments::where(
+                [
+                    ['freelancer_user_id', Auth::id()],
+                    ['created_at', '>=', $currentDate]
+                ]
+
+            )->with([
+                'freelancerUser',
+                'userBookingSlots',
+                'userBookingSlots.bookings',
+                'userBookingSlots.bookings.FreelancerUser'
+            ])->get();
+        }
 
         // $getProfileData = Bookings::where(
         //     [
