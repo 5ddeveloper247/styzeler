@@ -71,15 +71,15 @@ $(document).ready(function () {
         // $("#calendar").fullCalendar('refetchEvents');
 
     });
-    
-    
+
+
     $(".show_message").click(function () {
-      	$('#register_modal').modal('show');
-  	});
+        $('#register_modal').modal('show');
+    });
     $(".tokens_message").click(function () {
-      	$('#tokens_modal').modal('show');
-  	});
-    
+        $('#tokens_modal').modal('show');
+    });
+
 
 });
 
@@ -214,10 +214,10 @@ function profileResponse(response) {
 
         if (data != null || data != '') {
 
-           
-        	$("#user_id").val(data.id);
-        	$("#book_type").val(localStorage.getItem('bookType'));
-        	// For profile image
+
+            $("#user_id").val(data.id);
+            $("#book_type").val(localStorage.getItem('bookType'));
+            // For profile image
             hero_image = data.hero_image;
 
             $('#profile-image-id').attr('src', baseURL + hero_image);
@@ -315,12 +315,12 @@ function profileResponse(response) {
             // for email
             email = data.email;
 
-            if(user == 'hairdressingSalon' || user == 'beautySalon'){
-            	$('#ownerEmail').html('<a href="mailto:'+email+'" onclick="useOwnerToken();">'+email+'</a>');
-            }else{
-            	$('#ownerEmail').text(email);
+            if (user == 'hairdressingSalon' || user == 'beautySalon') {
+                $('#ownerEmail').html('<a href="mailto:' + email + '" onclick="useOwnerToken();">' + email + '</a>');
+            } else {
+                $('#ownerEmail').text(email);
             }
-            
+
 
             // for status
             profile_status = data.status;
@@ -358,6 +358,8 @@ function profileResponse(response) {
                 checkCheckBoxes(data, 'bodyTreatmentServices', 'bodyTreatmentServices');
                 checkCheckBoxes(data, 'EyesAndBrowServices', 'EyesAndBrowServices');
                 checkCheckBoxes(data, 'EyesAndBrowProducts', 'EyesAndBrowProducts');
+                checkCheckBoxes(data, 'makeupServives', 'makeupServives');
+
             }
 
             galleryImages = data.gallery
@@ -734,7 +736,7 @@ function selectSlot(id, start_time, end_time, date) {
     var endtimeAMPM = convertTo12HourFormat(end_time);
     $('#slot_book_id').val(id);
     $('#book_date').val(date);
-    
+
     $('#book_slot_start').html(starttimeAMPM);
     $('#book_slot_end').html(endtimeAMPM);
     $('#book_slot_date').html(date);
@@ -791,25 +793,25 @@ function bookSlotsResponse(response) {
 
 }
 
-function useOwnerToken(){
-	
-	let type = 'GET';
+function useOwnerToken() {
+
+    let type = 'GET';
     let url = '/useOwnerTokens';
     let message = '';
-//    let form = $('#form');
-    let data = 'freelancerId='+userId;//new FormData(form[0]);
+    //    let form = $('#form');
+    let data = 'freelancerId=' + userId;//new FormData(form[0]);
 
     // PASSING DATA TO FUNCTION
     SendAjaxRequestToServer(type, url, data, '', useOwnerTokensResponse, 'spinner_button', 'submit_button');
 }
 
-function useOwnerTokensResponse(response){
-	
-	if (response.status == 200 || response.status == '200') {
+function useOwnerTokensResponse(response) {
 
-//        toastr.success(response.message, '', {
-//            timeOut: 3000
-//        });
+    if (response.status == 200 || response.status == '200') {
+
+        //        toastr.success(response.message, '', {
+        //            timeOut: 3000
+        //        });
 
     } else {
         toastr.error(response.message, '', {
