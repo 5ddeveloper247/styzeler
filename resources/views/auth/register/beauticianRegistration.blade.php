@@ -874,9 +874,9 @@
                         <label class="form-check-label" for="eyelash-tint">Eyelash Tint</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="barow-lamination"
-                            value="Barow Lamination" name="EyesAndBrowServices[]">
-                        <label class="form-check-label" for="barow-lamination">Barow Lamination</label>
+                        <input class="form-check-input" type="checkbox" id="brow-lamination"
+                            value="Brow Lamination" name="EyesAndBrowServices[]">
+                        <label class="form-check-label" for="brow-lamination">Brow Lamination</label>
                     </div>
 
                     {{-- <div class="form-check">

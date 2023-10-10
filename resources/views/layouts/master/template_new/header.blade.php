@@ -91,8 +91,8 @@
                 <li class="drop">
                     <a href="{{ route('news') }}">News</a>
                     <ul class="sub">
-                        <li><a href="{{ route('news') }}">Styzeler Feeds</a></li>
-                        <li><a href="{{ route('news') }}">Styzeler Jobs</a></li>
+                        <li><a href="{{ route('blogs') }}">Styzeler Feeds</a></li>
+                        <li><a href="{{ route('jobs') }}">Styzeler Jobs</a></li>
                     </ul>
                 </li>
                 <li>

@@ -119,10 +119,10 @@
                             <img src="{{ asset('template_old/images/header-hr.png') }}" class="header-hr" />
                             <ul class="sub">
                                 <li>
-                                    <a href="{{ route('news') }}">Styzeler Feeds</a>
+                                    <a href="{{ route('blogs') }}">Styzeler Feeds</a>
                                 </li>
                                 <li>
-                                    <a href="{{ route('news') }}">Styzeler Jobs</a>
+                                    <a href="{{ route('jobs') }}">Styzeler Jobs</a>
                                 </li>
                             </ul>
                         </div>

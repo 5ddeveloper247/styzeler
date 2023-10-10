@@ -69,14 +69,11 @@ function addToCartResponse(response) {
             timeOut: 3000
         });
         
-        $("#item_text").val('');
-		$("#item_time").val('');
-		$("#item_price").val('');
-		$("#item_type").val('');
-		$("#item_subtype").val('');
-		$("#item_service").val('');
-		$("#cartConfirm_modal").modal('hide');
-       
+        if($("#item_type").val() == 'Make-up' && $("#item_service").val() == 'Bridal Make-up'){
+        	
+        	window.location.href = weddingRoute;
+        }
+        
     } else {
 
     	error = response.message;

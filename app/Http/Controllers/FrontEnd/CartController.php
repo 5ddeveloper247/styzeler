@@ -33,6 +33,11 @@ class CartController extends Controller
 		
 		if(isset($active_cart->id)){
 			
+			// logic in case when user add make -> bridal make up service in cart then exixting cart will be emoty and proceed with only bridal makeup entry
+			if($request->item_type == 'Make-up' && $request->item_service == 'Bridal Make-up'){
+				Cart_line::where('cart_id', $active_cart->id)->delete();
+			}
+			
 			$cart_line = new Cart_line();
 			$cart_line->cart_id = $active_cart->id;
 			$cart_line->item_text = $request->item_text;

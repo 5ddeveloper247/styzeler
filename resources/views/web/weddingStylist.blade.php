@@ -94,7 +94,9 @@
 @push('script')
 <script>
 $(document).ready(function () {
-	localStorage.removeItem('bookType');
+	if(localStorage.getItem('bookType') == ''){
+		localStorage.removeItem('bookType');
+	}
 });
 </script>
 @endpush

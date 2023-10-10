@@ -6,7 +6,7 @@
 @section('content')
     <div class="newProfile container my-5">
         <div class="newProfile-header">
-            <h4>Hairtylist Profile Building </h4>
+            <h4>Hair Stylist Profile Building </h4>
         </div>
         <div>
             <form id="register_form" class="my-5">
@@ -57,7 +57,7 @@
                 </div>
                 <div class="category my-5">
                     <h4>Category</h4>
-                    <h2>Hairstylist</h2>
+                    <h2>Hair Stylist</h2>
                 </div>
                 <div class="age my-5">
                     <h4>Age</h4>
