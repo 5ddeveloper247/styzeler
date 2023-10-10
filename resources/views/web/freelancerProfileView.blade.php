@@ -220,7 +220,9 @@
                     @if (in_array(@Auth::user()->type, ['hairdressingSalon', 'beautySalon']) && (@$membership > 0 || $todayUseToken > 0))
                         <p class="col-lg-10" id="ownerName"></p>
                     @elseif(@Auth::user()->type == 'client' && @$membership > 0)
-                        <p class="col-lg-10" id="ownerName"></p>
+                    <p class="col-lg-10" id="ownerName"></p>
+                    @else
+                    <p class="col-lg-10" style="font-size: 14px;color:red;">You need to buy package to access name.</p>
                     @endif
                 </div>
 
@@ -266,7 +268,9 @@
                     @if (in_array(@Auth::user()->type, ['hairdressingSalon', 'beautySalon']) && (@$membership > 0 || $todayUseToken > 0))
                         <p class="col-lg-10" id="ownerEmail"></p>
                     @elseif(@Auth::user()->type == 'client' && @$membership > 0)
-                        <p class="col-lg-10" id="ownerEmail"></p>
+                    <p class="col-lg-10" id="ownerEmail"></p>
+                    @else
+                    <p class="col-lg-10" style="font-size: 14px;color:red;">You need to buy package to access email.</p>
                     @endif
                 </div>
 

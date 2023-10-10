@@ -315,10 +315,14 @@ function profileResponse(response) {
             // for email
             email = data.email;
 
-            if (user == 'hairdressingSalon' || user == 'beautySalon') {
+
+            if (profile_type == 'Jobseeker') {
+                $('.book_client').addClass('d-none');
                 $('#ownerEmail').html('<a href="mailto:' + email + '" onclick="useOwnerToken();">' + email + '</a>');
             } else {
+                $('.book_client').removeClass('d-none');
                 $('#ownerEmail').text(email);
+
             }
 
 
@@ -767,7 +771,7 @@ $(document).on('click', '#book-slots', function (e) {
     let message = '';
     let form = $('#book_slots_form');
     let data = new FormData(form[0]);
-    console.log(data);
+    //    console.log(data);
 
     // PASSING DATA TO FUNCTION
     SendAjaxRequestToServer(type, url, data, '', bookSlotsResponse, 'spinner_button', 'submit_button');
@@ -788,6 +792,10 @@ function bookSlotsResponse(response) {
             timeOut: 3000
         });
         $('.slots-modal').modal('hide');
+
+        if (response.status == 404 || response.status == '404') {
+            $('#tokens_modal').modal('show');
+        }
 
     }
 

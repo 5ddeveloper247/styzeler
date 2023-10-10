@@ -294,20 +294,25 @@
             </div>
         </div>
         <!-- Booking Fail Message-->
-		<div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
-	    	<div class="modal-dialog modal-md" style="width: 350px">
-	        	<div class="modal-content border border-warning"
-	            	style="background-color: black; color: white; max-height: 1000px; overflow-y: auto; margin-top: 30%; margin-left: 10%;">
-	            	<div class="modal-header" style="border-bottom: 5px solid #766d48">
-	                	<h4 class="modal-title fs-1">Alert</h4>
-	                    <i class="close-modal" style="font-size: 2rem; cursor: pointer"><b>&times;</b></i>
-	              	</div>
-	             	<div class="modal-body my-5">
-	                	<p class="fs-2">Insufficient tokens, first buy package!</p>
-	             	</div>
+        <div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
+	        <div class="modal-dialog modal-md ">
+	            <div class="modal-content border border-warning"
+	                style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+	                <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+	                    <h4 class="modal-title">Buy Package</h4>
+	                    <i class="close-modal" data-dismiss="modal" style="font-size: 2rem;"><b>&times;</b></i>
+	                </div>
+	                <div class="modal-body">
+	                    Insufficient tokens, first buy package!
+	                </div>
+	                <div class="modal-footer text-center">
+	                    <a type="" href="{{ route('home_service') }}#packages" class="btn1 customBtn">Ok</a>
+	                    <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
+	                </div>
 	            </div>
-	      	</div>
-	  	</div>
+	        </div>
+	    </div>
+		
 	  	<div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
             <div class="modal-dialog modal-md ">
                 <div class="modal-content border border-warning"
