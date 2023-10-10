@@ -221,6 +221,8 @@
                     <p class="col-lg-10" id="ownerName"></p>
                     @elseif(@Auth::user()->type == 'client' && @$membership > 0)
                     <p class="col-lg-10" id="ownerName"></p>
+                    @else
+                    <p class="col-lg-10" style="font-size: 14px;color:red;">You need to buy package to access name.</p>
                     @endif
                 </div>
 
@@ -267,6 +269,8 @@
                     <p class="col-lg-10" id="ownerEmail"></p>
                     @elseif(@Auth::user()->type == 'client' && @$membership > 0)
                     <p class="col-lg-10" id="ownerEmail"></p>
+                    @else
+                    <p class="col-lg-10" style="font-size: 14px;color:red;">You need to buy package to access email.</p>
                     @endif
                 </div>
 

@@ -130,12 +130,15 @@ class AdminFrontEndController extends Controller
     
     public function bookings()
     {
-    	$getProfileData = Appointments::with([
-    					'adminClientUser',
-    					'userBookingSlots',
-    					'userBookingSlots.bookings',
-    					'userBookingSlots.bookings.FreelancerUser'
-    			])->get();
+    	$getProfileData = Appointments::whereHas('userAppointment', function ($query) {
+						    $query->where('type','!=', 'client');
+						})
+						->with([
+		    					'adminClientUser',
+		    					'userBookingSlots',
+		    					'userBookingSlots.bookings',
+		    					'userBookingSlots.bookings.FreelancerUser'
+		    			])->get();
     	$data['appointments'] = $getProfileData;
 
 //     	dd($getProfileData);

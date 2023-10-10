@@ -340,17 +340,19 @@ class ProfileController extends Controller
                 'message' => 'Please log in to book a slot.',
             ]);
         }
+        
+        $userDetails = User::where('id', Auth::user()->id)->first();
+        
+        $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
 
         if (isset($request->book_type) && $request->book_type == 'cart_book') {  // of cart booking then this code execution
-            $userDetails = User::where('id', Auth::user()->id)->first();
-
-            $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
+            
 
             $cartExist = Cart::where('user_id', Auth::user()->id)->where('slot_date', $request->book_date)->count();
 
             if ($tokens == 0 && $cartExist == 0) {
                 return response()->json([
-                    'status' => 422,
+                    'status' => 404,
                     'message' => 'No enough tokens, first buy package.',
                 ]);
             }
@@ -441,16 +443,22 @@ class ProfileController extends Controller
             }
 
             //             // check user tokens
-            $userDetails = User::where('id', Auth::user()->id)->first();
+            
 
-            //             $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
-
-            //             if ($tokens == 0) {
-            //             	return response()->json([
-            //             			'status' => 422,
-            //             			'message' => 'No enough tokens, first buy package.',
-            //             	]);
-            //             }
+            $bookExist = Appointments::whereHas('userBookingSlots.bookings', function ($query) use ($request) {
+						    $query->where('date', $request->book_date);
+						})
+						->where('booking_user_id', Auth::user()->id)
+						->with(['userBookingSlots.bookings',
+		    					'userBookingSlots.bookings.FreelancerUser'
+		    			])->count();
+            
+		    if ($tokens == 0 && $bookExist == 0) {
+            	return response()->json([
+            			'status' => 404,
+            			'message' => 'No enough tokens, first buy package.',
+            	]);
+            }
 
             // Create a new appointment
             Appointments::create([
@@ -458,6 +466,12 @@ class ProfileController extends Controller
                 'booking_user_id' => Auth::id(),
             ]);
 
+            if ($bookExist == 0) {
+            	$user = User::find(Auth::user()->id);
+            	$user->tokens = $tokens - 1;
+            	$user->update();
+            }
+            
             $bookedUserDetails = User::where('id', $request->user_id)->first();
             $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
 

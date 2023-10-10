@@ -180,7 +180,7 @@
 									<div class="col-8">
 										<div>
 											<span style="overflow-wrap: break-word;">
-												<p><strong>Client Name: </strong>{{@$row['adminClientUser']->name}} {{@$row['adminClientUser']->surname}}</p>
+												<p><strong>Owner Name: </strong>{{@$row['adminClientUser']->name}} {{@$row['adminClientUser']->surname}}</p>
 												<div>
 													<p><strong>Freelancer Name: </strong>{{@$row['userBookingSlots']['bookings']['FreelancerUser']->name}} {{@$row['userBookingSlots']['bookings']['FreelancerUser']->surname}} </p>
 												</div>
@@ -197,13 +197,13 @@
 													<p style="overflow-wrap: break-word;"><strong>Freelancer Mobile: </strong> {{@$row['userBookingSlots']['bookings']['FreelancerUser']->phone}}</p> 
 												</div>
 												<div>
-													<p style="overflow-wrap: break-word;"><strong>Client Category: </strong> {{@$row['adminClientUser']->type}}</p> 
+													<p style="overflow-wrap: break-word;"><strong>Owner Category: </strong> {{@$row['adminClientUser']->type}}</p> 
 												</div>
 												<div>
-													<p style="overflow-wrap: break-word;"><strong>Client Email: </strong> {{@$row['adminClientUser']->email}}</p> 
+													<p style="overflow-wrap: break-word;"><strong>Owner Email: </strong> {{@$row['adminClientUser']->email}}</p> 
 												</div>
 												<div>
-													<p style="overflow-wrap: break-word;"><strong>Client Mobile: </strong> {{@$row['adminClientUser']->phone}}</p> 
+													<p style="overflow-wrap: break-word;"><strong>Owner Mobile: </strong> {{@$row['adminClientUser']->phone}}</p> 
 												</div>
 												<div>
 													<p style="overflow-wrap: break-word;"><strong>Booking Status: </strong> {{@$row['userBookingSlots']['bookings']->status}}</p> 

@@ -713,9 +713,34 @@
     @endsection @push('script')
     <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
     <script>
-        $(document).ready(function() {
+    function setLocalStorageWithExpiration(key, value, expirationInHours) {
+        const now = new Date();
+        const item = {
+            value: value,
+            expiration: now.getTime() + expirationInHours * 60 * 60 * 1000 // Convert hours to milliseconds
+        };
+        localStorage.setItem(key, JSON.stringify(item));
+    }
 
-            localStorage.removeItem('bookType');
+    // Get data from localStorage and check expiration
+    function getLocalStorageWithExpiration(key) {
+        const itemStr = localStorage.getItem(key);
+        if (!itemStr) {
+            return null;
+        }
+        const item = JSON.parse(itemStr);
+        const now = new Date();
+        if (now.getTime() > item.expiration) {
+            localStorage.removeItem(key); // Remove the item from localStorage if it's expired
+            return null;
+        }
+        return item.value;
+    }
+    </script>
+    <script>
+        $(document).ready(function() {
+        	
+        	localStorage.removeItem('bookType');
 
             window.scrollTo(0, scrollPosition);
 
@@ -729,7 +754,11 @@
 
 
         $(function() {
-            $("#popupInfo-modal").modal("show");
+        	const retrievedData = getLocalStorageWithExpiration("flag");
+            if(retrievedData != 'true'){
+            	$("#popupInfo-modal").modal("show");
+            }
+            
         });
 
 
@@ -762,19 +791,27 @@
                     if ($("#popupInfo-modal").is(":visible")) {
                         //                         $("#popupInfo-modal").modal("hide");
                         flag = "1";
-                        $("html").css({
-                            "overflow": "hidden"
-                        });
+                        const retrievedData = getLocalStorageWithExpiration("flag");
+                        if(retrievedData != 'true'){
+                        	$("html").css({
+                                "overflow": "hidden"
+                            });
+                     	}
+                        
                     }
                 }
             }
             // if (isScrolledToClass(targetClass))
         });
         $(document).on("click", ".close-modal, body", function() {
+        	const dataToStore = "true";
+            setLocalStorageWithExpiration("flag", 'true', 12);
             $("html").css({
                 "overflow": "auto"
             });
             $(".modal").modal("hide");
         });
     </script>
+    
+    
 @endpush
