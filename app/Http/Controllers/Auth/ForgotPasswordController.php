@@ -71,10 +71,12 @@ class ForgotPasswordController extends Controller
         $otp_random_number = rand(100000, 999999);
 
         User::where('email', $request->email)->update(['remember_token' => $otp_random_number]);
-
-        $body = "<table>
+        $body = "<h4>Your OTP For Forget Password !</h4><br>
+        <h5>Dear $check_email->name !</h5><br>
+        <p>We Have Received Your Request for Forget Password, Please <span style='font-weight: bold; color: red;'>Do Not</span> Share it with anyone.<br>Find Your OTP Below:</p>";
+        $body .= "<table>
         				<tr>
-        					<td>Your Otp is " . $otp_random_number . "</td>
+        					<td>Your OTP is " . $otp_random_number . "</td>
         				</tr>
         			</table>";
         $sendEmail = [$request->email];
@@ -83,7 +85,7 @@ class ForgotPasswordController extends Controller
 
         return response()->json([
             'status' => 200,
-            'message' => 'Please Check your Email for Otp',
+            'message' => 'Please Check your Email for OTP',
             'otp_password' => $request->password,
             'user_id' =>  $user_id
         ]);
