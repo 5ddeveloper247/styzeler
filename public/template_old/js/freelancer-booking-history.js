@@ -250,10 +250,18 @@ $(function () {
                         //  let bookStime = response.appointments[i]["bookingTimeSlots"]['start_time'];
                         //  let bookEtime = response.appointments[i]["bookingTimeSlots"]['end_time'];
 
-                        owner_name = response.appointments[i]["client_user"]['name'];
-                        owner_email = response.appointments[i]["client_user"]['email'];
-                        owner_mobile = response.appointments[i]["client_user"]['phone'];
-                        owner_category = response.appointments[i]["client_user"]['type'];
+                        if (response.appointments[i]["client_user"] != undefined) {
+                            owner_name = response.appointments[i]["client_user"]['name'];
+                            owner_email = response.appointments[i]["client_user"]['email'];
+                            owner_mobile = response.appointments[i]["client_user"]['phone'];
+                            owner_category = response.appointments[i]["client_user"]['type'];
+                        } else {
+                            owner_name = response.appointments[i]["freelancer_user"]['name'];
+                            owner_email = response.appointments[i]["freelancer_user"]['email'];
+                            owner_mobile = response.appointments[i]["freelancer_user"]['phone'];
+                            owner_category = response.appointments[i]["freelancer_user"]['type'];
+                        }
+
                         owner_status = response.appointments[i]['user_booking_slots']['bookings']['status'];
 
                         slot_start_time = convertTo12HourFormat(response.appointments[i].user_booking_slots.start_time);

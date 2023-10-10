@@ -4,7 +4,7 @@
     const userId = "{{ @$data->id }}";
 </script>
 @push('css')
-    <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}?v={{time()}}" />
+    <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}?v={{ time() }}" />
 
     <style>
         table {
@@ -197,15 +197,15 @@
                 <div class="likes btn customBtn" id="likes">Likes</div>
             </div>
             @auth
-            	@if(Auth::user()->type == 'client')
-				<div class="col-3 text-center book_client">
-                 	<div class="book btn customBtn" id="book">Book</div>
-               	</div>
-               	@else
-               	<div class="col-3 text-center book_client">
-                 	<div class="book btn customBtn {{@$class}}" id="{{@$bookid}}">Book</div>
-               	</div>
-               	@endif
+                @if (Auth::user()->type == 'client')
+                    <div class="col-3 text-center book_client">
+                        <div class="book btn customBtn" id="book">Book</div>
+                    </div>
+                @else
+                    <div class="col-3 text-center book_client">
+                        <div class="book btn customBtn {{ @$class }}" id="{{ @$bookid }}">Book</div>
+                    </div>
+                @endif
             @endauth
 
 
@@ -217,10 +217,10 @@
 
                 <div class="name row ">
                     <label class="color-1 col-lg-2">Name : </label>
-                    @if ((in_array(@Auth::user()->type, ['hairdressingSalon','beautySalon'])) && (@$membership > 0 || $todayUseToken > 0))
-                    <p class="col-lg-10" id="ownerName"></p>
+                    @if (in_array(@Auth::user()->type, ['hairdressingSalon', 'beautySalon']) && (@$membership > 0 || $todayUseToken > 0))
+                        <p class="col-lg-10" id="ownerName"></p>
                     @elseif(@Auth::user()->type == 'client' && @$membership > 0)
-                    <p class="col-lg-10" id="ownerName"></p>
+                        <p class="col-lg-10" id="ownerName"></p>
                     @endif
                 </div>
 
@@ -263,10 +263,10 @@
 
                 <div class="email row">
                     <label class="color-1 col-lg-2">Email : </label>
-                    @if ((in_array(@Auth::user()->type, ['hairdressingSalon','beautySalon'])) && (@$membership > 0 || $todayUseToken > 0))
-                    <p class="col-lg-10" id="ownerEmail"></p>
+                    @if (in_array(@Auth::user()->type, ['hairdressingSalon', 'beautySalon']) && (@$membership > 0 || $todayUseToken > 0))
+                        <p class="col-lg-10" id="ownerEmail"></p>
                     @elseif(@Auth::user()->type == 'client' && @$membership > 0)
-                    <p class="col-lg-10" id="ownerEmail"></p>
+                        <p class="col-lg-10" id="ownerEmail"></p>
                     @endif
                 </div>
 
@@ -449,8 +449,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="text-right btn uploadBtn"
-                                                                                                                                                                                                                                                                                    style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                                                                                                                                    title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                                                                                                                                        style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                                                                                                                                        title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>
@@ -1467,7 +1467,9 @@
                                     <input class="form-check-input" type="checkbox" id="pregnancy-massage"
                                         value="Pregnancy Massage" name="massageServices[]">
                                     <label class="form-check-label" for="pregnancy-massage">Pregnancy
-                                        Massage</label><span class="ms-3"> N/A For Home Service</span>
+                                        Massage </label><span
+                                        style="font-size: 11px; color: red; font-style: italic;">(N/A For Home
+                                        Service)</span>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="thai-massage"
@@ -1520,7 +1522,9 @@
                                 </div>
                             </div>
                             <div class="hair-removal my-5">
-                                <h4>Hair Removal Permanent<span class="ms-3 fs-14">N/A For Home Service</span></h4>
+                                <h4>Hair Removal Permanent <span
+                                        style="font-size: 11px; color: red; font-style: italic;">(N/A For Home
+                                        Service)</span></h4>
                                 <h5><u>Services</u></h5>
                                 <div class="form-check">
                                     <input type="hidden" name="hairRemovalPermanentServices[heading]"
@@ -1771,9 +1775,9 @@
                                     <label class="form-check-label" for="nail-art">Nail Art</label>
                                 </div>
                                 <h5 class="mt-5"><u>Products</u></h5>
-                                <input type="hidden" name="manicurePedicureServices[heading]"
+                                <input type="hidden" name="manicurePedicureProducts[heading]"
                                     value="Manicure Pedicure">
-                                <input type="hidden" name="manicurePedicureServices[subHeading]" value="Products">
+                                <input type="hidden" name="manicurePedicureProducts[subHeading]" value="Products">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="nails-inc"
                                         value="Nails inc." name="manicurePedicureProducts[]">
@@ -2076,20 +2080,22 @@
                                     <label class="form-check-label" for="brow-lamination">Brow Lamination</label>
                                 </div>
 
-                                <div class="form-check">
+                                {{-- <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="eyelash-extensions"
                                         value="Eyelash Extensions" name="EyesAndBrowServices[]">
                                     <label class="form-check-label" for="eyelash-extensions">Eyelash Extensions</label>
-                                </div>
+                                </div> --}}
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="classic-full"
-                                        value="Classic Full" name="EyesAndBrowServices[]">
-                                    <label class="form-check-label" for="classic-full">Classic Full</label>
+                                        value="Eyelash Extensions Classic Full" name="EyesAndBrowServices[]">
+                                    <label class="form-check-label" for="classic-full">Eyelash Extensions Classic
+                                        Full</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="classic-half"
-                                        value="Classic Half" name="EyesAndBrowServices[]">
-                                    <label class="form-check-label" for="classic-half">Classic Half</label>
+                                        value="Eyelash Extensions Classic Half" name="EyesAndBrowServices[]">
+                                    <label class="form-check-label" for="classic-half">Eyelash Extensions Classic
+                                        Half</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="clamourous-volume-full"
@@ -2158,6 +2164,32 @@
                                     <label class="form-check-label" for="">LRefectoCil</label>
                                 </div>
 
+                            </div>
+                            <div class="makeup-styles my-5">
+                                <h4>Make-Up</h4>
+                                <h5><u>Services</u></h5>
+                                <div class="form-check">
+                                    <input type="hidden" name="makeupServives[heading]" value="Make-Up">
+                                    <input type="hidden" name="makeupServives[subHeading]" value="Services">
+                                    <input class="form-check-input" type="checkbox" id="blow-dry-makeup"
+                                        value="Blow-dry & Make-up" name="makeupServives[]">
+                                    <label class="form-check-label" for="blow-dry-makeup">Blow-dry & Make-up</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="up-do-makeup"
+                                        value="Up-do & Make-up" name="makeupServives[]">
+                                    <label class="form-check-label" for="up-do-makeup">Up-do & Make-up</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="make-up" value="Make-up"
+                                        name="makeupServives[]">
+                                    <label class="form-check-label" for="make-up">Make-up</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="bridal-makeup"
+                                        value="Bridal Make-up" name="makeupServives[]">
+                                    <label class="form-check-label" for="bridal-makeup">Bridal Make-up</label>
+                                </div>
                             </div>
                             </p>
                             <button type="button" class="btn customBtn updateProductAndServices"
@@ -2857,7 +2889,7 @@
     <script>
         const cart_book = localStorage.getItem('bookType');
         var user = '{{ @Auth::user()->type }}';
-        
+
         if (user == 'client') {
             $('.book_client').addClass('d-none');
 
@@ -2865,6 +2897,5 @@
                 $('.book_client').removeClass('d-none');
             }
         }
-
     </script>
 @endpush

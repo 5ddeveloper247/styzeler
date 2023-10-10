@@ -1,7 +1,7 @@
 @extends('layouts.master.template_old.master')
 {{-- @dd(Auth::user()) --}}
 @push('css')
-    <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}?v={{time()}}" />
+    <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}?v={{ time() }}" />
 
     <style>
         .timeSlots .option:hover {
@@ -145,15 +145,15 @@
                 </div>
 
                 <!-- <div class="status row">
-                        <label class="color-1 col-lg-3">Total Tokens : </label>
-                        <p class="col-lg-9" id="total_tokens"></p>
+                                                    <label class="color-1 col-lg-3">Total Tokens : </label>
+                                                    <p class="col-lg-9" id="total_tokens"></p>
 
-                    </div>
-                    <div class="status row">
-                        <label class="color-1 col-lg-3">Remaining Tokens : </label>
-                        <p class="col-lg-9" id="remaining_tokens"></p>
+                                                </div>
+                                                <div class="status row">
+                                                    <label class="color-1 col-lg-3">Remaining Tokens : </label>
+                                                    <p class="col-lg-9" id="remaining_tokens"></p>
 
-                    </div> -->
+                                                </div> -->
 
 
 
@@ -1391,7 +1391,8 @@
                                     <input class="form-check-input" type="checkbox" id="pregnancy-massage"
                                         value="Pregnancy Massage" name="massageServices[]">
                                     <label class="form-check-label" for="pregnancy-massage">Pregnancy
-                                        Massage</label><span class="ms-3"> N/A For Home Service</span>
+                                        Massage</label><span style="font-size: 11px; color: red; font-style: italic;">(N/A
+                                        For Home Service)</span>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="thai-massage"
@@ -1444,7 +1445,9 @@
                                 </div>
                             </div>
                             <div class="hair-removal my-5">
-                                <h4>Hair Removal Permanent<span class="ms-3 fs-14">N/A For Home Service</span></h4>
+                                <h4>Hair Removal Permanent <span
+                                        style="font-size: 11px; color: red; font-style: italic;">(N/A For Home
+                                        Service)</span></h4>
                                 <h5><u>Services</u></h5>
                                 <div class="form-check">
                                     <input type="hidden" name="hairRemovalPermanentServices[heading]"
@@ -1695,9 +1698,9 @@
                                     <label class="form-check-label" for="nail-art">Nail Art</label>
                                 </div>
                                 <h5 class="mt-5"><u>Products</u></h5>
-                                <input type="hidden" name="manicurePedicureServices[heading]"
+                                <input type="hidden" name="manicurePedicureProducts[heading]"
                                     value="Manicure Pedicure">
-                                <input type="hidden" name="manicurePedicureServices[subHeading]" value="Products">
+                                <input type="hidden" name="manicurePedicureProducts[subHeading]" value="Products">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="nails-inc"
                                         value="Nails inc." name="manicurePedicureProducts[]">
@@ -2000,20 +2003,22 @@
                                     <label class="form-check-label" for="brow-lamination">Brow Lamination</label>
                                 </div>
 
-                                <div class="form-check">
+                                {{-- <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="eyelash-extensions"
                                         value="Eyelash Extensions" name="EyesAndBrowServices[]">
                                     <label class="form-check-label" for="eyelash-extensions">Eyelash Extensions</label>
-                                </div>
+                                </div> --}}
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="classic-full"
-                                        value="Classic Full" name="EyesAndBrowServices[]">
-                                    <label class="form-check-label" for="classic-full">Classic Full</label>
+                                        value="Eyelash Extensions Classic Full" name="EyesAndBrowServices[]">
+                                    <label class="form-check-label" for="classic-full">Eyelash Extensions Classic
+                                        Full</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="classic-half"
-                                        value="Classic Half" name="EyesAndBrowServices[]">
-                                    <label class="form-check-label" for="classic-half">Classic Half</label>
+                                        value="Eyelash Extensions Classic Half" name="EyesAndBrowServices[]">
+                                    <label class="form-check-label" for="classic-half">Eyelash Extensions Classic
+                                        Half</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="clamourous-volume-full"
@@ -2082,6 +2087,32 @@
                                     <label class="form-check-label" for="">LRefectoCil</label>
                                 </div>
 
+                            </div>
+                            <div class="makeup-styles my-5">
+                                <h4>Make-Up</h4>
+                                <h5><u>Services</u></h5>
+                                <div class="form-check">
+                                    <input type="hidden" name="makeupServives[heading]" value="Make-Up">
+                                    <input type="hidden" name="makeupServives[subHeading]" value="Services">
+                                    <input class="form-check-input" type="checkbox" id="blow-dry-makeup"
+                                        value="Blow-dry & Make-up" name="makeupServives[]">
+                                    <label class="form-check-label" for="blow-dry-makeup">Blow-dry & Make-up</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="up-do-makeup"
+                                        value="Up-do & Make-up" name="makeupServives[]">
+                                    <label class="form-check-label" for="up-do-makeup">Up-do & Make-up</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="make-up" value="Make-up"
+                                        name="makeupServives[]">
+                                    <label class="form-check-label" for="make-up">Make-up</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="bridal-makeup"
+                                        value="Bridal Make-up" name="makeupServives[]">
+                                    <label class="form-check-label" for="bridal-makeup">Bridal Make-up</label>
+                                </div>
                             </div>
                             </p>
                             <button type="button" class="btn customBtn updateProductAndServices"
