@@ -390,11 +390,11 @@ class ProfileController extends Controller
                 $body = "<table>
 			                <tr>
 			                    <td>Username:</td>
-			                    <td>" . $userDetails['name'] . "</td>
+                                <td>" . $bookedUserDetails['name'] . "</td>
 			                </tr>
 			              	<tr>
 			                    <td>Booked Username:</td>
-			                    <td>" . $bookedUserDetails['name'] . "</td>
+			                    <td>" . $userDetails['name'] . "</td>
 			                </tr>
 			                <tr>
 			                    <td>Email:</td>
@@ -427,7 +427,7 @@ class ProfileController extends Controller
             }
         } else {
             // Check if the user is not allowed to book a slot
-            $allowedUserTypes = ['hairdressingSalon', 'beautySalon']; //'client', 
+            $allowedUserTypes = ['hairdressingSalon', 'beautySalon']; //'client',
             if (!in_array(Auth::user()->type, $allowedUserTypes)) {
                 return response()->json([
                     'status' => 422,
@@ -627,7 +627,7 @@ class ProfileController extends Controller
         } else {
             $newBooking = $booking;
         }
-        // if booking is there then 
+        // if booking is there then
         $newBookingId = $newBooking->id;
 
         $data = [
@@ -707,7 +707,7 @@ class ProfileController extends Controller
             ])->get();
         }
 
-        // $getProfileData = 
+        // $getProfileData =
 
 
         // Bookings::where(

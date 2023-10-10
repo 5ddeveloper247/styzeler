@@ -228,5 +228,5 @@ Route::group(['prefix' => 'admin'], function () {
 });
 
 
-Route::get('mail/send', 'App\Http\Controllers\MailController@sendEmail');
+Route::get('/sendMail', 'App\Http\Controllers\MailController@sendMail');
 // Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@register')->name('registration');

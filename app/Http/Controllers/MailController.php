@@ -2,25 +2,37 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Mail\DemoEmail;
-use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
+use App\Models\User;
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\SMTP;
+
+// require '../vendor/autoload.php';
 
 class MailController extends Controller
 {
-    public function send()
-    {
-        $objDemo = new \stdClass();
-        $objDemo->demo_one = 'Demo One Value';
-        $objDemo->demo_two = 'Demo Two Value';
-        $objDemo->sender = 'SenderUserName';
-        $objDemo->receiver = 'ReceiverUserName';
 
-        Mail::to("ar5555789@gmail.com", 'Receiver name')->send(new DemoEmail($objDemo));
-    }
 
-    public function sendEmail()
+    // public function sendMail($subject, $body, $from, $recipient, $recipient_name)
+    public function sendMail()
     {
-        sendMail('receiver_name', 'ar5555789@gmail.com', 'Registration', 'Registration sub', 'this is body');
+        try {
+
+            $mail = new PHPMailer();
+            $mail->CharSet = "UTF-8";
+
+            $mail->setFrom('my@live.com');
+
+            $mail->addCC('');
+            $mail->isHTML(true);
+            $mail->Subject = 'subject';
+            $mail->Body    = 'hi this is body';
+            $mail->AltBody = '';
+            $mail->addAddress('ar5555789@gmail.com', 'My name');
+            if (!$mail->send()) throw new Exception('Failed to send mail');
+        } catch (Exception $e) {
+            throw new Exception($e->getMessage());
+        }
     }
 }
