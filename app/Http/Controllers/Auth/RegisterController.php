@@ -213,7 +213,7 @@ class RegisterController extends Controller
                             <p>User Creadentials are:</p>";
                 $user_type = " <td>Type:</td>
                     <td>" . formatUserType($userData['type']) . "</td>";
-                $email_send_to = 'admin@styzeler.co.uk';
+                $email_send_to = $email;
                 $user_profile_type = $userData['profile_type'] ?? '';
                 $email_for = "New User Registration";
                 $email_subject = "New User Registration Email";
@@ -222,7 +222,7 @@ class RegisterController extends Controller
                             <p>Your Creadentials are:</p>";
                 $user_type = " <td>Password:</td>
                     <td>" . $userData['password'] . "</td>";
-                $email_send_to = $userData['email'];
+                $email_send_to = $email;
                 $user_profile_type = $userData['profile_type'] ?? '';
                 $email_for = "New Registration";
                 $email_subject = "Registration Email";
