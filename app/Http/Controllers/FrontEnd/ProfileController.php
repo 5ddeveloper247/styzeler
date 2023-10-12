@@ -366,6 +366,7 @@ class ProfileController extends Controller
             	$userCart = Cart::with('cart_lines')->where('user_id', Auth::user()->id)->where('status','active')->first();
             	$bookedUserDetails = User::where('id', $request->user_id)->first();
             	$slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
+            	$bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->first();
             	$cartServiceTimeMin = $userCart != null ? $userCart->cart_lines->sum('item_time_min') : 0;
             	
             	$totalServiceTime = $cartServiceTimeMin+60;
@@ -420,6 +421,14 @@ class ProfileController extends Controller
             		 
             		BookingSlots::whereIn('id', $slotIdsArray)->update(['status' => 'booked']);
             		
+            		Appointments::create([
+            				'booking_slots_id' => $commaSeparatedSlotIds,
+            				'booking_date' => $bookingDetails->date,
+            				'booking_time' => $slotDetails->start_time.' - '.$serviceEndTime,
+            				'freelancer_user_id' => $request->user_id,
+            				'booking_user_id' => Auth::id(),
+            		]);
+            	
             	}
             	else{
             		
@@ -429,10 +438,18 @@ class ProfileController extends Controller
             				'status' => 'booked'
             				
             		]);
+            		
+            		Appointments::create([
+            				'booking_slots_id' => $slotDetails->id,
+            				'booking_date' => $bookingDetails->date,
+            				'booking_time' => $slotDetails->start_time.' - '.$serviceEndTime,
+            				'freelancer_user_id' => $request->user_id,
+            				'booking_user_id' => Auth::id(),
+            		]);
             	}
             	
             	
-            	dd($serviceEndTime);
+//             	dd($serviceEndTime);
             	
             	
             	
@@ -445,11 +462,11 @@ class ProfileController extends Controller
                 $cart->status = 'checkout';
                 $cart->update();
 
-                Appointments::create([
-                    'booking_slots_id' => $request->slot_book_id,
-                    'freelancer_user_id' => $request->user_id,
-                    'booking_user_id' => Auth::id(),
-                ]);
+//                 Appointments::create([
+//                 		'booking_slots_id' => $request->slot_book_id,
+//                 		'freelancer_user_id' => $request->user_id,
+//                 		'booking_user_id' => Auth::id(),
+//                 ]);
              
                 if ($cartExist == 0) {
                     $user = User::find(Auth::user()->id);

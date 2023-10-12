@@ -422,7 +422,7 @@
 
                 </div>
                 <p class="text-center"><a class="text-center btn addTimeSlots d-none" onclick="addTimeSlots()"
-                        title="Add Slot">+</a></p>
+                        title="Click to add your available time.">Add Slots+</a></p>
 
                 <!-- end of new calendar ---------------------------------------------------- -->
             </div>
