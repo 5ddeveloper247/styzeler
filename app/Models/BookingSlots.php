@@ -15,7 +15,10 @@ class BookingSlots extends Model
     protected $fillable = [
         'bookings_id',
         'start_time',
-        'end_time'
+        'end_time',
+        'status',
+        'slots_time',
+
 
     ];
 

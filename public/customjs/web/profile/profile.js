@@ -740,11 +740,9 @@ function saveAvaibleSlots(response) {
 
 }
 
-function changeSlotDate(id, start_time, end_time) {
+function changeSlotTime(total_time) {
 
-    $('#slot_id').val(id);
-    $('#start_time').val(start_time);
-    $('#end_time').val(end_time);
+    $('#slots_time').val(total_time);
     $('#add-slots').html('Update');
 
     $('.slots-modal').modal('show');

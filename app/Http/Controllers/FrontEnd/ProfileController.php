@@ -341,13 +341,13 @@ class ProfileController extends Controller
                 'message' => 'Please log in to book a slot.',
             ]);
         }
-        
+
         $userDetails = User::where('id', Auth::user()->id)->first();
-        
+
         $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
 
         if (isset($request->book_type) && $request->book_type == 'cart_book') {  // of cart booking then this code execution
-            
+
 
             $cartExist = Cart::where('user_id', Auth::user()->id)->where('slot_date', $request->book_date)->count();
 
@@ -518,21 +518,22 @@ class ProfileController extends Controller
             }
 
             //             // check user tokens
-            
+
 
             $bookExist = Appointments::whereHas('userBookingSlots.bookings', function ($query) use ($request) {
-						    $query->where('date', $request->book_date);
-						})
-						->where('booking_user_id', Auth::user()->id)
-						->with(['userBookingSlots.bookings',
-		    					'userBookingSlots.bookings.FreelancerUser'
-		    			])->count();
-            
-		    if ($tokens == 0 && $bookExist == 0) {
-            	return response()->json([
-            			'status' => 404,
-            			'message' => 'No enough tokens, first buy package.',
-            	]);
+                $query->where('date', $request->book_date);
+            })
+                ->where('booking_user_id', Auth::user()->id)
+                ->with([
+                    'userBookingSlots.bookings',
+                    'userBookingSlots.bookings.FreelancerUser'
+                ])->count();
+
+            if ($tokens == 0 && $bookExist == 0) {
+                return response()->json([
+                    'status' => 404,
+                    'message' => 'No enough tokens, first buy package.',
+                ]);
             }
 
             // Create a new appointment
@@ -543,11 +544,11 @@ class ProfileController extends Controller
             ]);
 
             if ($bookExist == 0) {
-            	$user = User::find(Auth::user()->id);
-            	$user->tokens = $tokens - 1;
-            	$user->update();
+                $user = User::find(Auth::user()->id);
+                $user->tokens = $tokens - 1;
+                $user->update();
             }
-            
+
             $bookedUserDetails = User::where('id', $request->user_id)->first();
             $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
 
@@ -591,10 +592,12 @@ class ProfileController extends Controller
     public function saveAvaibleSlots(Request $request)
     {
 
+        $startTime = $request->start_time;
+        $endTime = $request->end_time;
+
         $validator =  Validator::make($request->all(), [
             'start_time' => 'required',
             'end_time' => 'required',
-            // 'slot_id' => 'required|exists:booking_slots,id'
 
         ]);
 
@@ -607,77 +610,61 @@ class ProfileController extends Controller
             ]);
         }
 
-        // $availableDays = $request->availableDate;
-        // $startTime  = $request->start_time;
-        // $endTime  = $request->end_time;
-        // $status = 'Available';
+        if (($startTime < $endTime) == false || ($startTime == $endTime) == true) {
 
-        // $startDateTime = Carbon::createFromFormat('Y-m-d H:i', $availableDays . ' ' . $startTime);
-        // $endDateTime = Carbon::createFromFormat('Y-m-d H:i', $availableDays . ' ' . $endTime);
-
-        // //Check if 'start time' is less then 'end time'
-        // if ($startDateTime > $endDateTime) {
-
-        //     $message = 'End Time must be greater than Start Time';
-        //     return response()->json([
-        //         'status' => 422,
-        //         'message' => $message,
-        //     ]);
-        // }
-
-        // // getting booking date from request
-        // $booking = Bookings::where(['date' => $availableDays, 'user_id' => Auth::id()])->first();
-
-        // $existingBooking = [];
-
-        // if ($booking) {
-        //     $existingBooking = BookingSlots::where('bookings_id', $booking->id)
-        //         // ->whereNotIn('id', [$request->slot_id])
-        //         ->where(function ($query) use ($startDateTime, $endDateTime) {
-        //             $query->where(function ($query) use ($startDateTime, $endDateTime) {
-        //                 $query->whereBetween('start_time', [$startDateTime, $endDateTime])
-        //                     ->orWhereBetween('end_time', [$startDateTime, $endDateTime]);
-        //             });
-        //         })
-        //         ->get();
-        //     dd($existingBooking, $startDateTime, $endDateTime, $booking);
-        // }
-
-        // // check booking is already created with in given time frame
-        // if ($existingBooking) {
-        //     // Time range overlap found, return an error response
-        //     $message = 'Time range already booked on the specified date';
-        //     return response()->json([
-        //         'status' => 422,
-        //         'message' => $message,
-        //     ]);
-        // }
-        $slotId = $request->slot_id;
-        $startTime = $request->start_time;
-        $endTime = $request->end_time;
-        $availableDays = $request->availableDate;
-        $status = 'Available';
-        // Create Carbon instances for the new slot's start and end times
-        $newStartTime = Carbon::parse($startTime)->format('H:i');
-        $newEndTime = Carbon::parse($endTime)->format('H:i');
-
-        // Check if 'start time' is less than 'end time'
-        if ($newStartTime >= $newEndTime) {
             $message = 'End Time must be greater than Start Time';
             return response()->json([
                 'status' => 422,
                 'message' => $message,
             ]);
         }
+
+        $startDateTime = Carbon::parse($request->availableDate . ' ' . $startTime);
+        $endDateTime = Carbon::parse($request->availableDate . ' ' . $endTime);
+        $interval = 30; // 30 minutes
+
+        $bookingSlots = [];
+
+        while ($startDateTime < $endDateTime) {
+            $slot = $startDateTime->format('H:i');
+            $bookingSlots[] = $slot;
+            $startDateTime->addMinutes($interval);
+        }
+
+        $availableDays = $request->availableDate;
+        $status = 'Available';
+
+        // Create Carbon instances for the new slot's start and end times
+        $newStartTime = Carbon::parse($startTime)->format('H:i');
+        $newEndTime = Carbon::parse($endTime)->format('H:i');
+
+        $newStartTime = date('H:i', strtotime('+1 minutes', strtotime($newStartTime)));
+        $newEndTime = date('H:i', strtotime('+1 minutes', strtotime($newEndTime)));
+
+        // Check if 'start time' is less than 'end time'
+        if ($newStartTime >= $newEndTime) {
+
+            $message = 'End Time must be greater than Start Time';
+            return response()->json([
+                'status' => 422,
+                'message' => $message,
+            ]);
+        }
+
         $booking = Bookings::where(['date' => $availableDays, 'user_id' => Auth::id()])->first();
+
         if ($booking) {
+
+            if ($request->has('slots_time')) {
+                BookingSlots::where(['slots_time' => $request->slots_time, 'bookings_id' => $booking->id])->delete();
+            }
+
             $overlappingSlots = BookingSlots::where('bookings_id', $booking->id)
-                ->where('id', '!=', $request->slot_id) // Exclude the slot_id in the request
+                // ->where('id', '!=', $slotId) // Exclude the slot_id in the request
                 ->where(function ($query) use ($newStartTime, $newEndTime) {
                     $query->whereBetween('start_time', [$newStartTime, $newEndTime])
                         ->orWhereBetween('end_time', [$newStartTime, $newEndTime]);
-                })
-                ->first();
+                })->first();
 
             // If overlapping slots are found, prevent the creation of the new slot
             if ($overlappingSlots) {
@@ -688,29 +675,38 @@ class ProfileController extends Controller
                 ]);
             }
         }
+
         $data = [
             'date' => $availableDays,
             'status' => $status,
             'user_id' => Auth::user()->id,
         ];
+
         $booking = Bookings::where(['date' => $availableDays, 'user_id' => Auth::id()])->first();
+
         //check if booking is there while creating booking slot
         if (!$booking) {
             $newBooking = Bookings::create($data);
         } else {
             $newBooking = $booking;
         }
+
         // if booking is there then
         $newBookingId = $newBooking->id;
 
-        $data = [
-            'bookings_id' => $newBookingId,
-            'start_time' => $startTime,
-            'end_time' => $endTime
-        ];
+        $start_slot_time = Carbon::parse($request->start_time)->format('h:i A');
+        $end_slot_time = Carbon::parse($request->end_time)->format('h:i A');
 
-
-        $bookingSlot = BookingSlots::updateOrCreate(['id' => $request->slot_id], $data);
+        foreach ($bookingSlots as $bookingSlot) {
+            $data = [
+                'bookings_id' => $newBookingId,
+                'start_time' => $bookingSlot,
+                'end_time' => date('H:i', strtotime('+30 minutes', strtotime($bookingSlot))),
+                'slots_time' => $start_slot_time . " - " .  $end_slot_time,
+                'status' => 'Available',
+            ];
+            $bookingSlot = BookingSlots::create($data);
+        }
 
         if ($bookingSlot->wasRecentlyCreated) {
             $message = 'Time Slot Created Successfully! Against ' . $availableDays;
@@ -898,3 +894,69 @@ class ProfileController extends Controller
         return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// $availableDays = $request->availableDate;
+        // $startTime  = $request->start_time;
+        // $endTime  = $request->end_time;
+        // $status = 'Available';
+
+        // $startDateTime = Carbon::createFromFormat('Y-m-d H:i', $availableDays . ' ' . $startTime);
+        // $endDateTime = Carbon::createFromFormat('Y-m-d H:i', $availableDays . ' ' . $endTime);
+
+        // //Check if 'start time' is less then 'end time'
+        // if ($startDateTime > $endDateTime) {
+
+        //     $message = 'End Time must be greater than Start Time';
+        //     return response()->json([
+        //         'status' => 422,
+        //         'message' => $message,
+        //     ]);
+        // }
+
+        // // getting booking date from request
+        // $booking = Bookings::where(['date' => $availableDays, 'user_id' => Auth::id()])->first();
+
+        // $existingBooking = [];
+
+        // if ($booking) {
+        //     $existingBooking = BookingSlots::where('bookings_id', $booking->id)
+        //         // ->whereNotIn('id', [$request->slot_id])
+        //         ->where(function ($query) use ($startDateTime, $endDateTime) {
+        //             $query->where(function ($query) use ($startDateTime, $endDateTime) {
+        //                 $query->whereBetween('start_time', [$startDateTime, $endDateTime])
+        //                     ->orWhereBetween('end_time', [$startDateTime, $endDateTime]);
+        //             });
+        //         })
+        //         ->get();
+        //     dd($existingBooking, $startDateTime, $endDateTime, $booking);
+        // }
+
+        // // check booking is already created with in given time frame
+        // if ($existingBooking) {
+        //     // Time range overlap found, return an error response
+        //     $message = 'Time range already booked on the specified date';
+        //     return response()->json([
+        //         'status' => 422,
+        //         'message' => $message,
+        //     ]);
+        // }

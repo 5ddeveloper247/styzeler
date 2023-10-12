@@ -9,7 +9,7 @@ var availableSelectDate = localStorage.getItem(SELECTEDSTATUSDATE);
 localStorage.removeItem('selectedstatusdate');
 var evezz = [];
 var today = today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-var endCalender = new Date(new Date().getFullYear(), (new Date().getMonth()) + 3, new Date().getDate());
+var endCalender = new Date(new Date().getFullYear(), (new Date().getMonth()) + 6, new Date().getDate());
 
 
 function optionBtns(selectedDate) {
