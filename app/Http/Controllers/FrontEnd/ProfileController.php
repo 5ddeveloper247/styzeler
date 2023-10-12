@@ -382,12 +382,12 @@ class ProfileController extends Controller
             	
             	if($slotDetails->slots_time != 'after_nine'){
             		
-            		$slots = BookingSlots::where('bookings_id', $slotDetails->bookings_id)->whereBetween('start_time', [$slotDetails->start_time, $serviceEndTime])->get();
+            		$slots = BookingSlots::where('bookings_id', $slotDetails->bookings_id)->whereBetween('start_time', [$slotDetails->start_time, $serviceEndTime])->orderBy('start_time', 'asc')->get();
             		
             		if(count($slots) > 0){
             			$firstindexSlots = isset($slots[0]) ? $slots[0] : '';
             			$lastindexSlots = isset($slots[count($slots)-1]) ? $slots[count($slots)-1] : '';
-            		
+
             			if($lastindexSlots->end_time < $serviceEndTime){
             				return response()->json([
             						'status' => 422,
@@ -403,15 +403,15 @@ class ProfileController extends Controller
             			}
             		
             			$hasBookedSlot = $slots->contains(function ($slot) {
-            				return $slot->status !== 'available';
+            				return $slot->status !== 'Available';
             			});
             		
-            				if ($hasBookedSlot) {
-            					return response()->json([
-            							'status' => 422,
-            							'message' => 'There is a booking between the slots, kindly choose different time.',
-            					]);
-            				}
+            			if ($hasBookedSlot) {
+            				return response()->json([
+            						'status' => 422,
+            						'message' => 'There is a booking between the slots, kindly choose different time.',
+            				]);
+            			}
             		}
             		
             		$commaSeparatedSlotIds = $slots->pluck('id')->implode(',');
@@ -432,7 +432,7 @@ class ProfileController extends Controller
             	}
             	
             	
-//             	dd($serviceEndTime);
+            	dd($serviceEndTime);
             	
             	
             	
@@ -639,7 +639,7 @@ class ProfileController extends Controller
         $newEndTime = Carbon::parse($endTime)->format('H:i');
 
         $newStartTime = date('H:i', strtotime('+1 minutes', strtotime($newStartTime)));
-        $newEndTime = date('H:i', strtotime('+1 minutes', strtotime($newEndTime)));
+        $newEndTime = date('H:i', strtotime('-1 minutes', strtotime($newEndTime)));
 
         // Check if 'start time' is less than 'end time'
         if ($newStartTime >= $newEndTime) {
