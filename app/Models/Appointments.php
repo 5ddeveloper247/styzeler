@@ -14,7 +14,7 @@ class Appointments extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'booking_slots_id', 'booking_user_id', 'freelancer_user_id'
+        'booking_slots_id', 'booking_user_id', 'freelancer_user_id', 'booking_date', 'booking_time'
     ];
 
     /**
