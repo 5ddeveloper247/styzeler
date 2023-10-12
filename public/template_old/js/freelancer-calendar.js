@@ -21,9 +21,10 @@ function optionBtns(selectedDate) {
 
 //
 var evezz = [];
+var slots_times = [];
 // var timeSlots = [];
 var today = today = new Date(new Date().getFullYear(), new Date().getMonth(), new Date().getDate());
-var endCalender = new Date(new Date().getFullYear(), (new Date().getMonth()) + 3, new Date().getDate());
+var endCalender = new Date(new Date().getFullYear(), (new Date().getMonth()) + 6, new Date().getDate());
 
 
 jQuery(document).ready(function () {
@@ -37,7 +38,7 @@ jQuery(document).ready(function () {
 });
 
 function convertTo12HourFormat(time24) {
-  console.log(time24);
+  // console.log(time24);
   // Split the time string into hours and minutes
   const [hours, minutes] = time24.split(':');
 
@@ -58,7 +59,9 @@ function convert(dateText) {
     day = ("0" + date.getDate()).slice(-2);
   return [date.getFullYear(), mnth, day].join("-");
 }
-
+function removeDuplicates(data) {
+  return data.filter((value, index) => data.indexOf(value) === index);
+}
 
 
 (function () {
@@ -100,9 +103,12 @@ function convert(dateText) {
           success: function (showResponse) {
 
             var events = [];
+
             var changeSlot = '';
             var html = '';
+            var slot_time_html = ``;
             $(".timeSlots").empty();
+            $(".total_time_slots").empty();
             var profileStatus = showResponse.userprofile['profile_type'];
             $.each(showResponse.data, function (i) {
               var status = showResponse.data[i]["status"];
@@ -167,17 +173,27 @@ function convert(dateText) {
                     var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
                     var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
 
-                    html += `<div title="Edit Slot" class="` + changeSlot + ` option col-md-3 mr-2" onclick = changeSlotDate(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
-
+                    html += `<div title="" class="` + changeSlot + ` option col-md-3 mr-2">` + starttimeAMPM + ` - ` + endtimeAMPM + `</div >`;
+                    slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
                   });
                 }
 
                 changeSlot = '';
               }
+              $(".appointment-status").show();
 
               $("#p_status").text(showResponse.data[i]["status"]);
               $("[data-date=" + showResponse.data[i]["date"] + "]").css("color", "#ffdb59");
             });
+            var filtered_times = removeDuplicates(slots_times);
+            if (slots_times != '') {
+              $.each(filtered_times, function (k) {
+                slot_time_html += `<div title = "Edit Slot" class="option col-md-3 mr-2" onclick="changeSlotTime('` + filtered_times[k] + `')"> ` + filtered_times[k] + `</div>`;
+
+              });
+            }
+            slots_times = [];
+            $(".total_time_slots").append(slot_time_html);
             $(".timeSlots").append(html);
             callback(events);
           }
@@ -208,7 +224,7 @@ function convert(dateText) {
         // $("#options").show();
         optionBtns(convert(dateText));
         let d = convert(dateText);
-        console.log(d);
+        // console.log(d);
         evezz.push({
           //   title: 'B',
           // color: "#0decfc",
@@ -227,12 +243,13 @@ function convert(dateText) {
         evezz = [];
         // var count = 0
         var html = '';
+        var slot_time_html = ``;
         //Check the status
         let found = false;
         var changeSlot = '';
         $(".appointment-status").hide();
         $(".timeSlots").empty();
-
+        $(".total_time_slots").empty();
         $.ajax({
           type: "post",
           url: '/showAppointmentDates',
@@ -243,7 +260,7 @@ function convert(dateText) {
             $.each(showResponse.data, function (i) {
               if (showResponse.data[i]["date"] === convert(dateText)) {
                 var status = showResponse.data[i]["status"];
-                console.log(status);
+                // console.log(status);
 
                 if (status == 'Off') {
 
@@ -258,12 +275,22 @@ function convert(dateText) {
                     var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
                     var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
 
-                    html += `<div title="Edit Slot" class="` + changeSlot + ` option col-md-3 mr-2" onclick = changeSlotDate(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
-                    // count++
+                    html += `<div title="" class="` + changeSlot + ` option col-md-3 mr-2">` + starttimeAMPM + ` - ` + endtimeAMPM + `</div >`;
+                    slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time'])
+
                   });
                   changeSlot = '';
                 }
+                var filtered_times = removeDuplicates(slots_times);
+                // console.log(filtered_times);
+                if (slots_times != '') {
+                  $.each(filtered_times, function (k) {
+                    slot_time_html += `<div title = "Edit Slot" class="option col-md-3 mr-2" onclick="changeSlotTime('` + filtered_times[k] + `')"> ` + filtered_times[k] + `</div>`;
 
+                  });
+                }
+                slots_times = [];
+                $(".total_time_slots").append(slot_time_html);
                 $(".timeSlots").append(html);
                 $("#p_status").text(showResponse.data[i]["status"]);
                 $(".appointment-status").show();

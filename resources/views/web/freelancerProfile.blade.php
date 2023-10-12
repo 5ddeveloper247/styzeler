@@ -12,6 +12,17 @@
             cursor: pointer;
         }
 
+        .total_time_slots>.option {
+            background: #fdd431;
+            color: #000;
+            cursor: pointer;
+        }
+
+        .total_time_slots>.option:hover {
+            background: #000;
+            color: #fdd431;
+        }
+
         .option {
             width: 100%;
             border: 1px solid #c4b9b0;
@@ -145,15 +156,15 @@
                 </div>
 
                 <!-- <div class="status row">
-                                                    <label class="color-1 col-lg-3">Total Tokens : </label>
-                                                    <p class="col-lg-9" id="total_tokens"></p>
+                                                                                                                                                                <label class="color-1 col-lg-3">Total Tokens : </label>
+                                                                                                                                                                <p class="col-lg-9" id="total_tokens"></p>
 
-                                                </div>
-                                                <div class="status row">
-                                                    <label class="color-1 col-lg-3">Remaining Tokens : </label>
-                                                    <p class="col-lg-9" id="remaining_tokens"></p>
+                                                                                                                                                            </div>
+                                                                                                                                                            <div class="status row">
+                                                                                                                                                                <label class="color-1 col-lg-3">Remaining Tokens : </label>
+                                                                                                                                                                <p class="col-lg-9" id="remaining_tokens"></p>
 
-                                                </div> -->
+                                                                                                                                                            </div> -->
 
 
 
@@ -415,6 +426,9 @@
 
                 <!-- end of new calendar ---------------------------------------------------- -->
             </div>
+        </div>
+        <div class="row total_time_slots ">
+
         </div>
         <div class="row timeSlots">
 
@@ -2741,15 +2755,46 @@
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <input type="hidden" id="slot_id" name="slot_id">
+                                <input type="hidden" id="slots_time" name="slots_time">
                                 <label for="start_time" class="color-1">Start Time</label>
-                                <input class="form-control" type="time" id="start_time" name="start_time"
-                                    min="07:00" max="19:00" required>
+                                <select class="form-control" name="start_time" id="start_time">
+                                    <option value="">Select Start Time</option>
+                                    @php
+                                        $start_time = strtotime('07:00');
+                                        $end_time = strtotime('19:30');
+                                    @endphp
+
+                                    @while ($start_time <= $end_time)
+                                        @php
+                                            $next_time = date('H:i', $start_time);
+                                        @endphp
+                                        <option value="{{ $next_time }}">{{ $next_time }}</option>
+                                        @php
+                                            $start_time = strtotime('+30 minutes', $start_time);
+                                        @endphp
+                                    @endwhile
+                                </select>
                             </div>
                             <div class="col-md-6">
                                 <label for="end_time" class="color-1">End Time</label>
-                                <input class="form-control" type="time" id="end_time" name="end_time"
-                                    min="07:00" max="19:00" required>
+                                <select class="form-control" name="end_time" id="end_time">
+                                    <option value="">Select End Time</option>
+
+                                    @php
+                                        $start_time = strtotime('07:30');
+                                        $end_time = strtotime('21:00');
+                                    @endphp
+
+                                    @while ($start_time <= $end_time)
+                                        @php
+                                            $next_time = date('H:i', $start_time);
+                                        @endphp
+                                        <option value="{{ $next_time }}">{{ $next_time }}</option>
+                                        @php
+                                            $start_time = strtotime('+30 minutes', $start_time);
+                                        @endphp
+                                    @endwhile
+                                </select>
                             </div>
                         </div>
                     </div>
@@ -2764,43 +2809,15 @@
     </div>
 @endsection
 @push('script')
-    <script>
+    {{-- <script>
         $(function() {
             $.ajaxSetup({
                 headers: {
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
                 }
             });
-
-            const timePickerStart = $('#start_time');
-            const timePickerLast = $('#end_time');
-
-            // Get the current time as a JavaScript Date object
-            // Set the minimum and maximum allowed times
-            const minTime = '07:00';
-            const maxTime = '19:00';
-
-            // Function to handle time input validation for both fields
-            function handleTimeInput(timePicker) {
-                const selectedTime = timePicker.val();
-                if (selectedTime < minTime || selectedTime > maxTime) {
-                    toastr.warning('Please select a time between 07:00 AM and 07:00 PM.', '', {
-                        timeOut: 3000
-                    });
-                    timePicker.val('07:00'); // Reset to the minimum allowed time
-                }
-            }
-
-            // Attach the same input event handler to both fields
-            timePickerStart.on('input', function() {
-                handleTimeInput(timePickerStart);
-            });
-
-            timePickerLast.on('input', function() {
-                handleTimeInput(timePickerLast);
-            });
         });
-    </script>
+    </script> --}}
     <script src="{{ asset('customjs/web/register/common.js') }}?v={{ time() }}"></script>
     <script src="{{ asset('template_old/js/freelancer-calendar.js') }}?v={{ time() }}"></script>
     <script src="{{ asset('customjs/web/profile/profile.js') }}?v={{ time() }}"></script>
