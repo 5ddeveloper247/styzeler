@@ -4,6 +4,16 @@ let onCall;
 
 $(document).ready(function () {
 
+	if(user == 'client' && cartServicesTime > 0 && localStorage.getItem('bookType') == 'cart_book'){
+		$(".servicesTimeText").show();
+		$("#serviceTime").text(cartServicesTime);
+		$("#serviceTotalTime").text(cartServicesTime+60);
+	}else{
+		$(".servicesTimeText").hide();
+		$("#serviceTime").text('');
+		$("#serviceTotalTime").text('');
+	}
+	
     $("#showReviews").hide();
     $("#showLikes").hide();
     $("#showBook").hide();

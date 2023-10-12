@@ -433,15 +433,15 @@
                 $("#top_1,#top_2,#top_3").show();
                 $("#top_1 p").html('Short  60 mints  &pound; 40').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '40').attr(
-                    'data-service', 'Cut Blowdry').attr('data-subtype', subtype);
+                    'data-service', 'Cut Blowdry').attr('data-text', 'Short  60 mints  £40').attr('data-subtype', subtype);
 
                 $("#top_2 p").html('Medium 60 mints  &pound;48').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '48').attr(
-                    'data-service', 'Cut Blowdry').attr('data-subtype', subtype);
+                    'data-service', 'Cut Blowdry').attr('data-text', 'Medium 60 mints  £48').attr('data-subtype', subtype);
 
                 $("#top_3 p").html('Long 60 mints  &pound; 56').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '60').attr('data-price', '56').attr(
-                    'data-service', 'Cut Blowdry').attr('data-subtype', subtype);
+                    'data-service', 'Cut Blowdry').attr('data-text', 'Long 60 mints  £56').attr('data-subtype', subtype);
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
                 $("#description").hide();
@@ -451,15 +451,15 @@
                 $("#top_1,#top_2,#top_3").show();
                 $("#top_1 p").html('Medium 45 mints &pound;35').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '45').attr('data-price', '35').attr(
-                    'data-service', 'Blowdry').attr('data-subtype', subtype);
+                    'data-service', 'Blowdry').attr('data-text', 'Medium 45 mints £35').attr('data-subtype', subtype);
 
                 $("#top_2 p").html('Long 60 mints  &pound; 40').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '40').attr(
-                    'data-service', 'Blowdry').attr('data-subtype', subtype);
+                    'data-service', 'Blowdry').attr('data-text', 'Long 60 mints  £40').attr('data-subtype', subtype);
 
                 $("#top_3 p").html('B+Updo 90 mints &pound; 72').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '90').attr('data-price', '72').attr(
-                    'data-service', 'Blowdry').attr('data-subtype', subtype);
+                    'data-service', 'Blowdry').attr('data-text', 'B+Updo 90 mints £72').attr('data-subtype', subtype);
                 
 
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
@@ -473,19 +473,19 @@
                 $("#description").hide();
                 $("#top_1 p").html('Roots +Length  90 mints  &pound; 48').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '48')
-                    .attr('data-service', 'Color').attr('data-subtype', subtype);
+                    .attr('data-service', 'Color').attr('data-text', 'Roots +Length  90 mints  £48').attr('data-subtype', subtype);
 
                 $("#top_2 p").html('Roots  60 mints   &pound; 40').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '40').attr(
-                    'data-service', 'Color').attr('data-subtype', subtype);
+                    'data-service', 'Color').attr('data-text', 'Roots  60 mints   £40').attr('data-subtype', subtype);
 
                 $("#top_3 p").html('+ Blow-Dry').attr('onclick', "caseCat('Blowdry')");
                 $("#top_3 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Color').attr('data-subtype', subtype);
+                    'data-service', 'Color').attr('data-text', '+ Blow-Dry').attr('data-subtype', subtype);
 
                 $("#top_4 p").html('+ Cut- Blow-Dry').attr('onclick', "caseCat('Cut_Blowdry')");
                 $("#top_4 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Color').attr('data-subtype', subtype);
+                    'data-service', 'Color').attr('data-text', '+ Cut- Blow-Dry').attr('data-subtype', subtype);
 
                 $("#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -496,31 +496,31 @@
 
                 $("#top_1 p").html('T-sectiom 60 mints  &pound; 48').attr('onclick', "");;
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '48').attr(
-                    'data-service', 'Highlights').attr('data-subtype', subtype);
+                    'data-service', 'Highlights').attr('data-text', 'T-sectiom 60 mints  £48').attr('data-subtype', subtype);
 
                 $("#top_2 p").html('Half Head  90 minuts  &pound;88').attr('onclick', "");;
                 $("#top_2 span").show().attr('data-time', '90').attr('data-price', '88').attr(
-                    'data-service', 'Highlights').attr('data-subtype', subtype);
+                    'data-service', 'Highlights').attr('data-text', 'Half Head  90 minuts  £88').attr('data-subtype', subtype);
 
                 $("#top_3 p").html('Full Head 120 mints &pound; 104').attr('onclick', "");;
                 $("#top_3 span").show().attr('data-time', '120').attr('data-price', '104')
-                    .attr('data-service', 'Highlights').attr('data-subtype', subtype);
+                    .attr('data-service', 'Highlights').attr('data-text', 'Full Head 120 mints £104').attr('data-subtype', subtype);
 
-                $("#top_4 p").html('+ Toner  10 ninuts  &pound; 15').attr('onclick', "");;
+                $("#top_4 p").html('+ Toner  10 minuts  &pound; 15').attr('onclick', "");;
                 $("#top_4 span").show().attr('data-time', '10').attr('data-price', '15').attr(
-                    'data-service', 'Highlights').attr('data-subtype', subtype);
+                    'data-service', 'Highlights').attr('data-text', '+ Toner  10 minuts  £15').attr('data-subtype', subtype);
 
-                $("#top_5 p").html('+ Colour 30 ninuts  &pound; 30').attr('onclick', "");;
+                $("#top_5 p").html('+ Colour 30 minuts  &pound; 30').attr('onclick', "");;
                 $("#top_5 span").show().attr('data-time', '30').attr('data-price', '30').attr(
-                    'data-service', 'Highlights').attr('data-subtype', subtype);
+                    'data-service', 'Highlights').attr('data-text', '+ Colour 30 minuts  £30').attr('data-subtype', subtype);
 
                 $("#top_6 p").html('+ Blow-Dry').attr('onclick', "caseCat('Blowdry')");
                 $("#top_6  span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Highlights').attr('data-subtype', subtype);
+                    'data-service', 'Highlights').attr('data-text', '+ Blow-Dry').attr('data-subtype', subtype);
 
                 $("#top_7 p").html('+ Cut- blow-ry').attr('onclick', "caseCat('Cut_Blowdry')");
                 $("#top_7 span").hide().attr('data-price', '').attr(
-                    'data-service', 'Highlights').attr('data-subtype', subtype);
+                    'data-service', 'Highlights').attr('data-text', '+ Cut- blow-ry').attr('data-subtype', subtype);
 
                 $("#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -532,31 +532,31 @@
 
                 $("#top_1 p").html('Half Head  60 mints  &pound; 96').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '96').attr(
-                    'data-service', 'Balayage').attr('data-subtype', subtype);
+                    'data-service', 'Balayage').attr('data-text', 'Half Head  60 mints  £96').attr('data-subtype', subtype);
 
                 $("#top_2 p").html('Full Head  90 mints  &pound; 112').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '90').attr('data-price', '112')
-                    .attr('data-service', 'Balayage').attr('data-subtype', subtype);
+                    .attr('data-service', 'Balayage').attr('data-text', 'Full Head  90 mints  £112').attr('data-subtype', subtype);
 
-                $("#top_3 p").html('+ Root shadow 30 ninuts  &pound; 30').attr('onclick', "");
+                $("#top_3 p").html('+ Root shadow 30 minuts  &pound; 30').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '30').attr('data-price', '30')
-                    .attr('data-service', 'Balayage').attr('data-subtype', subtype);
+                    .attr('data-service', 'Balayage').attr('data-text', '+ Root shadow 30 minuts  £30').attr('data-subtype', subtype);
 
                 $("#top_4 p").html('+ Toner  &pound; 15').attr('onclick', "");
                 $("#top_4 span").show().attr('data-time', '').attr('data-price', '15').attr(
-                    'data-service', 'Balayage').attr('data-subtype', subtype);
+                    'data-service', 'Balayage').attr('data-text', '+ Toner  £15').attr('data-subtype', subtype);
 
                 $("#top_5 p").html('+ Colour').attr('onclick', "caseCat('Color')");
                 $("#top_5 span").hide().attr('data-price', '').attr(
-                    'data-service', 'Balayage').attr('data-subtype', subtype);
+                    'data-service', 'Balayage').attr('data-text', '+ Colour').attr('data-subtype', subtype);
 
                 $("#top_6 p").html('+ Blow-Dry').attr('onclick', "caseCat('Blowdry')");
                 $("#top_6 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Balayage').attr('data-subtype', subtype);
+                    'data-service', 'Balayage').attr('data-text', '+ Blow-Dry').attr('data-subtype', subtype);
 
                 $("#top_7 p").html('+ Cut-Blow-Dry').attr('onclick', "caseCat('Cut_Blowdry')");
                 $("#top_7 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Balayage').attr('data-subtype', subtype);
+                    'data-service', 'Balayage').attr('data-text', '+ Cut-Blow-Dry').attr('data-subtype', subtype);
 
                 $("#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -569,35 +569,35 @@
                 $("#top_1,#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").show();
                 $("#top_1 p").html('Short  90 mints  &pound; 80').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '80').attr(
-                    'data-service', 'Full Head Bleach').attr('data-subtype', subtype);
+                    'data-service', 'Full Head Bleach').attr('data-text', 'Short  90 mints  £80').attr('data-subtype', subtype);
 
                 $("#top_2 p").html('Medium 90 mints  &pound;100').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '90').attr('data-price', '100').attr(
-                    'data-service', 'Full Head Bleach').attr('data-subtype', subtype);
+                    'data-service', 'Full Head Bleach').attr('data-text', 'Medium 90 mints  £100').attr('data-subtype', subtype);
 
                 $("#top_3 p").html('Long 120 mints  &pound; 140').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '120').attr('data-price', '140').attr(
-                    'data-service', 'Full Head Bleach').attr('data-subtype', subtype);
+                    'data-service', 'Full Head Bleach').attr('data-text', 'Long 120 mints  £140').attr('data-subtype', subtype);
 
                 $("#top_4 p").html('Roots Bleach  90 mints  &pound; 50').attr('onclick', "");
                 $("#top_4 span").show().attr('data-time', '90').attr('data-price', '50')
-                    .attr('data-service', 'Full Head Bleach').attr('data-subtype', subtype);
+                    .attr('data-service', 'Full Head Bleach').attr('data-text', 'Roots Bleach  90 mints  £50').attr('data-subtype', subtype);
 
                 $("#top_5 p").html('+ Rots  Toner  15 mints  &pound;16').attr('onclick', "");
                 $("#top_5 span").show().attr('data-time', '15').attr('data-price', '16')
-                .attr('data-service', 'Full Head Bleach').attr('data-subtype', subtype);
+                .attr('data-service', 'Full Head Bleach').attr('data-text', '+ Rots  Toner  15 mints  £16').attr('data-subtype', subtype);
 
                 $("#top_6 p").html('+ Full Head Toner 45 mints  &pound;40').attr('onclick', "");
                 $("#top_6 span").show().attr('data-time', '45').attr('data-price', '40')
-                    .attr('data-service', 'Full Head Bleach').attr('data-subtype', subtype);
+                    .attr('data-service', 'Full Head Bleach').attr('data-text', '+ Full Head Toner 45 mints  £40').attr('data-subtype', subtype);
 
                 $("#top_7 p").html('+ Cut-Blow Dry').attr('onclick', "caseCat('Cut_Blowdry')");
                 $("#top_7 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Full Head Bleach').attr('data-subtype', subtype);
+                    'data-service', 'Full Head Bleach').attr('data-text', '+ Cut-Blow Dry').attr('data-subtype', subtype);
 
                 $("#top_8 p").html('+ Blow Dry').attr('onclick', "caseCat('Blowdry')");
                 $("#top_8 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Full Head Bleach').attr('data-subtype', subtype);
+                    'data-service', 'Full Head Bleach').attr('data-text', '+ Blow Dry').attr('data-subtype', subtype);
 
                 $("#descHeading").hide().text('');
                 $("#description").hide();
@@ -607,15 +607,15 @@
                 $("#top_1,#top_2,#top_3").show();
                 $("#top_1 p").html('To be quoted &pound;.........');
                 $("#top_1 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Colour Correction').attr('data-subtype', subtype);
+                    'data-service', 'Colour Correction').attr('data-text', 'To be quoted £.........').attr('data-subtype', subtype);
 
                 $("#top_2 p").html('+ Cut-Blow Dry').attr('onclick', "caseCat('Cut_Blowdry')");
                 $("#top_2 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Colour Correction').attr('data-subtype', subtype);
+                    'data-service', 'Colour Correction').attr('data-text', '+ Cut-Blow Dry').attr('data-subtype', subtype);
 
                 $("#top_3 p").html('+ Blow Dry').attr('onclick', "caseCat('Blowdry')");
                 $("#top_3 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Colour Correction').attr('data-subtype', subtype);
+                    'data-service', 'Colour Correction').attr('data-text', '+ Blow Dry').attr('data-subtype', subtype);
 
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -626,24 +626,24 @@
                 $("#top_1,#top_2,#top_3,#top_4,#top_5").show();
                 $("#top_1 p").html('Short  60 minutes  &pound; 64').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '64').attr(
-                    'data-service', 'Perm').attr('data-subtype', subtype);
+                    'data-service', 'Perm').attr('data-text', 'Short  60 minutes  £64').attr('data-subtype', subtype);
 
 
                 $("#top_2 p").html('Medium 60 minutes  &pound;88').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '88').attr(
-                    'data-service', 'Perm').attr('data-subtype', subtype);
+                    'data-service', 'Perm').attr('data-text', 'Medium 60 minutes  £88').attr('data-subtype', subtype);
 
                 $("#top_3 p").html('Long 90 minutes  &pound; 104').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '90').attr('data-price', '104').attr(
-                    'data-service', 'Perm').attr('data-subtype', subtype);
+                    'data-service', 'Perm').attr('data-text', 'Long 90 minutes  £104').attr('data-subtype', subtype);
 
                 $("#top_4 p").html('+ Cut-Blow Dry').attr('onclick', "caseCat('Cut_Blowdry')");
                 $("#top_4 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Perm').attr('data-subtype', subtype);
+                    'data-service', 'Perm').attr('data-text', '+ Cut-Blow Dry').attr('data-subtype', subtype);
 
                 $("#top_5 p").html('+ Blow Dry').attr('onclick', "caseCat('Blowdry')");
                 $("#top_5 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Perm').attr('data-subtype', subtype);
+                    'data-service', 'Perm').attr('data-text', '+ Blow Dry').attr('data-subtype', subtype);
 
                 $("#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -655,15 +655,15 @@
 
                 $("#top_1 p").html('Short  60 mints  &pound; 70').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '70').attr(
-                    'data-service', 'Brazilian Blow Dry').attr('data-subtype', subtype);
+                    'data-service', 'Brazilian Blow Dry').attr('data-text', 'Short  60 mints  £70').attr('data-subtype', subtype);
 
                 $("#top_2 p").html('Medium 60 mints  &pound;90').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '90').attr(
-                    'data-service', 'Brazilian Blow Dry').attr('data-subtype', subtype);
+                    'data-service', 'Brazilian Blow Dry').attr('data-text', 'Medium 60 mints  £90').attr('data-subtype', subtype);
 
                 $("#top_3 p").html('Long 60 mints  &pound; 100').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '60').attr('data-price', '100').attr(
-                    'data-service', 'Brazilian Blow Dry').attr('data-subtype', subtype);
+                    'data-service', 'Brazilian Blow Dry').attr('data-text', 'Long 60 mints  £100').attr('data-subtype', subtype);
 
                 $("#descHeading").hide().text('');
                 $("#description").show().text(
@@ -678,15 +678,15 @@
                 $("#top_1,#top_2,#top_3").show();
                 $("#top_1 p").html('Short  90 mints  &pound; 80').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '80').attr(
-                    'data-service', 'Keratin Treatment').attr('data-subtype', subtype);
+                    'data-service', 'Keratin Treatment').attr('data-text', 'Short  90 mints  £80').attr('data-subtype', subtype);
 
                 $("#top_2 p").html('Medium 120 mints  &pound;120').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '120').attr('data-price', '120').attr(
-                    'data-service', 'Keratin Treatment').attr('data-subtype', subtype);
+                    'data-service', 'Keratin Treatment').attr('data-text', 'Medium 120 mints  £120').attr('data-subtype', subtype);
 
                 $("#top_3 p").html('Long 150 mints  &pound; 140').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '150').attr('data-price', '140').attr(
-                    'data-service', 'Keratin Treatment').attr('data-subtype', subtype);
+                    'data-service', 'Keratin Treatment').attr('data-text', 'Long 150 mints £140').attr('data-subtype', subtype);
 
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -700,11 +700,11 @@
                 $("#top_1,#top_2").show();
                 $("#top_1 p").html('Add-on &pound; 20').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '').attr('data-price', '20').attr(
-                    'data-service', 'Olaplex').attr('data-subtype', subtype);
+                    'data-service', 'Olaplex').attr('data-text', 'Add-on £20').attr('data-subtype', subtype);
 
                 $("#top_2 p").html('Stand alone service &pound; 40').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '').attr('data-price', '40').attr(
-                    'data-service', 'Olaplex').attr('data-subtype', subtype);
+                    'data-service', 'Olaplex').attr('data-text', 'Stand alone service £40').attr('data-subtype', subtype);
 
                 $("#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -718,7 +718,7 @@
                 $("#top_1").show();
                 $("#top_1 p").html('60 mints  &pound; 50').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '50').attr(
-                    'data-service', 'Up do').attr('data-subtype', subtype);
+                    'data-service', 'Up do').attr('data-text', '60 mints  £50').attr('data-subtype', subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -739,7 +739,7 @@
                 $("#top_1").show();
                 $("#top_1 p").html('From &pound;350').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '').attr('data-price', '350').attr(
-                    'data-service', 'Tape in Hair').attr('data-subtype', subtype);
+                    'data-service', 'Tape in Hair').attr('data-text', 'From £350').attr('data-subtype', subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").show().text('For full quatation contact freelancer');
@@ -752,7 +752,7 @@
                 $("#top_1").show();
                 $("#top_1 p").html('From &pound;650').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '').attr('data-price', '650').attr(
-                    'data-service', 'Bonded Hair').attr('data-subtype', subtype);
+                    'data-service', 'Bonded Hair').attr('data-text', 'From £650').attr('data-subtype', subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").show().text('For full quatation contact freelance');
@@ -765,7 +765,7 @@
                 $("#top_1").show();
                 $("#top_1 p").html('From &pound;450').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '').attr('data-price', '450').attr(
-                    'data-service', 'Micro Ring').attr('data-subtype', subtype);
+                    'data-service', 'Micro Ring').attr('data-text', 'From £450').attr('data-subtype', subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").show().text('For full quatation contact freelancer');

@@ -33,7 +33,13 @@ $(document).on('click', '.add_to_cart', function (e) {
 		return;
 	}
 	
-	$("#item_text").val($(this).text());
+	if(addtocartType == 'Ladies Services'){
+		console.log($(this).attr('data-text'));
+		$("#item_text").val($(this).attr('data-text'));
+	}else{
+		$("#item_text").val($(this).text());
+	}
+	
 	$("#item_time").val($(this).attr('data-time'));
 	$("#item_price").val($(this).attr('data-price'));
 	$("#item_type").val(addtocartType);

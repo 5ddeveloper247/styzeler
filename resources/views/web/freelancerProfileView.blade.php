@@ -28,7 +28,7 @@
             width: 100%;
             border: 1px solid #c4b9b0;
             text-align: center;
-            padding: 10px;
+            padding: 10px 0 10px 0;
             margin: 10px 0;
             transition: 1s all ease;
         }
@@ -151,6 +151,9 @@
         .fc-scroller {
             overflow-y: hidden !important;
         }
+/*         .booked-slot{ */
+/*         	color:#b1bcc5 !important; */
+/*         } */
     </style>
 @endpush
 
@@ -505,9 +508,16 @@
 
                 <div class="row">
 
-                    <div class="appointment-status text-center">
+                    <div class="appointment-status">
 
                         <h3 id="p_status"></h3>
+                        
+                        @if(@Auth::user()->type == 'client')
+                        	<p class="servicesTimeText" style="font-size: 12px;margin: unset;">Services Time: <span id="serviceTime"></span> minutes</p>
+                        	<p class="servicesTimeText" style="font-size: 12px;margin: unset;">Travelling Time: 60 minutes</p>
+                        	<p class="servicesTimeText" style="font-size: 12px;margin: unset;">Total Time: <span id="serviceTotalTime"></span> minutes</p>
+                        @endif
+                        
 
                     </div>
                 </div>
@@ -2870,7 +2880,7 @@
                     Insufficient tokens you need to buy package!
                 </div>
                 <div class="modal-footer text-center">
-                    <a type="" href="{{ route('businessOwner') }}#packages" class="btn customBtn">Ok</a>
+                    <a type="" href="{{ @Auth::user()->type == 'client' ? route('home_service') : route('businessOwner') }}#packages" class="btn customBtn">Ok</a>
                     <a type="button" class="btn customBtn close-modal" data-dismiss="modal">Close</a>
                 </div>
             </div>
@@ -2892,6 +2902,7 @@
     <script src="{{ asset('customjs/web/profile/profileView.js') }}?v={{ time() }}"></script>
     <script>
         const cart_book = localStorage.getItem('bookType');
+        const cartServicesTime = {{$cartServicesTimeMin}};
         var user = '{{ @Auth::user()->type }}';
 
         if (user == 'client') {

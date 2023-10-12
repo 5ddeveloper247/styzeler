@@ -16,7 +16,7 @@ class CartController extends Controller
 {
 	public function saveAddToCartDetails(Request $request)
 	{
-		
+// 		dd($request->all());
 		if(!isset(Auth::user()->id)){
 			return response()->json(['status' => 500, 'message' => 'Kindly login first!', 'data' => '']);
 		}
