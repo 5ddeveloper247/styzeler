@@ -229,24 +229,21 @@ $(function () {
                 console.log(response.appointments);
                 $.each(response.appointments, function (i) {
 
-                    if (response.appointments[i] != '' && response.appointments[i]['user_booking_slots']['bookings']['status'] !== "cancel"
-                        && response.appointments[i]['user_booking_slots']['bookings']['status'] !== "CANCELLED"
-                        && response.appointments[i]['user_booking_slots']['bookings']['status'] !== "CANCELLED by Salon Owner"
-                        && response.appointments[i]['user_booking_slots']['bookings']['status'] !== "cancel by Freelancer"
-                        && response.appointments[i]['user_booking_slots']['bookings']['status'] !== "CANCELLED due to Expired Time") {
+                    if (response.appointments[i] != '') {
 
-                        console.log(response.appointments[i].user_booking_slots.bookings.freelancer_user.name);
+                        console.log(response.appointments[i]);
                         let id = response.appointments[i]["id"];
                         let emailId = response.appointments[i]["_SalonEmail"];
 
                         let appDate = response.appointments[i]["_AppointmentDate"];
                         let app_created_date = response.appointments[i]["created_at"];
-                        let booking_date = response.appointments[i]['user_booking_slots']['bookings']['date'];
+                        let booking_date = response.appointments[i]['booking_date'];
+                        let booking_time = response.appointments[i]['booking_time'];
 
-                        let freelancer_name = response.appointments[i].user_booking_slots.bookings.freelancer_user.name + ' ' + response.appointments[i].user_booking_slots.bookings.freelancer_user.surname;
-                        let freelancer_category = response.appointments[i].user_booking_slots.bookings.freelancer_user.type;
-                        let freelancer_email = response.appointments[i].user_booking_slots.bookings.freelancer_user.email;
-                        let freelancer_phone = response.appointments[i].user_booking_slots.bookings.freelancer_user.phone;
+                        let freelancer_name = response.appointments[i].freelancer_app_user.name + ' ' + response.appointments[i].freelancer_app_user.surname;
+                        let freelancer_category = response.appointments[i].freelancer_app_user.type;
+                        let freelancer_email = response.appointments[i].freelancer_app_user.email;
+                        let freelancer_phone = response.appointments[i].freelancer_app_user.phone;
                         //  let bookStime = response.appointments[i]["bookingTimeSlots"]['start_time'];
                         //  let bookEtime = response.appointments[i]["bookingTimeSlots"]['end_time'];
 
@@ -254,14 +251,9 @@ $(function () {
                         owner_email = response.appointments[i]["client_user"]['email'];
                         owner_mobile = response.appointments[i]["client_user"]['phone'];
                         owner_category = response.appointments[i]["client_user"]['type'];
-                        owner_status = response.appointments[i]['user_booking_slots']['bookings']['status'];
-
-                        slot_start_time = convertTo12HourFormat(response.appointments[i].user_booking_slots.start_time);
-                        slot_end_time = convertTo12HourFormat(response.appointments[i].user_booking_slots.end_time);
+                        owner_status = 'Booked';
 
                         let app_created_date_dateOnly = app_created_date.split("T")[0];
-
-
                         let app_created_date_booking_date = booking_date.split("T")[0];
 
                         // refinedAvaliableDate(response.appointments[i]["availableDays"]);
@@ -291,8 +283,8 @@ $(function () {
                                 '<p><strong>Book Date: </strong> ' +
                                 app_created_date_booking_date + '&nbsp;&nbsp;</p>' +
 
-                                '<p><strong>Book Time: </strong> ' +
-                                slot_start_time + '-' + slot_end_time +
+                                '<p><strong>Book Time: </strong> ' + booking_time
+                                +
                                 '</p>' +
 
                                 '</span>' + '</div>' + '</a>' +
