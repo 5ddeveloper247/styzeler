@@ -357,104 +357,103 @@ class ProfileController extends Controller
                     'message' => 'No enough tokens, first buy package.',
                 ]);
             }
-            
+
             $active_cart = Cart::where('user_id', Auth::user()->id)->where('status', 'active')->first();
 
             if (isset($active_cart->id)) {
 
-            	
-            	$userCart = Cart::with('cart_lines')->where('user_id', Auth::user()->id)->where('status','active')->first();
-            	$bookedUserDetails = User::where('id', $request->user_id)->first();
-            	$slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
-            	$bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->first();
-            	$cartServiceTimeMin = $userCart != null ? $userCart->cart_lines->sum('item_time_min') : 0;
-            	
-            	$totalServiceTime = $cartServiceTimeMin+60;
-            	
-            	$serviceStartTime = Carbon::createFromFormat('H:i', $slotDetails->start_time);
-            	$serviceEndTime = $serviceStartTime->addMinutes($totalServiceTime)->format('H:i');
-            	
-            	if($slotDetails->status == 'booked'){
-            		return response()->json([
-            				'status' => 422,
-            				'message' => 'This slot is already booked, kindly choose different time.',
-            		]);
-            	}
-            	
-            	if($slotDetails->slots_time != 'after_nine'){
-            		
-            		$slots = BookingSlots::where('bookings_id', $slotDetails->bookings_id)->whereBetween('start_time', [$slotDetails->start_time, $serviceEndTime])->orderBy('start_time', 'asc')->get();
-            		
-            		if(count($slots) > 0){
-            			$firstindexSlots = isset($slots[0]) ? $slots[0] : '';
-            			$lastindexSlots = isset($slots[count($slots)-1]) ? $slots[count($slots)-1] : '';
 
-            			if($lastindexSlots->end_time < $serviceEndTime){
-            				return response()->json([
-            						'status' => 422,
-            						'message' => 'There is a break between the slots, kindly choose different time.',
-            				]);
-            			}
-            		
-            			if($firstindexSlots->slots_time != $lastindexSlots->slots_time){
-            				return response()->json([
-            						'status' => 422,
-            						'message' => 'There is a break between the slots, kindly choose different time.',
-            				]);
-            			}
-            		
-            			$hasBookedSlot = $slots->contains(function ($slot) {
-            				return $slot->status !== 'Available';
-            			});
-            		
-            			if ($hasBookedSlot) {
-            				return response()->json([
-            						'status' => 422,
-            						'message' => 'There is a booking between the slots, kindly choose different time.',
-            				]);
-            			}
-            		}
-            		
-            		$commaSeparatedSlotIds = $slots->pluck('id')->implode(',');
-            		 
-            		$slotIdsArray = explode(',', $commaSeparatedSlotIds);
-            		 
-            		BookingSlots::whereIn('id', $slotIdsArray)->update(['status' => 'booked']);
-            		
-            		Appointments::create([
-            				'booking_slots_id' => $commaSeparatedSlotIds,
-            				'booking_date' => $bookingDetails->date,
-            				'booking_time' => $slotDetails->start_time.' - '.$serviceEndTime,
-            				'freelancer_user_id' => $request->user_id,
-            				'booking_user_id' => Auth::id(),
-            		]);
-            	
-            	}
-            	else{
-            		
-            		BookingSlots::where('id', $slotDetails->id)->update([
-            				'end_time' => $serviceEndTime,
-            				'slots_time' => $slotDetails->start_time.' - '.$serviceEndTime,
-            				'status' => 'booked'
-            				
-            		]);
-            		
-            		Appointments::create([
-            				'booking_slots_id' => $slotDetails->id,
-            				'booking_date' => $bookingDetails->date,
-            				'booking_time' => $slotDetails->start_time.' - '.$serviceEndTime,
-            				'freelancer_user_id' => $request->user_id,
-            				'booking_user_id' => Auth::id(),
-            		]);
-            	}
-            	
-            	
-//             	dd($serviceEndTime);
-            	
-            	
-            	
-            	
-            	
+                $userCart = Cart::with('cart_lines')->where('user_id', Auth::user()->id)->where('status', 'active')->first();
+                $bookedUserDetails = User::where('id', $request->user_id)->first();
+                $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
+                $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->first();
+                $cartServiceTimeMin = $userCart != null ? $userCart->cart_lines->sum('item_time_min') : 0;
+
+                $totalServiceTime = $cartServiceTimeMin + 60;
+
+                $serviceStartTime = Carbon::createFromFormat('H:i', $slotDetails->start_time);
+                $serviceEndTime = $serviceStartTime->addMinutes($totalServiceTime)->format('H:i');
+
+                if ($slotDetails->status == 'booked') {
+                    return response()->json([
+                        'status' => 422,
+                        'message' => 'This slot is already booked, kindly choose different time.',
+                    ]);
+                }
+
+                if ($slotDetails->slots_time != 'after_nine') {
+
+                    $slots = BookingSlots::where('bookings_id', $slotDetails->bookings_id)->whereBetween('start_time', [$slotDetails->start_time, date('H:i', strtotime('-1 minutes', strtotime($serviceEndTime)))])->orderBy('start_time', 'asc')->get();
+
+                    $total_slots_time = count($slots) * 30;
+
+                    if (count($slots) > 0) {
+
+                        // $firstindexSlots = isset($slots[0]) ? $slots[0] : '';
+                        // $lastindexSlots = isset($slots[count($slots) - 1]) ? $slots[count($slots) - 1] : '';
+                        if ($total_slots_time < $totalServiceTime == true || ($total_slots_time == $totalServiceTime) != true) {
+                            return response()->json([
+                                'status' => 422,
+                                'message' => 'There is a break between the slots, kindly choose different time.',
+                            ]);
+                        }
+
+                        // if ($firstindexSlots->slots_time != $lastindexSlots->slots_time) {
+                        //     return response()->json([
+                        //         'status' => 422,
+                        //         'message' => 'There is a break between the slots, kindly choose different time.',
+                        //     ]);
+                        // }
+
+                        $hasBookedSlot = $slots->contains(function ($slot) {
+                            return $slot->status !== 'Available';
+                        });
+
+                        if ($hasBookedSlot) {
+                            return response()->json([
+                                'status' => 422,
+                                'message' => 'There is a booking between the slots, kindly choose different time.',
+                            ]);
+                        }
+                    }
+                    $commaSeparatedSlotIds = $slots->pluck('id')->implode(',');
+
+                    $slotIdsArray = explode(',', $commaSeparatedSlotIds);
+
+                    BookingSlots::whereIn('id', $slotIdsArray)->update(['status' => 'booked']);
+
+                    Appointments::create([
+                        'booking_slots_id' => $commaSeparatedSlotIds,
+                        'booking_date' => $bookingDetails->date,
+                        'booking_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
+                        'freelancer_user_id' => $request->user_id,
+                        'booking_user_id' => Auth::id(),
+                    ]);
+                } else {
+
+                    BookingSlots::where('id', $slotDetails->id)->update([
+                        'end_time' => $serviceEndTime,
+                        'slots_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
+                        'status' => 'booked'
+
+                    ]);
+
+                    Appointments::create([
+                        'booking_slots_id' => $slotDetails->id,
+                        'booking_date' => $bookingDetails->date,
+                        'booking_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
+                        'freelancer_user_id' => $request->user_id,
+                        'booking_user_id' => Auth::id(),
+                    ]);
+                }
+
+
+                //             	dd($serviceEndTime);
+
+
+
+
+
                 $cart = Cart::find($active_cart->id);
                 $cart->client_id = $request->user_id;
                 $cart->slot_id = $request->slot_book_id;
@@ -462,12 +461,12 @@ class ProfileController extends Controller
                 $cart->status = 'checkout';
                 $cart->update();
 
-//                 Appointments::create([
-//                 		'booking_slots_id' => $request->slot_book_id,
-//                 		'freelancer_user_id' => $request->user_id,
-//                 		'booking_user_id' => Auth::id(),
-//                 ]);
-             
+                //                 Appointments::create([
+                //                 		'booking_slots_id' => $request->slot_book_id,
+                //                 		'freelancer_user_id' => $request->user_id,
+                //                 		'booking_user_id' => Auth::id(),
+                //                 ]);
+
                 if ($cartExist == 0) {
                     $user = User::find(Auth::user()->id);
                     $user->tokens = $tokens - 1;
