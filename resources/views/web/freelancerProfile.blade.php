@@ -421,8 +421,11 @@
                     </div> --}}
 
                 </div>
+                <p class="text-center" style="margin-bottom: unset; font-size: 10px; color: #fdd431;">
+    				<a class="text-center">Click below to add your availability time</a>
+    			</p>
                 <p class="text-center"><a class="text-center btn addTimeSlots d-none" onclick="addTimeSlots()"
-                        title="Click to add your available time.">Add Slots+</a></p>
+                        title="Click to add your available time.">+</a></p>
 
                 <!-- end of new calendar ---------------------------------------------------- -->
             </div>
@@ -2735,7 +2738,7 @@
                 <div class="modal-body">
                     <h5 class="text-center">Updated!</h5>
                     <p>
-                        The date has been scheduled.
+                        The date has been scheduled. Now you can add your availability time.
                     </p>
                     <button type="button" class="btn customBtn" data-dismiss="modal">Okay</button>
 

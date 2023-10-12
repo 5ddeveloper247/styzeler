@@ -717,7 +717,7 @@
                 <div class="terms-conditions text-center">
                     <div class="terms my-5 btn ">
 
-                        <button type="button" class="btn customBtn" data-toggle="modal"
+                        <button type="button" class="btn customBtn agreeTermCond" data-toggle="modal"
                             data-target="#exampleModalLong">
                             Agree To Terms and Conditions
                         </button>
@@ -823,6 +823,9 @@
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
                 }
             });
+        });
+        $(document).on('click', '.agreeTermCond', function(e) {
+			$("#terms-and-conditions").prop('checked', false);
         });
         $(document).on('click', '#submit_button', function(e) {
 
