@@ -66,7 +66,7 @@
                                 <ul class="btns scrollbar">
                                     <li>
                                         <button type="button" class="shadow_btn shadowbtn"
-                                            onclick="caseCat('Classic_facial')">Classic facial <img
+                                            onclick="caseCat('Classic_facial')">Classic Facial <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
@@ -85,13 +85,13 @@
                                     </li>
                                     <li>
                                         <button type="button" class="shadow_btn shadowbtn"
-                                            onclick="caseCat('Antioxidant_facial')">Antioxidant facial <img
+                                            onclick="caseCat('Antioxidant_facial')">Antioxidant Facial <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
                                         <button type="button" class="shadow_btn shadowbtn"
-                                            onclick="caseCat('Acupuncture_facial')">Acupuncture facial <img
+                                            onclick="caseCat('Acupuncture_facial')">Acupuncture Facial <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>

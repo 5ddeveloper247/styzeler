@@ -57,8 +57,8 @@
 				<div class="inner">
 					<div class="btn_list">
 						
-						<a href="{{route('servicesLadies')}}" class="shadow_btn" data-id="ladies-services">Ladies services</a>
-						<a href="{{route('servicesMakeup')}}" class="shadow_btn" data-id="makeup">Make-up</a>
+						<a href="{{route('servicesLadies')}}" class="shadow_btn" data-id="ladies-services">Ladies Services</a>
+						<a href="{{route('servicesMakeup')}}" class="shadow_btn" data-id="makeup">Make-Up</a> 
 						<a href="javascript:;" class="shadow_btn" data-id="gents-services">Gents Services</a>
 						
 					</div>

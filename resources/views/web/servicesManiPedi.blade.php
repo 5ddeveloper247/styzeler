@@ -353,7 +353,7 @@
             if (i == 'Russian_Mani_Pedicure') {
                 $("#top_1").show();
                 $("#top_1 p").html('90 Minuts &pound; 65').attr('data-time', '90').attr('data-price', '65').attr(
-                    'data-service', 'Russian Mani Pedicure').attr('data-subtype', subtype);
+                    'data-service', 'Russian Manicure/Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'With a Russian manicure, however, the technician will use an electronic file or drill to remove the extra cuticle under the nail bed for a clean trim'
@@ -364,7 +364,7 @@
             if (i == 'Russian_Mani') {
                 $("#top_1").show();
                 $("#top_1 p").html('45 Minuts &pound; 35').attr('data-time', '45').attr('data-price', '35').attr(
-                    'data-service', 'Russian Mani').attr('data-subtype', subtype);
+                    'data-service', 'Russian Manicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'The Russian Manicure involves a dry process of filing, cutting, and removing the cuticle with electric drill bits entirely for a clean, edge-less look'
@@ -387,7 +387,7 @@
             if (i == 'French_Mani_Pedicure') {
                 $("#top_1").show();
                 $("#top_1 p").html('90 Minuts &pound; 56').attr('data-time', '90').attr('data-price', '56').attr(
-                    'data-service', 'French Mani Pedicure').attr('data-subtype', subtype);
+                    'data-service', 'French Manicure/Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'A French manicure or pedicure is a specific style of painting the nails that consists of a natural looking clear, pink or nude toned base polish paired with thin white tips.'
@@ -398,7 +398,7 @@
             if (i == 'French_Mani') {
                 $("#top_1").show();
                 $("#top_1 p").html('45 Minuts &pound; 30').attr('data-time', '45').attr('data-price', '30').attr(
-                    'data-service', 'French Mani').attr('data-subtype', subtype);
+                    'data-service', 'French Manicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'French manicure in which a band of usually white polish across the tip of the nail contrasts with the often clear or pale polish below.'
@@ -420,7 +420,7 @@
             if (i == 'Gel_Mani_Pedicure') {
                 $("#top_1").show();
                 $("#top_1 p").html('120 Minuts &pound; 60').attr('data-time', '120').attr('data-price', '60').attr(
-                    'data-service', 'Gel Mani Pedicure').attr('data-subtype', subtype);
+                    'data-service', 'Gel Manicure/Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'A gel manicure or pedicure involves a manicurist applying two coats of gel then set and hardening under UV (ultra-violet) light using a small, portable UV machine. Application may involve up to three coats of gel, and each coat needs to be set or �cured� under the light'
@@ -431,7 +431,7 @@
             if (i == 'Gel_Mani') {
                 $("#top_1").show();
                 $("#top_1 p").html('60 Minuts &pound; 30').attr('data-time', '60').attr('data-price', '30').attr(
-                    'data-service', 'Gel Mani').attr('data-subtype', subtype);
+                    'data-service', 'Gel Manicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'A gel manicure involves a manicurist applying two coats of gel and then set and hardening under UV (ultra-violet) light using a small, portable UV machine. Application may involve up to three coats of gel, and each coat needs to be set or �cured� under the light'
@@ -483,7 +483,7 @@
             if (i == 'Nail_Art_Gel_mani') {
                 $("#top_1").show();
                 $("#top_1 p").html('70 Minuts &pound; 40').attr('data-time', '70').attr('data-price', '40').attr(
-                    'data-service', 'Nail Art Gel Mani').attr('data-subtype', subtype);
+                    'data-service', 'Nail Art Gel Manicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'Nail art is a creative way to paint, decorate, enhance, and embellish nails. It is a type of artwork that can be done on fingernails and toenails,'
@@ -493,7 +493,7 @@
             if (i == 'Nail_Art_Gel_Pedi') {
                 $("#top_1").show();
                 $("#top_1 p").html('60 Minuts &pound; 45').attr('data-time', '60').attr('data-price', '45').attr(
-                    'data-service', 'Nail Art Gel Pedi').attr('data-subtype', subtype);
+                    'data-service', 'Nail Art Gel Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     "Nail art is a creative way to paint, decorate, enhance, and embellish nails. It is a type of artwork that can be done on fingernails and toenails,"
@@ -504,7 +504,7 @@
             if (i == 'Gel_Mani_Pedicure') {
                 $("#top_1").show();
                 $("#top_1 p").html('120 Minuts &pound; 60').attr('data-time', '120').attr('data-price', '60').attr(
-                    'data-service', 'Gel Mani Pedicure').attr('data-subtype', subtype);
+                    'data-service', 'Gel Manicure/Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'A gel manicure or pedicure involves a manicurist applying two coats of gel then set and hardening under UV (ultra-violet) light using a small, portable UV machine. Application may involve up to three coats of gel, and each coat needs to be set or �cured� under the light'

@@ -113,7 +113,7 @@
                                         <ul class="sub_btns">
                                             <li>
                                                 <button type="button" class="shadow_btn"
-                                                    onclick="caseCat('Ckassic_full','Eyelash Extensions')">Classic full <img
+                                                    onclick="caseCat('Ckassic_full','Eyelash Extensions')">Classic Full <img
                                                         src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
@@ -139,14 +139,14 @@
                                             </li>
                                             <li>
                                                 <button type="button" class="shadow_btn"
-                                                    onclick="caseCat('Hybrid_full_set','Eyelash Extensions')">Hybrid full
-                                                    set <img src="{{ asset('template_new/assets/images/eye.svg') }}"
+                                                    onclick="caseCat('Hybrid_full_set','Eyelash Extensions')">Hybrid Full Set 
+                                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
                                             <li>
                                                 <button type="button" class="shadow_btn"
-                                                    onclick="caseCat('Hybrid_half_set','Eyelash Extensions')">Hybrid half
-                                                    set <img src="{{ asset('template_new/assets/images/eye.svg') }}"
+                                                    onclick="caseCat('Hybrid_half_set','Eyelash Extensions')">Hybrid Half Set 
+                                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
                                             <li>
