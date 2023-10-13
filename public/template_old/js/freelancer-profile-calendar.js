@@ -158,11 +158,31 @@ jQuery(document).ready(function () {
                 }
                 if (showResponse.data[i]["booking_time_slots"] && profileStatus != 'Freelancer') {
                   $.each(showResponse.data[i]["booking_time_slots"], function (j) {
+                	  console.log(showResponse.data);
                     var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
-                    var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
+                   
+                    if(showResponse.data[i]["booking_time_slots"][j]['end_time'] != ''){
+                    	var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
+                    }else{
+                    	var endtimeAMPM = '';
+                    }
+                    
                     var slots_time = showResponse.data[i]["booking_time_slots"][j]['slots_time'];
-                    console.log(slots_time)
-                    html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2" onclick = changeSlotDate(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
+                    
+                    var slots_time = showResponse.data[i]["booking_time_slots"][j]['slots_time'];
+                    var status = showResponse.data[i]["booking_time_slots"][j]['status'];
+                    
+                    if(status == 'booked'){
+                    	html += `<div title="" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = ''><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div>`;
+                    }else{
+                    	if(slots_time == 'after_nine'){
+                        	html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>` + starttimeAMPM + ` - After 9</div>`;
+                        }else{
+                        	html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
+                        }
+                    }
+                    
+//                    html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2" onclick = changeSlotDate(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
                     // count++
                   });
                   changeSlot = '';
@@ -174,7 +194,7 @@ jQuery(document).ready(function () {
               $("[data-date=" + showResponse.data[i]["date"] + "]").css("color", "#ffdb59");
             });
 
-            $(".timeSlots").append(html);
+            $(".timeSlots").html(html);
             callback(events);
           }
 

@@ -281,7 +281,7 @@ class ProfileController extends Controller
 
                         'bookings_id' => $book_id->id,
                         'start_time' => '07:00',
-                        'end_time' => '19:00'
+                        'end_time' => '21:00'
 
                     ]);
                 }

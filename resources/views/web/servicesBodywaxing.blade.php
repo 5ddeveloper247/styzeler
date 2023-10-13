@@ -107,7 +107,7 @@
                                             </li>
                                             <li>
                                                 <button type="button" class="shadow_btn"
-                                                    onclick="caseCat('Half_Arms','Female wax')">Half Arms <img
+                                                    onclick="caseCat('Half_Arms','Female wax')">Forearm <img
                                                         src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
@@ -172,13 +172,13 @@
                                             </li>
                                             <li>
                                                 <button type="button" class="shadow_btn"
-                                                    onclick="caseCat('Full_legs','Male wax')">Full legs <img
+                                                    onclick="caseCat('Full_legs','Male wax')">Full Legs <img
                                                         src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
                                             <li>
                                                 <button type="button" class="shadow_btn"
-                                                    onclick="caseCat('Full_arms','Male wax')">Full arms <img
+                                                    onclick="caseCat('Full_arms','Male wax')">Full Arms <img
                                                         src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
@@ -190,7 +190,7 @@
                                             </li>
                                             <li>
                                                 <button type="button" class="shadow_btn"
-                                                    onclick="caseCat('Chest_abbs','Male wax')">Chest + abbs <img
+                                                    onclick="caseCat('Chest_abbs','Male wax')">Chest + Abbs <img
                                                         src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
@@ -415,7 +415,7 @@
             if (i == 'Half_Arms') {
                 $("#top_1").show();
                 $("#top_1 p").html('30 Minuts &pound; 12').attr('data-time', '30').attr('data-price', '12').attr(
-                    'data-subtype', subtype).attr('data-service', 'Half Arms');
+                    'data-subtype', subtype).attr('data-service', 'Forearm');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     'This wax includes everything from the elbow down. This normally includes the hands and fingers too.'
