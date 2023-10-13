@@ -773,7 +773,7 @@ class ProfileController extends Controller
 
             )->with([
                 'clientUser',
-                'freelancerUser',
+                'freelancerAppUser',
                 // 'userBookingSlots',
                 // 'userBookingSlots.bookings',
                 // 'userBookingSlots.bookings.FreelancerUser'
@@ -786,10 +786,11 @@ class ProfileController extends Controller
                 ]
 
             )->with([
+                'clientAppUser',
                 'freelancerUser',
-                'userBookingSlots',
-                'userBookingSlots.bookings',
-                'userBookingSlots.bookings.FreelancerUser'
+                // 'userBookingSlots',
+                // 'userBookingSlots.bookings',
+                // 'userBookingSlots.bookings.FreelancerUser'
             ])->get();
         }
 
@@ -827,27 +828,27 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(
                 [
                     ['booking_user_id', Auth::id()],
-                    ['created_at', '>=', $currentDate]
+                    ['created_at', '<', $currentDate]
                 ]
 
             )->with([
                 'clientUser',
-                'userBookingSlots',
-                'userBookingSlots.bookings',
-                'userBookingSlots.bookings.FreelancerUser'
+                'freelancerAppUser',
+                // 'userBookingSlots.bookings',
+                // 'userBookingSlots.bookings.FreelancerUser'
             ])->get();
         } else {
             $getProfileData = Appointments::where(
                 [
                     ['freelancer_user_id', Auth::id()],
-                    ['created_at', '>=', $currentDate]
+                    ['created_at', '<', $currentDate]
                 ]
 
             )->with([
+                'clientAppUser',
                 'freelancerUser',
-                'userBookingSlots',
-                'userBookingSlots.bookings',
-                'userBookingSlots.bookings.FreelancerUser'
+                // 'userBookingSlots.bookings',
+                // 'userBookingSlots.bookings.FreelancerUser'
             ])->get();
         }
 
@@ -879,7 +880,13 @@ class ProfileController extends Controller
 
         $userDetails = User::where('id', Auth::user()->id)->first();
 
-        return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
+        return response()->json(
+            [
+                'status' => 200,
+                'message' => '',
+                'data' => $userDetails
+            ]
+        );
     }
 
     public function useOwnerTokens(Request $request)
