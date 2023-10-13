@@ -57,7 +57,7 @@
 					<div class="inner">
 						<div class="btn_list">
 							
-							<a href="{{route('servicesLadies')}}" class="shadow_btn" data-id="ladies-services">Ladies services</a>
+							<a href="{{route('servicesLadies')}}" class="shadow_btn" data-id="ladies-services">Ladies Services</a>
 							<a href="javascript:;" class="shadow_btn" data-id="makeup">Make-up</a>
 							<a href="{{route('servicesGents')}}" class="shadow_btn" data-id="gents-services">Gents Services</a>
 							
@@ -66,10 +66,10 @@
 							<div class="text_list_inner">
 								<ul class="btns scrollbar">
 									<li>
-										<button type="button" class="shadow_btn shadowbtn"   onclick="caseCat('Makeup_Blowdry')">Make-Up & Blow-Dry <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+										<button type="button" class="shadow_btn shadowbtn"   onclick="caseCat('Makeup_Blowdry')">Blow-Dry & Make-Up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 									</li>
 									<li>
-										<button type="button" class="shadow_btn shadowbtn"   onclick="caseCat('Make_up_Up_do')">Make-Up & Up-Do <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+										<button type="button" class="shadow_btn shadowbtn"   onclick="caseCat('Make_up_Up_do')">Up-Do & Make-Up  <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 									</li>
 									<li>
 										<button type="button" class="shadow_btn shadowbtn"   onclick="caseCat('Make_up')">Make-Up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
@@ -216,7 +216,7 @@
 		 if(i=='Makeup_Blowdry') { 
 		  $("#top_1").show();
 		  $("#top_1 p").html('90 mints  &pound;100').attr('data-time', '90').attr('data-price', '100').attr(
-                  'data-service', 'Blow-dry & Make-up').attr('data-subtype', subtype);
+                  'data-service', 'Blow-Dry & Make-Up').attr('data-subtype', subtype);
 		  $("#top_2,#top_3").hide();
 		  $("#description").text('This package combines two of the most requested treatments for a special night out or event. Styzeler Hair & Makeup Freelancers  will provide the Make-up and   a Blow-dry of your choice');
 	    }  
@@ -225,7 +225,7 @@
 		if(i=='Make_up_Up_do') { 
 			$("#top_1").show();
 		    $("#top_1 p").html('80 mints  &pound;90').attr('data-time', '80').attr('data-price', '90').attr(
-	                  'data-service', 'Up-do & Make-up').attr('data-subtype', subtype);	
+	                  'data-service', 'Up-Do & Make-Up').attr('data-subtype', subtype);	
 			$("#top_2,#top_3").hide();
 	        $("#description").text('This package combines two of the most requested treatments for a special night out or event. Styzeler Hair & Makeup Freelancers  will provide the Make-up and   Up-do of your choice,');
 	    }  
@@ -243,7 +243,7 @@
 			$("#top_1").show();
 	  	   	$("#top_2,#top_3").hide();
 	  	 	$("#top_1 p").html('service &pound;20').attr('data-time', '').attr('data-price', '20').attr(
-                 'data-service', 'Bridal Make-up').attr('data-subtype', subtype);	
+                 'data-service', 'Bridal Make-Up').attr('data-subtype', subtype);	
 	       	$("#description").text('the bridal makeup needs to be linked with the bridal page');
 	    }
 	}

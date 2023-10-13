@@ -590,11 +590,11 @@
                 $("#top_6 span").show().attr('data-time', '45').attr('data-price', '40')
                     .attr('data-service', 'Full Head Bleach').attr('data-text', '+ Full Head Toner 45 mints  £40').attr('data-subtype', subtype);
 
-                $("#top_7 p").html('+ Cut-Blow Dry').attr('onclick', "caseCat('Cut_Blowdry')");
+                $("#top_7 p").html('+ Cut- Blow-Dry').attr('onclick', "caseCat('Cut_Blowdry')");
                 $("#top_7 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Full Head Bleach').attr('data-text', '+ Cut- Blow-Dry').attr('data-subtype', subtype);
 
-                $("#top_8 p").html('+ Blow Dry').attr('onclick', "caseCat('Blowdry')");
+                $("#top_8 p").html('+ Blow-Dry').attr('onclick', "caseCat('Blowdry')");
                 $("#top_8 span").hide().attr('data-time', '').attr('data-price', '').attr(
                     'data-service', 'Full Head Bleach').attr('data-text', '+ Blow-Dry').attr('data-subtype', subtype);
 
