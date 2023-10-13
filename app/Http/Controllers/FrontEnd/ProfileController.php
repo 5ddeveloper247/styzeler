@@ -391,7 +391,8 @@ class ProfileController extends Controller
 
                         // $firstindexSlots = isset($slots[0]) ? $slots[0] : '';
                         // $lastindexSlots = isset($slots[count($slots) - 1]) ? $slots[count($slots) - 1] : '';
-                        if ($total_slots_time > $totalServiceTime == false || ($total_slots_time >= $totalServiceTime) != true) {
+                        // dd($total_slots_time > $totalServiceTime, $total_slots_time == $totalServiceTime);
+                        if ($total_slots_time > $totalServiceTime || ($total_slots_time == $totalServiceTime) != true) {
                             return response()->json([
                                 'status' => 422,
                                 'message' => 'There is a break between the slots, kindly choose different time.',

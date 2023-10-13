@@ -1526,11 +1526,10 @@
                                         name="ladyWaxingServices[]">
                                     <label class="form-check-label" for="underarms">Underarms</label>
                                 </div>
-
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="forearms" value="Forearms"
+                                    <input class="form-check-input" type="checkbox" id="forearm" value="Forearm"
                                         name="ladyWaxingServices[]">
-                                    <label class="form-check-label" for="forearms">Forearms</label>
+                                    <label class="form-check-label" for="forearm">Forearm</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="upper-legs"
@@ -1623,9 +1622,9 @@
                                     <label class="form-check-label" for="full-legs">Full Legs</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="full-harms"
-                                        value="Full Harms" name="maleWaxingServices[]">
-                                    <label class="form-check-label" for="full-harms">Full Harms</label>
+                                    <input class="form-check-input" type="checkbox" id="forearms" value="Forearm"
+                                        name="maleWaxingServices[]">
+                                    <label class="form-check-label" for="forearms">Forearm</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="shoulders" value="Shoulders"
