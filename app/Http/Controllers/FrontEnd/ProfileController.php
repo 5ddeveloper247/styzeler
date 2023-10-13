@@ -391,7 +391,7 @@ class ProfileController extends Controller
 
                         // $firstindexSlots = isset($slots[0]) ? $slots[0] : '';
                         // $lastindexSlots = isset($slots[count($slots) - 1]) ? $slots[count($slots) - 1] : '';
-                        if ($total_slots_time < $totalServiceTime == true || ($total_slots_time == $totalServiceTime) != true) {
+                        if ($total_slots_time > $totalServiceTime == false || ($total_slots_time >= $totalServiceTime) != true) {
                             return response()->json([
                                 'status' => 422,
                                 'message' => 'There is a break between the slots, kindly choose different time.',
@@ -773,9 +773,10 @@ class ProfileController extends Controller
 
             )->with([
                 'clientUser',
-                'userBookingSlots',
-                'userBookingSlots.bookings',
-                'userBookingSlots.bookings.FreelancerUser'
+                'freelancerAppUser',
+                // 'userBookingSlots',
+                // 'userBookingSlots.bookings',
+                // 'userBookingSlots.bookings.FreelancerUser'
             ])->get();
         } else {
             $getProfileData = Appointments::where(
@@ -785,10 +786,11 @@ class ProfileController extends Controller
                 ]
 
             )->with([
+                'clientAppUser',
                 'freelancerUser',
-                'userBookingSlots',
-                'userBookingSlots.bookings',
-                'userBookingSlots.bookings.FreelancerUser'
+                // 'userBookingSlots',
+                // 'userBookingSlots.bookings',
+                // 'userBookingSlots.bookings.FreelancerUser'
             ])->get();
         }
 
@@ -826,27 +828,27 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(
                 [
                     ['booking_user_id', Auth::id()],
-                    ['created_at', '>=', $currentDate]
+                    ['created_at', '<', $currentDate]
                 ]
 
             )->with([
                 'clientUser',
-                'userBookingSlots',
-                'userBookingSlots.bookings',
-                'userBookingSlots.bookings.FreelancerUser'
+                'freelancerAppUser',
+                // 'userBookingSlots.bookings',
+                // 'userBookingSlots.bookings.FreelancerUser'
             ])->get();
         } else {
             $getProfileData = Appointments::where(
                 [
                     ['freelancer_user_id', Auth::id()],
-                    ['created_at', '>=', $currentDate]
+                    ['created_at', '<', $currentDate]
                 ]
 
             )->with([
+                'clientAppUser',
                 'freelancerUser',
-                'userBookingSlots',
-                'userBookingSlots.bookings',
-                'userBookingSlots.bookings.FreelancerUser'
+                // 'userBookingSlots.bookings',
+                // 'userBookingSlots.bookings.FreelancerUser'
             ])->get();
         }
 
@@ -878,7 +880,13 @@ class ProfileController extends Controller
 
         $userDetails = User::where('id', Auth::user()->id)->first();
 
-        return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
+        return response()->json(
+            [
+                'status' => 200,
+                'message' => '',
+                'data' => $userDetails
+            ]
+        );
     }
 
     public function useOwnerTokens(Request $request)

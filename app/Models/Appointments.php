@@ -38,6 +38,14 @@ class Appointments extends Model
     {
         return $this->belongsTo(User::class, 'booking_user_id', 'id')->where('id', Auth::id());
     }
+    public function freelancerAppUser(): HasOne
+    {
+        return $this->hasOne(User::class, 'id', 'freelancer_user_id');
+    }
+    public function clientAppUser(): HasOne
+    {
+        return $this->hasOne(User::class, 'id', 'booking_user_id');
+    }
     public function adminClientUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'booking_user_id', 'id');
