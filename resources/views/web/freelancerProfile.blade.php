@@ -73,17 +73,17 @@
     <!-- Content -->
     <div class="profile container">
 
-        <div class="profile-pic text-center aos-init aos-animate" data-aos="fade-up">
+        <div class="profile-pic aos-init aos-animate text-center" data-aos="fade-up">
 
             <img alt="" id="profile-image-id"
                 src="{{ asset(isset($data->hero_image) ? $data->hero_image : 'template_old/images/blank.png') }}"
                 width="100%">
 
 
-            <p><a class="text-center btn edit_pro_pic" onclick="editProfilePic()" title="Edit">+</a></p>
+            <p><a class="btn edit_pro_pic text-center" onclick="editProfilePic()" title="Edit">+</a></p>
         </div>
 
-        <div class="row my-4 justify-content-center">
+        <div class="row justify-content-center my-4">
             <div class="col-3 text-center">
                 <div class="profile btn customBtn" id="profile">Profile</div>
             </div>
@@ -100,9 +100,9 @@
         </div>
 
         <div class="row justify-content-center">
-            <div class="showProfile col-10 text-left mt-4" id="showProfile" style="">
+            <div class="showProfile col-10 mt-4 text-left" id="showProfile" style="">
 
-                <div class="name row ">
+                <div class="name row">
                     <label class="color-1 col-lg-2">Name : </label>
                     <p class="col-lg-10" id="ownerName"></p>
                 </div>
@@ -156,21 +156,21 @@
                 </div>
 
                 <!-- <div class="status row">
-                                                                                                                                                                <label class="color-1 col-lg-3">Total Tokens : </label>
-                                                                                                                                                                <p class="col-lg-9" id="total_tokens"></p>
+                                                                                                                                                                        <label class="color-1 col-lg-3">Total Tokens : </label>
+                                                                                                                                                                        <p class="col-lg-9" id="total_tokens"></p>
 
-                                                                                                                                                            </div>
-                                                                                                                                                            <div class="status row">
-                                                                                                                                                                <label class="color-1 col-lg-3">Remaining Tokens : </label>
-                                                                                                                                                                <p class="col-lg-9" id="remaining_tokens"></p>
+                                                                                                                                                                    </div>
+                                                                                                                                                                    <div class="status row">
+                                                                                                                                                                        <label class="color-1 col-lg-3">Remaining Tokens : </label>
+                                                                                                                                                                        <p class="col-lg-9" id="remaining_tokens"></p>
 
-                                                                                                                                                            </div> -->
+                                                                                                                                                                    </div> -->
 
 
 
                 <div class="products row">
                     <h3><label class="color-1 col-lg-12">Products : </label></h3>
-                    <a class="text-center btn" onclick="editServiceAndProduct();" title="Edit">✎</a>
+                    <a class="btn text-center" onclick="editServiceAndProduct();" title="Edit">✎</a>
                     <div class="col-lg-12" id="ownerProduct">
 
                         <div class="text-left">
@@ -214,7 +214,7 @@
 
                 <div class="services row">
                     <h3><label class="color-1 col-lg-12">Services : </label></h3>
-                    <a class="text-center btn" onclick="editServiceAndProduct();" title="Edit">✎</a>
+                    <a class="btn text-center" onclick="editServiceAndProduct();" title="Edit">✎</a>
                     <div class="col-lg-12" id="ownerService">
                         <div class="text-left">
                             <h4 class="font-weight-bold" id="hairCuttingServicesheading"></h4>
@@ -324,7 +324,7 @@
                 @if ($data->type != 'beautician')
                     <div class="brands row">
                         <h3><label class="color-1 col-lg-12">Brands : </label></h3>
-                        <a class="text-center btn" onclick="editServiceAndProduct();" title="Edit">✎</a>
+                        <a class="btn text-center" onclick="editServiceAndProduct();" title="Edit">✎</a>
                         <div class="col-lg-12" id="ownerService">
                             <div class="text-left">
                                 <h4 class="font-weight-bold" id="hairColorBrandsheading"></h4>
@@ -338,14 +338,14 @@
 
                 <div class="gallery">
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
-                    <h1 class="color-1 col-lg-12 text-center">GALLERY <a class="text-right btn uploadBtn"
+                    <h1 class="color-1 col-lg-12 text-center">GALLERY <a class="btn uploadBtn text-right"
                             style="font-size:1vw;" onclick="updateGallery()"
                             title="Upload new image/images"><u>(Upload)</u></a></h1>
 
                     <hr>
                     <hr>
                     {{-- @dd($data->data->{'image-gallery'}) --}}
-                    <div class=" row" id="gallery-content">
+                    <div class="row" id="gallery-content">
 
                         {{-- @if (!empty($data->gallery))
                             @foreach ($data->gallery as $key => $value)
@@ -366,19 +366,19 @@
 
 
             </div>
-            <div class="showReviews col-10 text-center mt-5" id="showReviews">
-                <div class="text-left  mt-4" id="showReviewLike">
+            <div class="showReviews col-10 mt-5 text-center" id="showReviews">
+                <div class="mt-4 text-left" id="showReviewLike">
 
                 </div>
             </div>
-            <div class="showLikes col-10 text-center mt-5" id="showLikes">
+            <div class="showLikes col-10 mt-5 text-center" id="showLikes">
                 This will be likes
             </div>
-            <div class="showBook col-10 text-left mt-5" id="showBook">
+            <div class="showBook col-10 mt-5 text-left" id="showBook">
 
                 <!-- new calendar  ---------------------------------------------------------- -->
 
-                <div class="p-0 p-md-3 col-lg-12">
+                <div class="p-md-3 col-lg-12 p-0">
                     <!-- <h2 class="mb-4">Full Calendar</h2> -->
                     <div class="card">
                         <div class="card-body p-0">
@@ -422,15 +422,15 @@
 
                 </div>
                 <p class="text-center" style="margin-bottom: unset; font-size: 10px; color: #fdd431;">
-    				<a class="text-center">Click below to add your availability time</a>
-    			</p>
-                <p class="text-center"><a class="text-center btn addTimeSlots d-none" onclick="addTimeSlots()"
+                    <a class="text-center">Click below to add your availability time</a>
+                </p>
+                <p class="text-center"><a class="btn addTimeSlots d-none text-center" onclick="addTimeSlots()"
                         title="Click to add your available time.">+</a></p>
 
                 <!-- end of new calendar ---------------------------------------------------- -->
             </div>
         </div>
-        <div class="row total_time_slots ">
+        <div class="row total_time_slots">
 
         </div>
         <div class="row timeSlots">
@@ -445,7 +445,7 @@
 
     <!-- edit profile picture -->
     <div class="modal profile-pic-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog " role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -465,7 +465,7 @@
                             <label for="stylist-picture">+</label>
                         </div>
                         </p>
-                        <button type="submit" id="updateProfileImage" class="btn customBtn ">Okay</button>
+                        <button type="submit" id="updateProfileImage" class="btn customBtn">Okay</button>
                     </form>
 
                     <!-- <button type="button" class="btn customBtn" data-dismiss="modal"  >Okay</button> -->
@@ -482,7 +482,7 @@
         <input type="hidden" name="type" value="{{ Auth::user()->type }}">
         <div class="modal name-mobile-modal" tabindex="-1" role="dialog" data-keyboard="false"
             data-backdrop="static">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -494,15 +494,15 @@
                         <h5 class="text-center">Edit Name and Mobile</h5>
                         <p>
                         <div class="form-group">
-                            <input type="text" class="form-control " id="stylist-name" name="stylist_name"
+                            <input type="text" class="form-control" id="stylist-name" name="stylist_name"
                                 aria-describedby="stylist-name" placeholder="Name">
                         </div>
                         <div class="form-group">
-                            <input type="text" class="form-control " id="stylist-surname" name="stylist_surname"
+                            <input type="text" class="form-control" id="stylist-surname" name="stylist_surname"
                                 aria-describedby="stylist-surname" placeholder="Surname">
                         </div>
                         <div class="form-group">
-                            <input type="tel" class="form-control " id="stylist-mobile" name="stylist_mobile"
+                            <input type="tel" class="form-control" id="stylist-mobile" name="stylist_mobile"
                                 aria-describedby="stylist-mobile" placeholder="Mobile">
                         </div>
                         </p>
@@ -520,7 +520,7 @@
 
         <!-- For age -->
         <div class="modal age-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -576,7 +576,7 @@
         <!-- Qualification -->
         <div class="modal qualification-modal" tabindex="-1" role="dialog" data-keyboard="false"
             data-backdrop="static">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -609,37 +609,37 @@
                                     NVQ Assesor, training assesor
                                 </label>
                             </div>
-                            <div class="form-group text-right ">
+                            <div class="form-group text-right">
 
                             </div>
                             <div class="form-group">
-                                <div class="tool-div ">
+                                <div class="tool-div">
                                     <label for="video" class="color-1">Update Trade test Video</label><span
                                         style="float: right"><i class="fa fa-exclamation-circle exclamation ml-2"
                                             aria-hidden="true" data-toggle="tooltip" title=""
-                                            data-original-title="Styzeler Hair and Beauty agency requires a trade test video to assess each freelancer’s skills and personality for Fair use and fair dealing. 
+                                            data-original-title="Styzeler Hair and Beauty agency requires a trade test video to assess each freelancer’s skills and personality for Fair use and fair dealing.
                                                     A  head mannequin can be used to showcase your skills based on your services.
                                                     COLORE. Highlights and Balayage can be combined.
                                                     CUT  Free choice between Square layered, Round layered, Bob, graduated Bob.
                                                     BARBER   Skin fade, Comb over Scissors."></i></span>
                                 </div>
-                                <input class="form-control " type="url" id="video" name="video"
+                                <input class="form-control" type="url" id="video" name="video"
                                     placeholder="Video Link">
                             </div>
 
                             <div class="form-group">
                                 <label for="utr_number" class="color-1">Edit UTR Number</label>
-                                <input class="form-control " type="text" id="utr-number" name="utr_number">
+                                <input class="form-control" type="text" id="utr-number" name="utr_number">
                             </div>
                             <div class="form-group">
-                                <div class="tool-div ">
+                                <div class="tool-div">
                                     <label for="public_liability_insurance" class="color-1">Update Public Liability
                                         Insurance</label>
                                     <span style="float: right"><i class="fa fa-exclamation-circle exclamation ml-2"
                                             aria-hidden="true" data-toggle="tooltip" title=""
                                             data-original-title="Public Liablity Insuarence"></i></span>
                                 </div>
-                                <input class="form-control " type="file" id="public-liability-insurance"
+                                <input class="form-control" type="file" id="public-liability-insurance"
                                     name="public_liability_insurance">
                             </div>
                         </div>
@@ -657,7 +657,7 @@
 
         <!-- language -->
         <div class="modal language-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -670,7 +670,7 @@
                         <div class="languages my-5">
 
                             <div class="form-group">
-                                <textarea class="form-control " id="stylist-language" name="stylist_language" rows="3"
+                                <textarea class="form-control" id="stylist-language" name="stylist_language" rows="3"
                                     placeholder="Languages"></textarea>
                             </div>
                         </div>
@@ -688,7 +688,7 @@
 
         <!-- Status -->
         <div class="modal status-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -721,7 +721,7 @@
 
         @if ($data->type != 'wedding')
             <div class="modal type-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -756,7 +756,7 @@
 
             <!-- rate -->
             <div class="modal rate-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -818,7 +818,7 @@
         @endif
         <!-- Zone -->
         <div class="modal work-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -880,7 +880,7 @@
 
         <!-- Resume -->
         <div class="modal resume-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -891,7 +891,7 @@
                         <h5 class="text-center">Edit Resume</h5>
                         <p>
                         <div class="form-group">
-                            <textarea class="form-control " id="stylist-resume" name="stylist_resume" rows="3" placeholder="Resume"></textarea>
+                            <textarea class="form-control" id="stylist-resume" name="stylist_resume" rows="3" placeholder="Resume"></textarea>
                         </div>
                         </p>
                         <button type="button" class="btn customBtn updateBasicInfoProfile"
@@ -910,7 +910,7 @@
             <!-- wedding & barber-service-product-modal  -->
             <div class="modal wedding-service-product-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1363,7 +1363,7 @@
         @if ($data->type === 'beautician')
             <div class="modal beautician-service-product-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1962,7 +1962,7 @@
                                 </div>
                             </div>
                             <div class="body-treatments my-5">
-                                <h4>Body Treatment <span class="ms-3 fs-14">N/A For Home Service</span></h4>
+                                <h4>Body Treatment <span class="fs-14 ms-3">N/A For Home Service</span></h4>
                                 <h5><u>Services</u></h5>
                                 <div class="form-check">
                                     <input type="hidden" name="bodyTreatmentServices[heading]"
@@ -2148,7 +2148,7 @@
         @if ($data->type === 'hairStylist')
             <div class="modal hairstylist-service-product-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -2559,9 +2559,20 @@
                                     <label class="form-check-label" for="hair-bridal">Hair Bridal</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="hair-extension"
-                                        value="Hair Extension" name="hairColorServices[]">
-                                    <label class="form-check-label" for="hair-extension">Hair Extension</label>
+                                    <input class="form-check-input" type="checkbox" id="tape-in-hair"
+                                        value="Hair Extension Tape-in-Hair" name="hairColorServices[]">
+                                    <label class="form-check-label" for="tape-in-hair">Hair Extension
+                                        Tape-in-Hair</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="micro-ring"
+                                        value="Hair Extension Micro Ring" name="hairColorServices[]">
+                                    <label class="form-check-label" for="micro-ring">Hair Extension Micro Ring</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="bonded-hair"
+                                        value="Hair Extension Bonded Hair" name="hairColorServices[]">
+                                    <label class="form-check-label" for="bonded-hair">Hair Extension Bonded Hair</label>
                                 </div>
                             </div>
                             <div class="chemical-treatments my-5">
@@ -2592,6 +2603,11 @@
                                     <label class="form-check-label" for="chemical-relaxer">Chemical Relaxer</label>
                                 </div>
 
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="olaplex" value="Olaplex"
+                                        name="chemicalTreatmentServices[]">
+                                    <label class="form-check-label" for="olaplex">Olaplex</label>
+                                </div>
                                 <h5 class="mt-5"><u>Products</u></h5>
                                 <div class="form-check">
                                     <input type="hidden" name="chemicalTreatmentProducts[heading]"
@@ -2658,7 +2674,7 @@
     </form>
     <!--Success Modal-->
     <div class="modal success-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog " role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
 
@@ -2677,7 +2693,7 @@
 
     <!-- Gallery Images -->
     <div class="modal gallery-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog " role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -2690,7 +2706,7 @@
                         <p>
                         <div class="form-group">
                             <label for="image_uploads" class="color-1">Upload Pictures</label>
-                            <input class="form-control " type="file" id="image-gallery" name="image_gallery[]"
+                            <input class="form-control" type="file" id="image-gallery" name="image_gallery[]"
                                 accept=".jpg, .jpeg, .png" multiple="">
                         </div>
                         </p>
@@ -2708,7 +2724,7 @@
 
     <!-- Error Modal -->
     <div class="modal error-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog " role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
 
@@ -2729,7 +2745,7 @@
     </div>
 
     <div class="modal avaliable-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog " role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
 
@@ -2748,7 +2764,7 @@
         </div>
     </div>
     <div class="modal slots-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog " role="document">
+        <div class="modal-dialog" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
 

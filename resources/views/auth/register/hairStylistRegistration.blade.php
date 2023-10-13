@@ -17,7 +17,7 @@
                         alt="your image" /> <br>
 
                     <input id="stylist-picture" name="stylist_picture" accept=".jpg, .jpeg, .png"
-                        class="my-4 col-lg-6 hidden" type='file' onchange="loadFile(event);" placeholder="upload" />
+                        class="col-lg-6 my-4 hidden" type='file' onchange="loadFile(event);" placeholder="upload" />
                     <label for="stylist-picture">+</label>
                 </div>
                 <div class="personalDetails">
@@ -30,7 +30,7 @@
                         <input type="text" class="form-control col-lg-6" id="stylist-surname" name="stylist_surname"
                             aria-describedby="stylist-surname" placeholder="Surname">
                     </div>
-                    <div class="form-group text-right col-lg-6 exclamation">
+                    <div class="form-group col-lg-6 exclamation text-right">
                         <i class="fa fa-exclamation-circle" aria-hidden="true" data-toggle="tooltip" data-placement="left"
                             title="Tell us a bit about you and your brief working history!"></i>
                     </div>
@@ -637,10 +637,21 @@
                             name="hairColorServices[]">
                         <label class="form-check-label" for="hair-bridal">Hair Bridal</label>
                     </div>
+
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="hair-extension" value="Hair Extension"
-                            name="hairColorServices[]">
-                        <label class="form-check-label" for="hair-extension">Hair Extension</label>
+                        <input class="form-check-input" type="checkbox" id="tape-in-hair"
+                            value="Hair Extension Tape-in-Hair" name="hairColorServices[]">
+                        <label class="form-check-label" for="tape-in-hair">Hair Extension Tape-in-Hair</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="micro-ring"
+                            value="Hair Extension Micro Ring" name="hairColorServices[]">
+                        <label class="form-check-label" for="micro-ring">Hair Extension Micro Ring</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="bonded-hair"
+                            value="Hair Extension Bonded Hair" name="hairColorServices[]">
+                        <label class="form-check-label" for="bonded-hair">Hair Extension Bonded Hair</label>
                     </div>
                 </div>
                 <div class="chemical-treatments my-5">
@@ -667,6 +678,11 @@
                         <input class="form-check-input" type="checkbox" id="chemical-relaxer" value="Chemical Relaxer"
                             name="chemicalTreatmentServices[]">
                         <label class="form-check-label" for="chemical-relaxer">Chemical Relaxer</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="olaplex" value="Olaplex"
+                            name="chemicalTreatmentServices[]">
+                        <label class="form-check-label" for="olaplex">Olaplex</label>
                     </div>
 
                     <h5 class="mt-5"><u>Products</u></h5>
@@ -715,7 +731,7 @@
                     </div>
                 </div>
                 <div class="terms-conditions text-center">
-                    <div class="terms my-5 btn ">
+                    <div class="terms btn my-5">
 
                         <button type="button" class="btn customBtn agreeTermCond" data-toggle="modal"
                             data-target="#exampleModalLong">
@@ -738,7 +754,7 @@
                                         <h5 class="modal-title text-center" id="exampleModalLongTitle">Terms and
                                             Conditions</h5>
 
-                                        <div class="form-check ">
+                                        <div class="form-check">
                                             <a href="{{ route('privacyPolicy') }}" target="_blank"
                                                 rel="noopener noreferrer">Privacy Policy</a><br>
                                             <a href="{{ route('webTermAndConditions') }}" target="_blank"
@@ -747,17 +763,17 @@
                                                 rel="noopener noreferrer">Freelancer Terms & Conditions</a><br>
                                             <input class="form-check-input btn customBtn" type="checkbox"
                                                 id="terms-and-conditions" value="1" name="agree">
-                                            <label class="form-check-label " for="agree">Agree To Terms and
+                                            <label class="form-check-label" for="agree">Agree To Terms and
                                                 Conditions</label>
                                         </div>
-                                        <div class="submit text-center mt-5">
+                                        <div class="submit mt-5 text-center">
                                             <button type="submit" id="submit_button" class="btn customBtn"
                                                 disabled>Submit</button>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <button type="button" class="btn btn-primary">Save changes</button> -->
                                     </div>
                                 </div>
                             </div>
@@ -768,7 +784,7 @@
                 <!--Success Modal-->
                 <div class="modal success-modal" tabindex="-1" role="dialog" data-keyboard="false"
                     data-backdrop="static">
-                    <div class="modal-dialog " role="document">
+                    <div class="modal-dialog" role="document">
                         <div class="modal-content bg-dark">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -790,7 +806,7 @@
                 <!--Error Modal-->
                 <div class="modal error-modal" tabindex="-1" role="dialog" data-keyboard="false"
                     data-backdrop="static">
-                    <div class="modal-dialog " role="document">
+                    <div class="modal-dialog" role="document">
                         <div class="modal-content bg-dark">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -798,7 +814,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <h5 class="text-center error-message"></h5>
+                                <h5 class="error-message text-center"></h5>
                                 <!--<p>Please try again!</p>-->
                                 <button type="button" class="btn customBtn" data-dismiss="modal">Okay</button>
 
@@ -825,7 +841,7 @@
             });
         });
         $(document).on('click', '.agreeTermCond', function(e) {
-			$("#terms-and-conditions").prop('checked', false);
+            $("#terms-and-conditions").prop('checked', false);
         });
         $(document).on('click', '#submit_button', function(e) {
 
