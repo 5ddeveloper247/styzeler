@@ -21,11 +21,11 @@
     <link rel="stylesheet" href="{{ asset('template_old/css/aos/aos.css') }}">
 
     <!--Custom CSS-->
-    <link rel="stylesheet" href="{{ asset('template_old/css/style.css') }}?v={{time()}}" />
-    <link rel="stylesheet" href="{{ asset('template_new/assets/css/toastr.min.css') }}?v={{time()}}">
+    <link rel="stylesheet" href="{{ asset('template_old/css/style.css') }}?v={{ time() }}" />
+    <link rel="stylesheet" href="{{ asset('template_new/assets/css/toastr.min.css') }}?v={{ time() }}">
 
     <!-- chat links -->
-    <link rel="stylesheet" href="{{ asset('template_new/assets/css/chat_style.css') }}?v={{time()}}" />
+    <link rel="stylesheet" href="{{ asset('template_new/assets/css/chat_style.css') }}?v={{ time() }}" />
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet"

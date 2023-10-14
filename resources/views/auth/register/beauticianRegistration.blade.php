@@ -177,12 +177,12 @@
                     </div>
 
                     <!-- <div class="form-group">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="tool-div col-lg-6">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <label for="video" class="color-1" >Trade test Video</label><span style="float: right"><i class="fa fa-exclamation-circle exclamation ml-2" aria-hidden="true" data-toggle="tooltip" title="Styzeler Hair and Beauty agency requires a trade test video to assess each freelancer’s skills and personality for Fair use and fair dealing. 
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <div class="tool-div col-lg-6">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <label for="video" class="color-1" >Trade test Video</label><span style="float: right"><i class="fa fa-exclamation-circle exclamation ml-2" aria-hidden="true" data-toggle="tooltip" title="Styzeler Hair and Beauty agency requires a trade test video to assess each freelancer’s skills and personality for Fair use and fair dealing. 
                     We require a Seated back massage a mini facial, and a gel manicure or eyelashes extension" ></i></span>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <input class="form-control col-lg-6" type="url" id="video" name="video" placeholder="Video Link">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            <input class="form-control col-lg-6" type="url" id="video" name="video" placeholder="Video Link">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div> -->
 
                     <div class="form-group">
                         <label for="image_uploads" class="color-1">Upload Pictures</label>
@@ -543,30 +543,96 @@
                             Manicures/Pedicures</label>
                     </div>
                     <div class="form-check">
+                        <input type="hidden" name="manicurePedicureServices[heading]" value="Manicure Pedicure">
+                        <input type="hidden" name="manicurePedicureServices[subHeading]" value="Services">
+                        <input class="form-check-input" type="checkbox" id="traditional-mani"
+                            value="Traditional Manicure" name="manicurePedicureServices[]">
+                        <label class="form-check-label" for="traditional-mani">Traditional
+                            Manicure</label>
+                    </div>
+                    <div class="form-check">
+
+                        <input class="form-check-input" type="checkbox" id="traditional-pedi"
+                            value="Traditional Pedicure" name="manicurePedicureServices[]">
+                        <label class="form-check-label" for="traditional-mani-pedi">Traditional
+                            Pedicure</label>
+                    </div>
+                    <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="spa-mani-pedi"
                             value="Spa Manicures/Pedicures" name="manicurePedicureServices[]">
-                        <label class="form-check-label" for="spa-mani-pedi">Spa Manicures/Pedicures</label>
+                        <label class="form-check-label" for="spa-mani-pedi">Spa Manicures/Pedicures <span
+                                style="font-size: 11px; color: red; font-style: italic;">(N/A For Home
+                                Service)</span></label>
                     </div>
+
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="get-mani-pedi" value="Gel Manicure/Pedicure"
                             name="manicurePedicureServices[]">
                         <label class="form-check-label" for="get-mani-pedi">Gel Manicure/Pedicure</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="mani-pedi" value="Manicure/Pedicure"
+                        <input class="form-check-input" type="checkbox" id="get-mani" value="Gel Manicure"
                             name="manicurePedicureServices[]">
-                        <label class="form-check-label" for="mani-pedi">Manicure/Pedicure</label>
+                        <label class="form-check-label" for="get-mani">Gel Manicure</label>
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="get-pedi" value="Gel Pedicure"
+                            name="manicurePedicureServices[]">
+                        <label class="form-check-label" for="get-pedi">Gel Pedicure</label>
+                    </div>
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="regular-mani-pedi"
+                            value="Regular Manicure/Pedicure" name="manicurePedicureServices[]">
+                        <label class="form-check-label" for="regular-mani-pedi">Regular
+                            Manicure/Pedicure</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="regular-mani" value="Regular Manicure"
+                            name="manicurePedicureServices[]">
+                        <label class="form-check-label" for="regular-mani">Regular Manicure</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="regular-pedi" value="Regular Pedicure"
+                            name="manicurePedicureServices[]">
+                        <label class="form-check-label" for="regular-pedi">Regular Pedicure</label>
+                    </div>
+
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="french-mani-pedi"
                             value="French Manicure/Pedicure" name="manicurePedicureServices[]">
-                        <label class="form-check-label" for="french-mani-pedi">French Manicure/Pedicure</label>
+                        <label class="form-check-label" for="french-mani-pedi">French
+                            Manicure/Pedicure</label>
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="french-mani" value="French Manicure"
+                            name="manicurePedicureServices[]">
+                        <label class="form-check-label" for="french-mani">French
+                            Manicure</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="french-pedi" value="French Pedicure"
+                            name="manicurePedicureServices[]">
+                        <label class="form-check-label" for="french-pedi">French
+                            Pedicure</label>
+                    </div>
+
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="russian-mani-pedi"
                             value="Russian Manicure/Pedicure" name="manicurePedicureServices[]">
                         <label class="form-check-label" for="russian-mani-pedi">Russian Manicure/Pedicure</label>
                     </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="russian-mani" value="Russian Manicure"
+                            name="manicurePedicureServices[]">
+                        <label class="form-check-label" for="russian-mani">Russian Manicure</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="russian-pedi" value="Russian Pedicure"
+                            name="manicurePedicureServices[]">
+                        <label class="form-check-label" for="russian-pedi">Russian Pedicure</label>
+                    </div>
+
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="acrylic-nail-extension"
                             value="Acrylic Nail Extension" name="manicurePedicureServices[]">
@@ -588,9 +654,14 @@
                         <label class="form-check-label" for="nail-designs">Nail Designs</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="nail-art" value="Nail Art"
+                        <input class="form-check-input" type="checkbox" id="nail-art" value="Nail Art + Gel Mani"
                             name="manicurePedicureServices[]">
-                        <label class="form-check-label" for="nail-art">Nail Art</label>
+                        <label class="form-check-label" for="nail-art">Nail Art + Gel Mani</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="nail-pedi" value="Nail Art + Gel Pedi"
+                            name="manicurePedicureServices[]">
+                        <label class="form-check-label" for="nail-pedi">Nail Art + Gel Pedi</label>
                     </div>
                     <h5 class="mt-5"><u>Products</u></h5>
                     <input type="hidden" name="manicurePedicureProducts[heading]" value="Manicure Pedicure">
@@ -892,42 +963,50 @@
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="classic-full"
                             value="Eyelash Extensions Classic Full" name="EyesAndBrowServices[]">
-                        <label class="form-check-label" for="classic-full">Eyelash Extensions Classic Full</label>
+                        <label class="form-check-label" for="classic-full">Eyelash Extensions Classic
+                            Full</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="classic-half"
                             value="Eyelash Extensions Classic Half" name="EyesAndBrowServices[]">
-                        <label class="form-check-label" for="classic-half">Eyelash Extensions Classic Half</label>
+                        <label class="form-check-label" for="classic-half">Eyelash Extensions Classic
+                            Half</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="clamourous-volume-full"
-                            value="Clamourous Volume Full" name="EyesAndBrowServices[]">
-                        <label class="form-check-label" for="clamourous-volume-full">Clamourous Volume Full</label>
+                            value="Eyelash Extensions Clamourous Volume Full" name="EyesAndBrowServices[]">
+                        <label class="form-check-label" for="clamourous-volume-full">Eyelash Extensions Clamourous
+                            Volume
+                            Full</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="clamourous-volume-half"
-                            value="Clamourous Volume Half" name="EyesAndBrowServices[]">
-                        <label class="form-check-label" for="clamourous-volume-half">Clamourous Volume Half</label>
+                            value="Eyelash Extensions Clamourous Volume Half" name="EyesAndBrowServices[]">
+                        <label class="form-check-label" for="clamourous-volume-half">Eyelash Extensions Clamourous
+                            Volume
+                            Half</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="hybrid-full-set" value="Hybrid Full Set"
-                            name="EyesAndBrowServices[]">
-                        <label class="form-check-label" for="hybrid-full-set">Hybrid Full Set</label>
+                        <input class="form-check-input" type="checkbox" id="hybrid-full-set"
+                            value="Eyelash Extensions Hybrid Full Set" name="EyesAndBrowServices[]">
+                        <label class="form-check-label" for="hybrid-full-set">Eyelash Extensions Hybrid Full Set</label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="hybrid-half-set" value="Hybrid Half Set"
-                            name="EyesAndBrowServices[]">
-                        <label class="form-check-label" for="hybrid-half-set">Hybrid Half Set</label>
+                        <input class="form-check-input" type="checkbox" id="hybrid-half-set"
+                            value="Eyelash Extensions Hybrid Half Set" name="EyesAndBrowServices[]">
+                        <label class="form-check-label" for="hybrid-half-set">Eyelash Extensions Hybrid Half Set</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="eyelash-infil" value="Eyelash Infil"
                             name="EyesAndBrowServices[]">
-                        <label class="form-check-label" for="eyelash-infil">Eyelash Infil</label>
+                        <label class="form-check-label" for="eyelash-infil">Eyelash
+                            Infil</label>
                     </div>
                     <div class="form-check">
                         <input class="form-check-input" type="checkbox" id="eyelash-removal" value="Eyelash Removal"
                             name="EyesAndBrowServices[]">
-                        <label class="form-check-label" for="eyelash-removal">Eyelash Removal</label>
+                        <label class="form-check-label" for="eyelash-removal">Eyelash
+                            Removal</label>
                     </div>
 
                     <h5 class="mt-5"><u>Products</u></h5>
@@ -1035,7 +1114,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <button type="button" class="btn btn-primary">Save changes</button> -->
                                     </div>
                                 </div>
                             </div>

@@ -151,9 +151,10 @@
         .fc-scroller {
             overflow-y: hidden !important;
         }
-/*         .booked-slot{ */
-/*         	color:#b1bcc5 !important; */
-/*         } */
+
+        /*         .booked-slot{ */
+        /*         	color:#b1bcc5 !important; */
+        /*         } */
     </style>
 @endpush
 
@@ -223,9 +224,9 @@
                     @if (in_array(@Auth::user()->type, ['hairdressingSalon', 'beautySalon']) && (@$membership > 0 || $todayUseToken > 0))
                         <p class="col-lg-10" id="ownerName"></p>
                     @elseif(@Auth::user()->type == 'client' && @$membership > 0)
-                    <p class="col-lg-10" id="ownerName"></p>
+                        <p class="col-lg-10" id="ownerName"></p>
                     @else
-                    <p class="col-lg-10" style="font-size: 14px;color:red;">You need to buy package to access name.</p>
+                        <p class="col-lg-10" style="font-size: 14px;color:red;">You need to buy package to access name.</p>
                     @endif
                 </div>
 
@@ -271,9 +272,9 @@
                     @if (in_array(@Auth::user()->type, ['hairdressingSalon', 'beautySalon']) && (@$membership > 0 || $todayUseToken > 0))
                         <p class="col-lg-10" id="ownerEmail"></p>
                     @elseif(@Auth::user()->type == 'client' && @$membership > 0)
-                    <p class="col-lg-10" id="ownerEmail"></p>
+                        <p class="col-lg-10" id="ownerEmail"></p>
                     @else
-                    <p class="col-lg-10" style="font-size: 14px;color:red;">You need to buy package to access email.</p>
+                        <p class="col-lg-10" style="font-size: 14px;color:red;">You need to buy package to access email.</p>
                     @endif
                 </div>
 
@@ -456,8 +457,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="text-right btn uploadBtn"
-                                                                                                                                                                                                                                                                                                        style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                                                                                                                                                        title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                                                                                                                                                                                style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                                                                                                                                                                                title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>
@@ -511,13 +512,16 @@
                     <div class="appointment-status">
 
                         <h3 id="p_status"></h3>
-                        
-                        @if(@Auth::user()->type == 'client')
-                        	<p class="servicesTimeText" style="font-size: 12px;margin: unset;">Services Time: <span id="serviceTime"></span> minutes</p>
-                        	<p class="servicesTimeText" style="font-size: 12px;margin: unset;">Travelling Time: 60 minutes</p>
-                        	<p class="servicesTimeText" style="font-size: 12px;margin: unset;">Total Time: <span id="serviceTotalTime"></span> minutes</p>
+
+                        @if (@Auth::user()->type == 'client')
+                            <p class="servicesTimeText" style="font-size: 12px;margin: unset;">Services Time: <span
+                                    id="serviceTime"></span> minutes</p>
+                            <p class="servicesTimeText" style="font-size: 12px;margin: unset;">Travelling Time: 60 minutes
+                            </p>
+                            <p class="servicesTimeText" style="font-size: 12px;margin: unset;">Total Time: <span
+                                    id="serviceTotalTime"></span> minutes</p>
                         @endif
-                        
+
 
                     </div>
                 </div>
@@ -1784,9 +1788,14 @@
                                     <label class="form-check-label" for="nail-designs">Nail Designs</label>
                                 </div>
                                 <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" id="nail-art" value="Nail Art"
-                                        name="manicurePedicureServices[]">
-                                    <label class="form-check-label" for="nail-art">Nail Art</label>
+                                    <input class="form-check-input" type="checkbox" id="nail-art"
+                                        value="Nail Art + Gel Mani" name="manicurePedicureServices[]">
+                                    <label class="form-check-label" for="nail-art">Nail Art + Gel Mani</label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="nail-pedi"
+                                        value="Nail Art + Gel Pedi" name="manicurePedicureServices[]">
+                                    <label class="form-check-label" for="nail-pedi">Nail Art + Gel Pedi</label>
                                 </div>
                                 <h5 class="mt-5"><u>Products</u></h5>
                                 <input type="hidden" name="manicurePedicureProducts[heading]"
@@ -2113,35 +2122,41 @@
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="clamourous-volume-full"
-                                        value="Clamourous Volume Full" name="EyesAndBrowServices[]">
-                                    <label class="form-check-label" for="clamourous-volume-full">Clamourous Volume
+                                        value="Eyelash Extensions Clamourous Volume Full" name="EyesAndBrowServices[]">
+                                    <label class="form-check-label" for="clamourous-volume-full">Eyelash Extensions
+                                        Clamourous Volume
                                         Full</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="clamourous-volume-half"
-                                        value="Clamourous Volume Half" name="EyesAndBrowServices[]">
-                                    <label class="form-check-label" for="clamourous-volume-half">Clamourous Volume
+                                        value="Eyelash Extensions Clamourous Volume Half" name="EyesAndBrowServices[]">
+                                    <label class="form-check-label" for="clamourous-volume-half">Eyelash Extensions
+                                        Clamourous Volume
                                         Half</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="hybrid-full-set"
-                                        value="Hybrid Full Set" name="EyesAndBrowServices[]">
-                                    <label class="form-check-label" for="hybrid-full-set">Hybrid Full Set</label>
+                                        value="Eyelash Extensions Hybrid Full Set" name="EyesAndBrowServices[]">
+                                    <label class="form-check-label" for="hybrid-full-set">Eyelash Extensions Hybrid Full
+                                        Set</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="hybrid-half-set"
-                                        value="Hybrid Half Set" name="EyesAndBrowServices[]">
-                                    <label class="form-check-label" for="hybrid-half-set">Hybrid Half Set</label>
+                                        value="Eyelash Extensions Hybrid Half Set" name="EyesAndBrowServices[]">
+                                    <label class="form-check-label" for="hybrid-half-set">Eyelash Extensions Hybrid Half
+                                        Set</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="eyelash-infil"
                                         value="Eyelash Infil" name="EyesAndBrowServices[]">
-                                    <label class="form-check-label" for="eyelash-infil">Eyelash Infil</label>
+                                    <label class="form-check-label" for="eyelash-infil">Eyelash
+                                        Infil</label>
                                 </div>
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="eyelash-removal"
                                         value="Eyelash Removal" name="EyesAndBrowServices[]">
-                                    <label class="form-check-label" for="eyelash-removal">Eyelash Removal</label>
+                                    <label class="form-check-label" for="eyelash-removal">Eyelash
+                                        Removal</label>
                                 </div>
 
                                 <h5 class="mt-5"><u>Products</u></h5>
@@ -2880,7 +2895,9 @@
                     Insufficient tokens you need to buy package!
                 </div>
                 <div class="modal-footer text-center">
-                    <a type="" href="{{ @Auth::user()->type == 'client' ? route('home_service') : route('businessOwner') }}#packages" class="btn customBtn">Ok</a>
+                    <a type=""
+                        href="{{ @Auth::user()->type == 'client' ? route('home_service') : route('businessOwner') }}#packages"
+                        class="btn customBtn">Ok</a>
                     <a type="button" class="btn customBtn close-modal" data-dismiss="modal">Close</a>
                 </div>
             </div>
@@ -2902,15 +2919,18 @@
     <script src="{{ asset('customjs/web/profile/profileView.js') }}?v={{ time() }}"></script>
     <script>
         const cart_book = localStorage.getItem('bookType');
-        const cartServicesTime = {{$cartServicesTimeMin}};
+        const cartServicesTime = {{ $cartServicesTimeMin }};
         var user = '{{ @Auth::user()->type }}';
 
-        if (user == 'client') {
-            $('.book_client').addClass('d-none');
+        setTimeout(() => {
+            if (user == 'client') {
 
-            if (cart_book == 'cart_book') {
-                $('.book_client').removeClass('d-none');
+                $('.book_client').addClass('d-none');
+
+                if (cart_book == 'cart_book') {
+                    $('.book_client').removeClass('d-none');
+                }
             }
-        }
+        }, 400);
     </script>
 @endpush
