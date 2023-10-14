@@ -907,7 +907,7 @@ class ProfileController extends Controller
             $tokens = (isset($userDetails->tokens) && $userDetails->tokens != null) ? $userDetails->tokens : 0;
             
             if($tokens == 0){
-            	return response()->json(['status' => 500, 'message' => 'Insufficient tokens, you need to buy package first.', 'data' => '']);
+            	return response()->json(['status' => 400, 'message' => 'Insufficient tokens, you need to buy package first.', 'data' => '']);
             }
             
 

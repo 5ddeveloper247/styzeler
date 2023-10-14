@@ -2916,24 +2916,26 @@
                 }
             });
         });
+        
+        const cart_book = localStorage.getItem('bookType');
+        const cartServicesTime = {{ $cartServicesTimeMin }};
+        var user = '{{ @Auth::user()->type }}';
     </script>
     <script src="{{ asset('customjs/web/register/common.js') }}?v={{ time() }}"></script>
     <script src="{{ asset('template_old/js/freelancer-profile-calendar.js') }}?v={{ time() }}"></script>
     <script src="{{ asset('customjs/web/profile/profileView.js') }}?v={{ time() }}"></script>
     <script>
-        const cart_book = localStorage.getItem('bookType');
-        const cartServicesTime = {{ $cartServicesTimeMin }};
-        var user = '{{ @Auth::user()->type }}';
+        
 
-        setTimeout(() => {
-            if (user == 'client') {
+//         setTimeout(() => {
+//             if (user == 'client') {
 
-                $('.book_client').addClass('d-none');
+//                 $('.book_client').addClass('d-none');
 
-                if (cart_book == 'cart_book') {
-                    $('.book_client').removeClass('d-none');
-                }
-            }
-        }, 400);
+//                 if (cart_book == 'cart_book') {
+//                     $('.book_client').removeClass('d-none');
+//                 }
+//             }
+//         }, 400);
     </script>
 @endpush

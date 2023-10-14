@@ -421,7 +421,7 @@
                     </div> --}}
 
                 </div>
-                <p class="text-center" style="margin-bottom: unset; font-size: 10px; color: #fdd431;">
+                <p class="text-center addTimeSlotstxt d-none" style="margin-bottom: unset; font-size: 10px; color: #fdd431;">
                     <a class="text-center">Click below to add your availability time</a>
                 </p>
                 <p class="text-center"><a class="btn addTimeSlots d-none text-center" onclick="addTimeSlots()"
@@ -1008,11 +1008,11 @@
                                 </div>
                             </div>
                             <div class="male-grooming my-5">
-                                <h4>Barber Male Grooming</h4>
+                                <h4>Salon Male Grooming</h4>
                                 <h5><u>Services</u></h5>
                                 <div class="form-check">
                                     <input type="hidden" name="barberMaleGroomingServices[heading]"
-                                        value="Barber Male Grooming">
+                                        value="Salon Male Grooming">
                                     <input type="hidden" name="barberMaleGroomingServices[subHeading]" value="Services">
                                     <input class="form-check-input" type="checkbox" name="barberMaleGroomingServices[]"
                                         id="scissors-cut" value="Scissors Cut">

@@ -683,7 +683,7 @@
                         <i class="close-modal" style="font-size: 2rem;"><b>&times;</b></i>
                     </div>
                     <div class="modal-body">
-                        Kindly login with Salon Owner!
+                        Kindly login as Salon Owner!
                     </div>
                     <div class="modal-footer text-center">
                         <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>

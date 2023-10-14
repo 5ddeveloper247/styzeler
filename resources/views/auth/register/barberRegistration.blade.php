@@ -330,10 +330,10 @@
             </div>
         </div>
         <div class="male-grooming my-5">
-            <h4>Barber Male Grooming</h4>
+            <h4>Salon Male Grooming</h4>
             <h5><u>Services</u></h5>
             <div class="form-check">
-                <input type="hidden" name="barberMaleGroomingServices[heading]" value="Barber Male Grooming">
+                <input type="hidden" name="barberMaleGroomingServices[heading]" value="Salon Male Grooming">
                 <input type="hidden" name="barberMaleGroomingServices[subHeading]" value="Services">
                 <input class="form-check-input" type="checkbox" name="barberMaleGroomingServices[]" id="scissors-cut"
                     value="Scissors Cut">

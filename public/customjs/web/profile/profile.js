@@ -647,7 +647,7 @@ function saveAvaibleDate(response) {
             $(".appointment-status").show();
             $("#calendar").fullCalendar('refetchEvents');
             $(".cancel").removeClass("customBtnNotSelected");
-            $(".addTimeSlots").removeClass("d-none");
+            $(".addTimeSlots, .addTimeSlotstxt").removeClass("d-none");
             $(".available").addClass("customBtnNotSelected");
             $(".off").removeClass("customBtnNotSelected");
             $(".on-call").addClass("customBtnNotSelected");
@@ -656,7 +656,7 @@ function saveAvaibleDate(response) {
         } else if (response.data == "Off") {
             $("#p_status").text("Off");
             $(".appointment-status").show();
-            $(".addTimeSlots").removeClass("d-none");
+            $(".addTimeSlots, .addTimeSlotstxt").removeClass("d-none");
             $("#calendar").fullCalendar('refetchEvents');
             $(".cancel").removeClass("customBtnNotSelected");
             $(".available").removeClass("customBtnNotSelected");
@@ -668,7 +668,7 @@ function saveAvaibleDate(response) {
             $("#p_status").text("On Call");
             $(".appointment-status").show();
             $("#calendar").fullCalendar('refetchEvents');
-            $(".addTimeSlots").addClass("d-none");
+            $(".addTimeSlots, .addTimeSlotstxt").addClass("d-none");
             $(".cancel").removeClass("customBtnNotSelected");
             $(".available").addClass("customBtnNotSelected");
             $(".off").addClass("customBtnNotSelected");
@@ -677,7 +677,7 @@ function saveAvaibleDate(response) {
 
         } else if (response.data == "Cancel") {
             $("#calendar").fullCalendar('refetchEvents');
-            $(".addTimeSlots").addClass("d-none");
+            $(".addTimeSlots, .addTimeSlotstxt").addClass("d-none");
             $(".appointment-status").hide();
             $(".cancel").addClass("customBtnNotSelected");
             $(".available").removeClass("customBtnNotSelected");
