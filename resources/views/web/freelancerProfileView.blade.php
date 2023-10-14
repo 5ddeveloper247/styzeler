@@ -211,8 +211,8 @@
                     </div>
                 @endif
                 <div class="col-3 text-center contact_btn d-none" id="" onclick="useOwnerToken();">
-                	<div class="book btn customBtn">Contact</div>
-               	</div>
+                    <div class="book btn customBtn">Contact</div>
+                </div>
             @endauth
 
 
@@ -460,8 +460,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="text-right btn uploadBtn"
-                                                                                                                                                                                                                                                                                                                                                style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                                                                                                                                                                                                title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                        style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                                                                                                                                                                                                                                        title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>
@@ -2926,14 +2926,13 @@
         var user = '{{ @Auth::user()->type }}';
 
         setTimeout(() => {
-            if (user == 'client') {
-
+            if (user == 'client' || user == 'wedding') {
                 $('.book_client').addClass('d-none');
 
                 if (cart_book == 'cart_book') {
                     $('.book_client').removeClass('d-none');
                 }
             }
-        }, 400);
+        }, 3000);
     </script>
 @endpush

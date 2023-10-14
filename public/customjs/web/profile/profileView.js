@@ -4,16 +4,16 @@ let onCall;
 
 $(document).ready(function () {
 
-	if(user == 'client' && cartServicesTime > 0 && localStorage.getItem('bookType') == 'cart_book'){
-		$(".servicesTimeText").show();
-		$("#serviceTime").text(cartServicesTime);
-		$("#serviceTotalTime").text(cartServicesTime+60);
-	}else{
-		$(".servicesTimeText").hide();
-		$("#serviceTime").text('');
-		$("#serviceTotalTime").text('');
-	}
-	
+    if (user == 'client' && cartServicesTime > 0 && localStorage.getItem('bookType') == 'cart_book') {
+        $(".servicesTimeText").show();
+        $("#serviceTime").text(cartServicesTime);
+        $("#serviceTotalTime").text(cartServicesTime + 60);
+    } else {
+        $(".servicesTimeText").hide();
+        $("#serviceTime").text('');
+        $("#serviceTotalTime").text('');
+    }
+
     $("#showReviews").hide();
     $("#showLikes").hide();
     $("#showBook").hide();
@@ -326,6 +326,7 @@ function profileResponse(response) {
             email = data.email;
 
             if (profile_type == 'Jobseeker' || type == 'wedding') {
+
                 $('.book_client').addClass('d-none');
                 $('.contact_btn').removeClass('d-none');
                 $('#ownerEmail').html('<a href="mailto:' + email + '" onclick="useOwnerToken();">' + email + '</a>');
@@ -747,7 +748,7 @@ function convertTo12HourFormat(time24) {
 }
 function selectSlot(id, start_time, end_time, date) {
 
-	var starttimeAMPM = convertTo12HourFormat(start_time);
+    var starttimeAMPM = convertTo12HourFormat(start_time);
     var endtimeAMPM = convertTo12HourFormat(end_time);
     $('#slot_book_id').val(id);
     $('#book_date').val(date);
@@ -828,9 +829,9 @@ function useOwnerTokensResponse(response) {
 
     if (response.status == 200 || response.status == '200') {
 
-                toastr.success(response.message, '', {
-                    timeOut: 3000
-                });
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
 
     } else {
         toastr.error(response.message, '', {
