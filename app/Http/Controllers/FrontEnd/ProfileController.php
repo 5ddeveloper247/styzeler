@@ -894,16 +894,22 @@ class ProfileController extends Controller
     {
 
         if (!isset(Auth::user()->id)) {
-            return response()->json(['status' => 500, 'message' => 'Login with client user first!', 'data' => '']);
+            return response()->json(['status' => 500, 'message' => 'Kindly login first!', 'data' => '']);
         }
 
         $userDetails = User::where('id', Auth::user()->id)->first();
+        $weddingUserDetails = User::where('id', $request->freelancerId)->first();
         $remainingTokens = (isset($userDetails->tokens) && $userDetails->tokens != null) ? $userDetails->tokens : 0;
         $count = Used_tokens::where('user_id', Auth::user()->id)->where('freelancer_id', $request->freelancerId)->where('date', date('Y-m-d'))->count();
 
         if ($count <= 0) {
 
             $tokens = (isset($userDetails->tokens) && $userDetails->tokens != null) ? $userDetails->tokens : 0;
+            
+            if($tokens == 0){
+            	return response()->json(['status' => 500, 'message' => 'Insufficient tokens, you need to buy package first.', 'data' => '']);
+            }
+            
 
             $used_tokens = new Used_tokens();
             $used_tokens->user_id = Auth::user()->id;
@@ -914,9 +920,45 @@ class ProfileController extends Controller
             $user = User::find(Auth::user()->id);
             $user->tokens = $tokens - 1;
             $user->update();
+            
+            $body = "<table>
+			                <tr>
+			                    <td>Username:</td>
+                                <td>" . $userDetails->name . " " . $userDetails->surname . "</td>
+			                </tr>
+			              	<tr>
+			                    <td>Email:</td>
+			                    <td>" . $userDetails->email . "</td>
+			                </tr>
+			                <tr>
+			                    <td colspan='2'>This client want to contact you for booking. Please contact with this person for future bookings. Thanks</td>
+			                </tr>
+			            </table>";
+            $userEmailsSend[] = $weddingUserDetails->email;
+            
+            sendMail($userDetails->name, $userEmailsSend, 'Booking', 'Booking Contact Email', $body);
+            
+            $body1 = "<table>
+			                <tr>
+			                    <td>Username:</td>
+                                <td>" . $weddingUserDetails->name . " " . $weddingUserDetails->surname . "</td>
+			                </tr>
+			              	<tr>
+			                    <td>Email:</td>
+			                    <td>" . $weddingUserDetails->email . "</td>
+			                </tr>
+			                <tr>
+			                    <td colspan='2'>Your contact request is sent to wedding stylist, he will contact you soon for booking. Thanks</td>
+			                </tr>
+			                
+			           	</table>";
+            $userEmailsSend1[] = $userDetails->email;
+            
+            sendMail($userDetails->name, $userEmailsSend1, 'Contact', 'Contact Email', $body1);
+            
         }
 
-        return response()->json(['status' => 200, 'message' => '', 'data' => $userDetails]);
+        return response()->json(['status' => 200, 'message' => 'Your request is successfully sent, Wedding Stylist will contact you soon.', 'data' => $userDetails]);
     }
 }
 

@@ -228,6 +228,7 @@ class ChatController extends Controller
         $chat_reply->reply = $request->chat_reply;
 
         $chat_reply->save();
+        
         $body = "<h4>Chat Notification !</h4><br>
                     <h5>Dear $guest_user->chat_guest_user->name !</h5><br>
                        <p>This Email is Reply to Your Question<br>Thank you !</p><br>

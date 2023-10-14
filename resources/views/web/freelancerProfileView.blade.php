@@ -210,6 +210,9 @@
                         <div class="book btn customBtn {{ @$class }}" id="{{ @$bookid }}">Book</div>
                     </div>
                 @endif
+                <div class="col-3 text-center contact_btn d-none" id="" onclick="useOwnerToken();">
+                	<div class="book btn customBtn">Contact</div>
+               	</div>
             @endauth
 
 

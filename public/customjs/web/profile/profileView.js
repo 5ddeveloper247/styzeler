@@ -325,12 +325,13 @@ function profileResponse(response) {
             // for email
             email = data.email;
 
-
-            if (profile_type == 'Jobseeker') {
+            if (profile_type == 'Jobseeker' || type == 'wedding') {
                 $('.book_client').addClass('d-none');
+                $('.contact_btn').removeClass('d-none');
                 $('#ownerEmail').html('<a href="mailto:' + email + '" onclick="useOwnerToken();">' + email + '</a>');
             } else {
                 $('.book_client').removeClass('d-none');
+                $('.contact_btn').addClass('d-none');
                 $('#ownerEmail').text(email);
 
             }
@@ -827,9 +828,9 @@ function useOwnerTokensResponse(response) {
 
     if (response.status == 200 || response.status == '200') {
 
-        //        toastr.success(response.message, '', {
-        //            timeOut: 3000
-        //        });
+                toastr.success(response.message, '', {
+                    timeOut: 3000
+                });
 
     } else {
         toastr.error(response.message, '', {
