@@ -136,5 +136,8 @@
             $("body").removeClass("loading");
         }
     });
+    $(document).on("click", ".close-modal", function() {
+        $('.modal').modal('hide');
+    });
 </script>
 @stack('script')

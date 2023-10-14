@@ -366,7 +366,7 @@ class FrontEndController extends Controller
         				->where('status', 'Active')->get();
         $users2 = User::whereIn('type', ['wedding'])->where('status', 'Active')->get();
 
-        $users = $users1->concat($users2);
+        $users = $users1;//$users1->concat($users2);
         				
         if (!empty($users)) {
             foreach ($users as $user) {

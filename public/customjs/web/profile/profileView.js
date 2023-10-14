@@ -325,7 +325,7 @@ function profileResponse(response) {
             // for email
             email = data.email;
 
-            setTimeout(() => {
+//            setTimeout(() => {
             	
             	
 	            if (profile_type == 'Jobseeker' || type == 'wedding') {
@@ -351,7 +351,7 @@ function profileResponse(response) {
 		                $('#ownerEmail').text(email);
 	                }
 	            }
-            }, 400);
+//            }, 400);
 
 
             // for status
