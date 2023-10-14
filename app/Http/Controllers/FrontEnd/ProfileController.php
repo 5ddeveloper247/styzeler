@@ -316,11 +316,15 @@ class ProfileController extends Controller
     public function showAppointmentDatesFreelancer(Request $req)
     {
 
-        $bookings = Bookings::where('user_id', $req->id)
+//         $bookings = Bookings::where('user_id', $req->id)
+//             ->IsNotCancelled()
+//             ->with(['bookingTimeSlots' => function ($query) {
+//                 $query->whereDoesntHave('appointments');
+//             }])
+//             ->get();
+      	$bookings = Bookings::where('user_id', $req->id)
             ->IsNotCancelled()
-            ->with(['bookingTimeSlots' => function ($query) {
-                $query->whereDoesntHave('appointments');
-            }])
+            ->with(['bookingTimeSlots'])
             ->get();
 
         $userprofile = User::where('id', $req->id)->first();
@@ -391,11 +395,12 @@ class ProfileController extends Controller
 
                         // $firstindexSlots = isset($slots[0]) ? $slots[0] : '';
                         // $lastindexSlots = isset($slots[count($slots) - 1]) ? $slots[count($slots) - 1] : '';
-                        // dd($total_slots_time > $totalServiceTime, $total_slots_time == $totalServiceTime);
-                        if ($total_slots_time > $totalServiceTime || ($total_slots_time == $totalServiceTime) != true) {
+//                         dd($total_slots_time > $totalServiceTime, $total_slots_time == $totalServiceTime);
+//                     	dd($total_slots_time , $totalServiceTime);
+                        if ($total_slots_time < $totalServiceTime ) {//|| ($total_slots_time == $totalServiceTime) != true
                             return response()->json([
                                 'status' => 422,
-                                'message' => 'There is a break between the slots, kindly choose different time.',
+                                'message' => 'There is a break between the slots, kindly choose different time.1',
                             ]);
                         }
 
