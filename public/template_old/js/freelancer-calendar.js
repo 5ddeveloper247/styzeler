@@ -157,16 +157,16 @@ function removeDuplicates(data) {
                   changeSlot = 'customBtnNotSelected';
                   $(".available").removeClass("customBtnNotSelected");
                   $(".off").addClass("customBtnNotSelected");
-                  $(".addTimeSlots").addClass('d-none');
+                  $(".addTimeSlots, .addTimeSlotstxt").addClass('d-none');
 
                 } else {
                   $(".available").addClass("customBtnNotSelected");
                   $(".off").removeClass("customBtnNotSelected");
-                  $(".addTimeSlots").removeClass('d-none');
+                  $(".addTimeSlots, .addTimeSlotstxt").removeClass('d-none');
 
                 }
                 if (profileStatus == 'Freelancer') {
-                  $(".addTimeSlots").addClass('d-none');
+                  $(".addTimeSlots, .addTimeSlotstxt").addClass('d-none');
                 }
                 if (showResponse.data[i]["booking_time_slots"]) {
                   $.each(showResponse.data[i]["booking_time_slots"], function (j) {
@@ -265,7 +265,7 @@ function removeDuplicates(data) {
                 if (status == 'Off') {
 
                   changeSlot = 'customBtnNotSelected';
-                  $(".addTimeSlots").addClass('d-none');
+                  $(".addTimeSlots, .addTimeSlotstxt").addClass('d-none');
 
                 }
                 if (showResponse.data[i]["booking_time_slots"] != '') {
@@ -301,21 +301,21 @@ function removeDuplicates(data) {
                   // showResponse.data[i]["status"] === "Off"
                 ) {
                   if (profileStatus == 'Freelancer') {
-                    $(".addTimeSlots").addClass('d-none');
+                    $(".addTimeSlots, .addTimeSlotstxt").addClass('d-none');
                   } else {
-                    $(".addTimeSlots").removeClass('d-none');
+                    $(".addTimeSlots, .addTimeSlotstxt").removeClass('d-none');
 
                   }
 
                   $(".available").addClass("customBtnNotSelected");
                   // $(".on-call").addClass("customBtnNotSelected");
                   $(".off").removeClass("customBtnNotSelected");
-                  // $(".addTimeSlots").removeClass('d-none');
+                  // $(".addTimeSlots, .addTimeSlotstxt").removeClass('d-none');
                   // $(".cancel").removeClass("customBtnNotSelected");
                 } else {
                   $(".available").removeClass("customBtnNotSelected");
                   $(".off").addClass("customBtnNotSelected");
-                  // $(".addTimeSlots").addClass('d-none');
+                  // $(".addTimeSlots, .addTimeSlotstxt").addClass('d-none');
 
                 }
 
@@ -327,9 +327,9 @@ function removeDuplicates(data) {
             });
             if (!found) {
               if (profileStatus == 'Freelancer') {
-                $(".addTimeSlots").addClass('d-none');
+                $(".addTimeSlots, .addTimeSlotstxt").addClass('d-none');
               } else {
-                $(".addTimeSlots").removeClass('d-none');
+                $(".addTimeSlots, .addTimeSlotstxt").removeClass('d-none');
 
               }
               $("#p_status").text("-");

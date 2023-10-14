@@ -123,6 +123,9 @@
     	        }
     	    });
     	});
+     $(document).on("click", ".close-modal", function() {
+         $('.modal').modal('hide');
+     });
  </script>
  <!-- Favicon -->
  @stack('script')

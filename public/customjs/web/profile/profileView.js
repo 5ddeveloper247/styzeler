@@ -325,17 +325,33 @@ function profileResponse(response) {
             // for email
             email = data.email;
 
-            if (profile_type == 'Jobseeker' || type == 'wedding') {
+            //            setTimeout(() => {
 
+
+            if (profile_type == 'Jobseeker' || type == 'wedding') {
                 $('.book_client').addClass('d-none');
                 $('.contact_btn').removeClass('d-none');
                 $('#ownerEmail').html('<a href="mailto:' + email + '" onclick="useOwnerToken();">' + email + '</a>');
             } else {
-                $('.book_client').removeClass('d-none');
-                $('.contact_btn').addClass('d-none');
-                $('#ownerEmail').text(email);
 
+                if (user == 'client') {
+
+                    $('.book_client').addClass('d-none');
+
+                    if (cart_book == 'cart_book') {
+                        $('.book_client').removeClass('d-none');
+                    } else {
+                        $('.book_client').addClass('d-none');
+                        $('.contact_btn').addClass('d-none');
+                        $('#ownerEmail').text(email);
+                    }
+                } else {
+                    $('.book_client').removeClass('d-none');
+                    $('.contact_btn').addClass('d-none');
+                    $('#ownerEmail').text(email);
+                }
             }
+            //            }, 400);
 
 
             // for status
@@ -834,6 +850,10 @@ function useOwnerTokensResponse(response) {
         });
 
     } else {
+
+        if (response.status == 400 || response.status == '400') {
+            $('#tokens_modal').modal('show');
+        }
         toastr.error(response.message, '', {
             timeOut: 3000
         });
