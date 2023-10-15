@@ -384,11 +384,11 @@ class ProfileController extends Controller
                         'message' => 'This slot is already booked, kindly choose different time.',
                     ]);
                 }
-
+                
                 if ($slotDetails->slots_time != 'after_nine') {
 
                     $slots = BookingSlots::where('bookings_id', $slotDetails->bookings_id)->whereBetween('start_time', [$slotDetails->start_time, date('H:i', strtotime('-1 minutes', strtotime($serviceEndTime)))])->orderBy('start_time', 'asc')->get();
-
+                    
                     $total_slots_time = count($slots) * 30;
 
                     if (count($slots) > 0) {
@@ -400,7 +400,7 @@ class ProfileController extends Controller
                         if ($total_slots_time < $totalServiceTime ) {//|| ($total_slots_time == $totalServiceTime) != true
                             return response()->json([
                                 'status' => 422,
-                                'message' => 'There is a break between the slots, kindly choose different time.1',
+                                'message' => 'There is a break between the slots, kindly choose different time.',
                             ]);
                         }
 
@@ -421,6 +421,11 @@ class ProfileController extends Controller
                                 'message' => 'There is a booking between the slots, kindly choose different time.',
                             ]);
                         }
+                    }else{
+                    	return response()->json([
+                    			'status' => 422,
+                    			'message' => 'There is a break between the slots, kindly choose different time.1',
+                    	]);
                     }
                     $commaSeparatedSlotIds = $slots->pluck('id')->implode(',');
 
@@ -678,6 +683,18 @@ class ProfileController extends Controller
         if ($booking) {
 
             if ($request->has('slots_time')) {
+            	$slots = BookingSlots::where(['slots_time' => $request->slots_time, 'bookings_id' => $booking->id])->get();
+            	$hasBookedSlot = $slots->contains(function ($slot) {
+            		return $slot->status !== 'Available';
+            	});
+            	
+            	if ($hasBookedSlot) {
+            		return response()->json([
+            			'status' => 422,
+            			'message' => 'Unable to edit slots. There is a booking exist in these slots.',
+            		]);
+            	}
+            	
                 BookingSlots::where(['slots_time' => $request->slots_time, 'bookings_id' => $booking->id])->delete();
             }
 

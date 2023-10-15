@@ -171,10 +171,28 @@ function removeDuplicates(data) {
                 if (showResponse.data[i]["booking_time_slots"]) {
                   $.each(showResponse.data[i]["booking_time_slots"], function (j) {
                     var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
-                    var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
-
-                    html += `<div title="" class="` + changeSlot + ` option col-md-3 mr-2">` + starttimeAMPM + ` - ` + endtimeAMPM + `</div >`;
-                    slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
+                    if(showResponse.data[i]["booking_time_slots"][j]['end_time'] != ''){
+                    	var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
+                    }else{
+                    	var endtimeAMPM = '';
+                    }
+                    
+                    var slots_time = showResponse.data[i]["booking_time_slots"][j]['slots_time'];
+                    var status = showResponse.data[i]["booking_time_slots"][j]['status'];
+                   
+                    if(status == 'booked'){
+                    	html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}"><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div >`;
+                        slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
+                    }else{
+                    	if(slots_time == 'after_nine'){
+                        	html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}")>` + starttimeAMPM + ` - After 9</div>`;
+                        	slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
+                        }else{
+                        	html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}">` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
+                        	slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
+                        }
+                    }
+                    
                   });
                 }
 
@@ -194,7 +212,7 @@ function removeDuplicates(data) {
             }
             slots_times = [];
             $(".total_time_slots").append(slot_time_html);
-            $(".timeSlots").append(html);
+            $(".timeSlots").html(html);
             callback(events);
           }
 
@@ -275,8 +293,24 @@ function removeDuplicates(data) {
                     var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
                     var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
 
-                    html += `<div title="" class="` + changeSlot + ` option col-md-3 mr-2">` + starttimeAMPM + ` - ` + endtimeAMPM + `</div >`;
-                    slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time'])
+                    var slots_time = showResponse.data[i]["booking_time_slots"][j]['slots_time'];
+                    var status = showResponse.data[i]["booking_time_slots"][j]['status'];
+                   
+                    if(status == 'booked'){
+                    	html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}"><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div >`;
+                    	slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
+                    }else{
+                    	if(slots_time == 'after_nine'){
+                        	html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}")>` + starttimeAMPM + ` - After 9</div>`;
+                        	slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
+                        }else{
+                        	html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}">` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
+                        	slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
+                        }
+                    }
+                    
+//                    html += `<div title="" class="` + changeSlot + ` option col-md-3 mr-2">` + starttimeAMPM + ` - ` + endtimeAMPM + `</div >`;
+//                    slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time'])
 
                   });
                   changeSlot = '';
@@ -291,7 +325,7 @@ function removeDuplicates(data) {
                 }
                 slots_times = [];
                 $(".total_time_slots").append(slot_time_html);
-                $(".timeSlots").append(html);
+                $(".timeSlots").html(html);
                 $("#p_status").text(showResponse.data[i]["status"]);
                 $(".appointment-status").show();
                 found = true;
