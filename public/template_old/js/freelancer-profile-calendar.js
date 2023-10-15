@@ -168,8 +168,6 @@ jQuery(document).ready(function () {
                     }
                     
                     var slots_time = showResponse.data[i]["booking_time_slots"][j]['slots_time'];
-                    
-                    var slots_time = showResponse.data[i]["booking_time_slots"][j]['slots_time'];
                     var status = showResponse.data[i]["booking_time_slots"][j]['status'];
                     
                     if(status == 'booked'){

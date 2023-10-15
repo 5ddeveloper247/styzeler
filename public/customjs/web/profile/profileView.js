@@ -813,6 +813,11 @@ function bookSlotsResponse(response) {
         toastr.success(response.message, '', {
             timeOut: 3000
         });
+        
+        setTimeout(function(){
+			location.reload();  //Refresh page
+		}, 1000);
+        
         $('.slots-modal').modal('hide');
 
     } else {

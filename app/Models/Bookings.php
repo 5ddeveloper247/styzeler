@@ -24,7 +24,7 @@ class Bookings extends Model
     // Define the relationship with BookingSlots that don't have appointments
     public function bookingTimeSlots()
     {
-        return $this->hasMany(BookingSlots::class, 'bookings_id');
+        return $this->hasMany(BookingSlots::class, 'bookings_id')->orderBy('start_time', 'asc');
     }
     /**
      * Get all of the comments for the Bookings
