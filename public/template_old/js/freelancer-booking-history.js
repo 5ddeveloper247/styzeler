@@ -245,10 +245,18 @@ $(function () {
                         let booking_date = response.appointments[i]['booking_date'];
                         let booking_time = response.appointments[i]['booking_time'];
 
-                        let freelancer_name = response.appointments[i].freelancer_user.name + ' ' + response.appointments[i].freelancer_user.surname;
-                        let freelancer_category = response.appointments[i].freelancer_user.type;
-                        let freelancer_email = response.appointments[i].freelancer_user.email;
-                        let freelancer_phone = response.appointments[i].freelancer_user.phone;
+                        if (response.appointments[i].freelancer_user == undefined) {
+                            freelancer_name = response.appointments[i].freelancer_app_user.name + ' ' + response.appointments[i].freelancer_app_user.surname;
+                            freelancer_category = response.appointments[i].freelancer_app_user.type;
+                            freelancer_email = response.appointments[i].freelancer_app_user.email;
+                            freelancer_phone = response.appointments[i].freelancer_app_user.phone;
+                        } else {
+                            freelancer_name = response.appointments[i].freelancer_user.name + ' ' + response.appointments[i].freelancer_user.surname;
+                            freelancer_category = response.appointments[i].freelancer_user.type;
+                            freelancer_email = response.appointments[i].freelancer_user.email;
+                            freelancer_phone = response.appointments[i].freelancer_user.phone;
+                        }
+
                         //  let bookStime = response.appointments[i]["bookingTimeSlots"]['start_time'];
                         //  let bookEtime = response.appointments[i]["bookingTimeSlots"]['end_time'];
                         if (response.appointments[i]["client_app_user"] != undefined) {
@@ -257,12 +265,12 @@ $(function () {
                             owner_mobile = response.appointments[i]["client_app_user"]['phone'];
                             owner_category = response.appointments[i]["client_app_user"]['type'];
                         }
-                        // else {
-                        //     owner_name = response.appointments[i]["freelancer_user"]['name'];
-                        //     owner_email = response.appointments[i]["freelancer_user"]['email'];
-                        //     owner_mobile = response.appointments[i]["freelancer_user"]['phone'];
-                        //     owner_category = response.appointments[i]["freelancer_user"]['type'];
-                        // }
+                        else {
+                            owner_name = response.appointments[i]["client_user"]['name'];
+                            owner_email = response.appointments[i]["client_user"]['email'];
+                            owner_mobile = response.appointments[i]["client_user"]['phone'];
+                            owner_category = response.appointments[i]["client_user"]['type'];
+                        }
 
                         owner_status = "Booked";
 

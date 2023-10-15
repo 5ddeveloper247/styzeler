@@ -316,13 +316,13 @@ class ProfileController extends Controller
     public function showAppointmentDatesFreelancer(Request $req)
     {
 
-//         $bookings = Bookings::where('user_id', $req->id)
-//             ->IsNotCancelled()
-//             ->with(['bookingTimeSlots' => function ($query) {
-//                 $query->whereDoesntHave('appointments');
-//             }])
-//             ->get();
-      	$bookings = Bookings::where('user_id', $req->id)
+        //         $bookings = Bookings::where('user_id', $req->id)
+        //             ->IsNotCancelled()
+        //             ->with(['bookingTimeSlots' => function ($query) {
+        //                 $query->whereDoesntHave('appointments');
+        //             }])
+        //             ->get();
+        $bookings = Bookings::where('user_id', $req->id)
             ->IsNotCancelled()
             ->with(['bookingTimeSlots'])
             ->get();
@@ -373,7 +373,11 @@ class ProfileController extends Controller
                 $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->first();
                 $cartServiceTimeMin = $userCart != null ? $userCart->cart_lines->sum('item_time_min') : 0;
 
-                $totalServiceTime = $cartServiceTimeMin + 60;
+                if ($slotDetails->slots_time != 'After_Nine') {
+                    $totalServiceTime = $cartServiceTimeMin + 60;
+                } else {
+                    $totalServiceTime = $cartServiceTimeMin;
+                }
 
                 $serviceStartTime = Carbon::createFromFormat('H:i', $slotDetails->start_time);
                 $serviceEndTime = $serviceStartTime->addMinutes($totalServiceTime)->format('H:i');
@@ -384,20 +388,20 @@ class ProfileController extends Controller
                         'message' => 'This slot is already booked, kindly choose different time.',
                     ]);
                 }
-                
-                if ($slotDetails->slots_time != 'after_nine') {
+
+                if ($slotDetails->slots_time != 'After_Nine') {
 
                     $slots = BookingSlots::where('bookings_id', $slotDetails->bookings_id)->whereBetween('start_time', [$slotDetails->start_time, date('H:i', strtotime('-1 minutes', strtotime($serviceEndTime)))])->orderBy('start_time', 'asc')->get();
-                    
+
                     $total_slots_time = count($slots) * 30;
 
                     if (count($slots) > 0) {
 
                         // $firstindexSlots = isset($slots[0]) ? $slots[0] : '';
                         // $lastindexSlots = isset($slots[count($slots) - 1]) ? $slots[count($slots) - 1] : '';
-//                         dd($total_slots_time > $totalServiceTime, $total_slots_time == $totalServiceTime);
-//                     	dd($total_slots_time , $totalServiceTime);
-                        if ($total_slots_time < $totalServiceTime ) {//|| ($total_slots_time == $totalServiceTime) != true
+                        //                         dd($total_slots_time > $totalServiceTime, $total_slots_time == $totalServiceTime);
+                        //                     	dd($total_slots_time , $totalServiceTime);
+                        if ($total_slots_time < $totalServiceTime) { //|| ($total_slots_time == $totalServiceTime) != true
                             return response()->json([
                                 'status' => 422,
                                 'message' => 'There is a break between the slots, kindly choose different time.',
@@ -421,11 +425,11 @@ class ProfileController extends Controller
                                 'message' => 'There is a booking between the slots, kindly choose different time.',
                             ]);
                         }
-                    }else{
-                    	return response()->json([
-                    			'status' => 422,
-                    			'message' => 'There is a break between the slots, kindly choose different time.1',
-                    	]);
+                    } else {
+                        return response()->json([
+                            'status' => 422,
+                            'message' => 'There is a break between the slots, kindly choose different time.1',
+                        ]);
                     }
                     $commaSeparatedSlotIds = $slots->pluck('id')->implode(',');
 
@@ -441,7 +445,7 @@ class ProfileController extends Controller
                         'booking_user_id' => Auth::id(),
                     ]);
                 } else {
-
+                    // dd($slotDetails->slots_time);
                     BookingSlots::where('id', $slotDetails->id)->update([
                         'end_time' => $serviceEndTime,
                         'slots_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
@@ -459,7 +463,7 @@ class ProfileController extends Controller
                 }
 
 
-                //             	dd($serviceEndTime);
+                //dd($serviceEndTime);
 
 
 
@@ -506,7 +510,7 @@ class ProfileController extends Controller
 			                </tr>
 			              	<tr>
 			                    <td>Slot Time:</td>
-			                    <td>" . $slotStartTime . "-" . $slotEndTime . "</td>
+			                    <td>" . $slotDetails->start_time . "-" . $serviceEndTime . "</td>
 			                </tr>
 			           	</table>";
                 $userEmailsSend[] = $userDetails['email'];
@@ -564,10 +568,19 @@ class ProfileController extends Controller
             }
 
             // Create a new appointment
-            Appointments::create([
+            $get_last_time =  Appointments::create([
                 'booking_slots_id' => $request->slot_book_id,
                 'freelancer_user_id' => $request->user_id,
+                'booking_date' => $request->book_date,
+                'booking_time' => '07:00' . ' - ' . '21:00',
                 'booking_user_id' => Auth::id(),
+            ]);
+
+            BookingSlots::where('id', $request->slot_book_id)->update([
+
+                'slots_time' => '07:00 AM - 09:00 PM',
+                'status' => 'booked'
+
             ]);
 
             if ($bookExist == 0) {
@@ -601,7 +614,7 @@ class ProfileController extends Controller
 			                </tr>
 			              	<tr>
 			                    <td>Slot Time:</td>
-			                    <td>" . $slotStartTime . "-" . $slotEndTime . "</td>
+			                    <td>" . $slotDetails->start_time . "-" . $get_last_time->booking_time . "</td>
 			                </tr>
 			           	</table>";
             $userEmailsSend[] = $bookedUserDetails['email'];
@@ -683,18 +696,18 @@ class ProfileController extends Controller
         if ($booking) {
 
             if ($request->has('slots_time')) {
-            	$slots = BookingSlots::where(['slots_time' => $request->slots_time, 'bookings_id' => $booking->id])->get();
-            	$hasBookedSlot = $slots->contains(function ($slot) {
-            		return $slot->status !== 'Available';
-            	});
-            	
-            	if ($hasBookedSlot) {
-            		return response()->json([
-            			'status' => 422,
-            			'message' => 'Unable to edit slots. There is a booking exist in these slots.',
-            		]);
-            	}
-            	
+                $slots = BookingSlots::where(['slots_time' => $request->slots_time, 'bookings_id' => $booking->id])->get();
+                $hasBookedSlot = $slots->contains(function ($slot) {
+                    return $slot->status !== 'Available';
+                });
+
+                if ($hasBookedSlot) {
+                    return response()->json([
+                        'status' => 422,
+                        'message' => 'Unable to edit slots. There is a booking exist in these slots.',
+                    ]);
+                }
+
                 BookingSlots::where(['slots_time' => $request->slots_time, 'bookings_id' => $booking->id])->delete();
             }
 
@@ -746,7 +759,16 @@ class ProfileController extends Controller
             ];
             $bookingSlot = BookingSlots::create($data);
         }
-
+        if ($end_slot_time == '09:00 PM') {
+            $data = [
+                'bookings_id' => $newBookingId,
+                'start_time' => '21:00',
+                'end_time' => '',
+                'slots_time' => "After_Nine",
+                'status' => 'Available',
+            ];
+            $bookingSlot = BookingSlots::create($data);
+        }
         if ($bookingSlot->wasRecentlyCreated) {
             $message = 'Time Slot Created Successfully! Against ' . $availableDays;
         } else {
@@ -927,11 +949,11 @@ class ProfileController extends Controller
         if ($count <= 0) {
 
             $tokens = (isset($userDetails->tokens) && $userDetails->tokens != null) ? $userDetails->tokens : 0;
-            
-            if($tokens == 0){
-            	return response()->json(['status' => 400, 'message' => 'Insufficient tokens, you need to buy package first.', 'data' => '']);
+
+            if ($tokens == 0) {
+                return response()->json(['status' => 400, 'message' => 'Insufficient tokens, you need to buy package first.', 'data' => '']);
             }
-            
+
 
             $used_tokens = new Used_tokens();
             $used_tokens->user_id = Auth::user()->id;
@@ -942,7 +964,7 @@ class ProfileController extends Controller
             $user = User::find(Auth::user()->id);
             $user->tokens = $tokens - 1;
             $user->update();
-            
+
             $body = "<table>
 			                <tr>
 			                    <td>Username:</td>
@@ -957,9 +979,9 @@ class ProfileController extends Controller
 			                </tr>
 			            </table>";
             $userEmailsSend[] = $weddingUserDetails->email;
-            
+
             sendMail($userDetails->name, $userEmailsSend, 'Booking', 'Booking Contact Email', $body);
-            
+
             $body1 = "<table>
 			                <tr>
 			                    <td>Username:</td>
@@ -975,9 +997,8 @@ class ProfileController extends Controller
 			                
 			           	</table>";
             $userEmailsSend1[] = $userDetails->email;
-            
+
             sendMail($userDetails->name, $userEmailsSend1, 'Contact', 'Contact Email', $body1);
-            
         }
 
         return response()->json(['status' => 200, 'message' => 'Your request is successfully sent, Wedding Stylist will contact you soon.', 'data' => $userDetails]);
