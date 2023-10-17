@@ -175,7 +175,7 @@ jQuery(document).ready(function () {
 
                     } else {
                       if (slots_time == 'After_Nine') {
-                        html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>` + starttimeAMPM + ` - After 9</div>`;
+                        html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>After 9</div>`;//` + starttimeAMPM + ` - 
                       } else {
                         html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
                       }
@@ -284,7 +284,7 @@ jQuery(document).ready(function () {
 
                     } else {
                       if (slots_time == 'After_Nine') {
-                        html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>` + starttimeAMPM + ` - After 9</div>`;
+                        html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>After 9</div>`;//` + starttimeAMPM + ` - 
                       } else {
                         html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
                       }

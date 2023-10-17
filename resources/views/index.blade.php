@@ -747,7 +747,7 @@
             setTimeout(function() {
                 flag = "0";
                 $("html").css({
-                    "overflow": "auto"
+                    "overflow-y": "auto"
                 });
             }, 1500);
         });
@@ -794,7 +794,7 @@
                         const retrievedData = getLocalStorageWithExpiration("flag");
                         if(retrievedData != 'true'){
                         	$("html").css({
-                                "overflow": "hidden"
+                                "overflow-y": "hidden"
                             });
                      	}
                         
@@ -807,7 +807,7 @@
         	const dataToStore = "true";
             setLocalStorageWithExpiration("flag", 'true', 12);
             $("html").css({
-                "overflow": "auto"
+                "overflow-y": "auto"
             });
             $(".modal").modal("hide");
         });

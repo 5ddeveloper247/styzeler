@@ -21,6 +21,23 @@ class CartController extends Controller
 			return response()->json(['status' => 500, 'message' => 'Kindly login first!', 'data' => '']);
 		}
 		
+		$userCart = Cart::with('cart_lines')->where('user_id', Auth::user()->id)->where('status', 'active')->first();
+		$cartServiceTimeMin = $userCart != null ? $userCart->cart_lines->sum('item_time_min') : 0;
+		$totalServiceTime = $cartServiceTimeMin+$request->item_time;
+
+		if ($cartServiceTimeMin > 720) {
+			return response()->json([
+					'status' => 500,
+					'message' => 'Unable to add service in cart. Your services time is exceeding the limit. (i.e 720 minutes)',
+			]);
+		}
+		if ($totalServiceTime > 720) {
+			return response()->json([
+					'status' => 500,
+					'message' => 'Unable to add service in cart. Your services time is exceeding the limit. (i.e 720 minutes)',
+			]);
+		}
+		
 // 		$userDetail = User::where('id', Auth::user()->id)->first();
 		
 // 		$tokens = (isset($userDetail->tokens) && $userDetail->tokens != null) ? $userDetail->tokens : 0;

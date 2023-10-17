@@ -7,6 +7,9 @@
 
 @push('css')
     <style>
+    #public-liability-insurance::file-selector {
+		    display: none;
+		}
         .option {
             width: 100%;
             border: 1px solid #c4b9b0;

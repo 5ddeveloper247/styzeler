@@ -73,7 +73,7 @@ if(isset($userDetails->type)){
                     <p class="col-lg-10" id="ownerName">{{$userDetails->name}} {{$userDetails->surname}}</p>
                 </div>
 
-				@if($userDetails->type == 'hairdressingSalon' || $userDetails->type == 'beautySalon' || $userDetails->type == 'client')
+				@if(in_array($userDetails->type, ['hairdressingSalon','beautySalon','client']))
 					<div class="address row ">
 	               		<label class="color-1 col-lg-2">Address : </label>
 	                  	<p class="col-lg-10" id="ownerAddress">{{@$userDetails->address}}</p>
@@ -84,6 +84,13 @@ if(isset($userDetails->type)){
 	                	<p class="col-lg-10" id="ownerPostcode">{{@$userDetails->post_code}}</p>
 	            	</div>
 	            @else
+	            
+	            	@if(in_array($userDetails->type, ['hairStylist','beautician','barber']))
+	            		<div class="age row">
+		                    <label class="color-1 col-lg-2">Profile Type : </label>
+		                    <p class="col-lg-10" id="ownerAge">{{@$userDetails->profile_type}}</p>
+		                </div>
+	            	@endif
 	            	<div class="age row">
 	                    <label class="color-1 col-lg-2">Age : </label>
 	                    <p class="col-lg-10" id="ownerAge">{{@$userDetails->age}} years</p>

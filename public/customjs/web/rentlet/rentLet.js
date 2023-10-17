@@ -123,11 +123,11 @@ function rentLet(that) {
 }
 
 function longRent(that) {
-    if (that.value == "weekly rent") {
+    if (that.value == "Weekly rent") {
         $('.weeklyRent').show();
         $('.monthlyRent').hide();
     }
-    else if (that.value == "monthly rent") {
+    else if (that.value == "Monthly rent") {
         $('.weeklyRent').hide();
         $('.monthlyRent').show();
     }
@@ -141,11 +141,11 @@ function longRent(that) {
 
 function shortRent(that) {
     
-	if (that.value == "daily rent") {
+	if (that.value == "Daily rent") {
     	$('.dailyRent').show();
         $('.hourlyRent').hide();
     } 
-	else if (that.value == "hourly rent") {
+	else if (that.value == "Hourly rent") {
         $('.dailyRent').hide();
         $('.hourlyRent').show();
     } 

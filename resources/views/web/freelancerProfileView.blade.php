@@ -3,6 +3,7 @@
     const baseURL = "{{ request()->root() }}";
     const userId = "{{ @$data->id }}";
 </script>
+
 @push('css')
     <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}?v={{ time() }}" />
 
@@ -19,9 +20,17 @@
         .timeSlots .option:hover {
             background: #c4b9b0;
             color: black;
-            font-weight: bold;
+/*             font-weight: bold; */
             border: 1px solid #c4b9b0;
             cursor: pointer;
+        }
+        
+        .booked:hover{
+        	background: black !important;
+            color: #c4b9b0 !important;
+            font-weight: unset  !important; 
+            border: 1px solid #c4b9b0 !important;
+            cursor: pointer !important;
         }
 
         .option {
@@ -156,6 +165,9 @@
         /*         	color:#b1bcc5 !important; */
         /*         } */
     </style>
+    <script>
+    	var scrollPosition = window.scrollY;
+	</script>
 @endpush
 
 @section('content')
@@ -2916,7 +2928,9 @@
                 }
             });
         });
-        
+        window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
+        });
         const cart_book = localStorage.getItem('bookType');
         const cartServicesTime = {{ $cartServicesTimeMin }};
         var user = '{{ @Auth::user()->type }}';
@@ -2925,7 +2939,7 @@
     <script src="{{ asset('template_old/js/freelancer-profile-calendar.js') }}?v={{ time() }}"></script>
     <script src="{{ asset('customjs/web/profile/profileView.js') }}?v={{ time() }}"></script>
     <script>
-        
+    
 
 //         setTimeout(() => {
 //             if (user == 'client') {

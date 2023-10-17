@@ -185,7 +185,7 @@ function removeDuplicates(data) {
                       slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
                     } else {
                       if (slots_time == 'After_Nine') {
-                        html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}")>` + starttimeAMPM + ` - After 9</div>`;
+                        html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}")>After 9</div>`;//` + starttimeAMPM + ` - 
                         slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
                       } else {
                         html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}">` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
@@ -305,7 +305,7 @@ function removeDuplicates(data) {
                       slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
                     } else {
                       if (slots_time == 'After_Nine') {
-                        html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}")>` + starttimeAMPM + ` - After 9</div>`;
+                        html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}")>After 9</div>`;//` + starttimeAMPM + ` - 
                         slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
                       } else {
                         html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}">` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;

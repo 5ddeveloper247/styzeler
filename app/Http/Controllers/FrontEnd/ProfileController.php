@@ -445,6 +445,12 @@ class ProfileController extends Controller
                         'booking_user_id' => Auth::id(),
                     ]);
                 } else {
+                	if ($totalServiceTime > 540) { // if user will chekout after 9 then restrict user to add services less then nxt morning 6 O'clock 
+                		return response()->json([
+                				'status' => 422,
+                				'message' => 'Unable to book. Your services are exceeding the time limit. (i.e 540 minutes)',
+                		]);
+                	}
                     // dd($slotDetails->slots_time);
                     BookingSlots::where('id', $slotDetails->id)->update([
                         'end_time' => $serviceEndTime,
@@ -614,7 +620,7 @@ class ProfileController extends Controller
 			                </tr>
 			              	<tr>
 			                    <td>Slot Time:</td>
-			                    <td>" . $slotDetails->start_time . "-" . $get_last_time->booking_time . "</td>
+			                    <td>" . $get_last_time->booking_time . "</td>
 			                </tr>
 			           	</table>";
             $userEmailsSend[] = $bookedUserDetails['email'];
@@ -759,16 +765,21 @@ class ProfileController extends Controller
             ];
             $bookingSlot = BookingSlots::create($data);
         }
-        if ($end_slot_time == '09:00 PM') {
-            $data = [
-                'bookings_id' => $newBookingId,
-                'start_time' => '21:00',
-                'end_time' => '',
-                'slots_time' => "After_Nine",
-                'status' => 'Available',
-            ];
-            $bookingSlot = BookingSlots::create($data);
+        
+        $afterNineExist = BookingSlots::where('bookings_id',$newBookingId)->where('slots_time','After_Nine')->count();
+        if($afterNineExist == 0){
+        	if ($end_slot_time == '09:00 PM') {
+        		$data = [
+        				'bookings_id' => $newBookingId,
+        				'start_time' => '21:00',
+        				'end_time' => '',
+        				'slots_time' => "After_Nine",
+        				'status' => 'Available',
+        		];
+        		$bookingSlot = BookingSlots::create($data);
+        	}
         }
+        
         if ($bookingSlot->wasRecentlyCreated) {
             $message = 'Time Slot Created Successfully! Against ' . $availableDays;
         } else {
@@ -992,7 +1003,7 @@ class ProfileController extends Controller
 			                    <td>" . $weddingUserDetails->email . "</td>
 			                </tr>
 			                <tr>
-			                    <td colspan='2'>Your contact request is sent to wedding stylist, he will contact you soon for booking. Thanks</td>
+			                    <td colspan='2'>Your contact request is sent to concerned person, he will contact you soon for booking. Thanks</td>
 			                </tr>
 			                
 			           	</table>";
@@ -1001,7 +1012,7 @@ class ProfileController extends Controller
             sendMail($userDetails->name, $userEmailsSend1, 'Contact', 'Contact Email', $body1);
         }
 
-        return response()->json(['status' => 200, 'message' => 'Your request is successfully sent, Wedding Stylist will contact you soon.', 'data' => $userDetails]);
+        return response()->json(['status' => 200, 'message' => 'Your request is successfully sent, Concerned person will contact you soon.', 'data' => $userDetails]);
     }
 }
 

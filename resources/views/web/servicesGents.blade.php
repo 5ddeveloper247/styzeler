@@ -69,7 +69,7 @@
 									<button type="button" class="shadow_btn shadowbtn"  onclick="caseCat('Scissors_Cut')">Scissors Cut <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 								</li>
 								<li>
-									<button type="button" class="shadow_btn shadowbtn"  onclick="caseCat('Cliper_Scissors_Cut')">Cliper & Scissors Cut <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+									<button type="button" class="shadow_btn shadowbtn"  onclick="caseCat('Cliper_Scissors_Cut')">Clipper & Scissors Cut <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 								</li>
 								<li>
 									<button type="button" class="shadow_btn shadowbtn"  onclick="caseCat('Clipper_Cut')">Clipper Cut <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
@@ -231,7 +231,7 @@
 		if (i == 'Cliper_Scissors_Cut') {
 			$("#top_1").show();
 			$("#top_1 p").html('30 Mints &pound;30').attr('data-time', '30').attr('data-price', '30').attr(
-	                  'data-service', 'Cliper & Scissors Cut').attr('data-subtype', subtype);
+	                  'data-service', 'Clipper & Scissors Cut').attr('data-subtype', subtype);
 			$("#top_2,#top_3").hide();
 			$("#category_description").text("The  back and side will be cut with a clipper for a sharper look and the top finished with the scissors for a softer finish");
 		}

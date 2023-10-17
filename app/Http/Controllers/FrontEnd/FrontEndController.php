@@ -135,6 +135,14 @@ class FrontEndController extends Controller
 
     public function homeServices()
     {
+    	if(isset(Auth::user()->id)){
+    		
+    		$active_cart = Cart::where('user_id', Auth::user()->id)->where('status', 'active')->first();
+    		if(isset($active_cart->id)){
+    			Cart_line::where('cart_id', $active_cart->id)->delete();
+    		}
+    	}
+    	
         return view('web.homeServices');
     }
 
@@ -260,7 +268,7 @@ class FrontEndController extends Controller
     public function jobs()
     {
         $currentDate = now()->toDateString();
-        $data['jobs'] =    DB::table('job_request')->where('start_date', '<=', $currentDate)->where('end_date', '>=', $currentDate)->get();
+        $data['jobs'] = DB::table('job_request')->where('status', 'active')->where('start_date', '<=', $currentDate)->where('end_date', '>=', $currentDate)->get();
         if(isset(Auth::user()->id)){
         	$data['userDetails'] = User::where('id', Auth::user()->id)->first();
         }else{

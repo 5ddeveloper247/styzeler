@@ -93,7 +93,7 @@
                             aria-describedby="stylist-surname" placeholder="Surname">
                     </div>
                     <div class="form-group text-right col-lg-6 exclamation">
-                        <i class="fa fa-exclamation-circle" aria-hidden="true" data-toggle="tooltip" data-placement="left"
+                        <i class="fa fa-exclamation-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top"
                             title="Tell us a bit about you and your brief working history!"></i>
                     </div>
                     <div class="form-group">

@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}?v={{ time() }}" />
 
     <style>
+    	
         .timeSlots .option:hover {
             background: #c4b9b0;
             color: black;
@@ -23,6 +24,13 @@
             color: #fdd431;
         }
 
+		.booked:hover{
+        	background: black !important;
+            color: #c4b9b0 !important;
+            font-weight: unset  !important; 
+            border: 1px solid #c4b9b0 !important;
+            cursor: pointer !important;
+        }
         .option {
             width: 100%;
             border: 1px solid #c4b9b0;
@@ -62,6 +70,9 @@
             max-height: calc(100vh - 200px);
             overflow-y: auto;
         }
+        
+
+		
     </style>
 @endpush
 
@@ -375,7 +386,7 @@
             <div class="showLikes col-10 mt-5 text-center" id="showLikes">
                 This will be likes
             </div>
-            <div class="showBook col-10 mt-5 text-left" id="showBook">
+            <div class="showBook col-12 mt-5 text-left" id="showBook">
 
                 <!-- new calendar  ---------------------------------------------------------- -->
 
@@ -429,14 +440,15 @@
                         title="Click to add your available time.">+</a></p>
 
                 <!-- end of new calendar ---------------------------------------------------- -->
+                <div class="row total_time_slots">
+
+		        </div>
+		        <div class="row timeSlots">
+		
+		        </div>
             </div>
         </div>
-        <div class="row total_time_slots">
-
-        </div>
-        <div class="row timeSlots">
-
-        </div>
+        
 
     </div>
 
@@ -2839,7 +2851,7 @@
                 <div class="modal-body">
                     <h5 class="text-center">Updated!</h5>
                     <p>
-                        The date has been scheduled. Now you can add your availability time.
+                        The date has been scheduled.
                     </p>
                     <button type="button" class="btn customBtn" data-dismiss="modal">Okay</button>
 
@@ -2920,6 +2932,9 @@
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
                 }
             });
+        });
+        window.addEventListener('beforeunload', function() {
+            window.scrollTo(0, 0);
         });
     </script> --}}
     <script src="{{ asset('customjs/web/register/common.js') }}?v={{ time() }}"></script>

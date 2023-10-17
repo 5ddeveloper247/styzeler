@@ -181,7 +181,7 @@ class AdminFrontEndController extends Controller
 
 	public function jobRequests()
 	{
-		$data['jobReqList'] = Job_request::where('type', 'owner')->get();
+		$data['jobReqList'] = Job_request::all();
 		$data['page'] = 'jobRequests';
 		return view('admin.jobRequests')->with($data);
 	}

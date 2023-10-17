@@ -340,6 +340,8 @@ function profileResponse(response) {
 
                     if (cart_book == 'cart_book') {
                         $('.book_client').removeClass('d-none');
+                        $('.contact_btn').addClass('d-none');
+                        $('#ownerEmail').text(email);
                     } else {
                         $('.book_client').addClass('d-none');
                         $('.contact_btn').addClass('d-none');
