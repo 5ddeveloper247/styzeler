@@ -51,6 +51,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         Route::post('/saveAvaibleSlots', 'ProfileController@saveAvaibleSlots')->name('saveAvaibleSlots');
         Route::post('/updateAfterNineSlot', 'ProfileController@updateAfterNineSlot')->name('updateAfterNineSlot');
         Route::post('/getfreelancerBooking', 'ProfileController@getfreelancerBooking')->name('getfreelancerBooking');
+        Route::post('/cancelAppointment', 'ProfileController@cancelAppointment')->name('cancelAppointment');
         Route::post('/getfreelancerBookingHistory', 'ProfileController@getfreelancerBookingHistory')->name('getfreelancerBookingHistory');
         Route::post('/saveRentAndLetDetails', 'RentLetController@saveRentAndLetDetails')->name('saveRentAndLetDetails');
         Route::post('/saveJobRequestDetails', 'JobRequestController@saveJobRequestDetails')->name('saveJobRequestDetails');

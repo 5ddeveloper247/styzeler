@@ -6,6 +6,7 @@ use App\Models\Bookings;
 use App\Models\Appointments;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class BookingSlots extends Model
@@ -36,4 +37,14 @@ class BookingSlots extends Model
     {
         return $this->hasOne(Bookings::class, 'id', 'bookings_id');
     }
+
+    // /**
+    //  * Get all of the getAppointment for the BookingSlots
+    //  *
+    //  * @return \Illuminate\Database\Eloquent\Relations\HasMany
+    //  */
+    // public function getAppointment(): HasMany
+    // {
+    //     return $this->hasMany(Appointments::class, 'foreign_key', 'local_key');
+    // }
 }

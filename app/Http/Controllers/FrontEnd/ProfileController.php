@@ -353,9 +353,9 @@ class ProfileController extends Controller
         if (isset($request->book_type) && $request->book_type == 'cart_book') {  // of cart booking then this code execution
 
 
-            $cartExist = Cart::where('user_id', Auth::user()->id)->where('slot_date', $request->book_date)->count();
-
-            if ($tokens == 0 && $cartExist == 0) {
+            // $cartExist = Cart::where('user_id', Auth::user()->id)->where('slot_date', $request->book_date)->count();
+            $appoExist = Appointments::where('booking_user_id', Auth::user()->id)->where('booking_date', $request->book_date)->count();
+            if ($tokens == 0 && $appoExist == 0) {
                 return response()->json([
                     'status' => 404,
                     'message' => 'No enough tokens, first buy package.',
@@ -488,7 +488,7 @@ class ProfileController extends Controller
                 //                 		'booking_user_id' => Auth::id(),
                 //                 ]);
 
-                if ($cartExist == 0) {
+                if ($appoExist == 0) {
                     $user = User::find(Auth::user()->id);
                     $user->tokens = $tokens - 1;
                     $user->update();
@@ -812,7 +812,7 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(
                 [
                     ['booking_user_id', Auth::id()],
-                    ['created_at', '>=', $currentDate]
+                    ['booking_date', '>=', $currentDate]
                 ]
 
             )->with([
@@ -826,7 +826,7 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(
                 [
                     ['freelancer_user_id', Auth::id()],
-                    ['created_at', '>=', $currentDate]
+                    ['booking_date', '>=', $currentDate]
                 ]
 
             )->with([
@@ -1051,6 +1051,131 @@ class ProfileController extends Controller
                 ]);
             }
         }
+    }
+
+    public function cancelAppointment(Request $request)
+    {
+
+        $appId =  $request->app_id;
+
+        $getAppointmentData = Appointments::where('id', $appId)->first();
+        // dd($getAppointmentData);
+        $getAppointmentCreatedTime = $getAppointmentData->created_at;
+        $getAppointmentBookingDate = $getAppointmentData->booking_date;
+        $getAppointmentBookingTime = $getAppointmentData->booking_time;
+        $getAppointmentBookingUserId = $getAppointmentData->booking_user_id;
+
+        $timeNow = now();
+        $hoursDifference = $timeNow->diffInHours($getAppointmentCreatedTime);
+
+        if ($hoursDifference > 24) {
+            return response()->json([
+                'status' => 403,
+                'message' => 'You Cannot Cancel This Booking!',
+                'data' => ''
+            ]);
+        }
+
+        $getAppointmentDataArray = explode(',', $getAppointmentData->booking_slots_id);
+
+        BookingSlots::whereIn('id', $getAppointmentDataArray)
+            ->update(
+                [
+                    "status" => "Available"
+                ]
+            );
+
+        $clientUser = User::where('id', $getAppointmentData->booking_user_id)->first();
+        $freelancerUser = User::where('id', $getAppointmentData->freelancer_user_id)->first();
+        // dd(empty($getAppointmentData));
+        $appoExist = Appointments::where('booking_user_id', $getAppointmentBookingUserId)->where('booking_date', $getAppointmentBookingDate)->count();
+
+        if ($appoExist == 1) {
+            User::where('id', $clientUser->id)->update([
+                'tokens' => $clientUser->tokens + 1
+            ]);
+        }
+
+
+        $getAppointmentData->delete();
+
+        $body = "<table>
+                    <tr>
+                        <td>Username: Booking cancel with " . $freelancerUser->name . " " . $freelancerUser->surname . "</td>
+                    </tr>
+                    <tr>
+                        <td>Email: " . $freelancerUser->email . "</td>
+                    </tr>
+                    <tr>
+                        <td>Booking Date: " . $getAppointmentBookingDate . "</td>
+                    </tr>
+                    <tr>
+                        <td>Booking time: " . $getAppointmentBookingTime . "</td>
+                    </tr>
+                    <tr>
+                        <td>Cancelled By: " . Auth::user()->name . " " . Auth::user()->surname . "</td>
+                    </tr>
+                </table>";
+
+        $userEmailsSend = $clientUser->email;
+
+        sendMail($clientUser->name, $userEmailsSend, 'Cancel Booking', 'Cancel Booking Email', $body);
+
+        $body1 = "<table>
+                    <tr>
+                        <td>Username: Booking cancel with " . $clientUser->name . " " . $clientUser->surname . "</td>
+                    </tr>
+                    <tr>
+                        <td>Email: " . $clientUser->email . "</td>
+                    </tr>
+                    <tr>
+                        <td>Booking Date: " . $getAppointmentBookingDate . "</td>
+                    </tr>
+                    <tr>
+                        <td>Booking time: " . $getAppointmentBookingTime . "</td>
+                    </tr>
+                    <tr>
+                        <td>Cancelled By: " . Auth::user()->name . " " . Auth::user()->surname . "</td>
+                    </tr>
+                </table>";
+
+        $userEmailsSend1 = $freelancerUser->email;
+
+        sendMail($clientUser->name, $userEmailsSend1, 'Cancel Booking', 'Cancel Booking Email', $body1);
+
+        $body1 = "<table>
+                    <tr>
+                        <td>Client Name: " . $clientUser->name . " " . $clientUser->surname . "</td>
+                    </tr>
+                    <tr>
+                        <td>Freelancer Name: " . $freelancerUser->name . " " . $freelancerUser->surname . "</td>
+                    </tr>
+                    <tr>
+                        <td>Client Email: " . $clientUser->email . "</td>
+                    </tr>
+                    <tr>
+                        <td>Freelancer Email: " . $freelancerUser->email . "</td>
+                    </tr>
+                    <tr>
+                        <td>Booking Date: " . $getAppointmentBookingDate . "</td>
+                    </tr>
+                    <tr>
+                        <td>Booking time: " . $getAppointmentBookingTime . "</td>
+                    </tr>
+                    <tr>
+                        <td>Cancelled By: " . Auth::user()->name . " " . Auth::user()->surname . "</td>
+                    </tr>
+                </table>";
+
+        $userEmailsSend2 = 'admin@styzeler.co.uk';
+
+        sendMail($clientUser->name, $userEmailsSend2, 'Cancel Booking', 'Cancel Booking Email', $body1);
+
+        return response()->json([
+            'status' => 200,
+            'message' => 'Booking Cancel Successfully!',
+            'data' => ''
+        ]);
     }
 }
 
