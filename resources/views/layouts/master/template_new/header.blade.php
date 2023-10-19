@@ -9,7 +9,7 @@
             <button type="button" class="toggle"><span></span></button>
             <div class="logo_name">Styzeler</div>
             <p class="subtitle">Recruitment Agency For Hair, Beauty, Spa</p>
-            <div class="btn_blk ">
+            <div class="btn_blk">
 
                 @if (auth()->check())
                     <!-- Check if the user is logged in -->
@@ -19,12 +19,17 @@
                             @csrf
                             <button type="submit" class="logon_btn">Sign Out</button>
                         </form>
+                        <a href="#" class="logon_btn heart_btn">
+                            <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt=""
+                                style="width:28px;">
+                        </a>
                     @endauth
 
                     <button href="javascript:void(0)" class="logon_btn heart_btn dropdown-toggle position-relative"
                         role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                         id="navbarDropdown">
-                        <img src="{{ asset('template_new/assets/images/user-icon.png') }}" alt="" style="width:28px;"><!-- heart_icon.jpg -->
+                        <img src="{{ asset('template_new/assets/images/user-icon.png') }}" alt=""
+                            style="width:28px;"><!-- heart_icon.jpg -->
                         <div class="dropdown-menu position-absolute" aria-labelledby="navbarDropdown">
                             {{-- <div class="user-profile"></div> --}}
                             @if (auth()->user()->type != 'client')
@@ -34,13 +39,13 @@
 
                             <a class="dropdown-item" href="{{ route('Profile') }}">Profile</a>
                             @if (auth()->user()->type == 'client')
-	                            <a class="dropdown-item" href="{{ route('clientBooking') }}">Your
-	                                Booking</a>
-	                        @else
-	                        	<a class="dropdown-item" href="{{ route('freelancerBooking') }}">Your
-	                                Booking</a>
+                                <a class="dropdown-item" href="{{ route('clientBooking') }}">Your
+                                    Booking</a>
+                            @else
+                                <a class="dropdown-item" href="{{ route('freelancerBooking') }}">Your
+                                    Booking</a>
                             @endif
-                            
+
                             <a class="dropdown-item" href="{{ route('termAndConditions') }}">Terms &
                                 Conditions</a>
                             <a class="dropdown-item" href="{{ route('privacyPolicy') }}">Privacy Policy</a>
@@ -50,7 +55,9 @@
                             <a class="dropdown-item" href="{{ route('freelancerTermAndConditions') }}">Freelancer
                                 Terms &
                                 Conditions</a>
-                            @if (auth()->user()->type == 'client' || auth()->user()->type == 'hairdressingSalon' || auth()->user()->type == 'beautySalon')
+                            @if (auth()->user()->type == 'client' ||
+                                    auth()->user()->type == 'hairdressingSalon' ||
+                                    auth()->user()->type == 'beautySalon')
                                 <a class="dropdown-item" href="javascript:;" onclick="getClientTokens();">Tokens</a>
                             @endif
                             <a class="dropdown-item" href="{{ route('faqs') }}">FAQ</a>
@@ -82,10 +89,10 @@
                 <li class="drop">
                     <a href="{{ route('candidate') }}">Candidate</a>
                     <ul class="sub">
-                        
+
                         <li><a href="{{ route('candidate') }}?type=freelancer">Freelance</a></li>
                         <li><a href="{{ route('candidate') }}?type=jobseeker">Job Seeker</a></li>
-                        
+
                     </ul>
                 </li>
                 <li class="drop">

@@ -1,8 +1,8 @@
 <header>
     <section class="header">
-        <nav class="navbar navbar-expand-lg navbar-light ">
+        <nav class="navbar navbar-expand-lg navbar-light">
 
-            <div class="text-left d-block d-lg-none">
+            <div class="d-block d-lg-none text-left">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('template_old/images/logo.png') }}" width="80px" /></a>
             </div>
@@ -11,17 +11,17 @@
                 <img src="{{ asset('template_old/images/menu.png') }}" alt="Styzeler">
             </button>
 
-            <div class="row collapse navbar-collapse" id="navbarSupportedContent">
-                <div class="container-fluid top-header pb-2 pb-lg-2">
+            <div class="row navbar-collapse collapse" id="navbarSupportedContent">
+                <div class="container-fluid top-header pb-lg-2 pb-2">
                     <a class="navbar-brand" href="{{ url('/') }}"><img
                             src="{{ asset('template_old/images/logo.png') }}" width="100px"
                             class="d-none d-lg-inline" /> </a>
                     <a class="navbar-heading" href="{{ url('/') }}"><strong style="font-size: 60px"
                             class="d-none d-lg-inline">Styzeler</strong></a>
-                    <p class="subtitle ml-2 d-none d-lg-inline"> Recruitment Agency For Hair, Beauty, Spa</p>
+                    <p class="subtitle d-none d-lg-inline ml-2"> Recruitment Agency For Hair, Beauty, Spa</p>
                     <div class="row d-lg-none">
                         <div class="col-6">
-                            <h6 class="subtitle-small d-block d-lg-none my-3 ">Recruitment Agency For Hair, Beauty, Spa
+                            <h6 class="subtitle-small d-block d-lg-none my-3">Recruitment Agency For Hair, Beauty, Spa
                             </h6>
                         </div>
                     </div>
@@ -36,37 +36,52 @@
                                         @csrf
                                         <button type="submit" class="logon_btn">Sign Out</button>
                                     </form>
+                                    <a href="{{ route('cart') }}" class="logon_btn heart_btn">
+                                        <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt=""
+                                            style="width:28px;">
+                                    </a>
                                 @endauth
                                 <button href="javascript:void(0)" class="logon_btn heart_btn dropdown-toggle"
                                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                                     id="navbarDropdown">
-<!--                                     <img src="{{ asset('template_new/assets/images/heart_icon.jpg') }}" alt=""> -->
-									<img src="{{ asset('template_new/assets/images/user-icon.png') }}" alt="" style="width:28px;"><!-- heart_icon.jpg -->
+                                    <!--                                     <img src="{{ asset('template_new/assets/images/heart_icon.jpg') }}" alt=""> -->
+                                    <img src="{{ asset('template_new/assets/images/user-icon.png') }}" alt=""
+                                        style="width:28px;"><!-- heart_icon.jpg -->
                                     <div class="dropdown-menu position-absolute" aria-labelledby="navbarDropdown">
                                         {{-- <div class="user-profile"></div> --}}
                                         @if (auth()->user()->type != 'client')
-                                            <a class="dropdown-item oldredirect" href="{{ route('freelancerBookingHistory') }}">Your
+                                            <a class="dropdown-item oldredirect"
+                                                href="{{ route('freelancerBookingHistory') }}">Your
                                                 Booking History</a>
                                         @endif
                                         <a class="dropdown-item oldredirect" href="{{ route('Profile') }}">Profile</a>
                                         @if (auth()->user()->type == 'client')
-				                            <a class="dropdown-item oldredirect" href="{{ route('clientBooking') }}">Your
-				                                Booking</a>
-				                        @else
-				                        	<a class="dropdown-item oldredirect" href="{{ route('freelancerBooking') }}">Your
-				                                Booking</a>
-			                            @endif
-                                        <a class="dropdown-item oldredirect" href="{{ route('termAndConditions') }}">Terms &
+                                            <a class="dropdown-item oldredirect"
+                                                href="{{ route('clientBooking') }}">Your
+                                                Booking</a>
+                                        @else
+                                            <a class="dropdown-item oldredirect"
+                                                href="{{ route('freelancerBooking') }}">Your
+                                                Booking</a>
+                                        @endif
+                                        <a class="dropdown-item oldredirect"
+                                            href="{{ route('termAndConditions') }}">Terms &
                                             Conditions</a>
-                                        <a class="dropdown-item oldredirect" href="{{ route('privacyPolicy') }}">Privacy Policy</a>
-                                        <a class="dropdown-item oldredirect" href="{{ route('webTermAndConditions') }}">Website
+                                        <a class="dropdown-item oldredirect"
+                                            href="{{ route('privacyPolicy') }}">Privacy Policy</a>
+                                        <a class="dropdown-item oldredirect"
+                                            href="{{ route('webTermAndConditions') }}">Website
                                             Terms &
                                             Conditions</a>
-                                        <a class="dropdown-item oldredirect" href="{{ route('freelancerTermAndConditions') }}">
+                                        <a class="dropdown-item oldredirect"
+                                            href="{{ route('freelancerTermAndConditions') }}">
                                             Freelancer Terms & Conditions</a>
-                                      	@if (auth()->user()->type == 'client' || auth()->user()->type == 'hairdressingSalon' || auth()->user()->type == 'beautySalon')
-			                                <a class="dropdown-item" href="javascript:;" onclick="getClientTokens();">Tokens</a>
-			                            @endif
+                                        @if (auth()->user()->type == 'client' ||
+                                                auth()->user()->type == 'hairdressingSalon' ||
+                                                auth()->user()->type == 'beautySalon')
+                                            <a class="dropdown-item" href="javascript:;"
+                                                onclick="getClientTokens();">Tokens</a>
+                                        @endif
                                         <a class="dropdown-item oldredirect" href="{{ route('faqs') }}">FAQ</a>
                                     </div>
                                 </button>
@@ -81,9 +96,9 @@
                 </div>
 
                 <div class="container-fluid my-1">
-                    <div class="d-flex navbar-nav  text-light text-center justify-content-between">
+                    <div class="d-flex navbar-nav text-light justify-content-between text-center">
 
-                        <div class=" nav-item  ">
+                        <div class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">Home<span
                                     class="sr-only">(current)</span></a>
                             <img src="{{ asset('template_old/images/header-hr.png') }}" class="header-hr" />
@@ -98,11 +113,11 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class=" nav-item ">
+                        <div class="nav-item">
                             <a class="nav-link" href="{{ route('businessOwner') }}">BUSINESS OWNER</a>
                             <img src="{{ asset('template_old/images/header-hr.png') }}" class="header-hr" />
                         </div>
-                        <div class=" nav-item position-relative">
+                        <div class="nav-item position-relative">
                             <a class="nav-link" href="{{ route('candidate') }}">Candidate</a>
                             <img src="{{ asset('template_old/images/header-hr.png') }}" class="header-hr" />
                             <ul class="sub">
@@ -114,7 +129,7 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class=" nav-item position-relative">
+                        <div class="nav-item position-relative">
                             <a class="nav-link" href="{{ route('news') }}">News </a>
                             <img src="{{ asset('template_old/images/header-hr.png') }}" class="header-hr" />
                             <ul class="sub">
@@ -126,11 +141,11 @@
                                 </li>
                             </ul>
                         </div>
-                        <div class=" nav-item position-relative">
+                        <div class="nav-item position-relative">
                             <a class="nav-link" href="{{ route('wedding') }}">Bridal </a>
                             <img src="{{ asset('template_old/images/header-hr.png') }}" class="header-hr" />
                         </div>
-                        <div class=" nav-item position-relative">
+                        <div class="nav-item position-relative">
                             <a class="nav-link" href="{{ route('rentAndLet') }}">Rent & Let</a>
                             <img src="{{ asset('template_old/images/header-hr.png') }}" class="header-hr" />
                             <ul class="sub">

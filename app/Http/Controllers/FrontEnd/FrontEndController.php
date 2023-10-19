@@ -80,13 +80,13 @@ class FrontEndController extends Controller
 
     public function businessOwner()
     {
-    	$data['users'] = User::where('status', 'Active')->whereIn('type', ['hairdressingSalon', 'beautySalon'])->get();
+        $data['users'] = User::where('status', 'Active')->whereIn('type', ['hairdressingSalon', 'beautySalon'])->get();
         return view('web.businessOwner')->with($data);
     }
 
     public function candidate(Request $request)
     {
-    	$data['type'] = isset($request->type) ? $request->type : '';
+        $data['type'] = isset($request->type) ? $request->type : '';
         return view('web.candidate')->with($data);
     }
 
@@ -102,11 +102,11 @@ class FrontEndController extends Controller
 
     public function rentAndLet()
     {
-    	if(isset(Auth::user()->id)){
-    		$data['userDetails'] = User::where('id', Auth::user()->id)->first();
-    	}else{
-    		$data['userDetails'] = '';
-    	}
+        if (isset(Auth::user()->id)) {
+            $data['userDetails'] = User::where('id', Auth::user()->id)->first();
+        } else {
+            $data['userDetails'] = '';
+        }
         return view('web.rentAndLet')->with($data);
     }
 
@@ -135,95 +135,92 @@ class FrontEndController extends Controller
 
     public function homeServices()
     {
-    	if(isset(Auth::user()->id)){
-    		
-    		$active_cart = Cart::where('user_id', Auth::user()->id)->where('status', 'active')->first();
-    		if(isset($active_cart->id)){
-    			Cart_line::where('cart_id', $active_cart->id)->delete();
-    		}
-    	}
-    	
+        if (isset(Auth::user()->id)) {
+
+            $active_cart = Cart::where('user_id', Auth::user()->id)->where('status', 'active')->first();
+            if (isset($active_cart->id)) {
+                Cart_line::where('cart_id', $active_cart->id)->delete();
+            }
+        }
+
         return view('web.homeServices');
     }
 
     public function barber(Request $request)
     {
-    	if(isset($request->type)){
-    		$type = $request->type;
-    	}else{
-    		$type = '';
-    	}
-    	if(isset(Auth::user()->type) && in_array(Auth::user()->type, ['hairdressingSalon','beautySalon','wedding','hairStylist','beautician','barber'])){
-    		 
-    		if($type != ''){
-    			$users = User::where('status', 'Active')->whereIn('type', ['barber'])->where('profile_type', '!=', 'Home Service')->where('profile_type', $type)->get();
-    		}else{
-    			$users = User::where('status', 'Active')->whereIn('type', ['barber'])->where('profile_type', '!=', 'Home Service')->get();
-    		}
-    	}
-    	else if(isset(Auth::user()->type) && in_array(Auth::user()->type, ['client'])){
-    		 
-    		$users = User::where('status', 'Active')->whereIn('type', ['barber'])->where('profile_type', 'Home Service')->get();
-    	}else{
-    		
-    		$users = User::where('status', 'Active')->whereIn('type', ['barber'])->get();
-    	}
-    	
-    	$data['users'] = $users;
+        if (isset($request->type)) {
+            $type = $request->type;
+        } else {
+            $type = '';
+        }
+        if (isset(Auth::user()->type) && in_array(Auth::user()->type, ['hairdressingSalon', 'beautySalon', 'wedding', 'hairStylist', 'beautician', 'barber'])) {
+
+            if ($type != '') {
+                $users = User::where('status', 'Active')->whereIn('type', ['barber'])->where('profile_type', '!=', 'Home Service')->where('profile_type', $type)->get();
+            } else {
+                $users = User::where('status', 'Active')->whereIn('type', ['barber'])->where('profile_type', '!=', 'Home Service')->get();
+            }
+        } else if (isset(Auth::user()->type) && in_array(Auth::user()->type, ['client'])) {
+
+            $users = User::where('status', 'Active')->whereIn('type', ['barber'])->where('profile_type', 'Home Service')->get();
+        } else {
+
+            $users = User::where('status', 'Active')->whereIn('type', ['barber'])->get();
+        }
+
+        $data['users'] = $users;
         return view('web.barber')->with($data);
     }
 
     public function hairstylist(Request $request)
     {
-    	if(isset($request->type)){
-    		$type = $request->type;
-    	}else{
-    		$type = '';
-    	}
-    	if(isset(Auth::user()->type) && in_array(Auth::user()->type, ['hairdressingSalon','beautySalon','wedding','hairStylist','beautician','barber'])){
-    		
-    		if($type != ''){
-    			$users = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->where('profile_type', '!=', 'Home Service')->where('profile_type', $type)->get();
-    		}else{
-    			$users = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->where('profile_type', '!=', 'Home Service')->get();
-    		}
-    	}
-    	else if(isset(Auth::user()->type) && in_array(Auth::user()->type, ['client'])){
-    		
-    		$users = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->where('profile_type', 'Home Service')->get();
-    	}else{
-    		
-    		$users = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->get();
-    	}
-        
-    	$data['users'] = $users;
+        if (isset($request->type)) {
+            $type = $request->type;
+        } else {
+            $type = '';
+        }
+        if (isset(Auth::user()->type) && in_array(Auth::user()->type, ['hairdressingSalon', 'beautySalon', 'wedding', 'hairStylist', 'beautician', 'barber'])) {
+
+            if ($type != '') {
+                $users = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->where('profile_type', '!=', 'Home Service')->where('profile_type', $type)->get();
+            } else {
+                $users = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->where('profile_type', '!=', 'Home Service')->get();
+            }
+        } else if (isset(Auth::user()->type) && in_array(Auth::user()->type, ['client'])) {
+
+            $users = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->where('profile_type', 'Home Service')->get();
+        } else {
+
+            $users = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->get();
+        }
+
+        $data['users'] = $users;
         return view('web.hairstylist')->with($data);
     }
 
     public function beautician(Request $request)
     {
-    	if(isset($request->type)){
-    		$type = $request->type;
-    	}else{
-    		$type = '';
-    	}
-    	if(isset(Auth::user()->type) && in_array(Auth::user()->type, ['hairdressingSalon','beautySalon','wedding','hairStylist','beautician','barber'])){
-    	
-    		if($type != ''){
-    			$users = User::where('status', 'Active')->whereIn('type', ['beautician'])->where('profile_type', '!=', 'Home Service')->where('profile_type', $type)->get();
-    		}else{
-    			$users = User::where('status', 'Active')->whereIn('type', ['beautician'])->where('profile_type', '!=', 'Home Service')->get();
-    		}
-    	}
-    	else if(isset(Auth::user()->type) && in_array(Auth::user()->type, ['client'])){
-    	
-    		$users = User::where('status', 'Active')->whereIn('type', ['beautician'])->where('profile_type', 'Home Service')->get();
-    	}else{
-    		
-    		$users = User::where('status', 'Active')->whereIn('type', ['beautician'])->get();
-    	}
-    	
-    	$data['users'] = $users;
+        if (isset($request->type)) {
+            $type = $request->type;
+        } else {
+            $type = '';
+        }
+        if (isset(Auth::user()->type) && in_array(Auth::user()->type, ['hairdressingSalon', 'beautySalon', 'wedding', 'hairStylist', 'beautician', 'barber'])) {
+
+            if ($type != '') {
+                $users = User::where('status', 'Active')->whereIn('type', ['beautician'])->where('profile_type', '!=', 'Home Service')->where('profile_type', $type)->get();
+            } else {
+                $users = User::where('status', 'Active')->whereIn('type', ['beautician'])->where('profile_type', '!=', 'Home Service')->get();
+            }
+        } else if (isset(Auth::user()->type) && in_array(Auth::user()->type, ['client'])) {
+
+            $users = User::where('status', 'Active')->whereIn('type', ['beautician'])->where('profile_type', 'Home Service')->get();
+        } else {
+
+            $users = User::where('status', 'Active')->whereIn('type', ['beautician'])->get();
+        }
+
+        $data['users'] = $users;
         return view('web.beautician')->with($data);
     }
 
@@ -234,10 +231,10 @@ class FrontEndController extends Controller
 
     public function weddingStylist()
     {
-    	 
-    	$users = User::where('status', 'Active')->whereIn('type', ['wedding'])->get();
-    	 
-    	$data['users'] = $users;
+
+        $users = User::where('status', 'Active')->whereIn('type', ['wedding'])->get();
+
+        $data['users'] = $users;
         return view('web.weddingStylist')->with($data);
     }
 
@@ -269,12 +266,12 @@ class FrontEndController extends Controller
     {
         $currentDate = now()->toDateString();
         $data['jobs'] = DB::table('job_request')->where('status', 'active')->where('start_date', '<=', $currentDate)->where('end_date', '>=', $currentDate)->get();
-        if(isset(Auth::user()->id)){
-        	$data['userDetails'] = User::where('id', Auth::user()->id)->first();
-        }else{
-        	$data['userDetails'] = '';
+        if (isset(Auth::user()->id)) {
+            $data['userDetails'] = User::where('id', Auth::user()->id)->first();
+        } else {
+            $data['userDetails'] = '';
         }
-        
+
         return view('web.jobs')->with($data);
     }
 
@@ -369,13 +366,13 @@ class FrontEndController extends Controller
             }
         }
 
-        $users1 = User::whereIn('type', ['hairStylist','beautician','barber'])
-        				->where('profile_type', 'Home Service')
-        				->where('status', 'Active')->get();
+        $users1 = User::whereIn('type', ['hairStylist', 'beautician', 'barber'])
+            ->where('profile_type', 'Home Service')
+            ->where('status', 'Active')->get();
         $users2 = User::whereIn('type', ['wedding'])->where('status', 'Active')->get();
 
-        $users = $users1;//$users1->concat($users2);
-        				
+        $users = $users1; //$users1->concat($users2);
+
         if (!empty($users)) {
             foreach ($users as $user) {
 
@@ -412,12 +409,12 @@ class FrontEndController extends Controller
     public function Profile()
     {
         $data = User::findOrFail(Auth::user()->id);
-        if(isset(Auth::user()->id)){
-//         	$membership = Membership::where('user_id', Auth::user()->id)->count();
-        	$user = User::where('id', Auth::user()->id)->first();
-        	$membership = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
-        }else{
-        	$membership = 0;
+        if (isset(Auth::user()->id)) {
+            //         	$membership = Membership::where('user_id', Auth::user()->id)->count();
+            $user = User::where('id', Auth::user()->id)->first();
+            $membership = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+        } else {
+            $membership = 0;
         }
         return customView(
             'web.freelancerProfile',
@@ -431,20 +428,20 @@ class FrontEndController extends Controller
     {
 
         $data = User::findOrFail($request->id);
-        if(isset(Auth::user()->id)){
-//         	$membership = Membership::where('user_id', Auth::user()->id)->count();
-        	$user = User::where('id', Auth::user()->id)->first();
-        	$userCart = Cart::with('cart_lines')->where('user_id', Auth::user()->id)->where('status','active')->first();
-        	
-        	$membership = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
-        	$todayUseToken = Used_tokens::where('user_id', Auth::user()->id)->where('freelancer_id', $request->id)->where('date', date('Y-m-d'))->count();
-        	$cartServicesTimeMin = $userCart != null ? $userCart->cart_lines->sum('item_time_min') : 0;
-        }else{
-        	$membership = 0;
-        	$todayUseToken = 0;
-        	$cartServicesTimeMin = 0;
+        if (isset(Auth::user()->id)) {
+            //         	$membership = Membership::where('user_id', Auth::user()->id)->count();
+            $user = User::where('id', Auth::user()->id)->first();
+            $userCart = Cart::with('cart_lines')->where('user_id', Auth::user()->id)->where('status', 'active')->first();
+
+            $membership = (isset($user->tokens) && $user->tokens != null) ? $user->tokens : 0;
+            $todayUseToken = Used_tokens::where('user_id', Auth::user()->id)->where('freelancer_id', $request->id)->where('date', date('Y-m-d'))->count();
+            $cartServicesTimeMin = $userCart != null ? $userCart->cart_lines->sum('item_time_min') : 0;
+        } else {
+            $membership = 0;
+            $todayUseToken = 0;
+            $cartServicesTimeMin = 0;
         }
-        
+
         return customView(
             'web.freelancerProfileView',
             'web.salonOwnerProfileView',
@@ -455,10 +452,36 @@ class FrontEndController extends Controller
     }
     public function freelancerBooking()
     {
-    	return view('web.freelancerBooking');
+        return view('web.freelancerBooking');
     }
     public function freelancerBookingHistory()
     {
         return view('web.freelancerBookingHistory');
+    }
+
+    public function cart()
+    {
+        return view('web.cart');
+    }
+
+    public function cartData()
+    {
+        $cart = Cart::where(
+            [
+                'user_id' => Auth::id(),
+                'status' => 'active'
+            ]
+        )
+            ->with('cart_lines')
+            ->get();
+        // dd($cart, Auth::id());
+        // return view('web.cart',);
+        return response()->json(
+            [
+                'status' => 200,
+                'message' => '',
+                'cart' => $cart
+            ]
+        );
     }
 }

@@ -12,26 +12,26 @@ use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 class Cart extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'cart';
 
     public function user()
     {
-    	return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
-    
+
     public function booked_user()
     {
-    	return $this->belongsTo(User::class, 'client_id');
+        return $this->belongsTo(User::class, 'client_id');
     }
 
     public function cart_lines()
     {
-    	return $this->hasMany(Cart_line::class, 'cart_id');
+        return $this->hasMany(Cart_line::class, 'cart_id', 'id');
     }
-    
+
     public function userBookingSlots(): BelongsTo
     {
-    	return $this->belongsTo(BookingSlots::class, 'slot_id', 'id');
+        return $this->belongsTo(BookingSlots::class, 'slot_id', 'id');
     }
 }

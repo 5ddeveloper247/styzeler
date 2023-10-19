@@ -57,6 +57,8 @@ Route::group(['namespace' => 'FrontEnd'], function () {
 
         Route::post('/addToCart', 'CartController@saveAddToCartDetails')->name('addToCart');
         Route::get('/book-freelancer', 'FrontEndController@bookFreelancer')->name('bookFreelancer');
+        Route::get('/cart', 'FrontEndController@cart')->name('cart');
+        Route::get('/cartData', 'FrontEndController@cartData')->name('cartData');
     });
     Route::post('/charge', 'PaymentController@charge')->name('stripe.charge');
     Route::get('/forgetPassword', 'FrontEndController@forgetPassword')->name('forgetPassword');
