@@ -222,12 +222,24 @@ function removeDuplicates(data) {
 
                 if (filtered_times[k] != "After_Nine") {
 
-                  var time_after_nine_1 = filtered_times[k].split(" - ")[0];
-                  var time_after_nine_2 = filtered_times[k].split(" - ")[1];
-                  time_after_nine_1 = convertTo12HourFormat(time_after_nine_1);
-                  time_after_nine_2 = convertTo12HourFormat(time_after_nine_2);
+                  if (filtered_times[k] != "After_Nine") {
 
-                  slot_time_html += `<div title = "Edit Slot" class="option col-md-3 mr-2" onclick="changeSlotTime('` + filtered_times[k] + `')"> ` + time_after_nine_1 + `'-'` + time_after_nine_2 + `</div>`;
+                    let time_after_nine_1 = filtered_times[k].slice(-2);
+                    let time_after_nine_2 = filtered_times[k].slice(-2);
+
+                    var time_after_nine1 = filtered_times[k].split(" - ")[0];
+                    var time_after_nine2 = filtered_times[k].split(" - ")[1];
+
+                    if (time_after_nine_2 === 'AM' || time_after_nine_2 === 'PM') {
+                      time_after_nine_1 = time_after_nine1;
+                      time_after_nine_2 = time_after_nine2;
+                    } else {
+                      time_after_nine_1 = convertTo12HourFormat(time_after_nine1);
+                      time_after_nine_2 = convertTo12HourFormat(time_after_nine2);
+                    }
+
+                    slot_time_html += `<div title = "Edit Slot" class="option col-md-3 mr-2" onclick="changeSlotTime('` + filtered_times[k] + `')"> ` + time_after_nine_1 + ` - ` + time_after_nine_2 + `</div>`;
+                  }
                 } else {
                   $("#after_nine_slot").prop('checked', true);
 
@@ -379,12 +391,21 @@ function removeDuplicates(data) {
                   $.each(filtered_times, function (k) {
                     if (filtered_times[k] != "After_Nine") {
 
-                      var time_after_nine_1 = filtered_times[k].split(" - ")[0];
-                      var time_after_nine_2 = filtered_times[k].split(" - ")[1];
-                      time_after_nine_1 = convertTo12HourFormat(time_after_nine_1);
-                      time_after_nine_2 = convertTo12HourFormat(time_after_nine_2);
+                      let time_after_nine_1 = filtered_times[k].slice(-2);
+                      let time_after_nine_2 = filtered_times[k].slice(-2);
 
-                      slot_time_html += `<div title = "Edit Slot" class="option col-md-3 mr-2" onclick="changeSlotTime('` + filtered_times[k] + `')"> ` + time_after_nine_1 + `'-'` + time_after_nine_2 + `</div>`;
+                      var time_after_nine1 = filtered_times[k].split(" - ")[0];
+                      var time_after_nine2 = filtered_times[k].split(" - ")[1];
+
+                      if (time_after_nine_2 === 'AM' || time_after_nine_2 === 'PM') {
+                        time_after_nine_1 = time_after_nine1;
+                        time_after_nine_2 = time_after_nine2;
+                      } else {
+                        time_after_nine_1 = convertTo12HourFormat(time_after_nine1);
+                        time_after_nine_2 = convertTo12HourFormat(time_after_nine2);
+                      }
+
+                      slot_time_html += `<div title = "Edit Slot" class="option col-md-3 mr-2" onclick="changeSlotTime('` + filtered_times[k] + `')"> ` + time_after_nine_1 + ` - ` + time_after_nine_2 + `</div>`;
                     } else {
                       // $("#after_nine_slot").prop('checked', true);
 
