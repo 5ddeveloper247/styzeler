@@ -748,4 +748,41 @@ function changeSlotTime(total_time) {
     $('.slots-modal').modal('show');
 
 }
+function after_nine() {
 
+    var availableDate = localStorage.getItem(SELECTEDSTATUSDATE);
+    let type = 'POST';
+    let url = '/updateAfterNineSlot';
+    let message = '';
+    let form = $('#after_nine');
+
+    check_slot = $('#after_nine_slot').prop('checked') == true ? 'on' : 'off';
+
+    let data = new FormData();
+    data.append('availableDate', availableDate);
+    data.append('check_slot', check_slot);
+
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', updateAfterNineSlotResponse, 'spinner_button', 'submit_button');
+}
+function updateAfterNineSlotResponse(response) {
+
+    // SHOWING MESSAGE ACCORDING TO RESPONSE
+    if (response.status == 200 || response.status == '200') {
+        // $("#calendar").fullCalendar('refetchEvents');
+        // $('#after_nine')[0].reset();
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
+        $("#calendar").fullCalendar('refetchEvents');
+        // $('.slots-modal').modal('hide');
+    } else {
+
+        error = response.message;
+
+        toastr.error(error, '', {
+            timeOut: 3000
+        });
+    }
+
+}

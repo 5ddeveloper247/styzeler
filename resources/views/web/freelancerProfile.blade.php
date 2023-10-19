@@ -4,7 +4,6 @@
     <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}?v={{ time() }}" />
 
     <style>
-    	
         .timeSlots .option:hover {
             background: #c4b9b0;
             color: black;
@@ -24,13 +23,14 @@
             color: #fdd431;
         }
 
-		.booked:hover{
-        	background: black !important;
+        .booked:hover {
+            background: black !important;
             color: #c4b9b0 !important;
-            font-weight: unset  !important; 
+            font-weight: unset !important;
             border: 1px solid #c4b9b0 !important;
             cursor: pointer !important;
         }
+
         .option {
             width: 100%;
             border: 1px solid #c4b9b0;
@@ -70,9 +70,6 @@
             max-height: calc(100vh - 200px);
             overflow-y: auto;
         }
-        
-
-		
     </style>
 @endpush
 
@@ -168,15 +165,15 @@
                 </div>
 
                 <!-- <div class="status row">
-                                                                                                                                                                                                                            <label class="color-1 col-lg-3">Total Tokens : </label>
-                                                                                                                                                                                                                            <p class="col-lg-9" id="total_tokens"></p>
+                                                                                                                                                                                                                                                                <label class="color-1 col-lg-3">Total Tokens : </label>
+                                                                                                                                                                                                                                                                <p class="col-lg-9" id="total_tokens"></p>
 
-                                                                                                                                                                                                                        </div>
-                                                                                                                                                                                                                        <div class="status row">
-                                                                                                                                                                                                                            <label class="color-1 col-lg-3">Remaining Tokens : </label>
-                                                                                                                                                                                                                            <p class="col-lg-9" id="remaining_tokens"></p>
+                                                                                                                                                                                                                                                            </div>
+                                                                                                                                                                                                                                                            <div class="status row">
+                                                                                                                                                                                                                                                                <label class="color-1 col-lg-3">Remaining Tokens : </label>
+                                                                                                                                                                                                                                                                <p class="col-lg-9" id="remaining_tokens"></p>
 
-                                                                                                                                                                                                                        </div> -->
+                                                                                                                                                                                                                                                            </div> -->
 
 
 
@@ -433,22 +430,31 @@
                     </div> --}}
 
                 </div>
-                <p class="text-center addTimeSlotstxt d-none" style="margin-bottom: unset; font-size: 10px; color: #fdd431;">
+
+                <p class="text-center addTimeSlotstxt d-none"
+                    style="margin-bottom: unset; font-size: 10px; color: #fdd431;">
                     <a class="text-center">Click below to add your availability time</a>
                 </p>
+                <div class="text-center addTimeSlotstxt d-none" style="margin-bottom: unset;color: #fdd431;" onchange="after_nine()">
+                    <form action="" id="after_nine">
+                        <input type="checkbox" class="form-check-input" id="after_nine_slot" name="after_nine_slot">
+                        <label class="form-check-label" for="after_nine_slot">After Nine</label>
+                    </form>
+         
+                </div>
                 <p class="text-center"><a class="btn addTimeSlots d-none text-center" onclick="addTimeSlots()"
                         title="Click to add your available time.">+</a></p>
 
                 <!-- end of new calendar ---------------------------------------------------- -->
                 <div class="row total_time_slots">
 
-		        </div>
-		        <div class="row timeSlots">
-		
-		        </div>
+                </div>
+                <div class="row timeSlots">
+
+                </div>
             </div>
         </div>
-        
+
 
     </div>
 
@@ -2877,7 +2883,7 @@
                                     <option value="">Select Start Time</option>
                                     @php
                                         $start_time = strtotime('07:00');
-                                        $end_time = strtotime('19:30');
+                                        $end_time = strtotime('20:30');
                                     @endphp
 
                                     @while ($start_time <= $end_time)
@@ -2890,6 +2896,7 @@
                                         @endphp
                                     @endwhile
                                 </select>
+
                             </div>
                             <div class="col-md-6">
                                 <label for="end_time" class="color-1">End Time</label>
@@ -2911,6 +2918,9 @@
                                         @endphp
                                     @endwhile
                                 </select>
+                            </div>
+                            <div class="col-12 mt-3">
+
                             </div>
                         </div>
                     </div>

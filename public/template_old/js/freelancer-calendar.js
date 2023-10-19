@@ -107,6 +107,7 @@ function removeDuplicates(data) {
             var changeSlot = '';
             var html = '';
             var slot_time_html = ``;
+
             $(".timeSlots").empty();
             $(".total_time_slots").empty();
             var profileStatus = showResponse.userprofile['profile_type'];
@@ -171,7 +172,8 @@ function removeDuplicates(data) {
                 if (showResponse.data[i]["booking_time_slots"]) {
                   $.each(showResponse.data[i]["booking_time_slots"], function (j) {
                     var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
-                    if (showResponse.data[i]["booking_time_slots"][j]['end_time'] != '') {
+
+                    if (showResponse.data[i]["booking_time_slots"][j]['end_time'] != null) {
                       var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
                     } else {
                       var endtimeAMPM = '';
@@ -181,13 +183,23 @@ function removeDuplicates(data) {
                     var status = showResponse.data[i]["booking_time_slots"][j]['status'];
 
                     if (status == 'booked') {
-                      html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}" disabled><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div >`;
+                      html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}" ><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div >`;
                       slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
+                      $("#after_nine_slot").attr("disabled", true);
+
                     } else {
+
+                      $("#after_nine_slot").attr("disabled", false);
+
                       if (slots_time == 'After_Nine') {
                         html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}")>After 9</div>`;//` + starttimeAMPM + ` - 
                         slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
+                        $("#after_nine_slot").attr("disabled", false);
+
+
                       } else {
+                        $("#after_nine_slot").attr("disabled", false);
+
                         html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}">` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
                         slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
                       }
@@ -203,10 +215,26 @@ function removeDuplicates(data) {
               $("#p_status").text(showResponse.data[i]["status"]);
               $("[data-date=" + showResponse.data[i]["date"] + "]").css("color", "#ffdb59");
             });
+
             var filtered_times = removeDuplicates(slots_times);
             if (slots_times != '') {
               $.each(filtered_times, function (k) {
-                slot_time_html += `<div title = "Edit Slot" class="option col-md-3 mr-2" onclick="changeSlotTime('` + filtered_times[k] + `')"> ` + filtered_times[k] + `</div>`;
+
+                if (filtered_times[k] != "After_Nine") {
+
+                  var time_after_nine_1 = filtered_times[k].split(" - ")[0];
+                  var time_after_nine_2 = filtered_times[k].split(" - ")[1];
+                  time_after_nine_1 = convertTo12HourFormat(time_after_nine_1);
+                  time_after_nine_2 = convertTo12HourFormat(time_after_nine_2);
+
+                  slot_time_html += `<div title = "Edit Slot" class="option col-md-3 mr-2" onclick="changeSlotTime('` + filtered_times[k] + `')"> ` + time_after_nine_1 + `'-'` + time_after_nine_2 + `</div>`;
+                } else {
+                  $("#after_nine_slot").prop('checked', true);
+
+                  slot_time_html += `<div class="option col-md-3 mr-2")>After_Nine</div>`;
+
+                }
+
 
               });
             }
@@ -295,7 +323,11 @@ function removeDuplicates(data) {
 
                   $.each(showResponse.data[i]["booking_time_slots"], function (j) {
                     var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
-                    var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
+                    if (showResponse.data[i]["booking_time_slots"][j]['end_time'] != null) {
+                      var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
+                    } else {
+                      var endtimeAMPM = '';
+                    }
 
                     var slots_time = showResponse.data[i]["booking_time_slots"][j]['slots_time'];
                     var status = showResponse.data[i]["booking_time_slots"][j]['status'];
@@ -303,11 +335,30 @@ function removeDuplicates(data) {
                     if (status == 'booked') {
                       html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}" disabled><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div >`;
                       slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
+                      $('#after_nine_slot').prop('checked', true);
+                      $("#after_nine_slot").attr("disabled", true);
+
                     } else {
+
+                      // alert('123')
+                      $('#after_nine_slot').prop('checked', false);
+                      $("#after_nine_slot").attr("disabled", false);
+
                       if (slots_time == 'After_Nine') {
+                        if (status == 'booked') {
+                          $("#after_nine_slot").attr("disabled", true);
+
+                        }
+                        $('#after_nine_slot').prop('checked', true);
+
                         html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}")>After 9</div>`;//` + starttimeAMPM + ` - 
                         slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
+
                       } else {
+
+                        $("#after_nine_slot").attr("disabled", false);
+                        $('#after_nine_slot').prop('checked', false);
+
                         html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}">` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
                         slots_times.push(showResponse.data[i]["booking_time_slots"][j]['slots_time']);
                       }
@@ -318,12 +369,28 @@ function removeDuplicates(data) {
 
                   });
                   changeSlot = '';
+                } else {
+                  $("#after_nine_slot").attr("disabled", false);
+                  $('#after_nine_slot').prop('checked', false);
                 }
                 var filtered_times = removeDuplicates(slots_times);
                 // console.log(filtered_times);
                 if (slots_times != '') {
                   $.each(filtered_times, function (k) {
-                    slot_time_html += `<div title = "Edit Slot" class="option col-md-3 mr-2" onclick="changeSlotTime('` + filtered_times[k] + `')"> ` + filtered_times[k] + `</div>`;
+                    if (filtered_times[k] != "After_Nine") {
+
+                      var time_after_nine_1 = filtered_times[k].split(" - ")[0];
+                      var time_after_nine_2 = filtered_times[k].split(" - ")[1];
+                      time_after_nine_1 = convertTo12HourFormat(time_after_nine_1);
+                      time_after_nine_2 = convertTo12HourFormat(time_after_nine_2);
+
+                      slot_time_html += `<div title = "Edit Slot" class="option col-md-3 mr-2" onclick="changeSlotTime('` + filtered_times[k] + `')"> ` + time_after_nine_1 + `'-'` + time_after_nine_2 + `</div>`;
+                    } else {
+                      // $("#after_nine_slot").prop('checked', true);
+
+                      slot_time_html += `<div class="option col-md-3 mr-2")>After_Nine</div>`;
+
+                    }
 
                   });
                 }
@@ -366,6 +433,7 @@ function removeDuplicates(data) {
 
             });
             if (!found) {
+
               if (profileStatus == 'Freelancer') {
                 $(".addTimeSlots, .addTimeSlotstxt").addClass('d-none');
               } else {
@@ -373,6 +441,9 @@ function removeDuplicates(data) {
 
               }
               $("#p_status").text("-");
+              $('#after_nine_slot').prop('checked', false);
+              $("#after_nine_slot").attr("disabled", false);
+
               // $(".cancel").addClass("customBtnNotSelected");
               $(".available").removeClass("customBtnNotSelected");
               $(".off").removeClass("customBtnNotSelected");

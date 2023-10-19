@@ -274,7 +274,11 @@ jQuery(document).ready(function () {
                   $.each(showResponse.data[i]["booking_time_slots"], function (j) {
 
                     var starttimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['start_time']);
-                    var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
+                    if (showResponse.data[i]["booking_time_slots"][j]['end_time'] != null) {
+                      var endtimeAMPM = convertTo12HourFormat(showResponse.data[i]["booking_time_slots"][j]['end_time']);
+                    } else {
+                      var endtimeAMPM = '';
+                    }
                     var slots_time = showResponse.data[i]["booking_time_slots"][j]['slots_time'];
                     var status = showResponse.data[i]["booking_time_slots"][j]['status'];
 
