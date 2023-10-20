@@ -844,12 +844,12 @@ function bookSlotsResponse(response) {
             	var status1 = slots[j]['status'];
 
             	if (status1 == 'booked') {
-            		html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}" onclick = '' disabled><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div>`;
+            		html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status1}" onclick = '' disabled><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div>`;
             	} else {
             		if (slots_time == 'After_Nine') {
-            			html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + slots[j]['id'] + `,'` + slots[j]['start_time'] + `','` + slots[j]['end_time'] + `','` + bookings["date"] + `')>After 9</div>`;//` + starttimeAMPM + ` - 
+            			html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` + slots[j]['id'] + `,'` + slots[j]['start_time'] + `','` + slots[j]['end_time'] + `','` + bookings["date"] + `')>After 9</div>`;//` + starttimeAMPM + ` - 
             		} else {
-            			html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + slots[j]['id'] + `,'` + slots[j]['start_time'] + `','` + slots[j]['end_time'] + `','` + bookings["date"] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
+            			html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` + slots[j]['id'] + `,'` + slots[j]['start_time'] + `','` + slots[j]['end_time'] + `','` + bookings["date"] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
             		}
             	}
             	// count++

@@ -160,7 +160,10 @@
         .fc-scroller {
             overflow-y: hidden !important;
         }
-
+		del {
+    		text-decoration: line-through;
+     		text-decoration-color: #ffbd59;
+     	}
         /*         .booked-slot{ */
         /*         	color:#b1bcc5 !important; */
         /*         } */

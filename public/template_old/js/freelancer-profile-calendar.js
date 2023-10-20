@@ -171,13 +171,13 @@ jQuery(document).ready(function () {
                     var status1 = showResponse.data[i]["booking_time_slots"][j]['status'];
 
                     if (status1 == 'booked') {
-                      html += `<div title="" class="` + changeSlot + `  option col-md-2 mr-2 ${status}" onclick = '' disabled><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div>`;
+                      html += `<div title="" class="` + changeSlot + `  option col-md-2 mr-2 ${status1}" onclick = '' disabled><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div>`;
 
                     } else {
                       if (slots_time == 'After_Nine') {
-                        html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>After 9</div>`;//` + starttimeAMPM + ` - 
+                        html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>After 9</div>`;//` + starttimeAMPM + ` - 
                       } else {
-                        html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
+                        html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
                       }
                     }
 
@@ -284,13 +284,13 @@ jQuery(document).ready(function () {
 
                     if (status1 == 'booked') {
 
-                      html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}" onclick = '' disabled><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div>`;
+                      html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status1}" onclick = '' disabled><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div>`;
 
                     } else {
                       if (slots_time == 'After_Nine') {
-                        html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>After 9</div>`;//` + starttimeAMPM + ` - 
+                        html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>After 9</div>`;//` + starttimeAMPM + ` - 
                       } else {
-                        html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
+                        html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` + showResponse.data[i]["booking_time_slots"][j]['id'] + `,'` + showResponse.data[i]["booking_time_slots"][j]['start_time'] + `','` + showResponse.data[i]["booking_time_slots"][j]['end_time'] + `','` + showResponse.data[i]["date"] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
                       }
                     }
 

@@ -70,6 +70,10 @@
             max-height: calc(100vh - 200px);
             overflow-y: auto;
         }
+        del {
+    		text-decoration: line-through;
+     		text-decoration-color: #ffbd59;
+     	}
     </style>
 @endpush
 
