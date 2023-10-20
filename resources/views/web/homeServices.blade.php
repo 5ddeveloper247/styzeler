@@ -106,11 +106,8 @@
                                     <li><a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}" class="shadow_btn">Client</a></li>
                                 </ul>
                             </li>
-                            <li>
-                            	<a href="#booking" class="shadow_btn">Price List 
-                            		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-                            	</a>
-                            </li>
+                            <li><a href="#booking" class="shadow_btn">Price List <img
+                                        src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a></li>
                         </ul>
                     </div>
                     <div class="img">
@@ -154,27 +151,27 @@
             <img src="{{ asset('template_new/assets/images/home_service_main.jpg') }}" alt="">
         </div>
         <!-- <div class="img_block" data-aos="fade-up" data-aos-duration="1000">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <div class="fig_wrap">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="fig">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <img src="assets/images/home_service_03.jpg" alt="">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <div class="fig_wrap">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="fig">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <img src="assets/images/home_service_04.jpg" alt="">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <div class="fig_wrap">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="fig">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <img src="assets/images/home_service_05.jpg" alt="">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <div class="fig_wrap">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                <div class="fig">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 <img src="assets/images/home_service_06.jpg" alt="">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               </div>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <div class="fig_wrap">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="fig">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     <img src="assets/images/home_service_03.jpg" alt="">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <div class="fig_wrap">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="fig">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     <img src="assets/images/home_service_04.jpg" alt="">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <div class="fig_wrap">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="fig">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     <img src="assets/images/home_service_05.jpg" alt="">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <div class="fig_wrap">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="fig">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     <img src="assets/images/home_service_06.jpg" alt="">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   </div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </div> -->
         <div class="contain">
             <div class="block_row" data-aos="fade-up" data-aos-duration="1000">
                 <div class="col">
@@ -207,7 +204,7 @@
                     </div>
                 </div>
             </div>
-            <div class="btn_blk mt-5 d-flex justify-content-end">
+            <div class="btn_blk d-flex justify-content-end mt-5">
                 <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}" class="site_btn">Register <img
                         src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
             </div>
@@ -396,16 +393,16 @@
                 </div>
             </div>
             <!-- <div class="content">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <h1>Buy tokens to book</h1>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <h3>One token! one booking!</h3>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <img src="assets/images/booking_line.jpg" alt="">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               <h2>MULTIPLE SERVICES</h2>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <h1>Buy tokens to book</h1>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <h3>One token! one booking!</h3>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <img src="assets/images/booking_line.jpg" alt="">
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   <h2>MULTIPLE SERVICES</h2>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  </div> -->
         </div>
 
         <div class="modal fade bd-example-modal-md" id="popup-pkg1" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content border border-warning"
+                <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
                         <h4 class="modal-title">STYZELER THE-ONE-OFF</h4>
@@ -432,7 +429,7 @@
         </div>
         <div class="modal fade bd-example-modal-md" id="popup-pkg2" role="dialog">
             <div class="modal-dialog modal-md">
-                <div class="modal-content border border-warning "
+                <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
                         <h4 class="modal-title">DEDICATED TO HELPING</h4>
@@ -461,8 +458,8 @@
             </div>
         </div>
         <div class="modal fade bd-example-modal-md" id="popup-pkg3" role="dialog">
-            <div class="modal-dialog modal-md ">
-                <div class="modal-content border border-warning"
+            <div class="modal-dialog modal-md">
+                <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
                         <h4 class="modal-title">UNITED TO SUCCEED</h4>
@@ -507,8 +504,8 @@
         </div>
 
         <div class="modal fade bd-example-modal-md" id="payment_modal" role="dialog">
-            <div class="modal-dialog modal-md ">
-                <div class="modal-content border border-warning"
+            <div class="modal-dialog modal-md">
+                <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
                         <h4 class="modal-title">Payment</h4>
@@ -540,8 +537,8 @@
         </div>
 
         <div class="modal fade bd-example-modal-md" id="register_modal" role="dialog">
-            <div class="modal-dialog modal-md ">
-                <div class="modal-content border border-warning"
+            <div class="modal-dialog modal-md">
+                <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
                         <h4 class="modal-title">Registeration is Free</h4>
@@ -557,10 +554,10 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="modal fade bd-example-modal-md" id="userType_message" role="dialog">
-            <div class="modal-dialog modal-md ">
-                <div class="modal-content border border-warning"
+            <div class="modal-dialog modal-md">
+                <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
                         <h4 class="modal-title">Alert</h4>
@@ -622,21 +619,24 @@
     </script>
     <script>
         $(document).on("click", ".popup-pkg1", function() {
-        	@if(@!Auth::user())
-	    		$('#register_modal').modal('show'); return;
-	       	@endif
+            @if (@!Auth::user())
+                $('#register_modal').modal('show');
+                return;
+            @endif
             $('#popup-pkg1').modal('show');
         });
         $(document).on("click", ".popup-pkg2", function() {
-        	@if(@!Auth::user())
-	    		$('#register_modal').modal('show'); return;
-	       	@endif
+            @if (@!Auth::user())
+                $('#register_modal').modal('show');
+                return;
+            @endif
             $('#popup-pkg2').modal('show');
         });
         $(document).on("click", ".popup-pkg3", function() {
-        	@if(@!Auth::user())
-	    		$('#register_modal').modal('show'); return;
-	       	@endif
+            @if (@!Auth::user())
+                $('#register_modal').modal('show');
+                return;
+            @endif
             $('#popup-pkg3').modal('show');
         });
         $(document).on("click", ".close-modal", function() {
@@ -647,18 +647,19 @@
         });
 
         function paymentModal(amount, tokens) {
-        	@if(@!Auth::user())
-	    		$('#register_modal').modal('show');return;
-			@elseif(@Auth::user()->type != 'client')
-				$('#userType_message').modal('show');return;
-	       	@endif
+            @if (@!Auth::user())
+                $('#register_modal').modal('show');
+                return;
+            @elseif (@Auth::user()->type != 'client')
+                $('#userType_message').modal('show');
+                return;
+            @endif
             $('#payment_amount').val(amount);
             $('#payment_tokens').val(tokens);
             $('#payment_modal').modal('show');
         }
     </script>
     <script>
-
         @auth
         var user = '{{ auth()->user()->type }}';
         @else

@@ -22,6 +22,7 @@
         .input_box {
             cursor: pointer;
         }
+
         .btn1 {
             display: inline-block;
             font-weight: 400;
@@ -40,14 +41,15 @@
             cursor: pointer;
             transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         }
+
         .customBtn {
-		    color: #c4b9b0 !important;
-		    border: 1px solid #c4b9b0;
-		    border-radius: 0;
-		    font-size: 18px;
-		    transition-duration: 0.3s;
-		    cursor: pointer;
-		}
+            color: #c4b9b0 !important;
+            border: 1px solid #c4b9b0;
+            border-radius: 0;
+            font-size: 18px;
+            transition-duration: 0.3s;
+            cursor: pointer;
+        }
     </style>
 @endpush
 
@@ -106,8 +108,8 @@
                                     </li>
 
                                     <!-- <li>
-                  <button type="button" class="shadow_btn " onclick="caseCat('Eyelash_Extensions')">Eyelash Extensions <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
-                 </li> -->
+                                                      <button type="button" class="shadow_btn" onclick="caseCat('Eyelash_Extensions')">Eyelash Extensions <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+                                                     </li> -->
                                     <li>
                                         <button type="button" class="shadow_btn">Eyelash Extensions</button>
                                         <ul class="sub_btns">
@@ -139,13 +141,15 @@
                                             </li>
                                             <li>
                                                 <button type="button" class="shadow_btn"
-                                                    onclick="caseCat('Hybrid_full_set','Eyelash Extensions')">Hybrid Full Set 
+                                                    onclick="caseCat('Hybrid_full_set','Eyelash Extensions')">Hybrid Full
+                                                    Set
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
                                             <li>
                                                 <button type="button" class="shadow_btn"
-                                                    onclick="caseCat('Hybrid_half_set','Eyelash Extensions')">Hybrid Half Set 
+                                                    onclick="caseCat('Hybrid_half_set','Eyelash Extensions')">Hybrid Half
+                                                    Set
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
@@ -211,15 +215,17 @@
                                             <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
                                         </div>
                                         <div class="btn_block">
-                                            @if(@$tokens>0)
-												<a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
-													<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
-												</a>
-											@else
-												<a href="javascript:;" class="book_freelance_btn error-booking">
-													<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
-												</a>
-											@endif
+                                            @if (@$tokens > 0)
+                                                <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
+                                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}"
+                                                        alt=""> Book a Freelancer
+                                                </a>
+                                            @else
+                                                <a href="javascript:;" class="book_freelance_btn error-booking">
+                                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}"
+                                                        alt=""> Book a Freelancer
+                                                </a>
+                                            @endif
                                             <ul class="check_list">
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> All candidates are DBS verified</li>
@@ -231,8 +237,10 @@
                                         </div>
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
-                                        <input type="hidden" id="userId" name="userId" value="{{ @Auth::user()->id }}">
-                                       	<input type="hidden" id="userType" name="userType" value="{{ @Auth::user()->type }}">
+                                        <input type="hidden" id="userId" name="userId"
+                                            value="{{ @Auth::user()->id }}">
+                                        <input type="hidden" id="userType" name="userType"
+                                            value="{{ @Auth::user()->type }}">
                                         <input type="hidden" id="item_text" name="item_text" value="">
                                         <input type="hidden" id="item_time" name="item_time" value="">
                                         <input type="hidden" id="item_price" name="item_price" value="">
@@ -246,50 +254,50 @@
                     </div>
                 </div>
             </div>
-			<!-- Booking Fail Message-->
-			
+            <!-- Booking Fail Message-->
+
 
     </section>
     <div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
-	        <div class="modal-dialog modal-md ">
-	            <div class="modal-content border border-warning"
-	                style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
-	                <div class="modal-header" style="border-bottom: 5px solid #766d48;">
-	                    <h4 class="modal-title">Buy Package</h4>
-	                    <i class="close-modal" data-dismiss="modal" style="font-size: 2rem;"><b>&times;</b></i>
-	                </div>
-	                <div class="modal-body">
-	                    Insufficient tokens, first buy package!
-	                </div>
-	                <div class="modal-footer text-center">
-	                    <a type="" href="{{ route('home_service') }}#packages" class="btn1 customBtn">Ok</a>
-	                    <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-		  	<div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
-	            <div class="modal-dialog modal-md ">
-	                <div class="modal-content border border-warning"
-	                    style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
-	                    <div class="modal-header" style="border-bottom: 5px solid #766d48;">
-	                        <h4 class="modal-title">Confirmation</h4>
-	                        <i class="close-modal closeCartConfirm" style="font-size: 2rem;cursor:pointer;"><b>&times;</b></i>
-	                    </div>
-	                    <div class="modal-body">
-	                        Are you sure you want to add this service in cart?
-	                    </div>
-	                    <div class="modal-footer text-center">
-	                        <a type="" href="javascript:;" class="btn1 customBtn" onclick="addToCartConfirm();">Yes</a>
-	                        <a type="button" class="btn1 customBtn closeCartConfirm" data-dismiss="modal">Close</a>
-	                    </div>
-	                </div>
-	            </div>
-	        </div>
+        <div class="modal-dialog modal-md">
+            <div class="modal-content border-warning border"
+                style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                    <h4 class="modal-title">Buy Package</h4>
+                    <i class="close-modal" data-dismiss="modal" style="font-size: 2rem;"><b>&times;</b></i>
+                </div>
+                <div class="modal-body">
+                    Insufficient tokens, first buy package!
+                </div>
+                <div class="modal-footer text-center">
+                    <a type="" href="{{ route('home_service') }}#packages" class="btn1 customBtn">Ok</a>
+                    <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content border-warning border"
+                style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                    <h4 class="modal-title">Confirmation</h4>
+                    <i class="close-modal closeCartConfirm" style="font-size: 2rem;cursor:pointer;"><b>&times;</b></i>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to add this service in cart?
+                </div>
+                <div class="modal-footer text-center">
+                    <a type="" href="javascript:;" class="btn1 customBtn" onclick="addToCartConfirm();">Yes</a>
+                    <a type="button" class="btn1 customBtn closeCartConfirm" data-dismiss="modal">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('script')
-    <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <script>
         $(window).on("load", function() {
             $(document).on("click", ".btn_list .shadow_btn", function() {
@@ -311,6 +319,7 @@
         var addtocartType = 'Eyes & Brows';
 
         function caseCat(i, subtype = '') {
+            console.log(i, subtype);
             if (i == 'Brow_Lamination') {
                 $("#top_1").show();
                 $("#top_1 p").html('145 Minuts &pound; 48').attr('data-time', '145').attr('data-price', '48').attr(
