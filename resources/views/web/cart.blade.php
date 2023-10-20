@@ -57,7 +57,7 @@
 
                 </div>
                 <div class="modal-footer text-center">
-                    <button type="button" class="btn customBtn" id="confirm_delete">Delete</button>
+                    <button type="button" class="btn1 customBtn" id="confirm_delete">Delete</button>
 
                 </div>
             </div>
