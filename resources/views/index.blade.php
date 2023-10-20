@@ -365,7 +365,7 @@
                     </a></li>
             </ul>
             <h2 class="h2_01">
-                Specialist in Hair & Beauty Recruitmen, London & Uk <br /> Permanent
+                Specialist in Hair & Beauty Recruitment, London & Uk <br /> Permanent
                 & Temporary position
             </h2>
             <div class="line none-modal"
@@ -454,8 +454,9 @@
                 </h2>
                 <h1>To Hire</h1>
                 <button type="button" style="display: flex; justify-content: center; align-items: center">
-                    <img src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" class="float-end w-50"
-                        alt="" />
+                    <a type="button" href="{{ route('businessOwner') . '#inr' }}"> <!-- packages2.html -->
+                        <img src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="" />
+                    </a>
                 </button>
             </div>
         </div>
@@ -480,7 +481,7 @@
 
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <!-- <div class="flexRow">                                                                                                                                                           </div>
-                                                                                                                                                                                           </div> -->
+                                                                                                                                                                                                                                                                                                                                           </div> -->
             <div class="flexRow" style="padding: 0px 38px">
                 <div class="col">
                     <div class="inner"
@@ -490,9 +491,12 @@
                             <img src="{{ asset('template_new/assets/images/categ_photo_02.jpg') }}" alt="" />
                         </div>
                         <div class="txt">
-                            <p>freelancers focus on getting a good review and expanding their
+                            <p class="d-inline">freelancers focus on getting a good review and expanding their
                                 portfolio, they strive to maintain industry-standard quality
                                 aligned with your expectations</p>
+                            <a class="link-light btn-read-more btn-sm ms-2" href="{{ route('hairstylist') }}">Read
+                                more</a>
+
                         </div>
                     </div>
                 </div>
@@ -504,8 +508,11 @@
                             <img src="{{ asset('template_new/assets/images/categ_photo_03.jpg') }}" alt="" />
                         </div>
                         <div class="txt">
-                            <p>Spending hours freelancing across various roles you can learn
+                            <p class="d-inline">Spending hours freelancing across various roles you can learn
                                 new skills and enrich your CV</p>
+                            <a class="link-light btn-read-more btn-sm ms-2" href="{{ route('beautician') }}">Read
+                                more</a>
+
                         </div>
                     </div>
                 </div>
@@ -517,8 +524,10 @@
                             <img src="{{ asset('template_new/assets/images/categ_photo_01.jpg') }}" alt="" />
                         </div>
                         <div class="txt">
-                            <p>Styzeler is the leading male grooming agency across London & UK
+                            <p class="d-inline">Styzeler is the leading male grooming agency across London & UK
                                 we offer master barbers to craft art for our clients</p>
+                            <a class="link-light btn-read-more btn-sm ms-2" href="{{ route('barber') }}">Read more</a>
+
                         </div>
                     </div>
                 </div>
@@ -531,7 +540,7 @@
             </div>
         </div>
     </section>
-    <section id="categ-0" class="mt-5 d-none d-md-block">
+    <section id="categ-0" class="d-none d-md-block mt-5">
         <div class="contain px-4" data-aos="fade-up" data-aos-duration="1000"
             style="background-image: url('{{ asset('template_new/assets/images/sec_bg_1.png') }}');background-size:100% 100%">
             <div class="row">
@@ -658,8 +667,11 @@
                     <button type="button" class="img-set-hire"
                         style="max-width: 15rem; background: transparent;
 	/* padding: 0; */ border: 0; margin: 0 auto;">
-                        <img width="40" height="40"
-                            src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="" />
+                        <a href="http://styzeler.test/businessOwner#to_hire" type="button"
+                            style="background: transparent; border: 0; margin-top: 100px">
+                            <img width="60" height="60"
+                                src="http://styzeler.test/template_new/assets/images/hire_play_btn.jpg" alt="">
+                        </a>
                     </button>
                 </div>
                 <div class="col-md-12">
@@ -677,7 +689,7 @@
         </div>
 
         <!-- <img src="assets/images/126-minr.jpg" alt="">
-                                                                                                                                                                                                                                                                                             </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                             </div> -->
     </section>
     <!-- membership -->
     <section id="get_job">
@@ -713,34 +725,34 @@
     @endsection @push('script')
     <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
     <script>
-    function setLocalStorageWithExpiration(key, value, expirationInHours) {
-        const now = new Date();
-        const item = {
-            value: value,
-            expiration: now.getTime() + expirationInHours * 60 * 60 * 1000 // Convert hours to milliseconds
-        };
-        localStorage.setItem(key, JSON.stringify(item));
-    }
+        function setLocalStorageWithExpiration(key, value, expirationInHours) {
+            const now = new Date();
+            const item = {
+                value: value,
+                expiration: now.getTime() + expirationInHours * 60 * 60 * 1000 // Convert hours to milliseconds
+            };
+            localStorage.setItem(key, JSON.stringify(item));
+        }
 
-    // Get data from localStorage and check expiration
-    function getLocalStorageWithExpiration(key) {
-        const itemStr = localStorage.getItem(key);
-        if (!itemStr) {
-            return null;
+        // Get data from localStorage and check expiration
+        function getLocalStorageWithExpiration(key) {
+            const itemStr = localStorage.getItem(key);
+            if (!itemStr) {
+                return null;
+            }
+            const item = JSON.parse(itemStr);
+            const now = new Date();
+            if (now.getTime() > item.expiration) {
+                localStorage.removeItem(key); // Remove the item from localStorage if it's expired
+                return null;
+            }
+            return item.value;
         }
-        const item = JSON.parse(itemStr);
-        const now = new Date();
-        if (now.getTime() > item.expiration) {
-            localStorage.removeItem(key); // Remove the item from localStorage if it's expired
-            return null;
-        }
-        return item.value;
-    }
     </script>
     <script>
         $(document).ready(function() {
-        	
-        	localStorage.removeItem('bookType');
+
+            localStorage.removeItem('bookType');
 
             window.scrollTo(0, scrollPosition);
 
@@ -754,11 +766,10 @@
 
 
         $(function() {
-        	const retrievedData = getLocalStorageWithExpiration("flag");
-            if(retrievedData != 'true'){
-            	$("#popupInfo-modal").modal("show");
+            const retrievedData = getLocalStorageWithExpiration("flag");
+            if (retrievedData != 'true') {
+                $("#popupInfo-modal").modal("show");
             }
-            
         });
 
 
@@ -766,11 +777,15 @@
             var scrollPosition =
                 window.pageYOffset || document.documentElement.scrollTop;
             var elements = document.getElementsByClassName(className);
+            var screenWidth = $(window).width();
 
             for (var i = 0; i < elements.length; i++) {
                 var elementOffset = elements[i].offsetTop;
-
-                if (scrollPosition >= elementOffset) {
+                if (screenWidth < 768 && scrollPosition <= elementOffset) {
+                    return true;
+                } else if ((screenWidth > 768 || screenWidth < 992) && scrollPosition <= elementOffset) {
+                    return true;
+                } else if (scrollPosition >= elementOffset) {
                     return true;
                 }
             }
@@ -792,19 +807,19 @@
                         //                         $("#popupInfo-modal").modal("hide");
                         flag = "1";
                         const retrievedData = getLocalStorageWithExpiration("flag");
-                        if(retrievedData != 'true'){
-                        	$("html").css({
+                        if (retrievedData != 'true') {
+                            $("html").css({
                                 "overflow-y": "hidden"
                             });
-                     	}
-                        
+                        }
+
                     }
                 }
             }
             // if (isScrolledToClass(targetClass))
         });
         $(document).on("click", ".close-modal, body", function() {
-        	const dataToStore = "true";
+            const dataToStore = "true";
             setLocalStorageWithExpiration("flag", 'true', 12);
             $("html").css({
                 "overflow-y": "auto"
@@ -812,6 +827,4 @@
             $(".modal").modal("hide");
         });
     </script>
-    
-    
 @endpush
