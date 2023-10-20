@@ -11,7 +11,7 @@ $(function () {
         success: function (response) {
             if (response.cart == "") {
                 $("#cart_line_table").append(
-                    '<div class="col-12 text-center">You have no bookings!</div>'
+                    '<div class="col-12 text-center">You have no item in cart!</div>'
                 );
             } else {
                 var cart_line_table = "";
