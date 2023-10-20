@@ -60,7 +60,6 @@ var modal = $("#cart_line_delete");
 
 function deletePrompt(id) {
     modal.modal("show");
-
     document
         .getElementById("confirm_delete")
         .setAttribute("onclick", "confirmDelete(" + id + ")");
@@ -71,7 +70,6 @@ function confirmDelete(id) {
         type: "DELETE",
         url: "/cartLineDelete/" + id,
         data: {},
-        // dataType: "dataType",
         success: function (response) {
             if (response.status == 200) {
                 $("#cart_line_" + response.data).remove();
