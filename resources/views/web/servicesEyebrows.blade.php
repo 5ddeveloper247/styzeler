@@ -75,7 +75,7 @@
                         </div>
                         <div class="text_list" data-id="eye_brows" style="display:block;">
                             <div class="text_list_inner">
-                                <ul class="btns scrollbar shadowbtn">
+                                <ul class="btns scrollbar shadowbtn" id="list_btns">
                                     <li>
                                         <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Brow_Lamination')">Brow Lamination <img
@@ -108,8 +108,8 @@
                                     </li>
 
                                     <!-- <li>
-                                                      <button type="button" class="shadow_btn" onclick="caseCat('Eyelash_Extensions')">Eyelash Extensions <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
-                                                     </li> -->
+                                                                                                      <button type="button" class="shadow_btn" onclick="caseCat('Eyelash_Extensions')">Eyelash Extensions <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+                                                                                                     </li> -->
                                     <li>
                                         <button type="button" class="shadow_btn">Eyelash Extensions</button>
                                         <ul class="sub_btns">
@@ -308,10 +308,26 @@
                 $(this).parent().find(".sub_btns").slideToggle();
             });
             $(document).on("click", ".sub_btns > li > button", function() {
+                console.log('kamran');
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
             });
             $(document).on("click", ".shadowbtn", function() {
+                console.log('kami');
+
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
+                // $(this).parents(".text_list_inner").find(".txt_wrap").css({
+                //     'opacity': 1,
+                //     'visibility': 'visible',
+                //     'z-index': 9999999999,
+                //     'display': 'block'
+                // });
+                // $(this).parents(".text_list_inner").find("#list_btns").css({
+                //     // 'opacity': 0,
+                //     // 'visibility': 'hidden',
+                //     // 'z-index': 0
+                //     'display': 'none'
+                // });
+                //.fadeToggle();
             });
 
         });
