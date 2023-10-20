@@ -44,6 +44,25 @@
             </div>
         </div>
     </div>
+
+    <div class="modal success-modal" id="cart_line_delete" tabindex="-1" role="dialog" data-keyboard="false"
+        data-backdrop="static">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <h4>Delete?</h4>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-center">Are you Sure You Want to Delete?</h5>
+
+                </div>
+                <div class="modal-footer text-center">
+                    <button type="button" class="btn customBtn" id="confirm_delete">Delete</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @push('script')
     <script>

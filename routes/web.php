@@ -60,6 +60,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         Route::get('/book-freelancer', 'FrontEndController@bookFreelancer')->name('bookFreelancer');
         Route::get('/cart', 'FrontEndController@cart')->name('cart');
         Route::get('/cartData', 'FrontEndController@cartData')->name('cartData');
+        Route::delete('/cartLineDelete/{id}', 'FrontEndController@cartLineDelete')->name('cartLineDelete');
     });
     Route::post('/charge', 'PaymentController@charge')->name('stripe.charge');
     Route::get('/forgetPassword', 'FrontEndController@forgetPassword')->name('forgetPassword');
