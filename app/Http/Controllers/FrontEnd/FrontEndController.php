@@ -484,4 +484,16 @@ class FrontEndController extends Controller
             ]
         );
     }
+
+    public function cartLineDelete($id)
+    {
+        $cart_line = Cart_line::where('id', $id)->delete();
+        return response()->json(
+            [
+                'status' => 200,
+                'message' => 'Successfully Deleted!',
+                'data' => $id
+            ]
+        );
+    }
 }
