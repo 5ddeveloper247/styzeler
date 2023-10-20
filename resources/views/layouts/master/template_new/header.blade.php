@@ -19,7 +19,7 @@
                             @csrf
                             <button type="submit" class="logon_btn">Sign Out</button>
                         </form>
-                        <a href="#" class="logon_btn heart_btn">
+                        <a href="{{ route('cart') }}" class="logon_btn heart_btn">
                             <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt=""
                                 style="width:28px;">
                         </a>
