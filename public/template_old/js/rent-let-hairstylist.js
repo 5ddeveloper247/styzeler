@@ -82,12 +82,12 @@ $(function() {
                           '<div class="row">  <div class="col-md-6 therapist-content p-3 px-4">'+'<h4>' + response.salonSpaces[i]["_Category"]+ '</h4>'+
                           '<p><strong>'+'Rent as you go'+'</strong></p>'+
                           '<p><strong>'+'Daily rent £'+response.salonSpaces[i]['_DailyRate']+'</strong></p>'+
-                        //   '<p>'+'Or Hourly rent depends what the salon owner feels more confortble with'+'</p>'+
+                        //   '<p>'+'Or Hourly rent depends what the business owner feels more confortble with'+'</p>'+
                           '<p><strong>Name: </strong>' + response.salonSpaces[i]["_SalonName"] + '</p>' +
                           '<p><strong>Address: </strong>' + response.salonSpaces[i]["_SalonAddress"] + '</p>' +
                           '<p><strong>Country: </strong>' + response.salonSpaces[i]["_SalonCountry"] + '</p>' +
                           '<p><strong>County: </strong>' + response.salonSpaces[i]["_SalonCounty"] + '</p>' +
-                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact salon owner for more info!</span> </span> </p>' + 
+                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact business owner for more info!</span> </span> </p>' + 
                           '<p><strong>Mobile: </strong>' + response.salonSpaces[i]["_SalonMobileNumber"] + ' </p>' + 
                           '<p><strong>Postal Code: </strong>' + response.salonSpaces[i]["_SalonPostalCode"] + '</p>' + 
                           '<p><strong>Space Description: </strong>' + response.salonSpaces[i]["_SpaceDescription"] + '</p>'+
@@ -140,12 +140,12 @@ $(function() {
                           '<div class="row">  <div class="col-md-6 therapist-content p-3 px-4">'+'<h4>' + response.salonSpaces[i]["_Category"]+ '</h4>'+
                           '<p><strong>'+'Rent as you go'+'</strong></p>'+
                           '<p><strong>'+'Hourly rent £'+response.salonSpaces[i]['_HourlyRate']+'</strong></p>'+
-                        //   '<p>'+'Or Daily rent depends what the salon owner feels more confortble with'+'</p>'+
+                        //   '<p>'+'Or Daily rent depends what the business owner feels more confortble with'+'</p>'+
                           '<p><strong>Name: </strong>' + response.salonSpaces[i]["_SalonName"] + '</p>' +
                           '<p><strong>Address: </strong>' + response.salonSpaces[i]["_SalonAddress"] + '</p>' +
                           '<p><strong>Country: </strong>' + response.salonSpaces[i]["_SalonCountry"] + '</p>' +
                           '<p><strong>County: </strong>' + response.salonSpaces[i]["_SalonCounty"] + '</p>' +
-                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact salon owner for more info!</span> </span> </p>' + 
+                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact business owner for more info!</span> </span> </p>' + 
                           '<p><strong>Mobile: </strong>' + response.salonSpaces[i]["_SalonMobileNumber"] + ' </p>' + 
                           '<p><strong>Postal Code: </strong>' + response.salonSpaces[i]["_SalonPostalCode"] + '</p>' + 
                           '<p><strong>Space Description: </strong>' + response.salonSpaces[i]["_SpaceDescription"] + '</p>'+
@@ -198,12 +198,12 @@ $(function() {
                           '<div class="row">  <div class="col-md-6 therapist-content p-3 px-4">'+'<h4>' + response.salonSpaces[i]["_Category"]+ '</h4>'+
                           '<p><strong>'+'Rent&let'+'</strong></p>'+
                           '<p><strong>'+'Monthly rent £'+response.salonSpaces[i]['_MonthlyRate']+'</strong></p>'+
-                        //   '<p>'+'Or Weekly rent depends what the salon owner feels more confortble with'+'</p>'+
+                        //   '<p>'+'Or Weekly rent depends what the business owner feels more confortble with'+'</p>'+
                           '<p><strong>Name: </strong>' + response.salonSpaces[i]["_SalonName"] + '</p>' +
                           '<p><strong>Address: </strong>' + response.salonSpaces[i]["_SalonAddress"] + '</p>' +
                           '<p><strong>Country: </strong>' + response.salonSpaces[i]["_SalonCountry"] + '</p>' +
                           '<p><strong>County: </strong>' + response.salonSpaces[i]["_SalonCounty"] + '</p>' +
-                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact salon owner for more info!</span> </span> </p>' + 
+                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact business owner for more info!</span> </span> </p>' + 
                           '<p><strong>Mobile: </strong>' + response.salonSpaces[i]["_SalonMobileNumber"] + ' </p>' + 
                           '<p><strong>Postal Code: </strong>' + response.salonSpaces[i]["_SalonPostalCode"] + '</p>' + 
                           '<p><strong>Space Description: </strong>' + response.salonSpaces[i]["_SpaceDescription"] + '</p>'+
@@ -256,13 +256,13 @@ $(function() {
                           '<div class="row">  <div class="col-md-6 therapist-content p-3 px-4">'+'<h4>' + response.salonSpaces[i]["_Category"]+ '</h4>'+
                           '<p><strong>'+'Rent&let'+'</strong></p>'+
                           '<p><strong>'+'Weekly rent £'+response.salonSpaces[i]['_WeeklyRate']+'</strong></p>'+
-                        //   '<p>'+'Or Monthly rent depends what the salon owner feels more confortble with'+'</p>'+
+                        //   '<p>'+'Or Monthly rent depends what the business owner feels more confortble with'+'</p>'+
                           '<p><strong>Name: </strong>' + response.salonSpaces[i]["_SalonName"] + '</p>' +
                         //   '<p><strong>Name: </strong>' + response.salonSpaces[i]["_SalonName"] + '</p>' +
                           '<p><strong>Address: </strong>' + response.salonSpaces[i]["_SalonAddress"] + '</p>' +
                           '<p><strong>Country: </strong>' + response.salonSpaces[i]["_SalonCountry"] + '</p>' +
                           '<p><strong>County: </strong>' + response.salonSpaces[i]["_SalonCounty"] + '</p>' +
-                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact salon owner for more info!</span> </span> </p>' + 
+                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact business owner for more info!</span> </span> </p>' + 
                           '<p><strong>Mobile: </strong>' + response.salonSpaces[i]["_SalonMobileNumber"] + ' </p>' + 
                           '<p><strong>Postal Code: </strong>' + response.salonSpaces[i]["_SalonPostalCode"] + '</p>' + 
                           '<p><strong>Space Description: </strong>' + response.salonSpaces[i]["_SpaceDescription"] + '</p>'+
@@ -317,7 +317,7 @@ $(function() {
                           '<p><strong>Address: </strong>' + response.salonSpaces[i]["_SalonAddress"] + '</p>' +
                           '<p><strong>Country: </strong>' + response.salonSpaces[i]["_SalonCountry"] + '</p>' +
                           '<p><strong>County: </strong>' + response.salonSpaces[i]["_SalonCounty"] + '</p>' +
-                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact salon owner for more info!</span> </span> </p>' + 
+                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact business owner for more info!</span> </span> </p>' + 
                           '<p><strong>Mobile: </strong>' + response.salonSpaces[i]["_SalonMobileNumber"] + ' </p>' + 
                           '<p><strong>Postal Code: </strong>' + response.salonSpaces[i]["_SalonPostalCode"] + '</p>' + 
                           '<p><strong>Space Description: </strong>' + response.salonSpaces[i]["_SpaceDescription"] + '</p>'+
@@ -452,12 +452,12 @@ $(function() {
                           '<div class="row">  <div class="col-md-6 therapist-content p-3 px-4">'+'<h4>' + response.salonSpaces[i]["_Category"]+ '</h4>'+
                           '<p><strong>'+'Rent as you go'+'</strong></p>'+
                           '<p><strong>'+'Daily rent £'+response.salonSpaces[i]['_DailyRate']+'</strong></p>'+
-                        //   '<p>'+'Or Hourly rent depends what the salon owner feels more confortble with'+'</p>'+
+                        //   '<p>'+'Or Hourly rent depends what the business owner feels more confortble with'+'</p>'+
                           '<p><strong>Name: </strong>' + response.salonSpaces[i]["_SalonName"] + '</p>' +
                           '<p><strong>Address: </strong>' + response.salonSpaces[i]["_SalonAddress"] + '</p>' +
                           '<p><strong>Country: </strong>' + response.salonSpaces[i]["_SalonCountry"] + '</p>' +
                           '<p><strong>County: </strong>' + response.salonSpaces[i]["_SalonCounty"] + '</p>' +
-                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact salon owner for more info!</span> </span> </p>' + 
+                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact business owner for more info!</span> </span> </p>' + 
                           '<p><strong>Mobile: </strong>' + response.salonSpaces[i]["_SalonMobileNumber"] + ' </p>' + 
                           '<p><strong>Postal Code: </strong>' + response.salonSpaces[i]["_SalonPostalCode"] + '</p>' + 
                           '<p><strong>Space Description: </strong>' + response.salonSpaces[i]["_SpaceDescription"] + '</p>'+
@@ -510,12 +510,12 @@ $(function() {
                           '<div class="row">  <div class="col-md-6 therapist-content p-3 px-4">'+'<h4>' + response.salonSpaces[i]["_Category"]+ '</h4>'+
                           '<p><strong>'+'Rent as you go'+'</strong></p>'+
                           '<p><strong>'+'Hourly rent £'+response.salonSpaces[i]['_HourlyRate']+'</strong></p>'+
-                        //   '<p>'+'Or Daily rent depends what the salon owner feels more confortble with'+'</p>'+
+                        //   '<p>'+'Or Daily rent depends what the business owner feels more confortble with'+'</p>'+
                           '<p><strong>Name: </strong>' + response.salonSpaces[i]["_SalonName"] + '</p>' +
                           '<p><strong>Address: </strong>' + response.salonSpaces[i]["_SalonAddress"] + '</p>' +
                           '<p><strong>Country: </strong>' + response.salonSpaces[i]["_SalonCountry"] + '</p>' +
                           '<p><strong>County: </strong>' + response.salonSpaces[i]["_SalonCounty"] + '</p>' +
-                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact salon owner for more info!</span> </span> </p>' + 
+                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact business owner for more info!</span> </span> </p>' + 
                           '<p><strong>Mobile: </strong>' + response.salonSpaces[i]["_SalonMobileNumber"] + ' </p>' + 
                           '<p><strong>Postal Code: </strong>' + response.salonSpaces[i]["_SalonPostalCode"] + '</p>' + 
                           '<p><strong>Space Description: </strong>' + response.salonSpaces[i]["_SpaceDescription"] + '</p>'+
@@ -568,12 +568,12 @@ $(function() {
                           '<div class="row">  <div class="col-md-6 therapist-content p-3 px-4">'+'<h4>' + response.salonSpaces[i]["_Category"]+ '</h4>'+
                           '<p><strong>'+'Rent&let'+'</strong></p>'+
                           '<p><strong>'+'Monthly rent £'+response.salonSpaces[i]['_MonthlyRate']+'</strong></p>'+
-                        //   '<p>'+'Or Weekly rent depends what the salon owner feels more confortble with'+'</p>'+
+                        //   '<p>'+'Or Weekly rent depends what the business owner feels more confortble with'+'</p>'+
                           '<p><strong>Name: </strong>' + response.salonSpaces[i]["_SalonName"] + '</p>' +
                           '<p><strong>Address: </strong>' + response.salonSpaces[i]["_SalonAddress"] + '</p>' +
                           '<p><strong>Country: </strong>' + response.salonSpaces[i]["_SalonCountry"] + '</p>' +
                           '<p><strong>County: </strong>' + response.salonSpaces[i]["_SalonCounty"] + '</p>' +
-                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact salon owner for more info!</span> </span> </p>' + 
+                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact business owner for more info!</span> </span> </p>' + 
                           '<p><strong>Mobile: </strong>' + response.salonSpaces[i]["_SalonMobileNumber"] + ' </p>' + 
                           '<p><strong>Postal Code: </strong>' + response.salonSpaces[i]["_SalonPostalCode"] + '</p>' + 
                           '<p><strong>Space Description: </strong>' + response.salonSpaces[i]["_SpaceDescription"] + '</p>'+
@@ -626,13 +626,13 @@ $(function() {
                           '<div class="row">  <div class="col-md-6 therapist-content p-3 px-4">'+'<h4>' + response.salonSpaces[i]["_Category"]+ '</h4>'+
                           '<p><strong>'+'Rent&let'+'</strong></p>'+
                           '<p><strong>'+'Weekly rent £'+response.salonSpaces[i]['_WeeklyRate']+'</strong></p>'+
-                        //   '<p>'+'Or Monthly rent depends what the salon owner feels more confortble with'+'</p>'+
+                        //   '<p>'+'Or Monthly rent depends what the business owner feels more confortble with'+'</p>'+
                           '<p><strong>Name: </strong>' + response.salonSpaces[i]["_SalonName"] + '</p>' +
                         //   '<p><strong>Name: </strong>' + response.salonSpaces[i]["_SalonName"] + '</p>' +
                           '<p><strong>Address: </strong>' + response.salonSpaces[i]["_SalonAddress"] + '</p>' +
                           '<p><strong>Country: </strong>' + response.salonSpaces[i]["_SalonCountry"] + '</p>' +
                           '<p><strong>County: </strong>' + response.salonSpaces[i]["_SalonCounty"] + '</p>' +
-                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact salon owner for more info!</span> </span> </p>' + 
+                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact business owner for more info!</span> </span> </p>' + 
                           '<p><strong>Mobile: </strong>' + response.salonSpaces[i]["_SalonMobileNumber"] + ' </p>' + 
                           '<p><strong>Postal Code: </strong>' + response.salonSpaces[i]["_SalonPostalCode"] + '</p>' + 
                           '<p><strong>Space Description: </strong>' + response.salonSpaces[i]["_SpaceDescription"] + '</p>'+
@@ -687,7 +687,7 @@ $(function() {
                           '<p><strong>Address: </strong>' + response.salonSpaces[i]["_SalonAddress"] + '</p>' +
                           '<p><strong>Country: </strong>' + response.salonSpaces[i]["_SalonCountry"] + '</p>' +
                           '<p><strong>County: </strong>' + response.salonSpaces[i]["_SalonCounty"] + '</p>' +
-                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact salon owner for more info!</span> </span> </p>' + 
+                          '<p><strong>Email: </strong><a href="mailto:' + response.salonSpaces[i]["_SalonEmailId"] + '">' + response.salonSpaces[i]["_SalonEmailId"] + '</a><span class="customTooltip"> <span class="exclamation"> <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i> </span> <span class="tooltiptext">Use the email to contact business owner for more info!</span> </span> </p>' + 
                           '<p><strong>Mobile: </strong>' + response.salonSpaces[i]["_SalonMobileNumber"] + ' </p>' + 
                           '<p><strong>Postal Code: </strong>' + response.salonSpaces[i]["_SalonPostalCode"] + '</p>' + 
                           '<p><strong>Space Description: </strong>' + response.salonSpaces[i]["_SpaceDescription"] + '</p>'+

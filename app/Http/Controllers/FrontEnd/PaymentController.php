@@ -25,7 +25,7 @@ class PaymentController extends Controller
         }
         if($request->payment_type == 'businessOwner'){
         	if (!in_array(Auth::user()->type, ['hairdressingSalon','beautySalon'])) {
-        		return back()->with('error', 'Please Login As a Salon Owner');
+        		return back()->with('error', 'Please Login As a Business Owner');
         	}
         }
         // Set your secret Stripe API key

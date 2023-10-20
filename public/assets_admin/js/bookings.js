@@ -33,7 +33,7 @@ $(function () {
                 vname[j]["_AppointmentDateDisplay"] + '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></p>' + '</a>'+
                 '</div>' + '</span>'+ '</div>' +
                 '<div class="col-8 ">' + 
-                '<div>' + '<span style="overflow-wrap: break-word;">'+ '<p><strong>Salon Owner: </strong>' +
+                '<div>' + '<span style="overflow-wrap: break-word;">'+ '<p><strong>Business Owner: </strong>' +
                 vname[j]["_SalonOwnerBusinessName"]+ '</p>' +
                 '<div>' + '<p><strong>Freelancer Name: </strong> ' +
                 vname[j]["_FreelancerName"] + '</p>' + '</div>' + 
@@ -66,7 +66,7 @@ $(function () {
                 vname[j]["_AppointmentDateDisplay"] + '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></p>' +  '</a>'+
                 '</div>' + '</span>'+ '</div>' +
                 '<div class="col-8 ">' + 
-                '<div>' + '<span style="overflow-wrap: break-word;">'+ '<p><strong>Salon Owner: </strong>' +
+                '<div>' + '<span style="overflow-wrap: break-word;">'+ '<p><strong>Business Owner: </strong>' +
                 vname[j]["_SalonOwnerBusinessName"]+ '</p>' +
                 '<div>' + '<p><strong>Freelancer Name: </strong> ' +
                 vname[j]["_FreelancerName"] + '</p>' + '</div>' + 
@@ -101,7 +101,7 @@ $(function () {
                 vname[j]["_AppointmentDateDisplay"] + '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></p>' +  '</a>'+
                 '</div>' + '</span>'+ '</div>' +
                 '<div class="col-8 ">' + 
-                '<div>' + '<span style="overflow-wrap: break-word;">'+ '<p><strong>Salon Owner: </strong>' +
+                '<div>' + '<span style="overflow-wrap: break-word;">'+ '<p><strong>Business Owner: </strong>' +
                 vname[j]["_SalonOwnerBusinessName"]+ '</p>' +
                 '<div>' + '<p><strong>Freelancer Name: </strong> ' +
                 vname[j]["_FreelancerName"] + '</p>' + '</div>' + 
@@ -136,7 +136,7 @@ $(function () {
                 vname[j]["_AppointmentDateDisplay"] + '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></p>' +  '</a>'+
                 '</div>' + '</span>'+ '</div>' +
                 '<div class="col-8 ">' + 
-                '<div>' + '<span style="overflow-wrap: break-word;">'+ '<p><strong>Salon Owner: </strong>' +
+                '<div>' + '<span style="overflow-wrap: break-word;">'+ '<p><strong>Business Owner: </strong>' +
                 vname[j]["_SalonOwnerBusinessName"]+ '</p>' +
                 '<div>' + '<p><strong>Freelancer Name: </strong> ' +
                 vname[j]["_FreelancerName"] + '</p>' + '</div>' + 

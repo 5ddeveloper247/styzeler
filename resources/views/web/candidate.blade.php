@@ -45,12 +45,12 @@
                         <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                     </a>
                 </li>
-                {{-- <li>
-            	<a href="{{@Auth::user() ? route('weddingStylist') : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
-                	justify-content: space-between;text-align: left;">Wedding Stylistes 
-                	<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-                </a>
-          	</li> --}}
+                <li>
+            		<a href="{{@Auth::user() ? route('weddingStylist') : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
+                		justify-content: space-between;text-align: left;">Wedding Stylistes 
+                		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+               	 	</a>
+          		</li>
             </ul>
             <div class="flexBlocks" data-aos="fade-up" data-aos-duration="1000">
                 <div class="column">

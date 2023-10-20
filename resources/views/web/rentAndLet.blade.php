@@ -168,7 +168,7 @@
                         <i class="close-modal" style="font-size: 2rem;"><b>&times;</b></i>
                     </div>
                     <div class="modal-body">
-                        Unable to proceed, Login as salon owner!
+                        Unable to proceed, Login as business owner!
                     </div>
                     <div class="modal-footer text-center">
                         <a type="" href="{{ route('rentAndLet') }}" class="btn customBtn">Ok</a>

@@ -16,7 +16,7 @@
                         <li class="redirPkg1" style="cursor:pointer;"><a href="{{ route('weddingRegistration') }}">Wedding
                                 Stylist</a></li>
 
-                        <li class="redirPkg2 position-relative" onclick="myFunction()" style="cursor:pointer;">Salon Owner
+                        <li class="redirPkg2 position-relative" onclick="myFunction()" style="cursor:pointer;">Business Owner
                             <div id="myDropdown" class="reg-dropdown-content">
                                 <a href="{{ route('hairdressingSalonRegistration') }}">Hairdressing / Barber Salon</a>
                                 <a href="{{ route('beautySalonRegistration') }}">Beauty / Spa Salon</a>

@@ -5,7 +5,7 @@
 @section('content')
     <div class="newProfile container my-5">
         <div class="newProfile-header">
-            <h4>Hairdressing & Barber Salon Owner Profile Building </h4>
+            <h4>Hairdressing & Barber Business Owner Profile Building </h4>
 
         </div>
         <div>

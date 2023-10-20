@@ -48,10 +48,10 @@
                 </div>
                 <div class="col-lg-6 p-md-5" data-aos="fade-up">
                     <div class="salon-owner">
-                        <h3 class="color-1">Salon Owner</h3>
+                        <h3 class="color-1">Business Owner</h3>
                         <div class="salon-owner-text">
                             <p>Freelancers can be used in multiple ways, one of the biggest reword is for a start-up  business, they take away the pressure of fixed-wage and allows the freedom of booking, for established businesses Freelancers can serve as stand by or oversee waiting list that became too long</p>
-                            <p>Salon Owner can hire a Freelancer for an unlimited or designated short period of time if desired offer a full-time position to a Freelancer who suits the business philosophy. Hiring a Freelancer can also be a great method of ensuring work is completed while you search for the perfect candidate for a particular job</p>
+                            <p>Business Owner can hire a Freelancer for an unlimited or designated short period of time if desired offer a full-time position to a Freelancer who suits the business philosophy. Hiring a Freelancer can also be a great method of ensuring work is completed while you search for the perfect candidate for a particular job</p>
                         </div>
                        
                     </div>

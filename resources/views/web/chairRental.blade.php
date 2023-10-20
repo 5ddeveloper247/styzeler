@@ -214,7 +214,7 @@
 				</div>
 			</div>
 
-			<!-- not salon owner -->
+			<!-- not Business owner -->
 			<div class="modal not-salon-owner-modal" tabindex="-1" role="dialog"
 				data-keyboard="false" data-backdrop="static">
 				<div class="modal-dialog " role="document">
@@ -226,7 +226,7 @@
 						</div>
 						<div class="modal-body">
 							<h5 class="text-center">Sorry!</h5>
-							<p>You're not a salon owner!</p>
+							<p>You're not a business owner!</p>
 							<a href="{{route('rentAndLet')}}" class="btn customBtn">Okay</a>
 
 						</div>

@@ -101,13 +101,16 @@
                                     Register<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                                 </button>
                                 <ul class="sub_list">
-                                    <li><a href="{{ route('register') }}" class="shadow_btn">Freelancer</a>
+                                    <li><a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}" class="shadow_btn">Freelancer</a>
                                     </li>
-                                    <li><a href="{{ route('register') }}" class="shadow_btn">Client</a></li>
+                                    <li><a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}" class="shadow_btn">Client</a></li>
                                 </ul>
                             </li>
-                            <li><a href="javascript:void(0)" class="shadow_btn">Price List <img
-                                        src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a></li>
+                            <li>
+                            	<a href="#booking" class="shadow_btn">Price List 
+                            		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                            	</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="img">
@@ -136,8 +139,11 @@
                                             class="shadow_btn">Client</a></li>
                                 </ul>
                             </li>
-                            <li><a href="#booking" class="shadow_btn">Price List <img
-                                        src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a></li>
+                            <li>
+                            	<a href="#booking" class="shadow_btn"> {{@Auth::user() ? 'Book' : 'Price List'}} 
+                            		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                            	</a>
+                            </li>
                         </ul>
                     </div>
                     <div class="img">

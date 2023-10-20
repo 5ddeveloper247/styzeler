@@ -108,7 +108,7 @@
                 <p><u><span>Why
                             create an account?</span></u><span><br>
                     </span><span>To use the site you need to create an account this allows you to
-                        receive bookings as a Freelancer or make a booking as a Salon owner</span></p>
+                        receive bookings as a Freelancer or make a booking as a Business owner</span></p>
 
                 <p><u><span>How
                             to make a booking?</span></u><span><br>
@@ -125,7 +125,7 @@
 
                 <p><u><span>What
                             does it mean to be on hold?</span></u><span><br>
-                    </span><span>The option /on hold / gives the chance to the Salon Owner to
+                    </span><span>The option /on hold / gives the chance to the Business Owner to
                         monitor the flow of the Salon booking and make a decision&nbsp; either to
                         confirm or to&nbsp; cancel the booking 48 hours prior to the booking</span></p>
 
@@ -173,13 +173,12 @@
 
                 <p><u><span>How
                             do make the payment for the service?</span></u><span><br>
-                    </span><span>Payment will be invoiced to the salon owner. From the agency, for
+                    </span><span>Payment will be invoiced to the business owner. From the agency, for
                         the agency service.</span><span><br>
                     </span><span>And from the Freelancer for their service.</span><span><br>
                     </span><span>Payment made within 7 days from receiving the invoice</span></p>
 
-                <p><u><span>Can
-                            a salon owner offer an employment contract to a freelancer?</span></u><span><br>
+                <p><u><span>Can a Business owner offer an employment contract to a freelancer?</span></u><span><br>
                     </span><span>For more info about employing a freelancer refer to, Terms of
                         Services paragraph&nbsp;18/19/20/21</span></p>
 
@@ -197,7 +196,7 @@
                             &amp; let?</span></u></p>
 
                 <p><span>Rent &amp; let it
-                        is Styzeler <u>free service for Salon Owner</u> to maximise on their empty
+                        is Styzeler <u>free service for Business Owner</u> to maximise on their empty
                         chairs for more info contact the agency on wearestyzeler@gmail.com</span></p>
 
                 <p><u><span>Book
@@ -211,14 +210,14 @@
                             &amp; Let a chair?</span></u></p>
 
                 <p><span>The agency does not
-                        charge any fee to list a chair to salon owner or to freelancer for renting a
+                        charge any fee to list a chair to business owner or to freelancer for renting a
                         chair for more info contact the agency on wearestyzeler@gmail.com</span></p>
 
                 <p><u><span>Fee,
                             payment for a chair rental</span></u></p>
 
                 <p><span>The fee is agreed
-                        between salon owner and freelancer paid to the salon owner from the freelancer</span></p>
+                        between business owner and freelancer paid to the business owner from the freelancer</span></p>
             </div>
         </div>
     </section>
