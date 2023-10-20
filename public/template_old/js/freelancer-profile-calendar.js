@@ -168,9 +168,9 @@ jQuery(document).ready(function () {
                     }
 
                     var slots_time = showResponse.data[i]["booking_time_slots"][j]['slots_time'];
-                    var status = showResponse.data[i]["booking_time_slots"][j]['status'];
+                    var status1 = showResponse.data[i]["booking_time_slots"][j]['status'];
 
-                    if (status == 'booked') {
+                    if (status1 == 'booked') {
                       html += `<div title="" class="` + changeSlot + `  option col-md-2 mr-2 ${status}" onclick = '' disabled><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div>`;
 
                     } else {
@@ -280,9 +280,9 @@ jQuery(document).ready(function () {
                       var endtimeAMPM = '';
                     }
                     var slots_time = showResponse.data[i]["booking_time_slots"][j]['slots_time'];
-                    var status = showResponse.data[i]["booking_time_slots"][j]['status'];
+                    var status1 = showResponse.data[i]["booking_time_slots"][j]['status'];
 
-                    if (status == 'booked') {
+                    if (status1 == 'booked') {
 
                       html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}" onclick = '' disabled><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div>`;
 

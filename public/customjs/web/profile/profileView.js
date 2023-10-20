@@ -7,10 +7,12 @@ $(document).ready(function () {
     if (user == 'client' && cartServicesTime > 0 && localStorage.getItem('bookType') == 'cart_book') {
         $(".servicesTimeText").show();
         $("#serviceTime").text(cartServicesTime);
+        $("#travellingTime").text('60');
         $("#serviceTotalTime").text(cartServicesTime + 60);
     } else {
         $(".servicesTimeText").hide();
         $("#serviceTime").text('');
+        $("#travellingTime").text('');
         $("#serviceTotalTime").text('');
     }
 
@@ -812,14 +814,80 @@ function bookSlotsResponse(response) {
     // SHOWING MESSAGE ACCORDING TO RESPONSE
     if (response.status == 200 || response.status == '200') {
 
+    	var bookings = response.data;
+    	var slots = bookings['booking_time_slots'];
+    	var status = bookings["status"];
+    	var changeSlot = '';
+    	var html = '';
+    	$(".timeSlots").empty();
+    	
+    	if (status == 'Off') {
+    		changeSlot = 'customBtnNotSelected';
+    		$(".book-appointment").removeClass("defaultStatus");
+    		$(".off").addClass("defaultStatus");
+    	} else {
+    		$(".book-appointment").addClass("defaultStatus");
+            $(".off").removeClass("defaultStatus");
+    	}
+    	
+    	if (slots != '') {
+    		
+    		$.each(slots, function (j) {
+
+            	var starttimeAMPM = convertTo12HourFormat(slots[j]['start_time']);
+            	if (slots[j]['end_time'] != null) {
+            		var endtimeAMPM = convertTo12HourFormat(slots[j]['end_time']);
+            	} else {
+            		var endtimeAMPM = '';
+            	}
+            	var slots_time = slots[j]['slots_time'];
+            	var status1 = slots[j]['status'];
+
+            	if (status1 == 'booked') {
+            		html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status}" onclick = '' disabled><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div>`;
+            	} else {
+            		if (slots_time == 'After_Nine') {
+            			html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + slots[j]['id'] + `,'` + slots[j]['start_time'] + `','` + slots[j]['end_time'] + `','` + bookings["date"] + `')>After 9</div>`;//` + starttimeAMPM + ` - 
+            		} else {
+            			html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status}" onclick = selectSlot(` + slots[j]['id'] + `,'` + slots[j]['start_time'] + `','` + slots[j]['end_time'] + `','` + bookings["date"] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
+            		}
+            	}
+            	// count++
+            });
+    		changeSlot = '';
+    	}
+    	
+    	if (status != 'Off') {
+            $(".timeSlots").html(html);
+        } else {
+            $(".timeSlots").empty();
+        }
+        $("#p_status").text(bookings["status"]);
+        $("[data-date=" + bookings["date"] + "]").css("color", "#ffdb59");
+    	
+        const cartServicesTime = 0;
+        
+        if (user == 'client' && cartServicesTime > 0 && localStorage.getItem('bookType') == 'cart_book') {
+            $(".servicesTimeText").show();
+            $("#serviceTime").text(cartServicesTime);
+            $("#travellingTime").text('0');
+            $("#serviceTotalTime").text(cartServicesTime);
+        } else {
+            $(".servicesTimeText").hide();
+            $("#serviceTime").text('0');
+            $("#travellingTime").text('0');
+            $("#serviceTotalTime").text('0');
+        }
+        
         toastr.success(response.message, '', {
             timeOut: 3000
         });
-        $("#calendar").fullCalendar('refetchEvents');
+        
+//        $("#calendar").fullCalendar('refetchEvents');
 
-        setTimeout(function () {
-            location.reload();  //Refresh page
-        }, 1000);
+//        setTimeout(function () {
+//            location.reload();  //Refresh page
+//        }, 1000);
 
         $('.slots-modal').modal('hide');
 

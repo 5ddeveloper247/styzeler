@@ -337,7 +337,6 @@ class ProfileController extends Controller
     }
     public function bookSlots(Request $request)
     {
-        // $request->dd();
         // Check if the user is not logged in
         if (!Auth::check()) {
             return response()->json([
@@ -352,6 +351,7 @@ class ProfileController extends Controller
 
         if (isset($request->book_type) && $request->book_type == 'cart_book') {  // of cart booking then this code execution
 
+        	
 
             // $cartExist = Cart::where('user_id', Auth::user()->id)->where('slot_date', $request->book_date)->count();
             $appoExist = Appointments::where('booking_user_id', Auth::user()->id)->where('booking_date', $request->book_date)->count();
@@ -366,11 +366,11 @@ class ProfileController extends Controller
 
             if (isset($active_cart->id)) {
 
-
                 $userCart = Cart::with('cart_lines')->where('user_id', Auth::user()->id)->where('status', 'active')->first();
                 $bookedUserDetails = User::where('id', $request->user_id)->first();
                 $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
-                $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->first();
+                $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->with(['bookingTimeSlots'])->first();
+                
                 $cartServiceTimeMin = $userCart != null ? $userCart->cart_lines->sum('item_time_min') : 0;
 
                 if ($slotDetails->slots_time != 'After_Nine') {
@@ -451,29 +451,22 @@ class ProfileController extends Controller
                             'message' => 'Unable to book. Your services are exceeding the time limit. (i.e 540 minutes)',
                         ]);
                     }
-                    // dd($slotDetails->slots_time, $serviceEndTime);
+
                     BookingSlots::where('id', $slotDetails->id)->update([
-                        'end_time' => $serviceEndTime,
-                        'slots_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
-                        'status' => 'booked'
-
+                    		'end_time' => $serviceEndTime,
+                    		'slots_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
+                    		'status' => 'booked'
+                    
                     ]);
-
+                    
                     Appointments::create([
-                        'booking_slots_id' => $slotDetails->id,
-                        'booking_date' => $bookingDetails->date,
-                        'booking_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
-                        'freelancer_user_id' => $request->user_id,
-                        'booking_user_id' => Auth::id(),
+                    		'booking_slots_id' => $slotDetails->id,
+                    		'booking_date' => $bookingDetails->date,
+                    		'booking_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
+                    		'freelancer_user_id' => $request->user_id,
+                    		'booking_user_id' => Auth::id(),
                     ]);
                 }
-
-
-                //dd($serviceEndTime);
-
-
-
-
 
                 $cart = Cart::find($active_cart->id);
                 $cart->client_id = $request->user_id;
@@ -482,12 +475,7 @@ class ProfileController extends Controller
                 $cart->status = 'checkout';
                 $cart->update();
 
-                //                 Appointments::create([
-                //                 		'booking_slots_id' => $request->slot_book_id,
-                //                 		'freelancer_user_id' => $request->user_id,
-                //                 		'booking_user_id' => Auth::id(),
-                //                 ]);
-
+              
                 if ($appoExist == 0) {
                     $user = User::find(Auth::user()->id);
                     $user->tokens = $tokens - 1;
@@ -525,9 +513,12 @@ class ProfileController extends Controller
 
                 sendMail($userDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
 
+                $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->with(['bookingTimeSlots'])->first();
+                
                 return response()->json([
                     'status' => 200,
                     'message' => 'Slot booked successfully.',
+                	'data' => $bookingDetails,
                 ]);
             } else {
                 return response()->json([
@@ -597,7 +588,8 @@ class ProfileController extends Controller
 
             $bookedUserDetails = User::where('id', $request->user_id)->first();
             $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
-
+            $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->with(['bookingTimeSlots'])->first();
+            
             $slotStartTime = date('h:i A', strtotime($slotDetails->start_time));
             $slotEndTime = date('h:i A', strtotime($slotDetails->end_time));
 
@@ -632,6 +624,7 @@ class ProfileController extends Controller
             return response()->json([
                 'status' => 200,
                 'message' => 'Slot booked successfully!',
+            	'data' => $bookingDetails,
             ]);
         }
     }
