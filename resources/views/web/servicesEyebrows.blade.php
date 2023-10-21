@@ -67,11 +67,14 @@
                     <div class="inner">
                         <div class="btn_list">
 
-                            <a href="{{ route('servicesBodywaxing') }}" class="shadow_btn" data-id="body_waxing">Body
+                            <a href="{{ route('servicesBodywaxing') }}" class="shadow_btn clear_select"
+                                data-id="body_waxing">Body
                                 Waxing</a>
-                            <a href="javascript:;" class="shadow_btn" data-id="eye_brows">Eyes & Brows</a>
-                            <a href="{{ route('servicesManiPedi') }}" class="shadow_btn" data-id="mani_pedi">Mani / Pedi</a>
-                            <a href="{{ route('servicesFacial') }}" class="shadow_btn" data-id="facial">Facial</a>
+                            <a href="javascript:;" class="shadow_btn clear_select" data-id="eye_brows">Eyes & Brows</a>
+                            <a href="{{ route('servicesManiPedi') }}" class="shadow_btn clear_select"
+                                data-id="mani_pedi">Mani / Pedi</a>
+                            <a href="{{ route('servicesFacial') }}" class="shadow_btn clear_select"
+                                data-id="facial">Facial</a>
                         </div>
                         <div class="text_list" data-id="eye_brows" style="display:block;">
                             <div class="text_list_inner">
@@ -106,10 +109,6 @@
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
-
-                                    <!-- <li>
-                                                                                                      <button type="button" class="shadow_btn" onclick="caseCat('Eyelash_Extensions')">Eyelash Extensions <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
-                                                                                                     </li> -->
                                     <li>
                                         <button type="button" class="shadow_btn">Eyelash Extensions</button>
                                         <ul class="sub_btns">
@@ -169,7 +168,7 @@
                                     </li>
                                 </ul>
                                 <div class="txt_wrap scrollbar" id="showbox">
-                                    <form action="" method="post">
+                                    <form action="" method="post" id="inner_form">
                                         <div class="form_inner">
                                             <div class="row">
                                                 <div class="col-10">
@@ -255,8 +254,6 @@
                 </div>
             </div>
             <!-- Booking Fail Message-->
-
-
     </section>
     <div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
         <div class="modal-dialog modal-md">
@@ -308,34 +305,67 @@
                 $(this).parent().find(".sub_btns").slideToggle();
             });
             $(document).on("click", ".sub_btns > li > button", function() {
-                console.log('kamran');
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
             });
             $(document).on("click", ".shadowbtn", function() {
-                console.log('kami');
-
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
-                // $(this).parents(".text_list_inner").find(".txt_wrap").css({
-                //     'opacity': 1,
-                //     'visibility': 'visible',
-                //     'z-index': 9999999999,
-                //     'display': 'block'
-                // });
-                // $(this).parents(".text_list_inner").find("#list_btns").css({
-                //     // 'opacity': 0,
-                //     // 'visibility': 'hidden',
-                //     // 'z-index': 0
-                //     'display': 'none'
-                // });
-                //.fadeToggle();
+                $(this).parents(".text_list_inner").find(".txt_wrap").css({
+                    'opacity': 1,
+                    'visibility': 'visible',
+                    'z-index': 99999999999,
+                    'display': 'block',
+                });
+                $('#inner_form').css('pointer-events', 'auto');
             });
 
+            $('.shaddowbtn1').on('click', function() {
+                $('#inner_form').css('pointer-events', 'auto');
+                $(this).parents('.text_list_inner').find('#showbox').addClass('d-block')
+                    .removeClass(
+                        'd-none');
+                if ($(window).width() <= 767) {
+                    if ($('#list_btns').hasClass('d-none') == true) {
+                        $(this).parents('#list_btns').removeClass('d-none');
+                        $(this).parents('.text_list_inner').find('#showbox').addClass('d-none')
+                            .removeClass(
+                                'd-block');
+                        $(this).parents(".text_list_inner").find("#showbox").css({
+                            'opacity': 0,
+                            'visibility': 'hidden',
+                            'z-index': 99999999999,
+                            'display': 'none',
+                        });
+                    } else {
+                        $(this).parents('#list_btns').addClass('d-none');
+                        $(this).parents('.text_list_inner').find('#showbox').addClass('d-block')
+                            .removeClass(
+                                'd-none');
+                        $(this).parents(".text_list_inner").find("#showbox").css({
+                            'opacity': 1,
+                            'visibility': 'visible',
+                            'z-index': 99999999999,
+                            'display': 'block',
+                        });
+                    }
+                    $('#inner_form').css('pointer-events', 'auto');
+                }
+            });
+            $(document).on('click', '.back_button', function() {
+                $('#list_btns').removeClass('d-none');
+
+                $('#showbox').addClass('d-none').removeClass('d-block');
+                $("#showbox").css({
+                    'opacity': 0,
+                    'visibility': 'hidden',
+                    'z-index': 99999999999,
+                    'display': 'none',
+                });
+            });
         });
 
         var addtocartType = 'Eyes & Brows';
 
         function caseCat(i, subtype = '') {
-            console.log(i, subtype);
             if (i == 'Brow_Lamination') {
                 $("#top_1").show();
                 $("#top_1 p").html('145 Minuts &pound; 48').attr('data-time', '145').attr('data-price', '48').attr(

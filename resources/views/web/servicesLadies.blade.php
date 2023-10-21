@@ -36,6 +36,7 @@
         #descHeading {
             font-weight: 600;
         }
+
         .btn1 {
             display: inline-block;
             font-weight: 400;
@@ -54,14 +55,15 @@
             cursor: pointer;
             transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         }
+
         .customBtn {
-		    color: #c4b9b0 !important;
-		    border: 1px solid #c4b9b0;
-		    border-radius: 0;
-		    font-size: 18px;
-		    transition-duration: 0.3s;
-		    cursor: pointer;
-		}
+            color: #c4b9b0 !important;
+            border: 1px solid #c4b9b0;
+            border-radius: 0;
+            font-size: 18px;
+            transition-duration: 0.3s;
+            cursor: pointer;
+        }
     </style>
 @endpush
 
@@ -83,84 +85,86 @@
 
                             <a href="javascript:;" class="shadow_btn" data-id="ladies-services">Ladies Services</a>
                             <a href="{{ route('servicesMakeup') }}" class="shadow_btn" data-id="makeup">Make-Up</a>
-                            <a href="{{ route('servicesGents') }}" class="shadow_btn" data-id="gents-services">Gents Services</a>
+                            <a href="{{ route('servicesGents') }}" class="shadow_btn" data-id="gents-services">Gents
+                                Services</a>
 
                         </div>
                         <div class="text_list" data-id="ladies-services" style="display: block;">
                             <div class="text_list_inner">
-                                <ul class="btns scrollbar">
-
+                                <ul class="btns scrollbar shadowbtn" id="list_btns">
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Cut_Blowdry')">Cut & Blowdry <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Blowdry')">Blowdry <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn" onclick="caseCat('Color')">Colour
+                                        <button type="button" class="shadow_btn shaddowbtn1"
+                                            onclick="caseCat('Color')">Colour
                                             <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Highlights')">Highlights <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Balayage')">Balayage <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Full_Head_Bleach')">Full Head Bleach <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Colour_Correction')">Colour Correction <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn" onclick="caseCat('Perm')">Perm
+                                        <button type="button" class="shadow_btn shaddowbtn1" onclick="caseCat('Perm')">Perm
                                             <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Brazilian_Blow_Dry')">Brazilian Blow-Dry <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('keratin_Treatment')">Keratin Treatment <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Olaplex')">Olaplex <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn" onclick="caseCat('Up_do')">Up-Do
+                                        <button type="button" class="shadow_btn shaddowbtn1"
+                                            onclick="caseCat('Up_do')">Up-Do
                                             <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Bridal_Hair')">Hair Bridal <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
@@ -191,7 +195,7 @@
 
                                 </ul>
                                 <div class="txt_wrap scrollbar" id="showbox">
-                                    <form action="" method="post">
+                                    <form action="" method="post" id="inner_form">
                                         <div class="form_inner">
                                             <div class="row">
                                                 <div class="col-11">
@@ -199,10 +203,11 @@
                                                         <div id="top_1" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!-- 																<input type="text" class="input_box" value="" >  -->
-                                                                <p class="input_box "></p>
-                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
-                                                                	data-subtype="" data-service="">
-                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                <p class="input_box"></p>
+                                                                <span class="add_to_cart" data-time="" data-price=""
+                                                                    data-type="" data-subtype="" data-service="">
+                                                                    <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -213,10 +218,11 @@
                                                         <div id="top_2" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!-- 																<input type="text" class="input_box" value=""> -->
-                                                                <p class="input_box "></p>
-                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
-                                                                	data-subtype="" data-service="">
-                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                <p class="input_box"></p>
+                                                                <span class="add_to_cart" data-time="" data-price=""
+                                                                    data-type="" data-subtype="" data-service="">
+                                                                    <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -224,12 +230,13 @@
                                                 </div>
                                                 <div class="col-11">
                                                     <div class="row">
-                                                        <div id="top_3" class="col-md-8 mb-4 ">
+                                                        <div id="top_3" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <p class="input_box "></p>
-                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
-                                                                	data-subtype="" data-service="">
-                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                <p class="input_box"></p>
+                                                                <span class="add_to_cart" data-time="" data-price=""
+                                                                    data-type="" data-subtype="" data-service="">
+                                                                    <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -240,10 +247,11 @@
                                                         <div id="top_4" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!-- 																<input type="text" class="input_box" value=""> -->
-                                                                <p class="input_box "></p>
-                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
-                                                                	data-subtype="" data-service="">
-                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                <p class="input_box"></p>
+                                                                <span class="add_to_cart" data-time="" data-price=""
+                                                                    data-type="" data-subtype="" data-service="">
+                                                                    <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -254,10 +262,11 @@
                                                         <div id="top_5" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!-- 																<input type="text" class="input_box" value=""> -->
-                                                                <p class="input_box "></p>
-                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
-                                                                	data-subtype="" data-service="">
-                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                <p class="input_box"></p>
+                                                                <span class="add_to_cart" data-time="" data-price=""
+                                                                    data-type="" data-subtype="" data-service="">
+                                                                    <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -268,10 +277,11 @@
                                                         <div id="top_6" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!-- 																<input type="text" class="input_box" value=""> -->
-                                                                <p class="input_box "></p>
-                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
-                                                                	data-subtype="" data-service="">
-                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                <p class="input_box"></p>
+                                                                <span class="add_to_cart" data-time="" data-price=""
+                                                                    data-type="" data-subtype="" data-service="">
+                                                                    <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -282,10 +292,11 @@
                                                         <div id="top_7" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!-- 																<input type="text" class="input_box" value=""> -->
-                                                                <p class="input_box "></p>
-                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
-                                                                	data-subtype="" data-service="">
-                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                <p class="input_box"></p>
+                                                                <span class="add_to_cart" data-time="" data-price=""
+                                                                    data-type="" data-subtype="" data-service="">
+                                                                    <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -296,11 +307,12 @@
                                                         <div id="top_8" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
                                                                 <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       <input type="text" class="input_box" value=""> -->
-                                                                <p class="input_box "></p>
-                                                                <span class="add_to_cart" data-time="" data-price="" data-type="" 
-                                                                	data-subtype="" data-service="">
-                                                                	<i class="fas fa-plus my-1" style="color: #9f866d;cursor:pointer;"></i>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <input type="text" class="input_box" value=""> -->
+                                                                <p class="input_box"></p>
+                                                                <span class="add_to_cart" data-time="" data-price=""
+                                                                    data-type="" data-subtype="" data-service="">
+                                                                    <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i>
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -324,15 +336,17 @@
                                             <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
                                         </div>
                                         <div class="btn_block">
-                                            @if(@$tokens>0)
-												<a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
-													<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
-												</a>
-											@else
-												<a href="javascript:;" class="book_freelance_btn error-booking">
-													<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
-												</a>
-											@endif
+                                            @if (@$tokens > 0)
+                                                <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
+                                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}"
+                                                        alt=""> Book a Freelancer
+                                                </a>
+                                            @else
+                                                <a href="javascript:;" class="book_freelance_btn error-booking">
+                                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}"
+                                                        alt=""> Book a Freelancer
+                                                </a>
+                                            @endif
                                             <ul class="check_list">
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> All candidates are DBS verified</li>
@@ -344,8 +358,10 @@
                                         </div>
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
-                                        <input type="hidden" id="userId" name="userId" value="{{ @Auth::user()->id }}">
-                                        <input type="hidden" id="userType" name="userType" value="{{ @Auth::user()->type }}">
+                                        <input type="hidden" id="userId" name="userId"
+                                            value="{{ @Auth::user()->id }}">
+                                        <input type="hidden" id="userType" name="userType"
+                                            value="{{ @Auth::user()->type }}">
                                         <input type="hidden" id="item_text" name="item_text" value="">
                                         <input type="hidden" id="item_time" name="item_time" value="">
                                         <input type="hidden" id="item_price" name="item_price" value="">
@@ -361,27 +377,27 @@
             </div>
         </div>
         <!-- Booking Fail Message-->
-		<div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
-	        <div class="modal-dialog modal-md ">
-	            <div class="modal-content border border-warning"
-	                style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
-	                <div class="modal-header" style="border-bottom: 5px solid #766d48;">
-	                    <h4 class="modal-title">Buy Package</h4>
-	                    <i class="close-modal" data-dismiss="modal" style="font-size: 2rem;"><b>&times;</b></i>
-	                </div>
-	                <div class="modal-body">
-	                    Insufficient tokens, first buy package!
-	                </div>
-	                <div class="modal-footer text-center">
-	                    <a type="" href="{{ route('home_service') }}#packages" class="btn1 customBtn">Ok</a>
-	                    <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	  	<div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
-            <div class="modal-dialog modal-md ">
-                <div class="modal-content border border-warning"
+        <div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content border-warning border"
+                    style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                    <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                        <h4 class="modal-title">Buy Package</h4>
+                        <i class="close-modal" data-dismiss="modal" style="font-size: 2rem;"><b>&times;</b></i>
+                    </div>
+                    <div class="modal-body">
+                        Insufficient tokens, first buy package!
+                    </div>
+                    <div class="modal-footer text-center">
+                        <a type="" href="{{ route('home_service') }}#packages" class="btn1 customBtn">Ok</a>
+                        <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
                         <h4 class="modal-title">Confirmation</h4>
@@ -391,7 +407,8 @@
                         Are you sure you want to add this service in cart?
                     </div>
                     <div class="modal-footer text-center">
-                        <a type="" href="javascript:;" class="btn1 customBtn" onclick="addToCartConfirm();">Yes</a>
+                        <a type="" href="javascript:;" class="btn1 customBtn"
+                            onclick="addToCartConfirm();">Yes</a>
                         <a type="button" class="btn1 customBtn closeCartConfirm" data-dismiss="modal">Close</a>
                     </div>
                 </div>
@@ -403,7 +420,7 @@
 
 @push('script')
     <script src="https://kit.fontawesome.com/8389fcfe36.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
 
     <script>
         $(window).on("load", function() {
@@ -417,14 +434,67 @@
             $(document).on("click", ".sub_btns > li > button", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
             });
+            // $(document).on("click", ".shadowbtn", function() {
+            //     $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
+            // });
             $(document).on("click", ".shadowbtn", function() {
-                $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
+                $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
+                $(this).parents(".text_list_inner").find(".txt_wrap").css({
+                    'opacity': 1,
+                    'visibility': 'visible',
+                    'z-index': 99999999999,
+                    'display': 'block',
+                });
+                $('#inner_form').css('pointer-events', 'auto');
             });
 
+            $('.shaddowbtn1').on('click', function() {
+                $('#inner_form').css('pointer-events', 'auto');
+                $(this).parents('.text_list_inner').find('#showbox').addClass('d-block')
+                    .removeClass(
+                        'd-none');
+                if ($(window).width() <= 767) {
+                    if ($('#list_btns').hasClass('d-none') == true) {
+                        $(this).parents('#list_btns').removeClass('d-none');
+                        $(this).parents('.text_list_inner').find('#showbox').addClass('d-none')
+                            .removeClass(
+                                'd-block');
+                        $(this).parents(".text_list_inner").find("#showbox").css({
+                            'opacity': 0,
+                            'visibility': 'hidden',
+                            'z-index': 99999999999,
+                            'display': 'none',
+                        });
+                    } else {
+                        $(this).parents('#list_btns').addClass('d-none');
+                        $(this).parents('.text_list_inner').find('#showbox').addClass('d-block')
+                            .removeClass(
+                                'd-none');
+                        $(this).parents(".text_list_inner").find("#showbox").css({
+                            'opacity': 1,
+                            'visibility': 'visible',
+                            'z-index': 99999999999,
+                            'display': 'block',
+                        });
+                    }
+                    $('#inner_form').css('pointer-events', 'auto');
+                }
+            });
+            $(document).on('click', '.back_button', function() {
+                $('#list_btns').removeClass('d-none');
+
+                $('#showbox').addClass('d-none').removeClass('d-block');
+                $("#showbox").css({
+                    'opacity': 0,
+                    'visibility': 'hidden',
+                    'z-index': 99999999999,
+                    'display': 'none',
+                });
+            });
         });
 
-        var bookFrelancerRoute = "{{route('bookFreelancer')}}";
-        
+        var bookFrelancerRoute = "{{ route('bookFreelancer') }}";
+
         var addtocartType = 'Ladies Services';
 
         function caseCat(i, subtype = '') {
@@ -432,11 +502,13 @@
                 $("#top_1,#top_2,#top_3").show();
                 $("#top_1 p").html('Short  60 mints  &pound; 40').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '40').attr(
-                    'data-service', 'Cut Blowdry').attr('data-text', 'Short  60 mints  £40').attr('data-subtype', subtype);
+                    'data-service', 'Cut Blowdry').attr('data-text', 'Short  60 mints  £40').attr('data-subtype',
+                    subtype);
 
                 $("#top_2 p").html('Medium 60 mints  &pound;48').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '48').attr(
-                    'data-service', 'Cut Blowdry').attr('data-text', 'Medium 60 mints  £48').attr('data-subtype', subtype);
+                    'data-service', 'Cut Blowdry').attr('data-text', 'Medium 60 mints  £48').attr('data-subtype',
+                    subtype);
 
                 $("#top_3 p").html('Long 60 mints  &pound; 56').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '60').attr('data-price', '56').attr(
@@ -459,7 +531,7 @@
                 $("#top_3 p").html('B+Updo 90 mints &pound; 72').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '90').attr('data-price', '72').attr(
                     'data-service', 'Blowdry').attr('data-text', 'B+Updo 90 mints £72').attr('data-subtype', subtype);
-                
+
 
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -472,7 +544,8 @@
                 $("#description").hide();
                 $("#top_1 p").html('Roots +Length  90 mints  &pound; 48').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '48')
-                    .attr('data-service', 'Color').attr('data-text', 'Roots +Length  90 mints  £48').attr('data-subtype', subtype);
+                    .attr('data-service', 'Color').attr('data-text', 'Roots +Length  90 mints  £48').attr('data-subtype',
+                        subtype);
 
                 $("#top_2 p").html('Roots  60 mints   &pound; 40').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '40').attr(
@@ -495,19 +568,23 @@
 
                 $("#top_1 p").html('T-sectiom 60 mints  &pound; 48').attr('onclick', "");;
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '48').attr(
-                    'data-service', 'Highlights').attr('data-text', 'T-sectiom 60 mints  £48').attr('data-subtype', subtype);
+                    'data-service', 'Highlights').attr('data-text', 'T-sectiom 60 mints  £48').attr('data-subtype',
+                    subtype);
 
                 $("#top_2 p").html('Half Head  90 minuts  &pound;88').attr('onclick', "");;
                 $("#top_2 span").show().attr('data-time', '90').attr('data-price', '88').attr(
-                    'data-service', 'Highlights').attr('data-text', 'Half Head  90 minuts  £88').attr('data-subtype', subtype);
+                    'data-service', 'Highlights').attr('data-text', 'Half Head  90 minuts  £88').attr('data-subtype',
+                    subtype);
 
                 $("#top_3 p").html('Full Head 120 mints &pound; 104').attr('onclick', "");;
                 $("#top_3 span").show().attr('data-time', '120').attr('data-price', '104')
-                    .attr('data-service', 'Highlights').attr('data-text', 'Full Head 120 mints £104').attr('data-subtype', subtype);
+                    .attr('data-service', 'Highlights').attr('data-text', 'Full Head 120 mints £104').attr('data-subtype',
+                        subtype);
 
                 $("#top_4 p").html('+ Toner  10 minuts  &pound; 15').attr('onclick', "");;
                 $("#top_4 span").show().attr('data-time', '10').attr('data-price', '15').attr(
-                    'data-service', 'Highlights').attr('data-text', '+ Toner  10 minuts  £15').attr('data-subtype', subtype);
+                    'data-service', 'Highlights').attr('data-text', '+ Toner  10 minuts  £15').attr('data-subtype',
+                    subtype);
 
                 $("#top_5 p").html('+ Colour').attr('onclick', "caseCat('Color')");
                 $("#top_5 span").hide().attr('data-time', '').attr('data-price', '').attr(
@@ -531,15 +608,18 @@
 
                 $("#top_1 p").html('Half Head  60 mints  &pound; 96').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '96').attr(
-                    'data-service', 'Balayage').attr('data-text', 'Half Head  60 mints  £96').attr('data-subtype', subtype);
+                    'data-service', 'Balayage').attr('data-text', 'Half Head  60 mints  £96').attr('data-subtype',
+                    subtype);
 
                 $("#top_2 p").html('Full Head  90 mints  &pound; 112').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '90').attr('data-price', '112')
-                    .attr('data-service', 'Balayage').attr('data-text', 'Full Head  90 mints  £112').attr('data-subtype', subtype);
+                    .attr('data-service', 'Balayage').attr('data-text', 'Full Head  90 mints  £112').attr('data-subtype',
+                        subtype);
 
                 $("#top_3 p").html('+ Root shadow 30 minuts  &pound; 30').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '30').attr('data-price', '30')
-                    .attr('data-service', 'Balayage').attr('data-text', '+ Root shadow 30 minuts  £30').attr('data-subtype', subtype);
+                    .attr('data-service', 'Balayage').attr('data-text', '+ Root shadow 30 minuts  £30').attr('data-subtype',
+                        subtype);
 
                 $("#top_4 p").html('+ Toner 15 minuts &pound; 15').attr('onclick', "");
                 $("#top_4 span").show().attr('data-time', '15').attr('data-price', '15').attr(
@@ -568,31 +648,38 @@
                 $("#top_1,#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").show();
                 $("#top_1 p").html('Short  90 mints  &pound; 80').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '80').attr(
-                    'data-service', 'Full Head Bleach').attr('data-text', 'Short  90 mints  £80').attr('data-subtype', subtype);
+                    'data-service', 'Full Head Bleach').attr('data-text', 'Short  90 mints  £80').attr('data-subtype',
+                    subtype);
 
                 $("#top_2 p").html('Medium 90 mints  &pound;100').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '90').attr('data-price', '100').attr(
-                    'data-service', 'Full Head Bleach').attr('data-text', 'Medium 90 mints  £100').attr('data-subtype', subtype);
+                    'data-service', 'Full Head Bleach').attr('data-text', 'Medium 90 mints  £100').attr('data-subtype',
+                    subtype);
 
                 $("#top_3 p").html('Long 120 mints  &pound; 140').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '120').attr('data-price', '140').attr(
-                    'data-service', 'Full Head Bleach').attr('data-text', 'Long 120 mints  £140').attr('data-subtype', subtype);
+                    'data-service', 'Full Head Bleach').attr('data-text', 'Long 120 mints  £140').attr('data-subtype',
+                    subtype);
 
                 $("#top_4 p").html('Roots Bleach  90 mints  &pound; 50').attr('onclick', "");
                 $("#top_4 span").show().attr('data-time', '90').attr('data-price', '50')
-                    .attr('data-service', 'Full Head Bleach').attr('data-text', 'Roots Bleach  90 mints  £50').attr('data-subtype', subtype);
+                    .attr('data-service', 'Full Head Bleach').attr('data-text', 'Roots Bleach  90 mints  £50').attr(
+                        'data-subtype', subtype);
 
                 $("#top_5 p").html('+ Rots  Toner  15 mints  &pound;16').attr('onclick', "");
                 $("#top_5 span").show().attr('data-time', '15').attr('data-price', '16')
-                .attr('data-service', 'Full Head Bleach').attr('data-text', '+ Rots  Toner  15 mints  £16').attr('data-subtype', subtype);
+                    .attr('data-service', 'Full Head Bleach').attr('data-text', '+ Rots  Toner  15 mints  £16').attr(
+                        'data-subtype', subtype);
 
                 $("#top_6 p").html('+ Full Head Toner 45 mints  &pound;40').attr('onclick', "");
                 $("#top_6 span").show().attr('data-time', '45').attr('data-price', '40')
-                    .attr('data-service', 'Full Head Bleach').attr('data-text', '+ Full Head Toner 45 mints  £40').attr('data-subtype', subtype);
+                    .attr('data-service', 'Full Head Bleach').attr('data-text', '+ Full Head Toner 45 mints  £40').attr(
+                        'data-subtype', subtype);
 
                 $("#top_7 p").html('+ Cut- Blow-Dry').attr('onclick', "caseCat('Cut_Blowdry')");
                 $("#top_7 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Full Head Bleach').attr('data-text', '+ Cut- Blow-Dry').attr('data-subtype', subtype);
+                    'data-service', 'Full Head Bleach').attr('data-text', '+ Cut- Blow-Dry').attr('data-subtype',
+                    subtype);
 
                 $("#top_8 p").html('+ Blow-Dry').attr('onclick', "caseCat('Blowdry')");
                 $("#top_8 span").hide().attr('data-time', '').attr('data-price', '').attr(
@@ -606,11 +693,13 @@
                 $("#top_1,#top_2,#top_3").show();
                 $("#top_1 p").html('From &pound;100 minuts 90');
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '100').attr(
-                    'data-service', 'Colour Correction').attr('data-text', 'From &pound;100 minuts 90').attr('data-subtype', subtype);
+                    'data-service', 'Colour Correction').attr('data-text', 'From &pound;100 minuts 90').attr(
+                    'data-subtype', subtype);
 
                 $("#top_2 p").html('+ Cut- Blow-Dry').attr('onclick', "caseCat('Cut_Blowdry')");
                 $("#top_2 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Colour Correction').attr('data-text', '+ Cut- Blow-Dry').attr('data-subtype', subtype);
+                    'data-service', 'Colour Correction').attr('data-text', '+ Cut- Blow-Dry').attr('data-subtype',
+                    subtype);
 
                 $("#top_3 p").html('+ Blow-Dry').attr('onclick', "caseCat('Blowdry')");
                 $("#top_3 span").hide().attr('data-time', '').attr('data-price', '').attr(
@@ -654,15 +743,18 @@
 
                 $("#top_1 p").html('Short  60 mints  &pound; 70').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '70').attr(
-                    'data-service', 'Brazilian Blow-Dry').attr('data-text', 'Short  60 mints  £70').attr('data-subtype', subtype);
+                    'data-service', 'Brazilian Blow-Dry').attr('data-text', 'Short  60 mints  £70').attr('data-subtype',
+                    subtype);
 
                 $("#top_2 p").html('Medium 60 mints  &pound;90').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '90').attr(
-                    'data-service', 'Brazilian Blow-Dry').attr('data-text', 'Medium 60 mints  £90').attr('data-subtype', subtype);
+                    'data-service', 'Brazilian Blow-Dry').attr('data-text', 'Medium 60 mints  £90').attr('data-subtype',
+                    subtype);
 
                 $("#top_3 p").html('Long 60 mints  &pound; 100').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '60').attr('data-price', '100').attr(
-                    'data-service', 'Brazilian Blow-Dry').attr('data-text', 'Long 60 mints  £100').attr('data-subtype', subtype);
+                    'data-service', 'Brazilian Blow-Dry').attr('data-text', 'Long 60 mints  £100').attr('data-subtype',
+                    subtype);
 
                 $("#descHeading").hide().text('');
                 $("#description").show().text(
@@ -677,15 +769,18 @@
                 $("#top_1,#top_2,#top_3").show();
                 $("#top_1 p").html('Short  90 mints  &pound; 80').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '80').attr(
-                    'data-service', 'Keratin Treatment').attr('data-text', 'Short  90 mints  £80').attr('data-subtype', subtype);
+                    'data-service', 'Keratin Treatment').attr('data-text', 'Short  90 mints  £80').attr('data-subtype',
+                    subtype);
 
                 $("#top_2 p").html('Medium 120 mints  &pound;120').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '120').attr('data-price', '120').attr(
-                    'data-service', 'Keratin Treatment').attr('data-text', 'Medium 120 mints  £120').attr('data-subtype', subtype);
+                    'data-service', 'Keratin Treatment').attr('data-text', 'Medium 120 mints  £120').attr(
+                    'data-subtype', subtype);
 
                 $("#top_3 p").html('Long 150 mints  &pound; 140').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '150').attr('data-price', '140').attr(
-                    'data-service', 'Keratin Treatment').attr('data-text', 'Long 150 mints £140').attr('data-subtype', subtype);
+                    'data-service', 'Keratin Treatment').attr('data-text', 'Long 150 mints £140').attr('data-subtype',
+                    subtype);
 
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -703,7 +798,8 @@
 
                 $("#top_2 p").html('Stand alone service 30 minuts &pound; 40').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '30').attr('data-price', '40').attr(
-                    'data-service', 'Olaplex').attr('data-text', 'Stand alone service 30 minuts £40').attr('data-subtype', subtype);
+                    'data-service', 'Olaplex').attr('data-text', 'Stand alone service 30 minuts £40').attr(
+                    'data-subtype', subtype);
 
                 $("#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -728,7 +824,7 @@
 
 
             if (i == 'Bridal_Hair') {
-            	$("#top_1,#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
+                $("#top_1,#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#description").show();
                 $("#descHeading").hide().text('');
                 $("#description").show().text('Hair Bridal should be connected with the wedding page');
@@ -738,7 +834,8 @@
                 $("#top_1").show();
                 $("#top_1 p").html('From &pound;350 minuts 120').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '120').attr('data-price', '350').attr(
-                    'data-service', 'Tape in Hair').attr('data-text', 'From £350 minuts 120').attr('data-subtype', subtype);
+                    'data-service', 'Tape in Hair').attr('data-text', 'From £350 minuts 120').attr('data-subtype',
+                    subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").show().text('For full quatation contact freelancer');
@@ -751,7 +848,8 @@
                 $("#top_1").show();
                 $("#top_1 p").html('From &pound;650 minuts 240').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '240').attr('data-price', '650').attr(
-                    'data-service', 'Bonded Hair').attr('data-text', 'From £650 minuts 240').attr('data-subtype', subtype);
+                    'data-service', 'Bonded Hair').attr('data-text', 'From £650 minuts 240').attr('data-subtype',
+                    subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").show().text('For full quatation contact freelance');
@@ -764,7 +862,8 @@
                 $("#top_1").show();
                 $("#top_1 p").html('From &pound;450 minuts 180').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '180').attr('data-price', '450').attr(
-                    'data-service', 'Micro Ring').attr('data-text', 'From £450 minuts 180').attr('data-subtype', subtype);
+                    'data-service', 'Micro Ring').attr('data-text', 'From £450 minuts 180').attr('data-subtype',
+                    subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").show().text('For full quatation contact freelancer');

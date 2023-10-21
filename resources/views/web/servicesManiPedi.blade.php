@@ -9,6 +9,7 @@
         #services .text_list .txt_wrap form .input_box {
             height: 3rem;
         }
+
         .btn1 {
             display: inline-block;
             font-weight: 400;
@@ -27,14 +28,15 @@
             cursor: pointer;
             transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         }
+
         .customBtn {
-		    color: #c4b9b0 !important;
-		    border: 1px solid #c4b9b0;
-		    border-radius: 0;
-		    font-size: 18px;
-		    transition-duration: 0.3s;
-		    cursor: pointer;
-		}
+            color: #c4b9b0 !important;
+            border: 1px solid #c4b9b0;
+            border-radius: 0;
+            font-size: 18px;
+            transition-duration: 0.3s;
+            cursor: pointer;
+        }
     </style>
 @endpush
 
@@ -63,116 +65,116 @@
                         </div>
                         <div class="text_list" data-id="mani_pedi" style="display: block;">
                             <div class="text_list_inner">
-                                <ul class="btns scrollbar">
+                                <ul class="btns scrollbar shadowbtn" id="list_btns">
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('HydraRegular_Mani_Pedicurefacial')">Regular Mani/Pedicure <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Regular_Mani')">Regular Mani <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Regular_Pedicure')">Regular Pedicure <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Russian_Mani_Pedicure')">Russian Mani/Pedicure <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Russian_Mani')">Russian Mani <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Russian_Pedicure')">Russian Pedicure <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('French_Mani_Pedicure')">French Mani/Pedicure <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('French_Mani')">French Mani <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('French_Pedicure')">French Pedicure <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Gel_Mani_Pedicure')">Gel Mani/Pedicure <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Gel_Mani')">Gel Mani <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Gel_Pedicure')">Gel Pedicure <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Get_Nail_Extension')">Get Nail Extension <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Acrylic_Nail_Extension')">Acrylic Nail Extension <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Nail_Designs')">Nail Designs <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Nail_Art_Gel_mani')">Nail Art + Gel mani <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <li>
-                                        <button type="button" class="shadow_btn shadowbtn"
+                                        <button type="button" class="shadow_btn shaddowbtn1"
                                             onclick="caseCat('Nail_Art_Gel_Pedi')">Nail Art + Gel Pedi <img
                                                 src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
                                     <!-- <li>
-                                                                                                                                                                                                                                                                          <button type="button" class="shadow_btn shadowbtn" onclick="caseCat('Hard_Gel')">Hard Gel <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
-                                                                                                                                                                                                                                                                         </li>
-                                                                                                                                                                                                                                                                         -->
+                                                                                                                                                                                                                                                                                                                  <button type="button" class="shadow_btn shaddowbtn1" onclick="caseCat('Hard_Gel')">Hard Gel <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+                                                                                                                                                                                                                                                                                                                 </li>
+                                                                                                                                                                                                                                                                                                                 -->
                                 </ul>
-                                <div class="txt_wrap scrollbar">
-                                    <form action="" method="post">
+                                <div class="txt_wrap scrollbar" id="showbox">
+                                    <form action="" method="post" id="inner_form">
                                         <div class="form_inner">
                                             <div class="row">
                                                 <div class="col-10">
@@ -221,15 +223,17 @@
                                             <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
                                         </div>
                                         <div class="btn_block">
-                                            @if(@$tokens>0)
-												<a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
-													<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
-												</a>
-											@else
-												<a href="javascript:;" class="book_freelance_btn error-booking">
-													<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
-												</a>
-											@endif
+                                            @if (@$tokens > 0)
+                                                <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
+                                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}"
+                                                        alt=""> Book a Freelancer
+                                                </a>
+                                            @else
+                                                <a href="javascript:;" class="book_freelance_btn error-booking">
+                                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}"
+                                                        alt=""> Book a Freelancer
+                                                </a>
+                                            @endif
                                             <ul class="check_list">
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> All candidates are DBS verified</li>
@@ -241,8 +245,10 @@
                                         </div>
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
-                                        <input type="hidden" id="userId" name="userId" value="{{ @Auth::user()->id }}">
-                                        <input type="hidden" id="userType" name="userType" value="{{ @Auth::user()->type }}">
+                                        <input type="hidden" id="userId" name="userId"
+                                            value="{{ @Auth::user()->id }}">
+                                        <input type="hidden" id="userType" name="userType"
+                                            value="{{ @Auth::user()->type }}">
                                         <input type="hidden" id="item_text" name="item_text" value="">
                                         <input type="hidden" id="item_time" name="item_time" value="">
                                         <input type="hidden" id="item_price" name="item_price" value="">
@@ -257,28 +263,28 @@
                 </div>
             </div>
         </div>
-		<!-- Booking Fail Message-->
-		<div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
-	        <div class="modal-dialog modal-md ">
-	            <div class="modal-content border border-warning"
-	                style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
-	                <div class="modal-header" style="border-bottom: 5px solid #766d48;">
-	                    <h4 class="modal-title">Buy Package</h4>
-	                    <i class="close-modal" data-dismiss="modal" style="font-size: 2rem;"><b>&times;</b></i>
-	                </div>
-	                <div class="modal-body">
-	                    Insufficient tokens, first buy package!
-	                </div>
-	                <div class="modal-footer text-center">
-	                    <a type="" href="{{ route('home_service') }}#packages" class="btn1 customBtn">Ok</a>
-	                    <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-	  	<div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
-            <div class="modal-dialog modal-md ">
-                <div class="modal-content border border-warning"
+        <!-- Booking Fail Message-->
+        <div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content border-warning border"
+                    style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                    <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                        <h4 class="modal-title">Buy Package</h4>
+                        <i class="close-modal" data-dismiss="modal" style="font-size: 2rem;"><b>&times;</b></i>
+                    </div>
+                    <div class="modal-body">
+                        Insufficient tokens, first buy package!
+                    </div>
+                    <div class="modal-footer text-center">
+                        <a type="" href="{{ route('home_service') }}#packages" class="btn1 customBtn">Ok</a>
+                        <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
+            <div class="modal-dialog modal-md">
+                <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
                         <h4 class="modal-title">Confirmation</h4>
@@ -288,7 +294,8 @@
                         Are you sure you want to add this service in cart?
                     </div>
                     <div class="modal-footer text-center">
-                        <a type="" href="javascript:;" class="btn1 customBtn" onclick="addToCartConfirm();">Yes</a>
+                        <a type="" href="javascript:;" class="btn1 customBtn"
+                            onclick="addToCartConfirm();">Yes</a>
                         <a type="button" class="btn1 customBtn closeCartConfirm" data-dismiss="modal">Close</a>
                     </div>
                 </div>
@@ -298,7 +305,7 @@
 @endsection
 
 @push('script')
-    <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <!-- <script src="{{ asset('template_new/assets/js/main.js') }}"></script> -->
     <script>
         $(window).on("load", function() {
@@ -312,10 +319,63 @@
             $(document).on("click", ".sub_btns > li > button", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
             });
+            // $(document).on("click", ".shadowbtn", function() {
+            //     $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
+            // });
             $(document).on("click", ".shadowbtn", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
+                $(this).parents(".text_list_inner").find(".txt_wrap").css({
+                    'opacity': 1,
+                    'visibility': 'visible',
+                    'z-index': 99999999999,
+                    'display': 'block',
+                });
+                $('#inner_form').css('pointer-events', 'auto');
             });
 
+            $('.shaddowbtn1').on('click', function() {
+                $('#inner_form').css('pointer-events', 'auto');
+                $(this).parents('.text_list_inner').find('#showbox').addClass('d-block')
+                    .removeClass(
+                        'd-none');
+                if ($(window).width() <= 767) {
+                    if ($('#list_btns').hasClass('d-none') == true) {
+                        $(this).parents('#list_btns').removeClass('d-none');
+                        $(this).parents('.text_list_inner').find('#showbox').addClass('d-none')
+                            .removeClass(
+                                'd-block');
+                        $(this).parents(".text_list_inner").find("#showbox").css({
+                            'opacity': 0,
+                            'visibility': 'hidden',
+                            'z-index': 99999999999,
+                            'display': 'none',
+                        });
+                    } else {
+                        $(this).parents('#list_btns').addClass('d-none');
+                        $(this).parents('.text_list_inner').find('#showbox').addClass('d-block')
+                            .removeClass(
+                                'd-none');
+                        $(this).parents(".text_list_inner").find("#showbox").css({
+                            'opacity': 1,
+                            'visibility': 'visible',
+                            'z-index': 99999999999,
+                            'display': 'block',
+                        });
+                    }
+                    $('#inner_form').css('pointer-events', 'auto');
+                }
+            });
+            $(document).on('click', '.back_button', function() {
+                $('#list_btns').removeClass('d-none');
+
+                $('#showbox').addClass('d-none').removeClass('d-block');
+                $("#showbox").css({
+                    'opacity': 0,
+                    'visibility': 'hidden',
+                    'z-index': 99999999999,
+                    'display': 'none',
+                });
+            });
         });
 
         var addtocartType = 'Mani / Pedi';
