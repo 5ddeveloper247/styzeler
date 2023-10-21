@@ -63,7 +63,7 @@
 											<i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;
 											<i class="fa fa-eye" aria-hidden="true"></i>
 										</span> 
-										<span class="tooltiptext">Use the email to contact salon owner for more info!</span>
+										<span class="tooltiptext">Use the email to contact business owner for more info!</span>
 									</span>
 								</p>
 								<p>

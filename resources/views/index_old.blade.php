@@ -135,7 +135,7 @@
       <div class="container text-left">
         <h1 class="my-4 color-1 header-2">Styzeler <u><a href="rent-let.html" class="color-1">Rent & Let</a></u></h1>
         <p class="my-2">Styzeler Rent &  Let gives  the chance to utilise and maximise on your empty chair and make the 
-          difference to your freedom calling  all hair and beauty salon owner across London and the Uk  
+          difference to your freedom calling  all hair and beauty business owner across London and the Uk  
 
         </p>
       </div>
@@ -180,7 +180,7 @@
           The winning formula for both
         </span>  
         <span>
-          Salon Owner & Freelancer
+          Business Owner & Freelancer
         </span> 
       </p>
       <div class="customHeader small p-2 d-block d-lg-none">
@@ -191,7 +191,7 @@
           The winning formula for both
         </p>
         <p class="text-left" style="margin-top: -12px">
-          Salon Owner & Freelancer
+          Business Owner & Freelancer
         </p> 
       </div>
     </div>

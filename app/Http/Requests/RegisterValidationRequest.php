@@ -49,7 +49,7 @@ class RegisterValidationRequest extends FormRequest
             'zone' => 'required_if:type,wedding,hairStylist,beautician,barber',
             'stylist_language' => 'required_if:type,wedding,hairStylist,beautician,barber',
 
-            //for hairdressing salon owner, beauty owner, client
+            //for hairdressing business owner, beauty owner, client
             'owner_picture' => [
                 'required_if:type,hairdressingSalon,beautySalon,client',
                 'mimes:jpg,png,jpeg',
@@ -105,7 +105,7 @@ class RegisterValidationRequest extends FormRequest
             'stylist_picture.mimes' => 'Profile picture must be in .jpg, .png, .jpeg format.',
             'stylist_password.required_if' => 'Please enter a password and it`s length must be 8 or greater and must contain atleast one number, one capital letter and one special charecter!!',
 
-            //for hairdressing salon owner ,beauty salon ,client
+            //for hairdressing business owner ,beauty salon ,client
             'owner_picture.required_if' => 'Profile picture is required!',
             'owner_picture.mimes' => 'Profile picture must be in .jpg, .png or .jpeg format.',
             'owner_name.required_if' => 'Name is required!',

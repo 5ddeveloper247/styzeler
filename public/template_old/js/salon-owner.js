@@ -77,7 +77,7 @@ function showHairdressingOwner() {
     
 }
 
-//To show Salon Owner
+//To show business Owner
 function showBeautyOwner() {
     
    //To show Beauty Owner is selected    

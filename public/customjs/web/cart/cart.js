@@ -11,7 +11,7 @@ $(function () {
         success: function (response) {
             if (response.cart == "") {
                 $("#cart_line_table").append(
-                    '<div class="col-12 text-center">You have no bookings!</div>'
+                    '<div class="col-12 text-center">You have no item in cart!</div>'
                 );
             } else {
                 var cart_line_table = "";
@@ -29,24 +29,26 @@ $(function () {
                                 cart_line_id +
                                 `">
                                 <td>
-                                    <span class="">Service</span>
+		                            <span class="">Type:</span>
+		                            <span class="">` +
+		                            	item_type +
+		                            `</span>
+		                            <br>
+                                    <span class="">Service:</span>
                                     <span class="">` +
-                                item_service +
-                                `</span>
+		                                item_service +
+		                            `</span>
                                     <br>
-                                    <span class="">Text</span>
+                                    <span class="">Text:</span>
                                     <span class="">` +
-                                item_text +
-                                `</span>
-                                    <br>
-                                    <span class="">Type</span>
-                                    <span class="">` +
-                                item_type +
-                                `</span>
+                                    	item_text +
+                                    `</span>
+                                    
+                                    
                                 </td>
                                 <td><button class="logon_btn heart_btn p-2 mx-auto" onclick="deletePrompt(` +
                                 cart_line_id +
-                                `)"><i class="fa fa-trash"></i></button></td>
+                                `)" title="Delete service"><i class="fa fa-trash"></i></button></td>
                             </tr>`;
                         });
                     }

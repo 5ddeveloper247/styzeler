@@ -100,7 +100,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('admin.beautySalonOwner') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Beauty Salon Owner</p>
+                                    <p>Beauty Business Owner</p>
                                 </a>
                             </li>
                             <li class="nav-item">

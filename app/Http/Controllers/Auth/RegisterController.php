@@ -85,7 +85,7 @@ class RegisterController extends Controller
             'image_gallery' => '/images/wedding',
             'public_liability_insurance' => '/images/wedding',
 
-            //for hairdressing salon owner & beauty salon owner
+            //for hairdressing business owner & beauty business owner
             'owner_picture' => '/images/hairdressing',
         ];
 

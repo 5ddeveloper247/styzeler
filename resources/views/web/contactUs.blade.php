@@ -44,7 +44,7 @@
 	                <div class="col-sm-3 col-6 mb-5">
 	                	<ul class="btn_list">
 	                		<li class="li-100">
-	                    		<a href="{{route('salonOwner')}}" class="shadow_btn">Salon Owner 
+	                    		<a href="{{route('salonOwner')}}" class="shadow_btn">Business Owner 
 		                    		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
 		                    	</a>
 		                    </li>

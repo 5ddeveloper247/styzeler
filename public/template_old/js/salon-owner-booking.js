@@ -144,7 +144,7 @@ function confirmAppointment(emailId,id, confirmedDate) {
     console.log("Date :"+AppntDate);    
 
     // let ownerMessage = "ON HOLD BOOKING HAS BEEN CONFIRMED FOR "+ confirmedDate;
-    let ownerMessage = "SALON OWNER HAS CONFIRMED THE ON HOLD BOOKING FOR "+ AppntDate; //Updated by Rumki
+    let ownerMessage = "BUSINESS OWNER HAS CONFIRMED THE ON HOLD BOOKING FOR "+ AppntDate; //Updated by Rumki
     // _AppointmentDate
     // let avaliableDate = $('input[name="avaliable_date"]:checked').val();
     

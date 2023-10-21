@@ -27,7 +27,7 @@
 	<section class="content">
 		<div class="card">
 			<div class="card-header">
-				<h3 class="card-title">Beauty Salon Owner</h3>
+				<h3 class="card-title">Beauty Business Owner</h3>
 			</div>
 			<!-- /.card-header -->
 			<div class="card-body">

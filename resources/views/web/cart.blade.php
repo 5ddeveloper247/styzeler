@@ -22,7 +22,7 @@
     </script>
     <div class="booking my-5">
         <div class="container">
-            <h2 class="color-1 my-4 text-center">Your Schedule</h2>
+            <h2 class="color-1 my-4 text-center">Your Cart</h2>
             <div class="row justify-content-center">
                 <div class="booking-box col-lg-8">
                     {{-- <div class="row text-center">
@@ -57,7 +57,7 @@
 
                 </div>
                 <div class="modal-footer text-center">
-                    <button type="button" class="btn customBtn" id="confirm_delete">Delete</button>
+                    <button type="button" class="btn1 customBtn" id="confirm_delete">Delete</button>
 
                 </div>
             </div>

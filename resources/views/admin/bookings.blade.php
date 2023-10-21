@@ -101,7 +101,7 @@
 								<div class="col-8">
 									<div>
 										<span style="overflow-wrap: break-word;">
-											<p><strong>Salon Owner: </strong>Nik Hudson</p>
+											<p><strong>Business Owner: </strong>Nik Hudson</p>
 											<div>
 												<p><strong>Freelancer Name: </strong> carlo Berardinucci</p>
 											</div>
@@ -273,7 +273,7 @@
                         <!-- 								<div class="col-8"> -->
                         <!-- 									<div> -->
                         <span style="overflow-wrap: break-word;">
-                            <!-- 											<p><strong>Salon Owner: </strong>Nik Hudson</p> -->
+                            <!-- 											<p><strong>Business Owner: </strong>Nik Hudson</p> -->
                             <!-- 											<div> -->
                             <!-- 												<p><strong>Freelancer Name: </strong> carlo Berardinucci</p> -->
                             <!-- 											</div> -->
@@ -341,7 +341,7 @@
                                         <!-- 								<div class="col-8"> -->
                                         <!-- 									<div> -->
                                         <span style="overflow-wrap: break-word;">
-                                            <!-- 											<p><strong>Salon Owner: </strong>Nik Hudson</p> -->
+                                            <!-- 											<p><strong>Business Owner: </strong>Nik Hudson</p> -->
                                             <!-- 											<div> -->
                                             <!-- 												<p><strong>Freelancer Name: </strong> carlo Berardinucci</p> -->
                                             <!-- 											</div> -->
@@ -393,7 +393,7 @@
                                                         <!-- 								<div class="col-8"> -->
                                                         <!-- 									<div> -->
                                                         <span style="overflow-wrap: break-word;">
-                                                            <!-- 											<p><strong>Salon Owner: </strong>Nik Hudson</p> -->
+                                                            <!-- 											<p><strong>Business Owner: </strong>Nik Hudson</p> -->
                                                             <!-- 											<div> -->
                                                             <!-- 												<p><strong>Freelancer Name: </strong> carlo Berardinucci</p> -->
                                                             <!-- 											</div> -->

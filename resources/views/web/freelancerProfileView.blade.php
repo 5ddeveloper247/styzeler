@@ -160,7 +160,10 @@
         .fc-scroller {
             overflow-y: hidden !important;
         }
-
+		del {
+    		text-decoration: line-through;
+     		text-decoration-color: #ffbd59;
+     	}
         /*         .booked-slot{ */
         /*         	color:#b1bcc5 !important; */
         /*         } */
@@ -529,12 +532,15 @@
                         <h3 id="p_status"></h3>
 
                         @if (@Auth::user()->type == 'client')
-                            <p class="servicesTimeText" style="font-size: 12px;margin: unset;">Services Time: <span
-                                    id="serviceTime"></span> minutes</p>
-                            <p class="servicesTimeText" style="font-size: 12px;margin: unset;">Travelling Time: 60 minutes
+                            <p class="servicesTimeText" style="font-size: 12px;margin: unset;">Services Time: 
+                            	<span id="serviceTime"></span> minutes
                             </p>
-                            <p class="servicesTimeText" style="font-size: 12px;margin: unset;">Total Time: <span
-                                    id="serviceTotalTime"></span> minutes</p>
+                            <p class="servicesTimeText" style="font-size: 12px;margin: unset;">Travelling Time: 
+								<span id="travellingTime"></span> minutes
+							</p>
+                            <p class="servicesTimeText" style="font-size: 12px;margin: unset;">Total Time: 
+                            	<span id="serviceTotalTime"></span> minutes
+                            </p>
                         @endif
 
 

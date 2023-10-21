@@ -86,7 +86,7 @@
                         We need this information to evaluate your suitability for job<br>
                         placements. <br>
                     </span><span>We use your personal information to inform
-                        the salon owner about the persons who are looking to be placed for temping work<br>
+                        the business owner about the persons who are looking to be placed for temping work<br>
                     </span><span><br>
                         <br>
                     </span></p>
@@ -163,7 +163,7 @@
                         company director.</span></p>
 
                 <p><span>.<span> </span></span><span>Our
-                        salon owner.</span></p>
+                        business owner.</span></p>
 
                 <p><span>&nbsp;</span></p>
 

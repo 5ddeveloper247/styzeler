@@ -6,7 +6,7 @@
 @section('content')
     <div class="newProfile container my-5">
         <div class="newProfile-header">
-            <h4>Beauty & Spa Salon owner's</h4>
+            <h4>Beauty & Spa Business owner's</h4>
             <h4>pages profile building </h4>
         </div>
         <div>
