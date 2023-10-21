@@ -61,6 +61,27 @@
             transition-duration: 0.3s;
             cursor: pointer;
         }
+
+        @media (max-width: 991px) {
+            header #nav>li>.sub {
+                display: block;
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+
+            .chat-btn {
+                width: 30%;
+                height: 6.25vw;
+                padding: 0;
+                font-size: 3vw;
+                border-radius: 0.3vw;
+                font-weight: 500;
+                border: 2px solid #f6ce30;
+                background: #f6ce30;
+                color: white;
+            }
+        }
     </style>
     @stack('css')
 </head>
