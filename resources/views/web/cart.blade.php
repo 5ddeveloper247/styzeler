@@ -14,6 +14,13 @@
             border: 1px solid #fdd431;
             padding: 5px;
         }
+
+        @media only screen and (max-width: 600px) {
+            #content_row {
+                padding: 0px 15px;
+            }
+
+        }
     </style>
 @endpush
 @section('content')
@@ -23,7 +30,7 @@
     <div class="booking my-5">
         <div class="container">
             <h2 class="color-1 my-4 text-center">Your Cart</h2>
-            <div class="row justify-content-center">
+            <div class="row justify-content-center" id="content_row">
                 <div class="booking-box col-lg-8">
                     {{-- <div class="row text-center">
                         <div class="col-4">

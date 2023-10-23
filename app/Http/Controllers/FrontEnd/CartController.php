@@ -47,9 +47,15 @@ class CartController extends Controller
         // 		}
 
         $active_cart = Cart::where('user_id', Auth::user()->id)->where('status', 'active')->first();
-        $exsits = Cart_line::where('item_service', $request->item_service)->exists();
-
-        if (!$exsits) {
+        $exists = Cart::where(['user_id' => Auth::user()->id, 'status' => 'active'])
+            ->with(['cart_lines' => function ($q) use ($request) {
+                $q->where('item_service', $request->item_service);
+            }])
+            ->first();
+        // $cart_line_id = Cart_line::where('item_service', $request->item_service)->first();
+        $cartLines = $exists->cart_lines;
+        // dd($cartLines->isEmpty());
+        if ($cartLines->isEmpty()) {
             if (isset($active_cart->id)) {
 
                 // logic in case when user add make -> bridal make up service in cart then exixting cart will be emoty and proceed with only bridal makeup entry

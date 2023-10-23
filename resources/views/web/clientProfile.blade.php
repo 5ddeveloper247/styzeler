@@ -1,4 +1,5 @@
 @extends('layouts.master.template_old.master')
+{{-- @extends('layouts.master.template_new.master') --}}
 <script>
     const baseURL = "{{ request()->root() }}";
 </script>
@@ -45,14 +46,14 @@
 @endpush
 @section('content')
     <div class="profile container">
-        <div class="profile-pic text-center aos-init aos-animate" data-aos="fade-up">
+        <div class="profile-pic aos-init aos-animate text-center" data-aos="fade-up">
 
             <img alt="" id="profile-image-id"
                 src="{{ asset(isset($data->hero_image) ? $data->hero_image : 'template_old/images/blank.png') }}"
                 width="100%">
 
 
-            <p><a class="text-center btn edit_pro_pic" onclick="editProfilePic()" title="Edit">+</a></p>
+            <p><a class="btn edit_pro_pic text-center" onclick="editProfilePic()" title="Edit">+</a></p>
         </div>
 
         <div class="row my-4">
@@ -66,18 +67,18 @@
                 <div class="service btn customBtn" id="service">Service</div>
             </div> --}}
         </div>
-        <div class="row mb-5 justify-content-center">
-            <div class="showProfile col-10 text-left mt-4" id="showProfile">
-                <div class="name row "><label class="color-1 col-lg-3">Client's Name : </label>
+        <div class="row justify-content-center mb-5">
+            <div class="showProfile col-10 mt-4 text-left" id="showProfile">
+                <div class="name row"><label class="color-1 col-lg-3">Client's Name : </label>
                     <p class="col-lg-9" id="ownerName"></p>
                 </div>
-                <div class="Address row "><label class="color-1 col-lg-3">Client's Address : </label>
+                <div class="Address row"><label class="color-1 col-lg-3">Client's Address : </label>
                     <p class="col-lg-9" id="owner-address"></p>
                 </div>
-                <div class="Postcode row "><label class="color-1 col-lg-3">Client's postcode : </label>
+                <div class="Postcode row"><label class="color-1 col-lg-3">Client's postcode : </label>
                     <p class="col-lg-9" id="owner-postcode"></p>
                 </div>
-                <div class="phone row "><label class="color-1 col-lg-3">Client's Phone : </label>
+                <div class="phone row"><label class="color-1 col-lg-3">Client's Phone : </label>
                     <p class="col-lg-9" id="owner-phone"></p>
                 </div>
                 <div class="email row"><label class="color-1 col-lg-3">Email : </label>
@@ -103,7 +104,7 @@
         <!-- modals -->
         <!-- Status -->
         <div class="modal status-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -134,7 +135,7 @@
         </div>
         <!-- edit profile picture -->
         <div class="modal profile-pic-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header"><button type="button" class="close" data-dismiss="modal"
                             aria-label="Close"><span aria-hidden="true">&times;
@@ -152,7 +153,7 @@
                                 <label for="stylist-picture">+</label>
                             </div>
                             </p>
-                            <button type="submit" id="updateProfileImage" class="btn customBtn ">Okay</button>
+                            <button type="submit" id="updateProfileImage" class="btn customBtn">Okay</button>
                         </form>
                     </div>
                     <div class="modal-footer text-center"></div>
@@ -164,7 +165,7 @@
             <input type="hidden" name="type" value="{{ Auth::user()->type }}">
             <!-- edit name -->
             <div class="modal name-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header"><button type="button" class="close" data-dismiss="modal"
                                 aria-label="Close"><span aria-hidden="true">&times;
@@ -182,7 +183,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn" data-dismiss="modal">
-                                                                                                                                                                            Okay</button>--><!-- </form>-->
+                                                                                                                                                                                                            Okay</button>--><!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
                     </div>
@@ -190,7 +191,7 @@
             </div>
             <!-- edit mobile number -->
             <div class="modal mobile-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header"><button type="button" class="close" data-dismiss="modal"
                                 aria-label="Close"><span aria-hidden="true">&times;
@@ -204,7 +205,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn" data-dismiss="modal">
-                                                                                                                                                                                Okay</button>--><!-- </form>-->
+                                                                                                                                                                                                                Okay</button>--><!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
                     </div>
@@ -213,7 +214,7 @@
             <!-- edit address -->
             <div class="modal address-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header"><button type="button" class="close" data-dismiss="modal"
                                 aria-label="Close"><span aria-hidden="true">&times;
@@ -229,7 +230,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn" data-dismiss="modal">
-                                                                                                                                                                                    Okay</button>--><!-- </form>-->
+                                                                                                                                                                                                                    Okay</button>--><!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
                     </div>
@@ -238,7 +239,7 @@
             <!-- edit Postcode -->
             <div class="modal postcode-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header"><button type="button" class="close" data-dismiss="modal"
                                 aria-label="Close"><span aria-hidden="true">&times;
@@ -253,7 +254,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn"
-                                                                                                                                                                                        data-dismiss="modal">Okay</button>-->
+                                                                                                                                                                                                                        data-dismiss="modal">Okay</button>-->
                             <!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
@@ -262,7 +263,7 @@
             </div>
             <!-- Status -->
             <div class="modal status-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -306,6 +307,6 @@
             });
         });
     </script>
-    <script src="{{ asset('customjs/web/register/common.js') }}?v={{time()}}"></script>
-    <script src="{{ asset('customjs/web/profile/clientProfile.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('customjs/web/register/common.js') }}?v={{ time() }}"></script>
+    <script src="{{ asset('customjs/web/profile/clientProfile.js') }}?v={{ time() }}"></script>
 @endpush
