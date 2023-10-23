@@ -28,7 +28,7 @@
     <section id="news">
         <!-- <div class="top_banner" style="background-image: url('{{ asset('template_new/assets/images/news_main.jpg ') }}')"> -->
         <div class="top_banner"
-            style="background-image: url('{{ asset('template_new/assets/images/newsfeed-banner.png') }}'); background-size: 100% 100%;">
+            style="background-image: url('{{ asset('template_new/assets/images/newsfeed-banner.png') }}'); background-size: 100%;">
             <div class="contain" data-aos="fade-up" data-aos-duration="1000">
                 <!-- 			<div class="txt"> -->
                 <!-- 				<h1>Styzeler News Feed</h1> -->
