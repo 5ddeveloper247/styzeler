@@ -40,7 +40,7 @@
                     <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone">
                 </div>
                 <div class="col-12 text-center p-2">
-                    <button class=" chat-btn text-dark" id="guest_form_submit">Start Chat</button>
+                    <button class=" chat-btn" id="guest_form_submit">Start Chat</button>
                 </div>
             </div>
         </form>
