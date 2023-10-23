@@ -420,7 +420,6 @@
             $(document).on("click", ".shadowbtn", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
             });
-
         });
 
         var bookFrelancerRoute = "{{route('bookFreelancer')}}";

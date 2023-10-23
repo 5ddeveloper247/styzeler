@@ -33,7 +33,7 @@ return new class extends Migration
             $table->string('image2');
             $table->string('image3');
             $table->string('status');
-            $table->date('date')->default(now());
+            $table->date('date')->default(null);
             $table->integer('user_id');
             $table->timestamps();
         });

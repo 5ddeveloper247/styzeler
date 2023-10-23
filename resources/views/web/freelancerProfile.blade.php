@@ -380,12 +380,14 @@
 
             </div>
             <div class="showReviews col-10 mt-5 text-center" id="showReviews">
-                <div class="mt-4 text-left" id="showReviewLike">
+                <div class="mt-4 text-left" id="freelancerReviewsHtml">
 
                 </div>
             </div>
             <div class="showLikes col-10 mt-5 text-center" id="showLikes">
-                This will be likes
+                <div class="text-left  mt-4" id="freelancerLikesHtml">
+                	
+                </div>
             </div>
             <div class="showBook col-12 mt-5 text-left" id="showBook">
 
@@ -2939,6 +2941,9 @@
     </div>
 @endsection
 @push('script')
+	<script>
+		var userId = {{@Auth::user()->id}};
+	</script>
     {{-- <script>
         $(function() {
             $.ajaxSetup({

@@ -16,6 +16,7 @@ use App\Models\Appointments;
 use App\Models\Cart;
 use App\Models\Cart_line;
 use App\Models\Used_tokens;
+use App\Models\User_review_like;
 
 class ProfileController extends Controller
 {
@@ -1169,6 +1170,62 @@ class ProfileController extends Controller
             'message' => 'Booking Cancel Successfully!',
             'data' => ''
         ]);
+    }
+    
+    public function submitFeedbackOwner(Request $request)
+    {
+    
+    	if (!isset(Auth::user()->id)) {
+    		return response()->json(['status' => 500, 'message' => 'Login with owner or client user first!', 'data' => '']);
+    	}
+    	
+    	if (in_array(Auth::user()->type, ['wedding','hairStylist','beautician','barber'])) {
+    		return response()->json(['status' => 500, 'message' => 'Login with owner or client user first!', 'data' => '']);
+    	}
+    	
+    	if ($request->ownerRemarks == null || $request->ownerRemarks == '') {
+    		return response()->json(['status' => 500, 'message' => 'Unable to send empty feedback!', 'data' => '']);
+    	}
+    	
+    	$feedback = new User_review_like();
+    	
+    	$feedback->user_id = Auth::user()->id;
+    	$feedback->freelancer_id = $request->feedbackFreelancerId;
+    	$feedback->feedback_type = $request->feedbackType;
+    	$feedback->remarks = $request->ownerRemarks;
+    	$feedback->date = date('Y-m-d');
+    	$feedback->save();
+    	
+    	$feedback = User_review_like::where('freelancer_id', $request->feedbackFreelancerId)
+    							->with('user', 'freelancer')->get();
+    	
+    	return response()->json(
+    			[
+    				'status' => 200, 'message' => 'Feedback send successfully.', 'data' => $feedback
+    			]
+    		);
+    }
+    
+    public function loadFeedbackFreelancer(Request $request)
+    {
+    
+    	if (isset($request->freelancerId) && $request->freelancerId != '') {
+    		
+    		$feedback = User_review_like::where('freelancer_id', $request->freelancerId)
+    					->with('user', 'freelancer')->get();
+    		
+    		return response()->json(
+    				[
+    						'status' => 200,
+    						'message' => '',
+    						'data' => $feedback
+    				]
+    				);
+    	}else{
+    		return response()->json(['status' => 500, 'message' => 'Something went wrong!', 'data' => '']);
+    	}
+    
+    	
     }
 }
 

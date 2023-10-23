@@ -504,12 +504,37 @@
 
             </div>
             <div class="showReviews col-10 text-center mt-5" id="showReviews">
-                <div class="text-left  mt-4" id="showReviewLike">
+            	
+            	@if (in_array(Auth::user()->type, ['hairdressingSalon','beautySalon','client']))
+            		<div class="giveReviewLike text-left">
+	                    <form class="reviewForm" id="reviewForm">
+	                   		<input type="hidden" name="feedbackType" id="feedbackType" value="">
+	                   		<input type="hidden" name="feedbackFreelancerId" id="reviewFreelancerId" value="">
+	                   		<h5 class="color-1">
+	                        	Your Review :
+	                      	</h5>
+	                      	<textarea class="form-control col-lg-8" name="ownerRemarks" id="ownerRemarks" rows="4" style="height:10vw; margin-top: 15px;" placeholder="Please enter your feedback here."></textarea>
+	                      	<div>
+	                        	<div>
+	                            	<button class="btn customBtn customSubmit" style="margin: 15px 0px;" type="button" onclick="submitReview();">Submit</button>       
+	                            	<button class="btn customBtn customLike" style="margin: 15px 0px;" type="button" onclick="submitLike();">Like</button>
+	                       	 	</div>
+	                        
+	                      	</div>
+	                    </form>
+	                </div>
+            	@endif
+                
+                <div class="text-left  mt-4" id="freelancerReviewsHtml">
+                	
 
                 </div>
             </div>
             <div class="showLikes col-10 text-center mt-5" id="showLikes">
-                This will be likes
+                <div class="text-left  mt-4" id="freelancerLikesHtml">
+                	
+
+                </div>
             </div>
             <div class="showBook col-10 text-left mt-5" id="showBook">
 

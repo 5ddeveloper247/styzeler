@@ -49,7 +49,7 @@ $(document).ready(function () {
 
         $("#reviews").removeClass("customBtn").addClass("customBtnSelected");
 
-        $("#showReviewLike").empty();
+        loadFeedback();
     });
 
     $("#likes").click(function () {
@@ -64,7 +64,7 @@ $(document).ready(function () {
 
         $("#likes").removeClass("customBtn").addClass("customBtnSelected");
 
-        $("#showLikes").empty();
+        loadFeedback();
     });
 
     $("#book").click(function () {
@@ -902,7 +902,6 @@ function bookSlotsResponse(response) {
         }
 
     }
-
 }
 
 function useOwnerToken() {
@@ -934,5 +933,101 @@ function useOwnerTokensResponse(response) {
             timeOut: 3000
         });
 
+    }
+}
+
+function submitReview(){
+	$('#feedbackType').val('review');
+	submitFeedback();
+}
+function submitLike(){
+	$('#feedbackType').val('like');
+	submitFeedback();
+}
+function submitFeedback() {
+
+	$('#reviewFreelancerId').val(userId);
+    let type = 'POST';
+    let url = '/submitFeedbackOwner';
+    let message = '';
+    let form = $('#reviewForm');
+    let data = new FormData(form[0]);
+
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', submitFeedbackResponse, 'spinner_button', 'submit_button');
+}
+
+function submitFeedbackResponse(response) {
+
+    if (response.status == 200 || response.status == '200') {
+
+    	$("#ownerRemarks").val('');
+    	loadFeedbackResponse(response);
+        toastr.success(response.message, '', {
+            timeOut: 3000
+        });
+
+    } else {
+
+        toastr.error(response.message, '', {
+            timeOut: 3000
+        });
+    }
+}
+
+function loadFeedback() {
+
+    let type = 'GET';
+    let url = '/loadFeedbackFreelancer';
+    let message = '';
+//    let form = $('#reviewForm');
+    let data = 'freelancerId=' + userId;//new FormData(form[0]);
+
+    // PASSING DATA TO FUNCTION
+    SendAjaxRequestToServer(type, url, data, '', loadFeedbackResponse, 'spinner_button', 'submit_button');
+}
+
+function loadFeedbackResponse(response) {
+
+    if (response.status == 200 || response.status == '200') {
+
+    	var feedback = response.data;
+    	var reviewshtml = '';
+    	var likeshtml = '';
+    	
+    	$("#freelancerReviewsHtml, #freelancerLikesHtml").empty();
+    	
+    	if(feedback.length > 0  ) {
+            // console.log(response);
+            $.each(feedback, function(i) {
+              if(feedback[i]['remarks'] != "") {
+            	  if(feedback[i]['feedback_type'] == 'review'){
+            		  
+            		  reviewshtml += '<div>' +
+						                  '<h5 class="color-1">' + feedback[i]['user']['name'] + ' ' + feedback[i]['user']['surname'] + '</h5>' + 
+						                  '<p class="mt-2">'+feedback[i]['remarks']+'</p>'+
+						             '</div>';
+            	  }else{
+            		  likeshtml += '<div>' +
+						                  '<h5 class="color-1">' + feedback[i]['user']['name'] + '</h5>' + 
+						                  '<p class="mt-2">'+feedback[i]['remarks']+'</p>'+
+						             '</div>';
+            	  }
+              }
+            });
+            $("#freelancerReviewsHtml").append(reviewshtml != '' ? reviewshtml : '<div>No Reviews Yet!</div>');
+            $("#freelancerLikesHtml").append(likeshtml != '' ? likeshtml : '<div>No Likes Yet!</div>');
+            
+          } else {
+        	  
+            $("#freelancerReviewsHtml").append('<div>No Reviews Yet!</div>');
+            $("#freelancerLikesHtml").append('<div>No Reviews Yet!</div>');
+          }
+
+    } else {
+
+        toastr.error(response.message, '', {
+            timeOut: 3000
+        });
     }
 }
