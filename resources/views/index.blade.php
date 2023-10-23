@@ -481,7 +481,7 @@
 
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <!-- <div class="flexRow">                                                                                                                                                           </div>
-                                                                                                                                                                                                                                                                                                                                           </div> -->
+                                                                                                                                                                                                                                                                                                                                                   </div> -->
             <div class="flexRow" style="padding: 0px 38px">
                 <div class="col">
                     <div class="inner"
@@ -667,7 +667,7 @@
                     <button type="button" class="img-set-hire"
                         style="max-width: 15rem; background: transparent;
 	/* padding: 0; */ border: 0; margin: 0 auto;">
-                        <a href="http://styzeler.test/businessOwner#to_hire" type="button"
+                        <a href="{{ route('businessOwner') . '#to_hire' }}" type="button"
                             style="background: transparent; border: 0; margin-top: 100px">
                             <img width="60" height="60"
                                 src="http://styzeler.test/template_new/assets/images/hire_play_btn.jpg" alt="">
@@ -689,7 +689,7 @@
         </div>
 
         <!-- <img src="assets/images/126-minr.jpg" alt="">
-                                                                                                                                                                                                                                                                                                                                                                                                                                             </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                     </div> -->
     </section>
     <!-- membership -->
     <section id="get_job">
