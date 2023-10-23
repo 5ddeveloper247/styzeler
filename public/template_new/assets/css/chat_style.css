@@ -192,7 +192,7 @@ body.show-chatbot .chatbot {
     resize: none;
     max-height: 180px;
     padding: 15px 15px 15px 0;
-    font-size: 1rem;
+    font-size: 1.4rem;
     background: #fdd431;
 }
 #guest_form input,

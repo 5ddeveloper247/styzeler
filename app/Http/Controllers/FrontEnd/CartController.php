@@ -47,7 +47,12 @@ class CartController extends Controller
         // 		}
 
         $active_cart = Cart::where('user_id', Auth::user()->id)->where('status', 'active')->first();
-        $exsits = Cart_line::where('item_service', $request->item_service)->exists();
+        $exsits = Cart_line::where(
+            [
+                'item_service' => $request->item_service,
+                'item_price' => $request->item_price
+            ]
+        )->exists();
 
         if (!$exsits) {
             if (isset($active_cart->id)) {
