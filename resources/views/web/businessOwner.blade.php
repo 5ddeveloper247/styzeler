@@ -2,7 +2,7 @@
 
 @push('css')
     <style>
-    	#packages .modal {
+        #packages .modal {
             --bs-modal-width: 57rem;
         }
 
@@ -82,6 +82,7 @@
             transition-duration: 0.3s;
             cursor: pointer;
         }
+
         .site_btn {
             border: 0.2rem solid #000000;
         }
@@ -157,13 +158,13 @@
 
 @section('content')
     <section id="business">
-<!--         <img src="{{ asset('template_new/assets/images/styzeler-business-owner-banner.JPG') }}" alt="" class="top_banner" /> -->
-        
+        <!--         <img src="{{ asset('template_new/assets/images/styzeler-business-owner-banner.JPG') }}" alt="" class="top_banner" /> -->
+
         <img src="{{ asset('template_new/assets/images/businessowner-banner.png') }}" alt="" class="top_banner" />
-        
+
         <div class="contain">
             <div class="text_wrap_blk" data-aos="fade-up" data-aos-duration="1000">
-            	
+
                 <h2 class="h2_01">Styzeler ''United to succeed'' Membership</h2>
                 <div class="data_01"
                     style="background-image: url('{{ asset('template_new/assets/images/business_bg_01.jpg') }}')">
@@ -205,9 +206,9 @@
                         <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
                         <div class="in">
                             <h4>
-                            	<a class="{{ @!Auth::user() ? 'show_message' : '' }}"
-                            		href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Freelancer
-                            	</a>
+                                <a class="{{ @!Auth::user() ? 'show_message' : '' }}"
+                                    href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Freelancer
+                                </a>
                             </h4>
                             <p>for temporary work or full/part-time position</p>
                         </div>
@@ -216,9 +217,9 @@
                         <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
                         <div class="in">
                             <h4>
-                            	<a class="{{ @!Auth::user() ? 'show_message' : '' }}"
-                            		href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Rent & let:
-                            	</a>
+                                <a class="{{ @!Auth::user() ? 'show_message' : '' }}"
+                                    href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Rent & let:
+                                </a>
                             </h4>
                             <p>Chair rental, maximise on an empty chair</p>
                         </div>
@@ -227,9 +228,9 @@
                         <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
                         <div class="in">
                             <h4>
-	                            <a class="{{ @!Auth::user() ? 'show_message' : '' }}"
-	                            	href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Job posting:
-	                            </a>
+                                <a class="{{ @!Auth::user() ? 'show_message' : '' }}"
+                                    href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Job posting:
+                                </a>
                             </h4>
                             <p>Invite candidate to apply for a vacancy</p>
                         </div>
@@ -238,9 +239,10 @@
                         <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
                         <div class="in">
                             <h4>
-	                            <a class="{{ @!Auth::user() ? 'show_message' : '' }}"
-	                            	href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Wedding Stylistes:
-	                            </a>
+                                <a class="{{ @!Auth::user() ? 'show_message' : '' }}"
+                                    href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Wedding
+                                    Stylistes:
+                                </a>
                             </h4>
                             <p>Take advantage and upgrade your services</p>
                         </div>
@@ -249,9 +251,9 @@
                         <img src="{{ asset('template_new/assets/images/logo.png') }}" alt="" />
                         <div class="in">
                             <h4>
-                            	<a class="{{ @!Auth::user() ? 'show_message' : '' }}" 
-                            		href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Events:
-                            	</a>
+                                <a class="{{ @!Auth::user() ? 'show_message' : '' }}"
+                                    href="{{ @Auth::user() ? route('packagesDescription') : 'javascript:;' }}">Events:
+                                </a>
                             </h4>
                             <p>Festivals, photo shooting, presentations Job posting</p>
                         </div>
@@ -436,13 +438,14 @@
             </div>
         </section>
 
-        <div class="token" style="background-image: url('{{ asset('template_new/assets/images/business_owner_main3.jpg') }}')">
+        <div class="token"
+            style="background-image: url('{{ asset('template_new/assets/images/business_owner_main3.jpg') }}')">
             <div class="contain" data-aos="fade-up" data-aos-duration="1000">
                 <!-- <div class="btn_blk">
-                    <a href="registration.html" class="site_btn"
-                      >Register <img src="assets/images/eye.svg" alt=""
-                    /></a>
-                  </div> -->
+                                                <a href="registration.html" class="site_btn"
+                                                  >Register <img src="assets/images/eye.svg" alt=""
+                                                /></a>
+                                              </div> -->
                 <div class="text">
                     <h3>One-token-One-service</h3>
                     <p>
@@ -462,61 +465,67 @@
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="btm_block">
                 <ul class="btn_list">
-					<li>
-						<a href="javascript:;" class="shadow_btn" onclick="showHairdressingOwner();" style="font-size: 1.7rem; padding: 0 1rem; justify-content: space-between;">
-							Hairdressing / Babers 
-							<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
-						</a>
-					</li>
-					<li>
-						<a href="javascript:;" class="shadow_btn"  onclick="showBeautyOwner();" style="font-size: 1.7rem; padding: 0 1rem; justify-content: space-between;">
-							Beauty / Spa 
-							<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
-						</a>
-					</li>
-				</ul>
+                    <li>
+                        <a href="javascript:;" class="shadow_btn" onclick="showHairdressingOwner();"
+                            style="font-size: 1.7rem; padding: 0 1rem; justify-content: space-between;">
+                            Hairdressing / Babers
+                            <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="shadow_btn" onclick="showBeautyOwner();"
+                            style="font-size: 1.7rem; padding: 0 1rem; justify-content: space-between;">
+                            Beauty / Spa
+                            <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
+                        </a>
+                    </li>
+                </ul>
                 <img src="{{ asset('assets/images/business_lines.jpg') }}" alt="" />
             </div>
             <div class="content-category-people row my-5" id="hairdressing_container">
-            	@if(isset($users))
-              	@foreach($users as $row)
-              	@if($row->type == 'hairdressingSalon')
-              		<div class="col-sm-4 col-lg-3">
-                		<a class="text-center" id="{{$row->id}}" href="{{ route('salonOwnerProfile') }}?id={{$row->id}}" style="color:gray;">
-                			<h2 class="color-1">{{$row->name}} {{$row->surname}}</h2>
-                			<div class="category-people py-3">
-                				<div class="picture">
-                					<img id="profile-image-id-0" alt="" width="100%" height="100%" src="{{ asset(isset($row->hero_image) ? $row->hero_image : 'template_old/images/blank.png') }}">
-                				</div>
-                			</div>
-                		</a>
-                	</div>
-             	@endif
-             	@endforeach
-            	@endif
-          	</div>
-              	
-          	<div class="content-category-people row my-5" id="beautyspa_container" style="display:none;">
-              	@if(isset($users))
-           		@foreach($users as $row)
-               	@if($row->type == 'beautySalon')
-                	<div class="col-sm-4 col-lg-3">
-                		<a class="text-center" id="{{$row->id}}" href="{{ route('salonOwnerProfile') }}?id={{$row->id}}" style="color:gray;">
-                			<h2 class="color-1">{{$row->name}} {{$row->surname}}</h2>
-                			<div class="category-people py-3">
-                				<div class="picture">
-                					<img id="profile-image-id-0" alt="" width="100%" height="100%" src="{{ asset(isset($row->hero_image) ? $row->hero_image : 'template_old/images/blank.png') }}">
-                				</div>
-                			</div>
-                		</a>
-                	</div>
-             	@endif
-             	@endforeach
-            	@endif
-        	</div>
+                @if (isset($users))
+                    @foreach ($users as $row)
+                        @if ($row->type == 'hairdressingSalon')
+                            <div class="col-sm-4 col-lg-3">
+                                <a class="text-center" id="{{ $row->id }}"
+                                    href="{{ route('salonOwnerProfile') }}?id={{ $row->id }}" style="color:gray;">
+                                    <h2 class="color-1">{{ $row->name }} {{ $row->surname }}</h2>
+                                    <div class="category-people py-3">
+                                        <div class="picture">
+                                            <img id="profile-image-id-0" alt="" width="100%" height="100%"
+                                                src="{{ asset(isset($row->hero_image) ? $row->hero_image : 'template_old/images/blank.png') }}">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
+            </div>
+
+            <div class="content-category-people row my-5" id="beautyspa_container" style="display:none;">
+                @if (isset($users))
+                    @foreach ($users as $row)
+                        @if ($row->type == 'beautySalon')
+                            <div class="col-sm-4 col-lg-3">
+                                <a class="text-center" id="{{ $row->id }}"
+                                    href="{{ route('salonOwnerProfile') }}?id={{ $row->id }}" style="color:gray;">
+                                    <h2 class="color-1">{{ $row->name }} {{ $row->surname }}</h2>
+                                    <div class="category-people py-3">
+                                        <div class="picture">
+                                            <img id="profile-image-id-0" alt="" width="100%" height="100%"
+                                                src="{{ asset(isset($row->hero_image) ? $row->hero_image : 'template_old/images/blank.png') }}">
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        @endif
+                    @endforeach
+                @endif
+            </div>
         </div>
         <div class="modal fade bd-example-modal-md" id="popup-pkg1" role="dialog">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-md modal-dialog-centered">
                 <div class="modal-content border border-warning"
                     style=" background-color: black; color: white; max-height:400px; overflow-y:auto; ">
                     <div class="modal-header" style=" border-bottom: 5px solid #766d48; ">
@@ -545,7 +554,7 @@
             </div>
         </div>
         <div class="modal fade bd-example-modal-md" id="popup-pkg2" role="dialog">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-md modal-dialog-centered">
                 <div class="modal-content border border-warning"
                     style=" background-color: black; color: white; max-height:400px; overflow-y:auto; ">
                     <div class="modal-header" style=" border-bottom: 5px solid #766d48; ">
@@ -577,7 +586,7 @@
             </div>
         </div>
         <div class="modal fade bd-example-modal-md" id="popup-pkg3" role="dialog">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-md modal-dialog-centered">
                 <div class="modal-content border border-warning"
                     style=" background-color: black; color: white; max-height:400px; overflow-y:auto; ">
                     <div class="modal-header" style=" border-bottom: 5px solid #766d48; ">
@@ -625,7 +634,7 @@
             </div>
         </div>
         <div class="modal fade bd-example-modal-md" id="payment_modal" role="dialog">
-            <div class="modal-dialog modal-md ">
+            <div class="modal-dialog modal-md modal-dialog-centered">
                 <div class="modal-content border border-warning"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
@@ -657,7 +666,7 @@
             </div>
         </div>
         <div class="modal fade bd-example-modal-md" id="register_modal" role="dialog">
-            <div class="modal-dialog modal-md ">
+            <div class="modal-dialog modal-md modal-dialog-centered">
                 <div class="modal-content border border-warning"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
@@ -675,7 +684,7 @@
             </div>
         </div>
         <div class="modal fade bd-example-modal-md" id="userType_message" role="dialog">
-            <div class="modal-dialog modal-md ">
+            <div class="modal-dialog modal-md modal-dialog-centered">
                 <div class="modal-content border border-warning"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
@@ -696,8 +705,8 @@
 @endsection
 
 @push('script')
-	<script src="https://js.stripe.com/v3/"></script>
-	<script>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script>
         const stripe = Stripe('{{ config('keys.STRIPE_PUBLISHABLE_KEY') }}');
         const elements = stripe.elements();
 
@@ -727,63 +736,70 @@
                 form.submit();
             }
         });
-	</script>
-	<script>
-	  	$(document).on("click", ".popup-pkg1", function () {
-	  		@if(@!Auth::user())
-	    		$('#register_modal').modal('show'); return;
-	       	@endif
-	    	$('#popup-pkg1').modal('show');
-	  	});
-	  	$(document).on("click", ".popup-pkg2", function () {
-	  		@if(@!Auth::user())
-	    		$('#register_modal').modal('show'); return;
-	       	@endif
-	    	$('#popup-pkg2').modal('show');
-	  	});
-	  	$(document).on("click", ".popup-pkg3", function () {
-		  	@if(@!Auth::user())
-	    		$('#register_modal').modal('show'); return;
-	       	@endif
-	    	$('#popup-pkg3').modal('show');
-	  	});
-	  	$(document).on("click", ".close-modal", function () {
-	    	$('.modal').modal('hide');
-	  	});
-	  	$(document).on("click", ".show_message", function() {
-          	$('#register_modal').modal('show');
-      	});
-      	function paymentModal(amount, tokens) {
+    </script>
+    <script>
+        $(document).on("click", ".popup-pkg1", function() {
+            @if (@!Auth::user())
+                $('#register_modal').modal('show');
+                return;
+            @endif
+            $('#popup-pkg1').modal('show');
+        });
+        $(document).on("click", ".popup-pkg2", function() {
+            @if (@!Auth::user())
+                $('#register_modal').modal('show');
+                return;
+            @endif
+            $('#popup-pkg2').modal('show');
+        });
+        $(document).on("click", ".popup-pkg3", function() {
+            @if (@!Auth::user())
+                $('#register_modal').modal('show');
+                return;
+            @endif
+            $('#popup-pkg3').modal('show');
+        });
+        $(document).on("click", ".close-modal", function() {
+            $('.modal').modal('hide');
+        });
+        $(document).on("click", ".show_message", function() {
+            $('#register_modal').modal('show');
+        });
 
-	    	@if(@!Auth::user())
-	    		$('#register_modal').modal('show');return;
-	    	@elseif(!in_array(@Auth::user()->type, ['hairdressingSalon','beautySalon']))
-				$('#userType_message').modal('show');return;
-	       	@endif
-		  	$('#payment_amount').val(amount);
-		    $('#payment_tokens').val(tokens);
-		    $('#payment_modal').modal('show');
-	  	}
+        function paymentModal(amount, tokens) {
 
-	  	function showHairdressingOwner(){
-			$('#hairdressing_container').show();
-			$('#beautyspa_container').hide();
-			
-	  	}
-	  	function showBeautyOwner(){
-			
-			$('#hairdressing_container').hide();
-			$('#beautyspa_container').show();
-	  	}
-  	</script>
-  	<script>
-	  	if (window.location.hash === '#packages') {
-	        // Scroll to the "packages" div
-	        var packagesDiv = document.getElementById('packages');
-	        if (packagesDiv) {
-	            packagesDiv.scrollIntoView();
-	        }
-	    }
+            @if (@!Auth::user())
+                $('#register_modal').modal('show');
+                return;
+            @elseif (!in_array(@Auth::user()->type, ['hairdressingSalon', 'beautySalon']))
+                $('#userType_message').modal('show');
+                return;
+            @endif
+            $('#payment_amount').val(amount);
+            $('#payment_tokens').val(tokens);
+            $('#payment_modal').modal('show');
+        }
+
+        function showHairdressingOwner() {
+            $('#hairdressing_container').show();
+            $('#beautyspa_container').hide();
+
+        }
+
+        function showBeautyOwner() {
+
+            $('#hairdressing_container').hide();
+            $('#beautyspa_container').show();
+        }
+    </script>
+    <script>
+        if (window.location.hash === '#packages') {
+            // Scroll to the "packages" div
+            var packagesDiv = document.getElementById('packages');
+            if (packagesDiv) {
+                packagesDiv.scrollIntoView();
+            }
+        }
         // Check if the 'error' key is present in the session data
         @if (session('error'))
             // Display Toastr notification
