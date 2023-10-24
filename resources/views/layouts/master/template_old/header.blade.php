@@ -6,7 +6,7 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     <img src="{{ asset('template_old/images/logo.png') }}" width="80px" /></a>
             </div>
-            <button class="navbar-toggler toggle" type="button" data-toggle="collapse"
+            <button class="navbar-toggler toggle " type="button" data-toggle="collapse"
                 data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span></span>
