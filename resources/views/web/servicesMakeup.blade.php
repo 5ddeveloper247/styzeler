@@ -93,9 +93,9 @@
                                                 alt=""></button>
                                     </li>
                                     <!-- <li>
-                              <button type="button" class="shadow_btn shaddowbtn1"   onclick="caseCat('Bridal_Make_up')">Bridal Make-up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+                                      <button type="button" class="shadow_btn shaddowbtn1"   onclick="caseCat('Bridal_Make_up')">Bridal Make-up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 
-                             </li> -->
+                                     </li> -->
                                 </ul>
                                 <div class="txt_wrap scrollbar" id="showbox">
                                     <form action="" method="post" id="inner_form">
@@ -222,7 +222,7 @@
     <script src="https://kit.fontawesome.com/8389fcfe36.js" crossorigin="anonymous"></script>
     <script>
         $(window).on("load", function() {
-            $(document).on("click", ".btn_list .shadow_btn", function() {
+            $(document).on("click", ".btn_list > .shadow_btn", function() {
                 let id = $(this).data("id");
                 $(".text_list[data-id = " + id + "]").slideToggle();
             });
