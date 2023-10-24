@@ -202,7 +202,6 @@
                                                     <div class="row">
                                                         <div id="top_1" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <!-- 																<input type="text" class="input_box" value="" >  -->
                                                                 <p class="input_box"></p>
                                                                 <span class="add_to_cart" data-time="" data-price=""
                                                                     data-type="" data-subtype="" data-service="">
@@ -217,7 +216,6 @@
                                                     <div class="row">
                                                         <div id="top_2" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <!-- 																<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box"></p>
                                                                 <span class="add_to_cart" data-time="" data-price=""
                                                                     data-type="" data-subtype="" data-service="">
@@ -246,7 +244,6 @@
                                                     <div class="row">
                                                         <div id="top_4" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <!-- 																<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box"></p>
                                                                 <span class="add_to_cart" data-time="" data-price=""
                                                                     data-type="" data-subtype="" data-service="">
@@ -261,7 +258,6 @@
                                                     <div class="row">
                                                         <div id="top_5" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <!-- 																<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box"></p>
                                                                 <span class="add_to_cart" data-time="" data-price=""
                                                                     data-type="" data-subtype="" data-service="">
@@ -276,7 +272,6 @@
                                                     <div class="row">
                                                         <div id="top_6" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <!-- 																<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box"></p>
                                                                 <span class="add_to_cart" data-time="" data-price=""
                                                                     data-type="" data-subtype="" data-service="">
@@ -291,7 +286,6 @@
                                                     <div class="row">
                                                         <div id="top_7" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <!-- 																<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box"></p>
                                                                 <span class="add_to_cart" data-time="" data-price=""
                                                                     data-type="" data-subtype="" data-service="">
@@ -306,8 +300,6 @@
                                                     <div class="row">
                                                         <div id="top_8" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <!--
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           <input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box"></p>
                                                                 <span class="add_to_cart" data-time="" data-price=""
                                                                     data-type="" data-subtype="" data-service="">
@@ -424,8 +416,9 @@
 
     <script>
         $(window).on("load", function() {
-            $(document).on("click", ".btn_list .shadow_btn", function() {
+            $(document).on("click", ".btn_list > .shadow_btn", function() {
                 let id = $(this).data("id");
+                console.log('clicked in short code');
                 $(".text_list[data-id = " + id + "]").slideToggle();
             });
             $(document).on("click", ".btns > li > button", function() {
@@ -438,17 +431,20 @@
             //     $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
             // });
             $(document).on("click", ".shadowbtn", function() {
+                console.log('clicked in medium code');
+
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
                 $(this).parents(".text_list_inner").find(".txt_wrap").css({
                     'opacity': 1,
                     'visibility': 'visible',
-                    'z-index': 99999999999,
+                    'z-index': 1,
                     'display': 'block',
                 });
                 $('#inner_form').css('pointer-events', 'auto');
             });
 
             $('.shaddowbtn1').on('click', function() {
+                console.log('clicked in long code');
                 $('#inner_form').css('pointer-events', 'auto');
                 $(this).parents('.text_list_inner').find('#showbox').addClass('d-block')
                     .removeClass(
@@ -481,15 +477,15 @@
                 }
             });
             $(document).on('click', '.back_button', function() {
-                $('#list_btns').removeClass('d-none');
-
                 $('#showbox').addClass('d-none').removeClass('d-block');
+
                 $("#showbox").css({
                     'opacity': 0,
                     'visibility': 'hidden',
                     'z-index': 99999999999,
                     'display': 'none',
                 });
+                $('#list_btns').removeClass('d-none');
             });
         });
 
