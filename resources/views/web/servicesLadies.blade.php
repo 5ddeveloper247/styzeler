@@ -418,7 +418,6 @@
         $(window).on("load", function() {
             $(document).on("click", ".btn_list > .shadow_btn", function() {
                 let id = $(this).data("id");
-                console.log('clicked in short code');
                 $(".text_list[data-id = " + id + "]").slideToggle();
             });
             $(document).on("click", ".btns > li > button", function() {
@@ -430,9 +429,7 @@
             // $(document).on("click", ".shadowbtn", function() {
             //     $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
             // });
-            $(document).on("click", ".shadowbtn", function() {
-                console.log('clicked in medium code');
-
+            $(document).on("click", ".shaddowbtn1", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
                 $(this).parents(".text_list_inner").find(".txt_wrap").css({
                     'opacity': 1,
@@ -444,7 +441,6 @@
             });
 
             $('.shaddowbtn1').on('click', function() {
-                console.log('clicked in long code');
                 $('#inner_form').css('pointer-events', 'auto');
                 $(this).parents('.text_list_inner').find('#showbox').addClass('d-block')
                     .removeClass(
