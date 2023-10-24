@@ -364,6 +364,40 @@
                 color: white;
             }
 
+            header .logon_btn {
+                margin: -0.27rem 0;
+                max-width: none;
+                width: 100%;
+                white-space: nowrap;
+                font-size: 1.3rem;
+                padding: 0 1rem;
+            }
+
+            .header {
+                width: unset !important;
+            }
+
+        }
+
+        header .logon_btn {
+            font-size: 1rem;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            -webkit-box-align: center;
+            -ms-flex-align: center;
+            align-items: center;
+            -webkit-box-pack: center;
+            -ms-flex-pack: center;
+            justify-content: center;
+            /* height: 4rem; */
+            color: #c4b9b0;
+            /* padding: 0 2rem; */
+            /* border: 0.1rem solid; */
+        }
+
+        .header {
+            width: 80rem;
         }
     </style>
     @stack('css')

@@ -1,5 +1,5 @@
 <header>
-    <section class="header">
+    <section class="header mx-auto">
         <nav class="navbar navbar-expand-lg navbar-light">
 
             <div class="d-block d-lg-none text-left">
@@ -36,7 +36,8 @@
                                     @auth
                                         <form method="POST" action="{{ route('logout') }}" class="mb-0">
                                             @csrf
-                                            <button type="submit" class="logon_btn">Sign Out</button>
+                                            <button type="submit" class="logon_btn">Sign
+                                                Out</button>
                                         </form>
                                         <a href="#" class="logon_btn heart_btn">
                                             <img src="{{ asset('template_new/assets/images/cart-round.png') }}"
@@ -101,14 +102,14 @@
 
 
 
-                    <div class="d-flex d-lg-none flex-row justify-content-between">
+                    <div class="d-flex d-lg-none justify-content-between flex-row">
                         <div class="">
                             <h6 class="subtitle-small d-block d-lg-none my-3" style="color: #cecfaa">Recruitment Agency
                                 For Hair, Beauty, Spa
                             </h6>
                         </div>
                         <div class="">
-                            <span style="float: right; " class="signinGroup1 d-lg-block ">
+                            <span style="float: right; " class="signinGroup1 d-lg-block">
 
                                 <div class="btn_blk position-relative" style="flex-direction: column">
                                     @if (auth()->check())
