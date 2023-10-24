@@ -5,6 +5,26 @@
 </script>
 @push('css')
     <style>
+        .modal-content {
+            background-image: url(../template_old/images/login-background.png) !important;
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+
+        .modal-header,
+        .modal-footer {
+            border: none;
+            background-color: transparent !important;
+        }
+
+        .modal-content {
+            text-align: center;
+            color: #ffde59 !important;
+            border-radius: 0;
+            background-color: transparent !important;
+            /*background-color: transparent !important;*/
+        }
+
         .option {
             width: 100%;
             border: 1px solid #c4b9b0;
@@ -41,6 +61,63 @@
         .modal-body {
             max-height: calc(100vh - 200px);
             overflow-y: auto;
+        }
+
+        .customBtnSelected,
+        .customBtnSelected:disabled {
+            background: #c4b9b0;
+            border-radius: 0;
+            font-size: 18px;
+            color: #000000 !important;
+            border: 1px solid #c4b9b0;
+            opacity: 1 !important;
+            transition-duration: 0.5s;
+            text-transform: capitalize;
+        }
+
+        .customBtnSelected:hover {
+            background: transparent;
+            /*color: #000000 !important;*/
+            border: 1px solid #faece1;
+            color: #faece1 !important;
+        }
+
+        .salonCustomBtnSelected {
+            background: #6cc095;
+            border-radius: 0;
+            font-size: 18px;
+            color: #000000 !important;
+            border: 1px solid #6cc095;
+            opacity: 1 !important;
+            transition-duration: 0.5s;
+        }
+
+        .customBtnNotSelected {
+            color: #c4b9b0 !important;
+            border: 1px solid #c4b9b0;
+            border-radius: 0;
+            font-size: 18px;
+            transition-duration: 0.3s;
+            pointer-events: none;
+
+        }
+
+        .customBtnNotSelected:hover {
+            background: transparent;
+            /*color: #000000 !important;*/
+            border: 1px solid #faece1;
+            color: #faece1 !important;
+        }
+
+        @media screen and (max-width: 320px) {
+            .customBtn {
+                font-size: 14px;
+            }
+
+            .customBtnSelected {
+                font-size: 14px;
+            }
+
         }
     </style>
 @endpush
@@ -183,7 +260,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn" data-dismiss="modal">
-                                                                                                                                                                                                            Okay</button>--><!-- </form>-->
+                                                                                                                                                                                                                                                                            Okay</button>--><!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
                     </div>
@@ -205,7 +282,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn" data-dismiss="modal">
-                                                                                                                                                                                                                Okay</button>--><!-- </form>-->
+                                                                                                                                                                                                                                                                                Okay</button>--><!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
                     </div>
@@ -230,7 +307,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn" data-dismiss="modal">
-                                                                                                                                                                                                                    Okay</button>--><!-- </form>-->
+                                                                                                                                                                                                                                                                                    Okay</button>--><!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
                     </div>
@@ -254,7 +331,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn"
-                                                                                                                                                                                                                        data-dismiss="modal">Okay</button>-->
+                                                                                                                                                                                                                                                                                        data-dismiss="modal">Okay</button>-->
                             <!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>

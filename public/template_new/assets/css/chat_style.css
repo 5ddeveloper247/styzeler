@@ -196,7 +196,7 @@ body.show-chatbot .chatbot {
     background: #fdd431;
 }
 #guest_form input,
-button {
+.chat-btn {
     /* height: 55px;
     width: 100%;
     border: none;
