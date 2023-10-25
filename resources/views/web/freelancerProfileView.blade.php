@@ -477,8 +477,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="btn uploadBtn text-right"
-                                                                                                                                                                                                                                                                                                                                                                                                            style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                                                                                                                                                                                                                                                            title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                                                                                                                                                                                                                                                title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>
@@ -612,7 +612,7 @@
 
     <!-- edit profile picture -->
     <div class="modal profile-pic-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -649,7 +649,7 @@
         <input type="hidden" name="type" value="{{ @$data->type }}">
         <div class="modal name-mobile-modal" tabindex="-1" role="dialog" data-keyboard="false"
             data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -687,7 +687,7 @@
 
         <!-- For age -->
         <div class="modal age-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -743,7 +743,7 @@
         <!-- Qualification -->
         <div class="modal qualification-modal" tabindex="-1" role="dialog" data-keyboard="false"
             data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -824,7 +824,7 @@
 
         <!-- language -->
         <div class="modal language-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -855,7 +855,7 @@
 
         <!-- Status -->
         <div class="modal status-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -888,7 +888,7 @@
 
         @if ($data->type != 'wedding')
             <div class="modal type-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -923,7 +923,7 @@
 
             <!-- rate -->
             <div class="modal rate-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -985,7 +985,7 @@
         @endif
         <!-- Zone -->
         <div class="modal work-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1047,7 +1047,7 @@
 
         <!-- Resume -->
         <div class="modal resume-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1077,7 +1077,7 @@
             <!-- wedding & barber-service-product-modal  -->
             <div class="modal wedding-service-product-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1491,7 +1491,7 @@
         @if ($data->type === 'beautician')
             <div class="modal beautician-service-product-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -2289,7 +2289,7 @@
         @if ($data->type === 'hairStylist')
             <div class="modal hairstylist-service-product-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -2794,7 +2794,7 @@
     </form>
     <!--Success Modal-->
     <div class="modal success-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
 
@@ -2813,7 +2813,7 @@
 
     <!-- Gallery Images -->
     <div class="modal gallery-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -2844,7 +2844,7 @@
 
     <!-- Error Modal -->
     <div class="modal error-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
 
@@ -2865,7 +2865,7 @@
     </div>
 
     <div class="modal avaliable-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
 
@@ -2884,7 +2884,7 @@
         </div>
     </div>
     <div class="modal slots-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
 
@@ -2917,7 +2917,7 @@
         </div>
     </div>
     <div class="modal fade bd-example-modal-md" id="register_modal" role="dialog">
-        <div class="modal-dialog modal-md">
+        <div class="modal-dialog modal-dialog-centered modal-md">
             <div class="modal-content border-warning border"
                 style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                 <div class="modal-header" style="border-bottom: 5px solid #766d48;">
@@ -2935,7 +2935,7 @@
         </div>
     </div>
     <div class="modal fade bd-example-modal-md" id="tokens_modal" role="dialog">
-        <div class="modal-dialog modal-md">
+        <div class="modal-dialog modal-dialog-centered modal-md">
             <div class="modal-content border-warning border"
                 style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                 <div class="modal-header" style="border-bottom: 5px solid #766d48;">

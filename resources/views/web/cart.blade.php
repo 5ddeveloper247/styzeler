@@ -54,7 +54,7 @@
 
     <div class="modal success-modal" id="cart_line_delete" tabindex="-1" role="dialog" data-keyboard="false"
         data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
                     <h4>Delete?</h4>

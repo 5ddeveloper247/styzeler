@@ -181,7 +181,7 @@
         <!-- modals -->
         <!-- Status -->
         <div class="modal status-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -212,7 +212,7 @@
         </div>
         <!-- edit profile picture -->
         <div class="modal profile-pic-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header"><button type="button" class="close" data-dismiss="modal"
                             aria-label="Close"><span aria-hidden="true">&times;
@@ -242,7 +242,7 @@
             <input type="hidden" name="type" value="{{ Auth::user()->type }}">
             <!-- edit name -->
             <div class="modal name-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header"><button type="button" class="close" data-dismiss="modal"
                                 aria-label="Close"><span aria-hidden="true">&times;
@@ -260,7 +260,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn" data-dismiss="modal">
-                                                                                                                                                                                                                                                                            Okay</button>--><!-- </form>-->
+                                                                                                                                                                                                                                                                                        Okay</button>--><!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
                     </div>
@@ -268,7 +268,7 @@
             </div>
             <!-- edit mobile number -->
             <div class="modal mobile-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header"><button type="button" class="close" data-dismiss="modal"
                                 aria-label="Close"><span aria-hidden="true">&times;
@@ -282,7 +282,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn" data-dismiss="modal">
-                                                                                                                                                                                                                                                                                Okay</button>--><!-- </form>-->
+                                                                                                                                                                                                                                                                                            Okay</button>--><!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
                     </div>
@@ -291,7 +291,7 @@
             <!-- edit address -->
             <div class="modal address-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header"><button type="button" class="close" data-dismiss="modal"
                                 aria-label="Close"><span aria-hidden="true">&times;
@@ -307,7 +307,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn" data-dismiss="modal">
-                                                                                                                                                                                                                                                                                    Okay</button>--><!-- </form>-->
+                                                                                                                                                                                                                                                                                                Okay</button>--><!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
                     </div>
@@ -316,7 +316,7 @@
             <!-- edit Postcode -->
             <div class="modal postcode-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header"><button type="button" class="close" data-dismiss="modal"
                                 aria-label="Close"><span aria-hidden="true">&times;
@@ -331,7 +331,7 @@
                             </p><button type="button" class="btn customBtn updateBasicInfoProfile"
                                 data-dismiss="modal">Okay</button>
                             <!-- <button type="button" class="btn customBtn"
-                                                                                                                                                                                                                                                                                        data-dismiss="modal">Okay</button>-->
+                                                                                                                                                                                                                                                                                                    data-dismiss="modal">Okay</button>-->
                             <!-- </form>-->
                         </div>
                         <div class="modal-footer text-center"></div>
@@ -340,7 +340,7 @@
             </div>
             <!-- Status -->
             <div class="modal status-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">

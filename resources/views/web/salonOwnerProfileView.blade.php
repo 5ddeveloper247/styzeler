@@ -2,7 +2,7 @@
 
 <script>
     const baseURL = "{{ request()->root() }}";
-   	const userId = "{{@$data->id}}";
+    const userId = "{{ @$data->id }}";
 </script>
 
 @push('css')
@@ -55,7 +55,7 @@
             {{-- <p><a class="text-center btn edit_pro_pic" onclick="editProfilePic()" title="Edit">+</a></p> --}}
         </div>
 
-		<div class="row my-4">
+        <div class="row my-4">
             <div class="col-4 text-center">
                 <div class="profile btn customBtn" id="profile">Profile</div>
             </div>
@@ -68,39 +68,39 @@
 
         </div>
 
-        <div class="row mb-5 justify-content-center">
-            <div class="showProfile col-10 text-left mt-4" id="showProfile">
-                <div class="name row ">
+        <div class="row justify-content-center mb-5">
+            <div class="showProfile col-10 mt-4 text-left" id="showProfile">
+                <div class="name row">
                     <label class="color-1 col-lg-3">Owner's Name : </label>
-                    	{{--@if (@$membership > 0)--}}
-                    	<p class="col-lg-9" id="ownerName"></p>
-                    	{{--@endif--}}
+                    {{-- @if (@$membership > 0) --}}
+                    <p class="col-lg-9" id="ownerName"></p>
+                    {{-- @endif --}}
                 </div>
-                <div class="Address row ">
+                <div class="Address row">
                     <label class="color-1 col-lg-3">Owner's Address : </label>
                     <p class="col-lg-9" id="owner-address"></p>
                 </div>
-                <div class="Postcode row ">
+                <div class="Postcode row">
                     <label class="color-1 col-lg-3">Owner's postcode : </label>
                     <p class="col-lg-9" id="owner-postcode"></p>
                 </div>
-                <div class="phone row ">
+                <div class="phone row">
                     <label class="color-1 col-lg-3">Owner's Phone : </label>
                     <p class="col-lg-9" id="owner-phone"></p>
                 </div>
 
                 <div class="email row">
                     <label class="color-1 col-lg-3">Email : </label>
-                    {{--@if (@$membership > 0) --}}
+                    {{-- @if (@$membership > 0) --}}
                     <p class="col-lg-9" id="owner-email"></p>
-                    {{--@endif--}}
+                    {{-- @endif --}}
                 </div>
 
 
             </div>
-            <div class="showProducts col-10 text-center mt-5" id="showProducts">
-                <div class="text-left mt-4">
-                    <h3>Products <!-- <a class="text-center btn" onclick="editServiceAndProduct();" title="Edit">✎</a> -->
+            <div class="showProducts col-10 mt-5 text-center" id="showProducts">
+                <div class="mt-4 text-left">
+                    <h3>Products <!-- <a class="btn text-center" onclick="editServiceAndProduct();" title="Edit">✎</a> -->
                     </h3>
                     <div class="text-left">
                         <h4 class="font-weight-bold" id="stylingProductsheading"></h4>
@@ -147,9 +147,9 @@
                 </div>
 
             </div>
-            <div class="showService col-10 text-center mt-5" id="showService">
-                <div class="text-left  mt-4">
-                    <h3>Services <!-- <a class="text-center btn" onclick="editServiceAndProduct();" title="Edit">✎</a> -->
+            <div class="showService col-10 mt-5 text-center" id="showService">
+                <div class="mt-4 text-left">
+                    <h3>Services <!-- <a class="btn text-center" onclick="editServiceAndProduct();" title="Edit">✎</a> -->
                     </h3>
 
                     <div class="text-left">
@@ -226,7 +226,7 @@
         <!-- edit profile picture -->
         <div class="modal profile-pic-modal" tabindex="-1" role="dialog" data-keyboard="false"
             data-backdrop="static">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -246,7 +246,7 @@
                                 <label for="stylist-picture">+</label>
                             </div>
                             </p>
-                            <button type="submit" id="updateProfileImage" class="btn customBtn ">Okay</button>
+                            <button type="submit" id="updateProfileImage" class="btn customBtn">Okay</button>
                         </form>
 
                         <!-- <button type="button" class="btn customBtn" data-dismiss="modal"  >Okay</button> -->
@@ -263,7 +263,7 @@
         <form action="" id="updateBasicInfoProfile">
             <input type="hidden" name="type" value="{{ @$data->type }}">
             <div class="modal name-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -298,7 +298,7 @@
             <!-- edit  mobile number -->
 
             <div class="modal mobile-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -330,7 +330,7 @@
 
             <div class="modal address-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -362,7 +362,7 @@
 
             <div class="modal postcode-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog " role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -395,7 +395,7 @@
             @if ($data->type == 'hairdressingSalon')
                 <div class="modal Hairdressing-service-product-modal" tabindex="-1" role="dialog"
                     data-keyboard="false" data-backdrop="static">
-                    <div class="modal-dialog " role="document">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content bg-dark">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -718,7 +718,7 @@
             @if ($data->type != 'hairdressingSalon')
                 <div class="modal Beauty-service-product-modal" tabindex="-1" role="dialog" data-keyboard="false"
                     data-backdrop="static">
-                    <div class="modal-dialog " role="document">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content bg-dark">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1294,12 +1294,12 @@
         <!--Success Modal-->
         <div class="modal success-modal" tabindex="-1" role="dialog" data-keyboard="false"
             data-backdrop="static">
-            <div class="modal-dialog " role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                                                                                                                                                                                                                                                                  <span aria-hidden="true">&times;</span>
-                                                                                                                                                                                                                                                                                                                                </button> -->
+                                                                                                                                                                                                                                                                                                                                      <span aria-hidden="true">&times;</span>
+                                                                                                                                                                                                                                                                                                                                    </button> -->
                     </div>
                     <div class="modal-body">
                         <h5 class="text-center">Successfull!</h5>
@@ -1314,7 +1314,7 @@
         </div>
 
         <!-- Footer -->
-        
+
     </div>
 @endsection
 
@@ -1328,6 +1328,6 @@
             });
         });
     </script>
-    <script src="{{ asset('customjs/web/register/common.js') }}?v={{time()}}"></script>
-    <script src="{{ asset('customjs/web/profile/salonOwnerProfileView.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('customjs/web/register/common.js') }}?v={{ time() }}"></script>
+    <script src="{{ asset('customjs/web/profile/salonOwnerProfileView.js') }}?v={{ time() }}"></script>
 @endpush

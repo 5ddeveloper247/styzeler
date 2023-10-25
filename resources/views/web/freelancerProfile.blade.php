@@ -386,7 +386,7 @@
             </div>
             <div class="showLikes col-10 mt-5 text-center" id="showLikes">
                 <div class="text-left  mt-4" id="freelancerLikesHtml">
-                	
+
                 </div>
             </div>
             <div class="showBook col-12 mt-5 text-left" id="showBook">
@@ -446,7 +446,7 @@
                         <input type="checkbox" class="form-check-input" id="after_nine_slot" name="after_nine_slot">
                         <label class="form-check-label" for="after_nine_slot">After Nine</label>
                     </form>
-         
+
                 </div>
                 <p class="text-center"><a class="btn addTimeSlots d-none text-center" onclick="addTimeSlots()"
                         title="Click to add your available time.">+</a></p>
@@ -470,7 +470,7 @@
 
     <!-- edit profile picture -->
     <div class="modal profile-pic-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -507,7 +507,7 @@
         <input type="hidden" name="type" value="{{ Auth::user()->type }}">
         <div class="modal name-mobile-modal" tabindex="-1" role="dialog" data-keyboard="false"
             data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -545,7 +545,7 @@
 
         <!-- For age -->
         <div class="modal age-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -601,7 +601,7 @@
         <!-- Qualification -->
         <div class="modal qualification-modal" tabindex="-1" role="dialog" data-keyboard="false"
             data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -682,7 +682,7 @@
 
         <!-- language -->
         <div class="modal language-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -713,7 +713,7 @@
 
         <!-- Status -->
         <div class="modal status-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -746,7 +746,7 @@
 
         @if ($data->type != 'wedding')
             <div class="modal type-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -781,7 +781,7 @@
 
             <!-- rate -->
             <div class="modal rate-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -843,7 +843,7 @@
         @endif
         <!-- Zone -->
         <div class="modal work-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -905,7 +905,7 @@
 
         <!-- Resume -->
         <div class="modal resume-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -935,7 +935,7 @@
             <!-- wedding & barber-service-product-modal  -->
             <div class="modal wedding-service-product-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1394,7 +1394,7 @@
         @if ($data->type === 'beautician')
             <div class="modal beautician-service-product-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -2258,7 +2258,7 @@
         @if ($data->type === 'hairStylist')
             <div class="modal hairstylist-service-product-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">
-                <div class="modal-dialog" role="document">
+                <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -2784,7 +2784,7 @@
     </form>
     <!--Success Modal-->
     <div class="modal success-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
 
@@ -2803,7 +2803,7 @@
 
     <!-- Gallery Images -->
     <div class="modal gallery-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -2834,7 +2834,7 @@
 
     <!-- Error Modal -->
     <div class="modal error-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
 
@@ -2855,7 +2855,7 @@
     </div>
 
     <div class="modal avaliable-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
 
@@ -2874,7 +2874,7 @@
         </div>
     </div>
     <div class="modal slots-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
                 <div class="modal-header">
 

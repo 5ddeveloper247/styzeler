@@ -67,14 +67,11 @@
                     <div class="inner">
                         <div class="btn_list">
 
-                            <a href="{{ route('servicesBodywaxing') }}" class="shadow_btn clear_select"
-                                data-id="body_waxing">Body
+                            <a href="{{ route('servicesBodywaxing') }}" class="shadow_btn" data-id="body_waxing">Body
                                 Waxing</a>
-                            <a href="javascript:;" class="shadow_btn clear_select" data-id="eye_brows">Eyes & Brows</a>
-                            <a href="{{ route('servicesManiPedi') }}" class="shadow_btn clear_select"
-                                data-id="mani_pedi">Mani / Pedi</a>
-                            <a href="{{ route('servicesFacial') }}" class="shadow_btn clear_select"
-                                data-id="facial">Facial</a>
+                            <a href="javascript:;" class="shadow_btn" data-id="eye_brows">Eyes & Brows</a>
+                            <a href="{{ route('servicesManiPedi') }}" class="shadow_btn" data-id="mani_pedi">Mani / Pedi</a>
+                            <a href="{{ route('servicesFacial') }}" class="shadow_btn" data-id="facial">Facial</a>
                         </div>
                         <div class="text_list" data-id="eye_brows" style="display:block;">
                             <div class="text_list_inner">
@@ -113,53 +110,53 @@
                                         <button type="button" class="shadow_btn">Eyelash Extensions</button>
                                         <ul class="sub_btns">
                                             <li>
-                                                <button type="button" class="shadow_btn"
+                                                <button type="button" class="shadow_btn shaddowbtn1"
                                                     onclick="caseCat('Ckassic_full','Eyelash Extensions')">Classic Full <img
                                                         src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
                                             <li>
-                                                <button type="button" class="shadow_btn"
+                                                <button type="button" class="shadow_btn shaddowbtn1"
                                                     onclick="caseCat('Classic_Half','Eyelash Extensions')">Classic Half <img
                                                         src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
                                             <li>
-                                                <button type="button" class="shadow_btn"
+                                                <button type="button" class="shadow_btn shaddowbtn1"
                                                     onclick="caseCat('Clamourous_Volume_Full','Eyelash Extensions')">Clamourous
                                                     Volume Full <img
                                                         src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
                                             <li>
-                                                <button type="button" class="shadow_btn"
+                                                <button type="button" class="shadow_btn shaddowbtn1"
                                                     onclick="caseCat('Clamourous_Volume_Half','Eyelash Extensions')">Clamourous
                                                     Volume Half <img
                                                         src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
                                             <li>
-                                                <button type="button" class="shadow_btn"
+                                                <button type="button" class="shadow_btn shaddowbtn1"
                                                     onclick="caseCat('Hybrid_full_set','Eyelash Extensions')">Hybrid Full
                                                     Set
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
                                             <li>
-                                                <button type="button" class="shadow_btn"
+                                                <button type="button" class="shadow_btn shaddowbtn1"
                                                     onclick="caseCat('Hybrid_half_set','Eyelash Extensions')">Hybrid Half
                                                     Set
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
                                             <li>
-                                                <button type="button" class="shadow_btn"
+                                                <button type="button" class="shadow_btn shaddowbtn1"
                                                     onclick="caseCat('Eyelash_Infilt','Eyelash Extensions')">Eyelash Infil
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
                                             <li>
-                                                <button type="button" class="shadow_btn"
+                                                <button type="button" class="shadow_btn shaddowbtn1"
                                                     onclick="caseCat('Eyelash_Removal','Eyelash Extensions')">Eyelash
                                                     Removal <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
@@ -256,7 +253,7 @@
             <!-- Booking Fail Message-->
     </section>
     <div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
-        <div class="modal-dialog modal-md">
+        <div class="modal-dialog modal-md modal-dialog-centered">
             <div class="modal-content border-warning border"
                 style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                 <div class="modal-header" style="border-bottom: 5px solid #766d48;">
@@ -274,7 +271,7 @@
         </div>
     </div>
     <div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
-        <div class="modal-dialog modal-md">
+        <div class="modal-dialog modal-md modal-dialog-centered">
             <div class="modal-content border-warning border"
                 style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                 <div class="modal-header" style="border-bottom: 5px solid #766d48;">
@@ -307,12 +304,12 @@
             $(document).on("click", ".sub_btns > li > button", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
             });
-            $(document).on("click", ".shadowbtn", function() {
+            $(document).on("click", ".shaddowbtn1", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
                 $(this).parents(".text_list_inner").find(".txt_wrap").css({
                     'opacity': 1,
                     'visibility': 'visible',
-                    'z-index': 99999999999,
+                    'z-index': 1,
                     'display': 'block',
                 });
                 $('#inner_form').css('pointer-events', 'auto');

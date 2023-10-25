@@ -11,7 +11,7 @@
 @section('content')
     <section id="candidates">
         <!-- <img src="{{ asset('template_new/assets/images/candidate_main.jpg') }}" alt="" class="main_img desktop">
-        <img src="{{ asset('template_new/assets/images/styzeler-candidate-banner.JPG') }}" alt="" class="main_img mobile"> -->
+            <img src="{{ asset('template_new/assets/images/styzeler-candidate-banner.JPG') }}" alt="" class="main_img mobile"> -->
 
         <img src="{{ asset('template_new/assets/images/candidate-banner.png') }}" alt="" class="main_img desktop">
         <img src="{{ asset('template_new/assets/images/candidate-banner-mb.png') }}" alt="" class="main_img mobile">
@@ -46,11 +46,14 @@
                     </a>
                 </li>
                 <li>
-            		<a href="{{@Auth::user() ? route('weddingStylist') : 'javascript:;'}}" class="shadow_btn {{@!Auth::user() ? 'show_message' : ''}}" style="font-size: 1.7rem; padding: 0 1rem;
-                		justify-content: space-between;text-align: left;">Wedding Stylistes 
-                		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-               	 	</a>
-          		</li>
+                    <a href="{{ @Auth::user() ? route('weddingStylist') : 'javascript:;' }}"
+                        class="shadow_btn {{ @!Auth::user() ? 'show_message' : '' }}"
+                        style="font-size: 1.7rem; padding: 0 1rem;
+                		justify-content: space-between;text-align: left;">Wedding
+                        Stylistes
+                        <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                    </a>
+                </li>
             </ul>
             <div class="flexBlocks" data-aos="fade-up" data-aos-duration="1000">
                 <div class="column">
@@ -72,7 +75,7 @@
                             with experienced and qualified Freelancer, who have the skills to take any business and make a
                             difference straight away, taking the pressure off overstretched permanent personnel</p>
                     </div>
-                    <div class="btn_blk mt-5 pt-4 d-flex justify-content-end">
+                    <div class="btn_blk d-flex justify-content-end mt-5 pt-4">
                         <a href="{{ route('register') }}" class="site_btn">Register <img
                                 src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
                     </div>
@@ -86,8 +89,8 @@
         <img src="{{ asset('template_new/assets/images/candidate_main2.jpg') }}" alt="">
     </section>
     <div class="modal fade bd-example-modal-md" id="register_modal" role="dialog">
-        <div class="modal-dialog modal-md ">
-            <div class="modal-content border border-warning"
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content border-warning border"
                 style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                 <div class="modal-header" style="border-bottom: 5px solid #766d48;">
                     <h4 class="modal-title">Registeration is Free</h4>

@@ -377,7 +377,7 @@
         </div>
         <!-- Booking Fail Message-->
         <div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-md modal-dialog-centered">
                 <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
@@ -395,7 +395,7 @@
             </div>
         </div>
         <div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-md modal-dialog-centered">
                 <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
@@ -420,7 +420,6 @@
 @push('script')
     <script src="https://kit.fontawesome.com/8389fcfe36.js" crossorigin="anonymous"></script>
     <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
-
     <script>
         $(window).on("load", function() {
             $(document).on("click", ".btn_list > .shadow_btn", function() {
@@ -433,9 +432,6 @@
             $(document).on("click", ".sub_btns > li > button", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
             });
-            // $(document).on("click", ".shadowbtn", function() {
-            //     $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
-            // });
             $(document).on("click", ".shaddowbtn1", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
                 $(this).parents(".text_list_inner").find(".txt_wrap").css({

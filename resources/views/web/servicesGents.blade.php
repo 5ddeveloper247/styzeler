@@ -186,7 +186,7 @@
         </div>
         <!-- Booking Fail Message-->
         <div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-dialog-centered modal-md">
                 <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
@@ -204,7 +204,7 @@
             </div>
         </div>
         <div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-dialog-centered modal-md">
                 <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">

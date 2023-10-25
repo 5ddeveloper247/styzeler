@@ -169,9 +169,9 @@
                                                 alt=""></button>
                                     </li>
                                     <!-- <li>
-                                                                                                                                                                                                                                                                                                                  <button type="button" class="shadow_btn shaddowbtn1" onclick="caseCat('Hard_Gel')">Hard Gel <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
-                                                                                                                                                                                                                                                                                                                 </li>
-                                                                                                                                                                                                                                                                                                                 -->
+                                                                                                                                                                                                                                                                                                                      <button type="button" class="shadow_btn shaddowbtn1" onclick="caseCat('Hard_Gel')">Hard Gel <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+                                                                                                                                                                                                                                                                                                                     </li>
+                                                                                                                                                                                                                                                                                                                     -->
                                 </ul>
                                 <div class="txt_wrap scrollbar" id="showbox">
                                     <form action="" method="post" id="inner_form">
@@ -265,7 +265,7 @@
         </div>
         <!-- Booking Fail Message-->
         <div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-dialog-centered modal-md">
                 <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
@@ -283,7 +283,7 @@
             </div>
         </div>
         <div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
-            <div class="modal-dialog modal-md">
+            <div class="modal-dialog modal-dialog-centered modal-md">
                 <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">

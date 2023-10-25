@@ -481,7 +481,7 @@
 
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <!-- <div class="flexRow">                                                                                                                                                           </div>
-                                                                                                                                                                                                                                                                                                                                                               </div> -->
+                                                                                                                                                                                                                                                                                                                                                                       </div> -->
             <div class="flexRow" style="padding: 0px 38px">
                 <div class="col">
                     <div class="inner"
@@ -689,7 +689,7 @@
         </div>
 
         <!-- <img src="assets/images/126-minr.jpg" alt="">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                 </div> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                         </div> -->
     </section>
     <!-- membership -->
     <section id="get_job">
@@ -703,9 +703,9 @@
                 </div>
             </div>
         </div>
-        <!-- <div class="modal fade bd-example-modal-md" id="popupInfo-modal" role="dialog">                                                                                                                                                                                                                                                                                                                                                                                                                                                                        </div> -->
+
         <div class="modal fade bd-example-modal-md" id="popupInfo-modal" role="dialog">
-            <div class="modal-dialog modal-md" style="width: 350px">
+            <div class="modal-dialog modal-dialog-centered modal-md" style="width: 350px">
                 <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 1000px; overflow-y: auto; margin-top: 30%; margin-left: 10%;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48">

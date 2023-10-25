@@ -13,6 +13,7 @@
         .input_box {
             cursor: pointer;
         }
+
         .btn1 {
             display: inline-block;
             font-weight: 400;
@@ -31,14 +32,15 @@
             cursor: pointer;
             transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
         }
+
         .customBtn {
-		    color: #c4b9b0 !important;
-		    border: 1px solid #c4b9b0;
-		    border-radius: 0;
-		    font-size: 18px;
-		    transition-duration: 0.3s;
-		    cursor: pointer;
-		}
+            color: #c4b9b0 !important;
+            border: 1px solid #c4b9b0;
+            border-radius: 0;
+            font-size: 18px;
+            transition-duration: 0.3s;
+            cursor: pointer;
+        }
     </style>
 @endpush
 
@@ -257,15 +259,17 @@
                                             <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
                                         </div>
                                         <div class="btn_block">
-                                            @if(@$tokens>0)
-												<a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
-													<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
-												</a>
-											@else
-												<a href="javascript:;" class="book_freelance_btn error-booking">
-													<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a Freelancer
-												</a>
-											@endif
+                                            @if (@$tokens > 0)
+                                                <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
+                                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}"
+                                                        alt=""> Book a Freelancer
+                                                </a>
+                                            @else
+                                                <a href="javascript:;" class="book_freelance_btn error-booking">
+                                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}"
+                                                        alt=""> Book a Freelancer
+                                                </a>
+                                            @endif
                                             <ul class="check_list">
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> All candidates are DBS verified</li>
@@ -277,8 +281,10 @@
                                         </div>
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
-                                        <input type="hidden" id="userId" name="userId" value="{{ @Auth::user()->id }}">
-                                        <input type="hidden" id="userType" name="userType" value="{{ @Auth::user()->type }}">
+                                        <input type="hidden" id="userId" name="userId"
+                                            value="{{ @Auth::user()->id }}">
+                                        <input type="hidden" id="userType" name="userType"
+                                            value="{{ @Auth::user()->type }}">
                                         <input type="hidden" id="item_text" name="item_text" value="">
                                         <input type="hidden" id="item_time" name="item_time" value="">
                                         <input type="hidden" id="item_price" name="item_price" value="">
@@ -295,27 +301,27 @@
         </div>
         <!-- Booking Fail Message-->
         <div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
-	        <div class="modal-dialog modal-md ">
-	            <div class="modal-content border border-warning"
-	                style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
-	                <div class="modal-header" style="border-bottom: 5px solid #766d48;">
-	                    <h4 class="modal-title">Buy Package</h4>
-	                    <i class="close-modal" data-dismiss="modal" style="font-size: 2rem;"><b>&times;</b></i>
-	                </div>
-	                <div class="modal-body">
-	                    Insufficient tokens, first buy package!
-	                </div>
-	                <div class="modal-footer text-center">
-	                    <a type="" href="{{ route('home_service') }}#packages" class="btn1 customBtn">Ok</a>
-	                    <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
-	                </div>
-	            </div>
-	        </div>
-	    </div>
-		
-	  	<div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
-            <div class="modal-dialog modal-md ">
-                <div class="modal-content border border-warning"
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content border-warning border"
+                    style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                    <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                        <h4 class="modal-title">Buy Package</h4>
+                        <i class="close-modal" data-dismiss="modal" style="font-size: 2rem;"><b>&times;</b></i>
+                    </div>
+                    <div class="modal-body">
+                        Insufficient tokens, first buy package!
+                    </div>
+                    <div class="modal-footer text-center">
+                        <a type="" href="{{ route('home_service') }}#packages" class="btn1 customBtn">Ok</a>
+                        <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade bd-example-modal-md" id="cartConfirm_modal" role="dialog">
+            <div class="modal-dialog modal-dialog-centered modal-md">
+                <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
                         <h4 class="modal-title">Confirmation</h4>
@@ -325,7 +331,8 @@
                         Are you sure you want to add this service in cart?
                     </div>
                     <div class="modal-footer text-center">
-                        <a type="" href="javascript:;" class="btn1 customBtn" onclick="addToCartConfirm();">Yes</a>
+                        <a type="" href="javascript:;" class="btn1 customBtn"
+                            onclick="addToCartConfirm();">Yes</a>
                         <a type="button" class="btn1 customBtn closeCartConfirm" data-dismiss="modal">Close</a>
                     </div>
                 </div>
@@ -336,7 +343,7 @@
 @endsection
 
 @push('script')
-    <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <script>
         $(window).on("load", function() {
             $(document).on("click", ".btn_list .shadow_btn", function() {
@@ -361,7 +368,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     'Upper lip waxing is a very quick facial hair removal treatment and the result can last for up to a month.'
-                    );
+                );
             }
 
             if (i == 'FullLip') {
@@ -389,7 +396,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     'If you become a regular waxer, you will notice that your hair will become quite sparse and not as coarse. When hair is shaved, it is cut off at the thick part of the hair, which is why you can feel stubble the next day.'
-                    );
+                );
             }
 
 
@@ -409,7 +416,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     'A full arm wax will include everything from your shoulder downwards, including hands and fingers if required. Underarm wax. For those who hate shaving, the underarm wax gets rid of all the hair in your armpits'
-                    );
+                );
             }
 
             if (i == 'Half_Arms') {
@@ -419,7 +426,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     'This wax includes everything from the elbow down. This normally includes the hands and fingers too.'
-                    );
+                );
             }
 
 
@@ -430,7 +437,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     'Waxing will totally remove your underarm hair,As a result, the armpit area feels and looks smoother and lighter � no more worries about that not-so-sexy underarm shadow'
-                    );
+                );
             }
 
             if (i == 'Full_Legs') {
@@ -467,7 +474,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "A bikini wax is mainly for beginners and won't take off much hair. This kind of waxing is ideal for quick clean-ups and does not require you to remove your panties. So for those who aren't comfortable being naked around a stranger, a bikini wax is the one for you!"
-                    );
+                );
             }
 
             if (i == 'French_Bikini') {
@@ -477,7 +484,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "This waxing method removes hair from your labia and pubic bone, leaving a small rectangular strip (also known as a 'landing strip') on the front of your pubic area. This type of wax is similar to a Brazilian, but hair from the buttocks area isn't removed."
-                    );
+                );
             }
 
             if (i == 'Brazilian_Bikini') {
@@ -487,7 +494,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "A Brazilian is sometimes nicknamed 'the landing strip'! It removes all of the pubic hair but leaves a small neat strip at the front. This waxing involves removing the pubic hair between the legs and through into the buttocks area."
-                    );
+                );
             }
 
             if (i == 'Hollywood') {
@@ -497,7 +504,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "A Hollywood wax is where all pubic hair is removed from the whole intimate area, including the labia, perineum and anus, leaving you entirely bare."
-                    );
+                );
             }
 
             if (i == 'Full_Back') {
@@ -527,7 +534,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "A full Arm wax will include everything from your shoulder downwards, including hands and fingers if required"
-                    );
+                );
             }
 
             if (i == 'Shoulders') {
@@ -545,7 +552,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "The chest and Abs are the ideal way to completely change the appearance of your upper body enhancing the mussels and Abs definition"
-                    );
+                );
             }
 
             if (i == 'Speedo_Line') {
@@ -555,7 +562,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "This treatment follows the line of the pants and removes hair from the top of the pubic bone and the high sides of your legs so everything appears neatly trimmed."
-                    );
+                );
             }
             if (i == 'Manzilian') {
                 $("#top_1").show();
@@ -564,7 +571,7 @@
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "A Manzilian involves complete hair removal surrounding the upper thighs, pubic mound, genitalia, and butt crack."
-                    );
+                );
             }
 
         }
