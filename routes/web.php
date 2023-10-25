@@ -70,7 +70,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/useOwnerTokens', 'ProfileController@useOwnerTokens')->name('useOwnerTokens');
     Route::post('/submitFeedbackOwner', 'ProfileController@submitFeedbackOwner')->name('submitFeedbackOwner');
     Route::get('/loadFeedbackFreelancer', 'ProfileController@loadFeedbackFreelancer')->name('loadFeedbackFreelancer');
-    
+
     // About
     Route::get('/aboutUs', 'FrontEndController@aboutUs')->name('aboutUs');
     Route::get('/contactUs', 'FrontEndController@contactUs')->name('contactUs');

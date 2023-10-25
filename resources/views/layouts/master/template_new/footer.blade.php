@@ -20,7 +20,7 @@
      <span class="material-symbols-rounded">mode_comment</span> <span class="material-symbols-outlined">close</span>
  </button>
  <div class="chatbot" style="z-index: 100;">
-     <div class="header">
+     <div class="chat_header">
          <h2>Chatbot</h2>
          <span class="close-btn material-symbols-outlined">close</span>
      </div>
@@ -29,7 +29,7 @@
          <form id="guest_form">
              <div class="row">
                  <div class="col-12 p-4 text-center">
-                     <h3 style="color: #fdd431;"><b>Chat User Info</b></h3>
+                     <h3 class="chat_body" style="color: #fdd431;"><b>Chat User Info</b></h3>
                  </div>
                  <div class="col-12 p-4">
                      <input type="text" class="form-control" id="username" name="username" placeholder="Name">

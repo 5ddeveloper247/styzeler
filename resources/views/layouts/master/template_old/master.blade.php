@@ -354,7 +354,7 @@
 
             .chat-btn {
                 width: 30%;
-                height: 6.25vw;
+                height: auto;
                 padding: 0;
                 font-size: 3vw;
                 border-radius: 0.3vw;
@@ -362,6 +362,8 @@
                 border: 2px solid #f6ce30;
                 background: #f6ce30;
                 color: white;
+                border-radius: 4px;
+
             }
 
             header .logon_btn {

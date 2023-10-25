@@ -161,6 +161,33 @@
             overflow-y: hidden !important;
         }
 
+        @media only screen and (max-width: 991px) {
+            .fc th.fc-day-header {
+                padding: 5px 5px !important;
+                font-weight: 500 !important;
+                color: #ffbd59 !important;
+                font-size: 0.7rem !important;
+            }
+
+            .fc-basic-view .fc-week-number,
+            .fc-basic-view .fc-day-number,
+            .fc-content {
+                padding: 5px 5px !important;
+                font-weight: 500 !important;
+                font-size: 0.7rem !important;
+            }
+
+            .fc-row .fc-week .table-bordered {
+                height: 2em !important;
+            }
+
+            .fc-event i {
+                font-size: 16px;
+                margin-right: 8px;
+                vertical-align: middle;
+            }
+        }
+
         del {
             text-decoration: line-through;
             text-decoration-color: #ffbd59;
@@ -477,8 +504,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="btn uploadBtn text-right"
-                                                                                                                                                                                                                                                                                                                                                                                                                style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                                                                                                                                                                                                                                                                title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>
@@ -541,7 +568,7 @@
 
                 </div>
             </div>
-            <div class="showBook col-10 mt-5 text-left" id="showBook">
+            <div class="showBook col mt-5 text-left" id="showBook">
 
                 <!-- new calendar  ---------------------------------------------------------- -->
 
@@ -2985,5 +3012,13 @@
         //                 }
         //             }
         //         }, 400);
+        window.onload = function() {
+            $('.fc-toolbar.fc-header-toolbar').addClass('row col-lg-12');
+        };
+
+        // add the responsive classes when navigating with calendar buttons
+        $(document).on('click', '.fc-button', function(e) {
+            $('.fc-toolbar.fc-header-toolbar').addClass('row col-lg-12');
+        });
     </script>
 @endpush

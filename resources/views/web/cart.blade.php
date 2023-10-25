@@ -51,8 +51,25 @@
             </div>
         </div>
     </div>
-
-    <div class="modal success-modal" id="cart_line_delete" tabindex="-1" role="dialog" data-keyboard="false"
+    <div class="modal fade bd-example-modal-md" id="cart_line_delete" role="dialog">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content border-warning border"
+                style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                    <h4 class="modal-title">Delete?</h4>
+                    <i class="close-modal closeCartConfirm" style="font-size: 2rem;cursor:pointer;"><b>&times;</b></i>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-center">Are you Sure You Want to Delete?</h5>
+                </div>
+                <div class="modal-footer text-center">
+                    <a type="" href="javascript:;" class="btn1 customBtn" id="confirm_delete">Yes</a>
+                    <a type="button" class="btn1 customBtn closeCartConfirm" data-dismiss="modal">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- <div class="modal success-modal" id="cart_line_delete" tabindex="-1" role="dialog" data-keyboard="false"
         data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark">
@@ -69,7 +86,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 @endsection
 @push('script')
     <script>

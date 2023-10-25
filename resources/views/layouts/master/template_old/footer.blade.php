@@ -19,7 +19,7 @@
     <span class="material-symbols-rounded">mode_comment</span> <span class="material-symbols-outlined">close</span>
 </button>
 <div class="chatbot" style="z-index: 100;">
-    <div class="header">
+    <div class="chat_header">
         <h2>Chatbot</h2>
         <span class="close-btn material-symbols-outlined">close</span>
     </div>
@@ -27,20 +27,20 @@
     <div class="info">
         <form id="guest_form">
             <div class="row">
-                <div class="col-12 text-center p-4">
-                    <h3 style="color: #fdd431;"><b>Chat User Info</b></h3>
+                <div class="col-12 px-4 py-3 text-center">
+                    <h3 class="chat_body" style="color: #fdd431;"><b>Chat User Info</b></h3>
                 </div>
-                <div class="col-12 p-4">
+                <div class="col-12 px-4 py-3">
                     <input type="text" class="form-control" id="username" name="username" placeholder="Name">
                 </div>
-                <div class="col-12 p-4">
+                <div class="col-12 px-4 py-3">
                     <input type="text" class="form-control" id="email" name="email" placeholder="E-mail">
                 </div>
-                <div class="col-12 p-4">
+                <div class="col-12 px-4 py-3">
                     <input type="number" class="form-control" id="phone" name="phone" placeholder="Phone">
                 </div>
-                <div class="col-12 text-center p-2">
-                    <button class=" chat-btn" id="guest_form_submit">Start Chat</button>
+                <div class="col-12 p-2 text-center">
+                    <button class="chat-btn" id="guest_form_submit">Start Chat</button>
                 </div>
             </div>
         </form>
@@ -69,8 +69,8 @@
 </div>
 
 <div class="modal fade bd-example-modal-md" id="showTokens_modal" role="dialog">
-    <div class="modal-dialog modal-md ">
-        <div class="modal-content border border-warning"
+    <div class="modal-dialog modal-md">
+        <div class="modal-content border-warning border"
             style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
             <div class="modal-header" style="border-bottom: 5px solid #766d48;">
                 <h4 class="modal-title">Tokens</h4>
