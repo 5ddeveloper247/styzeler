@@ -83,6 +83,14 @@
                 border-radius: 4px;
             }
         }
+
+        #toast-container>.toast-success,
+        #toast-container>.toast-error,
+        #toast-container>.toast-warning,
+        #toast-container>.toast-info {
+            font-size: 14px !important;
+            font-weight: 500 !important;
+        }
     </style>
     @stack('css')
 </head>

@@ -392,14 +392,19 @@
             -webkit-box-pack: center;
             -ms-flex-pack: center;
             justify-content: center;
-            /* height: 4rem; */
             color: #c4b9b0;
-            /* padding: 0 2rem; */
-            /* border: 0.1rem solid; */
         }
 
         .header {
             width: 80rem;
+        }
+
+        #toast-container>.toast-success,
+        #toast-container>.toast-error,
+        #toast-container>.toast-warning,
+        #toast-container>.toast-info {
+            font-size: 14px !important;
+            font-weight: 500 !important;
         }
     </style>
     @stack('css')

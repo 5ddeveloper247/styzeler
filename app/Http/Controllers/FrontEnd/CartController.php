@@ -46,16 +46,28 @@ class CartController extends Controller
         // 		}
 
         $active_cart = Cart::where('user_id', Auth::user()->id)->where('status', 'active')->first();
-        $exists = Cart::where(['user_id' => Auth::user()->id, 'status' => 'active'])
-            ->with(['cart_lines' => function ($q) use ($request) {
-                $q->where('item_service', $request->item_service);
-            }])
+        $exists = Cart::where(
+            [
+                'user_id' => Auth::user()->id,
+                'status' => 'active'
+            ]
+        )
+            ->with(
+                [
+                    'cart_lines'
+                    => function ($q) use ($request) {
+                        $q->where('item_service', $request->item_service);
+                    }
+                ]
+            )
             ->first();
-        $cartLines = $exists->cart_lines ?? null;
-        if (empty($cartLines)) {
+
+        $cartLines = !empty($exists) && !empty($exists->cart_lines) ? $exists->cart_lines : null;
+        // dd(count($cartLines) == 0, is_null($cartLines));
+        if (count($cartLines) == 0 || is_null($cartLines)) {
             if (isset($active_cart->id)) {
 
-                // logic in case when user add make -> bridal make up service in cart then exixting cart will be emoty and proceed with only bridal makeup entry
+                // logic in case when user add make -> bridal make up service in cart then exixting cart will be empty and proceed with only bridal makeup entry
                 if ($request->item_type == 'Make-up' && $request->item_service == 'Bridal Make-up') {
                     Cart_line::where('cart_id', $active_cart->id)->delete();
                 }
@@ -91,9 +103,9 @@ class CartController extends Controller
 
                 $cart_line->save();
             }
-            return response()->json(['status' => 200, 'message' => 'Service added to cart successfully!', 'data' => '']);
+            return response()->json(['status' => 200, 'message' => 'Service Successfully Added into Cart !', 'data' => '']);
         } else {
-            return response()->json(['status' => 403, 'message' => 'Service Already added to cart !', 'data' => '']);
+            return response()->json(['status' => 403, 'message' => 'Service Already Added into Cart !', 'data' => '']);
         }
     }
 }
