@@ -63,7 +63,7 @@ class CartController extends Controller
             ->first();
 
         $cartLines = !empty($exists) && !empty($exists->cart_lines) ? $exists->cart_lines : null;
-        // dd($cartLines, empty($cartLines), is_null($cartLines));
+
         if (empty($cartLines) || is_null($cartLines)) {
             if (isset($active_cart->id)) {
 
