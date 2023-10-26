@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers\FrontEnd;
 
-use Countable;
-use Carbon\Carbon;
-use App\Models\User;
 use App\Models\Cart;
 use App\Models\Cart_line;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use App\Http\Requests\BlogValidationRequest;
 
 class CartController extends Controller
 {
@@ -62,11 +58,10 @@ class CartController extends Controller
             )
             ->first();
 
-        $cartLines = !empty($exists) && !empty($exists->cart_lines) ? $exists->cart_lines : null;
+        $cartLines = !empty($exists) && count($exists->cart_lines) ? $exists->cart_lines : null;
 
-        if (empty($cartLines) || is_null($cartLines)) {
+        if (is_null($cartLines)) {
             if (isset($active_cart->id)) {
-
                 // logic in case when user add make -> bridal make up service in cart then exixting cart will be empty and proceed with only bridal makeup entry
                 if ($request->item_type == 'Make-up' && $request->item_service == 'Bridal Make-up') {
                     Cart_line::where('cart_id', $active_cart->id)->delete();

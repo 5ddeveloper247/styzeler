@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers\FrontEnd;
 
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Models\User;
-use App\Models\Rent_let;
-use App\Models\Job_request;
 use App\Models\Blog;
 use App\Models\Cart;
+use App\Models\User;
+use App\Models\Rent_let;
 use App\Models\Cart_line;
-use App\Models\Membership;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Collection;
+use App\Models\Job_request;
 use App\Models\Used_tokens;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class FrontEndController extends Controller
 {
@@ -293,6 +291,17 @@ class FrontEndController extends Controller
 
     public function servicesBodywaxing()
     {
+        $exists = Cart::where(
+            [
+                'user_id' => Auth::user()->id,
+                'status' => 'active'
+            ]
+        )
+            ->with('cart_lines')
+            ->first();
+
+        // !empty($exists) && count($exists->cart_lines) ? $exists->cart_lines->each->delete() : '';
+
         $user = User::where('id', Auth::user()->id)->first();
         $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
         return view('web.servicesBodywaxing')->with($data);

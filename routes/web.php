@@ -1,6 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Hash;
 
 Route::get('/', function () {
     return view('index');
@@ -13,7 +15,7 @@ Route::get('/old', function () {
 
 
 // Auth::routes();
-
+// dd(Hash::make('Asdf1234#'));
 Route::group(['namespace' => 'FrontEnd'], function () {
 
     //Auth
