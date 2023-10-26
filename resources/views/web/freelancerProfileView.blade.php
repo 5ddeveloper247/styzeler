@@ -186,6 +186,10 @@
                 margin-right: 8px;
                 vertical-align: middle;
             }
+
+            .profile_btns {
+                gap: 4px !important;
+            }
         }
 
         del {
@@ -234,33 +238,30 @@
             }
         @endphp
 
-        <div class="row justify-content-center my-4">
-            <div class="col-3 text-center">
+        <div class="d-flex justify-content-around profile_btns my-4">
+            <div class="text-center">
                 <div class="profile btn customBtn" id="profile">Profile</div>
             </div>
-            <div class="col-3 text-center">
+            <div class="text-center">
                 <div class="reviews btn customBtn" id="reviews">Reviews</div>
             </div>
-            <div class="col-3 text-center">
+            <div class="text-center">
                 <div class="likes btn customBtn" id="likes">Likes</div>
             </div>
             @auth
                 @if (Auth::user()->type == 'client')
-                    <div class="col-3 book_client text-center">
+                    <div class="book_client text-center">
                         <div class="book btn customBtn" id="book">Book</div>
                     </div>
                 @else
-                    <div class="col-3 book_client text-center">
+                    <div class="book_client text-center">
                         <div class="book btn customBtn {{ @$class }}" id="{{ @$bookid }}">Book</div>
                     </div>
                 @endif
-                <div class="col-3 contact_btn d-none text-center" id="" onclick="useOwnerToken();">
+                <div class="contact_btn d-none text-center" id="" onclick="useOwnerToken();">
                     <div class="book btn customBtn">Contact</div>
                 </div>
             @endauth
-
-
-
         </div>
 
         <div class="row justify-content-center mb-5">
@@ -504,8 +505,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="btn uploadBtn text-right"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>

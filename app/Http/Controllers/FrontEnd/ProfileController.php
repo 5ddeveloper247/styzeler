@@ -342,7 +342,7 @@ class ProfileController extends Controller
         if (!Auth::check()) {
             return response()->json([
                 'status' => 422,
-                'message' => 'Please log in to book a slot.',
+                'message' => 'Please Log in to Book a Slot!',
             ]);
         }
 
@@ -352,14 +352,14 @@ class ProfileController extends Controller
 
         if (isset($request->book_type) && $request->book_type == 'cart_book') {  // of cart booking then this code execution
 
-        	
+
 
             // $cartExist = Cart::where('user_id', Auth::user()->id)->where('slot_date', $request->book_date)->count();
             $appoExist = Appointments::where('booking_user_id', Auth::user()->id)->where('booking_date', $request->book_date)->count();
             if ($tokens == 0 && $appoExist == 0) {
                 return response()->json([
                     'status' => 404,
-                    'message' => 'No enough tokens, first buy package.',
+                    'message' => 'Not Enough Tokens, First Buy Package!',
                 ]);
             }
 
@@ -371,7 +371,7 @@ class ProfileController extends Controller
                 $bookedUserDetails = User::where('id', $request->user_id)->first();
                 $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
                 $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->with(['bookingTimeSlots'])->first();
-                
+
                 $cartServiceTimeMin = $userCart != null ? $userCart->cart_lines->sum('item_time_min') : 0;
 
                 if ($slotDetails->slots_time != 'After_Nine') {
@@ -386,7 +386,7 @@ class ProfileController extends Controller
                 if ($slotDetails->status == 'booked') {
                     return response()->json([
                         'status' => 422,
-                        'message' => 'This slot is already booked, kindly choose different time.',
+                        'message' => 'This Slot is Already Booked, Kindly Choose Different Time!',
                     ]);
                 }
 
@@ -405,7 +405,7 @@ class ProfileController extends Controller
                         if ($total_slots_time < $totalServiceTime) { //|| ($total_slots_time == $totalServiceTime) != true
                             return response()->json([
                                 'status' => 422,
-                                'message' => 'There is a break between the slots, kindly choose different time.',
+                                'message' => 'There is a Break Between the Slots, Kindly Choose Different Time!',
                             ]);
                         }
 
@@ -423,13 +423,13 @@ class ProfileController extends Controller
                         if ($hasBookedSlot) {
                             return response()->json([
                                 'status' => 422,
-                                'message' => 'There is a booking between the slots, kindly choose different time.',
+                                'message' => 'There is a Booking Between the Slots, Kindly Choose Different Time!',
                             ]);
                         }
                     } else {
                         return response()->json([
                             'status' => 422,
-                            'message' => 'There is a break between the slots, kindly choose different time.1',
+                            'message' => 'There is a Break Between the Slots, Kindly Choose Different Time!',
                         ]);
                     }
                     $commaSeparatedSlotIds = $slots->pluck('id')->implode(',');
@@ -446,26 +446,26 @@ class ProfileController extends Controller
                         'booking_user_id' => Auth::id(),
                     ]);
                 } else {
-                    if ($totalServiceTime > 540) { // if user will chekout after 9 then restrict user to add services less then nxt morning 6 O'clock 
+                    if ($totalServiceTime > 540) { // if user will chekout after 9 then restrict user to add services less then nxt morning 6 O'clock
                         return response()->json([
                             'status' => 422,
-                            'message' => 'Unable to book. Your services are exceeding the time limit. (i.e 540 minutes)',
+                            'message' => 'Unable to Book. Your Services are Exceeding the Time Limit. (i.e 540 minutes)',
                         ]);
                     }
 
                     BookingSlots::where('id', $slotDetails->id)->update([
-                    		'end_time' => $serviceEndTime,
-                    		'slots_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
-                    		'status' => 'booked'
-                    
+                        'end_time' => $serviceEndTime,
+                        'slots_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
+                        'status' => 'booked'
+
                     ]);
-                    
+
                     Appointments::create([
-                    		'booking_slots_id' => $slotDetails->id,
-                    		'booking_date' => $bookingDetails->date,
-                    		'booking_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
-                    		'freelancer_user_id' => $request->user_id,
-                    		'booking_user_id' => Auth::id(),
+                        'booking_slots_id' => $slotDetails->id,
+                        'booking_date' => $bookingDetails->date,
+                        'booking_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
+                        'freelancer_user_id' => $request->user_id,
+                        'booking_user_id' => Auth::id(),
                     ]);
                 }
 
@@ -476,7 +476,7 @@ class ProfileController extends Controller
                 $cart->status = 'checkout';
                 $cart->update();
 
-              
+
                 if ($appoExist == 0) {
                     $user = User::find(Auth::user()->id);
                     $user->tokens = $tokens - 1;
@@ -515,16 +515,16 @@ class ProfileController extends Controller
                 sendMail($userDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
 
                 $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->with(['bookingTimeSlots'])->first();
-                
+
                 return response()->json([
                     'status' => 200,
-                    'message' => 'Slot booked successfully.',
-                	'data' => $bookingDetails,
+                    'message' => 'Slot Booked Successfully!',
+                    'data' => $bookingDetails,
                 ]);
             } else {
                 return response()->json([
                     'status' => 422,
-                    'message' => 'First add service in cart then proceed.',
+                    'message' => 'First Add Service in Cart then Proceed!',
                 ]);
             }
         } else {
@@ -533,7 +533,7 @@ class ProfileController extends Controller
             if (!in_array(Auth::user()->type, $allowedUserTypes)) {
                 return response()->json([
                     'status' => 422,
-                    'message' => 'Only salon owners can book slots.',
+                    'message' => 'Only Salon Owners Can Book Slots!',
                 ]);
             }
 
@@ -542,7 +542,7 @@ class ProfileController extends Controller
             if ($checkSlot) {
                 return response()->json([
                     'status' => 422,
-                    'message' => 'Slot is already booked.',
+                    'message' => 'Slot is Already Booked.',
                 ]);
             }
 
@@ -561,7 +561,7 @@ class ProfileController extends Controller
             if ($tokens == 0 && $bookExist == 0) {
                 return response()->json([
                     'status' => 404,
-                    'message' => 'No enough tokens, first buy package.',
+                    'message' => 'Not Enough Tokens, First Buy Package!',
                 ]);
             }
 
@@ -590,7 +590,7 @@ class ProfileController extends Controller
             $bookedUserDetails = User::where('id', $request->user_id)->first();
             $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
             $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->with(['bookingTimeSlots'])->first();
-            
+
             $slotStartTime = date('h:i A', strtotime($slotDetails->start_time));
             $slotEndTime = date('h:i A', strtotime($slotDetails->end_time));
 
@@ -625,7 +625,7 @@ class ProfileController extends Controller
             return response()->json([
                 'status' => 200,
                 'message' => 'Slot booked successfully!',
-            	'data' => $bookingDetails,
+                'data' => $bookingDetails,
             ]);
         }
     }
@@ -652,7 +652,7 @@ class ProfileController extends Controller
 
         if (($startTime < $endTime) == false || ($startTime == $endTime) == true) {
 
-            $message = 'End Time must be greater than Start Time';
+            $message = 'End Time Must be Greater than Start Time!';
             return response()->json([
                 'status' => 422,
                 'message' => $message,
@@ -684,7 +684,7 @@ class ProfileController extends Controller
         // Check if 'start time' is less than 'end time'
         if ($newStartTime >= $newEndTime) {
 
-            $message = 'End Time must be greater than Start Time';
+            $message = 'End Time Must be Greater than Start Time!';
             return response()->json([
                 'status' => 422,
                 'message' => $message,
@@ -704,7 +704,7 @@ class ProfileController extends Controller
                 if ($hasBookedSlot) {
                     return response()->json([
                         'status' => 422,
-                        'message' => 'Unable to edit slots. There is a booking exist in these slots.',
+                        'message' => 'Unable to Edit Slots. There is a Booking Exist in these Slots!',
                     ]);
                 }
 
@@ -720,7 +720,7 @@ class ProfileController extends Controller
 
             // If overlapping slots are found, prevent the creation of the new slot
             if ($overlappingSlots) {
-                $message = 'Time range already booked on the specified date';
+                $message = 'Time Range Already Booked on the Specified Date!';
                 return response()->json([
                     'status' => 422,
                     'message' => $message,
@@ -987,7 +987,7 @@ class ProfileController extends Controller
 			                <tr>
 			                    <td colspan='2'>Your contact request is sent to concerned person, he will contact you soon for booking. Thanks</td>
 			                </tr>
-			                
+
 			           	</table>";
             $userEmailsSend1[] = $userDetails->email;
 
@@ -1075,7 +1075,8 @@ class ProfileController extends Controller
         BookingSlots::whereIn('id', $getAppointmentDataArray)
             ->update(
                 [
-                    "status" => "Available"
+                    "status" => "Available",
+                    'slots_time' => 'After_Nine'
                 ]
             );
 
@@ -1171,61 +1172,59 @@ class ProfileController extends Controller
             'data' => ''
         ]);
     }
-    
+
     public function submitFeedbackOwner(Request $request)
     {
-    
-    	if (!isset(Auth::user()->id)) {
-    		return response()->json(['status' => 500, 'message' => 'Login with owner or client user first!', 'data' => '']);
-    	}
-    	
-    	if (in_array(Auth::user()->type, ['wedding','hairStylist','beautician','barber'])) {
-    		return response()->json(['status' => 500, 'message' => 'Login with owner or client user first!', 'data' => '']);
-    	}
-    	
-    	if ($request->ownerRemarks == null || $request->ownerRemarks == '') {
-    		return response()->json(['status' => 500, 'message' => 'Unable to send empty feedback!', 'data' => '']);
-    	}
-    	
-    	$feedback = new User_review_like();
-    	
-    	$feedback->user_id = Auth::user()->id;
-    	$feedback->freelancer_id = $request->feedbackFreelancerId;
-    	$feedback->feedback_type = $request->feedbackType;
-    	$feedback->remarks = $request->ownerRemarks;
-    	$feedback->date = date('Y-m-d');
-    	$feedback->save();
-    	
-    	$feedback = User_review_like::where('freelancer_id', $request->feedbackFreelancerId)
-    							->with('user', 'freelancer')->get();
-    	
-    	return response()->json(
-    			[
-    				'status' => 200, 'message' => 'Feedback send successfully.', 'data' => $feedback
-    			]
-    		);
+
+        if (!isset(Auth::user()->id)) {
+            return response()->json(['status' => 500, 'message' => 'Login with owner or client user first!', 'data' => '']);
+        }
+
+        if (in_array(Auth::user()->type, ['wedding', 'hairStylist', 'beautician', 'barber'])) {
+            return response()->json(['status' => 500, 'message' => 'Login with owner or client user first!', 'data' => '']);
+        }
+
+        if ($request->ownerRemarks == null || $request->ownerRemarks == '') {
+            return response()->json(['status' => 500, 'message' => 'Unable to send empty feedback!', 'data' => '']);
+        }
+
+        $feedback = new User_review_like();
+
+        $feedback->user_id = Auth::user()->id;
+        $feedback->freelancer_id = $request->feedbackFreelancerId;
+        $feedback->feedback_type = $request->feedbackType;
+        $feedback->remarks = $request->ownerRemarks;
+        $feedback->date = date('Y-m-d');
+        $feedback->save();
+
+        $feedback = User_review_like::where('freelancer_id', $request->feedbackFreelancerId)
+            ->with('user', 'freelancer')->get();
+
+        return response()->json(
+            [
+                'status' => 200, 'message' => 'Feedback send successfully.', 'data' => $feedback
+            ]
+        );
     }
-    
+
     public function loadFeedbackFreelancer(Request $request)
     {
-    
-    	if (isset($request->freelancerId) && $request->freelancerId != '') {
-    		
-    		$feedback = User_review_like::where('freelancer_id', $request->freelancerId)
-    					->with('user', 'freelancer')->get();
-    		
-    		return response()->json(
-    				[
-    						'status' => 200,
-    						'message' => '',
-    						'data' => $feedback
-    				]
-    				);
-    	}else{
-    		return response()->json(['status' => 500, 'message' => 'Something went wrong!', 'data' => '']);
-    	}
-    
-    	
+
+        if (isset($request->freelancerId) && $request->freelancerId != '') {
+
+            $feedback = User_review_like::where('freelancer_id', $request->freelancerId)
+                ->with('user', 'freelancer')->get();
+
+            return response()->json(
+                [
+                    'status' => 200,
+                    'message' => '',
+                    'data' => $feedback
+                ]
+            );
+        } else {
+            return response()->json(['status' => 500, 'message' => 'Something went wrong!', 'data' => '']);
+        }
     }
 }
 

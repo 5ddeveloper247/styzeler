@@ -450,7 +450,7 @@ class FrontEndController extends Controller
             $todayUseToken = 0;
             $cartServicesTimeMin = 0;
         }
-
+        // dd(get_defined_vars());
         return customView(
             'web.freelancerProfileView',
             'web.salonOwnerProfileView',
