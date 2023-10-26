@@ -63,8 +63,8 @@ class CartController extends Controller
             ->first();
 
         $cartLines = !empty($exists) && !empty($exists->cart_lines) ? $exists->cart_lines : null;
-        // dd(count($cartLines) == 0, is_null($cartLines));
-        if (count($cartLines) == 0 || is_null($cartLines)) {
+        // dd($cartLines, empty($cartLines), is_null($cartLines));
+        if (empty($cartLines) || is_null($cartLines)) {
             if (isset($active_cart->id)) {
 
                 // logic in case when user add make -> bridal make up service in cart then exixting cart will be empty and proceed with only bridal makeup entry
