@@ -3,17 +3,20 @@ var currentHour = currentdate.getHours();
 let onCall;
 
 $(document).ready(function () {
-
-    if (user == 'client' && cartServicesTime > 0 && localStorage.getItem('bookType') == 'cart_book') {
+    if (
+        user == "client" &&
+        cartServicesTime > 0 &&
+        localStorage.getItem("bookType") == "cart_book"
+    ) {
         $(".servicesTimeText").show();
         $("#serviceTime").text(cartServicesTime);
-        $("#travellingTime").text('60');
+        $("#travellingTime").text("60");
         $("#serviceTotalTime").text(cartServicesTime + 60);
     } else {
         $(".servicesTimeText").hide();
-        $("#serviceTime").text('');
-        $("#travellingTime").text('');
-        $("#serviceTotalTime").text('');
+        $("#serviceTime").text("");
+        $("#travellingTime").text("");
+        $("#serviceTotalTime").text("");
     }
 
     $("#showReviews").hide();
@@ -22,7 +25,6 @@ $(document).ready(function () {
     $("#profile").removeClass("customBtn").addClass("customBtnSelected");
 
     $("#profile").click(function () {
-
         $("#showProfile").show();
 
         $("#showReviews").hide();
@@ -34,7 +36,6 @@ $(document).ready(function () {
         $("#book").removeClass("customBtnSelected").addClass("customBtn");
 
         $("#profile").removeClass("customBtn").addClass("customBtnSelected");
-
     });
 
     $("#reviews").click(function () {
@@ -81,117 +82,127 @@ $(document).ready(function () {
         onCall = tomorrow;
         // localStorage.removeItem(SELECTEDSTATUSDATE);
         // $("#calendar").fullCalendar('refetchEvents');
-
     });
-
 
     $(".show_message").click(function () {
-        $('#register_modal').modal('show');
+        $("#register_modal").modal("show");
     });
     $(".tokens_message").click(function () {
-        $('#tokens_modal').modal('show');
+        $("#tokens_modal").modal("show");
     });
-
-
 });
 
 function editName() {
-    $(".name-mobile-modal").modal('show');
-
+    $(".name-mobile-modal").modal("show");
 }
 
 function editAge() {
-    $(".age-modal").modal('show');
+    $(".age-modal").modal("show");
 }
 
 function editResume() {
-    $(".resume-modal").modal('show');
+    $(".resume-modal").modal("show");
 }
 
 function editRate() {
-    $(".rate-modal").modal('show');
+    $(".rate-modal").modal("show");
 }
 
 function editWork() {
-    $(".work-modal").modal('show');
+    $(".work-modal").modal("show");
 }
 
 function editLanguage() {
-    $(".language-modal").modal('show');
-
+    $(".language-modal").modal("show");
 }
 
 function editStatus() {
-    $(".status-modal").modal('show');
+    $(".status-modal").modal("show");
 }
 
 function editType() {
-    $(".type-modal").modal('show');
+    $(".type-modal").modal("show");
 }
 
 function editQualification() {
-    $(".qualification-modal").modal('show');
+    $(".qualification-modal").modal("show");
 }
 
 function editProfilePic() {
-    $(".profile-pic-modal").modal('show');
+    $(".profile-pic-modal").modal("show");
 }
 
 function updateGallery() {
-    $(".gallery-modal").modal('show');
+    $(".gallery-modal").modal("show");
 }
 
 // registrationMode = ;
-var registrationMode = '';
+var registrationMode = "";
 
 function formatRate(rate) {
     return parseFloat(rate).toFixed(2);
 }
 
 function getProfileData() {
-
     // e.preventDefault();
 
-    let type = 'GET';
-    let url = 'getProfileDataView';
-    let message = '';
-    let form = '';
-    let data = userId != '' ? 'id=' + userId : '';
+    let type = "GET";
+    let url = "getProfileDataView";
+    let message = "";
+    let form = "";
+    let data = userId != "" ? "id=" + userId : "";
     // if ($(this).text() == 'Submit') {
     //     url = url;
     // }
 
     // PASSING DATA TO FUNCTION
-    SendAjaxRequestToServer(type, url, data, '', profileResponse, 'spinner_button', 'submit_button');
-
+    SendAjaxRequestToServer(
+        type,
+        url,
+        data,
+        "",
+        profileResponse,
+        "spinner_button",
+        "submit_button"
+    );
 }
-getProfileData()
+getProfileData();
 
-function profileProductServices(elementAjaxData, elementArray, elementParagraph, elementHeading) {
+function profileProductServices(
+    elementAjaxData,
+    elementArray,
+    elementParagraph,
+    elementHeading
+) {
     elementArray = [];
 
     for (var key in elementAjaxData) {
-        if (elementAjaxData.hasOwnProperty(key) && !isNaN(key) && key !== 'heading' && key !== 'subHeading') {
+        if (
+            elementAjaxData.hasOwnProperty(key) &&
+            !isNaN(key) &&
+            key !== "heading" &&
+            key !== "subHeading"
+        ) {
             elementArray.push(elementAjaxData[key]);
         }
     }
 
-    var heading = 'Heading';
-    var para = 'Para';
+    var heading = "Heading";
+    var para = "Para";
     var dynamicHeading = {};
     var dynamicPara = {};
 
-    dynamicHeading[elementAjaxData + heading] = elementAjaxData.heading || '-';
-    dynamicPara[elementAjaxData + para] = elementArray.length > 0 ? elementArray.join(', ') : '-';
+    dynamicHeading[elementAjaxData + heading] = elementAjaxData.heading || "-";
+    dynamicPara[elementAjaxData + para] =
+        elementArray.length > 0 ? elementArray.join(", ") : "-";
 
-    $('#' + elementHeading).text(dynamicHeading[elementAjaxData + heading]);
-    $('#' + elementParagraph).text(dynamicPara[elementAjaxData + para]);
-
+    $("#" + elementHeading).text(dynamicHeading[elementAjaxData + heading]);
+    $("#" + elementParagraph).text(dynamicPara[elementAjaxData + para]);
 }
 function objectToArray(ProductsObject) {
     var ProductsArray = [];
     for (var key in ProductsObject) {
-        if (key !== 'heading' && key !== 'subHeading') {
+        if (key !== "heading" && key !== "subHeading") {
             ProductsArray.push(ProductsObject[key]);
         }
     }
@@ -206,17 +217,23 @@ function checkCheckBoxes(data, category, elementPrefix) {
         const elementParagraph = `${elementPrefix}Para`;
         const elementArray = [];
 
-        profileProductServices(categoryData, elementArray, elementParagraph, elementHeading);
+        profileProductServices(
+            categoryData,
+            elementArray,
+            elementParagraph,
+            elementHeading
+        );
         const categoryArray = objectToArray(categoryData);
 
         categoryArray.forEach(function (item) {
-            $(`input[type="checkbox"][name="${category}[]"][value="${item}"]`).prop('checked', true);
+            $(
+                `input[type="checkbox"][name="${category}[]"][value="${item}"]`
+            ).prop("checked", true);
         });
     }
 }
 // function to handle the response from server side after sending request for getting user details
 function profileResponse(response) {
-
     // SHOWING MESSAGE ACCORDING TO RESPONSE
     if (response.status == 200) {
         //saving response data in data var
@@ -224,16 +241,14 @@ function profileResponse(response) {
         var type = response.data.type;
         registrationMode = type;
 
-        if (data != null || data != '') {
-
-
+        if (data != null || data != "") {
             $("#user_id").val(data.id);
-            $("#book_type").val(localStorage.getItem('bookType'));
+            $("#book_type").val(localStorage.getItem("bookType"));
             // For profile image
             hero_image = data.hero_image;
 
-            $('#profile-image-id').attr('src', baseURL + hero_image);
-            $('#blah').attr('src', baseURL + hero_image);
+            $("#profile-image-id").attr("src", baseURL + hero_image);
+            $("#blah").attr("src", baseURL + hero_image);
 
             // For name,surname,phone
             profilename = data.name;
@@ -246,197 +261,293 @@ function profileResponse(response) {
             //     var cleanedPhone = '-'
             // }
 
-            $('#ownerName').text(profilename + ' ' + surname);
+            $("#ownerName").text(profilename + " " + surname);
             //            $('#ownerName').append('<a class="text-center btn" onclick="editName()" title="Edit">✎</a>');
 
-            $('#stylist-name').val(profilename);
-            $('#stylist-surname').val(surname);
-            $('#stylist-mobile').val(phone);
+            $("#stylist-name").val(profilename);
+            $("#stylist-surname").val(surname);
+            $("#stylist-mobile").val(phone);
 
             // for age
-            age = data.age
+            age = data.age;
 
-            $('#ownerAge').text(age);
+            $("#ownerAge").text(age);
             //            $('#ownerAge').append('<a class="text-center btn" onclick = "editAge()" title = "Edit" >✎</a >');
 
-            $(`input[name='stylist_age'][value='${age}']`).prop('checked', true);
+            $(`input[name='stylist_age'][value='${age}']`).prop(
+                "checked",
+                true
+            );
 
             // for Profile Type
-            profile_type = data.profile_type
+            profile_type = data.profile_type;
 
-            $('#profiletype').text(profile_type);
+            $("#profiletype").text(profile_type);
             //            $('#profiletype').append('<a class="text-center btn" onclick="editType();" title="Edit">✎</a>');
 
-            $('#profile_type').val(profile_type);
-
+            $("#profile_type").val(profile_type);
 
             // for qualification
             qualifications = data.qualification;
             utr_number = data.utr_number;
             video = data.trade_video;
 
-            $('#ownerQualification').text(qualifications);
+            $("#ownerQualification").text(qualifications);
             //            $('#ownerQualification').append('<a class="text-center btn" onclick="editQualification()" title="Edit">✎</a>');
 
             qualifications.forEach(function (qualifi) {
-                $(`input[type="checkbox"][name="qualification[]"][value="${qualifi}"]`).prop('checked', true);
+                $(
+                    `input[type="checkbox"][name="qualification[]"][value="${qualifi}"]`
+                ).prop("checked", true);
             });
-            $('#utr-number').val(utr_number);
-            $('#video').val(video);
+            $("#utr-number").val(utr_number);
+            $("#video").val(video);
 
             // for languages
             languages = data.languages;
 
-            $('#ownerLanguage').text(languages);
+            $("#ownerLanguage").text(languages);
             //            $('#ownerLanguage').append('<a class="text-center btn" onclick="editLanguage()" title="Edit">✎</a>');
-            $('#stylist-language').val(languages);
+            $("#stylist-language").val(languages);
 
             // for rate
             rate = data.rate;
             formattedRate = formatRate(rate);
 
-            $('#ownerRate').text(formattedRate);
+            $("#ownerRate").text(formattedRate);
             //            $('#ownerRate').append('<a class="text-center btn" onclick="editRate()" title="Edit">✎</a>');
             if (rate != 110 && rate != 120 && rate != 130) {
                 // This block will execute if rate is NOT 110, 120, or 130
-                $(`input[type="radio"][name='stylist_rate']`).prop('checked', true);
-                $('#rateOther').val(rate);
-                $('#otherRate').show();
+                $(`input[type="radio"][name='stylist_rate']`).prop(
+                    "checked",
+                    true
+                );
+                $("#rateOther").val(rate);
+                $("#otherRate").show();
             } else {
                 // This block will execute if rate is 110, 120, or 130
-                $(`input[name='stylist_rate'][value='${rate}']`).prop('checked', true);
+                $(`input[name='stylist_rate'][value='${rate}']`).prop(
+                    "checked",
+                    true
+                );
             }
             // for zone
             zone = data.zone;
 
-            $('#ownerWork').text(zone);
+            $("#ownerWork").text(zone);
             //            $('#ownerWork').append('<a class="text-center btn" onclick="editWork()" title="Edit">✎</a>');
 
             zone.forEach(function (zone) {
-
-                $(`input[type="checkbox"][name="zone[]"][value="${zone}"]`).prop('checked', true);
+                $(
+                    `input[type="checkbox"][name="zone[]"][value="${zone}"]`
+                ).prop("checked", true);
             });
 
             // for resume
             resume = data.resume;
 
-            $('#ownerResume').text(resume);
+            $("#ownerResume").text(resume);
             //            $('#ownerResume').append('<a class="text-center btn" onclick="editResume()" title="Edit">✎</a>');
-            $('#stylist-resume').val(resume);
+            $("#stylist-resume").val(resume);
 
             // for email
             email = data.email;
 
             //            setTimeout(() => {
 
-
-            if (profile_type == 'Jobseeker' || type == 'wedding') {
-                $('.book_client').addClass('d-none');
-                $('.contact_btn').removeClass('d-none');
-                $('#ownerEmail').html('<a href="mailto:' + email + '" onclick="useOwnerToken();">' + email + '</a>');
+            if (profile_type == "Jobseeker" || type == "wedding") {
+                $(".book_client").addClass("d-none");
+                $(".contact_btn").removeClass("d-none");
+                $("#ownerEmail").html(
+                    '<a href="mailto:' +
+                        email +
+                        '" onclick="useOwnerToken();">' +
+                        email +
+                        "</a>"
+                );
             } else {
+                if (user == "client") {
+                    $(".book_client").addClass("d-none");
 
-                if (user == 'client') {
-
-                    $('.book_client').addClass('d-none');
-
-                    if (cart_book == 'cart_book') {
-                        $('.book_client').removeClass('d-none');
-                        $('.contact_btn').addClass('d-none');
-                        $('#ownerEmail').text(email);
+                    if (cart_book == "cart_book") {
+                        $(".book_client").removeClass("d-none");
+                        $(".contact_btn").addClass("d-none");
+                        $("#ownerEmail").text(email);
                     } else {
-                        $('.book_client').addClass('d-none');
-                        $('.contact_btn').addClass('d-none');
-                        $('#ownerEmail').text(email);
+                        $(".book_client").addClass("d-none");
+                        $(".contact_btn").addClass("d-none");
+                        $("#ownerEmail").text(email);
                     }
                 } else {
-                    $('.book_client').removeClass('d-none');
-                    $('.contact_btn').addClass('d-none');
-                    $('#ownerEmail').text(email);
+                    $(".book_client").removeClass("d-none");
+                    $(".contact_btn").addClass("d-none");
+                    $("#ownerEmail").text(email);
                 }
             }
             //            }, 400);
 
-
             // for status
             profile_status = data.status;
-            $('#status').text(profile_status);
+            $("#status").text(profile_status);
             //            $('#status').append('<a class="text-center btn" onclick="editStatus();" title="Edit">✎</a>');
-            $('#stylist_status').val(profile_status);
+            $("#stylist_status").val(profile_status);
 
-
-            if (type == 'wedding' || type == 'hairStylist' || type == 'barber') {
-                checkCheckBoxes(data, 'stylingProducts', 'stylingProducts');
-                checkCheckBoxes(data, 'chemicalTreatmentProducts', 'chemicalTreatmentProducts');
-                checkCheckBoxes(data, 'chemicalTreatmentServices', 'chemicalTreatmentServices');
-                checkCheckBoxes(data, 'hairCuttingServices', 'hairCuttingServices');
-                checkCheckBoxes(data, 'weddingStyleServices', 'weddingStyleServices');
-                checkCheckBoxes(data, 'barberMaleGroomingServices', 'barberMaleGroomingServices');
-                checkCheckBoxes(data, 'hairColorServices', 'hairColorServices');
-                checkCheckBoxes(data, 'makeupServives', 'makeupServives');
-                checkCheckBoxes(data, 'salonMaleGroomingServices', 'salonMaleGroomingServices');
-                checkCheckBoxes(data, 'homeServiceMaleGroomingServices', 'homeServiceMaleGroomingServices');
-                checkCheckBoxes(data, 'hairColorBrands', 'hairColorBrands');
+            if (
+                type == "wedding" ||
+                type == "hairStylist" ||
+                type == "barber"
+            ) {
+                checkCheckBoxes(data, "stylingProducts", "stylingProducts");
+                checkCheckBoxes(
+                    data,
+                    "chemicalTreatmentProducts",
+                    "chemicalTreatmentProducts"
+                );
+                checkCheckBoxes(
+                    data,
+                    "chemicalTreatmentServices",
+                    "chemicalTreatmentServices"
+                );
+                checkCheckBoxes(
+                    data,
+                    "hairCuttingServices",
+                    "hairCuttingServices"
+                );
+                checkCheckBoxes(
+                    data,
+                    "weddingStyleServices",
+                    "weddingStyleServices"
+                );
+                checkCheckBoxes(
+                    data,
+                    "barberMaleGroomingServices",
+                    "barberMaleGroomingServices"
+                );
+                checkCheckBoxes(data, "hairColorServices", "hairColorServices");
+                checkCheckBoxes(data, "makeupServives", "makeupServives");
+                checkCheckBoxes(
+                    data,
+                    "salonMaleGroomingServices",
+                    "salonMaleGroomingServices"
+                );
+                checkCheckBoxes(
+                    data,
+                    "homeServiceMaleGroomingServices",
+                    "homeServiceMaleGroomingServices"
+                );
+                checkCheckBoxes(data, "hairColorBrands", "hairColorBrands");
             }
 
-            if (type == 'beautician') {
-                checkCheckBoxes(data, 'massageServices', 'massageServices');
-                checkCheckBoxes(data, 'massageProducts', 'massageProducts');
-                checkCheckBoxes(data, 'hairRemovalPermanentServices', 'hairRemovalPermanentServices');
-                checkCheckBoxes(data, 'ladyWaxingServices', 'ladyWaxingServices');
-                checkCheckBoxes(data, 'ladyWaxingProducts', 'ladyWaxingProducts');
-                checkCheckBoxes(data, 'maleWaxingServices', 'maleWaxingServices');
-                checkCheckBoxes(data, 'manicurePedicureServices', 'manicurePedicureServices');
-                checkCheckBoxes(data, 'manicurePedicureProducts', 'manicurePedicureProducts');
-                checkCheckBoxes(data, 'salonFacialServices', 'salonFacialServices');
-                checkCheckBoxes(data, 'salonFacialProducts', 'salonFacialProducts');
-                checkCheckBoxes(data, 'homeServiceFacialServices', 'homeServiceFacialServices');
-                checkCheckBoxes(data, 'bodyTreatmentServices', 'bodyTreatmentServices');
-                checkCheckBoxes(data, 'EyesAndBrowServices', 'EyesAndBrowServices');
-                checkCheckBoxes(data, 'EyesAndBrowProducts', 'EyesAndBrowProducts');
-                checkCheckBoxes(data, 'makeupServives', 'makeupServives');
-
+            if (type == "beautician") {
+                checkCheckBoxes(data, "massageServices", "massageServices");
+                checkCheckBoxes(data, "massageProducts", "massageProducts");
+                checkCheckBoxes(
+                    data,
+                    "hairRemovalPermanentServices",
+                    "hairRemovalPermanentServices"
+                );
+                checkCheckBoxes(
+                    data,
+                    "ladyWaxingServices",
+                    "ladyWaxingServices"
+                );
+                checkCheckBoxes(
+                    data,
+                    "ladyWaxingProducts",
+                    "ladyWaxingProducts"
+                );
+                checkCheckBoxes(
+                    data,
+                    "maleWaxingServices",
+                    "maleWaxingServices"
+                );
+                checkCheckBoxes(
+                    data,
+                    "manicurePedicureServices",
+                    "manicurePedicureServices"
+                );
+                checkCheckBoxes(
+                    data,
+                    "manicurePedicureProducts",
+                    "manicurePedicureProducts"
+                );
+                checkCheckBoxes(
+                    data,
+                    "salonFacialServices",
+                    "salonFacialServices"
+                );
+                checkCheckBoxes(
+                    data,
+                    "salonFacialProducts",
+                    "salonFacialProducts"
+                );
+                checkCheckBoxes(
+                    data,
+                    "homeServiceFacialServices",
+                    "homeServiceFacialServices"
+                );
+                checkCheckBoxes(
+                    data,
+                    "bodyTreatmentServices",
+                    "bodyTreatmentServices"
+                );
+                checkCheckBoxes(
+                    data,
+                    "EyesAndBrowServices",
+                    "EyesAndBrowServices"
+                );
+                checkCheckBoxes(
+                    data,
+                    "EyesAndBrowProducts",
+                    "EyesAndBrowProducts"
+                );
+                checkCheckBoxes(data, "makeupServives", "makeupServives");
             }
 
-            galleryImages = data.gallery
+            galleryImages = data.gallery;
             if (galleryImages) {
-                var galleryContainer = $('#gallery-content');
+                var galleryContainer = $("#gallery-content");
                 galleryContainer.empty(); // Clear the container before adding images
 
                 for (var i = 0; i < galleryImages.length; i++) {
                     var imageSrc = galleryImages[i];
-                    var imageHtml = '<div class="col-lg-4 p-4">' +
-                        '<img alt="" width="100%" height="100%" src="' + imageSrc + '">' +
-                        '<p>' +
+                    var imageHtml =
+                        '<div class="col-lg-4 p-4">' +
+                        '<img alt="" width="100%" height="100%" src="' +
+                        imageSrc +
+                        '">' +
+                        "<p>" +
                         //                        '<a class="text-center btn" onclick="deletePicture(\'' + imageSrc + '\')" title="Edit"><u>remove</u></a>' +
-                        '</p>' +
-                        '</div>';
+                        "</p>" +
+                        "</div>";
 
                     galleryContainer.append(imageHtml);
                 }
             }
-
         }
     }
-
 }
 
 function editServiceAndProduct() {
-    if (registrationMode === "wedding" || registrationMode === "hairStylist" || registrationMode === "barber") {
-        $(".wedding-service-product-modal").modal('show');
+    if (
+        registrationMode === "wedding" ||
+        registrationMode === "hairStylist" ||
+        registrationMode === "barber"
+    ) {
+        $(".wedding-service-product-modal").modal("show");
     }
     if (registrationMode === "hairStylist") {
-        $(".hairstylist-service-product-modal").modal('show');
+        $(".hairstylist-service-product-modal").modal("show");
     }
     if (registrationMode === "beautician") {
-        $(".beautician-service-product-modal").modal('show');
+        $(".beautician-service-product-modal").modal("show");
     }
 }
 
 //update
 
 function loadFileProfile(event) {
-    var output = document.getElementById('blah');
+    var output = document.getElementById("blah");
 
     // Check if the event object and its target property exist
     if (event && event.target) {
@@ -445,318 +556,321 @@ function loadFileProfile(event) {
             output.src = URL.createObjectURL(event.target.files[0]);
             output.onload = function () {
                 URL.revokeObjectURL(output.src); // free memory
-            }
+            };
         }
     }
-
 }
 
-$(document).on('click', '#updateProfileImage', function (e) {
-
+$(document).on("click", "#updateProfileImage", function (e) {
     e.preventDefault();
-    let type = 'POST';
-    let url = '/updateProfileImage';
-    let message = '';
-    let form = $('#hero_image_form');
+    let type = "POST";
+    let url = "/updateProfileImage";
+    let message = "";
+    let form = $("#hero_image_form");
     let data = new FormData(form[0]);
     // if ($(this).text() == 'Submit') {
     //     url = url;
     // }
 
     // PASSING DATA TO FUNCTION
-    SendAjaxRequestToServer(type, url, data, '', updateProfileImageResponse, 'spinner_button', 'submit_button');
+    SendAjaxRequestToServer(
+        type,
+        url,
+        data,
+        "",
+        updateProfileImageResponse,
+        "spinner_button",
+        "submit_button"
+    );
 });
 
 function updateProfileImageResponse(response) {
-
     // SHOWING MESSAGE ACCORDING TO RESPONSE
-    if (response.status == 200 || response.status == '200') {
-
+    if (response.status == 200 || response.status == "200") {
         getProfileData();
-        $('#hero_image_form')[0].reset();
-        toastr.success(response.message, '', {
-            timeOut: 3000
+        $("#hero_image_form")[0].reset();
+        toastr.success(response.message, "", {
+            timeOut: 3000,
         });
 
-        $('.profile-pic-modal').modal('hide');
+        $(".profile-pic-modal").modal("hide");
     } else {
-
         error = response.message;
 
-        toastr.error(error, '', {
-            timeOut: 3000
+        toastr.error(error, "", {
+            timeOut: 3000,
         });
     }
-
 }
 
-$(document).on('click', '#updateGalleryImages', function (e) {
-
+$(document).on("click", "#updateGalleryImages", function (e) {
     e.preventDefault();
-    let type = 'POST';
-    let url = '/updateGalleryImages';
-    let message = '';
-    let form = $('#gallery_images_form');
+    let type = "POST";
+    let url = "/updateGalleryImages";
+    let message = "";
+    let form = $("#gallery_images_form");
     let data = new FormData(form[0]);
     // if ($(this).text() == 'Submit') {
     //     url = url;
     // }
 
     // PASSING DATA TO FUNCTION
-    SendAjaxRequestToServer(type, url, data, '', updateGalleryImagesResponse, 'spinner_button', 'submit_button');
+    SendAjaxRequestToServer(
+        type,
+        url,
+        data,
+        "",
+        updateGalleryImagesResponse,
+        "spinner_button",
+        "submit_button"
+    );
 });
 
 function updateGalleryImagesResponse(response) {
-
     // SHOWING MESSAGE ACCORDING TO RESPONSE
-    if (response.status == 200 || response.status == '200') {
+    if (response.status == 200 || response.status == "200") {
         getProfileData();
 
-        $('#gallery_images_form')[0].reset();
-        toastr.success(response.message, '', {
-            timeOut: 3000
+        $("#gallery_images_form")[0].reset();
+        toastr.success(response.message, "", {
+            timeOut: 3000,
         });
 
-        $('.gallery-modal').modal('hide');
-
-
+        $(".gallery-modal").modal("hide");
     } else {
-
         error = response.message;
 
-        toastr.error(error, '', {
-            timeOut: 3000
+        toastr.error(error, "", {
+            timeOut: 3000,
         });
     }
-
 }
 
 function deletePicture(path) {
-
-    let type = 'POST';
-    let url = '/deleteGalleryImage';
-    let message = '';
-    let form = '';
+    let type = "POST";
+    let url = "/deleteGalleryImage";
+    let message = "";
+    let form = "";
     var data = JSON.stringify({
-        path: path
-
+        path: path,
     });
     // PASSING DATA TO FUNCTION
-    SendAjaxRequestToServer(type, url, data, '', deleteGalleryImageResponse, 'spinner_button', 'submit_button');
+    SendAjaxRequestToServer(
+        type,
+        url,
+        data,
+        "",
+        deleteGalleryImageResponse,
+        "spinner_button",
+        "submit_button"
+    );
 }
 
 function deleteGalleryImageResponse(response) {
-
     // SHOWING MESSAGE ACCORDING TO RESPONSE
-    if (response.status == 200 || response.status == '200') {
+    if (response.status == 200 || response.status == "200") {
         getProfileData();
 
-        toastr.success(response.message, '', {
-            timeOut: 3000
+        toastr.success(response.message, "", {
+            timeOut: 3000,
         });
-
     } else {
-
         error = response.message;
 
-        toastr.error(error, '', {
-            timeOut: 3000
+        toastr.error(error, "", {
+            timeOut: 3000,
         });
     }
 }
 
-$(document).on('click', '.updateBasicInfoProfile', function (e) {
-
+$(document).on("click", ".updateBasicInfoProfile", function (e) {
     e.preventDefault();
-    let type = 'POST';
-    let url = '/updateBasicInfoProfile';
-    let message = '';
-    let form = $('#updateBasicInfoProfile');
+    let type = "POST";
+    let url = "/updateBasicInfoProfile";
+    let message = "";
+    let form = $("#updateBasicInfoProfile");
     let data = new FormData(form[0]);
     // if ($(this).text() == 'Submit') {
     //     url = url;
     // }
 
     // PASSING DATA TO FUNCTION
-    SendAjaxRequestToServer(type, url, data, '', updateBasicInfoProfileResponse, 'spinner_button', 'submit_button');
+    SendAjaxRequestToServer(
+        type,
+        url,
+        data,
+        "",
+        updateBasicInfoProfileResponse,
+        "spinner_button",
+        "submit_button"
+    );
 });
 
 function updateBasicInfoProfileResponse(response) {
-
     // SHOWING MESSAGE ACCORDING TO RESPONSE
-    if (response.status == 200 || response.status == '200') {
+    if (response.status == 200 || response.status == "200") {
         getProfileData();
 
-        toastr.success(response.message, '', {
-            timeOut: 3000
+        toastr.success(response.message, "", {
+            timeOut: 3000,
         });
 
         // $('.modal').modal('hide');
-
-
     } else {
-
         // CALLING OUR FUNTION ERROR & SUCCESS HANDLING
         error = response.responseJSON.message;
         var is_invalid = response.responseJSON.errors;
 
         // Loop through the error object
         $.each(is_invalid, function (key) {
-
             // Assuming 'key' corresponds to the form field name
             var inputField = $('[name="' + key + '"]');
             // Add the 'is-invalid' class to the input field's parent or any desired container
-            inputField.closest('.form-control').addClass('is-invalid');
+            inputField.closest(".form-control").addClass("is-invalid");
         });
         // error_msg = error.split('(');
 
-        toastr.error(error, '', {
-            timeOut: 3000
+        toastr.error(error, "", {
+            timeOut: 3000,
         });
     }
-
 }
 
-$(document).on('click', '.updateProductAndServices', function (e) {
-
+$(document).on("click", ".updateProductAndServices", function (e) {
     e.preventDefault();
-    let type = 'POST';
-    let url = '/updateProductAndServices';
-    let message = '';
-    let form = $('#updateProductAndServices');
+    let type = "POST";
+    let url = "/updateProductAndServices";
+    let message = "";
+    let form = $("#updateProductAndServices");
     let data = new FormData(form[0]);
     // if ($(this).text() == 'Submit') {
     //     url = url;
     // }
 
     // PASSING DATA TO FUNCTION
-    SendAjaxRequestToServer(type, url, data, '', updateProductAndServicesResponse, 'spinner_button', 'submit_button');
+    SendAjaxRequestToServer(
+        type,
+        url,
+        data,
+        "",
+        updateProductAndServicesResponse,
+        "spinner_button",
+        "submit_button"
+    );
 });
 
-
 function updateProductAndServicesResponse(response) {
-
     // SHOWING MESSAGE ACCORDING TO RESPONSE
-    if (response.status == 200 || response.status == '200') {
+    if (response.status == 200 || response.status == "200") {
         getProfileData();
 
-        toastr.success(response.message, '', {
-            timeOut: 3000
+        toastr.success(response.message, "", {
+            timeOut: 3000,
         });
 
-        $('.modal').modal('hide');
-
+        $(".modal").modal("hide");
     } else {
-
         // CALLING OUR FUNTION ERROR & SUCCESS HANDLING
-        toastr.error(error, '', {
-            timeOut: 3000
+        toastr.error(error, "", {
+            timeOut: 3000,
         });
     }
-
 }
 
 function avaliableAppointmentDate(status) {
-
     var availableDate = localStorage.getItem(SELECTEDSTATUSDATE);
-    let type = 'POST';
-    let url = '/saveAvaibleDate';
-    let message = '';
-    let form = '';
+    let type = "POST";
+    let url = "/saveAvaibleDate";
+    let message = "";
+    let form = "";
     let data = JSON.stringify({
         Status: status,
         IsActive: "1",
-        availableDays: availableDate
+        availableDays: availableDate,
     });
 
     // PASSING DATA TO FUNCTION
-    SendAjaxRequestToServer(type, url, data, '', saveAvaibleDate, 'spinner_button', 'submit_button');
-
-
-
+    SendAjaxRequestToServer(
+        type,
+        url,
+        data,
+        "",
+        saveAvaibleDate,
+        "spinner_button",
+        "submit_button"
+    );
 }
 function saveAvaibleDate(response) {
-
     // SHOWING MESSAGE ACCORDING TO RESPONSE
-    if (response.status == 200 || response.status == '200') {
+    if (response.status == 200 || response.status == "200") {
         var availableDate = localStorage.getItem(SELECTEDSTATUSDATE);
-        toastr.success(response.message, '', {
-            timeOut: 3000
+        toastr.success(response.message, "", {
+            timeOut: 3000,
         });
 
         if (response.data == "Available") {
             $("#p_status").text("Available");
             $(".appointment-status").show();
-            $("#calendar").fullCalendar('refetchEvents');
+            $("#calendar").fullCalendar("refetchEvents");
             $(".cancel").removeClass("customBtnNotSelected");
             $(".available").addClass("customBtnNotSelected");
             $(".off").addClass("customBtnNotSelected");
             $(".on-call").addClass("customBtnNotSelected");
-            $(".avaliable-modal").modal('show');
-
+            $(".avaliable-modal").modal("show");
         } else if (response.data == "Off") {
-            console.log(response.data);
             $("#p_status").text("Off");
             $(".appointment-status").show();
-            $("#calendar").fullCalendar('refetchEvents');
+            $("#calendar").fullCalendar("refetchEvents");
             $(".cancel").removeClass("customBtnNotSelected");
             $(".available").addClass("customBtnNotSelected");
             $(".off").addClass("customBtnNotSelected");
             $(".on-call").addClass("customBtnNotSelected");
-            $(".avaliable-modal").modal('show');
-
+            $(".avaliable-modal").modal("show");
         } else if (response.data == "On Call") {
             $("#p_status").text("On Call");
             $(".appointment-status").show();
-            $("#calendar").fullCalendar('refetchEvents');
+            $("#calendar").fullCalendar("refetchEvents");
             $(".cancel").removeClass("customBtnNotSelected");
             $(".available").addClass("customBtnNotSelected");
             $(".off").addClass("customBtnNotSelected");
             $(".on-call").addClass("customBtnNotSelected");
-            $(".avaliable-modal").modal('show');
-
+            $(".avaliable-modal").modal("show");
         } else if (response.data == "Cancel") {
-            $("#calendar").fullCalendar('refetchEvents');
+            $("#calendar").fullCalendar("refetchEvents");
             $(".appointment-status").hide();
             $(".cancel").addClass("customBtnNotSelected");
             $(".available").removeClass("customBtnNotSelected");
             $(".off").removeClass("customBtnNotSelected");
 
             if (availableDate === onCall) {
-
                 // if (currentHour > 18) {
                 $(".on-call").removeClass("customBtnNotSelected");
                 // }
-
             }
         }
-
     } else {
-
         // CALLING OUR FUNCTION ERROR & SUCCESS HANDLING
-        toastr.error(error, '', {
-            timeOut: 3000
+        toastr.error(error, "", {
+            timeOut: 3000,
         });
     }
-
 }
 
 function changeSlotDate(id, start_time, end_time) {
     alert(id);
-    $('#slot_id').val(id);
-    $('#start_time').val(start_time);
-    $('#end_time').val(end_time);
-    $('#add-slots').html('Book');
+    $("#slot_id").val(id);
+    $("#start_time").val(start_time);
+    $("#end_time").val(end_time);
+    $("#add-slots").html("Book");
 
     // $('.slots-modal').modal('show');
-
 }
 function convertTo12HourFormat(time24) {
     // Split the time string into hours and minutes
-    const [hours, minutes] = time24.split(':');
+    const [hours, minutes] = time24.split(":");
 
     // Determine if it's AM or PM
-    const period = hours >= 12 ? 'PM' : 'AM';
+    const period = hours >= 12 ? "PM" : "AM";
 
     // Convert hours to 12-hour format
     const hours12 = hours % 12 || 12;
@@ -766,268 +880,345 @@ function convertTo12HourFormat(time24) {
 
     return time12;
 }
-function selectSlot(id, start_time, end_time, date) {
 
-    var starttimeAMPM = convertTo12HourFormat(start_time);
-    var endtimeAMPM = convertTo12HourFormat(end_time);
-    $('#slot_book_id').val(id);
-    $('#book_date').val(date);
-
-    $('#book_slot_start').html(starttimeAMPM);
-    $('#book_slot_end').html(endtimeAMPM);
-    $('#book_slot_date').html(date);
-    $('#book-slots').html('Book');
+function convertMinutesToHoursAndMinutes(minutes) {
+    const hours = Math.floor(minutes / 60);
+    const remainingMinutes = minutes % 60;
+    return (time12 = `${hours}:${remainingMinutes}`);
 }
 
-$(document).on('click', '.select_option', function (e) {
+function selectSlot(id, start_time, end_time, date) {
+    var starttimeAMPM = convertTo12HourFormat(start_time);
 
+    if (end_time == "null" || end_time == null) {
+        var startTime = start_time.split(":");
+        var startTimeInMinutes =
+            Number(startTime[0]) * 60 + Number(startTime[1]);
+        var endTime = convertMinutesToHoursAndMinutes(
+            cartServicesTime + startTimeInMinutes
+        );
+        var endtimeAMPM = convertTo12HourFormat(endTime);
+    } else {
+        var endtimeAMPM = convertTo12HourFormat(end_time);
+    }
+
+    $("#slot_book_id").val(id);
+    $("#book_date").val(date);
+
+    $("#book_slot_start").html(starttimeAMPM);
+    $("#book_slot_end").html(endtimeAMPM);
+
+    $("#book_slot_date").html(date);
+    $("#book-slots").html("Book");
+}
+
+$(document).on("click", ".select_option", function (e) {
     e.preventDefault();
-    $('.select_option').removeClass('time_active')
-    $(this).addClass('time_active')
+    $(".select_option").removeClass("time_active");
+    $(this).addClass("time_active");
     $(".book-appointment").removeClass("defaultStatus");
-
-
 });
 
-$(document).on('click', '.book-appointment', function (e) {
-
+$(document).on("click", ".book-appointment", function (e) {
     e.preventDefault();
-    $('.slots-modal').modal('show');
-
+    $(".slots-modal").modal("show");
 });
-$(document).on('click', '#book-slots', function (e) {
-
+$(document).on("click", "#book-slots", function (e) {
     e.preventDefault();
-    let type = 'POST';
-    let url = '/bookSlots';
-    let message = '';
-    let form = $('#book_slots_form');
+    let type = "POST";
+    let url = "/bookSlots";
+    let message = "";
+    let form = $("#book_slots_form");
     let data = new FormData(form[0]);
     //    console.log(data);
 
     // PASSING DATA TO FUNCTION
-    SendAjaxRequestToServer(type, url, data, '', bookSlotsResponse, 'spinner_button', 'submit_button');
+    SendAjaxRequestToServer(
+        type,
+        url,
+        data,
+        "",
+        bookSlotsResponse,
+        "spinner_button",
+        "submit_button"
+    );
 });
 
 function bookSlotsResponse(response) {
-
     // SHOWING MESSAGE ACCORDING TO RESPONSE
-    if (response.status == 200 || response.status == '200') {
+    if (response.status == 200 || response.status == "200") {
+        var bookings = response.data;
+        var slots = bookings["booking_time_slots"];
+        var status = bookings["status"];
+        var changeSlot = "";
+        var html = "";
+        $(".timeSlots").empty();
 
-    	var bookings = response.data;
-    	var slots = bookings['booking_time_slots'];
-    	var status = bookings["status"];
-    	var changeSlot = '';
-    	var html = '';
-    	$(".timeSlots").empty();
-    	
-    	if (status == 'Off') {
-    		changeSlot = 'customBtnNotSelected';
-    		$(".book-appointment").removeClass("defaultStatus");
-    		$(".off").addClass("defaultStatus");
-    	} else {
-    		$(".book-appointment").addClass("defaultStatus");
+        if (status == "Off") {
+            changeSlot = "customBtnNotSelected";
+            $(".book-appointment").removeClass("defaultStatus");
+            $(".off").addClass("defaultStatus");
+        } else {
+            $(".book-appointment").addClass("defaultStatus");
             $(".off").removeClass("defaultStatus");
-    	}
-    	
-    	if (slots != '') {
-    		
-    		$.each(slots, function (j) {
+        }
 
-            	var starttimeAMPM = convertTo12HourFormat(slots[j]['start_time']);
-            	if (slots[j]['end_time'] != null) {
-            		var endtimeAMPM = convertTo12HourFormat(slots[j]['end_time']);
-            	} else {
-            		var endtimeAMPM = '';
-            	}
-            	var slots_time = slots[j]['slots_time'];
-            	var status1 = slots[j]['status'];
+        if (slots != "") {
+            $.each(slots, function (j) {
+                var starttimeAMPM = convertTo12HourFormat(
+                    slots[j]["start_time"]
+                );
+                if (slots[j]["end_time"] != null) {
+                    var endtimeAMPM = convertTo12HourFormat(
+                        slots[j]["end_time"]
+                    );
+                } else {
+                    var endtimeAMPM = "";
+                }
+                var slots_time = slots[j]["slots_time"];
+                var status1 = slots[j]["status"];
 
-            	if (status1 == 'booked') {
-            		html += `<div title="" class="` + changeSlot + ` option col-md-2 mr-2 ${status1}" onclick = '' disabled><del>` + starttimeAMPM + ` - ` + endtimeAMPM + `</del></div>`;
-            	} else {
-            		if (slots_time == 'After_Nine') {
-            			html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` + slots[j]['id'] + `,'` + slots[j]['start_time'] + `','` + slots[j]['end_time'] + `','` + bookings["date"] + `')>After 9</div>`;//` + starttimeAMPM + ` - 
-            		} else {
-            			html += `<div title="Edit Slot" class="` + changeSlot + ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` + slots[j]['id'] + `,'` + slots[j]['start_time'] + `','` + slots[j]['end_time'] + `','` + bookings["date"] + `')>` + starttimeAMPM + ` - ` + endtimeAMPM + `</div>`;
-            		}
-            	}
-            	// count++
+                if (status1 == "booked") {
+                    html +=
+                        `<div title="" class="` +
+                        changeSlot +
+                        ` option col-md-2 mr-2 ${status1}" onclick = '' disabled><del>` +
+                        starttimeAMPM +
+                        ` - ` +
+                        endtimeAMPM +
+                        `</del></div>`;
+                } else {
+                    if (slots_time == "After_Nine") {
+                        html +=
+                            `<div title="Edit Slot" class="` +
+                            changeSlot +
+                            ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` +
+                            slots[j]["id"] +
+                            `,'` +
+                            slots[j]["start_time"] +
+                            `','` +
+                            slots[j]["end_time"] +
+                            `','` +
+                            bookings["date"] +
+                            `')>After 9</div>`; //` + starttimeAMPM + ` -
+                    } else {
+                        html +=
+                            `<div title="Edit Slot" class="` +
+                            changeSlot +
+                            ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` +
+                            slots[j]["id"] +
+                            `,'` +
+                            slots[j]["start_time"] +
+                            `','` +
+                            slots[j]["end_time"] +
+                            `','` +
+                            bookings["date"] +
+                            `')>` +
+                            starttimeAMPM +
+                            ` - ` +
+                            endtimeAMPM +
+                            `</div>`;
+                    }
+                }
+                // count++
             });
-    		changeSlot = '';
-    	}
-    	
-    	if (status != 'Off') {
+            changeSlot = "";
+        }
+
+        if (status != "Off") {
             $(".timeSlots").html(html);
         } else {
             $(".timeSlots").empty();
         }
         $("#p_status").text(bookings["status"]);
         $("[data-date=" + bookings["date"] + "]").css("color", "#ffdb59");
-    	
+
         const cartServicesTime = 0;
-        
-        if (user == 'client' && cartServicesTime > 0 && localStorage.getItem('bookType') == 'cart_book') {
+
+        if (
+            user == "client" &&
+            cartServicesTime > 0 &&
+            localStorage.getItem("bookType") == "cart_book"
+        ) {
             $(".servicesTimeText").show();
             $("#serviceTime").text(cartServicesTime);
-            $("#travellingTime").text('0');
+            $("#travellingTime").text("0");
             $("#serviceTotalTime").text(cartServicesTime);
         } else {
             $(".servicesTimeText").hide();
-            $("#serviceTime").text('0');
-            $("#travellingTime").text('0');
-            $("#serviceTotalTime").text('0');
+            $("#serviceTime").text("0");
+            $("#travellingTime").text("0");
+            $("#serviceTotalTime").text("0");
         }
-        
-        toastr.success(response.message, '', {
-            timeOut: 3000
+
+        toastr.success(response.message, "", {
+            timeOut: 3000,
         });
-        
-//        $("#calendar").fullCalendar('refetchEvents');
 
-//        setTimeout(function () {
-//            location.reload();  //Refresh page
-//        }, 1000);
+        //        $("#calendar").fullCalendar('refetchEvents');
 
-        $('.slots-modal').modal('hide');
+        //        setTimeout(function () {
+        //            location.reload();  //Refresh page
+        //        }, 1000);
 
+        $(".slots-modal").modal("hide");
     } else {
-        toastr.error(response.message, '', {
-            timeOut: 3000
+        toastr.error(response.message, "", {
+            timeOut: 3000,
         });
-        $('.slots-modal').modal('hide');
+        $(".slots-modal").modal("hide");
 
-        if (response.status == 404 || response.status == '404') {
-            $('#tokens_modal').modal('show');
+        if (response.status == 404 || response.status == "404") {
+            $("#tokens_modal").modal("show");
         }
-
     }
 }
 
 function useOwnerToken() {
-
-    let type = 'GET';
-    let url = '/useOwnerTokens';
-    let message = '';
+    let type = "GET";
+    let url = "/useOwnerTokens";
+    let message = "";
     //    let form = $('#form');
-    let data = 'freelancerId=' + userId;//new FormData(form[0]);
+    let data = "freelancerId=" + userId; //new FormData(form[0]);
 
     // PASSING DATA TO FUNCTION
-    SendAjaxRequestToServer(type, url, data, '', useOwnerTokensResponse, 'spinner_button', 'submit_button');
+    SendAjaxRequestToServer(
+        type,
+        url,
+        data,
+        "",
+        useOwnerTokensResponse,
+        "spinner_button",
+        "submit_button"
+    );
 }
 
 function useOwnerTokensResponse(response) {
-
-    if (response.status == 200 || response.status == '200') {
-
-        toastr.success(response.message, '', {
-            timeOut: 3000
+    if (response.status == 200 || response.status == "200") {
+        toastr.success(response.message, "", {
+            timeOut: 3000,
         });
-
     } else {
-
-        if (response.status == 400 || response.status == '400') {
-            $('#tokens_modal').modal('show');
+        if (response.status == 400 || response.status == "400") {
+            $("#tokens_modal").modal("show");
         }
-        toastr.error(response.message, '', {
-            timeOut: 3000
+        toastr.error(response.message, "", {
+            timeOut: 3000,
         });
-
     }
 }
 
-function submitReview(){
-	$('#feedbackType').val('review');
-	submitFeedback();
+function submitReview() {
+    $("#feedbackType").val("review");
+    submitFeedback();
 }
-function submitLike(){
-	$('#feedbackType').val('like');
-	submitFeedback();
+function submitLike() {
+    $("#feedbackType").val("like");
+    submitFeedback();
 }
 function submitFeedback() {
-
-	$('#reviewFreelancerId').val(userId);
-    let type = 'POST';
-    let url = '/submitFeedbackOwner';
-    let message = '';
-    let form = $('#reviewForm');
+    $("#reviewFreelancerId").val(userId);
+    let type = "POST";
+    let url = "/submitFeedbackOwner";
+    let message = "";
+    let form = $("#reviewForm");
     let data = new FormData(form[0]);
 
     // PASSING DATA TO FUNCTION
-    SendAjaxRequestToServer(type, url, data, '', submitFeedbackResponse, 'spinner_button', 'submit_button');
+    SendAjaxRequestToServer(
+        type,
+        url,
+        data,
+        "",
+        submitFeedbackResponse,
+        "spinner_button",
+        "submit_button"
+    );
 }
 
 function submitFeedbackResponse(response) {
-
-    if (response.status == 200 || response.status == '200') {
-
-    	$("#ownerRemarks").val('');
-    	loadFeedbackResponse(response);
-        toastr.success(response.message, '', {
-            timeOut: 3000
+    if (response.status == 200 || response.status == "200") {
+        $("#ownerRemarks").val("");
+        loadFeedbackResponse(response);
+        toastr.success(response.message, "", {
+            timeOut: 3000,
         });
-
     } else {
-
-        toastr.error(response.message, '', {
-            timeOut: 3000
+        toastr.error(response.message, "", {
+            timeOut: 3000,
         });
     }
 }
 
 function loadFeedback() {
-
-    let type = 'GET';
-    let url = '/loadFeedbackFreelancer';
-    let message = '';
-//    let form = $('#reviewForm');
-    let data = 'freelancerId=' + userId;//new FormData(form[0]);
+    let type = "GET";
+    let url = "/loadFeedbackFreelancer";
+    let message = "";
+    //    let form = $('#reviewForm');
+    let data = "freelancerId=" + userId; //new FormData(form[0]);
 
     // PASSING DATA TO FUNCTION
-    SendAjaxRequestToServer(type, url, data, '', loadFeedbackResponse, 'spinner_button', 'submit_button');
+    SendAjaxRequestToServer(
+        type,
+        url,
+        data,
+        "",
+        loadFeedbackResponse,
+        "spinner_button",
+        "submit_button"
+    );
 }
 
 function loadFeedbackResponse(response) {
+    if (response.status == 200 || response.status == "200") {
+        var feedback = response.data;
+        var reviewshtml = "";
+        var likeshtml = "";
 
-    if (response.status == 200 || response.status == '200') {
+        $("#freelancerReviewsHtml, #freelancerLikesHtml").empty();
 
-    	var feedback = response.data;
-    	var reviewshtml = '';
-    	var likeshtml = '';
-    	
-    	$("#freelancerReviewsHtml, #freelancerLikesHtml").empty();
-    	
-    	if(feedback.length > 0  ) {
+        if (feedback.length > 0) {
             // console.log(response);
-            $.each(feedback, function(i) {
-              if(feedback[i]['remarks'] != "") {
-            	  if(feedback[i]['feedback_type'] == 'review'){
-            		  
-            		  reviewshtml += '<div>' +
-						                  '<h5 class="color-1">' + feedback[i]['user']['name'] + ' ' + feedback[i]['user']['surname'] + '</h5>' + 
-						                  '<p class="mt-2">'+feedback[i]['remarks']+'</p>'+
-						             '</div>';
-            	  }else{
-            		  likeshtml += '<div>' +
-						                  '<h5 class="color-1">' + feedback[i]['user']['name'] + '</h5>' + 
-						                  '<p class="mt-2">'+feedback[i]['remarks']+'</p>'+
-						             '</div>';
-            	  }
-              }
+            $.each(feedback, function (i) {
+                if (feedback[i]["remarks"] != "") {
+                    if (feedback[i]["feedback_type"] == "review") {
+                        reviewshtml +=
+                            "<div>" +
+                            '<h5 class="color-1">' +
+                            feedback[i]["user"]["name"] +
+                            " " +
+                            feedback[i]["user"]["surname"] +
+                            "</h5>" +
+                            '<p class="mt-2">' +
+                            feedback[i]["remarks"] +
+                            "</p>" +
+                            "</div>";
+                    } else {
+                        likeshtml +=
+                            "<div>" +
+                            '<h5 class="color-1">' +
+                            feedback[i]["user"]["name"] +
+                            "</h5>" +
+                            '<p class="mt-2">' +
+                            feedback[i]["remarks"] +
+                            "</p>" +
+                            "</div>";
+                    }
+                }
             });
-            $("#freelancerReviewsHtml").append(reviewshtml != '' ? reviewshtml : '<div>No Reviews Yet!</div>');
-            $("#freelancerLikesHtml").append(likeshtml != '' ? likeshtml : '<div>No Likes Yet!</div>');
-            
-          } else {
-        	  
-            $("#freelancerReviewsHtml").append('<div>No Reviews Yet!</div>');
-            $("#freelancerLikesHtml").append('<div>No Reviews Yet!</div>');
-          }
-
+            $("#freelancerReviewsHtml").append(
+                reviewshtml != "" ? reviewshtml : "<div>No Reviews Yet!</div>"
+            );
+            $("#freelancerLikesHtml").append(
+                likeshtml != "" ? likeshtml : "<div>No Likes Yet!</div>"
+            );
+        } else {
+            $("#freelancerReviewsHtml").append("<div>No Reviews Yet!</div>");
+            $("#freelancerLikesHtml").append("<div>No Reviews Yet!</div>");
+        }
     } else {
-
-        toastr.error(response.message, '', {
-            timeOut: 3000
+        toastr.error(response.message, "", {
+            timeOut: 3000,
         });
     }
 }
