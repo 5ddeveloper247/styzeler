@@ -81,6 +81,8 @@
 		-webkit-box-direction: normal;
 		-ms-flex-direction: column;
 		flex-direction: column;
+		margin: 2rem 0;
+
 	}
 	#contact .btn_list {
 		margin-left: 0;

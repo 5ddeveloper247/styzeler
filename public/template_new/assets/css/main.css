@@ -1404,9 +1404,9 @@ footer .num {
 #contact .contact_for {
 	display: -webkit-box;
 	display: -ms-flexbox;
-	display: flex;
+	/* display: flex; */
 	color: #b1bcc5;
-	margin: 10rem 0;
+	margin: 5rem 0;
 }
 
 #contact .contact_for h3 {

@@ -29,8 +29,41 @@
                     knowledge and experience to benefit each other to succeed</p>
             </div>
             <div class="contact_for" data-aos="fade-up" data-aos-duration="1000">
+
+				{{-- Code Start By Muhammad Umer --}}
+                <div class="contact_for aos-init aos-animate">
+					<h3>Contact Styzeler for: </h3>
+					<ul class="btn_list">
+						<li>
+							<a href="{{route('candidate')}}" class="shadow_btn">Candidate 
+								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+							</a>
+						</li>
+						<li>
+							<a href="/candidate?candidate=freelancer" class="shadow_btn">Freelancing 
+								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+							</a>
+						</li>
+						<li>
+							<a href="{{route('rentAndLet')}}" class="shadow_btn">Rent &amp; Let 
+								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+							</a>
+						</li>
+						<li>
+							<a href="/candidate?candidate=jobseeker" class="shadow_btn">Job Seecker 
+								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+							</a>
+						</li>
+						<li>
+							<a href="{{route('news')}}" class="shadow_btn">News 
+								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+							</a>
+						</li>
+					</ul>
+				</div>
+				{{-- Code End By Muhammad Umer --}}
                 
-                <div class="row">
+                {{-- <div class="row">
                 	<div class="col-sm-3 col-12"><h3>Contact Styzeler for:</h3></div>
 	               	<div class="col-sm-3 col-6 mb-5">
 	                	<ul class="btn_list">
@@ -104,9 +137,7 @@
 		                    </li>
 	                	</ul>
 	                </div>
-	                
-	                
-	           	</div>
+	           	</div> --}}
             </div>
             
             
