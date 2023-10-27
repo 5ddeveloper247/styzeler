@@ -1848,4 +1848,12 @@ button[type="submit"]:disabled {
     left: -116px;
 }
 
+/******* CSS Start: Muhammad Umer *******/
+@media (max-width: 768px) {
+    /* Your mobile-specific CSS styles go here */
+    #showTokens_modal{
+        top: 40%;
+    }
+}
+/******* Code End: Muhammad Umer *******/
 /* Links inside the dropdown */
