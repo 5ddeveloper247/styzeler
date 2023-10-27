@@ -1049,8 +1049,8 @@ class ProfileController extends Controller
 
     public function cancelAppointment(Request $request)
     {
-
         $appId =  $request->app_id;
+        $cancel_time = $request->cancel_time;
 
         $getAppointmentData = Appointments::where('id', $appId)->first();
         // dd($getAppointmentData);
@@ -1071,14 +1071,24 @@ class ProfileController extends Controller
         }
 
         $getAppointmentDataArray = explode(',', $getAppointmentData->booking_slots_id);
-
-        BookingSlots::whereIn('id', $getAppointmentDataArray)
-            ->update(
+        // dd($request->all());
+        $bookinkSlots = BookingSlots::whereIn('id', $getAppointmentDataArray);
+        if ($cancel_time == '21') {
+            $bookinkSlots = $bookinkSlots->update(
                 [
                     "status" => "Available",
                     'slots_time' => 'After_Nine'
                 ]
             );
+        } else {
+            $bookinkSlots = $bookinkSlots->update(
+                [
+                    "status" => "Available",
+                ]
+            );
+        }
+
+
 
         $clientUser = User::where('id', $getAppointmentData->booking_user_id)->first();
         $freelancerUser = User::where('id', $getAppointmentData->freelancer_user_id)->first();
