@@ -7,7 +7,8 @@
         }
 
         #services .text_list .txt_wrap form .input_box {
-            height: 3rem;
+            height: 4rem;
+            gap: 7px !important;
         }
 
         .shadow_btn {
@@ -44,6 +45,13 @@
             font-size: 18px;
             transition-duration: 0.3s;
             cursor: pointer;
+        }
+        .outer-width{
+            width: auto!important;
+        }
+        .cart_icon {
+            border: 1px solid #fdd431;
+            border-radius: 50%;
         }
     </style>
 @endpush
@@ -101,21 +109,21 @@
                                     <form action="" method="post" id="inner_form">
                                         <div class="form_inner">
                                             <div class="row">
-                                                <div id="top_1" class="col-md-3 mb-4">
+                                                <div id="top_1" class="col-md-3 mb-4 outer-width">
                                                     <div class="input_box_wrap">
-                                                        <p class="input_box add_to_cart" data-time="" data-price=""
+                                                        <p class="input_box add_to_cart d-flex" data-time="" data-price=""
                                                             data-type="" data-subtype="" data-service=""></p>
                                                     </div>
                                                 </div>
-                                                <div id="top_2" class="col-md-3 mb-4">
+                                                <div id="top_2" class="col-md-3 mb-4 outer-width">
                                                     <div class="input_box_wrap">
-                                                        <p class="input_box add_to_cart" data-time="" data-price=""
+                                                        <p class="input_box add_to_cart d-flex" data-time="" data-price=""
                                                             data-type="" data-subtype="" data-service=""></p>
                                                     </div>
                                                 </div>
-                                                <div id="top_3" class="col-md-3 mb-4">
+                                                <div id="top_3" class="col-md-3 mb-4 outer-width">
                                                     <div class="input_box_wrap">
-                                                        <p class="input_box add_to_cart" data-time="" data-price=""
+                                                        <p class="input_box add_to_cart d-flex" data-time="" data-price=""
                                                             data-type="" data-subtype="" data-service=""></p>
                                                     </div>
                                                 </div>
@@ -299,7 +307,7 @@
 
             if (i == 'Makeup_Blowdry') {
                 $("#top_1").show();
-                $("#top_1 p").html('90 mints  &pound;100').attr('data-time', '90').attr('data-price', '100').attr(
+                $("#top_1 p").html('<span class="my-auto">90 mints  &pound;100</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '100').attr(
                     'data-service', 'Blow-Dry & Make-Up').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -310,7 +318,7 @@
 
             if (i == 'Make_up_Up_do') {
                 $("#top_1").show();
-                $("#top_1 p").html('80 mints  &pound;90').attr('data-time', '80').attr('data-price', '90').attr(
+                $("#top_1 p").html('<span class="my-auto">80 mints  &pound;90</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '80').attr('data-price', '90').attr(
                     'data-service', 'Up-Do & Make-Up').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -320,7 +328,7 @@
 
             if (i == 'Make_up') {
                 $("#top_1").show();
-                $("#top_1 p").html('60 mints  &pound;50').attr('data-time', '60').attr('data-price', '50').attr(
+                $("#top_1 p").html('<span class="my-auto">60 mints  &pound;50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '50').attr(
                     'data-service', 'Make-up').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -332,7 +340,7 @@
             if (i == 'Bridal_Make_up') {
                 $("#top_1").show();
                 $("#top_2,#top_3").hide();
-                $("#top_1 p").html('service &pound;20').attr('data-time', '').attr('data-price', '20').attr(
+                $("#top_1 p").html('<span class="my-auto">service &pound;20</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '').attr('data-price', '20').attr(
                     'data-service', 'Bridal Make-Up').attr('data-subtype', subtype);
                 $("#description").text('the bridal makeup needs to be linked with the bridal page');
             }

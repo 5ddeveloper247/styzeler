@@ -2646,7 +2646,7 @@ footer .num {
 #services .text_list .txt_wrap form .input_box {
 	background: #141010;
 	display: block;
-	width: 100%;
+	width: max-content;
 	height: 5rem;
 	border: 0;
 	padding: 0.6rem 1.2rem;
