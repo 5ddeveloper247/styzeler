@@ -703,6 +703,21 @@ footer .num {
     color: #93948b;
 }
 
+footer .icon-container {
+	justify-content: space-between;
+}
+@media screen and (min-width: 768px) {
+	/* desktop/ tablets-specific style*/
+	footer .social-media{ 
+		gap: 25px;
+	}
+}
+@media screen and (max-width: 767px) {
+	/* mobile-specific style*/
+	footer .social-media{ 
+		gap: 15px;
+	}
+}
 .contain {
     max-width: 130rem;
     padding: 0 2rem;
