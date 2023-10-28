@@ -131,18 +131,30 @@
                                     Register<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                                 </button>
                                 <ul class="sub_list">
-                                    <li><a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}"
-                                            class="shadow_btn">Freelancer</a>
+                                    <li>
+                                        <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}"
+                                            class="shadow_btn">Freelancer
+                                        </a>
                                     </li>
-                                    <li><a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}"
-                                            class="shadow_btn">Client</a></li>
+                                    <li>
+                                        <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}"
+                                            class="shadow_btn">Client
+                                        </a>
+                                    </li>
                                 </ul>
                             </li>
+                            @if(Auth::user())
+                                <li>
+                                    <a href="#booking" class="shadow_btn"> Book
+                                        <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                                    </a>
+                                </li>
+                            @endif
                             <li>
-                                <a href="#booking" class="shadow_btn"> {{ @Auth::user() ? 'Book' : 'Price List' }}
+                                <a href="#booking" class="shadow_btn">Price List
                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                                 </a>
-                            </li>
+                            </li>    
                         </ul>
                     </div>
                     <div class="img">

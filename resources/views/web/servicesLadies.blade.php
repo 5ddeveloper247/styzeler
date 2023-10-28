@@ -201,12 +201,13 @@
                                                     <div class="row">
                                                         <div id="top_1" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <p class="input_box"></p>
+                                                                <p class="input_box my-auto"></p>
                                                                 <span class="add_to_cart p-3" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
                                                                     data-service="">
-                                                                    <i class="fas fa-plus my-1"
-                                                                        style="color: #9f866d;cursor:pointer;"></i>
+                                                                    <img src={{ asset('template_new/assets/images/cart-round.png') }} alt="" style="width:28px;">
+                                                                    {{-- <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i> --}}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -216,12 +217,13 @@
                                                     <div class="row">
                                                         <div id="top_2" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <p class="input_box"></p>
+                                                                <p class="input_box my-auto"></p>
                                                                 <span class="add_to_cart p-4" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
                                                                     data-service="">
-                                                                    <i class="fas fa-plus my-1"
-                                                                        style="color: #9f866d;cursor:pointer;"></i>
+                                                                    <img src={{ asset('template_new/assets/images/cart-round.png') }} alt="" style="width:28px;">
+                                                                    {{-- <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i> --}}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -231,12 +233,14 @@
                                                     <div class="row">
                                                         <div id="top_3" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <p class="input_box"></p>
+                                                                <p class="input_box my-auto"></p>
                                                                 <span class="add_to_cart p-4" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
                                                                     data-service="">
-                                                                    <i class="fas fa-plus my-1"
-                                                                        style="color: #9f866d;cursor:pointer;"></i>
+                                                                    <img src={{ asset('template_new/assets/images/cart-round.png') }} alt="" style="width:28px;">
+
+                                                                    {{-- <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i> --}}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -246,12 +250,13 @@
                                                     <div class="row">
                                                         <div id="top_4" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <p class="input_box"></p>
+                                                                <p class="input_box my-auto"></p>
                                                                 <span class="add_to_cart p-4" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
                                                                     data-service="">
-                                                                    <i class="fas fa-plus my-1"
-                                                                        style="color: #9f866d;cursor:pointer;"></i>
+                                                                    <img src={{ asset('template_new/assets/images/cart-round.png') }} alt="" style="width:28px;">
+                                                                    {{-- <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i> --}}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -261,13 +266,14 @@
                                                     <div class="row">
                                                         <div id="top_5" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <p class="input_box"></p>
+                                                                <p class="input_box my-auto"></p>
                                                                 <span class="add_to_cart p-4" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
                                                                     data-service="">
-                                                                    <i class="fas fa-plus my-1"
+                                                                    <img src={{ asset('template_new/assets/images/cart-round.png') }} alt="" style="width:28px;">
+                                                                    {{-- <i class="fas fa-plus my-1"
                                                                         style="color: #9f866d;cursor:pointer;"></i>
-                                                                </span>
+ --}}                                                                </span>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -276,12 +282,13 @@
                                                     <div class="row">
                                                         <div id="top_6" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <p class="input_box"></p>
+                                                                <p class="input_box my-auto"></p>
                                                                 <span class="add_to_cart p-4" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
                                                                     data-service="">
-                                                                    <i class="fas fa-plus my-1"
-                                                                        style="color: #9f866d;cursor:pointer;"></i>
+                                                                    <img src={{ asset('template_new/assets/images/cart-round.png') }} alt="" style="width:28px;">
+                                                                    {{-- <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i> --}}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -291,12 +298,13 @@
                                                     <div class="row">
                                                         <div id="top_7" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <p class="input_box"></p>
+                                                                <p class="input_box my-auto"></p>
                                                                 <span class="add_to_cart p-4" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
                                                                     data-service="">
-                                                                    <i class="fas fa-plus my-1"
-                                                                        style="color: #9f866d;cursor:pointer;"></i>
+                                                                    <img src={{ asset('template_new/assets/images/cart-round.png') }} alt="" style="width:28px;">
+                                                                    {{-- <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i> --}}
                                                                 </span>
                                                             </div>
                                                         </div>
@@ -306,12 +314,13 @@
                                                     <div class="row">
                                                         <div id="top_8" class="col-md-8 mb-4">
                                                             <div class="input_box_wrap d-flex">
-                                                                <p class="input_box"></p>
+                                                                <p class="input_box my-auto"></p>
                                                                 <span class="add_to_cart p-4" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
                                                                     data-service="">
-                                                                    <i class="fas fa-plus my-1"
-                                                                        style="color: #9f866d;cursor:pointer;"></i>
+                                                                    <img src={{ asset('template_new/assets/images/cart-round.png') }} alt="" style="width:28px;">
+                                                                    {{-- <i class="fas fa-plus my-1"
+                                                                        style="color: #9f866d;cursor:pointer;"></i> --}}
                                                                 </span>
                                                             </div>
                                                         </div>

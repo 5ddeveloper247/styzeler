@@ -7,7 +7,8 @@
         }
 
         #services .text_list .txt_wrap form .input_box {
-            height: 3rem;
+            height: 4rem;
+            gap: 7px !important;
         }
 
         .input_box {
@@ -40,6 +41,13 @@
             font-size: 18px;
             transition-duration: 0.3s;
             cursor: pointer;
+        }
+        .outer-width{
+            width: auto!important;
+        }
+        .cart_icon {
+            border: 1px solid #fdd431;
+            border-radius: 50%;
         }
     </style>
 @endpush
@@ -218,9 +226,9 @@
 
                                                 <div class="col-10">
                                                     <div class="row">
-                                                        <div id="top_1" class="col-md-4 mb-4">
+                                                        <div id="top_1" class="col-md-4 mb-4 outer-width">
                                                             <div class="input_box_wrap">
-                                                                <p class="input_box add_to_cart" data-time=""
+                                                                <p class="input_box add_to_cart d-flex" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
                                                                     data-service="" title="Click to add in cart"></p>
                                                             </div>
@@ -363,7 +371,7 @@
 
             if (i == 'upperLip') {
                 $("#top_1").show();
-                $("#top_1 p").html('10 Mints &pound; 8').attr('data-time', '10').attr('data-price', '8').attr(
+                $("#top_1 p").html('<span class="my-auto">10 Mints &pound; 8</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '8').attr(
                     'data-subtype', subtype).attr('data-service', 'Uper Lip');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -373,7 +381,7 @@
 
             if (i == 'FullLip') {
                 $("#top_1").show();
-                $("#top_1 p").html('10 Mints &pound; 8').attr('data-time', '10').attr('data-price', '8').attr(
+                $("#top_1 p").html('<span class="my-auto">10 Mints &pound; 8</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '8').attr(
                     'data-subtype', subtype).attr('data-service', 'Full Lip');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text("Hair is removed above the upper lip and sides of the mouth.");
@@ -381,7 +389,7 @@
 
             if (i == 'Chin') {
                 $("#top_1").show();
-                $("#top_1 p").html('10 Mints &pound; 8').attr('data-time', '10').attr('data-price', '8').attr(
+                $("#top_1 p").html('<span class="my-auto">10 Mints &pound; 8</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '8').attr(
                     'data-subtype', subtype).attr('data-service', 'Chin');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -391,7 +399,7 @@
 
             if (i == 'Neck') {
                 $("#top_1").show();
-                $("#top_1 p").html('10 Mints &pound; 10').attr('data-time', '10').attr('data-price', '10').attr(
+                $("#top_1 p").html('<span class="my-auto">10 Mints &pound; 10</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '10').attr(
                     'data-subtype', subtype).attr('data-service', 'Neck');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -402,7 +410,7 @@
 
             if (i == 'Eye_brows') {
                 $("#top_1").show();
-                $("#top_1 p").html('10 Minuts &pound; 10').attr('data-time', '10').attr('data-price', '10').attr(
+                $("#top_1 p").html('<span class="my-auto">10 Minuts &pound; 10</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '10').attr(
                     'data-subtype', subtype).attr('data-service', 'Eye Brows');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -411,7 +419,7 @@
 
             if (i == 'Full_Arms') {
                 $("#top_1").show();
-                $("#top_1 p").html('30 Minuts &pound; 18').attr('data-time', '30').attr('data-price', '18').attr(
+                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 18</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '18').attr(
                     'data-subtype', subtype).attr('data-service', 'Full Arms');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -421,7 +429,7 @@
 
             if (i == 'Half_Arms') {
                 $("#top_1").show();
-                $("#top_1 p").html('30 Minuts &pound; 12').attr('data-time', '30').attr('data-price', '12').attr(
+                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 12</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '12').attr(
                     'data-subtype', subtype).attr('data-service', 'Forearm');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -432,7 +440,7 @@
 
             if (i == 'Under_Arms') {
                 $("#top_1").show();
-                $("#top_1 p").html('10 Minuts &pound; 12').attr('data-time', '10').attr('data-price', '12').attr(
+                $("#top_1 p").html('<span class="my-auto">10 Minuts &pound; 12</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '12').attr(
                     'data-subtype', subtype).attr('data-service', 'Under Arms');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -442,7 +450,7 @@
 
             if (i == 'Full_Legs') {
                 $("#top_1").show();
-                $("#top_1 p").html('45 Minuts &pound; 40').attr('data-time', '45').attr('data-price', '40').attr(
+                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '40').attr(
                     'data-subtype', subtype).attr('data-service', 'Full Legs');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -452,7 +460,7 @@
 
             if (i == 'Lower_Legs') {
                 $("#top_1").show();
-                $("#top_1 p").html('30 Minuts &pound; 24').attr('data-time', '30').attr('data-price', '24').attr(
+                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '24').attr(
                     'data-subtype', subtype).attr('data-service', 'Lower Legs');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text('Lower leg waxing is everything from just above the knee downwards.');
@@ -460,7 +468,7 @@
 
             if (i == 'Upper_Legs') {
                 $("#top_1").show();
-                $("#top_1 p").html('30 Minuts &pound; 24').attr('data-time', '30').attr('data-price', '24').attr(
+                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '24').attr(
                     'data-subtype', subtype).attr('data-service', 'Upper Legs');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -469,7 +477,7 @@
 
             if (i == 'Bikini') {
                 $("#top_1").show();
-                $("#top_1 p").html('30 Minuts &pound; 16').attr('data-time', '30').attr('data-price', '16').attr(
+                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 16</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '16').attr(
                     'data-subtype', subtype).attr('data-service', 'Bikini');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -479,7 +487,7 @@
 
             if (i == 'French_Bikini') {
                 $("#top_1").show();
-                $("#top_1 p").html('30 Minuts &pound; 24').attr('data-time', '30').attr('data-price', '24').attr(
+                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '24').attr(
                     'data-subtype', subtype).attr('data-service', 'French Bikini');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -489,7 +497,7 @@
 
             if (i == 'Brazilian_Bikini') {
                 $("#top_1").show();
-                $("#top_1 p").html('30 Minuts &pound; 32').attr('data-time', '30').attr('data-price', '32').attr(
+                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 32</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '32').attr(
                     'data-subtype', subtype).attr('data-service', 'Brazilian Bikini');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -499,7 +507,7 @@
 
             if (i == 'Hollywood') {
                 $("#top_1").show();
-                $("#top_1 p").html('45 Minuts &pound; 40').attr('data-time', '45').attr('data-price', '40').attr(
+                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '40').attr(
                     'data-subtype', subtype).attr('data-service', 'Hollywood');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -509,7 +517,7 @@
 
             if (i == 'Full_Back') {
                 $("#top_1").show();
-                $("#top_1 p").html('60 Minuts &pound; 50').attr('data-time', '60').attr('data-price', '50').attr(
+                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '50').attr(
                     'data-subtype', subtype).attr('data-service', 'Full Back');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -519,7 +527,7 @@
 
             if (i == 'Full_legs') {
                 $("#top_1").show();
-                $("#top_1 p").html('60 Minuts &pound; 50').attr('data-time', '60').attr('data-price', '50').attr(
+                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '50').attr(
                     'data-subtype', subtype).attr('data-service', 'Full legs');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -529,7 +537,7 @@
 
             if (i == 'Full_arms') {
                 $("#top_1").show();
-                $("#top_1 p").html('45 Minuts &pound; 40').attr('data-time', '45').attr('data-price', '40').attr(
+                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '40').attr(
                     'data-subtype', subtype).attr('data-service', 'Full arms');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -539,7 +547,7 @@
 
             if (i == 'Shoulders') {
                 $("#top_1").show();
-                $("#top_1 p").html('45 Minuts &pound; 15').attr('data-time', '45').attr('data-price', '15').attr(
+                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 15</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '15').attr(
                     'data-subtype', subtype).attr('data-service', 'Shoulders');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text("Shoulders wax. Does what it says on the tin");
@@ -547,7 +555,7 @@
 
             if (i == 'Chest_abbs') {
                 $("#top_1").show();
-                $("#top_1 p").html('60 Minuts &pound; 50').attr('data-time', '60').attr('data-price', '50').attr(
+                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '50').attr(
                     'data-subtype', subtype).attr('data-service', 'Chest + abbs');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -557,7 +565,7 @@
 
             if (i == 'Speedo_Line') {
                 $("#top_1").show();
-                $("#top_1 p").html('30 Minuts &pound; 25').attr('data-time', '30').attr('data-price', '25').attr(
+                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 25</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '25').attr(
                     'data-subtype', subtype).attr('data-service', 'Speedo Line');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -566,7 +574,7 @@
             }
             if (i == 'Manzilian') {
                 $("#top_1").show();
-                $("#top_1 p").html('45 Minuts &pound; 50').attr('data-time', '45').attr('data-price', '50').attr(
+                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '50').attr(
                     'data-subtype', subtype).attr('data-service', 'Manzilian');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(

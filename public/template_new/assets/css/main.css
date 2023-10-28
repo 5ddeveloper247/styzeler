@@ -349,6 +349,23 @@ footer .num {
     color: #93948b;
 }
 
+/** footer social Media Icons settings **/
+footer .icon-container {
+	justify-content: space-between;
+}
+@media screen and (min-width: 768px) {
+	/* desktop/ tablets-specific style*/
+	footer .social-media{ 
+		gap: 25px;
+	}
+}
+@media screen and (max-width: 767px) {
+	/* mobile-specific style*/
+	footer .social-media{ 
+		gap: 15px;
+	}
+}
+
 /*
 |----------------------------------------------------------------------
 |		Banner
@@ -2643,6 +2660,7 @@ footer .num {
 }
 
 #services .text_list .txt_wrap form .input_box {
+<<<<<<< HEAD
     background: #141010;
     display: block;
     width: 100%;
@@ -2653,6 +2671,18 @@ footer .num {
     color: var(--light);
     position: relative;
     z-index: 1;
+=======
+	background: #141010;
+	display: block;
+	width: max-content;
+	height: 5rem;
+	border: 0;
+	padding: 0.6rem 1.2rem;
+	font-size: 1.6rem;
+	color: var(--light);
+	position: relative;
+	z-index: 1;
+>>>>>>> 681bd749a738b7b486b1f7016dbd6fd08b8758fd
 }
 
 #services .text_list .txt_wrap form .input_box_wrap {
@@ -2779,6 +2809,14 @@ footer .num {
 .show {
     display: block !important;
 }
+/******* CSS Start: Muhammad Umer *******/
+@media (max-width: 768px) {
+    /* Your mobile-specific CSS styles go here */
+    #showTokens_modal{
+        top: 40%;
+    }
+}
+/******* Code End: Muhammad Umer *******/
 
 .reg-dropdown-content a {
     font-size: 15px;

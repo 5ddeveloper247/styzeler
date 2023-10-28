@@ -1273,10 +1273,6 @@ class ProfileController extends Controller
                 }
             ]
         )->first();
-        // with('userBookingSlots')->first();
-        // $update_booking = $appintment->userBookingSlots;
-        // $update_booking->update(['status' => $request->status]);
-        dd($appintment->userBookingSlots->status);
     }
 }
 

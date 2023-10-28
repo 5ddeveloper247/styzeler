@@ -83,7 +83,10 @@
                 border-radius: 4px;
             }
         }
-
+        .cart_icon{
+            width:28px !important;
+            height:28px !important;
+        }
         #toast-container>.toast-success,
         #toast-container>.toast-error,
         #toast-container>.toast-warning,

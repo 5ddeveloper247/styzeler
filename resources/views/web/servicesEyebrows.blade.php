@@ -15,7 +15,8 @@
         }
 
         #services .text_list .txt_wrap form .input_box {
-            height: 3rem;
+            height: 4rem;
+            gap: 7px !important;
             width: 100%;
         }
 
@@ -49,6 +50,13 @@
             font-size: 18px;
             transition-duration: 0.3s;
             cursor: pointer;
+        }
+        .outer-width{
+            width: auto!important;
+        }
+        .cart_icon {
+            border: 1px solid #fdd431;
+            border-radius: 50%;
         }
     </style>
 @endpush
@@ -170,9 +178,9 @@
                                             <div class="row">
                                                 <div class="col-10">
                                                     <div class="row">
-                                                        <div id="top_1" class="col-md-4 mb-4">
+                                                        <div id="top_1" class="col-md-4 mb-4 outer-width">
                                                             <div class="input_box_wrap">
-                                                                <p class="input_box add_to_cart" data-time=""
+                                                                <p class="input_box add_to_cart d-flex" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
                                                                     data-service=""></p>
                                                             </div>
@@ -365,7 +373,7 @@
         function caseCat(i, subtype = '') {
             if (i == 'Brow_Lamination') {
                 $("#top_1").show();
-                $("#top_1 p").html('145 Minuts &pound; 48').attr('data-time', '145').attr('data-price', '48').attr(
+                $("#top_1 p").html('<span class="my-auto">145 Minuts &pound; 48</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '145').attr('data-price', '48').attr(
                     'data-service', 'Brow Lamination').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -375,7 +383,7 @@
 
             if (i == 'Eyebrow_Threading') {
                 $("#top_1").show();
-                $("#top_1 p").html('15 Minuts &pound; 14').attr('data-time', '15').attr('data-price', '14').attr(
+                $("#top_1 p").html('<span class="my-auto">15 Minuts &pound; 14</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '15').attr('data-price', '14').attr(
                     'data-service', 'Eyebrow Threading').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -385,7 +393,7 @@
 
             if (i == 'Eyebrow_Tint') {
                 $("#top_1").show();
-                $("#top_1 p").html('15 Minuts &pound; 10').attr('data-time', '15').attr('data-price', '10').attr(
+                $("#top_1 p").html('<span class="my-auto">15 Minuts &pound; 10</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '15').attr('data-price', '10').attr(
                     'data-service', 'Eyebrow Tint').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -395,7 +403,7 @@
 
             if (i == 'Lash_Lifting') {
                 $("#top_1").show();
-                $("#top_1 p").html('45 Minuts &pound; 50').attr('data-time', '45').attr('data-price', '50').attr(
+                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '50').attr(
                     'data-service', 'Lash Lifting').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -405,7 +413,7 @@
 
             if (i == 'Eyelash_Tint') {
                 $("#top_1").show();
-                $("#top_1 p").html('15 Minuts &pound; 16').attr('data-time', '15').attr('data-price', '16').attr(
+                $("#top_1 p").html('<span class="my-auto">15 Minuts &pound; 16</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '15').attr('data-price', '16').attr(
                     'data-service', 'Eyelash  Tint').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -416,7 +424,7 @@
 
             if (i == 'Eyelash_Extensions') {
                 $("#top_1").show();
-                $("#top_1 p").html('120 Minuts &pound; 90').attr('data-time', '120').attr('data-price', '90').attr(
+                $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 90</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '90').attr(
                     'data-service', 'Eyelash Extensions').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -426,7 +434,7 @@
 
             if (i == 'Ckassic_full') {
                 $("#top_1").show();
-                $("#top_1 p").html('120 Minuts &pound; 90').attr('data-time', '120').attr('data-price', '90').attr(
+                $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 90</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '90').attr(
                     'data-service', 'Classic full').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -436,7 +444,7 @@
 
             if (i == 'Classic_Half') {
                 $("#top_1").show();
-                $("#top_1 p").html('90 Minuts &pound; 65').attr('data-time', '90').attr('data-price', '65').attr(
+                $("#top_1 p").html('<span class="my-auto">90 Minuts &pound; 65</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '65').attr(
                     'data-service', 'Classic Half').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -447,7 +455,7 @@
 
             if (i == 'Clamourous_Volume_Full') {
                 $("#top_1").show();
-                $("#top_1 p").html('120 Minuts &pound; 130').attr('data-time', '120').attr('data-price', '130').attr(
+                $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 130</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '130').attr(
                     'data-service', 'Clamourous Volume Full').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -458,7 +466,7 @@
 
             if (i == 'Clamourous_Volume_Half') {
                 $("#top_1").show();
-                $("#top_1 p").html('120 Minuts &pound; 110').attr('data-time', '120').attr('data-price', '110').attr(
+                $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 110</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '110').attr(
                     'data-service', 'Clamourous Volume Half').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -468,7 +476,7 @@
 
             if (i == 'Hybrid_full_set') {
                 $("#top_1").show();
-                $("#top_1 p").html('120 Minuts &pound; 100').attr('data-time', '120').attr('data-price', '100').attr(
+                $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 100</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '100').attr(
                     'data-service', 'Hybrid full set').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -478,7 +486,7 @@
 
             if (i == 'Hybrid_half_set') {
                 $("#top_1").show();
-                $("#top_1 p").html('120 Minuts &pound; 80').attr('data-time', '120').attr('data-price', '80').attr(
+                $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 80</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '80').attr(
                     'data-service', 'Hybrid half set').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -488,7 +496,7 @@
 
             if (i == 'Eyelash_Infilt') {
                 $("#top_1").show();
-                $("#top_1 p").html('60 Minuts &pound; 50').attr('data-time', '60').attr('data-price', '50').attr(
+                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '50').attr(
                     'data-service', 'Eyelash Infil').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -498,7 +506,7 @@
 
             if (i == 'Eyelash_Removal') {
                 $("#top_1").show();
-                $("#top_1 p").html('15 Minuts &pound; 15').attr('data-time', '15').attr('data-price', '15').attr(
+                $("#top_1 p").html('<span class="my-auto">15 Minuts &pound; 15</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '15').attr('data-price', '15').attr(
                     'data-service', 'Eyelash Removal').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
