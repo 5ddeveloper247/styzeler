@@ -456,7 +456,7 @@ class ProfileController extends Controller
                     BookingSlots::where('id', $slotDetails->id)->update([
                         'end_time' => $serviceEndTime,
                         'slots_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
-                        'status' => 'booked'
+                        'status' => $request->on_hold ?? 'booked',
 
                     ]);
 
@@ -515,10 +515,14 @@ class ProfileController extends Controller
                 sendMail($userDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
 
                 $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->with(['bookingTimeSlots'])->first();
-
+                if (is_null($request->on_hold)) {
+                    $message = "Booked";
+                } else {
+                    $message = "On Hold";
+                }
                 return response()->json([
                     'status' => 200,
-                    'message' => 'Slot Booked Successfully!',
+                    'message' => "Slot $message Successfully!",
                     'data' => $bookingDetails,
                 ]);
             } else {
@@ -575,10 +579,8 @@ class ProfileController extends Controller
             ]);
 
             BookingSlots::where('id', $request->slot_book_id)->update([
-
                 'slots_time' => '07:00 AM - 09:00 PM',
-                'status' => 'booked'
-
+                'status' => $request->on_hold ?? 'booked',
             ]);
 
             if ($bookExist == 0) {
@@ -621,10 +623,14 @@ class ProfileController extends Controller
             $userEmailsSend[] = 'admin@styzeler.co.uk';
 
             sendMail($bookedUserDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
-
+            if (is_null($request->on_hold)) {
+                $message = "Booked";
+            } else {
+                $message = "On Hold";
+            }
             return response()->json([
                 'status' => 200,
-                'message' => 'Slot booked successfully!',
+                'message' => "Slot $message successfully!",
                 'data' => $bookingDetails,
             ]);
         }
@@ -812,6 +818,7 @@ class ProfileController extends Controller
             )->with([
                 'clientUser',
                 'freelancerAppUser',
+                'userBookingSlots',
                 // 'userBookingSlots',
                 // 'userBookingSlots.bookings',
                 // 'userBookingSlots.bookings.FreelancerUser'
@@ -826,6 +833,7 @@ class ProfileController extends Controller
             )->with([
                 'clientAppUser',
                 'freelancerUser',
+                'userBookingSlots',
                 // 'userBookingSlots',
                 // 'userBookingSlots.bookings',
                 // 'userBookingSlots.bookings.FreelancerUser'
@@ -1049,8 +1057,8 @@ class ProfileController extends Controller
 
     public function cancelAppointment(Request $request)
     {
-
         $appId =  $request->app_id;
+        $cancel_time = $request->cancel_time;
 
         $getAppointmentData = Appointments::where('id', $appId)->first();
         // dd($getAppointmentData);
@@ -1071,14 +1079,24 @@ class ProfileController extends Controller
         }
 
         $getAppointmentDataArray = explode(',', $getAppointmentData->booking_slots_id);
-
-        BookingSlots::whereIn('id', $getAppointmentDataArray)
-            ->update(
+        // dd($request->all());
+        $bookinkSlots = BookingSlots::whereIn('id', $getAppointmentDataArray);
+        if ($cancel_time == '21') {
+            $bookinkSlots = $bookinkSlots->update(
                 [
                     "status" => "Available",
                     'slots_time' => 'After_Nine'
                 ]
             );
+        } else {
+            $bookinkSlots = $bookinkSlots->update(
+                [
+                    "status" => "Available",
+                ]
+            );
+        }
+
+
 
         $clientUser = User::where('id', $getAppointmentData->booking_user_id)->first();
         $freelancerUser = User::where('id', $getAppointmentData->freelancer_user_id)->first();
@@ -1225,6 +1243,40 @@ class ProfileController extends Controller
         } else {
             return response()->json(['status' => 500, 'message' => 'Something went wrong!', 'data' => '']);
         }
+    }
+
+    public function onHoldBooking(Request $request)
+    {
+        // dd($request->all());
+        $appintment = Appointments::where('id', $request->app_id)->with(
+            [
+                'userBookingSlots'
+                => function ($q) use ($request) {
+                    $q->update(['status' => $request->status]);
+                }
+            ]
+        )->first();
+        // with('userBookingSlots')->first();
+        // $update_booking = $appintment->userBookingSlots;
+        // $update_booking->update(['status' => $request->status]);
+        dd($appintment->userBookingSlots->status);
+    }
+
+    public function confirmOnHoldBooking(Request $request)
+    {
+        // dd($request->all());
+        $appintment = Appointments::where('id', $request->app_id)->with(
+            [
+                'userBookingSlots'
+                => function ($q) use ($request) {
+                    $q->update(['status' => $request->status]);
+                }
+            ]
+        )->first();
+        // with('userBookingSlots')->first();
+        // $update_booking = $appintment->userBookingSlots;
+        // $update_booking->update(['status' => $request->status]);
+        dd($appintment->userBookingSlots->status);
     }
 }
 

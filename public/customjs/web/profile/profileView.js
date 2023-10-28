@@ -909,7 +909,6 @@ function selectSlot(id, start_time, end_time, date) {
     $("#book_slot_end").html(endtimeAMPM);
 
     $("#book_slot_date").html(date);
-    $("#book-slots").html("Book");
 }
 
 $(document).on("click", ".select_option", function (e) {
@@ -917,10 +916,23 @@ $(document).on("click", ".select_option", function (e) {
     $(".select_option").removeClass("time_active");
     $(this).addClass("time_active");
     $(".book-appointment").removeClass("defaultStatus");
+    $(".on-Hold").removeClass("defaultStatus");
 });
 
 $(document).on("click", ".book-appointment", function (e) {
     e.preventDefault();
+    $("#on_hold").val("");
+    $("#book_or_hold").html("Book");
+    $("#book-slots").html("Book");
+    $(".slots-modal").modal("show");
+});
+
+$(document).on("click", ".on-Hold", function (e) {
+    e.preventDefault();
+
+    $("#on_hold").val("On Hold by " + user_name);
+    $("#book_or_hold").html("Hold");
+    $("#book-slots").html("Hold");
     $(".slots-modal").modal("show");
 });
 $(document).on("click", "#book-slots", function (e) {
@@ -952,6 +964,8 @@ function bookSlotsResponse(response) {
         var status = bookings["status"];
         var changeSlot = "";
         var html = "";
+        // console.log(status.includes("Hold"));
+
         $(".timeSlots").empty();
 
         if (status == "Off") {
@@ -977,8 +991,11 @@ function bookSlotsResponse(response) {
                 }
                 var slots_time = slots[j]["slots_time"];
                 var status1 = slots[j]["status"];
-
-                if (status1 == "booked") {
+                // console.log();
+                if (
+                    status1 == "booked" ||
+                    status1.includes("On Hold") == true
+                ) {
                     html +=
                         `<div title="" class="` +
                         changeSlot +
@@ -1221,4 +1238,35 @@ function loadFeedbackResponse(response) {
             timeOut: 3000,
         });
     }
+}
+// //Ajax call - updateappointment- on hold
+function onHoldAppointment(id) {
+    console.log(id);
+
+    var status = "On Hold by ";
+    var app_id;
+    var data = new FormData();
+
+    if (user_type == "hairdressingSalon" || user_type == "beautySalon") {
+        status = status + user_type;
+    } else if (profile_type == "Freelancer") {
+        status = status + profile_type;
+    }
+    data.append("app_id", id);
+    data.append("status", status);
+    $.ajax({
+        type: "POST",
+        url: "/onHoldBooking",
+        data: data,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            let adminEmail = "styzelercharlie7@gmail.com"; //Updated by Rumki - wearestyzeler@gmail.com
+            let resp1 = sendEmail(adminEmail, ownerMessage);
+            let resp = sendEmail(emailId, ownerMessage);
+            if (resp) {
+                $(".onCall-modal").modal("show");
+            }
+        },
+    });
 }
