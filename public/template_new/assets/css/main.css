@@ -349,6 +349,15 @@ footer .num {
 	color: #93948b;
 }
 
+/** footer social Media Icons settings **/
+footer .icon-container {
+	justify-content: space-between;
+}
+
+footer .social-media{ 
+    gap: 15px;
+}
+
 /*
 |----------------------------------------------------------------------
 |		Banner
