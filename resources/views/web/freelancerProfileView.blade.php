@@ -2,6 +2,9 @@
 <script>
     const baseURL = "{{ request()->root() }}";
     const userId = "{{ @$data->id }}";
+    var user_type = "{{ auth()->user()->type }}";
+    var profile_type = "{{ auth()->user()->profile_type }}";
+    var user_name = "{{ auth()->user()->name }}";
 </script>
 
 @push('css')
@@ -505,8 +508,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="btn uploadBtn text-right"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>
@@ -612,11 +615,13 @@
                             <a href="" class="book-appointment btn customBtn defaultStatus">Book</a>
                         </div>
                     </div>
-                    {{-- <div class="col-6 col-md-6 col-lg-2 text-center">
-                        <div class="">
-                            <a class="on-Hold btn customBtn defaultStatus" href="">On Hold</a>
+                    @if (in_array(Auth::user()->type, ['beautySalon', 'hairdressingSalon']))
+                        <div class="col-6 col-md-6 col-lg-2 text-center">
+                            <div class="">
+                                <a class="on-Hold btn customBtn defaultStatus" href="">Hold</a>
+                            </div>
                         </div>
-                    </div> --}}
+                    @endif
                     <div class="col-6 col-md-6 col-lg-2 text-center">
                         <div class="">
                             <a class="cancel btn customBtn defaultStatus" href="">Cancel</a>
@@ -2923,10 +2928,11 @@
                         <input type="hidden" id="book_type" name="book_type">
                         <input type="hidden" id="slot_book_id" name="slot_book_id">
                         <input type="hidden" id="book_date" name="book_date">
+                        <input type="hidden" id="on_hold" name="on_hold">
 
                         <div class="row">
                             <div class="col-md-12">
-                                <h4 style="color: #ffde59 ">Are you sure to book slot?</h4>
+                                <h4 style="color: #ffde59 ">Are you sure to <span id="book_or_hold"></span> slot?</h4>
                                 <h6><strong>Time: </strong><span id="book_slot_start"></span> - <span
                                         id="book_slot_end"></span> on <strong>Date:</strong>
                                     <span id="book_slot_date"></span>

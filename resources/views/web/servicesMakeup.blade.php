@@ -93,9 +93,9 @@
                                                 alt=""></button>
                                     </li>
                                     <!-- <li>
-                                                  <button type="button" class="shadow_btn shaddowbtn1"   onclick="caseCat('Bridal_Make_up')">Bridal Make-up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+                                                      <button type="button" class="shadow_btn shaddowbtn1"   onclick="caseCat('Bridal_Make_up')">Bridal Make-up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 
-                                                 </li> -->
+                                                     </li> -->
                                 </ul>
                                 <div class="txt_wrap scrollbar" id="showbox">
                                     <form action="" method="post" id="inner_form">

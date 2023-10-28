@@ -2,7 +2,9 @@
 
 @push('css')
     <style>
-
+        .color-1 {
+            text-wrap: balance !important;
+        }
     </style>
 @endpush
 
