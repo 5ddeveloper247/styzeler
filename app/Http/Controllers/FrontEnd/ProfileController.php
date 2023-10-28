@@ -1245,27 +1245,11 @@ class ProfileController extends Controller
         }
     }
 
-    public function onHoldBooking(Request $request)
-    {
-        // dd($request->all());
-        $appintment = Appointments::where('id', $request->app_id)->with(
-            [
-                'userBookingSlots'
-                => function ($q) use ($request) {
-                    $q->update(['status' => $request->status]);
-                }
-            ]
-        )->first();
-        // with('userBookingSlots')->first();
-        // $update_booking = $appintment->userBookingSlots;
-        // $update_booking->update(['status' => $request->status]);
-        dd($appintment->userBookingSlots->status);
-    }
 
     public function confirmOnHoldBooking(Request $request)
     {
         // dd($request->all());
-        $appintment = Appointments::where('id', $request->app_id)->with(
+        $confirm_appintment = Appointments::where('id', $request->app_id)->with(
             [
                 'userBookingSlots'
                 => function ($q) use ($request) {
@@ -1273,6 +1257,62 @@ class ProfileController extends Controller
                 }
             ]
         )->first();
+
+        if ($confirm_appintment) {
+            // $userEmailsSend1 = $freelancerUser->email;
+
+
+            // $body1 = "<table>
+            //         <tr>
+            //             <td>Client Name: " . $clientUser->name . " " . $clientUser->surname . "</td>
+            //         </tr>
+            //         <tr>
+            //             <td>Freelancer Name: " . $freelancerUser->name . " " . $freelancerUser->surname . "</td>
+            //         </tr>
+            //         <tr>
+            //             <td>Client Email: " . $clientUser->email . "</td>
+            //         </tr>
+            //         <tr>
+            //             <td>Freelancer Email: " . $freelancerUser->email . "</td>
+            //         </tr>
+            //         <tr>
+            //             <td>Booking Date: " . $getAppointmentBookingDate . "</td>
+            //         </tr>
+            //         <tr>
+            //             <td>Booking time: " . $getAppointmentBookingTime . "</td>
+            //         </tr>
+            //         <tr>
+            //             <td>Cancelled By: " . Auth::user()->name . " " . Auth::user()->surname . "</td>
+            //         </tr>
+            //     </table>";
+
+            // $userEmailsSend2 = 'admin@styzeler.co.uk';
+
+            // sendMail(Auth::user()->name, Auth::user()->email, 'Confirm On Hold Booking', 'Confirm On Hold Booking Email', $body1);
+            return response()->json(['status' => 200, 'message' => 'On Hold Confirmed Successfully!', 'data' => '']);
+        } else {
+            return response()->json(['status' => 500, 'message' => 'Something went wrong!', 'data' => '']);
+        }
+    }
+
+    public function cancelOnHoldBooking(Request $request)
+    {
+        // dd($request->all());
+        $cancel_appintment = Appointments::where('id', $request->app_id)->with(
+            [
+                'userBookingSlots'
+                => function ($q) use ($request) {
+                    $q->update(['status' => $request->status]);
+                }
+            ]
+        )->first();
+
+
+        if ($cancel_appintment) {
+            return response()->json(['status' => 200, 'message' => 'On Hold Cancelled Successfully!', 'data' => '']);
+        } else {
+            return response()->json(['status' => 500, 'message' => 'Something went wrong!', 'data' => '']);
+        }
     }
 }
 

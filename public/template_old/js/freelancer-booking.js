@@ -113,46 +113,38 @@ window.onload = function () {
 // }
 
 // //Ajax call - updateappointment- cancel
-// function cancelAppointment(emailId, id, confirmedDate) {
-//     console.log(emailId);
+// function cancelAppointment(id) {
 //     console.log(id);
-//     console.log(selected);
-//     let newselectedDate = new Date(confirmedDate);
-//     newselectedDate.setDate(newselectedDate.getDate());
-//     confirmedDate = newselectedDate.toJSON().slice(0,10);
-//     var AppntDate = moment(newselectedDate).format('DD-MMM-YYYY');
-//     console.log("Date :"+AppntDate);
 
-//     let ownerMessage = "THE FREELANCER HAS CANCELLED THE BOOKING FOR " + AppntDate;
+//     var status = "Cancelled by ";
+//     var app_id;
+//     var data = new FormData();
 
+//     if (profile_type == "Freelancer") {
+//         status = status + profile_type;
+//     }
+//     data.append("app_id", id);
+//     data.append("status", status);
 //     $.ajax({
-//         type: 'post',
-//         url: webUrl + 'updateappointment',
-//         data: {
-//             "_AppointmentId" : id,
-//             "_Status" : "cancel by Freelancer"
+//         type: "POST",
+//         url: "/cancelOnHoldBooking",
+//         data: data,
+//         processData: false,
+//         contentType: false,
+//         success: function (response) {
+//             let adminEmail = "styzelercharlie7@gmail.com"; //Updated by Rumki - wearestyzeler@gmail.com
+//             let resp1 = sendEmail(adminEmail, ownerMessage);
+//             let resp = sendEmail(emailId, ownerMessage);
+//             if (resp) {
+//                 $(".onCall-modal").modal("show");
+//             }
 //         },
-//         success: function(updateResponse) {
-
-//             // console.log(updateResponse);
-//             // let emailIds= emailId + ",wearestyzeler@gmail.com";
-//             let adminEmail="styzelercharlie7@gmail.com";  //Updated by Rumki - wearestyzeler@gmail.com
-//             let resp1 =  sendEmail(adminEmail,ownerMessage);
-//             let resp =  sendEmail(emailId,ownerMessage);
-//            if(resp){
-//                $(".cancel-modal").modal('show');
-//            }
-//         }
 //     });
-
 // }
 
 // //Ajax call - updateappointment- on hold
 function onHoldAppointment(id) {
-    console.log(id);
-
     var status = "Confirmed by ";
-    var app_id;
     var data = new FormData();
 
     if (profile_type == "Freelancer") {
@@ -167,16 +159,34 @@ function onHoldAppointment(id) {
         processData: false,
         contentType: false,
         success: function (response) {
-            let adminEmail = "styzelercharlie7@gmail.com"; //Updated by Rumki - wearestyzeler@gmail.com
-            let resp1 = sendEmail(adminEmail, ownerMessage);
-            let resp = sendEmail(emailId, ownerMessage);
-            if (resp) {
-                $(".onCall-modal").modal("show");
-            }
+            toastr.success(response.message, "", {
+                timeOut: 3000,
+            });
         },
     });
 }
+function cancelonHoldAppointment(id) {
+    var status = "Cancelled by ";
+    var data = new FormData();
 
+    if (profile_type == "Freelancer") {
+        status = status + profile_type;
+    }
+    data.append("app_id", id);
+    data.append("status", status);
+    $.ajax({
+        type: "POST",
+        url: "/cancelOnHoldBooking",
+        data: data,
+        processData: false,
+        contentType: false,
+        success: function (response) {
+            toastr.success(response.message, "", {
+                timeOut: 3000,
+            });
+        },
+    });
+}
 // //Ajax call - updateappointment- on hold
 // function onCallAppointment(id) {
 //     console.log(id);
@@ -378,7 +388,9 @@ $(function () {
                                 on_hold_show =
                                     '<div class="text-center customBtn mb-2" onClick="onHoldAppointment(' +
                                     id +
-                                    ')"><a>Confirm On Hold</a></div>';
+                                    ')"><a>Confirm On Hold</a></div><div class="text-center customBtn mb-2" onClick="cancelonHoldAppointment(' +
+                                    id +
+                                    ')"><a>Cancel On Hold</a></div>';
                             }
                             $(".appointment-row").append(
                                 '<div class="col-4">' +

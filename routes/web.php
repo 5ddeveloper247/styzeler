@@ -43,6 +43,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         // Route::get('/ownerProfile', 'FrontEndController@ownerProfile')->name('ownerProfile');
         Route::post('/onHoldBooking', 'ProfileController@onHoldBooking')->name('onHoldBooking');
         Route::post('/confirmOnHoldBooking', 'ProfileController@confirmOnHoldBooking')->name('confirmOnHoldBooking');
+        Route::post('/cancelOnHoldBooking', 'ProfileController@cancelOnHoldBooking')->name('cancelOnHoldBooking');
 
         Route::get('/getProfileData', 'ProfileController@getProfileData')->name('getProfileData');
         Route::post('/ProfileImageUpdate', 'ProfileController@ProfileImageUpdate')->name('ProfileImageUpdate');
