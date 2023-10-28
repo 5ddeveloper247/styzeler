@@ -353,9 +353,17 @@ footer .num {
 footer .icon-container {
 	justify-content: space-between;
 }
-
-footer .social-media{ 
-    gap: 15px;
+@media screen and (min-width: 768px) {
+	/* desktop/ tablets-specific style*/
+	footer .social-media{ 
+		gap: 25px;
+	}
+}
+@media screen and (max-width: 767px) {
+	/* mobile-specific style*/
+	footer .social-media{ 
+		gap: 15px;
+	}
 }
 
 /*
