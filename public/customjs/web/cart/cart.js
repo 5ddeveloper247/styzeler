@@ -9,11 +9,12 @@ $(function () {
         url: "/cartData",
         data: {},
         success: function (response) {
-            if (response.cart == "") {
+            if (response.cart[0]['cart_lines'] == "") {
                 $("#cart_line_table").append(
                     '<div class="col-12 text-center">You have no item in cart!</div>'
                 );
-            } else {
+            } 
+            else {
                 var cart_line_table = "";
                 $.each(response.cart, function (i) {
                     let cart = response.cart[i];
@@ -76,6 +77,12 @@ function confirmDelete(id) {
             if (response.status == 200) {
                 $("#cart_line_" + response.data).remove();
                 modal.modal("hide");
+                
+                if($('#cart_line_table').children().length == 0){
+                    $("#cart_line_table").append(
+                        '<div class="col-12 text-center">You have no item in cart!</div>'
+                    );
+                }
 
                 toastr.success(response.message, "", {
                     timeOut: 3000,
