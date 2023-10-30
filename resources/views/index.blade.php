@@ -705,9 +705,9 @@
         </div>
 
         <div class="modal fade bd-example-modal-md" id="popupInfo-modal" role="dialog">
-            <div class="modal-dialog modal-dialog-centered modal-md" style="width: 350px">
+            <div class="modal-dialog modal-dialog-centered modal-md" style="width: fit-content  ">
                 <div class="modal-content border-warning border"
-                    style="background-color: black; color: white; max-height: 1000px; overflow-y: auto; margin-top: 30%; margin-left: 10%;">
+                    style="background-color: black; color: white; max-height: 1000px; overflow-y: auto; margin-top: 30%">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48">
                         <h4 class="modal-title fs-1">Alert</h4>
                         <i class="close-modal" style="font-size: 2rem; cursor: pointer"><b>&times;</b></i>
