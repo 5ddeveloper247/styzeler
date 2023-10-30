@@ -325,7 +325,7 @@
 @section('content')
     <!-- header -->
     <section class="d-none d-md-block" id="banner"
-        style="background-image: url('{{ asset('template_new/assets/images/banner.jpg') }}')">
+        style="background-image: url('{{ asset('template_new/assets/images/banner (1).jpg') }}')">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="content">
                 <h1>
