@@ -6,10 +6,10 @@
             Styzeler Kemp House,152-160 City Road London. EC1V 2NX
         </span>
         <div class="d-flex social-media">
-            <h1><a target="_blank" href="https://www.instagram.com/styzeler/"><i class="fa fa-instagram color-1" aria-hidden="true"></i></a></h1>
-            <h1><a target="_blank" href="https://twitter.com/styzeler/status/1270851982803316736?s=20"><i class="fa fa-twitter color-1" aria-hidden="true"></i></a></h1>
-            <h1><a target="_blank" href="http://www.linkedin.com/in/styzeler-london"><i class="fa fa-linkedin color-1" aria-hidden="true"></i></a></h1>
-            <h1><a target="_blank" href="https://g.page/r/CbZ4IkhN9ROREAE"><i class="fa fa-google color-1" aria-hidden="true"></i></a></h1>
+            <span><a target="_blank" href="https://www.instagram.com/styzeler/"><i class="fa fa-instagram color-1" aria-hidden="true"></i></a></span>
+            <span><a target="_blank" href="https://twitter.com/styzeler/status/1270851982803316736?s=20"><i class="fa fa-twitter color-1" aria-hidden="true"></i></a></span>
+            <span><a target="_blank" href="http://www.linkedin.com/in/styzeler-london"><i class="fa fa-linkedin color-1" aria-hidden="true"></i></a></span>
+            <span><a target="_blank" href="https://g.page/r/CbZ4IkhN9ROREAE"><i class="fa fa-google color-1" aria-hidden="true"></i></a></span>
         </div>
     </div>
     <div class="num"><a href="tel:0207 566 3989">0207 566 3989</a></div>
