@@ -32,7 +32,7 @@
 
 				{{-- Code Start By Muhammad Umer --}}
                 <div class="contact_for aos-init aos-animate">
-					<h3>Contact Styzeler for: </h3>
+					<h3>Contact Styzeler for</h3>
 					<ul class="btn_list">
 						<li>
 							<a href="{{route('candidate')}}" class="shadow_btn">Candidate 

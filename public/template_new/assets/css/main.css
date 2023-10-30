@@ -1418,9 +1418,9 @@ footer .icon-container {
 }
 
 #contact .contact_for {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    /* display: flex; */
+    /* display: -webkit-box;
+    display: -ms-flexbox; */
+    display: flex;
     color: #b1bcc5;
     margin: 5rem 0;
 }
@@ -1440,6 +1440,7 @@ footer .icon-container {
     padding: 0;
     margin: 0;
     margin-left: auto;
+    white-space: nowrap;
 }
 
 #contact .btn_list > li {
