@@ -254,9 +254,14 @@ $(function () {
                             //     && response.appointments[i]['user_booking_slots']['bookings']['status'] !== "CANCELLED due to Expired Time"
                         ) {
                             let id = response.appointments[i]["id"];
-                            let status =
-                                response.appointments[i].user_booking_slots
-                                    .status;
+                            if(response.appointments[i].user_booking_slots != null){
+                            	let status =
+                                    response.appointments[i].user_booking_slots
+                                        .status;
+                            }else{
+                            	let status = 'Booked';
+                            }
+                            
                             // console.log(status);
                             let emailId =
                                 response.appointments[i]["_SalonEmail"];
