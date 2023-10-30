@@ -9,8 +9,8 @@
     <link rel="stylesheet" href="{{ asset('template_new/assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('template_new/assets/css/animation.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('template_new/assets/css/reset.css') }}" />
-    <link rel="stylesheet" href="{{ asset('template_new/assets/css/main.css') }}" />
-    <link rel="stylesheet" href="{{ asset('template_new/assets/css/responsive.css') }}" />
+    <link rel="stylesheet" href="{{ asset('template_new/assets/css/main.css') }}?v={{ time() }}" />
+    <link rel="stylesheet" href="{{ asset('template_new/assets/css/responsive.css') }}?v={{ time() }}" />
     <link rel="icon" href="{{ asset('template_old/images/favicon-logo.png') }}" type="image/png" sizes="16x16">
     <link rel="stylesheet" href="{{ asset('template_new/assets/css/toastr.min.css') }}">
     <!-- chat links -->
