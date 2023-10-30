@@ -47,6 +47,15 @@
 
                         </table>
                     </div>
+                    <a class="logon_btn my-5" id="back-btn" href="{{ url()->previous() }}" 
+                        style=" 
+                        width: fit-content;
+                        justify-content: space-around;
+                        float: inline-end;
+                        font-size: 1.6rem;
+                        padding: 1.5rem
+                        ">Back
+                    </a>
                 </div>
             </div>
         </div>
@@ -91,6 +100,17 @@
 @push('script')
     <script>
         $(function() {
+            /***************** Change Back button color on hover effect 
+             * Code Added by: Muhammad Umer *****************/
+            $('a#back-btn').hover(
+                function() {
+                    $(this).css('color', '#FFFFFF');
+                },
+                function() {
+                    $(this).css('color', '#c4b9b0');
+                }
+            );
+            /***************** End *****************/
             $.ajaxSetup({
                 headers: {
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
