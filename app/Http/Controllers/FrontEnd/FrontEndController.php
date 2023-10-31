@@ -519,6 +519,6 @@ class FrontEndController extends Controller
                 }
             }
         }
-}
+    }
 
 }
