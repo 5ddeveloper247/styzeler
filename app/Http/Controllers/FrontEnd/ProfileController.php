@@ -253,7 +253,6 @@ class ProfileController extends Controller
 
     public function saveAvaibleDate(Request $request)
     {
-
         $request = json_decode(file_get_contents('php://input'), true);
 
         $availableDays = $request['availableDays'];
@@ -351,8 +350,6 @@ class ProfileController extends Controller
         $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
 
         if (isset($request->book_type) && $request->book_type == 'cart_book') {  // of cart booking then this code execution
-
-
 
             // $cartExist = Cart::where('user_id', Auth::user()->id)->where('slot_date', $request->book_date)->count();
             $appoExist = Appointments::where('booking_user_id', Auth::user()->id)->where('booking_date', $request->book_date)->count();
@@ -569,11 +566,22 @@ class ProfileController extends Controller
                 ]);
             }
 
+            $userSelectedDate = Carbon::parse($request->book_date . ' ' . Carbon::now()->format('H:i:s'));
+
+            $currentDateTime = Carbon::now();
+            $modifiedDateTime = $currentDateTime->copy()->addHours(36); // Add 36 hours to a copy of the current date and time
+
+            if ($userSelectedDate->lt($modifiedDateTime)) {
+                return response()->json([
+                    'status' => 403,
+                    'message' => 'Date Cannot be Choosed within 36 Hours',
+                ]);
+            }
             // Create a new appointment
             $get_last_time =  Appointments::create([
                 'booking_slots_id' => $request->slot_book_id,
                 'freelancer_user_id' => $request->user_id,
-                'booking_date' => $request->book_date,
+                'booking_date' => $currentDateTime->addHours(36)->format('Y-m-d'),
                 'booking_time' => '07:00' . ' - ' . '21:00',
                 'booking_user_id' => Auth::id(),
             ]);
@@ -1246,11 +1254,12 @@ class ProfileController extends Controller
     }
 
 
-    public function confirmOnHoldBooking(Request $request)
+    public function onHoldBooking(Request $request)
     {
-        // dd($request->all());
-        $confirm_appintment = Appointments::where('id', $request->app_id)->with(
+        $appointment = Appointments::where('id', $request->app_id)->with(
             [
+                'userAppointment',
+                'bookedFreelancer',
                 'userBookingSlots'
                 => function ($q) use ($request) {
                     $q->update(['status' => $request->status]);
@@ -1258,58 +1267,58 @@ class ProfileController extends Controller
             ]
         )->first();
 
-        if ($confirm_appintment) {
-            // $userEmailsSend1 = $freelancerUser->email;
+        $message = '';
+        $on_hold = "On Hold";
+        if (str_contains(strtolower($request->status), 'confirmed')) {
+            $message = 'On Hold Confirmed Successfully!';
+        } elseif (str_contains(strtolower($request->status), 'cancelled')) {
+            $message = 'On Hold Cancelled Successfully!';
+        } elseif (str_contains(strtolower($request->status), 'booked')) {
+            $message = 'On Hold Booked Successfully!';
+        };
 
+        if ($appointment) {
 
-            // $body1 = "<table>
-            //         <tr>
-            //             <td>Client Name: " . $clientUser->name . " " . $clientUser->surname . "</td>
-            //         </tr>
-            //         <tr>
-            //             <td>Freelancer Name: " . $freelancerUser->name . " " . $freelancerUser->surname . "</td>
-            //         </tr>
-            //         <tr>
-            //             <td>Client Email: " . $clientUser->email . "</td>
-            //         </tr>
-            //         <tr>
-            //             <td>Freelancer Email: " . $freelancerUser->email . "</td>
-            //         </tr>
-            //         <tr>
-            //             <td>Booking Date: " . $getAppointmentBookingDate . "</td>
-            //         </tr>
-            //         <tr>
-            //             <td>Booking time: " . $getAppointmentBookingTime . "</td>
-            //         </tr>
-            //         <tr>
-            //             <td>Cancelled By: " . Auth::user()->name . " " . Auth::user()->surname . "</td>
-            //         </tr>
-            //     </table>";
+            $body1 = "<table>
+                    <tr>
+                        <td>Client Name: " . $appointment->userAppointment->name . " " . $appointment->userAppointment->surname . "</td>
+                    </tr>
+                    <tr>
+                        <td>Freelancer Name: " . $appointment->bookedFreelancer->name . " " . $appointment->bookedFreelancer->surname . "</td>
+                    </tr>
+                    <tr>
+                        <td>Client Email: " . $appointment->userAppointment->email . "</td>
+                    </tr>
+                    <tr>
+                        <td>Freelancer Email: " . $appointment->bookedFreelancer->email . "</td>
+                    </tr>
+                    <tr>
+                        <td>$on_hold Date: " . $appointment->booking_date . "</td>
+                    </tr>
+                    <tr>
+                        <td>$on_hold time: " . $appointment->booking_time . "</td>
+                    </tr>
+                    <tr>
+                        <td>Status: " . $appointment->userBookingSlots->status . "</td>
+                    </tr>
+                </table>";
 
-            // $userEmailsSend2 = 'admin@styzeler.co.uk';
+            $sendEmailTo = ['admin', 'owner', 'freelancer'];
 
-            // sendMail(Auth::user()->name, Auth::user()->email, 'Confirm On Hold Booking', 'Confirm On Hold Booking Email', $body1);
-            return response()->json(['status' => 200, 'message' => 'On Hold Confirmed Successfully!', 'data' => '']);
-        } else {
-            return response()->json(['status' => 500, 'message' => 'Something went wrong!', 'data' => '']);
-        }
-    }
-
-    public function cancelOnHoldBooking(Request $request)
-    {
-        // dd($request->all());
-        $cancel_appintment = Appointments::where('id', $request->app_id)->with(
-            [
-                'userBookingSlots'
-                => function ($q) use ($request) {
-                    $q->update(['status' => $request->status]);
+            foreach ($sendEmailTo as $user_type) {
+                if ($user_type == 'admin') {
+                    $admin = User::where('type', $user_type)->first();
+                    sendMail($admin->name, $admin->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
+                } else if ($user_type == 'freelancer') {
+                    $freelancer = User::findOrFail($appointment->freelancer_user_id);
+                    sendMail($freelancer->name, $freelancer->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
+                } else if ($user_type == 'owner') {
+                    $freelancer = User::findOrFail($appointment->booking_user_id);
+                    sendMail($freelancer->name, $freelancer->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
                 }
-            ]
-        )->first();
+            }
 
-
-        if ($cancel_appintment) {
-            return response()->json(['status' => 200, 'message' => 'On Hold Cancelled Successfully!', 'data' => '']);
+            return response()->json(['status' => 200, 'message' => $message, 'data' => $request->app_id]);
         } else {
             return response()->json(['status' => 500, 'message' => 'Something went wrong!', 'data' => '']);
         }

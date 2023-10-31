@@ -34,6 +34,12 @@ class Appointments extends Model
     {
         return $this->belongsTo(User::class, 'freelancer_user_id', 'id')->where('id', Auth::id());
     }
+
+    public function bookedFreelancer(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'freelancer_user_id', 'id');
+    }
+
     public function clientUser(): BelongsTo
     {
         return $this->belongsTo(User::class, 'booking_user_id', 'id')->where('id', Auth::id());
