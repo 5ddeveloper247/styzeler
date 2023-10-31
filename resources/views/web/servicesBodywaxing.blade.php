@@ -364,7 +364,18 @@
             $(document).on("click", ".sub_btns > li > button", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
             });
+
+            @if (session('error'))
+                // Display Toastr notification
+                toastr.error("{{ session('error') }}");
+            @endif
+            @if (session('success'))
+                // Display Toastr notification
+                toastr.success("{{ session('success') }}");
+            @endif
+
         });
+        
         var addtocartType = 'Body Waxing';
 
         function caseCat(i, subtype = '') {

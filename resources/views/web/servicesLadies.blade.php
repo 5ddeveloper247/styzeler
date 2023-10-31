@@ -495,6 +495,15 @@
                     'display': 'none',
                 });
             });
+            
+            @if (session('error'))
+            // Display Toastr notification
+            toastr.error("{{ session('error') }}");
+            @endif
+            @if (session('success'))
+                // Display Toastr notification
+                toastr.success("{{ session('success') }}");
+            @endif
         });
 
         var bookFrelancerRoute = "{{ route('bookFreelancer') }}";
@@ -875,7 +884,6 @@
                     'Micro rings are small metal rings that hair extensions are threaded through, along with some of your own hair. Once they have been positioned correctly the micro rings are clamped into place, securing the hair extensions to your hair'
                 );
             }
-
         }
     </script>
 @endpush

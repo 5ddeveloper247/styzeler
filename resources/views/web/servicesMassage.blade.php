@@ -319,6 +319,15 @@
                     'display': 'none',
                 });
             });
+
+            @if (session('error'))
+                // Display Toastr notification
+                toastr.error("{{ session('error') }}");
+            @endif
+            @if (session('success'))
+                // Display Toastr notification
+                toastr.success("{{ session('success') }}");
+            @endif
         });
         var addtocartType = 'Message';
 

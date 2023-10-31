@@ -58,8 +58,11 @@ class PaymentController extends Controller
                     'total_tokens' => $request->input('payment_tokens') + $total_tokens,
                 ]
             );
-
+            if($request->has('redirectRoute')){
+                return redirect('/'.$request->redirectRoute)->with('success', 'Payment Succesfull!');;
+            }
             return back()->with('success', 'Payment Succesfull!');
+
         } catch (\Exception $e) {
             return back()->with('error', $e->getMessage());
         }

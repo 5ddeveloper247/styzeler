@@ -133,13 +133,13 @@ class FrontEndController extends Controller
 
     public function homeServices()
     {
-        if (isset(Auth::user()->id)) {
+        // if (isset(Auth::user()->id)) {
 
-            $active_cart = Cart::where('user_id', Auth::user()->id)->where('status', 'active')->first();
-            if (isset($active_cart->id)) {
-                Cart_line::where('cart_id', $active_cart->id)->delete();
-            }
-        }
+        //     $active_cart = Cart::where('user_id', Auth::user()->id)->where('status', 'active')->first();
+        //     if (isset($active_cart->id)) {
+        //         Cart_line::where('cart_id', $active_cart->id)->delete();
+        //     }
+        // }
 
         return view('web.homeServices');
     }
@@ -291,6 +291,7 @@ class FrontEndController extends Controller
 
     public function servicesBodywaxing()
     {
+        $serviceArray = ['Body Waxing', 'Eyes & Brows', 'Mani / Pedi', 'Facial'];
         $exists = Cart::where(
             [
                 'user_id' => Auth::user()->id,
@@ -299,7 +300,13 @@ class FrontEndController extends Controller
         )
             ->with('cart_lines')
             ->first();
-
+        if(!empty($exists) && count($exists->cart_lines)){
+            foreach ($exists->cart_lines as $cart_line){
+                if(!in_array($cart_line->item_type,$serviceArray)){
+                    $cart_line->delete();
+                }
+            }
+        } 
         // !empty($exists) && count($exists->cart_lines) ? $exists->cart_lines->each->delete() : '';
 
         $user = User::where('id', Auth::user()->id)->first();
@@ -329,6 +336,22 @@ class FrontEndController extends Controller
 
     public function servicesMassage()
     {
+        $serviceArray = ['Massage'];
+        $exists = Cart::where(
+            [
+                'user_id' => Auth::user()->id,
+                'status' => 'active'
+            ]
+        )
+            ->with('cart_lines')
+            ->first();
+        if(!empty($exists) && count($exists->cart_lines)){
+            foreach ($exists->cart_lines as $cart_line){
+                if(!in_array($cart_line->item_type,$serviceArray)){
+                    $cart_line->delete();
+                }
+            }
+        }
         $user = User::where('id', Auth::user()->id)->first();
         $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
         return view('web.servicesMassage')->with($data);
@@ -336,6 +359,22 @@ class FrontEndController extends Controller
 
     public function servicesLadies()
     {
+        $serviceArray = ['Ladies Services', 'Make-Up', 'Gents Services'];
+        $exists = Cart::where(
+            [
+                'user_id' => Auth::user()->id,
+                'status' => 'active'
+            ]
+        )
+            ->with('cart_lines')
+            ->first();
+        if(!empty($exists) && count($exists->cart_lines)){
+            foreach ($exists->cart_lines as $cart_line){
+                if(!in_array($cart_line->item_type,$serviceArray)){
+                    $cart_line->delete();
+                }
+            }
+        }
         $user = User::where('id', Auth::user()->id)->first();
         $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
         return view('web.servicesLadies')->with($data);
