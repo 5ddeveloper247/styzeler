@@ -108,4 +108,6 @@
 
 </body>
 
+<script src="{{ asset('customjs/web/checkModalEvent.js')}}?v={{ time() }}"></script>
+
 </html>

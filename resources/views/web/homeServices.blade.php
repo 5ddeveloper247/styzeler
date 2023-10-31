@@ -629,6 +629,18 @@
                 tokenInput.setAttribute('value', token.id);
                 form.appendChild(tokenInput);
 
+                if (localStorage.getItem('redirectTo')) {
+                    let redirectRoute = localStorage.getItem('redirectTo');
+
+                    const redirectTo = document.createElement('input');
+                    redirectTo.setAttribute('type', 'hidden');
+                    redirectTo.setAttribute('name', 'redirectRoute');
+                    redirectTo.setAttribute('value', redirectRoute);
+                    form.appendChild(redirectTo);
+                    // Remove the URL from URL
+                    localStorage.removeItem('redirectTo');
+                }
+
                 form.submit();
             }
         });

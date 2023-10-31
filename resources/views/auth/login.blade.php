@@ -166,14 +166,21 @@
 
         function loginResponse(response) {
 
+            let redirectRoute;
             // SHOWING MESSAGE ACCORDING TO RESPONSE
             if (response.status == 200) {
                 toastr.success(response.message, '', {
                     timeOut: 3000
                 });
-
+                if(localStorage.getItem('redirectTo')){
+                    redirectRoute = localStorage.getItem('redirectTo');
+                    // Remove the URL from URL
+                    localStorage.removeItem('redirectTo');
+                } else {
+                    redirectRoute = 'Profile';
+                }
                 setTimeout(function() {
-                    window.location.href = '{{ url('/Profile') }}';
+                    window.location.href = `{{ url('/${redirectRoute}') }}`;
                 }, 3000);
             } else {
                 if (response.status == 422) {

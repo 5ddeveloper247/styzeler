@@ -19,10 +19,12 @@
                             @csrf
                             <button type="submit" class="logon_btn">Sign Out</button>
                         </form>
-                        <a href="{{ route('cart') }}" class="logon_btn heart_btn">
-                            <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt=""
-                                style="width:28px;">
-                        </a>
+                        @if(!isset(auth()->user()->profile_type))
+                            <a href="{{ route('cart') }}" class="logon_btn heart_btn">
+                                <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt=""
+                                    style="width:28px;">
+                            </a>
+                        @endif
                     @endauth
 
                     <button href="javascript:void(0)" class="logon_btn heart_btn dropdown-toggle position-relative"
