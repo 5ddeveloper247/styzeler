@@ -9,7 +9,8 @@ $(function () {
         url: "/cartData",
         data: {},
         success: function (response) {
-            if (response.cart[0]['cart_lines'] == "") {
+            console.log(response);
+            if (response.cart == '' || response.cart[0]['cart_lines'] == '') {
                 $("#cart_line_table").append(
                     '<div class="col-12 text-center">You have no item in cart!</div>'
                 );
