@@ -317,7 +317,7 @@
             if (i == 'Makeup_Blowdry') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">90 mints  &pound;100</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '100').attr(
-                    'data-service', 'Blow-Dry & Make-Up').attr('data-subtype', subtype);
+                    'data-service', 'Blow-dry & Make-up').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'This package combines two of the most requested treatments for a special night out or event. Styzeler Hair & Makeup Freelancers  will provide the Make-up and   a Blow-dry of your choice'
@@ -328,7 +328,7 @@
             if (i == 'Make_up_Up_do') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">80 mints  &pound;90</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '80').attr('data-price', '90').attr(
-                    'data-service', 'Up-Do & Make-Up').attr('data-subtype', subtype);
+                    'data-service', 'Up-do & Make-up').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'This package combines two of the most requested treatments for a special night out or event. Styzeler Hair & Makeup Freelancers  will provide the Make-up and   Up-do of your choice,'

@@ -515,17 +515,17 @@
                 $("#top_1,#top_2,#top_3").show();
                 $("#top_1 p").html('Short  60 mints  &pound; 40').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '40').attr(
-                    'data-service', 'Cut Blowdry').attr('data-text', 'Short  60 mints  �40').attr('data-subtype',
+                    'data-service', 'Cut & Blowdry').attr('data-text', 'Short  60 mints  �40').attr('data-subtype',
                     subtype);
 
                 $("#top_2 p").html('Medium 60 mints  &pound;48').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '48').attr(
-                    'data-service', 'Cut Blowdry').attr('data-text', 'Medium 60 mints  �48').attr('data-subtype',
+                    'data-service', 'Cut & Blowdry').attr('data-text', 'Medium 60 mints  �48').attr('data-subtype',
                     subtype);
 
                 $("#top_3 p").html('Long 60 mints  &pound; 56').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '60').attr('data-price', '56').attr(
-                    'data-service', 'Cut Blowdry').attr('data-text', 'Long 60 mints  �56').attr('data-subtype', subtype);
+                    'data-service', 'Cut & Blowdry').attr('data-text', 'Long 60 mints  �56').attr('data-subtype', subtype);
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
                 $("#description").hide();
@@ -557,20 +557,20 @@
                 $("#description").hide();
                 $("#top_1 p").html('Roots +Length  90 mints  &pound; 48').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '48')
-                    .attr('data-service', 'Color').attr('data-text', 'Roots +Length  90 mints  �48').attr('data-subtype',
+                    .attr('data-service', 'Colour').attr('data-text', 'Roots +Length  90 mints  �48').attr('data-subtype',
                         subtype);
 
                 $("#top_2 p").html('Roots  60 mints   &pound; 40').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '40').attr(
-                    'data-service', 'Color').attr('data-text', 'Roots  60 mints   �40').attr('data-subtype', subtype);
+                    'data-service', 'Colour').attr('data-text', 'Roots  60 mints   �40').attr('data-subtype', subtype);
 
                 $("#top_3 p").html('+ Blow-Dry').attr('onclick', "caseCat('Blowdry')");
                 $("#top_3 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Color').attr('data-text', '+ Blow-Dry').attr('data-subtype', subtype);
+                    'data-service', 'Colour').attr('data-text', '+ Blow-Dry').attr('data-subtype', subtype);
 
                 $("#top_4 p").html('+ Cut- Blow-Dry').attr('onclick', "caseCat('Cut_Blowdry')");
                 $("#top_4 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Color').attr('data-text', '+ Cut- Blow-Dry').attr('data-subtype', subtype);
+                    'data-service', 'Colour').attr('data-text', '+ Cut- Blow-Dry').attr('data-subtype', subtype);
 
                 $("#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -661,42 +661,42 @@
                 $("#top_1,#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").show();
                 $("#top_1 p").html('Short  90 mints  &pound; 80').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '80').attr(
-                    'data-service', 'Full Head Bleach').attr('data-text', 'Short  90 mints  �80').attr('data-subtype',
+                    'data-service', 'Full head bleach').attr('data-text', 'Short  90 mints  �80').attr('data-subtype',
                     subtype);
 
                 $("#top_2 p").html('Medium 90 mints  &pound;100').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '90').attr('data-price', '100').attr(
-                    'data-service', 'Full Head Bleach').attr('data-text', 'Medium 90 mints  �100').attr('data-subtype',
+                    'data-service', 'Full head bleach').attr('data-text', 'Medium 90 mints  �100').attr('data-subtype',
                     subtype);
 
                 $("#top_3 p").html('Long 120 mints  &pound; 140').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '120').attr('data-price', '140').attr(
-                    'data-service', 'Full Head Bleach').attr('data-text', 'Long 120 mints  �140').attr('data-subtype',
+                    'data-service', 'Full head bleach').attr('data-text', 'Long 120 mints  �140').attr('data-subtype',
                     subtype);
 
                 $("#top_4 p").html('Roots Bleach  90 mints  &pound; 50').attr('onclick', "");
                 $("#top_4 span").show().attr('data-time', '90').attr('data-price', '50')
-                    .attr('data-service', 'Full Head Bleach').attr('data-text', 'Roots Bleach  90 mints  �50').attr(
+                    .attr('data-service', 'Full head bleach').attr('data-text', 'Roots Bleach  90 mints  �50').attr(
                         'data-subtype', subtype);
 
                 $("#top_5 p").html('+ Rots  Toner  15 mints  &pound;16').attr('onclick', "");
                 $("#top_5 span").show().attr('data-time', '15').attr('data-price', '16')
-                    .attr('data-service', 'Full Head Bleach').attr('data-text', '+ Rots  Toner  15 mints  �16').attr(
+                    .attr('data-service', 'Full head bleach').attr('data-text', '+ Rots  Toner  15 mints  �16').attr(
                         'data-subtype', subtype);
 
                 $("#top_6 p").html('+ Full Head Toner 45 mints  &pound;40').attr('onclick', "");
                 $("#top_6 span").show().attr('data-time', '45').attr('data-price', '40')
-                    .attr('data-service', 'Full Head Bleach').attr('data-text', '+ Full Head Toner 45 mints  �40').attr(
+                    .attr('data-service', 'Full head bleach').attr('data-text', '+ Full Head Toner 45 mints  �40').attr(
                         'data-subtype', subtype);
 
                 $("#top_7 p").html('+ Cut- Blow-Dry').attr('onclick', "caseCat('Cut_Blowdry')");
                 $("#top_7 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Full Head Bleach').attr('data-text', '+ Cut- Blow-Dry').attr('data-subtype',
+                    'data-service', 'Full head bleach').attr('data-text', '+ Cut- Blow-Dry').attr('data-subtype',
                     subtype);
 
                 $("#top_8 p").html('+ Blow-Dry').attr('onclick', "caseCat('Blowdry')");
                 $("#top_8 span").hide().attr('data-time', '').attr('data-price', '').attr(
-                    'data-service', 'Full Head Bleach').attr('data-text', '+ Blow-Dry').attr('data-subtype', subtype);
+                    'data-service', 'Full head bleach').attr('data-text', '+ Blow-Dry').attr('data-subtype', subtype);
 
                 $("#descHeading").hide().text('');
                 $("#description").hide();
@@ -756,17 +756,17 @@
 
                 $("#top_1 p").html('Short  60 mints  &pound; 70').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '70').attr(
-                    'data-service', 'Brazilian Blow-Dry').attr('data-text', 'Short  60 mints  �70').attr('data-subtype',
+                    'data-service', 'Brazilian Blow-dry').attr('data-text', 'Short  60 mints  �70').attr('data-subtype',
                     subtype);
 
                 $("#top_2 p").html('Medium 60 mints  &pound;90').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '90').attr(
-                    'data-service', 'Brazilian Blow-Dry').attr('data-text', 'Medium 60 mints  �90').attr('data-subtype',
+                    'data-service', 'Brazilian Blow-dry').attr('data-text', 'Medium 60 mints  �90').attr('data-subtype',
                     subtype);
 
                 $("#top_3 p").html('Long 60 mints  &pound; 100').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '60').attr('data-price', '100').attr(
-                    'data-service', 'Brazilian Blow-Dry').attr('data-text', 'Long 60 mints  �100').attr('data-subtype',
+                    'data-service', 'Brazilian Blow-dry').attr('data-text', 'Long 60 mints  �100').attr('data-subtype',
                     subtype);
 
                 $("#descHeading").hide().text('');
@@ -826,7 +826,7 @@
                 $("#top_1").show();
                 $("#top_1 p").html('60 mints  &pound; 50').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '50').attr(
-                    'data-service', 'Up do').attr('data-text', '60 minuts  �50').attr('data-subtype', subtype);
+                    'data-service', 'Up-do').attr('data-text', '60 minuts  �50').attr('data-subtype', subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -847,7 +847,7 @@
                 $("#top_1").show();
                 $("#top_1 p").html('From &pound;350 minuts 120').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '120').attr('data-price', '350').attr(
-                    'data-service', 'Tape in Hair').attr('data-text', 'From �350 minuts 120').attr('data-subtype',
+                    'data-service', 'Hair Extension Tape-in-Hair').attr('data-text', 'From �350 minuts 120').attr('data-subtype',
                     subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
@@ -861,7 +861,7 @@
                 $("#top_1").show();
                 $("#top_1 p").html('From &pound;650 minuts 240').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '240').attr('data-price', '650').attr(
-                    'data-service', 'Bonded Hair').attr('data-text', 'From �650 minuts 240').attr('data-subtype',
+                    'data-service', 'Hair Extension Bonded Hair').attr('data-text', 'From �650 minuts 240').attr('data-subtype',
                     subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
@@ -875,7 +875,7 @@
                 $("#top_1").show();
                 $("#top_1 p").html('From &pound;450 minuts 180').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '180').attr('data-price', '450').attr(
-                    'data-service', 'Micro Ring').attr('data-text', 'From �450 minuts 180').attr('data-subtype',
+                    'data-service', 'Hair Extension Micro Ring').attr('data-text', 'From �450 minuts 180').attr('data-subtype',
                     subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();

@@ -423,7 +423,7 @@
             if (i == 'Eyelash_Tint') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">15 Minuts &pound; 16</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '15').attr('data-price', '16').attr(
-                    'data-service', 'Eyelash  Tint').attr('data-subtype', subtype);;
+                    'data-service', 'Eyelash Tint').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'Eyelash Tinting is applying a safe, semi-permanent vegetable dye to your eyelashes. This is done to make your dull lashes appear not only darker but also longer and fuller'
@@ -444,7 +444,7 @@
             if (i == 'Ckassic_full') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 90</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '90').attr(
-                    'data-service', 'Classic full').attr('data-subtype', subtype);;
+                    'data-service', 'Eyelash Extensions Classic Full').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'Classic Full Set is 1:1 lash application. One extension is applied to each one of your natural lashes, extending the length and appearance of your eyelashes. Classic lashes are suitable for clients who have a good amount of natural lashes'
@@ -454,7 +454,7 @@
             if (i == 'Classic_Half') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">90 Minuts &pound; 65</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '65').attr(
-                    'data-service', 'Classic Half').attr('data-subtype', subtype);;
+                    'data-service', 'Eyelash Extensions Classic Half').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'Half-set eyelash extension would be half of a full set. What does this mean exactly? It means that instead of an eyelash extension for every natural lash, you get an eyelash extension put in for every second or third natural lash,Half sets are great places to start if you are a beginner and are a bit nervous about your first treatment'
@@ -465,7 +465,7 @@
             if (i == 'Clamourous_Volume_Full') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 130</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '130').attr(
-                    'data-service', 'Clamourous Volume Full').attr('data-subtype', subtype);;
+                    'data-service', 'Eyelash Extensions Clamourous Volume Full').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'What are glam volume lashes? Volume lashing is where the technician takes 2-6 very thin eyelash extensions and makes them into a fan shape before applying to the natural eyelash. All the fans are hand made during each lash set using different lengths, curls and thickness to suit each individual client'
@@ -476,7 +476,7 @@
             if (i == 'Clamourous_Volume_Half') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 110</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '110').attr(
-                    'data-service', 'Clamourous Volume Half').attr('data-subtype', subtype);;
+                    'data-service', 'Eyelash Extensions Clamourous Volume Half').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'Glamourous Volume lashing is where the technician takes 2-6 very thin eyelash extensions and makes them into a fan shape before applying to the natural eyelash. All the fans are handmade during each lash set using different lengths, curls and thicknesses to suit each individual client <Half set you to get an eyelash extension put in for every second or third natural lash>'
@@ -486,7 +486,7 @@
             if (i == 'Hybrid_full_set') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 100</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '100').attr(
-                    'data-service', 'Hybrid full set').attr('data-subtype', subtype);;
+                    'data-service', 'Eyelash Extensions Hybrid Full Set').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'Hybrid full set Hybrid lashes are a 70-30 mixture of both classic lashes and volume lashes. Choosing hybrid eyelash extensions gives you the best of both worlds.'
@@ -496,7 +496,7 @@
             if (i == 'Hybrid_half_set') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 80</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '80').attr(
-                    'data-service', 'Hybrid half set').attr('data-subtype', subtype);;
+                    'data-service', 'Eyelash Extensions Hybrid Half Set').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     "Hybrid Half set Hybrid lashes are a 70-30 mixture of both classic lashes and volume lashes. Choosing hybrid eyelash extensions gives you the best of both worlds.<Half set you get an eyelash extension put in for every second or third natural lash>"

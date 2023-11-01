@@ -380,9 +380,9 @@
                 $("#top_1,top_2").show();
                 $("#top_3").hide();
                 $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 100</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '100').attr(
-                    'data-service', 'Acupuncture Facial').attr('data-subtype', subtype);
+                    'data-service', 'Acupuncture facial').attr('data-subtype', subtype);
                 $("#top_2 p").html('<span class="my-auto">45 Minuts &pound; 150</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '150').attr(
-                    'data-service', 'Acupuncture Facial').attr('data-subtype', subtype);
+                    'data-service', 'Acupuncture facial').attr('data-subtype', subtype);
                 $("#description").text(
                     "This treatment focuses specifically on the face, neck, and hairline your aesthetician will place several needles on those areas. This helps to increase blood flow and stimulate collagen production which helps with skin elasticity.Other benefits of Acupuncture Facial include firming up the skin and reducing the appearance of wrinkles and fine lines, ugly acne scars, and blemishes"
                 );

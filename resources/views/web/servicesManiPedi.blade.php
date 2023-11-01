@@ -401,7 +401,7 @@
             if (i == 'HydraRegular_Mani_Pedicurefacial') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">90 Minuts &pound; 48</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '48').attr(
-                    'data-service', 'Regular Mani/Pedicure').attr('data-subtype', subtype);
+                    'data-service', 'Regular Manicure/Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     "Manicure and Pedicure are the curation and care of a client's hands and  feet. This includes skincare, nail care, and artificial nail enhancements that can be customised to a variety of preferences"
@@ -411,7 +411,7 @@
             if (i == 'Regular_Mani') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '24').attr(
-                    'data-service', 'Regular Mani').attr('data-subtype', subtype);
+                    'data-service', 'Regular Manicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     "Regular manicure is the traditional manicure that you're probably familiar with. Here your nails are trimmed, shaped and buffed. Cuticle oil is applied and cuticles are managed too. You'll usually get to enjoy a wonderfully relaxing hand massage. In the end, standard nail polish is applied"
@@ -560,7 +560,7 @@
             if (i == 'Nail_Art_Gel_mani') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">70 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '70').attr('data-price', '40').attr(
-                    'data-service', 'Nail Art Gel Manicure').attr('data-subtype', subtype);
+                    'data-service', 'Nail Art + Gel Mani').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     'Nail art is a creative way to paint, decorate, enhance, and embellish nails. It is a type of artwork that can be done on fingernails and toenails,'
@@ -570,7 +570,7 @@
             if (i == 'Nail_Art_Gel_Pedi') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">s60 Minuts &pound; 45</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '45').attr(
-                    'data-service', 'Nail Art Gel Pedicure').attr('data-subtype', subtype);
+                    'data-service', 'Nail Art + Gel Pedi').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
                     "Nail art is a creative way to paint, decorate, enhance, and embellish nails. It is a type of artwork that can be done on fingernails and toenails,"

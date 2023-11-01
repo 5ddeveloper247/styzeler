@@ -405,11 +405,11 @@
             if (i == 'Thai_Massage') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">60 MINS &pound; 55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '55').attr(
-                    'data-service', 'Thai Massage').attr('data-subtype', subtype);
+                    'data-service', 'Thai massage').attr('data-subtype', subtype);
                 $("#top_2 p").html('<span class="my-auto">90 MINS &pound; 80 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '80').attr(
-                    'data-service', 'Thai Massage').attr('data-subtype', subtype);
+                    'data-service', 'Thai massage').attr('data-subtype', subtype);
                 $("#top_3 p").html('<span class="my-auto">90 MINS &pound; 104 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '104').attr(
-                    'data-service', 'Thai Massage').attr('data-subtype', subtype);
+                    'data-service', 'Thai massage').attr('data-subtype', subtype);
                 $("#description").text(
                     "The practice of Thai yoga massage is said to be thousands of years old, but it is still part of Thailand's medical system due to its perceived healing properties on both emotional and physical levels. Traditional Thai massage uses no oils or lotions. The client remains clothed during a treatment. A full Thai massage session may last two hours and includes rhythmic pressing and stretching of the entire body. This may include pulling fingers, toes, ears, cracking knuckles,"
                 );
