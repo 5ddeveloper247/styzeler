@@ -126,25 +126,23 @@
                 <div class="btn_head desktop" data-aos="fade-up" data-aos-duration="1000">
                     <div class="txt">
                         <ul class="btn_list">
-                            @if(!Auth::user())
-                                <li>
-                                    <button type="button" class="shadow_btn">
-                                        Register<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-                                    </button>
-                                    <ul class="sub_list">
-                                        <li>
-                                            <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}"
-                                                class="shadow_btn">Freelancer
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}"
-                                                class="shadow_btn">Client
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                            @endif
+                            <li>
+                                <button type="button" class="shadow_btn" {!! Auth::user() ? 'disabled = ture' : '' !!}>
+                                    Register<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                                </button>
+                                <ul class="sub_list">
+                                    <li>
+                                        <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}"
+                                            class="shadow_btn">Freelancer
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}"
+                                            class="shadow_btn">Client
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             @if(Auth::user())
                                 <li>
                                     <a href="#booking" class="shadow_btn"> Book
