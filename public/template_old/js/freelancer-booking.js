@@ -5,6 +5,7 @@ var on_hold_show = "";
 var cancel_btn = "";
 
 var confirm_by_owner = "confirm_by_owner";
+var cancel_by_owner = "cancel_by_owner";
 var confirm_booking = "confirm_booking";
 var cancel_booking = "cancel_booking";
 let today;
@@ -170,19 +171,21 @@ window.onload = function () {
 //         },
 //     });
 // }
-function cancelonHoldAppointment(id, btn) {
+function cancelonHoldAppointment(id, btn, option = "") {
     var status;
     if (btn == "confirm_booking") {
         status = "Confirmed by ";
     } else if (btn == "cancel_booking") {
         status = "Cancelled by ";
     } else if (btn == "confirm_by_owner") {
-        status = "Booked";
+        status = "On Hold Confirmed";
     }
     var data = new FormData();
 
     if (profile_type == "Freelancer") {
         status = status + profile_type;
+    } else if (option != "") {
+        status = status + "Business Owner";
     }
     data.append("app_id", id);
     data.append("status", status);
@@ -204,12 +207,15 @@ function cancelonHoldAppointment(id, btn) {
         },
     });
 }
-function openConfirmModal(id, btn) {
+function openConfirmModal(id, btn, option = "") {
     $(".confirm-modal").modal("show");
     var form = $("#confirm_form");
     form.find("#booking_id").val(id);
-    console.log(btn);
-    if (btn == "confirm_booking" || btn == "confirm_by_owner") {
+    console.log(btn, option);
+    if (
+        (btn == "confirm_booking" && option == "") ||
+        (btn == "confirm_by_owner" && option == "")
+    ) {
         form.find("#confirm_or_cancel").text("Confirm");
         form.find("#confirm_cancel_btn").text("Yes, Confirm");
         form.find("#confirm_cancel_btn").attr(
@@ -219,10 +225,17 @@ function openConfirmModal(id, btn) {
     } else if (btn == "cancel_booking") {
         form.find("#confirm_or_cancel").text("Cancel");
         form.find("#confirm_cancel_btn").text("Yes, Cancel");
-        form.find("#confirm_cancel_btn").attr(
-            "onclick",
-            "cancelonHoldAppointment(" + id + "," + btn + ")"
-        );
+        if (option == "cancel_by_owner") {
+            form.find("#confirm_cancel_btn").attr(
+                "onclick",
+                "cancelonHoldAppointment(" + id + "," + btn + "," + option + ")"
+            );
+        } else {
+            form.find("#confirm_cancel_btn").attr(
+                "onclick",
+                "cancelonHoldAppointment(" + id + "," + btn + ")"
+            );
+        }
     }
 }
 
@@ -430,7 +443,7 @@ $(function () {
                             // } else
                             if (
                                 profile_type == "Freelancer" &&
-                                check_status.includes("on hold")
+                                check_status.includes("on hold by")
                             ) {
                                 on_hold_show =
                                     '<div class="text-center customBtn mb-2 btn_' +
@@ -449,15 +462,31 @@ $(function () {
                                 cancel_btn = "d-none";
                             } else if (
                                 (profile_type == "Freelancer" &&
-                                    check_status.includes("confirmed")) ||
-                                check_status.includes("cancelled") ||
-                                check_status.includes("booked")
+                                    check_status.includes("confirmed by")) ||
+                                check_status.includes("cancelled by") ||
+                                check_status.includes("on hold confirmed")
                             ) {
                                 on_hold_show = "";
                             } else if (
                                 (user_type == "hairdressingSalon" ||
                                     user_type == "hairdressingSalon") &&
-                                check_status.includes("confirmed")
+                                check_status.includes("on hold by")
+                            ) {
+                                on_hold_show =
+                                    '<div div class="text-center customBtn mb-2 btn_' +
+                                    id +
+                                    '" onClick="openConfirmModal(' +
+                                    id +
+                                    "," +
+                                    cancel_booking +
+                                    "," +
+                                    cancel_by_owner +
+                                    ')"><a>Cancel On Hold</a></div>';
+                                cancel_btn = "d-none";
+                            } else if (
+                                (user_type == "hairdressingSalon" ||
+                                    user_type == "hairdressingSalon") &&
+                                check_status.includes("confirmed by")
                             ) {
                                 on_hold_show =
                                     '<div class="text-center customBtn mb-2 btn_' +
@@ -466,7 +495,14 @@ $(function () {
                                     id +
                                     "," +
                                     confirm_by_owner +
-                                    ')"><a>Confirm</a></div>';
+                                    ')"><a>Confirm</a></div><div div class="text-center customBtn mb-2 btn_' +
+                                    id +
+                                    '" onClick="openConfirmModal(' +
+                                    id +
+                                    "," +
+                                    cancel_booking +
+                                    ')"><a>Cancel</a></div>';
+                                cancel_btn = "d-none";
                             }
 
                             $(".appointment-row").append(

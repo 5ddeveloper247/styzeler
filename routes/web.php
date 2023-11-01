@@ -1,8 +1,9 @@
 <?php
 
+use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
@@ -11,7 +12,6 @@ Route::get('/', function () {
 Route::get('/old', function () {
     return view('index_old');
 });
-
 
 
 // Auth::routes();

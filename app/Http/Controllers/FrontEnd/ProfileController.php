@@ -566,22 +566,22 @@ class ProfileController extends Controller
                 ]);
             }
 
-            $userSelectedDate = Carbon::parse($request->book_date . ' ' . Carbon::now()->format('H:i:s'));
+            $userSelectedDate = Carbon::parse($request->book_date . ' ' . Carbon::now()->format('H:i'));
 
             $currentDateTime = Carbon::now();
-            $modifiedDateTime = $currentDateTime->copy()->addHours(36); // Add 36 hours to a copy of the current date and time
+            $modifiedDateTime = $currentDateTime->copy()->addHours(48); // Add 48 hours to a copy of the current date and time
 
-            if ($userSelectedDate->lt($modifiedDateTime)) {
+            if ($userSelectedDate->lt($modifiedDateTime->format('Y-m-d H:i'))) {
                 return response()->json([
                     'status' => 403,
-                    'message' => 'Date Cannot be Choosed within 36 Hours',
+                    'message' => 'Date Cannot be Choosed within 48 Hours',
                 ]);
             }
             // Create a new appointment
             $get_last_time =  Appointments::create([
                 'booking_slots_id' => $request->slot_book_id,
                 'freelancer_user_id' => $request->user_id,
-                'booking_date' => $currentDateTime->addHours(36)->format('Y-m-d'),
+                'booking_date' => $modifiedDateTime->format('Y-m-d H:i'),
                 'booking_time' => '07:00' . ' - ' . '21:00',
                 'booking_user_id' => Auth::id(),
             ]);
@@ -1269,12 +1269,12 @@ class ProfileController extends Controller
 
         $message = '';
         $on_hold = "On Hold";
-        if (str_contains(strtolower($request->status), 'confirmed')) {
+        if (str_contains(strtolower($request->status), 'confirmed by')) {
             $message = 'On Hold Confirmed Successfully!';
-        } elseif (str_contains(strtolower($request->status), 'cancelled')) {
+        } elseif (str_contains(strtolower($request->status), 'cancelled by')) {
             $message = 'On Hold Cancelled Successfully!';
-        } elseif (str_contains(strtolower($request->status), 'booked')) {
-            $message = 'On Hold Booked Successfully!';
+        } elseif (str_contains(strtolower($request->status), 'on hold confirmed')) {
+            $message = 'On Hold Confirmed Successfully!';
         };
 
         if ($appointment) {
@@ -1326,14 +1326,22 @@ class ProfileController extends Controller
 
     public function checkOnHold()
     {
-        dd('dkfdkfdhf');
-        $on_hold_slots = BookingSlots::where('status', '=', 'Booked')
-            ->where('created_at', '<', now())
-            ->get();
-        foreach ($on_hold_slots as $on_hold) {
-            $on_hold->status = 'Cancelled due to Time Expire';
-            $on_hold->slots_time = null;
-            $on_hold->save();
+        $check_appointment = Appointments::has('userBookingSlots')->with(['userBookingSlots' => function ($q) {
+            $q->where(['slots_time' => '07:00 AM - 09:00 PM', 'status' => 'Confirmed by Freelancer']);
+        }])->get();
+
+        foreach ($check_appointment as $appointment) {
+
+            $appointment_date = date('Y-m-d', strtotime($appointment->created_at . " +36 hours"));
+
+            if (Carbon::now()->format('Y-m-d H:i') > $appointment_date . " 12:00") {
+                $bookingSlot = $appointment->userBookingSlots;
+                if ($bookingSlot) {
+                    $bookingSlot->status = 'Cancelled due to Time Expire';
+                    $bookingSlot->slots_time = null;
+                    $bookingSlot->save();
+                }
+            }
         }
     }
 }
