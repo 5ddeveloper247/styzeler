@@ -221,8 +221,9 @@
                 </div>
             </div>
             <div class="btn_blk d-flex justify-content-end mt-5">
-                <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}" class="site_btn">Register <img
-                        src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
+                <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}" class="site_btn" {!! Auth::user() ? 'style="pointer-events: none"' : '' !!}>Register 
+                    <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                </a>
             </div>
             <div class="content">
                 <h1>Buy tokens to book</h1>
