@@ -71,6 +71,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
 
     Route::post('/showAppointmentDatesFreelancer', 'ProfileController@showAppointmentDatesFreelancer')->name('showAppointmentDatesFreelancer');
     Route::post('/bookSlots', 'ProfileController@bookSlots')->name('bookSlots');
+    Route::get('/checkOnHold', 'ProfileController@checkOnHold')->name('checkOnHold');
     Route::get('/useOwnerTokens', 'ProfileController@useOwnerTokens')->name('useOwnerTokens');
     Route::post('/submitFeedbackOwner', 'ProfileController@submitFeedbackOwner')->name('submitFeedbackOwner');
     Route::get('/loadFeedbackFreelancer', 'ProfileController@loadFeedbackFreelancer')->name('loadFeedbackFreelancer');
