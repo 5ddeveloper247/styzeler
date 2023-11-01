@@ -1323,6 +1323,19 @@ class ProfileController extends Controller
             return response()->json(['status' => 500, 'message' => 'Something went wrong!', 'data' => '']);
         }
     }
+
+    public function checkOnHold()
+    {
+        dd('dkfdkfdhf');
+        $on_hold_slots = BookingSlots::where('status', '=', 'Booked')
+            ->where('created_at', '<', now())
+            ->get();
+        foreach ($on_hold_slots as $on_hold) {
+            $on_hold->status = 'Cancelled due to Time Expire';
+            $on_hold->slots_time = null;
+            $on_hold->save();
+        }
+    }
 }
 
 
