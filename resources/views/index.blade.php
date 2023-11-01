@@ -406,8 +406,12 @@
             <div class="reg_line d-none d-md-block">
                 <div class="d-flex justify-content-between">
                     <p>Freelancers Help Small Businesses Grow</p>
-                    <a href="{{ route('register') }}" class="site_btn" style="border: #000000">Register <img
-                            src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" /></a>
+                    <a href="{{ route('register') }}" class="site_btn" style="border: #000000; 
+                        @if(Auth::user()) 
+                            pointer-events: none; 
+                        @endif">Register 
+                        <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
+                    </a>
                 </div>
                 <img src="{{ asset('template_new/assets/images/line_yellow.jpg') }}" alt=""
                     class="browse_line_yellow" style="margin-top: 32px" /> <span
@@ -533,8 +537,8 @@
                 </div>
             </div>
             <div class="btm" style="margin-right: 6px">
-                <img src="{{ asset('template_new/assets/images/line_purple.jpg') }}" alt="" /> <a
-                    href="{{ route('registration') }}" class="site_btn">Register
+                <img src="{{ asset('template_new/assets/images/line_purple.jpg') }}" alt="" /> 
+                <a href="{{ route('registration') }}" class="site_btn" {!! Auth::user() ? 'style="pointer-events: none"' : '' !!}>Register 
                     <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
                 </a>
             </div>

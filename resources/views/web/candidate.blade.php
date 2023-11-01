@@ -76,8 +76,9 @@
                             difference straight away, taking the pressure off overstretched permanent personnel</p>
                     </div>
                     <div class="btn_blk d-flex justify-content-end mt-5 pt-4">
-                        <a href="{{ route('register') }}" class="site_btn">Register <img
-                                src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
+                        <a href="{{ route('register') }}" class="site_btn" {!! Auth::user() ? 'style="pointer-events: none"' : '' !!}>Register 
+                            <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                        </a>
                     </div>
                 </div>
             </div>

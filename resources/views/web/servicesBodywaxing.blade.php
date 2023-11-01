@@ -81,7 +81,7 @@
                                         <ul class="sub_btns">
                                             <li>
                                                 <button type="button" class="shadow_btn"
-                                                    onclick="caseCat('upperLip','Female wax')">Uper Lip <img
+                                                    onclick="caseCat('upperLip','Female wax')">Upper Lip <img
                                                         src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""></button>
                                             </li>
@@ -383,7 +383,7 @@
             if (i == 'upperLip') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">10 Mints &pound; 8</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '8').attr(
-                    'data-subtype', subtype).attr('data-service', 'Uper Lip');
+                    'data-subtype', subtype).attr('data-service', 'Upper Lip');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     'Upper lip waxing is a very quick facial hair removal treatment and the result can last for up to a month.'
@@ -452,7 +452,7 @@
             if (i == 'Under_Arms') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">10 Minuts &pound; 12</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '12').attr(
-                    'data-subtype', subtype).attr('data-service', 'Under Arms');
+                    'data-subtype', subtype).attr('data-service', 'Underarms');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     'Waxing will totally remove your underarm hair,As a result, the armpit area feels and looks smoother and lighter � no more worries about that not-so-sexy underarm shadow'
@@ -499,7 +499,7 @@
             if (i == 'French_Bikini') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '24').attr(
-                    'data-subtype', subtype).attr('data-service', 'French Bikini');
+                    'data-subtype', subtype).attr('data-service', 'French Bikini<');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "This waxing method removes hair from your labia and pubic bone, leaving a small rectangular strip (also known as a 'landing strip') on the front of your pubic area. This type of wax is similar to a Brazilian, but hair from the buttocks area isn't removed."
@@ -539,7 +539,7 @@
             if (i == 'Full_legs') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '50').attr(
-                    'data-subtype', subtype).attr('data-service', 'Full legs');
+                    'data-subtype', subtype).attr('data-service', 'Full Legs');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "This wax includes everything from the tops of the thighs down to your toes!");
@@ -549,7 +549,7 @@
             if (i == 'Full_arms') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '40').attr(
-                    'data-subtype', subtype).attr('data-service', 'Full arms');
+                    'data-subtype', subtype).attr('data-service', 'Full Arms');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "A full Arm wax will include everything from your shoulder downwards, including hands and fingers if required"
@@ -567,7 +567,7 @@
             if (i == 'Chest_abbs') {
                 $("#top_1").show();
                 $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '50').attr(
-                    'data-subtype', subtype).attr('data-service', 'Chest + abbs');
+                    'data-subtype', subtype).attr('data-service', 'Chest + Abb');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "The chest and Abs are the ideal way to completely change the appearance of your upper body enhancing the mussels and Abs definition"
