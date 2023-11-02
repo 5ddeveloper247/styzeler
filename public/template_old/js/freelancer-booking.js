@@ -533,7 +533,7 @@ $(function () {
                                     '<span class="name_' +
                                     i +
                                     '" style="overflow-wrap: break-word;">' +
-                                    "<p><strong>Client Name: </strong>" +
+                                    "<p><strong>Business Owner Name: </strong>" +
                                     owner_name +
                                     "</p>" +
                                     '<span class="name_' +
@@ -567,14 +567,14 @@ $(function () {
                                     '<span class="email_' +
                                     i +
                                     '" style="overflow-wrap: break-word;">' +
-                                    "<p><strong>Client Email: </strong>" +
+                                    "<p><strong>Business Owner Email: </strong>" +
                                     owner_email +
                                     "</p>" +
                                     "</span>" +
                                     '<span class="mobile_' +
                                     i +
                                     '">' +
-                                    "<p><strong>Client Mobile: </strong>" +
+                                    "<p><strong>Business Owner Mobile: </strong>" +
                                     owner_mobile +
                                     "</p>" +
                                     "</span>" +
@@ -848,7 +848,7 @@ function getfreelancerBookings() {
                                 '<span class="name_' +
                                 i +
                                 '" style="overflow-wrap: break-word;">' +
-                                "<p><strong>Client Name: </strong>" +
+                                "<p><strong>Business Owner Name: </strong>" +
                                 owner_name +
                                 "</p>" +
                                 '<span class="name_' +
@@ -882,14 +882,14 @@ function getfreelancerBookings() {
                                 '<span class="email_' +
                                 i +
                                 '" style="overflow-wrap: break-word;">' +
-                                "<p><strong>Client Email: </strong>" +
+                                "<p><strong>Business Owner Email: </strong>" +
                                 owner_email +
                                 "</p>" +
                                 "</span>" +
                                 '<span class="mobile_' +
                                 i +
                                 '">' +
-                                "<p><strong>Client Mobile: </strong>" +
+                                "<p><strong>Business Owner Mobile: </strong>" +
                                 owner_mobile +
                                 "</p>" +
                                 "</span>" +

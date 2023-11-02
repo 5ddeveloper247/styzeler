@@ -566,12 +566,24 @@ class ProfileController extends Controller
                 ]);
             }
 
+            $message = "";
+            $heading1 = '';
+            $heading2 = '';
+            $date_data = '';
+            $email_user_name = '';
+            $email_user_book_user = '';
             if (!empty($request->on_hold)) {
+                $message = "On Hold";
+                $heading1 = 'Booking On Hold';
+                $heading2 = 'Booking Email On Hold';
+                $date_data = 'On Hold';
+                $email_user_name = 'Business Owner Name';
+                $email_user_book_user = 'On Hold Freelancer Name';
+
                 $userSelectedDate = Carbon::parse($request->book_date . ' ' . Carbon::now()->format('H:i'));
 
                 $currentDateTime = Carbon::now();
                 $modifiedDateTime = $currentDateTime->copy()->addHours(48); // Add 48 hours to a copy of the current date and time
-                // dd($userSelectedDate, $modifiedDateTime);
 
                 if ($userSelectedDate->lt($modifiedDateTime->format('Y-m-d'))) {
                     return response()->json([
@@ -580,6 +592,13 @@ class ProfileController extends Controller
                     ]);
                 }
             } else {
+                $message = "Booked";
+                $heading1 = 'Booking';
+                $heading2 = 'Booking Email';
+                $date_data = 'Book';
+                $email_user_name = 'Username';
+                $email_user_book_user = 'Booked Username';
+
                 $modifiedDateTime = $request->book_date;
             }
             // Create a new appointment
@@ -597,7 +616,7 @@ class ProfileController extends Controller
                 'status' => $request->on_hold ?? 'booked',
             ]);
 
-            if ($bookExist == 0) {
+            if ($bookExist == 0 && empty($request->on_hold)) {
                 $user = User::find(Auth::user()->id);
                 $user->tokens = $tokens - 1;
                 $user->update();
@@ -612,11 +631,11 @@ class ProfileController extends Controller
 
             $body = "<table>
 			                <tr>
-			                    <td>Username:</td>
+			                    <td>" . $email_user_name . ":</td>
 			                    <td>" . $bookedUserDetails['name'] . "</td>
 			                </tr>
 			              	<tr>
-			                    <td>Booked Username:</td>
+			                    <td>" . $email_user_book_user . ":</td>
 			                    <td>" . $userDetails['name'] . "</td>
 			                </tr>
 			                <tr>
@@ -624,24 +643,24 @@ class ProfileController extends Controller
 			                    <td>" . $userDetails['email'] . "</td>
 			                </tr>
 			                <tr>
-			                    <td>Book Date:</td>
+			                    <td>" . $date_data . " Date:</td>
 			                    <td>" . date('d-M-Y', strtotime($request->book_date)) . "</td>
 			                </tr>
 			              	<tr>
 			                    <td>Slot Time:</td>
 			                    <td>" . $get_last_time->booking_time . "</td>
 			                </tr>
+                            <tr>
+			                    <td>Status:</td>
+			                    <td>" . $slotDetails->status . "</td>
+			                </tr>
 			           	</table>";
             $userEmailsSend[] = $bookedUserDetails['email'];
             $userEmailsSend[] = $bookedUserDetails['email'];
             $userEmailsSend[] = 'admin@styzeler.co.uk';
 
-            sendMail($bookedUserDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
-            if (is_null($request->on_hold)) {
-                $message = "Booked";
-            } else {
-                $message = "On Hold";
-            }
+            sendMail($bookedUserDetails['name'], $userEmailsSend, $heading1, $heading2, $body);
+
             return response()->json([
                 'status' => 200,
                 'message' => "Slot $message successfully!",
@@ -1287,13 +1306,13 @@ class ProfileController extends Controller
 
             $body1 = "<table>
                     <tr>
-                        <td>Client Name: " . $appointment->userAppointment->name . " " . $appointment->userAppointment->surname . "</td>
+                        <td>Business Owner Name: " . $appointment->userAppointment->name . " " . $appointment->userAppointment->surname . "</td>
                     </tr>
                     <tr>
                         <td>Freelancer Name: " . $appointment->bookedFreelancer->name . " " . $appointment->bookedFreelancer->surname . "</td>
                     </tr>
                     <tr>
-                        <td>Client Email: " . $appointment->userAppointment->email . "</td>
+                        <td>Business Owner Email: " . $appointment->userAppointment->email . "</td>
                     </tr>
                     <tr>
                         <td>Freelancer Email: " . $appointment->bookedFreelancer->email . "</td>
@@ -1302,7 +1321,7 @@ class ProfileController extends Controller
                         <td>$on_hold Date: " . $appointment->booking_date . "</td>
                     </tr>
                     <tr>
-                        <td>$on_hold time: " . $appointment->booking_time . "</td>
+                        <td>Slot time: " . $appointment->booking_time . "</td>
                     </tr>
                     <tr>
                         <td>Status: " . $appointment->userBookingSlots->status . "</td>
