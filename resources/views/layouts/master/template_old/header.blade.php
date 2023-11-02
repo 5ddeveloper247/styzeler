@@ -39,7 +39,7 @@
                                             <button type="submit" class="logon_btn">Sign
                                                 Out</button>
                                         </form>
-                                        @if(!isset(auth()->user()->profile_type))
+                                        @if(!isset(auth()->user()->profile_type) && !in_array(auth()->user()->type, ['beautySalon', 'hairdressingSalon']))
                                             <a href="{{ route('cart') }}" class="logon_btn heart_btn">
                                                 <img src="{{ asset('template_new/assets/images/cart-round.png') }}"
                                                     alt="" style="width:28px;">
