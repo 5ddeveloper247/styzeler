@@ -200,7 +200,7 @@ function cancelonHoldAppointment(id, btn, option = "") {
             $(".confirm-modal").modal("hide");
             $("#confirm_form").find("#booking_id").val("");
             $(".btn_" + response.data).addClass("d-none");
-            $("#cancelAppBtn").removeClass("d-none");
+            // $("#cancelAppBtn").removeClass("d-none");
             toastr.success(response.message, "", {
                 timeOut: 3000,
             });
