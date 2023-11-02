@@ -1281,7 +1281,6 @@ class ProfileController extends Controller
 
     public function onHoldBooking(Request $request)
     {
-        dd($request->all());
         $appointment = Appointments::where('id', $request->app_id)->with(
             [
                 'userAppointment',
