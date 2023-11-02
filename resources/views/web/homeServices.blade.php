@@ -130,7 +130,7 @@
                                 </li>
                             @endif
                             <li>
-                                <a href="#packages" class="shadow_btn">{{ @Auth::user() ? 'Book' : 'Price List' }} 
+                                <a href="#booking" class="shadow_btn">Price List
                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                                 </a>
                             </li>
@@ -176,7 +176,7 @@
                                 </li>
                             @endif
                             <li>
-                                <a href="#packages" class="shadow_btn">Price List
+                                <a href="#booking" class="shadow_btn">Price List
                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                                 </a>
                             </li>    
