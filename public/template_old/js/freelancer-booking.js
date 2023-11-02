@@ -418,6 +418,8 @@ $(function () {
                                 app_created_date.split("T")[0];
                             let app_created_date_booking_date =
                                 booking_date.split("T")[0];
+                            let cancel_time = booking_time.split(":")[0];
+
                             // refinedAvaliableDate(response.appointments[i]["availableDays"]);
 
                             // if (response.appointments[i] != '') {
@@ -600,6 +602,8 @@ $(function () {
                                     cancel_btn +
                                     '" id="cancelAppBtn" onClick="cancelAppointment(' +
                                     id +
+                                    "," +
+                                    cancel_time +
                                     ')">' +
                                     "<a>Cancel</a>" +
                                     "</div>" +

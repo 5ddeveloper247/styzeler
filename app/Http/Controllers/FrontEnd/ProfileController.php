@@ -566,22 +566,28 @@ class ProfileController extends Controller
                 ]);
             }
 
-            $userSelectedDate = Carbon::parse($request->book_date . ' ' . Carbon::now()->format('H:i'));
+            if (!empty($request->on_hold)) {
+                $userSelectedDate = Carbon::parse($request->book_date . ' ' . Carbon::now()->format('H:i'));
 
-            $currentDateTime = Carbon::now();
-            $modifiedDateTime = $currentDateTime->copy()->addHours(48); // Add 48 hours to a copy of the current date and time
+                $currentDateTime = Carbon::now();
+                $modifiedDateTime = $currentDateTime->copy()->addHours(48); // Add 48 hours to a copy of the current date and time
+                // dd($userSelectedDate, $modifiedDateTime);
 
-            if ($userSelectedDate->lt($modifiedDateTime->format('Y-m-d H:i'))) {
-                return response()->json([
-                    'status' => 403,
-                    'message' => 'Date Cannot be Choosed within 48 Hours',
-                ]);
+                if ($userSelectedDate->lt($modifiedDateTime->format('Y-m-d'))) {
+                    return response()->json([
+                        'status' => 403,
+                        'message' => 'Date Cannot be Choosed within 48 Hours',
+                    ]);
+                }
+            } else {
+                $modifiedDateTime = $request->book_date;
             }
             // Create a new appointment
+
             $get_last_time =  Appointments::create([
                 'booking_slots_id' => $request->slot_book_id,
                 'freelancer_user_id' => $request->user_id,
-                'booking_date' => $modifiedDateTime->format('Y-m-d H:i'),
+                'booking_date' => empty($request->on_hold) ? $modifiedDateTime : $modifiedDateTime->format('Y-m-d'),
                 'booking_time' => '07:00' . ' - ' . '21:00',
                 'booking_user_id' => Auth::id(),
             ]);

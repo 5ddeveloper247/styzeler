@@ -508,8 +508,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="btn uploadBtn text-right"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>
@@ -3008,6 +3008,8 @@
     <script src="{{ asset('customjs/web/register/common.js') }}?v={{ time() }}"></script>
     <script src="{{ asset('template_old/js/freelancer-profile-calendar.js') }}?v={{ time() }}"></script>
     <script src="{{ asset('customjs/web/profile/profileView.js') }}?v={{ time() }}"></script>
+    <script src="{{ asset('customjs/web/profile/cancelBooking.js') }}?v={{ time() }}"></script>
+
     <script>
         //         setTimeout(() => {
         //             if (user == 'client') {

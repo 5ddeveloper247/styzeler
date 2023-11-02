@@ -1,4 +1,5 @@
 let SELECTEDSTATUSDATE = "selectedstatusdate";
+var status_for_hold = "";
 
 var currentdate = new Date();
 currentdate.setDate(currentdate.getDate() + 1);
@@ -21,9 +22,9 @@ var endCalender = new Date(
 
 function optionBtns(selectedDate) {
     if (selectedDate >= tomorrow) {
-        $(".on-Hold").removeClass("defaultStatus");
-    } else {
         $(".on-Hold").addClass("defaultStatus");
+    } else {
+        $(".on-Hold").removeClass("defaultStatus");
     }
 }
 function convertTo12HourFormat(time24) {
@@ -206,7 +207,23 @@ jQuery(document).ready(function () {
                                                     "booking_time_slots"
                                                 ][j]["status"];
 
-                                            if (status1 == "booked") {
+                                            if (status1 != null) {
+                                                status_for_hold =
+                                                    status1.toLowerCase();
+                                            }
+
+                                            if (
+                                                status1 == "booked" ||
+                                                status_for_hold.includes(
+                                                    "on hold by"
+                                                ) ||
+                                                status_for_hold.includes(
+                                                    "confirmed by"
+                                                ) ||
+                                                status_for_hold.includes(
+                                                    "on hold confirmed"
+                                                )
+                                            ) {
                                                 html +=
                                                     `<div title="" class="` +
                                                     changeSlot +
@@ -396,7 +413,22 @@ jQuery(document).ready(function () {
                                                     "booking_time_slots"
                                                 ][j]["status"];
 
-                                            if (status1 == "booked") {
+                                            if (status1 != null) {
+                                                status_for_hold =
+                                                    status1.toLowerCase();
+                                            }
+                                            if (
+                                                status1 == "booked" ||
+                                                status_for_hold.includes(
+                                                    "on hold by"
+                                                ) ||
+                                                status_for_hold.includes(
+                                                    "confirmed by"
+                                                ) ||
+                                                status_for_hold.includes(
+                                                    "on hold confirmed"
+                                                )
+                                            ) {
                                                 html +=
                                                     `<div title="" class="` +
                                                     changeSlot +
