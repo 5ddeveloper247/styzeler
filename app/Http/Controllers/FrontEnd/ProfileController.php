@@ -1281,6 +1281,7 @@ class ProfileController extends Controller
 
     public function onHoldBooking(Request $request)
     {
+        dd($request->all());
         $appointment = Appointments::where('id', $request->app_id)->with(
             [
                 'userAppointment',
@@ -1298,8 +1299,16 @@ class ProfileController extends Controller
             $message = 'On Hold Confirmed Successfully!';
         } elseif (str_contains(strtolower($request->status), 'cancelled by')) {
             $message = 'On Hold Cancelled Successfully!';
-        } elseif (str_contains(strtolower($request->status), 'on hold confirmed')) {
-            $message = 'On Hold Confirmed Successfully!';
+        } elseif (str_contains(strtolower($request->status), 'booked')) {
+
+            $owners = ['hairdressingSalon', 'beautySalon'];
+            if (in_array(Auth::user()->type, $owners)) {
+                $user = User::whereIn('type', $owners)->first();
+                $user->tokens = $user->tokens - 1;
+                $user->update();
+            }
+
+            $message = 'On Hold Booked Successfully!';
         };
 
         if ($appointment) {

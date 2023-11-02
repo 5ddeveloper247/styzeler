@@ -178,7 +178,7 @@ function cancelonHoldAppointment(id, btn, option = "") {
     } else if (btn == "cancel_booking") {
         status = "Cancelled by ";
     } else if (btn == "confirm_by_owner") {
-        status = "On Hold Confirmed";
+        status = "Booked";
     }
     var data = new FormData();
 
@@ -487,7 +487,7 @@ $(function () {
                                 cancel_btn = "d-none";
                             } else if (
                                 (user_type == "hairdressingSalon" ||
-                                    user_type == "hairdressingSalon") &&
+                                    user_type == "beautySalon") &&
                                 check_status.includes("confirmed by")
                             ) {
                                 on_hold_show =
