@@ -396,8 +396,12 @@
                         different projects. Hence, they can effectively brainstorm
                         creativity and motivate full-time employees</p>
                 </div>
-                <a href="{{ route('register') }}" class="site_btn" style="border: #000000">Register <img
-                        src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" /></a>
+                <a href="{{ route('register') }}" class="site_btn" style="border: #000000;
+                    @if(Auth::user()) 
+                        pointer-events: none; 
+                    @endif">Register 
+                    <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
+                </a>
                 <img src="{{ asset('template_new/assets/images/line_yellow.jpg') }}" alt=""
                     class="browse_line_yellow" style="margin-top: 32px; margin-bottom: 20px" />
             </div>

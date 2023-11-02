@@ -82,6 +82,15 @@
             transition-duration: 0.3s;
             cursor: pointer;
         }
+        /******* CSS Start: Muhammad Umer *******/
+        @media (max-width: 768px) {
+            /* Your mobile-specific CSS styles go here */
+            ul.btn_list {
+                display: flex;
+                flex-wrap: wrap;
+            }
+        }
+        /******* Code End: Muhammad Umer *******/
     </style>
 @endpush
 
@@ -97,38 +106,8 @@
                     <div class="txt">
                         <ul class="btn_list">
                             <li>
-                                <button type="button" class="shadow_btn">
-                                    Register<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-                                </button>
-                                <ul class="sub_list">
-                                    <li><a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}"
-                                            class="shadow_btn">Freelancer</a>
-                                    </li>
-                                    <li><a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}"
-                                            class="shadow_btn">Client</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#booking" class="shadow_btn">{{ @Auth::user() ? 'Book' : 'Price List' }} <img
-                                        src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a></li>
-                        </ul>
-                    </div>
-                    <div class="img">
-                        <!-- <img src="assets/images/home_service_02.jpg" alt=""> -->
-                    </div>
-                </div>
-                <div class="img">
-                    <img src="{{ asset('template_new/assets/images/home_service_01.jpg') }}" alt="">
-                </div>
-            </div>
-        </div>
-        <div class="btn_wraper_head">
-            <div class="contain">
-                <div class="btn_head desktop" data-aos="fade-up" data-aos-duration="1000">
-                    <div class="txt">
-                        <ul class="btn_list">
-                            <li>
-                                <button type="button" class="shadow_btn" {!! Auth::user() ? 'disabled = ture' : '' !!}>
-                                    Register<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                                <button type="button" class="shadow_btn" {!! Auth::user() ? 'disabled = ture style = "pointer-events: none"': '' !!}>Register
+                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                                 </button>
                                 <ul class="sub_list">
                                     <li>
@@ -151,7 +130,53 @@
                                 </li>
                             @endif
                             <li>
-                                <a href="#booking" class="shadow_btn">Price List
+                                <a href="#packages" class="shadow_btn">{{ @Auth::user() ? 'Book' : 'Price List' }} 
+                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="img">
+                        <!-- <img src="assets/images/home_service_02.jpg" alt=""> -->
+                    </div>
+                </div>
+                <div class="img">
+                    <img src="{{ asset('template_new/assets/images/home_service_01.jpg') }}" alt="">
+                </div>
+            </div>
+        </div>
+        <div class="btn_wraper_head">
+            <div class="contain">
+                <div class="btn_head desktop" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="txt">
+                        <ul class="btn_list">
+                            <li>
+                                <button type="button" class="shadow_btn" {!! Auth::user() ? 'disabled = ture style = "pointer-events: none"': '' !!}>
+                                    Register
+                                    <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                                </button>
+                                <ul class="sub_list">
+                                    <li>
+                                        <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}"
+                                            class="shadow_btn">Freelancer
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ @!Auth::user() ? route('register') : 'javascript:;' }}"
+                                            class="shadow_btn">Client
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            @if(Auth::user())
+                                <li>
+                                    <a href="#booking" class="shadow_btn"> Book
+                                        <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                                    </a>
+                                </li>
+                            @endif
+                            <li>
+                                <a href="#packages" class="shadow_btn">Price List
                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                                 </a>
                             </li>    
