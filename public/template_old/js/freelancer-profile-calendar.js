@@ -154,11 +154,13 @@ jQuery(document).ready(function () {
                                     $(".book-appointment").removeClass(
                                         "defaultStatus"
                                     );
+                                    $(".on-Hold").removeClass("defaultStatus");
                                     $(".off").addClass("defaultStatus");
                                 } else {
                                     $(".book-appointment").addClass(
                                         "defaultStatus"
                                     );
+                                    $(".on-Hold").addClass("defaultStatus");
                                     $(".off").removeClass("defaultStatus");
                                 }
                                 if (profileStatus == "Freelancer") {
@@ -513,6 +515,7 @@ jQuery(document).ready(function () {
                                 $(".book-appointment").addClass(
                                     "defaultStatus"
                                 );
+                                $(".on-Hold").addClass("defaultStatus");
                             }
                             // else {
                             //   $(".appointment-status").hide();
@@ -521,6 +524,7 @@ jQuery(document).ready(function () {
                         if (!found) {
                             $(".addTimeSlots").addClass("d-none");
                             $(".book-appointment").addClass("defaultStatus");
+                            $(".on-Hold").addClass("defaultStatus");
 
                             $("#p_status").text("-");
                             $(".timeSlots").empty();
