@@ -21,11 +21,11 @@ var endCalender = new Date(
 );
 
 function optionBtns(selectedDate) {
-    if (selectedDate >= tomorrow) {
-        $(".on-Hold").addClass("defaultStatus");
-    } else {
-        $(".on-Hold").removeClass("defaultStatus");
-    }
+    // if (selectedDate >= tomorrow) {
+    //     $(".on-Hold").addClass("defaultStatus");
+    // } else {
+    //     $(".on-Hold").removeClass("defaultStatus");
+    // }
 }
 function convertTo12HourFormat(time24) {
     // Split the time string into hours and minutes
