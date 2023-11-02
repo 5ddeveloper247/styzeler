@@ -471,7 +471,7 @@ $(function () {
                                 on_hold_show = "";
                             } else if (
                                 (user_type == "hairdressingSalon" ||
-                                    user_type == "hairdressingSalon") &&
+                                    user_type == "beautySalon") &&
                                 check_status.includes("on hold by")
                             ) {
                                 on_hold_show =
