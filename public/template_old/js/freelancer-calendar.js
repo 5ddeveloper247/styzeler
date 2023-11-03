@@ -117,6 +117,7 @@ function removeDuplicates(data) {
                             // Define a mapping of status values to titles
                             var statusToTitle = {
                                 Available: "Available",
+                                Hold: "Hold",
                                 Off: "Off",
                                 "On Call": "On Call",
                                 // Add more mappings as needed
@@ -231,15 +232,9 @@ function removeDuplicates(data) {
                                             }
 
                                             if (
-                                                status == "booked" ||
-                                                status_for_hold.includes(
-                                                    "on hold by"
-                                                ) ||
-                                                status_for_hold.includes(
-                                                    "confirmed by"
-                                                ) ||
-                                                status_for_hold.includes(
-                                                    "on hold confirmed"
+                                                status != "Available" &&
+                                                !status_for_hold.includes(
+                                                    "cancelled by"
                                                 )
                                             ) {
                                                 html +=
@@ -494,15 +489,9 @@ function removeDuplicates(data) {
                                                     status.toLowerCase();
                                             }
                                             if (
-                                                status == "booked" ||
-                                                status_for_hold.includes(
-                                                    "on hold by"
-                                                ) ||
-                                                status_for_hold.includes(
-                                                    "confirmed by"
-                                                ) ||
-                                                status_for_hold.includes(
-                                                    "on hold confirmed"
+                                                status != "Available" &&
+                                                !status_for_hold.includes(
+                                                    "cancelled by"
                                                 )
                                             ) {
                                                 html +=

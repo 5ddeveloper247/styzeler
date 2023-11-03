@@ -257,6 +257,7 @@ class ProfileController extends Controller
 
         $availableDays = $request['availableDays'];
         $status = $request['Status'];
+        // dd($availableDays, $status);
 
         $booking = Bookings::where(['date' => $availableDays, 'user_id' => Auth::id()])->first();
 
@@ -281,7 +282,8 @@ class ProfileController extends Controller
 
                         'bookings_id' => $book_id->id,
                         'start_time' => '07:00',
-                        'end_time' => '21:00'
+                        'end_time' => '21:00',
+                        'status' => $status
 
                     ]);
                 }
@@ -368,7 +370,6 @@ class ProfileController extends Controller
                 $bookedUserDetails = User::where('id', $request->user_id)->first();
                 $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
                 $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->with(['bookingTimeSlots'])->first();
-
                 $cartServiceTimeMin = $userCart != null ? $userCart->cart_lines->sum('item_time_min') : 0;
 
                 if ($slotDetails->slots_time != 'After_Nine') {
@@ -539,14 +540,35 @@ class ProfileController extends Controller
             }
 
             // Check if the slot is already booked
-            $checkSlot = Appointments::where('booking_slots_id', $request->slot_book_id)->first();
-            if ($checkSlot) {
+            // $checkSlot = Appointments::query();
+            // if (!empty($request->on_hold)) {
+            //     $checkSlot = $checkSlot->with(['userBookingSlots' => function ($q) {
+            //         $q->where('status', 'cancelled by');
+            //     }]);
+            // }
+            // $checkSlot = $checkSlot->where('booking_slots_id', $request->slot_book_id)->first();
+            $checkSlot = Appointments::query();
+
+            if (!empty($request->on_hold)) {
+                $checkSlot = $checkSlot->with(['userBookingSlots' => function ($q) {
+                    $q->where('status', 'LIKE', '%Cancelled by%');
+                }]);
+            }
+
+            $checkSlot = $checkSlot->where('booking_slots_id', $request->slot_book_id)->first();
+            $check_status = '';
+            if ($checkSlot && $checkSlot->userBookingSlots) {
+                $check_status = $checkSlot->userBookingSlots->status;
+            }
+
+            if ($checkSlot && !str_contains($check_status, 'Cancelled by')) {
                 return response()->json([
                     'status' => 422,
                     'message' => 'Slot is Already Booked.',
                 ]);
             }
 
+            // dd('success');
             //             // check user tokens
 
 
@@ -606,7 +628,8 @@ class ProfileController extends Controller
             $get_last_time =  Appointments::create([
                 'booking_slots_id' => $request->slot_book_id,
                 'freelancer_user_id' => $request->user_id,
-                'booking_date' => empty($request->on_hold) ? $modifiedDateTime : $modifiedDateTime->format('Y-m-d'),
+                // 'booking_date' => empty($request->on_hold) ? $modifiedDateTime : $modifiedDateTime->format('Y-m-d'),
+                'booking_date' => $request->book_date,
                 'booking_time' => '07:00' . ' - ' . '21:00',
                 'booking_user_id' => Auth::id(),
             ]);
@@ -625,7 +648,13 @@ class ProfileController extends Controller
             $bookedUserDetails = User::where('id', $request->user_id)->first();
             $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
             $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)->with(['bookingTimeSlots'])->first();
-
+            if (!empty($request->on_hold)) {
+                $bookingDetails->status = 'On Hold';
+                $bookingDetails->save();
+            } else {
+                $bookingDetails->status = 'Booked';
+                $bookingDetails->save();
+            }
             $slotStartTime = date('h:i A', strtotime($slotDetails->start_time));
             $slotEndTime = date('h:i A', strtotime($slotDetails->end_time));
 
@@ -1297,8 +1326,17 @@ class ProfileController extends Controller
         if (str_contains(strtolower($request->status), 'confirmed by')) {
             $message = 'On Hold Confirmed Successfully!';
         } elseif (str_contains(strtolower($request->status), 'cancelled by')) {
+
+            BookingSlots::where('id', $appointment->booking_slots_id)->with(['bookings' => function ($q) {
+                $q->update(['status' => 'Available']);
+            }])->first();
+
             $message = 'On Hold Cancelled Successfully!';
         } elseif (str_contains(strtolower($request->status), 'booked')) {
+
+            BookingSlots::where('id', $appointment->booking_slots_id)->with(['bookings' => function ($q) {
+                $q->update(['status' => 'Booked']);
+            }])->first();
 
             $owners = ['hairdressingSalon', 'beautySalon'];
             if (in_array(Auth::user()->type, $owners)) {

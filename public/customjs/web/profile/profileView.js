@@ -957,9 +957,9 @@ $(document).on("click", "#book-slots", function (e) {
 });
 
 function bookSlotsResponse(response) {
-    // SHOWING MESSAGE ACCORDING TO RESPONSE
-    console.log(response);
     if (response.status == 200 || response.status == "200") {
+        $("#calendar").fullCalendar("refetchEvents");
+
         var bookings = response.data;
         var slots = bookings["booking_time_slots"];
         var status = bookings["status"];

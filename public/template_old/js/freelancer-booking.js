@@ -466,7 +466,7 @@ $(function () {
                                 (profile_type == "Freelancer" &&
                                     check_status.includes("confirmed by")) ||
                                 check_status.includes("cancelled by") ||
-                                check_status.includes("on hold confirmed")
+                                check_status.includes("booked")
                             ) {
                                 on_hold_show = "";
                             } else if (
@@ -503,6 +503,8 @@ $(function () {
                                     id +
                                     "," +
                                     cancel_booking +
+                                    "," +
+                                    cancel_by_owner +
                                     ')"><a>Cancel</a></div>';
                                 cancel_btn = "d-none";
                             }

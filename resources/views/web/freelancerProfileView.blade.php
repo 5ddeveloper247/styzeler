@@ -508,8 +508,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="btn uploadBtn text-right"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>
@@ -618,7 +618,7 @@
                     @if (in_array(Auth::user()->type, ['beautySalon', 'hairdressingSalon']))
                         <div class="col-6 col-md-6 col-lg-2 text-center">
                             <div class="">
-                                <a class="on-Hold btn customBtn defaultStatus" href="">Hold</a>
+                                <a class="on-Hold btn customBtn defaultStatus" href="">On Hold</a>
                             </div>
                         </div>
                     @endif
