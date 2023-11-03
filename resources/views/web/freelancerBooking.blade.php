@@ -8,6 +8,16 @@
             padding: 5px;
 
         }
+        #circle {
+            width: auto; /* Adjust the width and height as needed */
+            height: 25px;
+            background-color: #fdd431;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-left: auto;
+        }
     </style>
 @endpush
 @section('content')
@@ -26,9 +36,20 @@
                             <h4 class="month-of-year">Date
                             </h4>
                         </div>
-                        <div class="col-8">
-                            <h4 class="year">Booking Details
+                        <div class="col-8" style="display: flex; justify-content: center;">
+                            <h4 class="year" style="margin-left: auto">
+                                <span>Booking Details</span>
                             </h4>
+                            <div id="circle">
+                                <a href="{{ url()->previous() }}" style="height: 25px">
+                                    <svg xmlns="http://www.w3.org/2000/svg" style="color: black" class="icon icon-tabler icon-tabler-arrow-left" width="25" height="25" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                        <path d="M5 12l14 0"></path>
+                                        <path d="M5 12l6 6"></path>
+                                        <path d="M5 12l6 -6"></path>
+                                    </svg>
+                                </a>
+                            </div>
                         </div>
                     </div>
                     <div class="row appointment-row p-3 text-left">
@@ -111,7 +132,7 @@
                             </p>
                         </div> -->
                     </div>
-                    <a class="logon_btn my-2" id="back-btn" href="{{ url()->previous() }}" 
+                    {{-- <a class="logon_btn my-2" id="back-btn" href="{{ url()->previous() }}" 
                         style=" 
                         width: fit-content;
                         justify-content: space-around;
@@ -120,7 +141,7 @@
                         padding: 0.3rem;
                         color: rgb(196, 185, 176);
                         ">Back
-                    </a>
+                    </a> --}}
                 </div>
             </div>
         </div>
