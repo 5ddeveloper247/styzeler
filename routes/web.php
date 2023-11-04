@@ -42,6 +42,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         Route::get('/freelancerBookingHistory', 'FrontEndController@freelancerBookingHistory')->name('freelancerBookingHistory');
         // Route::get('/ownerProfile', 'FrontEndController@ownerProfile')->name('ownerProfile');
         Route::post('/onHoldBooking', 'ProfileController@onHoldBooking')->name('onHoldBooking');
+        Route::post('/confirmBooking', 'ProfileController@confirmBooking')->name('confirmBooking');
 
         Route::get('/getProfileData', 'ProfileController@getProfileData')->name('getProfileData');
         Route::post('/ProfileImageUpdate', 'ProfileController@ProfileImageUpdate')->name('ProfileImageUpdate');

@@ -4,19 +4,20 @@ namespace App\Http\Controllers\FrontEnd;
 
 use Countable;
 use Carbon\Carbon;
+use App\Models\Cart;
 use App\Models\User;
 use App\Models\Bookings;
+use App\Models\Cart_line;
+use App\Models\Used_tokens;
+use App\Models\Appointments;
 use App\Models\BookingSlots;
 use Illuminate\Http\Request;
+use App\Models\User_review_like;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Requests\UpdateProfileBasicInfoValidationRequest;
-use App\Models\Appointments;
-use App\Models\Cart;
-use App\Models\Cart_line;
-use App\Models\Used_tokens;
-use App\Models\User_review_like;
 
 class ProfileController extends Controller
 {
@@ -257,7 +258,6 @@ class ProfileController extends Controller
 
         $availableDays = $request['availableDays'];
         $status = $request['Status'];
-        // dd($availableDays, $status);
 
         $booking = Bookings::where(['date' => $availableDays, 'user_id' => Auth::id()])->first();
 
@@ -398,8 +398,6 @@ class ProfileController extends Controller
 
                         // $firstindexSlots = isset($slots[0]) ? $slots[0] : '';
                         // $lastindexSlots = isset($slots[count($slots) - 1]) ? $slots[count($slots) - 1] : '';
-                        //                         dd($total_slots_time > $totalServiceTime, $total_slots_time == $totalServiceTime);
-                        //                     	dd($total_slots_time , $totalServiceTime);
                         if ($total_slots_time < $totalServiceTime) { //|| ($total_slots_time == $totalServiceTime) != true
                             return response()->json([
                                 'status' => 422,
@@ -561,14 +559,13 @@ class ProfileController extends Controller
                 $check_status = $checkSlot->userBookingSlots->status;
             }
 
-            if ($checkSlot && !str_contains($check_status, 'Cancelled by')) {
+            if (!is_null($checkSlot) && (!str_contains($check_status, 'Cancelled by') || $checkSlot->status != 'Cancel')) {
                 return response()->json([
                     'status' => 422,
                     'message' => 'Slot is Already Booked.',
                 ]);
             }
 
-            // dd('success');
             //             // check user tokens
 
 
@@ -636,14 +633,14 @@ class ProfileController extends Controller
 
             BookingSlots::where('id', $request->slot_book_id)->update([
                 'slots_time' => '07:00 AM - 09:00 PM',
-                'status' => $request->on_hold ?? 'booked',
+                'status' => $request->on_hold ?? 'Pending',
             ]);
 
-            if ($bookExist == 0 && empty($request->on_hold)) {
-                $user = User::find(Auth::user()->id);
-                $user->tokens = $tokens - 1;
-                $user->update();
-            }
+            // if ($bookExist == 0 && empty($request->on_hold)) {
+            //     $user = User::find(Auth::user()->id);
+            //     $user->tokens = $tokens - 1;
+            //     $user->update();
+            // }
 
             $bookedUserDetails = User::where('id', $request->user_id)->first();
             $slotDetails = BookingSlots::where('id', $request->slot_book_id)->first();
@@ -652,7 +649,7 @@ class ProfileController extends Controller
                 $bookingDetails->status = 'On Hold';
                 $bookingDetails->save();
             } else {
-                $bookingDetails->status = 'Booked';
+                $bookingDetails->status = 'Pending';
                 $bookingDetails->save();
             }
             $slotStartTime = date('h:i A', strtotime($slotDetails->start_time));
@@ -692,7 +689,7 @@ class ProfileController extends Controller
 
             return response()->json([
                 'status' => 200,
-                'message' => "Slot $message successfully!",
+                'message' => "Request to Slot $message Successfully Send!",
                 'data' => $bookingDetails,
             ]);
         }
@@ -845,28 +842,7 @@ class ProfileController extends Controller
     public function getfreelancerBooking()
     {
         $currentDate = now()->toDateString();
-        // if (Auth::user()->type == 'client') {
-        //     //             $getProfileData = Appointments::where(
-        //     //                 [
-        //     //                     ['booking_user_id', Auth::id()],
-        //     //                     // ['created_at', '>=', $currentDate]
-        //     //                 ]
 
-        //     //             )->with([
-        //     //                 'clientUser',
-        //     //                 'userBookingSlots',
-        //     //                 'userBookingSlots.bookings',
-        //     //                 'userBookingSlots.bookings.FreelancerUser'
-        //     //             ])->get();
-        //     dd(Auth::user()->id);
-        //     $getProfileData = Cart::where('user_id', Auth::user()->id)->where('status', 'checkout')
-        //         ->with([
-        //             'user',
-        //             'booked_user',
-        //             'userBookingSlots',
-        //         ])->get();
-        // } else {
-        // dd(Auth::id());
         $allowedTypes = ['client', 'beautySalon', 'hairdressingSalon'];
 
         if (in_array(Auth::user()->type, $allowedTypes)) {
@@ -874,53 +850,44 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(
                 [
                     ['booking_user_id', Auth::id()],
-                    ['booking_date', '>=', $currentDate]
+                    ['created_at', '>=', $currentDate],
+                    // ['status', '!=', null]
                 ]
 
-            )->with([
-                'clientUser',
-                'freelancerAppUser',
-                'userBookingSlots',
-                // 'userBookingSlots',
-                // 'userBookingSlots.bookings',
-                // 'userBookingSlots.bookings.FreelancerUser'
-            ])->get();
+            )->has('userBookingSlots')
+                ->with([
+                    'userBookingSlots',
+                    //  => function ($q) {
+                    //     $q->where('status', '!=', 'Available');
+                    // },
+                    'clientUser',
+                    'freelancerAppUser',
+                    // 'userBookingSlots',
+                    // 'userBookingSlots.bookings',
+                    // 'userBookingSlots.bookings.FreelancerUser'
+                ])->get();
         } else {
-            $getProfileData = Appointments::where(
-                [
-                    ['freelancer_user_id', Auth::id()],
-                    ['booking_date', '>=', $currentDate]
-                ]
 
-            )->with([
-                'clientAppUser',
-                'freelancerUser',
-                'userBookingSlots',
-                // 'userBookingSlots',
-                // 'userBookingSlots.bookings',
-                // 'userBookingSlots.bookings.FreelancerUser'
-            ])->get();
+            $getProfileData = Appointments::where([
+                ['freelancer_user_id', Auth::id()],
+                ['created_at', '>=', $currentDate],
+                // ['status', '!=', null]
+
+            ])->has('userBookingSlots')
+                ->with([
+                    'userBookingSlots',
+                    // => function ($q) {
+                    //     $q->where('status', '!=', 'Available');
+                    // },
+                    'clientAppUser',
+                    'freelancerUser'
+                ])
+                ->get();
+
+            // dd($getProfileData, Auth::id());
         }
 
-        // $getProfileData =
 
-
-        // Bookings::where(
-        //     [
-        //         ['user_id', '=', Auth::id()],
-        //         // ['date', '>=', $currentDate]
-        //     ]
-
-        // )
-        //     // ->with([
-        //     //     'user',
-        //     //     'bookingTimeSlots',
-        //     //     'appointment_s',
-        //     //     'appointment_s.userAppointment'
-        //     // ])
-        //     ->get();
-        // }
-        // dd($getProfileData);
         return response()->json([
             'status' => 200,
             'appointments' => $getProfileData,
@@ -1122,13 +1089,22 @@ class ProfileController extends Controller
         $appId =  $request->app_id;
         $cancel_time = $request->cancel_time;
 
-        $getAppointmentData = Appointments::where('id', $appId)->first();
-        // dd($getAppointmentData);
+        $getAppointmentData = Appointments::where('id', $appId)
+            ->has('userBookingSlots')
+            ->with(
+                ['userBookingSlots.bookings'
+                => function ($q) {
+                    $q->update(['status' => 'Available']);
+                }]
+            )->first();
+        $getAppointmentData->status = 'Cancel';
+        $getAppointmentData->save();
         $getAppointmentCreatedTime = $getAppointmentData->created_at;
         $getAppointmentBookingDate = $getAppointmentData->booking_date;
         $getAppointmentBookingTime = $getAppointmentData->booking_time;
         $getAppointmentBookingUserId = $getAppointmentData->booking_user_id;
 
+        $token_not_remove = BookingSlots::where('id', $getAppointmentData->booking_slots_id)->value('status');
         $timeNow = now();
         $hoursDifference = $timeNow->diffInHours($getAppointmentCreatedTime);
 
@@ -1141,7 +1117,6 @@ class ProfileController extends Controller
         }
 
         $getAppointmentDataArray = explode(',', $getAppointmentData->booking_slots_id);
-        // dd($request->all());
         $bookinkSlots = BookingSlots::whereIn('id', $getAppointmentDataArray);
         if ($cancel_time == '21') {
             $bookinkSlots = $bookinkSlots->update(
@@ -1154,25 +1129,23 @@ class ProfileController extends Controller
             $bookinkSlots = $bookinkSlots->update(
                 [
                     "status" => "Available",
+                    'slots_time' => null
                 ]
             );
         }
 
-
-
         $clientUser = User::where('id', $getAppointmentData->booking_user_id)->first();
         $freelancerUser = User::where('id', $getAppointmentData->freelancer_user_id)->first();
-        // dd(empty($getAppointmentData));
         $appoExist = Appointments::where('booking_user_id', $getAppointmentBookingUserId)->where('booking_date', $getAppointmentBookingDate)->count();
 
-        if ($appoExist == 1) {
+        if ($appoExist == 1 && !str_contains(strtolower($token_not_remove), 'pending')) {
             User::where('id', $clientUser->id)->update([
                 'tokens' => $clientUser->tokens + 1
             ]);
         }
 
 
-        $getAppointmentData->delete();
+        // $getAppointmentData->delete();
 
         $body = "<table>
                     <tr>
@@ -1326,14 +1299,16 @@ class ProfileController extends Controller
         if (str_contains(strtolower($request->status), 'confirmed by')) {
             $message = 'On Hold Confirmed Successfully!';
         } elseif (str_contains(strtolower($request->status), 'cancelled by')) {
-
+            $appointment->status = 'Cancel';
+            $appointment->save();
             BookingSlots::where('id', $appointment->booking_slots_id)->with(['bookings' => function ($q) {
                 $q->update(['status' => 'Available']);
             }])->first();
 
             $message = 'On Hold Cancelled Successfully!';
         } elseif (str_contains(strtolower($request->status), 'booked')) {
-
+            $appointment->status = 'Booked';
+            $appointment->save();
             BookingSlots::where('id', $appointment->booking_slots_id)->with(['bookings' => function ($q) {
                 $q->update(['status' => 'Booked']);
             }])->first();
@@ -1389,7 +1364,82 @@ class ProfileController extends Controller
                 }
             }
 
-            return response()->json(['status' => 200, 'message' => $message, 'data' => $request->app_id]);
+            return response()->json(['status' => 200, 'message' => $message, 'data' => ['app_id' => $request->app_id, 'status' => $request->status]]);
+        } else {
+            return response()->json(['status' => 500, 'message' => 'Something went wrong!', 'data' => '']);
+        }
+    }
+
+    public function confirmBooking(Request $request)
+    {
+        $appointment = Appointments::where('id', $request->app_id)->with(
+            [
+                'userAppointment',
+                'bookedFreelancer',
+                'userBookingSlots'
+                => function ($q) use ($request) {
+                    $q->update(['status' => $request->status]);
+                }
+            ]
+        )->first();
+
+        $message = '';
+
+        if (str_contains(strtolower($request->status), 'booked')) {
+
+            BookingSlots::where('id', $appointment->booking_slots_id)->with(['bookings' => function ($q) {
+                $q->update(['status' => 'Booked']);
+            }])->first();
+            $appointment->status = $request->status;
+            $appointment->save();
+            $user = User::where('id', $appointment->booking_user_id)->first();
+            $user->tokens = $user->tokens - 1;
+            $user->update();
+            $message = 'Booking Confirmed Successfully!';
+        };
+
+        if ($appointment) {
+
+            $body1 = "<table>
+                    <tr>
+                        <td>Business Owner Name: " . $appointment->userAppointment->name . " " . $appointment->userAppointment->surname . "</td>
+                    </tr>
+                    <tr>
+                        <td>Freelancer Name: " . $appointment->bookedFreelancer->name . " " . $appointment->bookedFreelancer->surname . "</td>
+                    </tr>
+                    <tr>
+                        <td>Business Owner Email: " . $appointment->userAppointment->email . "</td>
+                    </tr>
+                    <tr>
+                        <td>Freelancer Email: " . $appointment->bookedFreelancer->email . "</td>
+                    </tr>
+                    <tr>
+                        <td>Booking Date: " . $appointment->booking_date . "</td>
+                    </tr>
+                    <tr>
+                        <td>Slot time: " . $appointment->booking_time . "</td>
+                    </tr>
+                    <tr>
+                        <td>Status: " . $appointment->userBookingSlots->status . "</td>
+                    </tr>
+                </table>";
+
+            $sendEmailTo = ['admin', 'owner', 'freelancer'];
+
+            foreach ($sendEmailTo as $user_type) {
+                if ($user_type == 'admin') {
+                    $admin = User::where('type', $user_type)->first();
+                    sendMail($admin->name, $admin->email, "Booking Confirm", "Booking Confirm Email", $body1);
+                } else if ($user_type == 'freelancer') {
+                    $freelancer = User::findOrFail($appointment->freelancer_user_id);
+                    sendMail($freelancer->name, $freelancer->email, "Booking Confirm", "Booking Confirm Email", $body1);
+                } else if ($user_type == 'owner') {
+                    $freelancer = User::findOrFail($appointment->booking_user_id);
+                    sendMail($freelancer->name, $freelancer->email, "Booking Confirm", "Booking Confirm Email", $body1);
+                }
+            }
+
+            return response()->json(['status' => 200, 'message' => $message, 'data' => ['app_id' => $request->app_id, 'status' => $request->status]]);
         } else {
             return response()->json(['status' => 500, 'message' => 'Something went wrong!', 'data' => '']);
         }
@@ -1470,7 +1520,6 @@ class ProfileController extends Controller
         //             });
         //         })
         //         ->get();
-        //     dd($existingBooking, $startDateTime, $endDateTime, $booking);
         // }
 
         // // check booking is already created with in given time frame

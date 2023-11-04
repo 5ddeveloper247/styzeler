@@ -28,7 +28,7 @@ class Appointments extends Model
     }
     public function userBookingSlots(): BelongsTo
     {
-        return $this->belongsTo(BookingSlots::class, 'booking_slots_id', 'id');
+        return $this->belongsTo(BookingSlots::class, 'booking_slots_id', 'id')->where('status', '!=', 'Available');
     }
     public function freelancerUser(): BelongsTo
     {
