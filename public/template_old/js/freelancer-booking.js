@@ -769,6 +769,7 @@ function getfreelancerBookings() {
                     '<div class="col-12 text-center">You have no bookings!</div>'
                 );
             } else {
+                $(".appointment-row").empty();
                 $.each(response.appointments, function (i) {
                     if (
                         response.appointments[i] != ""
