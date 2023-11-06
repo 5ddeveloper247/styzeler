@@ -554,12 +554,11 @@ class ProfileController extends Controller
             }
 
             $checkSlot = $checkSlot->where('booking_slots_id', $request->slot_book_id)->first();
-            $check_status = '';
-            if ($checkSlot && $checkSlot->userBookingSlots) {
-                $check_status = $checkSlot->userBookingSlots->status;
-            }
-
-            if (!is_null($checkSlot) && (!str_contains($check_status, 'Cancelled by') || $checkSlot->status != 'Cancel')) {
+            // $check_status = '';
+            // if ($checkSlot && $checkSlot->userBookingSlots) {
+            //     $check_status = $checkSlot->userBookingSlots->status;
+            // }
+            if ($checkSlot && $checkSlot->status != 'Cancel') {
                 return response()->json([
                     'status' => 422,
                     'message' => 'Slot is Already Booked.',
@@ -865,7 +864,9 @@ class ProfileController extends Controller
                     // 'userBookingSlots',
                     // 'userBookingSlots.bookings',
                     // 'userBookingSlots.bookings.FreelancerUser'
-                ])->get();
+                ])
+                ->orderBy('created_at', 'desc')
+                ->get();
         } else {
 
             $getProfileData = Appointments::where([
@@ -882,6 +883,7 @@ class ProfileController extends Controller
                     'clientAppUser',
                     'freelancerUser'
                 ])
+                ->orderBy('created_at', 'desc')
                 ->get();
 
             // dd($getProfileData, Auth::id());

@@ -35,6 +35,7 @@
 @endpush
 
 @section('content')
+    {{-- @dd($data['appointments']) --}}
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
         <section class="content-header">
@@ -72,80 +73,10 @@
                 </li>
             </ul>
             <div class="tab-content">
+
                 <div id="panel0" class="tab-pane active">
                     <div class="container">
                         <h2 class="color-1 my-4 text-center">All Pending Bookings</h2>
-                        <div class="row justify-content-center">
-                            <div class="booking-box col-lg-8">
-                                <div class="row text-center">
-                                    <div class="col-4">
-                                        <h4 class="month-of-year">Date</h4>
-                                    </div>
-                                    <div class="col-8">
-                                        <h4 class="year">Booking Details</h4>
-                                    </div>
-                                </div>
-                                <div class="row pending-appointment p-3 text-left">
-                                    <div class="col-4">
-                                        <span>
-                                            <div>
-                                                <a onclick="showToggle(1);">
-                                                    <p style="cursor: pointer;">
-                                                        <strong>Date: </strong> 21-12-2021&nbsp;&nbsp;
-                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                    </p>
-                                                </a>
-                                            </div>
-                                        </span>
-                                    </div>
-                                    <div class="col-8">
-                                        <div>
-                                            <span style="overflow-wrap: break-word;">
-                                                <p><strong>Business Owner: </strong>Nik Hudson</p>
-                                                <div>
-                                                    <p><strong>Freelancer Name: </strong> carlo Berardinucci</p>
-                                                </div>
-                                            </span>
-                                            <div id="toggle1" style="display: none;">
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"> <strong>Freelancer Category:
-                                                        </strong> Hairstylist</p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"> <strong>Freelancer Email:
-                                                        </strong> carlo_berardinucci@yahoo.co.uk </p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Freelancer Mobile:
-                                                        </strong> 07830536184</p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Salon Category: </strong>
-                                                        Hairdressing Owner</p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Salon Email: </strong>
-                                                        scar_lostesting@yahoo.co.uk</p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Salon Mobile: </strong>
-                                                        02075663979</p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Booking Status: </strong>
-                                                        CONFIRMED</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="panel1" class="tab-pane active">
-                    <div class="container">
-                        <h2 class="color-1 my-4 text-center">All Owner Bookings</h2>
                         <div class="row justify-content-center">
                             <div class="booking-box col-lg-8">
                                 <div class="row text-center">
@@ -160,100 +91,221 @@
                                     @if (@count($appointments))
                                         @forelse ($appointments as $row)
                                             {{-- @dd($row) --}}
-                                            @php
-                                                $creationDate = date('d-M-Y', strtotime(@$row->created_at));
-                                                $bookDate = date('d-M-Y', strtotime(@$row->booking_date));
-                                                // $bookStime = date('h:i A', strtotime(@$row['userBookingSlots']->start_time));
-                                                // $bookEtime = date('h:i A', strtotime(@$row['userBookingSlots']->end_time));
-                                            @endphp
+                                            @if (!empty($row->userBookingSlots->status) && str_contains(strtolower($row->userBookingSlots->status), 'pending'))
+                                                @php
+                                                    $creationDate = date('d-M-Y', strtotime(@$row->created_at));
+                                                    $bookDate = date('d-M-Y', strtotime(@$row->booking_date));
+                                                    // $bookStime = date('h:i A', strtotime(@$row['userBookingSlots']->start_time));
+                                                    // $bookEtime = date('h:i A', strtotime(@$row['userBookingSlots']->end_time));
+                                                @endphp
 
-                                            <div class="col-4">
-                                                <span>
-                                                    <div>
-                                                        <a onclick="showToggle({{ $row->id }});">
-                                                            <p style="cursor: pointer;">
-                                                                <strong>Date: </strong> {{ @$creationDate }}&nbsp;&nbsp;
-                                                                <i class="fa fa-eye" aria-hidden="true"></i>
-                                                            </p>
-                                                            <p style="cursor: pointer;">
-                                                                <strong>Book Date: </strong> {{ @$bookDate }}
-                                                            </p>
-                                                            <p style="cursor: pointer;">
-                                                                <strong>Slot Time: </strong>
-                                                                {{ $row->booking_time }}
-                                                            </p>
-                                                        </a>
-                                                    </div>
-                                                </span>
-                                            </div>
-                                            <div class="col-8">
-                                                <div>
-                                                    <span style="overflow-wrap: break-word;">
-                                                        <p><strong>Owner Name: </strong>{{ @$row['adminClientUser']->name }}
-                                                            {{ @$row['adminClientUser']->surname }}</p>
+                                                <div class="col-4">
+                                                    <span>
                                                         <div>
-                                                            <p><strong>Freelancer Name:
-                                                                </strong>{{ @$row['freelancerAppUser']->name }}
-                                                                {{ @$row['freelancerAppUser']->surname }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p style="overflow-wrap: break-word;"> <strong>Freelancer
-                                                                    Category: </strong>
-                                                                {{ @$row['freelancerAppUser']->type }}
-                                                            </p>
+                                                            <a onclick="showToggle({{ $row->id }});">
+                                                                <p style="cursor: pointer;">
+                                                                    <strong>Date: </strong> {{ @$creationDate }}&nbsp;&nbsp;
+                                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                </p>
+                                                                <p style="cursor: pointer;">
+                                                                    <strong>Book Date: </strong> {{ @$bookDate }}
+                                                                </p>
+                                                                <p style="cursor: pointer;">
+                                                                    <strong>Slot Time: </strong>
+                                                                    {{ $row->booking_time }}
+                                                                </p>
+                                                            </a>
                                                         </div>
                                                     </span>
-                                                    <div id="toggle{{ $row->id }}" style="display: none;">
+                                                </div>
+                                                <div class="col-8">
+                                                    <div>
+                                                        <span style="overflow-wrap: break-word;">
+                                                            <p><strong>Owner Name:
+                                                                </strong>{{ @$row['adminClientUser']->name }}
+                                                                {{ @$row['adminClientUser']->surname }}</p>
+                                                            <div>
+                                                                <p><strong>Freelancer Name:
+                                                                    </strong>{{ @$row['freelancerAppUser']->name }}
+                                                                    {{ @$row['freelancerAppUser']->surname }}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"> <strong>Freelancer
+                                                                        Category: </strong>
+                                                                    {{ @$row['freelancerAppUser']->type }}
+                                                                </p>
+                                                            </div>
+                                                        </span>
+                                                        <div id="toggle{{ $row->id }}" style="display: none;">
 
-                                                        <div>
-                                                            <p style="overflow-wrap: break-word;"> <strong>Freelancer Email:
-                                                                </strong>
-                                                                {{ @$row['freelancerAppUser']->email }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p style="overflow-wrap: break-word;"><strong>Freelancer Mobile:
-                                                                </strong>
-                                                                {{ @$row['freelancerAppUser']->phone }}
-                                                            </p>
-                                                        </div>
-                                                        <div>
-                                                            <p style="overflow-wrap: break-word;"><strong>Owner Category:
-                                                                </strong> {{ @$row['adminClientUser']->type }}</p>
-                                                        </div>
-                                                        <div>
-                                                            <p style="overflow-wrap: break-word;"><strong>Owner Email:
-                                                                </strong> {{ @$row['adminClientUser']->email }}</p>
-                                                        </div>
-                                                        <div>
-                                                            <p style="overflow-wrap: break-word;"><strong>Owner Mobile:
-                                                                </strong> {{ @$row['adminClientUser']->phone }}</p>
-                                                        </div>
-                                                        <div>
-                                                            <p style="overflow-wrap: break-word;"><strong>Booking Status:
-                                                                </strong>
-                                                                Booked</p>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"> <strong>Freelancer
+                                                                        Email:
+                                                                    </strong>
+                                                                    {{ @$row['freelancerAppUser']->email }}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Freelancer
+                                                                        Mobile:
+                                                                    </strong>
+                                                                    {{ @$row['freelancerAppUser']->phone }}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Owner
+                                                                        Category:
+                                                                    </strong> {{ @$row['adminClientUser']->type }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Owner Email:
+                                                                    </strong> {{ @$row['adminClientUser']->email }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Owner Mobile:
+                                                                    </strong> {{ @$row['adminClientUser']->phone }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Booking
+                                                                        Status:
+                                                                    </strong>
+                                                                    {{ @$row['userBookingSlots']->status }}</p>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            @endif
                                         @empty
                                             <p>No Bookings Found!</p>
                                         @endforelse
                                         {{-- @else
                                         <p class="text-center">No Bookings Found!</p> --}}
                                     @endif
-
-
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <div id="panel1" class="tab-pane">
+                    <div class="container">
+                        <h2 class="color-1 my-4 text-center">All Pending Bookings</h2>
+                        <div class="row justify-content-center">
+                            <div class="booking-box col-lg-8">
+                                <div class="row text-center">
+                                    <div class="col-4">
+                                        <h4 class="month-of-year">Date</h4>
+                                    </div>
+                                    <div class="col-8">
+                                        <h4 class="year">Booking Details</h4>
+                                    </div>
+                                </div>
+                                <div class="row confirm-appointment p-3 text-left">
+                                    @if (@count($appointments))
+                                        @forelse ($appointments as $row)
+                                            {{-- @dd($row) --}}
+                                            @if (!empty($row->userBookingSlots->status) && str_contains(strtolower($row->userBookingSlots->status), 'on hold by'))
+                                                @php
+                                                    $creationDate = date('d-M-Y', strtotime(@$row->created_at));
+                                                    $bookDate = date('d-M-Y', strtotime(@$row->booking_date));
+                                                    // $bookStime = date('h:i A', strtotime(@$row['userBookingSlots']->start_time));
+                                                    // $bookEtime = date('h:i A', strtotime(@$row['userBookingSlots']->end_time));
+                                                @endphp
+
+                                                <div class="col-4">
+                                                    <span>
+                                                        <div>
+                                                            <a onclick="showToggle({{ $row->id }});">
+                                                                <p style="cursor: pointer;">
+                                                                    <strong>Date: </strong>
+                                                                    {{ @$creationDate }}&nbsp;&nbsp;
+                                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                </p>
+                                                                <p style="cursor: pointer;">
+                                                                    <strong>Book Date: </strong> {{ @$bookDate }}
+                                                                </p>
+                                                                <p style="cursor: pointer;">
+                                                                    <strong>Slot Time: </strong>
+                                                                    {{ $row->booking_time }}
+                                                                </p>
+                                                            </a>
+                                                        </div>
+                                                    </span>
+                                                </div>
+                                                <div class="col-8">
+                                                    <div>
+                                                        <span style="overflow-wrap: break-word;">
+                                                            <p><strong>Owner Name:
+                                                                </strong>{{ @$row['adminClientUser']->name }}
+                                                                {{ @$row['adminClientUser']->surname }}</p>
+                                                            <div>
+                                                                <p><strong>Freelancer Name:
+                                                                    </strong>{{ @$row['freelancerAppUser']->name }}
+                                                                    {{ @$row['freelancerAppUser']->surname }}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"> <strong>Freelancer
+                                                                        Category: </strong>
+                                                                    {{ @$row['freelancerAppUser']->type }}
+                                                                </p>
+                                                            </div>
+                                                        </span>
+                                                        <div id="toggle{{ $row->id }}" style="display: none;">
+
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"> <strong>Freelancer
+                                                                        Email:
+                                                                    </strong>
+                                                                    {{ @$row['freelancerAppUser']->email }}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Freelancer
+                                                                        Mobile:
+                                                                    </strong>
+                                                                    {{ @$row['freelancerAppUser']->phone }}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Owner
+                                                                        Category:
+                                                                    </strong> {{ @$row['adminClientUser']->type }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Owner Email:
+                                                                    </strong> {{ @$row['adminClientUser']->email }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Owner Mobile:
+                                                                    </strong> {{ @$row['adminClientUser']->phone }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Booking
+                                                                        Status:
+                                                                    </strong>
+                                                                    {{ @$row['userBookingSlots']->status }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            @endif
+                                        @empty
+                                            <p>No Bookings Found!</p>
+                                        @endforelse
+                                        {{-- @else
+                                        <p class="text-center">No Bookings Found!</p> --}}
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <div id="panel2" class="tab-pane">
                     <div class="container">
-                        <h2 class="color-1 my-4 text-center">All On Hold Bookings</h2>
+                        <h2 class="color-1 my-4 text-center">All Confirmed Bookings</h2>
                         <div class="row justify-content-center">
                             <div class="booking-box col-lg-8">
                                 <div class="row text-center">
@@ -264,70 +316,115 @@
                                         <h4 class="year">Booking Details</h4>
                                     </div>
                                 </div>
-                                <div class="row onHold-appointment p-3 text-left">
-                                    <div class="col-4">
-                                        <span>
-                                            <div>
-                                                <a onclick="showToggle(3);">
-                                                    <p style="cursor: pointer;">
-                                                        <strong>Date: </strong> 21-12-2021&nbsp;&nbsp;
-                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                    </p>
-                                                </a>
-                                            </div>
-                                        </span>
-                                    </div>
-                                    <div class="col-8">
-                                        <div>
-                                            <span style="overflow-wrap: break-word;">
-                                                <p><strong>Business Owner: </strong>Nik Hudson</p>
-                                                <div>
-                                                    <p><strong>Freelancer Name: </strong> carlo Berardinucci</p>
+                                <div class="row confirm-appointment p-3 text-left">
+                                    @if (@count($appointments))
+                                        @forelse ($appointments as $row)
+                                            {{-- @dd($row) --}}
+                                            @if (
+                                                (!empty($row->userBookingSlots->status) &&
+                                                    (str_contains(strtolower($row->userBookingSlots->status), 'confirmed by') ||
+                                                        str_contains(strtolower($row->userBookingSlots->status), 'booked'))) ||
+                                                    str_contains(strtolower($row->status), 'booked'))
+                                                @php
+                                                    $creationDate = date('d-M-Y', strtotime(@$row->created_at));
+                                                    $bookDate = date('d-M-Y', strtotime(@$row->booking_date));
+                                                    // $bookStime = date('h:i A', strtotime(@$row['userBookingSlots']->start_time));
+                                                    // $bookEtime = date('h:i A', strtotime(@$row['userBookingSlots']->end_time));
+                                                @endphp
+
+                                                <div class="col-4">
+                                                    <span>
+                                                        <div>
+                                                            <a onclick="showToggle({{ $row->id }});">
+                                                                <p style="cursor: pointer;">
+                                                                    <strong>Date: </strong>
+                                                                    {{ @$creationDate }}&nbsp;&nbsp;
+                                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                </p>
+                                                                <p style="cursor: pointer;">
+                                                                    <strong>Book Date: </strong> {{ @$bookDate }}
+                                                                </p>
+                                                                <p style="cursor: pointer;">
+                                                                    <strong>Slot Time: </strong>
+                                                                    {{ $row->booking_time }}
+                                                                </p>
+                                                            </a>
+                                                        </div>
+                                                    </span>
                                                 </div>
-                                            </span>
-                                            <div id="toggle3" style="display: none;">
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"> <strong>Freelancer Category:
-                                                        </strong> Hairstylist
-                                                    </p>
+                                                <div class="col-8">
+                                                    <div>
+                                                        <span style="overflow-wrap: break-word;">
+                                                            <p><strong>Owner Name:
+                                                                </strong>{{ @$row['adminClientUser']->name }}
+                                                                {{ @$row['adminClientUser']->surname }}</p>
+                                                            <div>
+                                                                <p><strong>Freelancer Name:
+                                                                    </strong>{{ @$row['freelancerAppUser']->name }}
+                                                                    {{ @$row['freelancerAppUser']->surname }}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"> <strong>Freelancer
+                                                                        Category: </strong>
+                                                                    {{ @$row['freelancerAppUser']->type }}
+                                                                </p>
+                                                            </div>
+                                                        </span>
+                                                        <div id="toggle{{ $row->id }}" style="display: none;">
+
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"> <strong>Freelancer
+                                                                        Email:
+                                                                    </strong>
+                                                                    {{ @$row['freelancerAppUser']->email }}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Freelancer
+                                                                        Mobile:
+                                                                    </strong>
+                                                                    {{ @$row['freelancerAppUser']->phone }}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Owner
+                                                                        Category:
+                                                                    </strong> {{ @$row['adminClientUser']->type }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Owner Email:
+                                                                    </strong> {{ @$row['adminClientUser']->email }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Owner Mobile:
+                                                                    </strong> {{ @$row['adminClientUser']->phone }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Booking
+                                                                        Status:
+                                                                    </strong>
+                                                                    {{ @$row['userBookingSlots']->status }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"> <strong>Freelancer Email:
-                                                        </strong>
-                                                        carlo_berardinucci@yahoo.co.uk </p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Freelancer Mobile:
-                                                        </strong> 07830536184</p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Salon Category: </strong>
-                                                        Hairdressing Owner
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Salon Email: </strong>
-                                                        scar_lostesting@yahoo.co.uk</p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Salon Mobile: </strong>
-                                                        02075663979</p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Booking Status: </strong>
-                                                        CONFIRMED</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            @endif
+                                        @empty
+                                            <p>No Bookings Found!</p>
+                                        @endforelse
+                                        {{-- @else
+                                        <p class="text-center">No Bookings Found!</p> --}}
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+
                 <div id="panel3" class="tab-pane">
                     <div class="container">
-                        <h2 class="color-1 my-4 text-center">All Cancelled Bookings</h2>
+                        <h2 class="color-1 my-4 text-center">All Confirmed Bookings</h2>
                         <div class="row justify-content-center">
                             <div class="booking-box col-lg-8">
                                 <div class="row text-center">
@@ -338,138 +435,106 @@
                                         <h4 class="year">Booking Details</h4>
                                     </div>
                                 </div>
-                                <div class="row cancel-appointment p-3 text-left">
-                                    <div class="col-4">
-                                        <span>
-                                            <div>
-                                                <a onclick="showToggle(4);">
-                                                    <p style="cursor: pointer;">
-                                                        <strong>Date: </strong> 21-12-2021&nbsp;&nbsp;
-                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                    </p>
-                                                </a>
-                                            </div>
-                                        </span>
-                                    </div>
-                                    <div class="col-8">
-                                        <div>
-                                            <span style="overflow-wrap: break-word;">
-                                                <p><strong>Business Owner: </strong>Nik Hudson</p>
-                                                <div>
-                                                    <p><strong>Freelancer Name: </strong> carlo Berardinucci</p>
+                                <div class="row confirm-appointment p-3 text-left">
+                                    @if (@count($appointments))
+                                        @forelse ($appointments as $row)
+                                            {{-- @dd($row) --}}
+                                            @if (
+                                                (!empty($row->userBookingSlots->status) && str_contains(strtolower($row->userBookingSlots->status), 'cancelled')) ||
+                                                    str_contains(strtolower($row->status), 'cancel'))
+                                                @php
+                                                    $creationDate = date('d-M-Y', strtotime(@$row->created_at));
+                                                    $bookDate = date('d-M-Y', strtotime(@$row->booking_date));
+                                                    // $bookStime = date('h:i A', strtotime(@$row['userBookingSlots']->start_time));
+                                                    // $bookEtime = date('h:i A', strtotime(@$row['userBookingSlots']->end_time));
+                                                @endphp
+
+                                                <div class="col-4">
+                                                    <span>
+                                                        <div>
+                                                            <a onclick="showToggle({{ $row->id }});">
+                                                                <p style="cursor: pointer;">
+                                                                    <strong>Date: </strong>
+                                                                    {{ @$creationDate }}&nbsp;&nbsp;
+                                                                    <i class="fa fa-eye" aria-hidden="true"></i>
+                                                                </p>
+                                                                <p style="cursor: pointer;">
+                                                                    <strong>Book Date: </strong> {{ @$bookDate }}
+                                                                </p>
+                                                                <p style="cursor: pointer;">
+                                                                    <strong>Slot Time: </strong>
+                                                                    {{ $row->booking_time }}
+                                                                </p>
+                                                            </a>
+                                                        </div>
+                                                    </span>
                                                 </div>
-                                            </span>
-                                            <div id="toggle4" style="display: none;">
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;">
-                                                        <strong>Freelancer Category:
-                                                        </strong> Hairstylist
-                                                    </p>
+                                                <div class="col-8">
+                                                    <div>
+                                                        <span style="overflow-wrap: break-word;">
+                                                            <p><strong>Owner Name:
+                                                                </strong>{{ @$row['adminClientUser']->name }}
+                                                                {{ @$row['adminClientUser']->surname }}</p>
+                                                            <div>
+                                                                <p><strong>Freelancer Name:
+                                                                    </strong>{{ @$row['freelancerAppUser']->name }}
+                                                                    {{ @$row['freelancerAppUser']->surname }}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"> <strong>Freelancer
+                                                                        Category: </strong>
+                                                                    {{ @$row['freelancerAppUser']->type }}
+                                                                </p>
+                                                            </div>
+                                                        </span>
+                                                        <div id="toggle{{ $row->id }}" style="display: none;">
+
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"> <strong>Freelancer
+                                                                        Email:
+                                                                    </strong>
+                                                                    {{ @$row['freelancerAppUser']->email }}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Freelancer
+                                                                        Mobile:
+                                                                    </strong>
+                                                                    {{ @$row['freelancerAppUser']->phone }}
+                                                                </p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Owner
+                                                                        Category:
+                                                                    </strong> {{ @$row['adminClientUser']->type }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Owner Email:
+                                                                    </strong> {{ @$row['adminClientUser']->email }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Owner Mobile:
+                                                                    </strong> {{ @$row['adminClientUser']->phone }}</p>
+                                                            </div>
+                                                            <div>
+                                                                <p style="overflow-wrap: break-word;"><strong>Booking
+                                                                        Status:
+                                                                    </strong>
+                                                                    {{ @$row['userBookingSlots']->status }}</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;">
-                                                        <strong>Freelancer Email: </strong>
-                                                        carlo_berardinucci@yahoo.co.uk
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;">
-                                                        <strong>Freelancer Mobile: </strong>
-                                                        07830536184
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Salon
-                                                            Category: </strong>
-                                                        Hairdressing Owner</p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Salon
-                                                            Email: </strong>
-                                                        scar_lostesting@yahoo.co.uk</p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Salon
-                                                            Mobile: </strong>
-                                                        02075663979</p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;"><strong>Booking
-                                                            Status: </strong>
-                                                        CONFIRMED</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-4">
-                                        <span>
-                                            <div>
-                                                <a onclick="showToggle(44);">
-                                                    <p style="cursor: pointer;">
-                                                        <strong>Date: </strong> 21-12-2021&nbsp;&nbsp;
-                                                        <i class="fa fa-eye" aria-hidden="true"></i>
-                                                    </p>
-                                                </a>
-                                            </div>
-                                        </span>
-                                    </div>
-                                    <div class="col-8">
-                                        <div>
-                                            <span style="overflow-wrap: break-word;">
-                                                <p><strong>Business Owner: </strong>Nik Hudson</p>
-                                                <div>
-                                                    <p><strong>Freelancer Name: </strong> carlo Berardinucci</p>
-                                                </div>
-                                            </span>
-                                            <div id="toggle44" style="display: none;">
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;">
-                                                        <strong>Freelancer
-                                                            Category: </strong> Hairstylist
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;">
-                                                        <strong>Freelancer
-                                                            Email: </strong>
-                                                        carlo_berardinucci@yahoo.co.uk
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;">
-                                                        <strong>Freelancer
-                                                            Mobile: </strong> 07830536184
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;">
-                                                        <strong>Salon
-                                                            Category: </strong> Hairdressing
-                                                        Owner
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;">
-                                                        <strong>Salon Email:
-                                                        </strong>
-                                                        scar_lostesting@yahoo.co.uk
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;">
-                                                        <strong>Salon Mobile:
-                                                        </strong> 02075663979
-                                                    </p>
-                                                </div>
-                                                <div>
-                                                    <p style="overflow-wrap: break-word;">
-                                                        <strong>Booking
-                                                            Status: </strong> CONFIRMED
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                            @endif
+                                        @empty
+                                            <p>No Bookings Found!</p>
+                                        @endforelse
+                                        {{-- @else
+                                        <p class="text-center">No Bookings Found!</p> --}}
+                                    @else
+                                        <p>No Bookings Found!</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>

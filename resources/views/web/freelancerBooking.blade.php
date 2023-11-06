@@ -59,83 +59,83 @@
                     </div>
                     <div class="row appointment-row p-3 text-left">
                         <!--<div class="col-4">
-                                <span class="day_of_week">Mon</span>
-                                <span class="day">16</span>
-                            </div>
-                            <div class="col-8">
-                                <span class="appointment">
-                                    Compton Hair
-                                    <div class="option text-right">
-                                    <a href="">Confirm</a>
+                                    <span class="day_of_week">Mon</span>
+                                    <span class="day">16</span>
                                 </div>
-                                </span>
-                            </div>
-                            <div class="col-4 text-center">
-                                <span class="day_of_week">Mon</span>
-                                <span class="day">16</span>
-                            </div>
-                            <div class="col-8">
-                                <p class="appointment">
-
-                                </p>
-                            </div>
-                            <div class="col-4 text-center">
-                                <span class="day_of_week">Mon</span>
-                                <span class="day">16</span>
-                            </div>
-                            <div class="col-8">
-                                <p class="appointment">
-
-                                </p>
-                            </div>
-                            <div class="col-4 text-center">
-                                <span class="day_of_week">Mon</span>
-                                <span class="day">16</span>
-                            </div>
-                            <div class="col-8">
-                                <span class="appointment">
-                                    Compton Hair
-                                    <div class="option text-right">
+                                <div class="col-8">
+                                    <span class="appointment">
+                                        Compton Hair
+                                        <div class="option text-right">
                                         <a href="">Confirm</a>
                                     </div>
-                                </span>
-                            </div>
-                            <div class="col-4 text-center">
-                                <span class="day_of_week">Mon</span>
-                                <span class="day">16</span>
-                            </div>
-                            <div class="col-8">
-                                <p class="appointment">
+                                    </span>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <span class="day_of_week">Mon</span>
+                                    <span class="day">16</span>
+                                </div>
+                                <div class="col-8">
+                                    <p class="appointment">
 
-                                </p>
-                            </div>
-                            <div class="col-4 text-center">
-                                <span class="day_of_week">Mon</span>
-                                <span class="day">16</span>
-                            </div>
-                            <div class="col-8">
-                                <p class="appointment">
+                                    </p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <span class="day_of_week">Mon</span>
+                                    <span class="day">16</span>
+                                </div>
+                                <div class="col-8">
+                                    <p class="appointment">
 
-                                </p>
-                            </div>
-                            <div class="col-4 text-center">
-                                <span class="day_of_week">Mon</span>
-                                <span class="day">16</span>
-                            </div>
-                            <div class="col-8">
-                                <p class="appointment">
+                                    </p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <span class="day_of_week">Mon</span>
+                                    <span class="day">16</span>
+                                </div>
+                                <div class="col-8">
+                                    <span class="appointment">
+                                        Compton Hair
+                                        <div class="option text-right">
+                                            <a href="">Confirm</a>
+                                        </div>
+                                    </span>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <span class="day_of_week">Mon</span>
+                                    <span class="day">16</span>
+                                </div>
+                                <div class="col-8">
+                                    <p class="appointment">
 
-                                </p>
-                            </div>
-                            <div class="col-4 text-center">
-                                <span class="day_of_week">Mon</span>
-                                <span class="day">16</span>
-                            </div>
-                            <div class="col-8">
-                                <p class="appointment">
+                                    </p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <span class="day_of_week">Mon</span>
+                                    <span class="day">16</span>
+                                </div>
+                                <div class="col-8">
+                                    <p class="appointment">
 
-                                </p>
-                            </div> -->
+                                    </p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <span class="day_of_week">Mon</span>
+                                    <span class="day">16</span>
+                                </div>
+                                <div class="col-8">
+                                    <p class="appointment">
+
+                                    </p>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <span class="day_of_week">Mon</span>
+                                    <span class="day">16</span>
+                                </div>
+                                <div class="col-8">
+                                    <p class="appointment">
+
+                                    </p>
+                                </div> -->
                     </div>
                     {{-- <a class="logon_btn my-2" id="back-btn" href="{{ url()->previous() }}"
                         style="

@@ -130,15 +130,20 @@ class AdminFrontEndController extends Controller
 
     public function bookings()
     {
-        $getProfileData = Appointments::whereHas('userAppointment', function ($query) {
-            $query->where('type', '!=', 'client');
-        })->with(
-            [
-                'adminClientUser',
-                'freelancerAppUser',
-                'userBookingSlots'
-            ]
-        )->get();
+        $getProfileData = Appointments::whereHas(
+            'userAppointment',
+            function ($query) {
+                $query->where('type', '!=', 'client');
+            }
+        )
+            ->with(
+                [
+                    'adminClientUser',
+                    'freelancerAppUser',
+                    'userBookingSlots'
+                ]
+            )
+            ->get();
 
         // dd($getProfileData);
         // $getProfileData = Appointments::whereHas('userAppointment', function ($query) {
@@ -154,7 +159,7 @@ class AdminFrontEndController extends Controller
 
         // dd($getProfileData);
         $data['page'] = 'bookings';
-        // dd($data);
+        // dd($data['appointments']);
         return view('admin.bookings')->with($data);
     }
 

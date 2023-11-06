@@ -196,6 +196,7 @@ function cancelonHoldAppointment(id, btn, option = "") {
         processData: false,
         contentType: false,
         success: function (response) {
+            console.log(response.data.app_id);
             $(".confirm-modal").modal("hide");
             $("#confirm_form").find("#booking_id").val("");
             $(".btn_" + response.data.app_id).addClass("d-none");
@@ -762,6 +763,7 @@ function getfreelancerBookings() {
         url: "/getfreelancerBooking",
         data: {},
         success: function (response) {
+            console.log(response.appointments);
             if (response.appointments == "") {
                 $(".appointment-row").append(
                     '<div class="col-12 text-center">You have no bookings!</div>'
@@ -779,18 +781,19 @@ function getfreelancerBookings() {
                         let id = response.appointments[i]["id"];
                         let book_slot_id = "";
                         var status;
-                        if (
-                            response.appointments[i].user_booking_slots != null
-                        ) {
+
+                        if (response.appointments[i].status == null) {
                             status =
                                 response.appointments[i].user_booking_slots
                                     .status;
-                        } else {
-                            status = "Booked";
+                        } else if (
+                            response.appointments[i].status != null &&
+                            (response.appointments[i].status == "Cancel" ||
+                                response.appointments[i].status == "Booked")
+                        ) {
+                            status = response.appointments[i].status;
                         }
-                        console.log(
-                            response.appointments[i].user_booking_slots
-                        );
+                        // console.log(status);
                         let emailId = response.appointments[i]["_SalonEmail"];
 
                         let appDate =
@@ -921,11 +924,22 @@ function getfreelancerBookings() {
                                 cancel_by_owner +
                                 ')"><a>Cancel On Hold</a></div>';
                             cancel_btn = "d-none";
+                        }
+                        if (
+                            (user_type == "hairdressingSalon" ||
+                                user_type == "beautySalon") &&
+                            check_status.includes("booked")
+                        ) {
+                            console.log(user_type);
+                            on_hold_show = "";
+                            cancel_btn = "d-block";
                         } else if (
                             (user_type == "hairdressingSalon" ||
                                 user_type == "beautySalon") &&
                             check_status.includes("confirmed by")
                         ) {
+                            console.log(user_type, check_status);
+
                             on_hold_show =
                                 '<div class="text-center customBtn mb-2 btn_' +
                                 id +
