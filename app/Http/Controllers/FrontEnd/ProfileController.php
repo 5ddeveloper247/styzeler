@@ -1314,14 +1314,12 @@ class ProfileController extends Controller
             BookingSlots::where('id', $appointment->booking_slots_id)->with(['bookings' => function ($q) {
                 $q->update(['status' => 'Booked']);
             }])->first();
-
             $owners = ['hairdressingSalon', 'beautySalon'];
             if (in_array(Auth::user()->type, $owners)) {
                 $user = User::whereIn('type', $owners)->first();
                 $user->tokens = $user->tokens - 1;
                 $user->update();
             }
-
             $message = 'On Hold Booked Successfully!';
         };
 
