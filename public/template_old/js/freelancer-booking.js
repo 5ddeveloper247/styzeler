@@ -3,7 +3,13 @@ let logInId = localStorage.getItem("loginstid");
 var selected;
 var on_hold_show = "";
 var cancel_btn = "";
+var cancel_by = "";
 
+if (profile_type == "Freelancer") {
+    cancel_by = profile_type;
+} else if (user_type == "hairdressingSalon" || user_type == "beautySalon") {
+    cancel_by = "Business Owner";
+}
 var confirm_by_owner = "confirm_by_owner";
 var cancel_by_owner = "cancel_by_owner";
 var confirm_on_hold = "confirm_on_hold";
@@ -184,7 +190,7 @@ function cancelonHoldAppointment(id, btn, option = "") {
 
     if (profile_type == "Freelancer") {
         status = status + profile_type;
-    } else if (option != "") {
+    } else if (user_type == "hairdressingSalon" || user_type == "beautySalon") {
         status = status + "Business Owner";
     }
     data.append("app_id", id);
@@ -784,14 +790,18 @@ function getfreelancerBookings() {
                         var status;
 
                         if (response.appointments[i].status == null) {
+                            console.log("kamran1");
                             status =
                                 response.appointments[i].user_booking_slots
                                     .status;
                         } else if (
                             response.appointments[i].status != null &&
-                            (response.appointments[i].status == "Cancel" ||
+                            (response.appointments[i].status.includes(
+                                "Cancelled by"
+                            ) ||
                                 response.appointments[i].status == "Booked")
                         ) {
+                            console.log("kamran2");
                             status = response.appointments[i].status;
                         }
                         // console.log(status);
@@ -875,6 +885,7 @@ function getfreelancerBookings() {
                         }
 
                         owner_status = status;
+                        console.log(owner_status, status);
                         var check_status = owner_status.toLowerCase();
                         slot_time = response.appointments[i]["booking_time"];
                         let app_created_date_dateOnly =
@@ -1070,7 +1081,9 @@ function getfreelancerBookings() {
                                 id +
                                 "," +
                                 cancel_time +
-                                ')">' +
+                                ",'" +
+                                cancel_by +
+                                "')\">" +
                                 "<a>Cancel</a>" +
                                 "</div>" +
                                 "</div>"

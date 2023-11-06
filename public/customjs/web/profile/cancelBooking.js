@@ -1,4 +1,4 @@
-function cancelAppointment(app_id, cancel_time) {
+function cancelAppointment(app_id, cancel_time, cancel_by) {
     let type = "POST";
     let url = "/cancelAppointment";
     let message = "";
@@ -6,6 +6,7 @@ function cancelAppointment(app_id, cancel_time) {
     let data = new FormData();
     data.append("app_id", app_id);
     data.append("cancel_time", cancel_time);
+    data.append("cancel_by", cancel_by);
     // if ($(this).text() == 'Submit') {
     //     url = url;
     // }

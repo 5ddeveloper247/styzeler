@@ -1090,6 +1090,7 @@ class ProfileController extends Controller
     {
         $appId =  $request->app_id;
         $cancel_time = $request->cancel_time;
+        $cancel_by = $request->cancel_by;
 
         $getAppointmentData = Appointments::where('id', $appId)
             ->has('userBookingSlots')
@@ -1099,7 +1100,7 @@ class ProfileController extends Controller
                     $q->update(['status' => 'Available']);
                 }]
             )->first();
-        $getAppointmentData->status = 'Cancel';
+        $getAppointmentData->status = 'Cancelled by ' . $cancel_by;
         $getAppointmentData->save();
         $getAppointmentCreatedTime = $getAppointmentData->created_at;
         $getAppointmentBookingDate = $getAppointmentData->booking_date;
@@ -1301,7 +1302,7 @@ class ProfileController extends Controller
         if (str_contains(strtolower($request->status), 'confirmed by')) {
             $message = 'On Hold Confirmed Successfully!';
         } elseif (str_contains(strtolower($request->status), 'cancelled by')) {
-            $appointment->status = 'Cancel';
+            $appointment->status = $request->status;
             $appointment->save();
             BookingSlots::where('id', $appointment->booking_slots_id)->with(['bookings' => function ($q) {
                 $q->update(['status' => 'Available']);

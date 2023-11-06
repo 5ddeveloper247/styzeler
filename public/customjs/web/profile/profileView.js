@@ -1029,7 +1029,7 @@ function bookSlotsResponse(response) {
                         html +=
                             `<div title="Edit Slot" class="` +
                             changeSlot +
-                            ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` +
+                            ` select_option option col-md-2 kamran mr-2 ${status1}" onclick = selectSlot(` +
                             slots[j]["id"] +
                             `,'` +
                             slots[j]["start_time"] +
