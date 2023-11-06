@@ -930,7 +930,6 @@ function getfreelancerBookings() {
                                 user_type == "beautySalon") &&
                             check_status.includes("booked")
                         ) {
-                            console.log(user_type);
                             on_hold_show = "";
                             cancel_btn = "d-block";
                         } else if (
@@ -938,8 +937,6 @@ function getfreelancerBookings() {
                                 user_type == "beautySalon") &&
                             check_status.includes("confirmed by")
                         ) {
-                            console.log(user_type, check_status);
-
                             on_hold_show =
                                 '<div class="text-center customBtn mb-2 btn_' +
                                 id +
@@ -969,6 +966,7 @@ function getfreelancerBookings() {
                                 "," +
                                 confirm_booking +
                                 ')"><a>Confirm Booking</a></div>';
+                            cancel_btn = "";
                         }
                         $(".appointment-row").append(
                             '<div class="col-4">' +
