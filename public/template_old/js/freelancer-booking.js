@@ -181,7 +181,7 @@ function cancelonHoldAppointment(id, btn, option = "") {
     if (profile_type == "Freelancer") {
         status = status + profile_type;
     } else if (user_type == "hairdressingSalon" || user_type == "beautySalon") {
-        status = status + "Business Owner";
+        status = status + " Business Owner";
     }
     data.append("app_id", id);
     data.append("status", status);
@@ -203,7 +203,7 @@ function cancelonHoldAppointment(id, btn, option = "") {
                 );
             }
             $(".book_change_status_" + response.data.app_id).html(
-                "<strong>Status</strong>: " + response.data.status
+                "<strong>Booking Status</strong>: " + response.data.status
             );
             toastr.success(response.message, "", {
                 timeOut: 3000,
@@ -230,7 +230,7 @@ function confirmAppointment(id, btn) {
             $("#confirm_form").find("#booking_id").val("");
             $(".btn_" + response.data.app_id).addClass("d-none");
             $(".book_change_status_" + response.data.app_id).html(
-                "<strong>Status</strong>: " + response.data.status
+                "<strong>Booking Status</strong>: " + response.data.status
             );
             if (response.data.status.includes("Cancelled by")) {
                 $("#cancelAppBtn_" + response.data.app_id).addClass("d-none");
@@ -797,12 +797,18 @@ function getfreelancerBookings() {
                                     .status;
                         } else if (
                             response.appointments[i].status != null &&
+                            response.appointments[i].confirmed_by == null &&
                             (response.appointments[i].status.includes(
                                 "Cancelled by"
                             ) ||
                                 response.appointments[i].status == "Booked")
                         ) {
                             status = response.appointments[i].status;
+                        } else if (
+                            response.appointments[i].status != null &&
+                            response.appointments[i].confirmed_by != null
+                        ) {
+                            status = "Confirm by Business Owner";
                         }
                         let emailId = response.appointments[i]["_SalonEmail"];
 
@@ -1057,7 +1063,7 @@ function getfreelancerBookings() {
                                 '">' +
                                 '<p class="book_change_status_' +
                                 id +
-                                '"><strong>Status: </strong>' +
+                                '"><strong>Booking Status: </strong>' +
                                 owner_status +
                                 "</p>" +
                                 "</span>" +

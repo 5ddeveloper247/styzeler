@@ -841,7 +841,7 @@ class ProfileController extends Controller
     public function getfreelancerBooking()
     {
         $currentDate = now()->toDateString();
-
+        dd($currentDate);
         $allowedTypes = ['client', 'beautySalon', 'hairdressingSalon'];
 
         if (in_array(Auth::user()->type, $allowedTypes)) {
@@ -849,7 +849,7 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(
                 [
                     ['booking_user_id', Auth::id()],
-                    ['created_at', '>=', $currentDate],
+                    ['booking_date', '>=', $currentDate],
                     // ['status', '!=', null]
                 ]
 
@@ -871,7 +871,7 @@ class ProfileController extends Controller
 
             $getProfileData = Appointments::where([
                 ['freelancer_user_id', Auth::id()],
-                ['created_at', '>=', $currentDate],
+                ['booking_date', '>=', $currentDate],
                 // ['status', '!=', null]
 
             ])->has('userBookingSlots')
@@ -1101,6 +1101,7 @@ class ProfileController extends Controller
                 }]
             )->first();
         $getAppointmentData->status = 'Cancelled by ' . $cancel_by;
+        $getAppointmentData->confirmed_by = null;
         $getAppointmentData->save();
         $getAppointmentCreatedTime = $getAppointmentData->created_at;
         $getAppointmentBookingDate = $getAppointmentData->booking_date;
@@ -1142,7 +1143,7 @@ class ProfileController extends Controller
         $appoExist = Appointments::where('booking_user_id', $getAppointmentBookingUserId)->where('booking_date', $getAppointmentBookingDate)->count();
         // dd(!str_contains(strtolower($getAppointmentData->status), 'cancelled by'));
         // dd(!str_contains(strtolower($token_not_remove), 'pending'), !str_contains(strtolower($getAppointmentData->status), 'cancelled by'));
-        if ($appoExist == 1 && !str_contains(strtolower($getAppointmentData->status), 'cancelled by')) {
+        if ($appoExist == 1 && str_contains(strtolower($getAppointmentData->status), 'cancelled by')) {
             User::where('id', $clientUser->id)->update([
                 'tokens' => $clientUser->tokens + 1
             ]);
@@ -1304,6 +1305,7 @@ class ProfileController extends Controller
             $message = 'On Hold Confirmed Successfully!';
         } elseif (str_contains(strtolower($request->status), 'cancelled by')) {
             $appointment->status = $request->status;
+            $appointment->confirmed_by = null;
             $appointment->save();
             BookingSlots::where('id', $appointment->booking_slots_id)->with(['bookings' => function ($q) {
                 $q->update(['status' => 'Available']);
@@ -1312,6 +1314,7 @@ class ProfileController extends Controller
             $message = 'On Hold Cancelled Successfully!';
         } elseif (str_contains(strtolower($request->status), 'booked')) {
             $appointment->status = 'Booked';
+            $appointment->confirmed_by = Auth::id();
             $appointment->save();
             BookingSlots::where('id', $appointment->booking_slots_id)->with(['bookings' => function ($q) {
                 $q->update(['status' => 'Booked']);
