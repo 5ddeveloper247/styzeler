@@ -177,7 +177,6 @@ jQuery(document).ready(function () {
                                             "booking_time_slots"
                                         ],
                                         function (j) {
-                                            console.log(showResponse.data);
                                             var starttimeAMPM =
                                                 convertTo12HourFormat(
                                                     showResponse.data[i][
@@ -408,22 +407,17 @@ jQuery(document).ready(function () {
                                                 showResponse.data[i][
                                                     "booking_time_slots"
                                                 ][j]["status"];
-                                            console.log(status1);
                                             if (status1 != null) {
                                                 status_for_hold =
                                                     status1.toLowerCase();
                                             }
-                                            // console.log(
-                                            //     status1,
-                                            //     status_for_hold
-                                            // );
+
                                             if (
                                                 status1 != "Available" &&
                                                 !status_for_hold.includes(
                                                     "cancelled by"
                                                 )
                                             ) {
-                                                console.log(status_for_hold);
                                                 html +=
                                                     `<div title="" class="` +
                                                     changeSlot +

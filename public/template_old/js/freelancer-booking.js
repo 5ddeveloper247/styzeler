@@ -21,7 +21,6 @@ today = new Date(
     new Date().getMonth(),
     new Date().getDate()
 );
-//console.log(logInId);
 
 function redirect() {
     window.location.href = "./freelancer-booking.html?e=success";
@@ -65,8 +64,6 @@ window.onload = function () {
 
 // function sendEmail(emailId, msg) {
 
-//     console.log(emailId);
-//     console.log(msg);
 //     let ownerMessage = msg;
 //     var settings = {
 //     "url": "./email.php",
@@ -83,22 +80,18 @@ window.onload = function () {
 //     };
 
 //     $.ajax(settings).done(function (response) {
-//     console.log(response);
 //     });
 
 //     return true;
 // }
 
 // function avaliableAppointment(emailId, id, confirmedDate) {
-//     console.log(emailId);
-//     console.log(id);
-//     console.log(selected);
+
 //     let newselectedDate = new Date(confirmedDate);
 //     newselectedDate.setDate(newselectedDate.getDate());
 //     confirmedDate = newselectedDate.toJSON().slice(0,10);
 
 //     var AppntDate = moment(newselectedDate).format('DD-MMM-YYYY');
-//     console.log("Date :"+AppntDate);
 //     let ownerMessage = "THE FREELANCER HAS CONFIRMED THE BOOKING FOR " + AppntDate;
 
 //     $.ajax({
@@ -110,9 +103,7 @@ window.onload = function () {
 //         },
 //         success: function(updateResponse) {
 
-//             console.log(updateResponse);
 //             // let emailIds= emailId + ",wearestyzeler@gmail.com";
-//             //console.log(emailIds);
 //            let adminEmail="styzelercharlie7@gmail.com";  //Updated by Rumki - wearestyzeler@gmail.com
 //            let resp1 =  sendEmail(adminEmail,ownerMessage);
 //            let resp =  sendEmail(emailId,ownerMessage);
@@ -126,7 +117,6 @@ window.onload = function () {
 
 // //Ajax call - updateappointment- cancel
 // function cancelAppointment(id) {
-//     console.log(id);
 
 //     var status = "Cancelled by ";
 //     var app_id;
@@ -202,11 +192,16 @@ function cancelonHoldAppointment(id, btn, option = "") {
         processData: false,
         contentType: false,
         success: function (response) {
-            console.log(response.data.app_id);
             $(".confirm-modal").modal("hide");
             $("#confirm_form").find("#booking_id").val("");
             $(".btn_" + response.data.app_id).addClass("d-none");
-            $("#cancelAppBtn_" + response.data.app_id).removeClass("d-none");
+            if (response.data.status.includes("Cancelled by")) {
+                $("#cancelAppBtn_" + response.data.app_id).addClass("d-none");
+            } else {
+                $("#cancelAppBtn_" + response.data.app_id).removeClass(
+                    "d-none"
+                );
+            }
             $(".book_change_status_" + response.data.app_id).html(
                 "<strong>Status</strong>: " + response.data.status
             );
@@ -237,7 +232,13 @@ function confirmAppointment(id, btn) {
             $(".book_change_status_" + response.data.app_id).html(
                 "<strong>Status</strong>: " + response.data.status
             );
-            $("#cancelAppBtn_" + response.data.app_id).removeClass("d-none");
+            if (response.data.status.includes("Cancelled by")) {
+                $("#cancelAppBtn_" + response.data.app_id).addClass("d-none");
+            } else {
+                $("#cancelAppBtn_" + response.data.app_id).removeClass(
+                    "d-none"
+                );
+            }
             toastr.success(response.message, "", {
                 timeOut: 3000,
             });
@@ -285,7 +286,6 @@ function openConfirmModal(id, btn, option = "") {
 
 // //Ajax call - updateappointment- on hold
 // function onCallAppointment(id) {
-//     console.log(id);
 
 //     $.ajax({
 //         type: 'post',
@@ -297,7 +297,6 @@ function openConfirmModal(id, btn, option = "") {
 //         success: function(updateResponse) {
 
 //             $(".onCall-modal").modal('show');
-//             console.log(updateResponse);
 //         }
 //     });
 
@@ -305,7 +304,6 @@ function openConfirmModal(id, btn, option = "") {
 
 // onCallAppointment
 // function onCallAppointment(id) {
-//     console.log(id);
 
 //     // $.ajax({
 //     //     type: 'post',
@@ -317,12 +315,10 @@ function openConfirmModal(id, btn, option = "") {
 //     //     success: function(updateResponse) {
 
 //     //         $(".onHold-modal").modal('show');
-//     //         console.log(updateResponse);
 //     //     }
 //     // });
 
 //     $(".onCall-modal").modal('show');
-//             // console.log(updateResponse);
 
 // }
 
@@ -339,7 +335,6 @@ $(function () {
     //                     '<div class="col-12 text-center">You have no bookings!</div>'
     //                 );
     //             } else {
-    //                 console.log(response.appointments);
     //                 $.each(response.appointments, function (i) {
     //                     if (
     //                         response.appointments[i] != ""
@@ -350,7 +345,6 @@ $(function () {
     //                         //     && response.appointments[i]['user_booking_slots']['bookings']['status'] !== "CANCELLED due to Expired Time"
     //                     ) {
     //                         let id = response.appointments[i]["id"];
-    //                         console.log(id);
     //                         let book_slot_id = "";
     //                         // response.appointments[i].user_booking_slots.id;
     //                         var status;
@@ -365,7 +359,6 @@ $(function () {
     //                             status = "Booked";
     //                         }
 
-    //                         // console.log(status);
     //                         let emailId =
     //                             response.appointments[i]["_SalonEmail"];
 
@@ -494,7 +487,6 @@ $(function () {
     //                             profile_type == "Freelancer" &&
     //                             check_status.includes("on hold by")
     //                         ) {
-    //                             console.log(id, "first");
     //                             on_hold_show =
     //                                 '<div class="text-center customBtn mb-2 btn_' +
     //                                 id +
@@ -516,7 +508,6 @@ $(function () {
     //                             check_status.includes("cancelled by") ||
     //                             check_status.includes("booked")
     //                         ) {
-    //                             console.log(id, "second");
 
     //                             cancel_btn = "d-block";
     //                         } else if (
@@ -524,7 +515,6 @@ $(function () {
     //                                 user_type == "beautySalon") &&
     //                             check_status.includes("on hold by")
     //                         ) {
-    //                             console.log(id, "third");
     //                             on_hold_show =
     //                                 '<div div class="text-center customBtn mb-2 btn_' +
     //                                 id +
@@ -541,7 +531,6 @@ $(function () {
     //                                 user_type == "beautySalon") &&
     //                             check_status.includes("confirmed by")
     //                         ) {
-    //                             console.log(id, "fourth");
     //                             on_hold_show =
     //                                 '<div class="text-center customBtn mb-2 btn_' +
     //                                 id +
@@ -563,7 +552,6 @@ $(function () {
     //                             profile_type == "Freelancer" &&
     //                             check_status.includes("pending")
     //                         ) {
-    //                             console.log(id, "fifth");
     //                             on_hold_show =
     //                                 '<div class="text-center customBtn mb-2 btn_' +
     //                                 id +
@@ -769,7 +757,6 @@ function getfreelancerBookings() {
         url: "/getfreelancerBooking",
         data: {},
         success: function (response) {
-            console.log(response.appointments);
             if (response.appointments == "") {
                 $(".appointment-row").append(
                     '<div class="col-12 text-center">You have no bookings!</div>'
@@ -788,9 +775,23 @@ function getfreelancerBookings() {
                         let id = response.appointments[i]["id"];
                         let book_slot_id = "";
                         var status;
+                        if (
+                            response.appointments[i]["status"] != null &&
+                            response.appointments[i]["status"].includes(
+                                "Cancelled by"
+                            )
+                        ) {
+                            cancel_btn = "d-none";
+                        }
+                        //  if (
+                        //      response.appointments[i]["status"] != null &&
+                        //      response.appointments[i]["status"].includes(
+                        //          "Booked"
+                        //      )
+                        //  ) {
 
+                        //  }
                         if (response.appointments[i].status == null) {
-                            console.log("kamran1");
                             status =
                                 response.appointments[i].user_booking_slots
                                     .status;
@@ -801,10 +802,8 @@ function getfreelancerBookings() {
                             ) ||
                                 response.appointments[i].status == "Booked")
                         ) {
-                            console.log("kamran2");
                             status = response.appointments[i].status;
                         }
-                        // console.log(status);
                         let emailId = response.appointments[i]["_SalonEmail"];
 
                         let appDate =
@@ -885,7 +884,6 @@ function getfreelancerBookings() {
                         }
 
                         owner_status = status;
-                        console.log(owner_status, status);
                         var check_status = owner_status.toLowerCase();
                         slot_time = response.appointments[i]["booking_time"];
                         let app_created_date_dateOnly =
@@ -920,6 +918,7 @@ function getfreelancerBookings() {
                             check_status.includes("booked")
                         ) {
                             on_hold_show = "";
+                            cancel_btn = "d-block";
                         } else if (
                             (user_type == "hairdressingSalon" ||
                                 user_type == "beautySalon") &&
@@ -990,7 +989,9 @@ function getfreelancerBookings() {
                                 '">' +
                                 "<p><strong>Date: </strong> " +
                                 app_created_date_dateOnly +
-                                '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></p>' +
+                                '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true" id=view_' +
+                                id +
+                                "></i></p>" +
                                 "<p><strong>Book Date: </strong> " +
                                 app_created_date_booking_date +
                                 "&nbsp;&nbsp;</p>" +
@@ -1089,17 +1090,31 @@ function getfreelancerBookings() {
                                 "</div>"
                         );
 
-                        if (
-                            response.appointments[i]["status"] === "Cancel" ||
-                            response.appointments[i]["status"] ===
-                                "CANCELLED" ||
-                            response.appointments[i]["status"] ===
-                                "CANCELLED by Salon Owner" ||
-                            response.appointments[i]["status"] ===
-                                "cancel by Freelancer"
+                        if (response.appointments[i]["status"] == null) {
+                            $("#show" + i).show();
+                            $("#view_" + id).css({
+                                color: "#fdd431",
+                            });
+                        } else if (
+                            response.appointments[i]["status"] != null &&
+                            response.appointments[i]["status"].includes(
+                                "Cancelled by"
+                            )
                         ) {
                             $("#show" + i).hide();
-                            $("#details" + id).css("background-color", "#2222");
+                            $("#view_" + id).css({
+                                color: "red",
+                            });
+                        } else if (
+                            response.appointments[i]["status"] != null &&
+                            response.appointments[i]["status"].includes(
+                                "Booked"
+                            )
+                        ) {
+                            $("#show" + i).show();
+                            $("#view_" + id).css({
+                                color: "green",
+                            });
                         }
 
                         if (

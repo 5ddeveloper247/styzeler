@@ -942,7 +942,6 @@ $(document).on("click", "#book-slots", function (e) {
     let message = "";
     let form = $("#book_slots_form");
     let data = new FormData(form[0]);
-    //    console.log(data);
 
     // PASSING DATA TO FUNCTION
     SendAjaxRequestToServer(
@@ -965,7 +964,6 @@ function bookSlotsResponse(response) {
         var status = bookings["status"];
         var changeSlot = "";
         var html = "";
-        // console.log(status.includes("Hold"));
 
         $(".timeSlots").empty();
 
@@ -996,7 +994,6 @@ function bookSlotsResponse(response) {
                 if (status1 != null) {
                     status_for_hold = status1.toLowerCase();
                 }
-                console.log(status_for_hold);
                 if (
                     status1 == "booked" ||
                     status_for_hold.includes("on hold by") ||
@@ -1202,7 +1199,6 @@ function loadFeedbackResponse(response) {
         $("#freelancerReviewsHtml, #freelancerLikesHtml").empty();
 
         if (feedback.length > 0) {
-            // console.log(response);
             $.each(feedback, function (i) {
                 if (feedback[i]["remarks"] != "") {
                     if (feedback[i]["feedback_type"] == "review") {
@@ -1248,8 +1244,6 @@ function loadFeedbackResponse(response) {
 }
 // //Ajax call - updateappointment- on hold
 function onHoldAppointment(id) {
-    console.log(id);
-
     var status = "On Hold by ";
     var app_id;
     var data = new FormData();

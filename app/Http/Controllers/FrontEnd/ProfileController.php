@@ -558,7 +558,7 @@ class ProfileController extends Controller
             // if ($checkSlot && $checkSlot->userBookingSlots) {
             //     $check_status = $checkSlot->userBookingSlots->status;
             // }
-            if ($checkSlot && $checkSlot->status != 'Cancel') {
+            if ($checkSlot && !str_contains(strtolower($checkSlot->status), 'cancelled by')) {
                 return response()->json([
                     'status' => 422,
                     'message' => 'Slot is Already Booked.',
@@ -1107,7 +1107,7 @@ class ProfileController extends Controller
         $getAppointmentBookingTime = $getAppointmentData->booking_time;
         $getAppointmentBookingUserId = $getAppointmentData->booking_user_id;
 
-        $token_not_remove = BookingSlots::where('id', $getAppointmentData->booking_slots_id)->value('status');
+        // $token_not_remove = BookingSlots::where('id', $getAppointmentData->booking_slots_id)->value('status');
         $timeNow = now();
         $hoursDifference = $timeNow->diffInHours($getAppointmentCreatedTime);
 
@@ -1140,8 +1140,9 @@ class ProfileController extends Controller
         $clientUser = User::where('id', $getAppointmentData->booking_user_id)->first();
         $freelancerUser = User::where('id', $getAppointmentData->freelancer_user_id)->first();
         $appoExist = Appointments::where('booking_user_id', $getAppointmentBookingUserId)->where('booking_date', $getAppointmentBookingDate)->count();
-
-        if ($appoExist == 1 && !str_contains(strtolower($token_not_remove), 'pending')) {
+        // dd(!str_contains(strtolower($getAppointmentData->status), 'cancelled by'));
+        // dd(!str_contains(strtolower($token_not_remove), 'pending'), !str_contains(strtolower($getAppointmentData->status), 'cancelled by'));
+        if ($appoExist == 1 && !str_contains(strtolower($getAppointmentData->status), 'cancelled by')) {
             User::where('id', $clientUser->id)->update([
                 'tokens' => $clientUser->tokens + 1
             ]);

@@ -8,7 +8,6 @@ today = new Date(
     new Date().getMonth(),
     new Date().getDate()
 );
-//console.log(logInId);
 
 function redirect() {
     window.location.href = "./freelancer-booking.html?e=success";
@@ -52,8 +51,6 @@ window.onload = function () {
 
 // function sendEmail(emailId, msg) {
 
-//     console.log(emailId);
-//     console.log(msg);
 //     let ownerMessage = msg;
 //     var settings = {
 //     "url": "./email.php",
@@ -70,22 +67,18 @@ window.onload = function () {
 //     };
 
 //     $.ajax(settings).done(function (response) {
-//     console.log(response);
 //     });
 
 //     return true;
 // }
 
 // function avaliableAppointment(emailId, id, confirmedDate) {
-//     console.log(emailId);
-//     console.log(id);
-//     console.log(selected);
+
 //     let newselectedDate = new Date(confirmedDate);
 //     newselectedDate.setDate(newselectedDate.getDate());
 //     confirmedDate = newselectedDate.toJSON().slice(0,10);
 
 //     var AppntDate = moment(newselectedDate).format('DD-MMM-YYYY');
-//     console.log("Date :"+AppntDate);
 //     let ownerMessage = "THE FREELANCER HAS CONFIRMED THE BOOKING FOR " + AppntDate;
 
 //     $.ajax({
@@ -97,9 +90,7 @@ window.onload = function () {
 //         },
 //         success: function(updateResponse) {
 
-//             console.log(updateResponse);
 //             // let emailIds= emailId + ",wearestyzeler@gmail.com";
-//             //console.log(emailIds);
 //            let adminEmail="styzelercharlie7@gmail.com";  //Updated by Rumki - wearestyzeler@gmail.com
 //            let resp1 =  sendEmail(adminEmail,ownerMessage);
 //            let resp =  sendEmail(emailId,ownerMessage);
@@ -113,14 +104,11 @@ window.onload = function () {
 
 // //Ajax call - updateappointment- cancel
 // function cancelAppointment(emailId, id, confirmedDate) {
-//     console.log(emailId);
-//     console.log(id);
-//     console.log(selected);
+
 //     let newselectedDate = new Date(confirmedDate);
 //     newselectedDate.setDate(newselectedDate.getDate());
 //     confirmedDate = newselectedDate.toJSON().slice(0,10);
 //     var AppntDate = moment(newselectedDate).format('DD-MMM-YYYY');
-//     console.log("Date :"+AppntDate);
 
 //     let ownerMessage = "THE FREELANCER HAS CANCELLED THE BOOKING FOR " + AppntDate;
 
@@ -133,7 +121,6 @@ window.onload = function () {
 //         },
 //         success: function(updateResponse) {
 
-//             // console.log(updateResponse);
 //             // let emailIds= emailId + ",wearestyzeler@gmail.com";
 //             let adminEmail="styzelercharlie7@gmail.com";  //Updated by Rumki - wearestyzeler@gmail.com
 //             let resp1 =  sendEmail(adminEmail,ownerMessage);
@@ -148,15 +135,12 @@ window.onload = function () {
 
 // //Ajax call - updateappointment- on hold
 // function onHoldAppointment(emailId, id, confirmedDate) {
-//     console.log(emailId);
-//     console.log(id);
-//     console.log(selected);
+
 //     let newselectedDate = new Date(confirmedDate);
 //     newselectedDate.setDate(newselectedDate.getDate());
 //     confirmedDate = newselectedDate.toJSON().slice(0,10);
 
 //     var AppntDate = moment(newselectedDate).format('DD-MMM-YYYY');
-//     console.log("Date :"+AppntDate);
 //     let ownerMessage = "THE FREELANCER HAS ACCEPTED THE ON HOLD BOOKING FOR " + AppntDate;
 
 //     $.ajax({
@@ -168,7 +152,6 @@ window.onload = function () {
 //         },
 //         success: function(updateResponse) {
 
-//             // console.log(updateResponse);
 //             // let emailIds= emailId + ",wearestyzeler@gmail.com";
 //             let adminEmail="styzelercharlie7@gmail.com";  //Updated by Rumki - wearestyzeler@gmail.com
 //             let resp1 =  sendEmail(adminEmail,ownerMessage);
@@ -183,7 +166,6 @@ window.onload = function () {
 
 // //Ajax call - updateappointment- on hold
 // function onCallAppointment(id) {
-//     console.log(id);
 
 //     $.ajax({
 //         type: 'post',
@@ -195,7 +177,6 @@ window.onload = function () {
 //         success: function(updateResponse) {
 
 //             $(".onCall-modal").modal('show');
-//             console.log(updateResponse);
 //         }
 //     });
 
@@ -203,7 +184,6 @@ window.onload = function () {
 
 // onCallAppointment
 // function onCallAppointment(id) {
-//     console.log(id);
 
 //     // $.ajax({
 //     //     type: 'post',
@@ -215,12 +195,10 @@ window.onload = function () {
 //     //     success: function(updateResponse) {
 
 //     //         $(".onHold-modal").modal('show');
-//     //         console.log(updateResponse);
 //     //     }
 //     // });
 
 //     $(".onCall-modal").modal('show');
-//             // console.log(updateResponse);
 
 // }
 
@@ -288,7 +266,6 @@ $(function () {
                                 app_created_date.split("T")[0];
                             let app_created_date_booking_date =
                                 booking_date.split("T")[0];
-                            // console.log(booking_time.split(":")[0] == "21");
                             // if (booking_time.split(":")[0] == "21") {
                             //     var after_nine = true;
                             // } else {
@@ -509,7 +486,6 @@ function getfreelancerBookings() {
             } else {
                 $.each(response.appointments, function (i) {
                     if (response.appointments[i] != "") {
-                        // console.log(response.appointments[i]);
                         let id = response.appointments[i]["id"];
                         let emailId = response.appointments[i]["_SalonEmail"];
 
@@ -545,7 +521,6 @@ function getfreelancerBookings() {
                         owner_category =
                             response.appointments[i]["client_user"]["type"];
                         owner_status = "Booked";
-                        console.log(booking_time.split(":")[0]);
                         let app_created_date_dateOnly =
                             app_created_date.split("T")[0];
                         let app_created_date_booking_date =
