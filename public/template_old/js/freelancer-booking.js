@@ -202,7 +202,7 @@ function cancelonHoldAppointment(id, btn, option = "") {
                     "d-none"
                 );
             }
-            if (response.data.status == "Booked Business Owner") {
+            if (response.data.status == "Booked by Business Owner") {
                 $(".book_change_status_" + response.data.app_id).html(
                     "<strong>Booking Status</strong>: Confirmed by Business Owner"
                 );
