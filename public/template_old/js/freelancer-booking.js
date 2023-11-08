@@ -181,7 +181,7 @@ function cancelonHoldAppointment(id, btn, option = "") {
     if (profile_type == "Freelancer") {
         status = status + profile_type;
     } else if (user_type == "hairdressingSalon" || user_type == "beautySalon") {
-        status = status + " Business Owner";
+        status = status + " by Business Owner";
     }
     data.append("app_id", id);
     data.append("status", status);
@@ -202,9 +202,15 @@ function cancelonHoldAppointment(id, btn, option = "") {
                     "d-none"
                 );
             }
-            $(".book_change_status_" + response.data.app_id).html(
-                "<strong>Booking Status</strong>: " + response.data.status
-            );
+            if (response.data.status == "Booked Business Owner") {
+                $(".book_change_status_" + response.data.app_id).html(
+                    "<strong>Booking Status</strong>: Confirmed by Business Owner"
+                );
+            } else {
+                $(".book_change_status_" + response.data.app_id).html(
+                    "<strong>Booking Status</strong>: " + response.data.status
+                );
+            }
             toastr.success(response.message, "", {
                 timeOut: 3000,
             });
