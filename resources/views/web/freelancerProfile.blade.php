@@ -76,10 +76,11 @@
             max-height: calc(100vh - 200px);
             overflow-y: auto;
         }
+
         del {
-    		text-decoration: line-through;
-     		text-decoration-color: #ffbd59;
-     	}
+            text-decoration: line-through;
+            text-decoration-color: #ffbd59;
+        }
     </style>
 @endpush
 
@@ -175,15 +176,15 @@
                 </div>
 
                 <!-- <div class="status row">
-                                                                                                                                                                                                                                                                <label class="color-1 col-lg-3">Total Tokens : </label>
-                                                                                                                                                                                                                                                                <p class="col-lg-9" id="total_tokens"></p>
+                                                                                                                                                                                                                                                                    <label class="color-1 col-lg-3">Total Tokens : </label>
+                                                                                                                                                                                                                                                                    <p class="col-lg-9" id="total_tokens"></p>
 
-                                                                                                                                                                                                                                                            </div>
-                                                                                                                                                                                                                                                            <div class="status row">
-                                                                                                                                                                                                                                                                <label class="color-1 col-lg-3">Remaining Tokens : </label>
-                                                                                                                                                                                                                                                                <p class="col-lg-9" id="remaining_tokens"></p>
+                                                                                                                                                                                                                                                                </div>
+                                                                                                                                                                                                                                                                <div class="status row">
+                                                                                                                                                                                                                                                                    <label class="color-1 col-lg-3">Remaining Tokens : </label>
+                                                                                                                                                                                                                                                                    <p class="col-lg-9" id="remaining_tokens"></p>
 
-                                                                                                                                                                                                                                                            </div> -->
+                                                                                                                                                                                                                                                                </div> -->
 
 
 
@@ -391,7 +392,7 @@
                 </div>
             </div>
             <div class="showLikes col-10 mt-5 text-center" id="showLikes">
-                <div class="text-left  mt-4" id="freelancerLikesHtml">
+                <div class="mt-4 text-left" id="freelancerLikesHtml">
 
                 </div>
             </div>
@@ -443,11 +444,12 @@
 
                 </div>
 
-                <p class="text-center addTimeSlotstxt d-none"
+                <p class="addTimeSlotstxt d-none text-center"
                     style="margin-bottom: unset; font-size: 10px; color: #fdd431;">
                     <a class="text-center">Click below to add your availability time</a>
                 </p>
-                <div class="text-center addTimeSlotstxt d-none" style="margin-bottom: unset;color: #fdd431;" onchange="after_nine()">
+                <div class="addTimeSlotstxt d-none text-center" style="margin-bottom: unset;color: #fdd431;"
+                    onchange="after_nine()">
                     <form action="" id="after_nine">
                         <input type="checkbox" class="form-check-input" id="after_nine_slot" name="after_nine_slot">
                         <label class="form-check-label" for="after_nine_slot">After Nine</label>
@@ -2947,9 +2949,9 @@
     </div>
 @endsection
 @push('script')
-	<script>
-		var userId = {{@Auth::user()->id}};
-	</script>
+    <script>
+        var userId = {{ @Auth::user()->id }};
+    </script>
     {{-- <script>
         $(function() {
             $.ajaxSetup({
