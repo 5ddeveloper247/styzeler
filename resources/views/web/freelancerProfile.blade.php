@@ -1,5 +1,11 @@
 @extends('layouts.master.template_old.master')
-{{-- @dd(Auth::user()) --}}
+<script>
+    const baseURL = "{{ request()->root() }}";
+    const userId = "{{ @$data->id }}";
+    var user_type = "{{ auth()->user()->type }}";
+    var profile_type = "{{ auth()->user()->profile_type }}";
+    var user_name = "{{ auth()->user()->name }}";
+</script>
 @push('css')
     <link rel="stylesheet" href="{{ asset('template_old/css/calendar.css') }}?v={{ time() }}" />
 

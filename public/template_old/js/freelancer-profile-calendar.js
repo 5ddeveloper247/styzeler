@@ -357,6 +357,13 @@ jQuery(document).ready(function () {
                     success: function (showResponse) {
                         var profileStatus =
                             showResponse.userprofile["profile_type"];
+                        if (
+                            user_type == "hairdressingSalon" ||
+                            user_type == "beautySalon" ||
+                            profile_type == "Freelancer"
+                        ) {
+                            $(".timeSlots").addClass("invisible");
+                        }
                         $.each(showResponse.data, function (i) {
                             if (
                                 showResponse.data[i]["date"] ===
@@ -454,7 +461,7 @@ jQuery(document).ready(function () {
                                                     html +=
                                                         `<div title="Edit Slot" id="slots_btn" class="` +
                                                         changeSlot +
-                                                        ` select_option option invisible col-md-2 mr-2 ${status1}" onclick = selectSlot(` +
+                                                        ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` +
                                                         showResponse.data[i][
                                                             "booking_time_slots"
                                                         ][j]["id"] +
@@ -490,11 +497,18 @@ jQuery(document).ready(function () {
 
                                 if (status != "Off") {
                                     $(".timeSlots").html(html);
-                                    $("#slots_btn").click();
-                                    //  $(".book-appointment").addClass(
-                                    //      "defaultStatus"
-                                    //  );
-                                    //  $(".on-Hold").addClass("defaultStatus");
+                                    if (
+                                        user_type == "hairdressingSalon" ||
+                                        user_type == "beautySalon" ||
+                                        profile_type == "Freelancer"
+                                    ) {
+                                        $("#slots_btn").click();
+                                    } else {
+                                        $(".book-appointment").addClass(
+                                            "defaultStatus"
+                                        );
+                                        $(".on-Hold").addClass("defaultStatus");
+                                    }
                                 } else {
                                     $(".timeSlots").empty();
                                 }

@@ -237,7 +237,6 @@ $(function () {
                     '<div class="col-12 text-center">You have no bookings!</div>'
                 );
             } else {
-                console.log(response.appointments);
                 $.each(response.appointments, function (i) {
                     if (
                         response.appointments[i] != ""
@@ -369,7 +368,7 @@ $(function () {
                                 "<p><strong>Book Date: </strong> " +
                                 app_created_date_booking_date +
                                 "&nbsp;&nbsp;</p>" +
-                                "<p><strong>Book Time: </strong> " +
+                                "<p class='book_time'><strong>Book Time: </strong> " +
                                 slot_time +
                                 "</p>" +
                                 "</span>" +
@@ -518,6 +517,13 @@ $(function () {
                         });
                     }
                 });
+                if (
+                    user_type == "hairdressingSalon" ||
+                    user_type == "beautySalon" ||
+                    profile_type == "Freelancer"
+                ) {
+                    $(".book_time").addClass("d-none");
+                }
             }
         },
     });

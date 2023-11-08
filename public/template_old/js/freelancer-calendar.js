@@ -428,6 +428,13 @@ function removeDuplicates(data) {
                     data: JSON.stringify({}),
                     success: function (showResponse) {
                         // console.log(showResponse)
+                        if (
+                            user_type == "hairdressingSalon" ||
+                            user_type == "beautySalon" ||
+                            profile_type == "Freelancer"
+                        ) {
+                            $(".timeSlots").addClass("invisible");
+                        }
                         var profileStatus =
                             showResponse.userprofile["profile_type"];
                         $.each(showResponse.data, function (i) {

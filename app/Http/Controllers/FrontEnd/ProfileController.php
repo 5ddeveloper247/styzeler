@@ -1146,7 +1146,7 @@ class ProfileController extends Controller
         )
             ->count();
 
-        if ($appoExist == 1 && $getAppointmentData->status == 'Booked') {
+        if ($appoExist == 1 && ($getAppointmentData->status == 'Booked' || $clientUser->type == 'client')) {
             User::where('id', $clientUser->id)->update([
                 'tokens' => $clientUser->tokens + 1
             ]);

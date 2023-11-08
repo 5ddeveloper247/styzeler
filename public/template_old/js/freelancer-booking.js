@@ -1007,7 +1007,7 @@ function getfreelancerBookings() {
                                 "<p><strong>Book Date: </strong> " +
                                 app_created_date_booking_date +
                                 "&nbsp;&nbsp;</p>" +
-                                "<p><strong>Book Time: </strong> " +
+                                "<p class='book_time'><strong>Book Time: </strong> " +
                                 slot_time +
                                 "</p>" +
                                 "</span>" +
@@ -1174,6 +1174,13 @@ function getfreelancerBookings() {
                         });
                     }
                 });
+                if (
+                    user_type == "hairdressingSalon" ||
+                    user_type == "beautySalon" ||
+                    profile_type == "Freelancer"
+                ) {
+                    $(".book_time").addClass("d-none");
+                }
             }
         },
     });
