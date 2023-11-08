@@ -452,9 +452,9 @@ jQuery(document).ready(function () {
                                                         `')>After 9</div>`; //` + starttimeAMPM + ` -
                                                 } else {
                                                     html +=
-                                                        `<div title="Edit Slot" class="` +
+                                                        `<div title="Edit Slot" id="slots_btn" class="` +
                                                         changeSlot +
-                                                        ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` +
+                                                        ` select_option option invisible col-md-2 mr-2 ${status1}" onclick = selectSlot(` +
                                                         showResponse.data[i][
                                                             "booking_time_slots"
                                                         ][j]["id"] +
@@ -490,6 +490,11 @@ jQuery(document).ready(function () {
 
                                 if (status != "Off") {
                                     $(".timeSlots").html(html);
+                                    $("#slots_btn").click();
+                                    //  $(".book-appointment").addClass(
+                                    //      "defaultStatus"
+                                    //  );
+                                    //  $(".on-Hold").addClass("defaultStatus");
                                 } else {
                                     $(".timeSlots").empty();
                                 }
@@ -499,10 +504,10 @@ jQuery(document).ready(function () {
                                 );
                                 $(".appointment-status").show();
                                 found = true;
-                                $(".book-appointment").addClass(
-                                    "defaultStatus"
-                                );
-                                $(".on-Hold").addClass("defaultStatus");
+                                // $(".book-appointment").addClass(
+                                //     "defaultStatus"
+                                // );
+                                // $(".on-Hold").addClass("defaultStatus");
                             }
                             // else {
                             //   $(".appointment-status").hide();
