@@ -328,8 +328,11 @@ $(function () {
                             owner_category =
                                 response.appointments[i]["client_user"]["type"];
                         }
-
-                        owner_status = response.appointments[i]["status"];
+                        if (response.appointments[i]["confirmed_by"] != null) {
+                            owner_status = "Confirmed by Business Owner";
+                        } else {
+                            owner_status = response.appointments[i]["status"];
+                        }
 
                         slot_time = response.appointments[i]["booking_time"];
                         // slot_end_time = convertTo12HourFormat(response.appointments[i].user_booking_slots.end_time);

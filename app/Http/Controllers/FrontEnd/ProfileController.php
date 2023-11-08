@@ -910,9 +910,9 @@ class ProfileController extends Controller
             )->with([
                 'clientUser',
                 'freelancerAppUser',
-                // 'userBookingSlots.bookings',
+                'userBookingSlots',
                 // 'userBookingSlots.bookings.FreelancerUser'
-            ])->get();
+            ])->orderBy('created_at', 'desc')->get();
         } else {
             $getProfileData = Appointments::where(
                 [
@@ -923,9 +923,9 @@ class ProfileController extends Controller
             )->with([
                 'clientAppUser',
                 'freelancerUser',
-                // 'userBookingSlots.bookings',
+                'userBookingSlots',
                 // 'userBookingSlots.bookings.FreelancerUser'
-            ])->get();
+            ])->orderBy('created_at', 'desc')->get();
         }
 
         // $getProfileData = Bookings::where(
