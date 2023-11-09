@@ -1,6 +1,9 @@
 let logInId = localStorage.getItem("loginstid");
 
 var selected;
+if (user_type == "client") {
+    cancel_by = "Client";
+}
 
 let today;
 today = new Date(
@@ -204,6 +207,7 @@ window.onload = function () {
 
 $(function () {
     function getfreelancerBooking() {
+        var cancel_btn = "";
         //Ajax call - getappointments
         $.ajax({
             type: "post",
@@ -260,8 +264,12 @@ $(function () {
                                 ];
                             owner_category =
                                 response.appointments[i]["client_user"]["type"];
-                            owner_status = "Booked";
 
+                            owner_status = response.appointments[i]["status"];
+                            if (owner_status.includes("Cancelled by")) {
+                                cancel_btn = "d-none";
+                                $("#cancelAppBtn_" + id).addClass("d-none");
+                            }
                             let app_created_date_dateOnly =
                                 app_created_date.split("T")[0];
                             let app_created_date_booking_date =
@@ -360,7 +368,7 @@ $(function () {
                                     '<span class="status_' +
                                     i +
                                     '">' +
-                                    "<p><strong>Status: </strong>" +
+                                    "<p><strong>Booking Status: </strong>" +
                                     owner_status +
                                     "</p>" +
                                     "</span>" +
@@ -377,11 +385,17 @@ $(function () {
                                     // '</div>' +
                                     // '<div class=" text-center customBtn onHold_btn' + i + '" onClick="onHoldAppointment(\'' + emailId + '\' , ' + id + ',\'' + appDate + '\')">' + '<a>Confirm On Hold</a>' +
                                     // '</div>' +
-                                    '<div class=" text-center customBtn" onClick="cancelAppointment(' +
+                                    '<div class="text-center customBtn ' +
+                                    cancel_btn +
+                                    '" id="cancelAppBtn_' +
+                                    id +
+                                    '" onClick="cancelAppointment(' +
                                     id +
                                     "," +
                                     cancel_time +
-                                    ')">' +
+                                    ",'" +
+                                    cancel_by +
+                                    "')\">" +
                                     "<a>Cancel</a>" +
                                     "</div>" +
                                     // '</div>' + '</div>' +
@@ -520,7 +534,11 @@ function getfreelancerBookings() {
                             response.appointments[i]["client_user"]["phone"];
                         owner_category =
                             response.appointments[i]["client_user"]["type"];
-                        owner_status = "Booked";
+                        owner_status = response.appointments[i]["status"];
+                        if (owner_status.includes("Cancelled by")) {
+                            cancel_btn = "d-none";
+                            $("#cancelAppBtn_" + id).addClass("d-none");
+                        }
                         let app_created_date_dateOnly =
                             app_created_date.split("T")[0];
                         let app_created_date_booking_date =
@@ -614,7 +632,7 @@ function getfreelancerBookings() {
                                 '<span class="status_' +
                                 i +
                                 '">' +
-                                "<p><strong>Status: </strong>" +
+                                "<p><strong>Booking Status: </strong>" +
                                 owner_status +
                                 "</p>" +
                                 "</span>" +

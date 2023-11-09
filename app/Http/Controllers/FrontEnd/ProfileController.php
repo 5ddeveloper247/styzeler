@@ -431,8 +431,9 @@ class ProfileController extends Controller
                     $commaSeparatedSlotIds = $slots->pluck('id')->implode(',');
 
                     $slotIdsArray = explode(',', $commaSeparatedSlotIds);
-
-                    BookingSlots::whereIn('id', $slotIdsArray)->update(['status' => 'booked']);
+                    $bookingDetails->status = 'Booked';
+                    $bookingDetails->save();
+                    BookingSlots::whereIn('id', $slotIdsArray)->update(['status' => 'Booked']);
 
                     Appointments::create([
                         'booking_slots_id' => $commaSeparatedSlotIds,
@@ -440,6 +441,7 @@ class ProfileController extends Controller
                         'booking_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
                         'freelancer_user_id' => $request->user_id,
                         'booking_user_id' => Auth::id(),
+                        'status' => 'Booked',
                     ]);
                 } else {
                     if ($totalServiceTime > 540) { // if user will chekout after 9 then restrict user to add services less then nxt morning 6 O'clock
@@ -452,7 +454,7 @@ class ProfileController extends Controller
                     BookingSlots::where('id', $slotDetails->id)->update([
                         'end_time' => $serviceEndTime,
                         'slots_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
-                        'status' => $request->on_hold ?? 'booked',
+                        'status' => $request->on_hold ?? 'Booked',
 
                     ]);
 
@@ -462,6 +464,8 @@ class ProfileController extends Controller
                         'booking_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
                         'freelancer_user_id' => $request->user_id,
                         'booking_user_id' => Auth::id(),
+                        // 'status' => 'Booked',
+
                     ]);
                 }
 
@@ -884,9 +888,8 @@ class ProfileController extends Controller
                 ])
                 ->orderBy('created_at', 'desc')
                 ->get();
-
-            // dd($getProfileData, Auth::id());
         }
+        // dd($getProfileData, Auth::id());
 
 
         return response()->json([
@@ -1089,7 +1092,7 @@ class ProfileController extends Controller
     {
         $appId =  $request->app_id;
         $cancel_time = $request->cancel_time;
-        $cancel_by = $request->cancel_by;
+        $cancel_by = formatUserType($request->cancel_by);
 
         $getAppointmentData = Appointments::where('id', $appId)
             ->has('userBookingSlots')
@@ -1127,12 +1130,20 @@ class ProfileController extends Controller
                 ]
             );
         } else {
-            $bookinkSlots = $bookinkSlots->update(
-                [
-                    "status" => "Available",
-                    'slots_time' => null
-                ]
-            );
+            if ($cancel_by != 'Client' || $cancel_by != 'client') {
+                $bookinkSlots = $bookinkSlots->update(
+                    [
+                        "status" => "Available",
+                    ]
+                );
+            } else {
+                $bookinkSlots = $bookinkSlots->update(
+                    [
+                        "status" => "Available",
+                        'slots_time' => null
+                    ]
+                );
+            }
         }
 
         $clientUser = User::where('id', $getAppointmentData->booking_user_id)->first();

@@ -9,6 +9,8 @@ if (profile_type == "Freelancer") {
     cancel_by = profile_type;
 } else if (user_type == "hairdressingSalon" || user_type == "beautySalon") {
     cancel_by = "Business Owner";
+} else {
+    cancel_by = user_type;
 }
 var confirm_by_owner = "confirm_by_owner";
 var cancel_by_owner = "cancel_by_owner";
@@ -769,6 +771,8 @@ function getfreelancerBookings() {
                 );
             } else {
                 $(".appointment-row").empty();
+                console.log(response.appointments);
+
                 $.each(response.appointments, function (i) {
                     if (
                         response.appointments[i] != ""

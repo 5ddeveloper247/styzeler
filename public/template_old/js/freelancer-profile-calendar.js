@@ -97,7 +97,13 @@ jQuery(document).ready(function () {
                         var events = [];
                         var changeSlot = "";
                         var html = "";
-                        $(".timeSlots").empty();
+                        if (
+                            user_type == "hairdressingSalon" ||
+                            user_type == "beautySalon" ||
+                            profile_type == "Freelancer"
+                        ) {
+                            $(".timeSlots").empty();
+                        }
                         var profileStatus =
                             showResponse.userprofile["profile_type"];
                         $.each(showResponse.data, function (i) {
@@ -288,6 +294,7 @@ jQuery(document).ready(function () {
                             }
                             if (status != "Off") {
                                 $(".timeSlots").html(html);
+                                console.log("in off");
                             } else {
                                 $(".timeSlots").empty();
                             }
@@ -345,7 +352,14 @@ jQuery(document).ready(function () {
                 //Check the status
                 let found = false;
                 var changeSlot = "";
-                $(".timeSlots").empty();
+                if (
+                    user_type == "hairdressingSalon" ||
+                    user_type == "beautySalon" ||
+                    profile_type == "Freelancer"
+                ) {
+                    $(".timeSlots").addClass("invisible");
+                }
+
                 $(".appointment-status").hide();
 
                 $.ajax({
@@ -357,13 +371,7 @@ jQuery(document).ready(function () {
                     success: function (showResponse) {
                         var profileStatus =
                             showResponse.userprofile["profile_type"];
-                        if (
-                            user_type == "hairdressingSalon" ||
-                            user_type == "beautySalon" ||
-                            profile_type == "Freelancer"
-                        ) {
-                            $(".timeSlots").addClass("invisible");
-                        }
+
                         $.each(showResponse.data, function (i) {
                             if (
                                 showResponse.data[i]["date"] ===
@@ -528,13 +536,20 @@ jQuery(document).ready(function () {
                             // }
                         });
                         if (!found) {
+                            console.log(found);
                             $(".addTimeSlots").addClass("d-none");
                             $(".book-appointment").addClass("defaultStatus");
                             $(".on-Hold").addClass("defaultStatus");
 
                             $("#p_status").text("-");
-                            $(".timeSlots").empty();
-
+                            // $(".timeSlots").empty();
+                            if (
+                                user_type == "hairdressingSalon" ||
+                                user_type == "beautySalon" ||
+                                profile_type == "Freelancer"
+                            ) {
+                                $(".timeSlots").empty();
+                            }
                             // $(".cancel").addClass("customBtnNotSelected");
                             $(".availbook-appointmentable").removeClass(
                                 "defaultStatus"
