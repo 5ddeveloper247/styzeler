@@ -355,6 +355,12 @@ class ProfileController extends Controller
 
             // $cartExist = Cart::where('user_id', Auth::user()->id)->where('slot_date', $request->book_date)->count();
             $appoExist = Appointments::where('booking_user_id', Auth::user()->id)->where('booking_date', $request->book_date)->count();
+            $appoExistBooked = Appointments::where([
+                'booking_user_id' => Auth::id(),
+                'booking_date' => $request->book_date,
+                'status' => 'Booked',
+            ])->count();
+            // dd($appoExistBooked);
             if ($tokens == 0 && $appoExist == 0) {
                 return response()->json([
                     'status' => 404,
@@ -477,14 +483,14 @@ class ProfileController extends Controller
                 $cart->update();
 
 
-                if ($appoExist == 0) {
+                if ($appoExistBooked == 0) {
                     $user = User::find(Auth::user()->id);
                     $user->tokens = $tokens - 1;
                     $user->update();
                 }
 
-                $slotStartTime = date('h:i A', strtotime($slotDetails->start_time));
-                $slotEndTime = date('h:i A', strtotime($slotDetails->end_time));
+                // $slotStartTime = date('h:i A', strtotime($slotDetails->start_time));
+                // $slotEndTime = date('h:i A', strtotime($slotDetails->end_time));
 
                 $body = "<table>
 			                <tr>
@@ -1148,16 +1154,22 @@ class ProfileController extends Controller
 
         $clientUser = User::where('id', $getAppointmentData->booking_user_id)->first();
         $freelancerUser = User::where('id', $getAppointmentData->freelancer_user_id)->first();
-        $appoExist = Appointments::where(
-            [
-                'id' => $appId,
-                'booking_user_id' => $getAppointmentBookingUserId,
-                'booking_date' => $getAppointmentBookingDate
-            ]
-        )
-            ->count();
-
-        if ($appoExist == 1 && ($getAppointmentData->status == 'Booked' || $clientUser->type == 'client')) {
+        // $appoExist = Appointments::where(
+        //     [
+        //         'id' => $appId,
+        //         'booking_user_id' => $getAppointmentBookingUserId,
+        //         'booking_date' => $getAppointmentBookingDate
+        //     ]
+        // )
+        //     ->count();
+        // dd($request->all());
+        $appoExistBooked = Appointments::where([
+            'booking_user_id' => $getAppointmentBookingUserId,
+            'booking_date' => $getAppointmentBookingDate,
+            'status' => 'Booked',
+        ])->count();
+        // dd($appoExistBooked);
+        if ($appoExistBooked == 1 && ($getAppointmentData->status == 'Booked' || $clientUser->type == 'client')) {
             User::where('id', $clientUser->id)->update([
                 'tokens' => $clientUser->tokens + 1
             ]);

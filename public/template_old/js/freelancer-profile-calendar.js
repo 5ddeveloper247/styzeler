@@ -7,7 +7,7 @@ var tomorrow = currentdate.toJSON().slice(0, 10);
 var calHeight = 600;
 var currentHour = currentdate.getHours();
 var availableSelectDate = localStorage.getItem(SELECTEDSTATUSDATE);
-localStorage.removeItem("selectedstatusdate");
+// localStorage.removeItem("selectedstatusdate");
 var evezz = [];
 var today = (today = new Date(
     new Date().getFullYear(),
@@ -104,6 +104,7 @@ jQuery(document).ready(function () {
                         ) {
                             $(".timeSlots").empty();
                         }
+
                         var profileStatus =
                             showResponse.userprofile["profile_type"];
                         $.each(showResponse.data, function (i) {
@@ -112,6 +113,7 @@ jQuery(document).ready(function () {
                             // Define a mapping of status values to titles
                             var statusToTitle = {
                                 Available: "Available",
+                                Booked: "Booked",
                                 Off: "Off",
                                 "On Call": "On Call",
                                 // Add more mappings as needed
@@ -154,7 +156,6 @@ jQuery(document).ready(function () {
                                 );
                                 evezz = [];
                                 var status = showResponse.data[i]["status"];
-
                                 if (status == "Off") {
                                     changeSlot = "customBtnNotSelected";
                                     $(".book-appointment").removeClass(
@@ -172,6 +173,7 @@ jQuery(document).ready(function () {
                                 if (profileStatus == "Freelancer") {
                                     $(".addTimeSlots").addClass("d-none");
                                 }
+
                                 if (
                                     showResponse.data[i][
                                         "booking_time_slots"
@@ -219,7 +221,32 @@ jQuery(document).ready(function () {
                                                     status1.toLowerCase();
                                             }
 
-                                            if (
+                                            if (status1 == "Available") {
+                                                html +=
+                                                    `<div title="Edit Slot" class="` +
+                                                    changeSlot +
+                                                    ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` +
+                                                    showResponse.data[i][
+                                                        "booking_time_slots"
+                                                    ][j]["id"] +
+                                                    `,'` +
+                                                    showResponse.data[i][
+                                                        "booking_time_slots"
+                                                    ][j]["start_time"] +
+                                                    `','` +
+                                                    showResponse.data[i][
+                                                        "booking_time_slots"
+                                                    ][j]["end_time"] +
+                                                    `','` +
+                                                    showResponse.data[i][
+                                                        "date"
+                                                    ] +
+                                                    `')>` +
+                                                    starttimeAMPM +
+                                                    ` - ` +
+                                                    endtimeAMPM +
+                                                    `</div>`;
+                                            } else if (
                                                 status1 != "Available" ||
                                                 !status_for_hold.includes(
                                                     "cancelled by"
@@ -294,7 +321,6 @@ jQuery(document).ready(function () {
                             }
                             if (status != "Off") {
                                 $(".timeSlots").html(html);
-                                console.log("in off");
                             } else {
                                 $(".timeSlots").empty();
                             }
@@ -326,7 +352,7 @@ jQuery(document).ready(function () {
                     return [date.getFullYear(), mnth, day].join("-");
                 }
 
-                // localStorage.setItem(SELECTEDSTATUSDATE, convert(dateText));
+                localStorage.setItem(SELECTEDSTATUSDATE, convert(dateText));
                 optionBtns(convert(dateText));
 
                 // $("#options").show();
@@ -369,6 +395,8 @@ jQuery(document).ready(function () {
                         id: userId,
                     },
                     success: function (showResponse) {
+                        $(".timeSlots").empty();
+
                         var profileStatus =
                             showResponse.userprofile["profile_type"];
 
@@ -536,13 +564,11 @@ jQuery(document).ready(function () {
                             // }
                         });
                         if (!found) {
-                            console.log(found);
                             $(".addTimeSlots").addClass("d-none");
                             $(".book-appointment").addClass("defaultStatus");
                             $(".on-Hold").addClass("defaultStatus");
 
                             $("#p_status").text("-");
-                            // $(".timeSlots").empty();
                             if (
                                 user_type == "hairdressingSalon" ||
                                 user_type == "beautySalon" ||
