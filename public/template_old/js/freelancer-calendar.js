@@ -205,9 +205,6 @@ function removeDuplicates(data) {
                                             if (
                                                 showResponse.data[i][
                                                     "booking_time_slots"
-                                                ][j]["end_time"] != "" ||
-                                                showResponse.data[i][
-                                                    "booking_time_slots"
                                                 ][j]["end_time"] != null
                                             ) {
                                                 var endtimeAMPM =
@@ -473,10 +470,7 @@ function removeDuplicates(data) {
                                             if (
                                                 showResponse.data[i][
                                                     "booking_time_slots"
-                                                ][j]["end_time"] != null ||
-                                                showResponse.data[i][
-                                                    "booking_time_slots"
-                                                ][j]["end_time"] != ""
+                                                ][j]["end_time"] != null
                                             ) {
                                                 var endtimeAMPM =
                                                     convertTo12HourFormat(
