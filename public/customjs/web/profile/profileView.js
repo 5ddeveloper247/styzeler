@@ -982,7 +982,10 @@ function bookSlotsResponse(response) {
                 var starttimeAMPM = convertTo12HourFormat(
                     slots[j]["start_time"]
                 );
-                if (slots[j]["end_time"] != null) {
+                if (
+                    slots[j]["end_time"] != null ||
+                    slots[j]["end_time"] != ""
+                ) {
                     var endtimeAMPM = convertTo12HourFormat(
                         slots[j]["end_time"]
                     );

@@ -195,7 +195,10 @@ jQuery(document).ready(function () {
                                             if (
                                                 showResponse.data[i][
                                                     "booking_time_slots"
-                                                ][j]["end_time"] != ""
+                                                ][j]["end_time"] != "" ||
+                                                showResponse.data[i][
+                                                    "booking_time_slots"
+                                                ][j]["end_time"] != null
                                             ) {
                                                 var endtimeAMPM =
                                                     convertTo12HourFormat(
@@ -429,6 +432,9 @@ jQuery(document).ready(function () {
                                                     ][j]["start_time"]
                                                 );
                                             if (
+                                                showResponse.data[i][
+                                                    "booking_time_slots"
+                                                ][j]["end_time"] != "" ||
                                                 showResponse.data[i][
                                                     "booking_time_slots"
                                                 ][j]["end_time"] != null
