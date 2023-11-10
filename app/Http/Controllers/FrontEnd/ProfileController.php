@@ -470,7 +470,7 @@ class ProfileController extends Controller
                         'booking_time' => $slotDetails->start_time . ' - ' . $serviceEndTime,
                         'freelancer_user_id' => $request->user_id,
                         'booking_user_id' => Auth::id(),
-                        // 'status' => 'Booked',
+                        'status' => 'Booked',
 
                     ]);
                 }
