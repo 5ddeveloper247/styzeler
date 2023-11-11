@@ -224,6 +224,7 @@ function getfreelancerBookings() {
                     '<div class="col-12 text-center">You have no bookings!</div>'
                 );
             } else {
+                console.log(response.appointments);
                 $.each(response.appointments, function (i) {
                     if (response.appointments[i] != "") {
                         let id = response.appointments[i]["id"];

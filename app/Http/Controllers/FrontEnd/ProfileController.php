@@ -383,6 +383,7 @@ class ProfileController extends Controller
                 } else {
                     $totalServiceTime = $cartServiceTimeMin;
                 }
+                // dd($totalServiceTime);
 
                 $serviceStartTime = Carbon::createFromFormat('H:i', $slotDetails->start_time);
                 $serviceEndTime = $serviceStartTime->addMinutes($totalServiceTime)->format('H:i');

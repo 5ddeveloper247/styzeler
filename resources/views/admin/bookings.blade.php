@@ -87,16 +87,18 @@
                                         <h4 class="year">Booking Details</h4>
                                     </div>
                                 </div>
-                                <div class="row confirm-appointment p-3 text-left">
+                                {{-- @dd($appointments) --}}
+                                <div class="row confirm-appointment p-3 text-left" id="pending">
                                     @if (@count($appointments))
                                         @forelse ($appointments as $row)
                                             {{-- @dd($row) --}}
-                                            @if (!empty($row->userBookingSlots->status) && str_contains(strtolower($row->userBookingSlots->status), 'pending'))
+                                            @if (
+                                                !empty($row) &&
+                                                    (empty($row->status) || is_null($row->status)) &&
+                                                    (!empty($row->userBookingSlots->status) && str_contains(strtolower($row->userBookingSlots->status), 'pending')))
                                                 @php
                                                     $creationDate = date('d-M-Y', strtotime(@$row->created_at));
                                                     $bookDate = date('d-M-Y', strtotime(@$row->booking_date));
-                                                    // $bookStime = date('h:i A', strtotime(@$row['userBookingSlots']->start_time));
-                                                    // $bookEtime = date('h:i A', strtotime(@$row['userBookingSlots']->end_time));
                                                 @endphp
 
                                                 <div class="col-4">
@@ -190,7 +192,7 @@
 
                 <div id="panel1" class="tab-pane">
                     <div class="container">
-                        <h2 class="color-1 my-4 text-center">All Pending Bookings</h2>
+                        <h2 class="color-1 my-4 text-center">All On Hold Bookings</h2>
                         <div class="row justify-content-center">
                             <div class="booking-box col-lg-8">
                                 <div class="row text-center">
@@ -201,7 +203,7 @@
                                         <h4 class="year">Booking Details</h4>
                                     </div>
                                 </div>
-                                <div class="row confirm-appointment p-3 text-left">
+                                <div class="row confirm-appointment p-3 text-left" id="on_hold">
                                     @if (@count($appointments))
                                         @forelse ($appointments as $row)
                                             {{-- @dd($row) --}}
@@ -316,10 +318,9 @@
                                         <h4 class="year">Booking Details</h4>
                                     </div>
                                 </div>
-                                <div class="row confirm-appointment p-3 text-left">
+                                <div class="row confirm-appointment p-3 text-left" id="confirmed">
                                     @if (@count($appointments))
                                         @forelse ($appointments as $row)
-                                            {{-- @dd($row) --}}
                                             @if (
                                                 (!empty($row->userBookingSlots->status) &&
                                                     (str_contains(strtolower($row->userBookingSlots->status), 'confirmed by') ||
@@ -328,10 +329,7 @@
                                                 @php
                                                     $creationDate = date('d-M-Y', strtotime(@$row->created_at));
                                                     $bookDate = date('d-M-Y', strtotime(@$row->booking_date));
-                                                    // $bookStime = date('h:i A', strtotime(@$row['userBookingSlots']->start_time));
-                                                    // $bookEtime = date('h:i A', strtotime(@$row['userBookingSlots']->end_time));
                                                 @endphp
-
                                                 <div class="col-4">
                                                     <span>
                                                         <div>
@@ -404,7 +402,8 @@
                                                                 <p style="overflow-wrap: break-word;"><strong>Booking
                                                                         Status:
                                                                     </strong>
-                                                                    {{ @$row['userBookingSlots']->status }}</p>
+                                                                    {{ $row->confirmed_by ? 'Confirmed by Business Owner' : @$row['userBookingSlots']->status }}
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -413,8 +412,6 @@
                                         @empty
                                             <p>No Bookings Found!</p>
                                         @endforelse
-                                        {{-- @else
-                                        <p class="text-center">No Bookings Found!</p> --}}
                                     @endif
                                 </div>
                             </div>
@@ -424,7 +421,7 @@
 
                 <div id="panel3" class="tab-pane">
                     <div class="container">
-                        <h2 class="color-1 my-4 text-center">All Confirmed Bookings</h2>
+                        <h2 class="color-1 my-4 text-center">All Cancelled Bookings</h2>
                         <div class="row justify-content-center">
                             <div class="booking-box col-lg-8">
                                 <div class="row text-center">
@@ -435,18 +432,14 @@
                                         <h4 class="year">Booking Details</h4>
                                     </div>
                                 </div>
-                                <div class="row confirm-appointment p-3 text-left">
+                                <div class="row confirm-appointment p-3 text-left" id="cancelled">
                                     @if (@count($appointments))
                                         @forelse ($appointments as $row)
                                             {{-- @dd($row) --}}
-                                            @if (
-                                                (!empty($row->userBookingSlots->status) && str_contains(strtolower($row->userBookingSlots->status), 'cancelled')) ||
-                                                    str_contains(strtolower($row->status), 'cancel'))
+                                            @if (!empty($row) && str_contains(strtolower($row->status), 'cancelled by'))
                                                 @php
                                                     $creationDate = date('d-M-Y', strtotime(@$row->created_at));
                                                     $bookDate = date('d-M-Y', strtotime(@$row->booking_date));
-                                                    // $bookStime = date('h:i A', strtotime(@$row['userBookingSlots']->start_time));
-                                                    // $bookEtime = date('h:i A', strtotime(@$row['userBookingSlots']->end_time));
                                                 @endphp
 
                                                 <div class="col-4">
@@ -521,7 +514,8 @@
                                                                 <p style="overflow-wrap: break-word;"><strong>Booking
                                                                         Status:
                                                                     </strong>
-                                                                    {{ @$row['userBookingSlots']->status }}</p>
+                                                                    {{ !empty($row) && !empty($row->status) ? $row->status : @$row['userBookingSlots']->status }}
+                                                                </p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -554,5 +548,30 @@
             $("#toggle" + id).toggle();
 
         }
+
+        $(window).on('load', function() {
+            var pending = $('#pending').html();
+            var on_hold = $('#on_hold').html();
+            var confirmed = $('#confirmed').html();
+            var cancelled = $('#cancelled').html();
+
+            isPending = pending.replace(/\s/g, '');
+            isOnHold = on_hold.replace(/\s/g, '');
+            isConfirmed = confirmed.replace(/\s/g, '');
+            isCancelled = cancelled.replace(/\s/g, '');
+
+            if (isPending == '') {
+                $('#pending').html('<p class="mx-auto mb-0">No Bookings Found!</p>');
+            }
+            if (isOnHold == '') {
+                $('#on_hold').html('<p class="mx-auto mb-0">No Bookings Found!</p>');
+            }
+            if (isConfirmed == '') {
+                $('#confirmed').html('<p class="mx-auto mb-0">No Bookings Found!</p>');
+            }
+            if (isCancelled == '') {
+                $('#cancelled').html('<p class="mx-auto mb-0">No Bookings Found!</p>');
+            }
+        });
     </script>
 @endpush
