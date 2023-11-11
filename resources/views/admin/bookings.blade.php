@@ -207,12 +207,14 @@
                                     @if (@count($appointments))
                                         @forelse ($appointments as $row)
                                             {{-- @dd($row) --}}
-                                            @if (!empty($row->userBookingSlots->status) && str_contains(strtolower($row->userBookingSlots->status), 'on hold by'))
+                                            @if (empty($row->status) &&
+                                                    empty($row->confirmed_by) &&
+                                                    !empty($row->userBookingSlots->status) &&
+                                                    (str_contains(strtolower($row->userBookingSlots->status), 'on hold by') ||
+                                                        str_contains(strtolower($row->userBookingSlots->status), 'confirmed by freelancer')))
                                                 @php
                                                     $creationDate = date('d-M-Y', strtotime(@$row->created_at));
                                                     $bookDate = date('d-M-Y', strtotime(@$row->booking_date));
-                                                    // $bookStime = date('h:i A', strtotime(@$row['userBookingSlots']->start_time));
-                                                    // $bookEtime = date('h:i A', strtotime(@$row['userBookingSlots']->end_time));
                                                 @endphp
 
                                                 <div class="col-4">
@@ -322,10 +324,10 @@
                                     @if (@count($appointments))
                                         @forelse ($appointments as $row)
                                             @if (
-                                                (!empty($row->userBookingSlots->status) &&
-                                                    (str_contains(strtolower($row->userBookingSlots->status), 'confirmed by') ||
-                                                        str_contains(strtolower($row->userBookingSlots->status), 'booked'))) ||
-                                                    str_contains(strtolower($row->status), 'booked'))
+                                                !empty($row->status) &&
+                                                    !str_contains(strtolower($row->status), 'cancelled') &&
+                                                    !empty($row->userBookingSlots->status) &&
+                                                    str_contains(strtolower($row->userBookingSlots->status), 'booked'))
                                                 @php
                                                     $creationDate = date('d-M-Y', strtotime(@$row->created_at));
                                                     $bookDate = date('d-M-Y', strtotime(@$row->booking_date));
