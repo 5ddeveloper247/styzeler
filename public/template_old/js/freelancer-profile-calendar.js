@@ -97,6 +97,7 @@ jQuery(document).ready(function () {
                         var events = [];
                         var changeSlot = "";
                         var html = "";
+                        var isBooked = "";
                         if (
                             user_type == "hairdressingSalon" ||
                             user_type == "beautySalon" ||
@@ -109,16 +110,20 @@ jQuery(document).ready(function () {
                             showResponse.userprofile["profile_type"];
                         $.each(showResponse.data, function (i) {
                             var status = showResponse.data[i]["status"];
-
+                            if (user_type == "client") {
+                                isBooked = "Available";
+                            } else {
+                                isBooked = "Booked";
+                            }
                             // Define a mapping of status values to titles
                             var statusToTitle = {
                                 Available: "Available",
-                                Booked: "Booked",
+                                Booked: isBooked,
                                 Off: "Off",
                                 "On Call": "On Call",
                                 // Add more mappings as needed
                             };
-
+                            console.log(showResponse);
                             var title = statusToTitle[status] || status; // Use the mapping or the status as the title
                             events.push({
                                 title: title,
@@ -129,7 +134,8 @@ jQuery(document).ready(function () {
                                 end: showResponse.data[i]["date"],
                                 allDay: true,
                             });
-
+                            var availableSelectDate =
+                                localStorage.getItem(SELECTEDSTATUSDATE);
                             if (
                                 showResponse.data[i]["date"] ===
                                 convert(availableSelectDate)

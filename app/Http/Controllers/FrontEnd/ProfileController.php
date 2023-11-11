@@ -451,6 +451,7 @@ class ProfileController extends Controller
                         'status' => 'Booked',
                     ]);
                 } else {
+                    // dd($totalServiceTime, $serviceEndTime);
                     if ($totalServiceTime > 540) { // if user will chekout after 9 then restrict user to add services less then nxt morning 6 O'clock
                         return response()->json([
                             'status' => 422,
@@ -1133,7 +1134,8 @@ class ProfileController extends Controller
             $bookinkSlots = $bookinkSlots->update(
                 [
                     "status" => "Available",
-                    'slots_time' => 'After_Nine'
+                    'slots_time' => 'After_Nine',
+                    'end_time' => null
                 ]
             );
         } else {

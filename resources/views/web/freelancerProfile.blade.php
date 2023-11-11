@@ -81,6 +81,10 @@
             text-decoration: line-through;
             text-decoration-color: #ffbd59;
         }
+
+        table {
+            text-align: center !important;
+        }
     </style>
 @endpush
 
@@ -176,15 +180,15 @@
                 </div>
 
                 <!-- <div class="status row">
-                                                                                                                                                                                                                                                                    <label class="color-1 col-lg-3">Total Tokens : </label>
-                                                                                                                                                                                                                                                                    <p class="col-lg-9" id="total_tokens"></p>
+                                                                                                                                                                                                                                                                        <label class="color-1 col-lg-3">Total Tokens : </label>
+                                                                                                                                                                                                                                                                        <p class="col-lg-9" id="total_tokens"></p>
 
-                                                                                                                                                                                                                                                                </div>
-                                                                                                                                                                                                                                                                <div class="status row">
-                                                                                                                                                                                                                                                                    <label class="color-1 col-lg-3">Remaining Tokens : </label>
-                                                                                                                                                                                                                                                                    <p class="col-lg-9" id="remaining_tokens"></p>
+                                                                                                                                                                                                                                                                    </div>
+                                                                                                                                                                                                                                                                    <div class="status row">
+                                                                                                                                                                                                                                                                        <label class="color-1 col-lg-3">Remaining Tokens : </label>
+                                                                                                                                                                                                                                                                        <p class="col-lg-9" id="remaining_tokens"></p>
 
-                                                                                                                                                                                                                                                                </div> -->
+                                                                                                                                                                                                                                                                    </div> -->
 
 
 

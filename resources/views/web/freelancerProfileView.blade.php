@@ -508,8 +508,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="btn uploadBtn text-right"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>
@@ -3021,13 +3021,13 @@
         //                 }
         //             }
         //         }, 400);
-        window.onload = function() {
-            $('.fc-toolbar.fc-header-toolbar').addClass('row col-lg-12');
-        };
+        // window.onload = function() {
+        //     $('.fc-toolbar.fc-header-toolbar').addClass('row col-lg-12');
+        // };
 
-        // add the responsive classes when navigating with calendar buttons
-        $(document).on('click', '.fc-button', function(e) {
-            $('.fc-toolbar.fc-header-toolbar').addClass('row col-lg-12');
-        });
+        // // add the responsive classes when navigating with calendar buttons
+        // $(document).on('click', '.fc-button', function(e) {
+        //     $('.fc-toolbar.fc-header-toolbar').addClass('row col-lg-12');
+        // });
     </script>
 @endpush
