@@ -212,7 +212,6 @@ jQuery(document).ready(function () {
                                             } else {
                                                 var endtimeAMPM = "";
                                             }
-
                                             var slots_time =
                                                 showResponse.data[i][
                                                     "booking_time_slots"
@@ -227,7 +226,10 @@ jQuery(document).ready(function () {
                                                     status1.toLowerCase();
                                             }
 
-                                            if (status1 == "Available") {
+                                            if (
+                                                status1 == "Available" &&
+                                                slots_time != "After_Nine"
+                                            ) {
                                                 html +=
                                                     `<div title="Edit Slot" class="` +
                                                     changeSlot +
@@ -254,9 +256,10 @@ jQuery(document).ready(function () {
                                                     `</div>`;
                                             } else if (
                                                 status1 != "Available" ||
-                                                !status_for_hold.includes(
+                                                (!status_for_hold.includes(
                                                     "cancelled by"
-                                                )
+                                                ) &&
+                                                    slots_time != "After_Nine")
                                             ) {
                                                 html +=
                                                     `<div title="" class="` +
