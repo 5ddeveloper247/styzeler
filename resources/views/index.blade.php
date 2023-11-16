@@ -342,7 +342,7 @@
         </div>
     </section>
     <section class="d-lg-none d-md-none">
-        <img src="{{ asset('template_new/assets/images/new_home_1.jpg') }}" alt="" />
+        <img src="{{ asset('template_new/assets/images/new_home_1_new.jpg') }}" alt="" />
     </section>
     <!-- banner -->
     <section id="browse">
