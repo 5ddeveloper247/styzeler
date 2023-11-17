@@ -16,7 +16,7 @@
                     <img id="blah" class="rounded-circle" src="{{ asset('template_old/images/blank.png') }}"
                         alt="your image" /> <br>
 
-                    <input id="owner-picture" name="owner_picture" accept=".jpg, .jpeg, .png" class="my-4 col-lg-6 hidden"
+                    <input id="owner-picture" name="owner_picture" accept=".jpg, .jpeg, .png" class="col-lg-6 my-4 hidden"
                         type='file' onchange="loadFile(event);" />
                     <label for="owner-picture">+</label>
 
@@ -24,38 +24,39 @@
                 <div class="personalDetails">
                     <h4>Personal Details</h4>
                     <div class="form-group">
-                        <input type="text" class="form-control col-lg-6 " id="owner-name" name="owner_name"
+                        <input type="text" class="form-control col-lg-6" id="owner-name" name="owner_name"
                             aria-describedby="owner-name" placeholder="Name">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control col-lg-6 " id="owner-surname" name="owner_surname"
+                        <input type="text" class="form-control col-lg-6" id="owner-surname" name="owner_surname"
                             aria-describedby="owner-surname" placeholder="Surname">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control col-lg-6 " id="owner-address" name="owner_address" rows="3" placeholder="Address"></textarea>
+                        <textarea class="form-control col-lg-6" id="owner-address" name="owner_address" rows="3" placeholder="Address"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control col-lg-6 " id="owner-postcode" name="owner_postcode"
+                        <input type="text" class="form-control col-lg-6" id="owner-postcode" name="owner_postcode"
                             aria-describedby="owner-postcode" placeholder="Postcode">
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <input type="text" class="form-control col-lg-6 " id="owner-telephone" name="owner_telephone"
                             aria-describedby="owner-telephone" placeholder="Telephone">
-                    </div>
+                    </div> --}}
                     <div class="form-group">
-                        <input type="text" class="form-control col-lg-6 " id="owner-email" name="owner_email"
+                        <input type="text" class="form-control col-lg-6" id="owner-email" name="owner_email"
                             aria-describedby="owner-email" placeholder="Email">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-control col-lg-6 " id="owner-password" name="owner_password"
+                        <input type="text" class="form-control col-lg-6" id="owner-password" name="owner_password"
                             aria-describedby="owner-password" placeholder="Password">
                     </div>
 
                 </div>
                 <div class="terms-conditions text-center">
-                    <div class="terms my-5 btn ">
+                    <div class="terms btn my-5">
 
-                        <button type="button" class="btn customBtn agreeTermCond" data-toggle="modal" data-target="#exampleModalLong">
+                        <button type="button" class="btn customBtn agreeTermCond" data-toggle="modal"
+                            data-target="#exampleModalLong">
                             Agree To Terms and Conditions
                         </button>
 
@@ -74,7 +75,7 @@
                                         <h5 class="modal-title text-center" id="exampleModalLongTitle">Terms and
                                             Conditions</h5>
 
-                                        <div class="form-check ">
+                                        <div class="form-check">
                                             <a href="{{ route('privacyPolicy') }}" target="_blank"
                                                 rel="noopener noreferrer">Privacy Policy</a><br>
                                             <a href="{{ route('webTermAndConditions') }}" target="_blank"
@@ -83,17 +84,17 @@
                                                 rel="noopener noreferrer">Freelancer Terms & Conditions</a><br>
                                             <input class="form-check-input btn customBtn" type="checkbox"
                                                 id="terms-and-conditions" value="1" name="agree">
-                                            <label class="form-check-label " for="agree">Agree To Terms and
+                                            <label class="form-check-label" for="agree">Agree To Terms and
                                                 Conditions</label>
                                         </div>
-                                        <div class="submit text-center mt-5">
+                                        <div class="submit mt-5 text-center">
                                             <button type="submit" id="submit_button" class="btn customBtn"
                                                 disabled>Submit</button>
                                         </div>
                                     </div>
                                     <div class="modal-footer">
                                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <button type="button" class="btn btn-primary">Save changes</button> -->
                                     </div>
                                 </div>
                             </div>
@@ -117,9 +118,9 @@
                 }
             });
         });
-        
+
         $(document).on('click', '.agreeTermCond', function(e) {
-			$("#terms-and-conditions").prop('checked', false);
+            $("#terms-and-conditions").prop('checked', false);
         });
         $(document).on('click', '#submit_button', function(e) {
 

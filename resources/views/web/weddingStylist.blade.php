@@ -48,14 +48,14 @@
     <!-- Content -->
     <div class="occupation">
         <!-- <section class="content-body">
-                <div class="container">
-                    <h1>Your wedding should be the party of your life </h1>
-                    <div class="content-text my-5 p-4">
-                        <p>Styzeler freelancers can help you to achieve your dream day
-                            At Styzeler we have a variety of experienced wedding Hairstylist, passionate to create a personalised updo for your wedding day from beautiful  Long Smooth Curls, Fishtail Braid, to Classic Finger Wave and more.</p>
+                    <div class="container">
+                        <h1>Your wedding should be the party of your life </h1>
+                        <div class="content-text my-5 p-4">
+                            <p>Styzeler freelancers can help you to achieve your dream day
+                                At Styzeler we have a variety of experienced wedding Hairstylist, passionate to create a personalised updo for your wedding day from beautiful  Long Smooth Curls, Fishtail Braid, to Classic Finger Wave and more.</p>
+                        </div>
                     </div>
-                </div>
-            </section> -->
+                </section> -->
 
         <section class="content-category">
             <div class="container">

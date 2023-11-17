@@ -872,9 +872,9 @@ function getfreelancerBookings() {
                             freelancer_email =
                                 response.appointments[i].freelancer_app_user
                                     .email;
-                            freelancer_phone =
-                                response.appointments[i].freelancer_app_user
-                                    .phone;
+                            // freelancer_phone =
+                            //     response.appointments[i].freelancer_app_user
+                            //         .phone;
                         } else {
                             freelancer_name =
                                 response.appointments[i].freelancer_user.name +
@@ -885,8 +885,8 @@ function getfreelancerBookings() {
                                 response.appointments[i].freelancer_user.type;
                             freelancer_email =
                                 response.appointments[i].freelancer_user.email;
-                            freelancer_phone =
-                                response.appointments[i].freelancer_user.phone;
+                            // freelancer_phone =
+                            //     response.appointments[i].freelancer_user.phone;
                         }
 
                         if (
@@ -901,10 +901,10 @@ function getfreelancerBookings() {
                                 response.appointments[i]["client_app_user"][
                                     "email"
                                 ];
-                            owner_mobile =
-                                response.appointments[i]["client_app_user"][
-                                    "phone"
-                                ];
+                            // owner_mobile =
+                            //     response.appointments[i]["client_app_user"][
+                            //         "phone"
+                            //     ];
                             owner_category =
                                 response.appointments[i]["client_app_user"][
                                     "type"
@@ -916,10 +916,10 @@ function getfreelancerBookings() {
                                 response.appointments[i]["client_user"][
                                     "email"
                                 ];
-                            owner_mobile =
-                                response.appointments[i]["client_user"][
-                                    "phone"
-                                ];
+                            // owner_mobile =
+                            //     response.appointments[i]["client_user"][
+                            //         "phone"
+                            //     ];
                             owner_category =
                                 response.appointments[i]["client_user"]["type"];
                         }
@@ -1076,9 +1076,9 @@ function getfreelancerBookings() {
                                 '<span class="name_' +
                                 i +
                                 '" style="overflow-wrap: break-word;">' +
-                                "<p><strong>Freelancer Mobile: </strong>" +
-                                freelancer_phone +
-                                "</p>" +
+                                // "<p><strong>Freelancer Mobile: </strong>" +
+                                // freelancer_phone +
+                                // "</p>" +
                                 '<span class="email_' +
                                 i +
                                 '" style="overflow-wrap: break-word;">' +
@@ -1086,13 +1086,13 @@ function getfreelancerBookings() {
                                 owner_email +
                                 "</p>" +
                                 "</span>" +
-                                '<span class="mobile_' +
-                                i +
-                                '">' +
-                                "<p><strong>Business Owner Mobile: </strong>" +
-                                owner_mobile +
-                                "</p>" +
-                                "</span>" +
+                                // '<span class="mobile_' +
+                                // i +
+                                // '">' +
+                                // "<p><strong>Business Owner Mobile: </strong>" +
+                                // owner_mobile +
+                                // "</p>" +
+                                // "</span>" +
                                 '<span class="status_' +
                                 i +
                                 '">' +

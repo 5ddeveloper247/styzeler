@@ -93,9 +93,9 @@ $(document).ready(function () {
     });
 });
 
-function editName() {
-    $(".name-mobile-modal").modal("show");
-}
+// function editName() {
+//     $(".name-mobile-modal").modal("show");
+// }
 
 function editAge() {
     $(".age-modal").modal("show");
@@ -254,7 +254,7 @@ function profileResponse(response) {
             // For name,surname,phone
             profilename = data.name;
             surname = data.surname;
-            phone = data.phone;
+            // phone = data.phone;
 
             // if (phone) {
             //     var cleanedPhone = phone.replace(/\D/g, '');
@@ -267,7 +267,7 @@ function profileResponse(response) {
 
             $("#stylist-name").val(profilename);
             $("#stylist-surname").val(surname);
-            $("#stylist-mobile").val(phone);
+            // $("#stylist-mobile").val(phone);
 
             // for age
             age = data.age;

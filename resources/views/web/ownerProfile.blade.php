@@ -80,10 +80,10 @@
                     <label class="color-1 col-lg-3">Owner's postcode : </label>
                     <p class="col-lg-9" id="owner-postcode"></p>
                 </div>
-                <div class="phone row">
+                {{-- <div class="phone row">
                     <label class="color-1 col-lg-3">Owner's Phone : </label>
                     <p class="col-lg-9" id="owner-phone"></p>
-                </div>
+                </div> --}}
 
                 <div class="email row">
                     <label class="color-1 col-lg-3">Email : </label>
@@ -291,7 +291,7 @@
 
             <!-- edit  mobile number -->
 
-            <div class="modal mobile-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+            {{-- <div class="modal mobile-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header">
@@ -318,7 +318,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
             <!-- edit address -->
 
@@ -863,14 +863,14 @@
                                         <label class="form-check-label" for="full-arms">Full Arms</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="underarms"
-                                            value="Underarms" name="bodyWaxingServices[]">
+                                        <input class="form-check-input" type="checkbox" id="underarms" value="Underarms"
+                                            name="bodyWaxingServices[]">
                                         <label class="form-check-label" for="underarms">Underarms</label>
                                     </div>
 
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="forearms"
-                                            value="Forearms" name="bodyWaxingServices[]">
+                                        <input class="form-check-input" type="checkbox" id="forearms" value="Forearms"
+                                            name="bodyWaxingServices[]">
                                         <label class="form-check-label" for="forearms">Forearms</label>
                                     </div>
                                     <div class="form-check">
@@ -879,8 +879,8 @@
                                         <label class="form-check-label" for="upper-legs">Upper Legs</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" id="full-legs"
-                                            value="Full Legs" name="bodyWaxingServices[]">
+                                        <input class="form-check-input" type="checkbox" id="full-legs" value="Full Legs"
+                                            name="bodyWaxingServices[]">
                                         <label class="form-check-label" for="full-legs">Full Legs</label>
                                     </div>
                                     <div class="form-check">
@@ -1292,8 +1292,8 @@
                 <div class="modal-content bg-dark">
                     <div class="modal-header">
                         <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                                                                                                                                                                                                                                                                                                      <span aria-hidden="true">&times;</span>
-                                                                                                                                                                                                                                                                                                                                    </button> -->
+                                                                                                                                                                                                                                                                                                                                                  <span aria-hidden="true">&times;</span>
+                                                                                                                                                                                                                                                                                                                                                </button> -->
                     </div>
                     <div class="modal-body">
                         <h5 class="text-center">Successfull!</h5>

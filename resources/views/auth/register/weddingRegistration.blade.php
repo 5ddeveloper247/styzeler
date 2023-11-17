@@ -77,7 +77,7 @@
                     <img id="blah" class="rounded-circle" accept=".jpg, .jpeg, .png"
                         src="{{ asset('template_old/images/blank.png') }}" alt="your image" /> <br>
 
-                    <input id="stylist-picture" name="stylist_picture" class="my-4 col-lg-6 hidden" type='file'
+                    <input id="stylist-picture" name="stylist_picture" class="col-lg-6 my-4 hidden" type='file'
                         accept=".jpg, .jpeg, .png" onchange="loadFile(event);" placeholder="upload" />
                     <label for="stylist-picture">+</label>
 
@@ -92,7 +92,7 @@
                         <input type="text" class="form-control col-lg-6" id="stylist-surname" name="stylist_surname"
                             aria-describedby="stylist-surname" placeholder="Surname">
                     </div>
-                    <div class="form-group text-right col-lg-6 exclamation">
+                    <div class="form-group col-lg-6 exclamation text-right">
                         <i class="fa fa-exclamation-circle" aria-hidden="true" data-toggle="tooltip" data-placement="top"
                             title="Tell us a bit about you and your brief working history!"></i>
                     </div>
@@ -108,10 +108,10 @@
                         <input type="text" class="form-control col-lg-6" id="stylist-email" name="stylist_email"
                             aria-describedby="stylist-email" placeholder="Email">
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <input type="number" class="form-control col-lg-6" id="stylist-mobile" name="stylist_mobile"
                             aria-describedby="stylist-mobile" placeholder="Mobile">
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <input type="text" class="form-control col-lg-6" id="stylist-password" name="stylist_password"
                             aria-describedby="stylist-password" placeholder="Password">
@@ -136,8 +136,7 @@
                         </label>
                     </div>
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="stylist_age" id="age36-45"
-                            value="36-45">
+                        <input class="form-check-input" type="radio" name="stylist_age" id="age36-45" value="36-45">
                         <label class="form-check-label" for="barber">
                             36-45
                         </label>
@@ -214,7 +213,7 @@
                             </label>
                         </div>
                     </div>
-                    <div class="form-group text-right col-lg-6 ">
+                    <div class="form-group col-lg-6 text-right">
 
                     </div>
                     <div class="form-group">
@@ -629,7 +628,7 @@
                 </div>
 
                 <div class="terms-conditions text-center">
-                    <div class="terms my-5 btn ">
+                    <div class="terms btn my-5">
 
                         <button type="button" class="btn customBtn agreeTermCond" data-toggle="modal"
                             data-target="#exampleModalLong">
@@ -651,7 +650,7 @@
                                         <h5 class="modal-title text-center" id="exampleModalLongTitle">Terms and
                                             Conditions</h5>
 
-                                        <div class="form-check ">
+                                        <div class="form-check">
                                             <a href="{{ route('privacyPolicy') }}" target="_blank"
                                                 rel="noopener noreferrer">Privacy Policy</a><br>
                                             <a href="{{ route('webTermAndConditions') }}" target="_blank"
@@ -660,10 +659,10 @@
                                                 rel="noopener noreferrer">Freelancer Terms & Conditions</a><br>
                                             <input class="form-check-input btn customBtn" type="checkbox"
                                                 id="terms-and-conditions" value="1" name="agree">
-                                            <label class="form-check-label " for="terms-and-conditions">Agree To Terms and
+                                            <label class="form-check-label" for="terms-and-conditions">Agree To Terms and
                                                 Conditions</label>
                                         </div>
-                                        <div class="submit text-center mt-2">
+                                        <div class="submit mt-2 text-center">
                                             <button type="submit" id="submit_button" class="btn customBtn"
                                                 disabled>Submit</button>
                                             <button type="submit" id="spinner_button" class="btn customBtn d-none"
@@ -674,7 +673,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      <button type="button" class="btn btn-primary">Save changes</button> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          <button type="button" class="btn btn-primary">Save changes</button> -->
                                     </div>
                                 </div>
                             </div>
@@ -685,7 +684,7 @@
                 <!--Success Modal-->
                 <div class="modal success-modal" tabindex="-1" role="dialog" data-keyboard="false"
                     data-backdrop="static">
-                    <div class="modal-dialog " role="document">
+                    <div class="modal-dialog" role="document">
                         <div class="modal-content bg-dark">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -707,7 +706,7 @@
                 <!--Error Modal-->
                 <div class="modal error-modal" tabindex="-1" role="dialog" data-keyboard="false"
                     data-backdrop="static">
-                    <div class="modal-dialog " role="document">
+                    <div class="modal-dialog" role="document">
                         <div class="modal-content bg-dark">
                             <div class="modal-header">
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -715,7 +714,7 @@
                                 </button>
                             </div>
                             <div class="modal-body">
-                                <h5 class="text-center error-message"></h5>
+                                <h5 class="error-message text-center"></h5>
                                 <!--<p>Please try again!</p>-->
                                 <button type="button" class="btn customBtn mt-2" data-dismiss="modal">Okay</button>
 
@@ -742,7 +741,7 @@
             });
         });
         $(document).on('click', '.agreeTermCond', function(e) {
-			$("#terms-and-conditions").prop('checked', false);
+            $("#terms-and-conditions").prop('checked', false);
         });
         $(document).on('click', '#submit_button', function(e) {
 

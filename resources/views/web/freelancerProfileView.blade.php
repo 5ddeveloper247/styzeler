@@ -691,7 +691,7 @@
                     </div>
                     <div class="modal-body">
                         <!-- <form id="name-mobile-form"> -->
-                        <h5 class="text-center">Edit Name and Mobile</h5>
+                        <h5 class="text-center">Edit Name</h5>
                         <p>
                         <div class="form-group">
                             <input type="text" class="form-control" id="stylist-name" name="stylist_name"
@@ -701,10 +701,10 @@
                             <input type="text" class="form-control" id="stylist-surname" name="stylist_surname"
                                 aria-describedby="stylist-surname" placeholder="Surname">
                         </div>
-                        <div class="form-group">
+                        {{-- <div class="form-group">
                             <input type="tel" class="form-control" id="stylist-mobile" name="stylist_mobile"
                                 aria-describedby="stylist-mobile" placeholder="Mobile">
-                        </div>
+                        </div> --}}
                         </p>
                         <button type="button" class="btn customBtn updateBasicInfoProfile"
                             data-dismiss="modal">Okay</button>

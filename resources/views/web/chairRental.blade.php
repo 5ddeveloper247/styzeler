@@ -89,10 +89,10 @@
                                         aria-describedby="salonCountryCode" name="salonCountryCode" placeholder="Post code"
                                         autocomplete="nope" required>
                                 </div>
-                                <div class="form-group">
+                                {{-- <div class="form-group">
                                     <input type="text" class="form-control change" id="salonMobile" name="salonMobile"
                                         aria-describedby="salon-mobile" placeholder="Phone" autocomplete="nope" required>
-                                </div>
+                                </div> --}}
                                 <div class="form-group">
                                     <textarea class="form-control change" id="spaceDescription" name="spaceDescription" name="space-description"
                                         style="height:8vw;" placeholder="Space Description" autocomplete="nope" required></textarea>
@@ -216,8 +216,8 @@
                         <div class="modal-content bg-dark">
                             <div class="modal-header">
                                 <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button> -->
+                                <span aria-hidden="true">&times;</span>
+                              </button> -->
                             </div>
                             <div class="modal-body">
                                 <h5 class="text-center">Sorry!</h5>
@@ -238,8 +238,8 @@
                         <div class="modal-content bg-dark">
                             <div class="modal-header">
                                 <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button> -->
+                                <span aria-hidden="true">&times;</span>
+                              </button> -->
                             </div>
                             <div class="modal-body">
                                 <h5 class="text-center">Sorry!</h5>

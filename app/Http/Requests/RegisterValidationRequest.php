@@ -34,7 +34,7 @@ class RegisterValidationRequest extends FormRequest
             'stylist_resume' => 'required_if:type,wedding,hairStylist,beautician,barber',
             'stylist_email' => 'required_if:type,wedding,hairStylist,beautician,barber|unique:users,email',
             'cv' => 'required_if:type,wedding,hairStylist,beautician,barber|mimes:pdf',
-            'stylist_mobile' => 'required_if:type,wedding,hairStylist,beautician,barber',
+            // 'stylist_mobile' => 'required_if:type,wedding,hairStylist,beautician,barber',
             'stylist_password' => [
                 'required_if:type,wedding,hairStylist,beautician,barber',
                 function ($attribute, $value, $fail) {
@@ -58,7 +58,7 @@ class RegisterValidationRequest extends FormRequest
             'owner_surname' => 'required_if:type,hairdressingSalon,beautySalon,client',
             'owner_address' => 'required_if:type,hairdressingSalon,beautySalon,client',
             'owner_postcode' => 'required_if:type,hairdressingSalon,beautySalon,client',
-            'owner_telephone' => 'required_if:type,hairdressingSalon,beautySalon,client',
+            // 'owner_telephone' => 'required_if:type,hairdressingSalon,beautySalon,client',
             'owner_email' => [
                 'required_if:type,hairdressingSalon,beautySalon,client',
                 'unique:users,email',
@@ -93,7 +93,7 @@ class RegisterValidationRequest extends FormRequest
             'stylist_resume.required_if' => 'Tell us a bit about you and your brief working history in RESUME!',
             'stylist_email.required_if' => 'Email is required!',
             'stylist_email.unique' => 'Email is already taken!',
-            'stylist_mobile.required_if' => 'Mobile Number is required!',
+            // 'stylist_mobile.required_if' => 'Mobile Number is required!',
             'stylist_age.required_if' => 'Please select your age group!',
             'utr_number.required_if' => 'Please enter your utr number!',
             'qualification.required_if' => 'Please Select Qualification',
@@ -112,7 +112,7 @@ class RegisterValidationRequest extends FormRequest
             'owner_surname.required_if' => 'Surname is required!',
             'owner_address.required_if' => 'Address is required!',
             'owner_postcode.required_if' => 'PostCode is required!',
-            'owner_telephone.required_if' => 'Mobile Number is required!',
+            // 'owner_telephone.required_if' => 'Mobile Number is required!',
             'owner_email.required_if' => 'Email is required!',
             'owner_email.unique' => 'Email is already taken!',
             'owner_password.required_if' => 'The password field is required!',

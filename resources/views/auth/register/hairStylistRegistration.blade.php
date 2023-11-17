@@ -46,10 +46,10 @@
                         <input type="text" class="form-control col-lg-6" id="stylist-email"
                             aria-describedby="stylist-email" name="stylist_email" placeholder="Email">
                     </div>
-                    <div class="form-group">
+                    {{-- <div class="form-group">
                         <input type="number" class="form-control col-lg-6" id="stylist-mobile"
                             aria-describedby="stylist-mobile" name="stylist_mobile" placeholder="Mobile">
-                    </div>
+                    </div> --}}
                     <div class="form-group">
                         <input type="text" class="form-control col-lg-6" id="stylist-password" name="stylist_password"
                             aria-describedby="stylist-password" placeholder="Password">

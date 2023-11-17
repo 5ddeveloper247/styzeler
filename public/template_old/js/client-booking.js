@@ -224,7 +224,6 @@ function getfreelancerBookings() {
                     '<div class="col-12 text-center">You have no bookings!</div>'
                 );
             } else {
-                console.log(response.appointments);
                 $.each(response.appointments, function (i) {
                     if (response.appointments[i] != "") {
                         let id = response.appointments[i]["id"];
@@ -248,8 +247,8 @@ function getfreelancerBookings() {
                             response.appointments[i].freelancer_app_user.type;
                         let freelancer_email =
                             response.appointments[i].freelancer_app_user.email;
-                        let freelancer_phone =
-                            response.appointments[i].freelancer_app_user.phone;
+                        // let freelancer_phone =
+                        //     response.appointments[i].freelancer_app_user.phone;
                         //  let bookStime = response.appointments[i]["bookingTimeSlots"]['start_time'];
                         //  let bookEtime = response.appointments[i]["bookingTimeSlots"]['end_time'];
 
@@ -257,8 +256,8 @@ function getfreelancerBookings() {
                             response.appointments[i]["client_user"]["name"];
                         owner_email =
                             response.appointments[i]["client_user"]["email"];
-                        owner_mobile =
-                            response.appointments[i]["client_user"]["phone"];
+                        // owner_mobile =
+                        //     response.appointments[i]["client_user"]["phone"];
                         owner_category =
                             response.appointments[i]["client_user"]["type"];
 
@@ -338,9 +337,9 @@ function getfreelancerBookings() {
                                 '<span class="name_' +
                                 i +
                                 '" style="overflow-wrap: break-word;">' +
-                                "<p><strong>Freelancer Mobile: </strong>" +
-                                freelancer_phone +
-                                "</p>" +
+                                // "<p><strong>Freelancer Mobile: </strong>" +
+                                // freelancer_phone +
+                                // "</p>" +
                                 '<span class="email_' +
                                 i +
                                 '" style="overflow-wrap: break-word;">' +
@@ -348,13 +347,13 @@ function getfreelancerBookings() {
                                 owner_email +
                                 "</p>" +
                                 "</span>" +
-                                '<span class="mobile_' +
-                                i +
-                                '">' +
-                                "<p><strong>Client Mobile: </strong>" +
-                                owner_mobile +
-                                "</p>" +
-                                "</span>" +
+                                // '<span class="mobile_' +
+                                // i +
+                                // '">' +
+                                // "<p><strong>Client Mobile: </strong>" +
+                                // owner_mobile +
+                                // "</p>" +
+                                // "</span>" +
                                 '<span class="status_' +
                                 i +
                                 '">' +
