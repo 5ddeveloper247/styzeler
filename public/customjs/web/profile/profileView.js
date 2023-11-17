@@ -2,6 +2,7 @@ var tomorrow = currentdate.toJSON().slice(0, 10);
 var currentHour = currentdate.getHours();
 let onCall;
 var status_for_hold = "";
+// console.log(user_type, profile_type);
 $(document).ready(function () {
     if (
         user == "client" &&
@@ -887,6 +888,30 @@ function convertMinutesToHoursAndMinutes(minutes) {
     return (time12 = `${hours}:${remainingMinutes}`);
 }
 
+function formateDate(dateText) {
+    var months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ];
+
+    var date = new Date(dateText),
+        day = ("0" + date.getDate()).slice(-2),
+        month = months[date.getMonth()],
+        year = date.getFullYear();
+
+    return [day, month, year].join("-");
+}
+
 function selectSlot(id, start_time, end_time, date) {
     var starttimeAMPM = convertTo12HourFormat(start_time);
 
@@ -901,14 +926,14 @@ function selectSlot(id, start_time, end_time, date) {
     } else {
         var endtimeAMPM = convertTo12HourFormat(end_time);
     }
-
+    let convertedDate = formateDate(date);
     $("#slot_book_id").val(id);
     $("#book_date").val(date);
 
     $("#book_slot_start").html(starttimeAMPM);
     $("#book_slot_end").html(endtimeAMPM);
 
-    $("#book_slot_date").html(date);
+    $("#book_slot_date").html(convertedDate);
 }
 
 $(document).on("click", ".select_option", function (e) {

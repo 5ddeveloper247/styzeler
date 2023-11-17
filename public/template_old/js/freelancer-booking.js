@@ -24,9 +24,34 @@ today = new Date(
     new Date().getDate()
 );
 
+function formateDate(dateText) {
+    var months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ];
+
+    var date = new Date(dateText),
+        day = ("0" + date.getDate()).slice(-2),
+        month = months[date.getMonth()],
+        year = date.getFullYear();
+
+    return [day, month, year].join("-");
+}
+
 function redirect() {
     window.location.href = "./freelancer-booking.html?e=success";
 }
+
 function convertTo12HourFormat(time24) {
     // Split the time string into hours and minutes
     const [hours, minutes] = time24.split(":");
@@ -1004,12 +1029,12 @@ function getfreelancerBookings() {
                                 i +
                                 '">' +
                                 "<p><strong>Date: </strong> " +
-                                app_created_date_dateOnly +
+                                formateDate(app_created_date_dateOnly) +
                                 '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true" id=view_' +
                                 id +
                                 "></i></p>" +
                                 "<p><strong>Book Date: </strong> " +
-                                app_created_date_booking_date +
+                                formateDate(app_created_date_booking_date) +
                                 "&nbsp;&nbsp;</p>" +
                                 "<p class='book_time'><strong>Book Time: </strong> " +
                                 slot_time +

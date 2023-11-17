@@ -19,7 +19,7 @@
                             @csrf
                             <button type="submit" class="logon_btn">Sign Out</button>
                         </form>
-                        @if(!isset(auth()->user()->profile_type) && !in_array(auth()->user()->type, ['beautySalon', 'hairdressingSalon']))
+                        @if (!isset(auth()->user()->profile_type) && !in_array(auth()->user()->type, ['beautySalon', 'hairdressingSalon']))
                             <a href="{{ route('cart') }}" class="logon_btn heart_btn">
                                 <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt=""
                                     style="width:28px;">
@@ -43,11 +43,17 @@
                             @if (auth()->user()->type == 'client')
                                 <a class="dropdown-item" href="{{ route('clientBooking') }}">Your
                                     Booking</a>
+                                <a class="dropdown-item oldredirect" href="{{ route('clientBookingHistory') }}">Your
+                                    Booking
+                                    History</a>
                             @else
                                 <a class="dropdown-item" href="{{ route('freelancerBooking') }}">Your
                                     Booking</a>
                             @endif
-
+                            @if (auth()->user()->type == 'beautySalon' || auth()->user()->type == 'hairdressingSalon')
+                                <a class="dropdown-item oldredirect" href="{{ route('chairListing') }}">Your Chair
+                                    Listing</a>
+                            @endif
                             <a class="dropdown-item" href="{{ route('termAndConditions') }}">Terms &
                                 Conditions</a>
                             <a class="dropdown-item" href="{{ route('privacyPolicy') }}">Privacy Policy</a>

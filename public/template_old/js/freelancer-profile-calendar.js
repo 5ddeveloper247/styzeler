@@ -27,6 +27,7 @@ function optionBtns(selectedDate) {
     //     $(".on-Hold").removeClass("defaultStatus");
     // }
 }
+
 function convertTo12HourFormat(time24) {
     // Split the time string into hours and minutes
     const [hours, minutes] = time24.split(":");
@@ -42,6 +43,7 @@ function convertTo12HourFormat(time24) {
 
     return time12;
 }
+
 function convert(dateText) {
     var date = new Date(dateText),
         mnth = ("0" + (date.getMonth() + 1)).slice(-2),

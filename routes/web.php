@@ -39,6 +39,8 @@ Route::group(['namespace' => 'FrontEnd'], function () {
         Route::get('/Profile', 'FrontEndController@Profile')->name('Profile');
         Route::get('/freelancerBooking', 'FrontEndController@freelancerBooking')->name('freelancerBooking');
         Route::get('/clientBooking', 'FrontEndController@freelancerBooking')->name('clientBooking');
+        Route::get('/clientBookingHistory', 'FrontEndController@freelancerBookingHistory')->name('clientBookingHistory');
+
         Route::get('/freelancerBookingHistory', 'FrontEndController@freelancerBookingHistory')->name('freelancerBookingHistory');
         // Route::get('/ownerProfile', 'FrontEndController@ownerProfile')->name('ownerProfile');
         Route::post('/onHoldBooking', 'ProfileController@onHoldBooking')->name('onHoldBooking');
@@ -117,6 +119,9 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/rent-let-hairstylist', 'FrontEndController@rentLetHairstylist')->name('rentLetHairstylist');
     Route::get('/rent-let-beauty-therapist', 'FrontEndController@rentLetBeautyTherapist')->name('rentLetBeautyTherapist');
     Route::get('/jobs', 'FrontEndController@jobs')->name('jobs');
+    Route::get('/chairListing', 'FrontEndController@chairListing')->name('chairListing');
+    Route::get('/chairListingData', 'FrontEndController@chairListingData')->name('chairListingData');
+    Route::post('/changeChairStatus', 'FrontEndController@changeChairStatus')->name('changeChairStatus');
 
     Route::get('/blogs', 'FrontEndController@blogs')->name('blogs');
 

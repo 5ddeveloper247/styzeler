@@ -247,9 +247,63 @@ class FrontEndController extends Controller
         return view('web.chairRental');
     }
 
+
+    public function chairListing()
+    {
+        return view('web.chairListing');
+    }
+
+    public function chairListingData()
+    {
+        $all_chairs = Rent_let::where('user_id', Auth::id())
+            ->with('user')
+            ->get();
+        return response()->json(
+            [
+                'status' => 200,
+                'chairs' => $all_chairs
+            ]
+        );
+    }
+
+    public function changeChairStatus()
+    {
+        $request = json_decode(file_get_contents('php://input'), true);
+        $chair_status = Rent_let::findOrFail($request['id']);
+        if ($request['status'] == 'active') {
+            $status = 'inactive';
+        } else {
+            $status = 'active';
+        }
+
+        $is_changed = $chair_status->update(['status' => $status]);
+
+        if ($is_changed == true) {
+            return response()
+                ->json(
+                    [
+                        'status' => 200,
+                        'message' => "Status $status Successfully!",
+                        'data' => $chair_status
+                    ]
+                );
+        } else {
+            return response()
+                ->json(
+                    [
+                        'status' => 401,
+                        'message' => 'Something Went Wrong, Try Again!'
+                    ]
+                );
+        }
+    }
+
     public function rentLetHairstylist()
     {
-        $data['rentLetList'] = Rent_let::whereIn('category', ['Hairdressing Chair', 'Barber Chair'])->get();
+        $data['rentLetList'] = Rent_let::whereIn('category', ['Hairdressing Chair', 'Barber Chair'])
+            ->where('status', 'active')
+            ->get();
+        // dd($data);
         $data['page'] = 'hairstylist';
         return view('web.rentLetList')->with($data);
     }
@@ -293,7 +347,7 @@ class FrontEndController extends Controller
     {
         $serviceArray = ['Body Waxing', 'Eyes & Brows', 'Mani / Pedi', 'Facial'];
         $this->removeNonServiceCartLines($serviceArray);
-        
+
         // !empty($exists) && count($exists->cart_lines) ? $exists->cart_lines->each->delete() : '';
 
         $user = User::where('id', Auth::user()->id)->first();
@@ -520,5 +574,4 @@ class FrontEndController extends Controller
             }
         }
     }
-
 }

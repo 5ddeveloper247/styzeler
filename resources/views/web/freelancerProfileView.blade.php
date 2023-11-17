@@ -508,8 +508,8 @@
                     <!--<h1 class="color-1 col-lg-12 text-center">GALLERY</h1>-->
                     <h1 class="color-1 col-lg-12 text-center">GALLERY
                         <!-- <a class="btn uploadBtn text-right"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                style="font-size:1vw;" onclick="updateGallery()"
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                title="Upload new image/images"><u>(Upload)</u></a> -->
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        style="font-size:1vw;" onclick="updateGallery()"
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        title="Upload new image/images"><u>(Upload)</u></a> -->
                     </h1>
 
                     <hr>
@@ -2929,12 +2929,23 @@
                         <input type="hidden" id="slot_book_id" name="slot_book_id">
                         <input type="hidden" id="book_date" name="book_date">
                         <input type="hidden" id="on_hold" name="on_hold">
-
+                        @php
+                            if (auth()->user()->type == 'client') {
+                                $display = 'd-inline';
+                                $word = 'Slot';
+                            } else {
+                                $display = 'd-none';
+                                $word = 'Date';
+                            }
+                        @endphp
                         <div class="row">
                             <div class="col-md-12">
-                                <h4 style="color: #ffde59 ">Are you sure to <span id="book_or_hold"></span> slot?</h4>
-                                <h6><strong>Time: </strong><span id="book_slot_start"></span> - <span
-                                        id="book_slot_end"></span> on <strong>Date:</strong>
+                                <h4 style="color: #ffde59 ">Are you sure to <span id="book_or_hold"></span>
+                                    {{ $word ?? '' }}?</h4>
+                                <h6>
+                                    <div class="{{ $display ?? '' }}"><strong>Time: </strong><span
+                                            id="book_slot_start"></span> - <span id="book_slot_end"></span> on</div>
+                                    <strong>Date:</strong>
                                     <span id="book_slot_date"></span>
                                 </h6>
 

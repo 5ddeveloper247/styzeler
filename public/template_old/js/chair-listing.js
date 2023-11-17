@@ -1,103 +1,85 @@
 // let logInId = localStorage.getItem("loginstid");
-
-//Active a chair
-function activeChair(chairId) {
-    //Ajax call - Login
-    $.ajax({
-        type: 'post',
-        url: webUrl + 'activatesalonspace',
-        data: {
-          "_SalonChairId": chairId,
-       },
-        success: function(response) {
-          
-          console.log(response);
-          location.reload();
-
-        }
-      
-    });
-    //End of Ajax call
-}
-
-function inactiveChair(chairId) {
-    //Ajax call - Login
-    $.ajax({
-        type: 'post',
-        url: webUrl + 'inactivatesalonspace',
-        data: {
-          "_SalonChairId": chairId,
-       },
-        success: function(response) {
-          
-          console.log(response);
-          location.reload();
-
-
-        }
-      
-    });
-    //End of Ajax call
-}
-
 $(function () {
-
     //Ajax call - getappointments
+    getAllChairtData();
+    //End of Ajax call
+});
+//Active a chair
+function chairStatus(chairId, status) {
+    var data = JSON.stringify({
+        id: chairId,
+        status: status,
+    });
     $.ajax({
-        type: 'post',
-        url: webUrl + 'getsalonownerchairlisting',
-        data: {
-
-            "_SalonOwnerEmail": localStorage.getItem("loginemail")
-            
-
+        type: "post",
+        url: "/changeChairStatus",
+        data: data,
+        success: function (response) {
+            $(".chair_booking_row").empty();
+            if (response.status == 200) {
+                getAllChairtData();
+                toastr.success(response.message, "Success");
+            }
         },
+    });
+    //End of Ajax call
+}
+
+function getAllChairtData() {
+    $.ajax({
+        type: "get",
+        url: "/chairListingData",
+        data: "",
+        dataType: "json",
         success: function (response) {
             console.log(response);
-            // console.log("booking-history.js" + logInId);
-            
-            if ( response.salonspaces.length === 0 ) {
-                $(".chair_booking_row").append('<div class="col-12 text-center" >You have no bookings!</div>');
+
+            if (response.status == 200) {
+                if (response.chairs.length === 0) {
+                    $(".chair_booking_row").append(
+                        '<div class="col-12 text-center" >You have No Chair Listing!</div>'
+                    );
+                } else {
+                    $.each(response.chairs, function (i) {
+                        let id = response.chairs[i]["id"];
+
+                        let status = response.chairs[i]["status"];
+
+                        $(".chair_booking_row").append(
+                            '<div class="col-8">' +
+                                '<div class="chair_listing_' +
+                                i +
+                                '">' +
+                                "<p><strong>Category: </strong> " +
+                                response.chairs[i]["category"] +
+                                "</p>" +
+                                "</div>" +
+                                "</div>" +
+                                '<div class="col-4 text-center " id="chair_' +
+                                i +
+                                '">' +
+                                "</div>" +
+                                "</div>"
+                        );
+
+                        $("#chair_" + i).append(
+                            '<a class="text-capitalize" id="status_btn_' +
+                                id +
+                                '" onclick="chairStatus(' +
+                                id +
+                                ", '" +
+                                status +
+                                "');\" >" +
+                                status +
+                                "</a>"
+                        );
+                    });
+                }
             } else {
-                
-                $.each(response.salonspaces, function (i) {
-
-                let id = response.salonspaces[i]["_SalonChairId"];
-                
-                let status = response.salonspaces[i]["_IsActive"] === "0" ? "Inactive" : "Active";
-                
-
-                    $(".chair_booking_row")
-                    .append('<div class="col-8">' +
-                        '<div class="chair_listing_' + i + '">' + '<p><strong>Category: </strong> ' +
-                        response.salonspaces[i]["_Category"] + '</p>' +
-                        '</div>' + '</div>' +
-                        '<div class="col-4 text-center " id="chair_'+i+'">' +
-                            
-                        '</div>'+
-                        '</div>');
-                        
-                        if(  response.salonspaces[i]['_IsActive'] === "0" ) {
-                            $("#chair_" + i ).append('<a onclick="activeChair(' + response.salonspaces[i]['_SalonChairId'] + ');" >Inactive</a>');
-                        } else {
-                            $("#chair_" + i ).append('<a onclick="inactiveChair(' + response.salonspaces[i]['_SalonChairId'] + ')">Active</a>');
-        
-                        }
-                    
-            
-                        
-                
-            });
-                
+                $(".chair_booking_row").append(
+                    '<div class="col-12 text-center" >You have No Chair Listing!</div>'
+                );
             }
-
-           
-        }
-
+        },
     });
-    //End of Ajax call
-
-
-
-});
-
+}
