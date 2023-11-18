@@ -797,7 +797,7 @@ function getfreelancerBookings() {
             } else {
                 $(".appointment-row").empty();
                 console.log(response.appointments);
-
+                var user_name = "";
                 $.each(response.appointments, function (i) {
                     if (
                         response.appointments[i] != ""
@@ -818,14 +818,16 @@ function getfreelancerBookings() {
                         ) {
                             cancel_btn = "d-none";
                         }
-                        //  if (
-                        //      response.appointments[i]["status"] != null &&
-                        //      response.appointments[i]["status"].includes(
-                        //          "Booked"
-                        //      )
-                        //  ) {
 
-                        //  }
+                        if (
+                            response.appointments[i].client_app_user != null &&
+                            response.appointments[i].client_app_user.type ==
+                                "client"
+                        ) {
+                            user_name = "Client";
+                        } else {
+                            user_name = "Business Owner";
+                        }
                         if (response.appointments[i].status == null) {
                             status =
                                 response.appointments[i].user_booking_slots
@@ -1048,7 +1050,9 @@ function getfreelancerBookings() {
                                 '<span class="name_' +
                                 i +
                                 '" style="overflow-wrap: break-word;">' +
-                                "<p><strong>Business Owner Name: </strong>" +
+                                "<p><strong>" +
+                                user_name +
+                                " Name: </strong>" +
                                 owner_name +
                                 "</p>" +
                                 '<span class="name_' +

@@ -363,13 +363,13 @@
                         style="font-size: 1.7rem; padding: 0 1rem; justify-content: space-between;">Freelancer
                         / job seeker <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
                     </a></li>
+
             </ul>
-            <h2 class="h2_01">
+            <h2 class="h2_01 none-modal-sm">
                 Specialist in Hair & Beauty Recruitment, London & Uk <br /> Permanent
                 & Temporary position
             </h2>
-            <div class="line none-modal"
-                style="background-image: url('{{ asset('template_new/assets/images/browse_bg.jpg') }}'">
+            <div class="line" style="background-image: url('{{ asset('template_new/assets/images/browse_bg.jpg') }}'">
                 <p style="margin: 10px 0px 11px 13px">Styzeler a leading Hair &
                     Beauty digital agency providing expert freelancers for temporary
                     work or permanent employment for Hair Beauty & Spa businesses</p>
@@ -385,7 +385,8 @@
                     philosophy. Hiring a Freelancer can also be a great solution to take
                     away the pressure of fixed-wage and allows the freedom of booking,</p>
             </div>
-            <img src="{{ asset('template_new/assets/images/line_gray.jpg') }}" alt="" class="browse_line_gray" />
+            <img src="{{ asset('template_new/assets/images/line_gray.jpg') }}" alt=""
+                class="browse_line_gray none-modal" />
             <div class="d-block d-md-none">
                 <div class="reg_line">
                     <span style="font-size: 3rem; color: #c4b9b0">Freelancers Help Small
@@ -469,25 +470,10 @@
     </section>
     <!-- hire -->
     <section id="categ">
-        {{-- <div class="img-box d-none d-md-block">
-            <img src="{{ asset('template_new/assets/images/categ_bg_main.jpg') }}" alt="" />
-            <div class="cta">
-                <a class="site_btn" href="{{ route('hairstylist') }}">Read More</a>
-                <!-- https://beta.styzeler.co.uk/hairstylist.html -->
-            </div>
-            <div class="cta1">
-                <a class="site_btn" href="{{ route('barber') }}">Read More</a>
-                <!-- https://beta.styzeler.co.uk/barber.html -->
-            </div>
-            <div class="cta2">
-                <a class="site_btn" href="{{ route('beautician') }}">Read More</a>
-                <!-- https://beta.styzeler.co.uk/beautician.html -->
-            </div>
-        </div> --}}
+
 
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
-            <!-- <div class="flexRow">                                                                                                                                                           </div>
-                                                                                                                                                                                                                                                                                                                                                                                               </div> -->
+
             <div class="flexRow" style="padding: 0px 38px">
                 <div class="col">
                     <div class="inner"
@@ -693,9 +679,6 @@
                 </div>
             </div>
         </div>
-
-        <!-- <img src="assets/images/126-minr.jpg" alt="">
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 </div> -->
     </section>
     <!-- membership -->
     <section id="get_job">
@@ -787,9 +770,11 @@
 
             for (var i = 0; i < elements.length; i++) {
                 var elementOffset = elements[i].offsetTop;
-                if (screenWidth < 768 && scrollPosition <= elementOffset) {
+
+                // console.log(elementOffset, scrollPosition);
+                if (screenWidth < 768 && scrollPosition == elementOffset) {
                     return true;
-                } else if ((screenWidth > 768 || screenWidth < 992) && scrollPosition <= elementOffset) {
+                } else if ((screenWidth > 768 || screenWidth < 992) && scrollPosition == elementOffset) {
                     return true;
                 } else if (scrollPosition >= elementOffset) {
                     return true;
@@ -800,13 +785,18 @@
         }
 
         // Usage
-        var targetClass = "none-modal";
+        // var targetClass = "";
+        if ($(window).width() <= 768) {
+            var targetClass = "none-modal-sm";
+        } else {
+            var targetClass = "none-modal";
+        }
         var flag = "0";
 
         window.addEventListener("scroll", function() {
 
             if (isScrolledToClass(targetClass)) {
-
+                console.log(targetClass);
                 if (flag == "0") {
 
                     if ($("#popupInfo-modal").is(":visible")) {

@@ -73,7 +73,14 @@ class RentLetController extends Controller
 
         $rent_let->save();
 
-        return response()->json(['status' => 200, 'message' => 'Rent & Let details submitted succsessfully!', 'data' => '']);
+        return response()
+            ->json(
+                [
+                    'status' => 200,
+                    'message' => 'Rent & Let Details Submitted Succsessfully!',
+                    'data' => ''
+                ]
+            );
     }
 
     public function changeRentLetStatusActive(Request $request, $id = '')
@@ -94,7 +101,7 @@ class RentLetController extends Controller
             $rent_let = Rent_let::find($id);
             $rent_let->status = 'inactive';
             $rent_let->update();
-            session()->flash('success', 'Record Deactivated Successfully!!');
+            session()->flash('success', 'Record Deactivated Successfully!');
             return redirect()->back();
         } else {
             return abort(404);
