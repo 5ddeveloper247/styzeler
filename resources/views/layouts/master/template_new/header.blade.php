@@ -1,3 +1,8 @@
+<style>
+    .sub .dropdown-menu .show {
+        border: 0px;
+    }
+</style>
 <header>
     <div class="contain">
         <div class="top">
@@ -85,10 +90,12 @@
                 <li>
                     <a href="{{ url('/') }}">Home</a>
                 </li>
-                <li class="drop">
-                    <a href="{{ route('aboutUs') }}">About us</a>
-                    <ul class="sub">
-                        <li><a href="{{ route('contactUs') }}">Contact us</a></li>
+                <li class="drop dropdown">
+                    <a href="javascript:void(0)" class="" type="button" id="dropdownMenuButton"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About us</a>
+                    <ul class="sub dropdown-menu" style="border: 0px; display: none;">
+                        <li class="dropdown-item"><a href="{{ route('aboutUs') }}">About us</a></li>
+                        <li class="dropdown-item"><a href="{{ route('contactUs') }}">Contact us</a></li>
                     </ul>
                 </li>
                 <li>

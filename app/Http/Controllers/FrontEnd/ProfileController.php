@@ -985,7 +985,7 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(
                 [
                     ['booking_user_id', Auth::id()],
-                    ['created_at', '>=', $currentDate],
+                    ['booking_date', '>=', $currentDate],
                     // ['status', '!=', null]
                 ]
 
@@ -1010,7 +1010,7 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(
                 [
                     ['freelancer_user_id', Auth::id()],
-                    ['created_at', '>=', $currentDate],
+                    ['booking_date', '>=', $currentDate],
                     // ['status', '!=', null]
 
                 ]
@@ -1816,13 +1816,23 @@ class ProfileController extends Controller
                 ]
             )
             ->get();
-
         foreach ($check_appointment as $appointment) {
 
             $appointment_date = date('Y-m-d', strtotime($appointment->created_at . " +36 hours"));
+            // $time1 = (Carbon::now()->format('2023-11-20 12:00'));
+            // $time2 = ($appointment_date . " 12:00");
+            // if ($time1 == $time2) {
+            //     # code...
+            //     echo "$time1 == $time2 <br>";
+            // } else {
+            //     echo "Not Matched<br>";
+            // }
 
+            // var_dump(Carbon::now()->format('Y-m-d H:i') > $appointment_date . " 12:00");
             if (Carbon::now()->format('Y-m-d H:i') > $appointment_date . " 12:00") {
                 $bookingSlot = $appointment->userBookingSlots;
+                // print_r($bookingSlot);
+                // dd(Carbon::now()->format('Y-m-d H:i') > $appointment_date . " 12:00", $appointment);
                 if ($bookingSlot) {
                     $bookingSlot->status = 'Cancelled Due to Time Expire';
                     $bookingSlot->slots_time = null;
