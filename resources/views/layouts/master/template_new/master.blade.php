@@ -83,10 +83,12 @@
                 border-radius: 4px;
             }
         }
-        .cart_icon{
-            width:28px !important;
-            height:28px !important;
+
+        .cart_icon {
+            width: 28px !important;
+            height: 28px !important;
         }
+
         #toast-container>.toast-success,
         #toast-container>.toast-error,
         #toast-container>.toast-warning,
@@ -108,6 +110,21 @@
 
 </body>
 
-<script src="{{ asset('customjs/web/checkModalEvent.js')}}?v={{ time() }}"></script>
+<script src="{{ asset('customjs/web/checkModalEvent.js') }}?v={{ time() }}"></script>
+<script>
+    $(document).ready(function() {
+        // var parent = $('.sub');
+        var large_screen = $('.large_screen');
+        var small_screen = $('.small_screen');
+        if ($(window).width() <= 768) {
+            large_screen.addClass('d-none');
+            small_screen.removeClass('d-none');
+        } else {
+            large_screen.removeClass('d-none');
+            small_screen.addClass('d-none');
+        }
+
+    });
+</script>
 
 </html>

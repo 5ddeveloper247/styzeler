@@ -1,8 +1,3 @@
-<style>
-    .sub .dropdown-menu .show {
-        border: 0px;
-    }
-</style>
 <header>
     <div class="contain">
         <div class="top">
@@ -81,8 +76,6 @@
                     <a href="{{ route('login') }}" class="logon_btn">Sign In</a>
                     <a href="{{ route('register') }}" class="logon_btn">Register</a>
                 @endif
-
-
             </div>
         </div>
         <nav>
@@ -90,10 +83,16 @@
                 <li>
                     <a href="{{ url('/') }}">Home</a>
                 </li>
-                <li class="drop dropdown">
-                    <a href="javascript:void(0)" class="" type="button" id="dropdownMenuButton"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">About us</a>
-                    <ul class="sub dropdown-menu" style="border: 0px; display: none;">
+                <li class="drop large_screen">
+                    <a href="{{ route('aboutUs') }}">About us</a>
+                    <ul class="sub">
+                        <li><a href="{{ route('contactUs') }}">Contact us</a></li>
+                    </ul>
+                </li>
+                <li class="drop dropdown small_screen">
+                    <a href="javascript:void(0)" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">About us</a>
+                    <ul class="sub" style="border: 0px; display: none;">
                         <li class="dropdown-item"><a href="{{ route('aboutUs') }}">About us</a></li>
                         <li class="dropdown-item"><a href="{{ route('contactUs') }}">Contact us</a></li>
                     </ul>
@@ -101,31 +100,54 @@
                 <li>
                     <a href="{{ route('businessOwner') }}">Business Owner</a>
                 </li>
-                <li class="drop">
+                <li class="drop large_screen">
                     <a href="{{ route('candidate') }}">Candidate</a>
                     <ul class="sub">
-
                         <li><a href="{{ route('candidate') }}?type=freelancer">Freelance</a></li>
                         <li><a href="{{ route('candidate') }}?type=jobseeker">Job Seeker</a></li>
-
                     </ul>
                 </li>
-                <li class="drop">
+                <li class="drop dropdown small_screen">
+                    <a href="javascript:void(0)" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Candidate</a>
+                    <ul class="sub" style="border: 0px; display: none;">
+                        <li class="dropdown-item"><a href="{{ route('candidate') }}?type=freelancer">Freelance</a></li>
+                        <li class="dropdown-item"><a href="{{ route('candidate') }}?type=jobseeker">Job Seeker</a></li>
+                    </ul>
+                </li>
+                <li class="drop large_screen">
                     <a href="{{ route('news') }}">News</a>
                     <ul class="sub">
                         <li><a href="{{ route('blogs') }}">Styzeler Feeds</a></li>
                         <li><a href="{{ route('jobs') }}">Styzeler Jobs</a></li>
                     </ul>
                 </li>
+                <li class="drop dropdown small_screen">
+                    <a href="javascript:void(0)" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">News</a>
+                    <ul class="sub" style="border: 0px; display: none;">
+                        <li class="dropdown-item"><a href="{{ route('blogs') }}">Styzeler Feeds</a></li>
+                        <li class="dropdown-item"><a href="{{ route('jobs') }}">Styzeler Jobs</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="{{ route('wedding') }}">Bridal</a>
                 </li>
-                <li class="drop">
+                <li class="drop large_screen">
                     <a href="{{ route('rentAndLet') }}">Rent & Let</a>
                     <ul class="sub">
                         <li><a href="{{ route('rentAndLet') }}">Hourly</a></li>
                         <li><a href="{{ route('rentAndLet') }}">Daily</a></li>
                         <li><a href="{{ route('rentAndLet') }}">Monthly</a></li>
+                    </ul>
+                </li>
+                <li class="drop dropdown small_screen">
+                    <a href="javascript:void(0)" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">Rent & Let</a>
+                    <ul class="sub" style="border: 0px; display: none;">
+                        <li class="dropdown-item"><a href="{{ route('rentAndLet') }}">Hourly</a></li>
+                        <li class="dropdown-item"><a href="{{ route('rentAndLet') }}">Daily</a></li>
+                        <li class="dropdown-item"><a href="{{ route('rentAndLet') }}">Monthly</a></li>
                     </ul>
                 </li>
             </ul>
