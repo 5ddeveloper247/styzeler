@@ -9,12 +9,12 @@ $(function () {
         url: "/cartData",
         data: {},
         success: function (response) {
-            if (response.cart == '' || response.cart[0]['cart_lines'] == '') {
+            if (response.cart == "" || response.cart[0]["cart_lines"] == "") {
                 $("#cart_line_table").append(
                     '<div class="col-12 text-center">You have no item in cart!</div>'
                 );
-            } 
-            else {
+            } else {
+                $(".freelancer_btn").removeClass("d-none");
                 var cart_line_table = "";
                 $.each(response.cart, function (i) {
                     let cart = response.cart[i];
@@ -32,20 +32,20 @@ $(function () {
                                 <td>
 		                            <span class="">Type:</span>
 		                            <span class="">` +
-		                            	item_type +
-		                            `</span>
+                                item_type +
+                                `</span>
 		                            <br>
                                     <span class="">Service:</span>
                                     <span class="">` +
-		                                item_service +
-		                            `</span>
+                                item_service +
+                                `</span>
                                     <br>
                                     <span class="">Text:</span>
                                     <span class="">` +
-                                    	item_text +
-                                    `</span>
-                                    
-                                    
+                                item_text +
+                                `</span>
+
+
                                 </td>
                                 <td><button class="logon_btn heart_btn p-2 mx-auto" onclick="deletePrompt(` +
                                 cart_line_id +
@@ -77,11 +77,12 @@ function confirmDelete(id) {
             if (response.status == 200) {
                 $("#cart_line_" + response.data).remove();
                 modal.modal("hide");
-                
-                if($('#cart_line_table').children().length == 0){
+
+                if ($("#cart_line_table").children().length == 0) {
                     $("#cart_line_table").append(
                         '<div class="col-12 text-center">You have no item in cart!</div>'
                     );
+                    $(".freelancer_btn").addClass("d-none");
                 }
 
                 toastr.success(response.message, "", {

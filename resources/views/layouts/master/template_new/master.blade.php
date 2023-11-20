@@ -123,7 +123,6 @@
             large_screen.removeClass('d-none');
             small_screen.addClass('d-none');
         }
-
     });
 </script>
 

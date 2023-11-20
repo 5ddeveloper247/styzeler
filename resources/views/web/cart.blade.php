@@ -20,11 +20,13 @@
                 padding: 0px 15px;
             }
         }
+
         #circle {
-            width: auto; /* Adjust the width and height as needed */
+            width: auto;
+            /* Adjust the width and height as needed */
             height: 25px;
             background-color: #fdd431;
-            border-radius: 50%; 
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -38,10 +40,13 @@
     <div class="booking my-5">
         <div class="container">
             <div style="display: flex; justify-content: center;">
-                <h1 class="color-1 my-4 mx-4 m-4 text-center">Your Cart</h1>
+                <h1 class="color-1 m-4 mx-4 my-4 text-center">Your Cart</h1>
                 <div id="circle" class="my-4">
                     <a href="{{ url()->previous() }}" style="height: auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" style="color: black" class="icon icon-tabler icon-tabler-arrow-left" width="25" height="25" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" style="color: black"
+                            class="icon icon-tabler icon-tabler-arrow-left" width="25" height="25"
+                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                            stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path d="M5 12l14 0"></path>
                             <path d="M5 12l6 6"></path>
@@ -66,9 +71,23 @@
                         <table id="cart_line_table">
 
                         </table>
+
                     </div>
-                    {{-- <a class="logon_btn my-5" id="back-btn" href="{{ url()->previous() }}" 
-                        style=" 
+                    <div id="services" class="d-flex justify-content-center my-4">
+                        @if ($tokens > 0)
+                            <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn freelancer_btn d-none">
+                                <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a
+                                Freelancer
+                            </a>
+                        @else
+                            <a href="javascript:;" class="book_freelance_btn error-booking freelancer_btn d-none">
+                                <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a
+                                Freelancer
+                            </a>
+                        @endif
+                    </div>
+                    {{-- <a class="logon_btn my-5" id="back-btn" href="{{ url()->previous() }}"
+                        style="
                         width: fit-content;
                         justify-content: space-around;
                         float: inline-end;
@@ -120,7 +139,7 @@
 @push('script')
     <script>
         $(function() {
-            /***************** Change Back button color on hover effect 
+            /***************** Change Back button color on hover effect
              * Code Added by: Muhammad Umer *****************/
             $('a#back-btn').hover(
                 function() {

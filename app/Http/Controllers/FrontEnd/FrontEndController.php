@@ -524,7 +524,9 @@ class FrontEndController extends Controller
 
     public function cart()
     {
-        return view('web.cart');
+        $user = User::where('id', Auth::user()->id)->first();
+        $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
+        return view('web.cart')->with($data);
     }
 
     public function cartData()
