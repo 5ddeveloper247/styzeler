@@ -1086,7 +1086,9 @@ function getfreelancerBookings() {
                                 '<span class="email_' +
                                 i +
                                 '" style="overflow-wrap: break-word;">' +
-                                "<p><strong>Business Owner Email: </strong>" +
+                                "<p><strong>" +
+                                user_name +
+                                " Email: </strong>" +
                                 owner_email +
                                 "</p>" +
                                 "</span>" +

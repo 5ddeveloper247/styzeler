@@ -255,6 +255,8 @@ $(function () {
         url: "/getfreelancerBookingHistory",
         data: {},
         success: function (response) {
+            console.log(response.appointments);
+            var user_name = "";
             if (response.appointments == "") {
                 $(".appointment-row").append(
                     '<div class="col-12 text-center">You have no bookings!</div>'
@@ -280,7 +282,21 @@ $(function () {
                             response.appointments[i]["booking_date"];
                         let booking_time =
                             response.appointments[i]["booking_time"];
-
+                        if (
+                            response.appointments[i].client_app_user != null &&
+                            response.appointments[i].client_app_user.type ==
+                                "client"
+                        ) {
+                            user_name = "Client";
+                        } else if (
+                            response.appointments[i].client_user != null &&
+                            response.appointments[i].client_user.type ==
+                                "client"
+                        ) {
+                            user_name = "Client";
+                        } else {
+                            user_name = "Business Owner";
+                        }
                         if (
                             response.appointments[i].freelancer_user ==
                             undefined
@@ -403,7 +419,9 @@ $(function () {
                                 '<span class="name_' +
                                 i +
                                 '" style="overflow-wrap: break-word;">' +
-                                "<p><strong>Client Name: </strong>" +
+                                "<p><strong>" +
+                                user_name +
+                                " Name: </strong>" +
                                 owner_name +
                                 "</p>" +
                                 '<span class="name_' +
@@ -437,7 +455,9 @@ $(function () {
                                 '<span class="email_' +
                                 i +
                                 '" style="overflow-wrap: break-word;">' +
-                                "<p><strong>Client Email: </strong>" +
+                                "<p><strong>" +
+                                user_name +
+                                " Email: </strong>" +
                                 owner_email +
                                 "</p>" +
                                 "</span>" +
