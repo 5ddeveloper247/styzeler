@@ -2723,6 +2723,47 @@ footer .icon-container {
     background: #00c2cb;
 }
 
+#cart_services .book_freelance_btn > img {
+    width: 5rem;
+}
+
+/* Cart Page */
+
+#cart_services .book_freelance_btn {
+    position: relative;
+    color: #7ed957;
+    background: transparent;
+    display: -webkit-inline-box;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    white-space: nowrap;
+    font-size: 2.4rem;
+    line-height: 1;
+    letter-spacing: -0.1rem;
+    font-weight: 700;
+    gap: 1rem;
+    grid-gap: 1rem;
+    border: 0;
+    border-radius: 10rem;
+    padding: 0 0 0rem;
+    padding-right: 1rem;
+    overflow: hidden;
+    margin: 18px 0;
+}
+
+#cart_services .book_freelance_btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 1rem;
+    background: #00c2cb;
+}
+
 #services .book_freelance_btn > img {
     width: 5rem;
 }
@@ -2762,6 +2803,35 @@ footer .icon-container {
 }
 
 #services .text_list .check_list li > img {
+    width: 2.2rem;
+    min-width: 2.2rem;
+    height: 2.2rem;
+    margin-right: 1rem;
+}
+
+/* Cart Page */
+
+#cart_services .check_list {
+    margin-top: 2rem;
+}
+
+#cart_services .check_list li {
+    margin: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-size: 1.7rem;
+    font-weight: 600;
+}
+
+#cart_services .check_list li:not(:nth-last-child(1)) {
+    margin-bottom: 1.4rem;
+}
+
+#cart_services .check_list li > img {
     width: 2.2rem;
     min-width: 2.2rem;
     height: 2.2rem;

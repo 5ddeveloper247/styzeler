@@ -46,9 +46,11 @@
             transition-duration: 0.3s;
             cursor: pointer;
         }
-        .outer-width{
-            width: auto!important;
+
+        .outer-width {
+            width: auto !important;
         }
+
         .cart_icon {
             border: 1px solid #fdd431;
             border-radius: 50%;
@@ -117,23 +119,25 @@
                                     <form action="" method="post" id="inner_form">
                                         <div class="form_inner">
                                             <div class="row">
-                                                <div id="top_1" class="col-md-3 mb-4 outer-width">
+                                                <div id="top_1" class="col-md-3 outer-width mb-4">
                                                     <div class="input_box_wrap">
-                                                        <p class="input_box add_to_cart d-flex" data-time="" data-price=""
-                                                            data-type="" data-subtype="" data-service="">       
-                                                        </p>  
-                                                    </div>  
-                                                </div>
-                                                <div id="top_2" class="col-md-3 mb-4 outer-width">
-                                                    <div class="input_box_wrap">
-                                                        <p class="input_box add_to_cart d-flex" data-time="" data-price=""
-                                                            data-type="" data-subtype="" data-service=""></p>
+                                                        <p class="input_box add_to_cart d-flex" data-time=""
+                                                            data-price="" data-type="" data-subtype="" data-service="">
+                                                        </p>
                                                     </div>
                                                 </div>
-                                                <div id="top_3" class="col-md-3 mb-4 outer-width">
+                                                <div id="top_2" class="col-md-3 outer-width mb-4">
                                                     <div class="input_box_wrap">
-                                                        <p class="input_box add_to_cart d-flex" data-time="" data-price=""
-                                                            data-type="" data-subtype="" data-service=""></p>
+                                                        <p class="input_box add_to_cart d-flex" data-time=""
+                                                            data-price="" data-type="" data-subtype="" data-service="">
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                                <div id="top_3" class="col-md-3 outer-width mb-4">
+                                                    <div class="input_box_wrap">
+                                                        <p class="input_box add_to_cart d-flex" data-time=""
+                                                            data-price="" data-type="" data-subtype="" data-service="">
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -150,9 +154,9 @@
                                             </div>
                                         </div>
                                         <div class="right-arrow">
-                                            <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
+                                            {{-- <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}"> --}}
                                         </div>
-                                        <div class="btn_block">
+                                        {{-- <div class="btn_block">
                                             @if (@$tokens > 0)
                                                 <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
@@ -172,7 +176,7 @@
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> Minimum call out &pound;30</li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
                                         <input type="hidden" id="userId" name="userId"
@@ -325,7 +329,9 @@
 
             if (i == 'Scissors_Cut') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">40 Mints &pound;35</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '40').attr('data-price', '35').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">40 Minutes &pound;35</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '40').attr('data-price', '35').attr(
                     'data-service', 'Scissors Cut').attr('data-subtype', subtype);;
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -335,7 +341,9 @@
 
             if (i == 'Cliper_Scissors_Cut') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">30 Mints &pound;30</span>  <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '30').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">30 Minutes &pound;30</span>  <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '30').attr('data-price', '30').attr(
                     'data-service', 'Clipper & Scissors Cut').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -345,7 +353,9 @@
 
             if (i == 'Clipper_Cut') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">20 Mints &pound;20</span>  <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '20').attr('data-price', '20').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">20 Minutes &pound;20</span>  <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '20').attr('data-price', '20').attr(
                     'data-service', 'Clipper Cut').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -356,7 +366,9 @@
 
             if (i == 'Skin_Fade') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">45 Mints &pound;40</span>  <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '40').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">45 Minutes &pound;40</span>  <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '40').attr(
                     'data-service', 'Skin Fade').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -367,7 +379,9 @@
 
             if (i == 'Beard_Shaped') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">20 Mints &pound;15</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '20').attr('data-price', '15').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">20 Minutes &pound;15</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '20').attr('data-price', '15').attr(
                     'data-service', 'Beard Shaped').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(

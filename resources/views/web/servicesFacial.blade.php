@@ -38,9 +38,11 @@
             transition-duration: 0.3s;
             cursor: pointer;
         }
-        .outer-width{
-            width: auto!important;
+
+        .outer-width {
+            width: auto !important;
         }
+
         .cart_icon {
             border: 1px solid #fdd431;
             border-radius: 50%;
@@ -106,8 +108,8 @@
                                     </li>
                                     <li>
                                         <button type="button" class="shadow_btn shaddowbtn1"
-                                            onclick="caseCat('Acne_Reduction_Facial')">Acne Reduction Facial <img
-                                                src="{{ asset('template_new/assets/images/eye.svg') }}"
+                                            onclick="caseCat('Acne_Reduction_Facial')" style="font-size: 1.5rem;">Acne
+                                            Reduction Facial <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
 
@@ -118,7 +120,7 @@
                                             <div class="row">
                                                 <div class="col-10">
                                                     <div class="row">
-                                                        <div id="top_1" class="col-md-4 mb-4 outer-width">
+                                                        <div id="top_1" class="col-md-4 outer-width mb-4">
                                                             <div class="input_box_wrap">
                                                                 <!-- 															<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box add_to_cart d-flex" data-time=""
@@ -127,7 +129,7 @@
                                                             </div>
                                                         </div>
 
-                                                        <div id="top_2" class="col-md-4 mb-4 outer-width">
+                                                        <div id="top_2" class="col-md-4 outer-width mb-4">
                                                             <div class="input_box_wrap">
                                                                 <!-- 															<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box add_to_cart d-flex" data-time=""
@@ -135,7 +137,7 @@
                                                                     data-service=""></p>
                                                             </div>
                                                         </div>
-                                                        <div id="top_3" class="col-md-4 mb-4 outer-width">
+                                                        <div id="top_3" class="col-md-4 outer-width mb-4">
                                                             <div class="input_box_wrap">
                                                                 <!-- 															<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box add_to_cart d-flex" data-time=""
@@ -161,9 +163,9 @@
                                             </div>
                                         </div>
                                         <div class="right-arrow">
-                                            <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
+                                            {{-- <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}"> --}}
                                         </div>
-                                        <div class="btn_block">
+                                        {{-- <div class="btn_block">
                                             @if (@$tokens > 0)
                                                 <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
@@ -183,7 +185,7 @@
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> Minimum call out &pound;30</li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
                                         <input type="hidden" id="userId" name="userId"
@@ -332,7 +334,9 @@
         function caseCat(i, subtype = '') {
             if (i == 'Hydrafacial') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 60</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '60').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;60</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '60').attr(
                     'data-service', 'Hydrafacial').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -343,9 +347,13 @@
             if (i == 'Classic_facial') {
                 $("#top_1,#top_2").show();
                 $("#top_3").hide();
-                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 54</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '54').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;54</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '54').attr(
                     'data-service', 'Classic Facial').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">45 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '40').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">45 Minutes &pound;40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '40').attr(
                     'data-service', 'Classic Facial').attr('data-subtype', subtype);
                 $("#description").text(
                     'A classic or standard facial usually involves cleansing, exfoliating, extractions, a mask, and a moisturizer. Given its calming nature, this facial can be a great choice for anyone with normal to dry skin'
@@ -355,9 +363,13 @@
             if (i == 'Linphatic_Facial') {
                 $("#top_1,#top_2").show();
                 $("#top_3").hide();
-                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 54</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '54').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;54</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '54').attr(
                     'data-service', 'Linphatic Facial').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">45 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '40').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">45 Minutes &pound;40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '40').attr(
                     'data-service', 'Linphatic Facial').attr('data-subtype', subtype);
                 $("#description").text(
                     'A lymphatic drainage massage is a part of other types of  {classic facials }, it drains a build-up of lymphatic fluid within your face. The gentle, light massage treatment enhances circulation in your face by delivering oxygen around the skin and pushing waste and toxins out of the lymph nodes'
@@ -366,9 +378,13 @@
 
             if (i == 'Antioxidant_facial') {
                 $("#top_1,#top_2").show();
-                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '50').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '50').attr(
                     'data-service', 'Antioxidant Facial').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">45 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '40').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">45 Minutes &pound;40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '40').attr(
                     'data-service', 'Antioxidant Facial').attr('data-subtype', subtype);
                 $("#top_3").hide();
                 $("#description").text(
@@ -379,9 +395,13 @@
             if (i == 'Acupuncture_facial') {
                 $("#top_1,top_2").show();
                 $("#top_3").hide();
-                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 100</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '100').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;100</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '100').attr(
                     'data-service', 'Acupuncture facial').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">45 Minuts &pound; 150</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '150').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">45 Minutes &pound;150</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '150').attr(
                     'data-service', 'Acupuncture facial').attr('data-subtype', subtype);
                 $("#description").text(
                     "This treatment focuses specifically on the face, neck, and hairline your aesthetician will place several needles on those areas. This helps to increase blood flow and stimulate collagen production which helps with skin elasticity.Other benefits of Acupuncture Facial include firming up the skin and reducing the appearance of wrinkles and fine lines, ugly acne scars, and blemishes"
@@ -391,9 +411,13 @@
 
             if (i == 'Acne_Reduction_Facial') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 70</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '70').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;70</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '70').attr(
                     'data-service', 'Acne Reduction Facial').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">45 Minuts &pound; 56</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '56').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">45 Minutes &pound;56</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '56').attr(
                     'data-service', 'Acne Reduction Facial').attr('data-subtype', subtype);
                 $("#top_3").hide();
                 $("#description").text(

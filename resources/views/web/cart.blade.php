@@ -73,18 +73,26 @@
                         </table>
 
                     </div>
-                    <div id="services" class="d-flex justify-content-center my-4">
+                    <div id="cart_services" class="d-flex justify-content-center d-none my-4">
                         @if ($tokens > 0)
-                            <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn freelancer_btn d-none">
+                            <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn freelancer_btn">
                                 <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a
                                 Freelancer
                             </a>
                         @else
-                            <a href="javascript:;" class="book_freelance_btn error-booking freelancer_btn d-none">
+                            <a href="javascript:;" class="book_freelance_btn error-booking freelancer_btn">
                                 <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""> Book a
                                 Freelancer
                             </a>
                         @endif
+                        <ul class="check_list">
+                            <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}" alt=""> All
+                                candidates are DBS verified</li>
+                            <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}" alt=""> At - Home
+                                service 24/7</li>
+                            <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}" alt=""> Minimum call
+                                out &pound;30</li>
+                        </ul>
                     </div>
                     {{-- <a class="logon_btn my-5" id="back-btn" href="{{ url()->previous() }}"
                         style="
@@ -117,6 +125,24 @@
             </div>
         </div>
     </div>
+    <div class="modal fade bd-example-modal-md" id="fail-modal" role="dialog">
+        <div class="modal-dialog modal-md modal-dialog-centered">
+            <div class="modal-content border-warning border"
+                style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
+                <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                    <h4 class="modal-title">Buy Package</h4>
+                    <i class="close-modal" data-dismiss="modal" style="font-size: 2rem;"><b>&times;</b></i>
+                </div>
+                <div class="modal-body">
+                    Insufficient tokens, first buy package!
+                </div>
+                <div class="modal-footer text-center">
+                    <a type="" href="{{ route('home_service') }}#packages" class="btn1 customBtn">Ok</a>
+                    <a type="button" class="btn1 customBtn close-modal" data-dismiss="modal">Close</a>
+                </div>
+            </div>
+        </div>
+    </div>
     {{-- <div class="modal success-modal" id="cart_line_delete" tabindex="-1" role="dialog" data-keyboard="false"
         data-backdrop="static">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -139,6 +165,10 @@
 @push('script')
     <script>
         $(function() {
+
+            $(document).on("click", ".error-booking", function() {
+                $('#fail-modal').modal('show');
+            });
             /***************** Change Back button color on hover effect
              * Code Added by: Muhammad Umer *****************/
             $('a#back-btn').hover(

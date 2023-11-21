@@ -42,9 +42,11 @@
             transition-duration: 0.3s;
             cursor: pointer;
         }
-        .outer-width{
-            width: auto!important;
+
+        .outer-width {
+            width: auto !important;
         }
+
         .cart_icon {
             border: 1px solid #fdd431;
             border-radius: 50%;
@@ -226,7 +228,7 @@
 
                                                 <div class="col-10">
                                                     <div class="row">
-                                                        <div id="top_1" class="col-md-4 mb-4 outer-width">
+                                                        <div id="top_1" class="col-md-4 outer-width mb-4">
                                                             <div class="input_box_wrap">
                                                                 <p class="input_box add_to_cart d-flex" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
@@ -264,9 +266,9 @@
                                             </div>
                                         </div>
                                         <div class="right-arrow">
-                                            <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
+                                            {{-- <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}"> --}}
                                         </div>
-                                        <div class="btn_block">
+                                        {{-- <div class="btn_block">
                                             @if (@$tokens > 0)
                                                 <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
@@ -284,9 +286,9 @@
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> At - Home service 24/7</li>
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
-                                                        alt=""> Minimum call out &pound;30</li>
+                                                        alt=""> Minimum call out &pound;0</li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
                                         <input type="hidden" id="userId" name="userId"
@@ -375,14 +377,16 @@
             @endif
 
         });
-        
+
         var addtocartType = 'Body Waxing';
 
         function caseCat(i, subtype = '') {
 
             if (i == 'upperLip') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">10 Mints &pound; 8</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '8').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">10 Minutes &pound;8</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '10').attr('data-price', '8').attr(
                     'data-subtype', subtype).attr('data-service', 'Upper Lip');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -392,7 +396,9 @@
 
             if (i == 'FullLip') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">10 Mints &pound; 8</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '8').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">10 Minutes &pound;8</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '10').attr('data-price', '8').attr(
                     'data-subtype', subtype).attr('data-service', 'Full Lip');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text("Hair is removed above the upper lip and sides of the mouth.");
@@ -400,7 +406,9 @@
 
             if (i == 'Chin') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">10 Mints &pound; 8</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '8').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">10 Minutes &pound;8</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '10').attr('data-price', '8').attr(
                     'data-subtype', subtype).attr('data-service', 'Chin');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -410,7 +418,9 @@
 
             if (i == 'Neck') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">10 Mints &pound; 10</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '10').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">10 Minutes &pound;10</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '10').attr('data-price', '10').attr(
                     'data-subtype', subtype).attr('data-service', 'Neck');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -421,7 +431,9 @@
 
             if (i == 'Eye_brows') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">10 Minuts &pound; 10</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '10').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">10 Minutes &pound;10</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '10').attr('data-price', '10').attr(
                     'data-subtype', subtype).attr('data-service', 'Eye Brows');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -430,7 +442,9 @@
 
             if (i == 'Full_Arms') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 18</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '18').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">30 Minutes &pound;18</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '30').attr('data-price', '18').attr(
                     'data-subtype', subtype).attr('data-service', 'Full Arms');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -440,7 +454,9 @@
 
             if (i == 'Half_Arms') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 12</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '12').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">30 Minutes &pound;12</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '30').attr('data-price', '12').attr(
                     'data-subtype', subtype).attr('data-service', 'Forearm');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -451,17 +467,21 @@
 
             if (i == 'Under_Arms') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">10 Minuts &pound; 12</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '10').attr('data-price', '12').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">10 Minutes &pound;12</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '10').attr('data-price', '12').attr(
                     'data-subtype', subtype).attr('data-service', 'Underarms');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
-                    'Waxing will totally remove your underarm hair,As a result, the armpit area feels and looks smoother and lighter � no more worries about that not-so-sexy underarm shadow'
+                    'Waxing will totally remove your underarm hair,As a result, the armpit area feels and looks smoother and lighter no more worries about that not-so-sexy underarm shadow'
                 );
             }
 
             if (i == 'Full_Legs') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '40').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">45 Minutes &pound;40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '40').attr(
                     'data-subtype', subtype).attr('data-service', 'Full Legs');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -471,7 +491,9 @@
 
             if (i == 'Lower_Legs') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '24').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">30 Minutes &pound;24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '30').attr('data-price', '24').attr(
                     'data-subtype', subtype).attr('data-service', 'Lower Legs');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text('Lower leg waxing is everything from just above the knee downwards.');
@@ -479,16 +501,20 @@
 
             if (i == 'Upper_Legs') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '24').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">30 Minutes &pound;24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '30').attr('data-price', '24').attr(
                     'data-subtype', subtype).attr('data-service', 'Upper Legs');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
-                    'Upper leg wax typically eliminates hair from the thighs to above the knees (front and back');
+                    'Upper leg wax typically eliminates hair from the thighs to above the knees (front and back)');
             }
 
             if (i == 'Bikini') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 16</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '16').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">30 Minutes &pound;16</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '30').attr('data-price', '16').attr(
                     'data-subtype', subtype).attr('data-service', 'Bikini');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -498,7 +524,9 @@
 
             if (i == 'French_Bikini') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '24').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">30 Minutes &pound;24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '30').attr('data-price', '24').attr(
                     'data-subtype', subtype).attr('data-service', 'French Bikini<');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -508,7 +536,9 @@
 
             if (i == 'Brazilian_Bikini') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 32</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '32').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">30 Minutes &pound;32</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '30').attr('data-price', '32').attr(
                     'data-subtype', subtype).attr('data-service', 'Brazilian Bikini');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -518,7 +548,9 @@
 
             if (i == 'Hollywood') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '40').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">45 Minutes &pound;40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '40').attr(
                     'data-subtype', subtype).attr('data-service', 'Hollywood');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -528,7 +560,9 @@
 
             if (i == 'Full_Back') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '50').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '50').attr(
                     'data-subtype', subtype).attr('data-service', 'Full Back');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -538,7 +572,9 @@
 
             if (i == 'Full_legs') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '50').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '50').attr(
                     'data-subtype', subtype).attr('data-service', 'Full Legs');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -548,7 +584,9 @@
 
             if (i == 'Full_arms') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '40').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">45 Minutes &pound;40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '40').attr(
                     'data-subtype', subtype).attr('data-service', 'Full Arms');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -558,7 +596,9 @@
 
             if (i == 'Shoulders') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 15</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '15').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">45 Minutes &pound;15</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '15').attr(
                     'data-subtype', subtype).attr('data-service', 'Shoulders');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text("Shoulders wax. Does what it says on the tin");
@@ -566,7 +606,9 @@
 
             if (i == 'Chest_abbs') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '50').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '50').attr(
                     'data-subtype', subtype).attr('data-service', 'Chest + Abb');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -576,7 +618,9 @@
 
             if (i == 'Speedo_Line') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">30 Minuts &pound; 25</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '30').attr('data-price', '25').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">30 Minutes &pound;25</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '30').attr('data-price', '25').attr(
                     'data-subtype', subtype).attr('data-service', 'Speedo Line');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
@@ -585,7 +629,9 @@
             }
             if (i == 'Manzilian') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '50').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">45 Minutes &pound;50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '50').attr(
                     'data-subtype', subtype).attr('data-service', 'Manzilian');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(

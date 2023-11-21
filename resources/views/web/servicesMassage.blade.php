@@ -39,9 +39,10 @@
             cursor: pointer;
         }
 
-        .outer-width{
-            width: auto!important;
+        .outer-width {
+            width: auto !important;
         }
+
         .cart_icon {
             border: 1px solid #fdd431;
             border-radius: 50%;
@@ -126,21 +127,21 @@
 
                                                 <div class="col-10">
                                                     <div class="row">
-                                                        <div id="top_1" class="col-md-4 mb-4 outer-width">
+                                                        <div id="top_1" class="col-md-4 outer-width mb-4">
                                                             <div class="input_box_wrap">
                                                                 <p class="input_box add_to_cart d-flex" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
                                                                     data-service=""></p>
                                                             </div>
                                                         </div>
-                                                        <div id="top_2" class="col-md-4 mb-4 outer-width">
+                                                        <div id="top_2" class="col-md-4 outer-width mb-4">
                                                             <div class="input_box_wrap">
                                                                 <p class="input_box add_to_cart d-flex" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
                                                                     data-service=""></p>
                                                             </div>
                                                         </div>
-                                                        <div id="top_3" class="col-md-4 mb-4 outer-width">
+                                                        <div id="top_3" class="col-md-4 outer-width mb-4">
                                                             <div class="input_box_wrap">
                                                                 <p class="input_box add_to_cart d-flex" data-time=""
                                                                     data-price="" data-type="" data-subtype=""
@@ -164,9 +165,9 @@
                                             </div>
                                         </div>
                                         <div class="right-arrow">
-                                            <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
+                                            {{-- <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}"> --}}
                                         </div>
-                                        <div class="btn_block">
+                                        {{-- <div class="btn_block">
                                             @if (@$tokens > 0)
                                                 <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
@@ -186,7 +187,7 @@
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> Minimum call out &pound;30</li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
                                         <input type="hidden" id="userId" name="userId"
@@ -334,9 +335,13 @@
         function caseCat(i, subtype = '') {
             if (i == 'Swedish_Massag') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 MINS &pound; 55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '55').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '55').attr(
                     'data-service', 'Swedish Massage').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">90 MINS &pound; 80 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '80').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">90 Minutes &pound;80 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '80').attr(
                     'data-service', 'Swedish Massage').attr('data-subtype', subtype);
                 $("#top_3").hide();
                 $("#description").text(
@@ -347,11 +352,17 @@
 
             if (i == 'Hot_Stone_Massage') {
                 $("#top_1,#top_2,#top_3").show();
-                $("#top_1 p").html('<span class="my-auto">60 MINS &pound; 55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '55').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '55').attr(
                     'data-service', 'Hot Stone Massage').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">90 MINS &pound; 72 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '72').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">90 Minutes &pound;72 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '72').attr(
                     'data-service', 'Hot Stone Massage').attr('data-subtype', subtype);
-                $("#top_3 p").html('<span class="my-auto">90 MINS &pound; 96 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '96').attr(
+                $("#top_3 p").html(
+                    '<span class="my-auto">90 Minutes &pound;96 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '96').attr(
                     'data-service', 'Hot Stone Massage').attr('data-subtype', subtype);
                 $("#description").text(
                     "Hot stone therapy is effective for muscle tension relief, improving blood circulation, and relieving stress. The procedure of hot stone massage provides a deeper feeling of relaxation and well-being than other techniques, and it all has to do with the temperature. The application of higher-temperature stones produces deep-down blood circulation that gives the following benefits"
@@ -361,11 +372,17 @@
 
             if (i == 'Deep_Tissue_Massage') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 MINS &pound; 55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '55').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '55').attr(
                     'data-service', 'Deep Tissue Massage').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">90 MINS &pound; 72 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '72').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">90 Minutes &pound;72 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '72').attr(
                     'data-service', 'Deep Tissue Massage').attr('data-subtype', subtype);
-                $("#top_3 p").html('<span class="my-auto">90 MINS &pound; 104 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '104').attr(
+                $("#top_3 p").html(
+                    '<span class="my-auto">90 Minutes &pound;104 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '104').attr(
                     'data-service', 'Deep Tissue Massage').attr('data-subtype', subtype);
                 $("#description").text(
                     "Deep tissue massage is a technique that uses slow and deep strokes and sustained pressure to target the deeper layers of your muscles and the connective tissues around them. A deep tissue massage is a great choice for anyone who engages in physical activities or those who have an injury or chronic pain"
@@ -375,11 +392,17 @@
 
             if (i == 'Aromatherapy_Massage') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 MINS &pound; 64 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '64').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;64 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '64').attr(
                     'data-service', 'Aromatherapy Massage').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">90 MINS &pound; 80 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '80').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">90 Minutes &pound;80 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '80').attr(
                     'data-service', 'Aromatherapy Massage').attr('data-subtype', subtype);
-                $("#top_3 p").html('<span class="my-auto">90 MINS &pound; 104 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '104').attr(
+                $("#top_3 p").html(
+                    '<span class="my-auto">90 Minutes &pound;104 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '104').attr(
                     'data-service', 'Aromatherapy Massage').attr('data-subtype', subtype);
                 $("#description").text(
                     "An aromatherapy massage is used for a variety of different reasons, including relaxation, pain management, and improved mood. These are also some of the basic benefits of massage therapy. Adding essential oils is thought to enhance such benefits"
@@ -389,11 +412,17 @@
 
             if (i == 'Shiatsu_Massage') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 MINS &pound; 55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '55').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '55').attr(
                     'data-service', 'Shiatsu Massage').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">90 MINS &pound; 80 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '80').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">90 Minutes &pound;80 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '80').attr(
                     'data-service', 'Shiatsu Massage').attr('data-subtype', subtype);
-                $("#top_3 p").html('<span class="my-auto">90 MINS &pound; 120 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '120').attr(
+                $("#top_3 p").html(
+                    '<span class="my-auto">90 Minutes &pound;120 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '120').attr(
                     'data-service', 'Shiatsu Massage').attr('data-subtype', subtype);
                 $("#description").text(
                     "Shiatsu is a non-invasive therapy originating from Japan. It uses a combination of kneading, pressing, tapping and stretching techniques. These gentle techniques aim to reduce tension and re-energise the body. A shiatsu therapist applies pressure on the body's meridians, parts of the body believed to be energy channels, to balance or unblock the flow of energy, known as Ki or Qi"
@@ -404,11 +433,17 @@
 
             if (i == 'Thai_Massage') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 MINS &pound; 55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '55').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '55').attr(
                     'data-service', 'Thai massage').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">90 MINS &pound; 80 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '80').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">90 Minutes &pound;80 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '80').attr(
                     'data-service', 'Thai massage').attr('data-subtype', subtype);
-                $("#top_3 p").html('<span class="my-auto">90 MINS &pound; 104 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '104').attr(
+                $("#top_3 p").html(
+                    '<span class="my-auto">90 Minutes &pound;104 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '104').attr(
                     'data-service', 'Thai massage').attr('data-subtype', subtype);
                 $("#description").text(
                     "The practice of Thai yoga massage is said to be thousands of years old, but it is still part of Thailand's medical system due to its perceived healing properties on both emotional and physical levels. Traditional Thai massage uses no oils or lotions. The client remains clothed during a treatment. A full Thai massage session may last two hours and includes rhythmic pressing and stretching of the entire body. This may include pulling fingers, toes, ears, cracking knuckles,"
@@ -419,11 +454,17 @@
 
             if (i == 'Lymphatic_Massagel') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 MINS &pound; 55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '55').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '55').attr(
                     'data-service', 'Lymphatic Massage').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">90 MINS &pound; 80 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '80').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">90 Minutes &pound;80 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '80').attr(
                     'data-service', 'Lymphatic Massage').attr('data-subtype', subtype);
-                $("#top_3 p").html('<span class="my-auto">90 MINS &pound; 120 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '120').attr(
+                $("#top_3 p").html(
+                    '<span class="my-auto">90 Minutes &pound;120 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '120').attr(
                     'data-service', 'Lymphatic Massage').attr('data-subtype', subtype);
                 $("#description").text(
                     "Lymph drainage massage has become a popular form of massage due to its potential health benefits. This specialized approach focuses on the lymphatic system which is part of the immune system. This type of massage aims to help the body maintain proper blood circulation, body fluid balance, and immune function the largest nodes are in the neck, groin, and armpits. They all work together to make sure clean lymph is transported back to the veins that carry blood toward the heart."
@@ -433,11 +474,17 @@
 
             if (i == 'Reflexology') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 MINS &pound; 55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '55').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;55 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '55').attr(
                     'data-service', 'Reflexology').attr('data-subtype', subtype);
-                $("#top_2 p").html('<span class="my-auto">90 MINS &pound; 72 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '72').attr(
+                $("#top_2 p").html(
+                    '<span class="my-auto">90 Minutes &pound;72 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '72').attr(
                     'data-service', 'Reflexology').attr('data-subtype', subtype);
-                $("#top_3 p").html('<span class="my-auto">90 MINS &pound; 88 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '88').attr(
+                $("#top_3 p").html(
+                    '<span class="my-auto">90 Minutes &pound;88 </span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '88').attr(
                     'data-service', 'Reflexology').attr('data-subtype', subtype);
                 $("#description").text(
                     "Reflexology, also known as zone therapy, is an alternative medical practice involving the application of pressure to specific points on the feet, ears, and/or hands. This is done using thumb, finger, and hand massage techniques without the use of oil or lotion. It is based on a system of zones and reflex areas that reflect an area of the body on the feet and hands, with the premise that such work on the feet and hands causes a physical change to the supposedly related areas of the body."

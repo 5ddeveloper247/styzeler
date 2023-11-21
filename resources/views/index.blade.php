@@ -361,7 +361,7 @@
                     </a></li>
                 <li><a href="{{ route('candidate') }}" class="shadow_btn"
                         style="font-size: 1.7rem; padding: 0 1rem; justify-content: space-between;">Freelancer
-                        / job seeker <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
+                        / Job Seeker <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
                     </a></li>
 
             </ul>

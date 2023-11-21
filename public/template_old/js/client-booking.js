@@ -53,6 +53,29 @@ window.onload = function () {
     // $(".year").text(date.getFullYear());
 };
 
+function formateDate(dateText) {
+    var months = [
+        "Jan",
+        "Feb",
+        "Mar",
+        "Apr",
+        "May",
+        "Jun",
+        "Jul",
+        "Aug",
+        "Sep",
+        "Oct",
+        "Nov",
+        "Dec",
+    ];
+
+    var date = new Date(dateText),
+        day = ("0" + date.getDate()).slice(-2),
+        month = months[date.getMonth()],
+        year = date.getFullYear();
+
+    return [day, month, year].join("-");
+}
 // function sendEmail(emailId, msg) {
 
 //     let ownerMessage = msg;
@@ -294,10 +317,10 @@ function getfreelancerBookings() {
                                 i +
                                 '">' +
                                 "<p><strong>Date: </strong> " +
-                                app_created_date_dateOnly +
+                                formateDate(app_created_date_dateOnly) +
                                 '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></p>' +
                                 "<p><strong>Book Date: </strong> " +
-                                app_created_date_booking_date +
+                                formateDate(app_created_date_booking_date) +
                                 "&nbsp;&nbsp;</p>" +
                                 "<p><strong>Book Time: </strong> " +
                                 booking_time +

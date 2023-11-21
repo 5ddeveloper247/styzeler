@@ -46,9 +46,11 @@
             transition-duration: 0.3s;
             cursor: pointer;
         }
-        .outer-width{
-            width: auto!important;
+
+        .outer-width {
+            width: auto !important;
         }
+
         .cart_icon {
             border: 1px solid #fdd431;
             border-radius: 50%;
@@ -101,30 +103,33 @@
                                                 alt=""></button>
                                     </li>
                                     <!-- <li>
-                                                      <button type="button" class="shadow_btn shaddowbtn1"   onclick="caseCat('Bridal_Make_up')">Bridal Make-up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+                                                                      <button type="button" class="shadow_btn shaddowbtn1"   onclick="caseCat('Bridal_Make_up')">Bridal Make-up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 
-                                                     </li> -->
+                                                                     </li> -->
                                 </ul>
                                 <div class="txt_wrap scrollbar" id="showbox">
                                     <form action="" method="post" id="inner_form">
                                         <div class="form_inner">
                                             <div class="row">
-                                                <div id="top_1" class="col-md-3 mb-4 outer-width">
+                                                <div id="top_1" class="col-md-3 outer-width mb-4">
                                                     <div class="input_box_wrap">
-                                                        <p class="input_box add_to_cart d-flex" data-time="" data-price=""
-                                                            data-type="" data-subtype="" data-service=""></p>
+                                                        <p class="input_box add_to_cart d-flex" data-time=""
+                                                            data-price="" data-type="" data-subtype="" data-service="">
+                                                        </p>
                                                     </div>
                                                 </div>
-                                                <div id="top_2" class="col-md-3 mb-4 outer-width">
+                                                <div id="top_2" class="col-md-3 outer-width mb-4">
                                                     <div class="input_box_wrap">
-                                                        <p class="input_box add_to_cart d-flex" data-time="" data-price=""
-                                                            data-type="" data-subtype="" data-service=""></p>
+                                                        <p class="input_box add_to_cart d-flex" data-time=""
+                                                            data-price="" data-type="" data-subtype="" data-service="">
+                                                        </p>
                                                     </div>
                                                 </div>
-                                                <div id="top_3" class="col-md-3 mb-4 outer-width">
+                                                <div id="top_3" class="col-md-3 outer-width mb-4">
                                                     <div class="input_box_wrap">
-                                                        <p class="input_box add_to_cart d-flex" data-time="" data-price=""
-                                                            data-type="" data-subtype="" data-service=""></p>
+                                                        <p class="input_box add_to_cart d-flex" data-time=""
+                                                            data-price="" data-type="" data-subtype="" data-service="">
+                                                        </p>
                                                     </div>
                                                 </div>
                                             </div>
@@ -141,9 +146,9 @@
                                             </div>
                                         </div>
                                         <div class="right-arrow">
-                                            <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
+                                            {{-- <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}"> --}}
                                         </div>
-                                        <div class="btn_block">
+                                        {{-- <div class="btn_block">
                                             @if (@$tokens > 0)
                                                 <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
@@ -163,11 +168,10 @@
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> Minimum call out &pound;30</li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
-                                        <input type="hidden" id="userId" name="userId"
-                                            value="{{ @Auth::user()->id }}">
+                                        <input type="hidden" id="userId" name="userId" value="{{ @Auth::user()->id }}">
                                         <input type="hidden" id="userType" name="userType"
                                             value="{{ @Auth::user()->type }}">
                                         <input type="hidden" id="item_text" name="item_text" value="">
@@ -316,7 +320,9 @@
 
             if (i == 'Makeup_Blowdry') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">90 mints  &pound;100</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '100').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">90 Minutes  &pound;100</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '100').attr(
                     'data-service', 'Blow-dry & Make-up').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -327,7 +333,9 @@
 
             if (i == 'Make_up_Up_do') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">80 mints  &pound;90</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '80').attr('data-price', '90').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">80 Minutes  &pound;90</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '80').attr('data-price', '90').attr(
                     'data-service', 'Up-do & Make-up').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -337,7 +345,9 @@
 
             if (i == 'Make_up') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 mints  &pound;50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '50').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes  &pound;50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '50').attr(
                     'data-service', 'Make-up').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -349,7 +359,9 @@
             if (i == 'Bridal_Make_up') {
                 $("#top_1").show();
                 $("#top_2,#top_3").hide();
-                $("#top_1 p").html('<span class="my-auto">service &pound;20</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '').attr('data-price', '20').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">service &pound;20</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '').attr('data-price', '20').attr(
                     'data-service', 'Bridal Make-Up').attr('data-subtype', subtype);
                 $("#description").text('the bridal makeup needs to be linked with the bridal page');
             }

@@ -986,10 +986,11 @@ class ProfileController extends Controller
                 [
                     ['booking_user_id', Auth::id()],
                     ['booking_date', '>=', $currentDate],
-                    // ['status', '!=', null]
                 ]
 
-            )->has('userBookingSlots')
+            )
+                ->where('status', 'not like', '%Cancelled%')
+                ->has('userBookingSlots')
                 ->with(
                     [
                         'userBookingSlots',
@@ -1011,10 +1012,11 @@ class ProfileController extends Controller
                 [
                     ['freelancer_user_id', Auth::id()],
                     ['booking_date', '>=', $currentDate],
-                    // ['status', '!=', null]
 
                 ]
-            )->has('userBookingSlots')
+            )
+                ->where('status', 'not like', '%Cancelled%')
+                ->has('userBookingSlots')
                 ->with(
                     [
                         'userBookingSlots',

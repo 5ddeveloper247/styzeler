@@ -11,10 +11,10 @@ $(function () {
         success: function (response) {
             if (response.cart == "" || response.cart[0]["cart_lines"] == "") {
                 $("#cart_line_table").append(
-                    '<div class="col-12 text-center">You have no item in cart!</div>'
+                    '<div class="col-12 text-center">You Have No Items in Cart!</div>'
                 );
             } else {
-                $(".freelancer_btn").removeClass("d-none");
+                $("#cart_services").removeClass("d-none");
                 var cart_line_table = "";
                 $.each(response.cart, function (i) {
                     let cart = response.cart[i];
@@ -80,9 +80,10 @@ function confirmDelete(id) {
 
                 if ($("#cart_line_table").children().length == 0) {
                     $("#cart_line_table").append(
-                        '<div class="col-12 text-center">You have no item in cart!</div>'
+                        '<div class="col-12 text-center">You Have No Items in Cart!</div>'
                     );
-                    $(".freelancer_btn").addClass("d-none");
+                    $("#cart_services").addClass("d-none");
+                    // $("#services .check_list").addClass("d-none");
                 }
 
                 toastr.success(response.message, "", {

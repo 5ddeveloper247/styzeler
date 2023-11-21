@@ -38,9 +38,11 @@
             transition-duration: 0.3s;
             cursor: pointer;
         }
-        .outer-width{
-            width: auto!important;
+
+        .outer-width {
+            width: auto !important;
         }
+
         .cart_icon {
             border: 1px solid #fdd431;
             border-radius: 50%;
@@ -177,9 +179,9 @@
                                                 alt=""></button>
                                     </li>
                                     <!-- <li>
-                                                                                                                                                                                                                                                                                                                      <button type="button" class="shadow_btn shaddowbtn1" onclick="caseCat('Hard_Gel')">Hard Gel <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
-                                                                                                                                                                                                                                                                                                                     </li>
-                                                                                                                                                                                                                                                                                                                     -->
+                                                                                                                                                                                                                                                                                                                                      <button type="button" class="shadow_btn shaddowbtn1" onclick="caseCat('Hard_Gel')">Hard Gel <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+                                                                                                                                                                                                                                                                                                                                     </li>
+                                                                                                                                                                                                                                                                                                                                     -->
                                 </ul>
                                 <div class="txt_wrap scrollbar" id="showbox">
                                     <form action="" method="post" id="inner_form">
@@ -187,7 +189,7 @@
                                             <div class="row">
                                                 <div class="col-10">
                                                     <div class="row">
-                                                        <div id="top_1" class="col-md-4 mb-4 outer-width">
+                                                        <div id="top_1" class="col-md-4 outer-width mb-4">
                                                             <div class="input_box_wrap">
                                                                 <!-- 																<input type="text" class="input_box" value=""> -->
                                                                 <p class="input_box add_to_cart d-flex" data-time=""
@@ -228,9 +230,9 @@
                                             </div>
                                         </div>
                                         <div class="right-arrow">
-                                            <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}">
+                                            {{-- <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}"> --}}
                                         </div>
-                                        <div class="btn_block">
+                                        {{-- <div class="btn_block">
                                             @if (@$tokens > 0)
                                                 <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
@@ -250,7 +252,7 @@
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> Minimum call out &pound;30</li>
                                             </ul>
-                                        </div>
+                                        </div> --}}
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
                                         <input type="hidden" id="userId" name="userId"
@@ -400,7 +402,9 @@
         function caseCat(i, subtype = '') {
             if (i == 'HydraRegular_Mani_Pedicurefacial') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">90 Minuts &pound; 48</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '48').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">90 Minutes &pound;48</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '48').attr(
                     'data-service', 'Regular Manicure/Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -410,7 +414,9 @@
 
             if (i == 'Regular_Mani') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '24').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">45 Minutes &pound;24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '24').attr(
                     'data-service', 'Regular Manicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -419,7 +425,9 @@
             }
             if (i == 'Regular_Pedicure') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 30</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '30').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">45 Minutes &pound;30</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '30').attr(
                     'data-service', 'Regular Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -429,7 +437,9 @@
 
             if (i == 'Russian_Mani_Pedicure') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">90 Minuts &pound; 65</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '65').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">90 Minutes &pound;65</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '65').attr(
                     'data-service', 'Russian Manicure/Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -440,7 +450,9 @@
 
             if (i == 'Russian_Mani') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 35</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '35').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">45 Minutes &pound;35</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '35').attr(
                     'data-service', 'Russian Manicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -451,7 +463,9 @@
 
             if (i == 'Russian_Pedicure') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '40').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">45 Minutes &pound;40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '40').attr(
                     'data-service', 'Russian Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -463,7 +477,9 @@
 
             if (i == 'French_Mani_Pedicure') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">90 Minuts &pound; 56</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '56').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">90 Minutes &pound;56</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '56').attr(
                     'data-service', 'French Manicure/Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -474,7 +490,9 @@
 
             if (i == 'French_Mani') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 30</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '30').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">45 Minutes &pound;30</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '30').attr(
                     'data-service', 'French Manicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -485,7 +503,9 @@
 
             if (i == 'French_Pedicure') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">45 Minuts &pound; 35</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '45').attr('data-price', '35').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">45 Minutes &pound;35</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '45').attr('data-price', '35').attr(
                     'data-service', 'French Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -496,7 +516,9 @@
 
             if (i == 'Gel_Mani_Pedicure') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 60</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '60').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">120 Minutes &pound;60</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '120').attr('data-price', '60').attr(
                     'data-service', 'Gel Manicure/Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -507,7 +529,9 @@
 
             if (i == 'Gel_Mani') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 30</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '30').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;30</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '30').attr(
                     'data-service', 'Gel Manicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -518,7 +542,9 @@
 
             if (i == 'Gel_Pedicure') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 35</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '35').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;35</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '35').attr(
                     'data-service', 'Gel Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -529,7 +555,9 @@
 
             if (i == 'Get_Nail_Extension') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">60 Minuts &pound; 45</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '45').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">60 Minutes &pound;45</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '45').attr(
                     'data-service', 'Get Nail Extension').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -539,7 +567,9 @@
 
             if (i == 'Acrylic_Nail_Extension') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">90 Minuts &pound; 50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '90').attr('data-price', '50').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">90 Minutes &pound;50</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '90').attr('data-price', '50').attr(
                     'data-service', 'Acrylic Nail Extension').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -549,7 +579,9 @@
 
             if (i == 'Nail_Designs') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">50 Minuts &pound; 10</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '50').attr('data-price', '10').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">50 Minutes &pound;10</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '50').attr('data-price', '10').attr(
                     'data-service', 'Nail Designs').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -559,7 +591,9 @@
 
             if (i == 'Nail_Art_Gel_mani') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">70 Minuts &pound; 40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '70').attr('data-price', '40').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">70 Minutes &pound;40</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '70').attr('data-price', '40').attr(
                     'data-service', 'Nail Art + Gel Mani').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -569,7 +603,9 @@
 
             if (i == 'Nail_Art_Gel_Pedi') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">s60 Minuts &pound; 45</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '60').attr('data-price', '45').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">s60 Minutes &pound;45</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '60').attr('data-price', '45').attr(
                     'data-service', 'Nail Art + Gel Pedi').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
@@ -580,7 +616,9 @@
 
             if (i == 'Gel_Mani_Pedicure') {
                 $("#top_1").show();
-                $("#top_1 p").html('<span class="my-auto">120 Minuts &pound; 60</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>').attr('data-time', '120').attr('data-price', '60').attr(
+                $("#top_1 p").html(
+                    '<span class="my-auto">120 Minutes &pound;60</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                ).attr('data-time', '120').attr('data-price', '60').attr(
                     'data-service', 'Gel Manicure/Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
