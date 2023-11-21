@@ -5,8 +5,9 @@
         .site_btn {
             border: 0.2rem solid #000000;
         }
-        .li-100{
-        	width:100% !important;
+
+        .li-100 {
+            width: 100% !important;
         }
     </style>
 @endpush
@@ -30,45 +31,45 @@
             </div>
             <div class="contact_for" data-aos="fade-up" data-aos-duration="1000">
 
-				{{-- Code Start By Muhammad Umer --}}
+                {{-- Code Start By Muhammad Umer --}}
                 <div class="contact_for aos-init aos-animate">
-					<h3>Contact Styzeler for</h3>
-					<ul class="btn_list">
-						<li>
-							<a href="{{route('candidate')}}" class="shadow_btn">Candidate 
-								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-							</a>
-						</li>
-						<li>
-							<a href="/candidate?candidate=freelancer" class="shadow_btn">Freelancing 
-								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-							</a>
-						</li>
-						<li>
-							<a href="{{route('rentAndLet')}}" class="shadow_btn">Rent &amp; Let 
-								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-							</a>
-						</li>
-						<li>
-							<a href="/candidate?candidate=jobseeker" class="shadow_btn">Job Seecker 
-								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-							</a>
-						</li>
-						<li>
-							<a href="{{route('news')}}" class="shadow_btn">News 
-								<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-							</a>
-						</li>
-					</ul>
-				</div>
-				{{-- Code End By Muhammad Umer --}}
-                
+                    <h3>Contact Styzeler for</h3>
+                    <ul class="btn_list">
+                        <li>
+                            <a href="{{ route('candidate') }}" class="shadow_btn">Candidate
+                                <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/candidate?candidate=freelancer" class="shadow_btn">Freelancing
+                                <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('rentAndLet') }}" class="shadow_btn">Rent &amp; Let
+                                <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/candidate?candidate=jobseeker" class="shadow_btn">Job Seeker
+                                <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('news') }}" class="shadow_btn">News
+                                <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                {{-- Code End By Muhammad Umer --}}
+
                 {{-- <div class="row">
                 	<div class="col-sm-3 col-12"><h3>Contact Styzeler for:</h3></div>
 	               	<div class="col-sm-3 col-6 mb-5">
 	                	<ul class="btn_list">
 	                		<li class="li-100">
-	                    		<a href="{{route('contactUs')}}" class="shadow_btn">Styzeler 
+	                    		<a href="{{route('contactUs')}}" class="shadow_btn">Styzeler
 		                    		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
 		                    	</a>
 		                    </li>
@@ -77,7 +78,7 @@
 	                <div class="col-sm-3 col-6 mb-5">
 	                	<ul class="btn_list">
 	                		<li class="li-100">
-	                    		<a href="{{route('salonOwner')}}" class="shadow_btn">Business Owner 
+	                    		<a href="{{route('salonOwner')}}" class="shadow_btn">Business Owner
 		                    		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
 		                    	</a>
 		                    </li>
@@ -86,7 +87,7 @@
 	                <div class="col-sm-3 col-6 mb-5">
 	                	<ul class="btn_list">
 	                		<li class="li-100">
-	                    		<a href="{{route('rentAndLet')}}" class="shadow_btn">Rent & Let 
+	                    		<a href="{{route('rentAndLet')}}" class="shadow_btn">Rent & Let
 		                    		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
 		                    	</a>
 		                    </li>
@@ -95,7 +96,7 @@
 	                <div class="col-sm-3 col-6 mb-5">
 	                	<ul class="btn_list">
 	                		<li class="li-100">
-	                    		<a href="{{route('barber')}}" class="shadow_btn">Barber/Grooming 
+	                    		<a href="{{route('barber')}}" class="shadow_btn">Barber/Grooming
 		                    		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
 		                    	</a>
 		                    </li>
@@ -104,7 +105,7 @@
 	                <div class="col-sm-3 col-6 mb-5">
 	                	<ul class="btn_list">
 	                		<li class="li-100">
-	                    		<a href="{{route('hairstylist')}}" class="shadow_btn">Hair Stylist 
+	                    		<a href="{{route('hairstylist')}}" class="shadow_btn">Hair Stylist
 		                    		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
 		                    	</a>
 		                    </li>
@@ -139,40 +140,40 @@
 	                </div>
 	           	</div> --}}
             </div>
-            
-            
-                
+
+
+
             <!-- <div class="contact_for" data-aos="fade-up" data-aos-duration="1000">
-                <h3>Contact Styzeler for</h3>
-                <ul class="btn_list">
-                    <li>
-                    	<a href="javascript:;" class="shadow_btn">Candidate 
-                    		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-                    	</a>
-                    </li>
-                    <li>
-                    	<a href="javascript:;" class="shadow_btn">Freelancing 
-                    		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-                    	</a>
-                    </li>
-                    <li>
-                    	<a href="javascript:;" class="shadow_btn">Rent & Let 
-                    		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-                    	</a>
-                    </li>
-                    <li>
-                    	<a href="javascript:;" class="shadow_btn">Job Sicker 
-                    		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-                    	</a>
-                    </li>
-                    <li>
-                    	<a href="javascript:;" class="shadow_btn">News 
-                    		<img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
-                    	</a>
-                    </li>
-                    
-                </ul>
-            </div> -->
+                    <h3>Contact Styzeler for</h3>
+                    <ul class="btn_list">
+                        <li>
+                        <a href="javascript:;" class="shadow_btn">Candidate
+                        <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                        </a>
+                        </li>
+                        <li>
+                        <a href="javascript:;" class="shadow_btn">Freelancing
+                        <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                        </a>
+                        </li>
+                        <li>
+                        <a href="javascript:;" class="shadow_btn">Rent & Let
+                        <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                        </a>
+                        </li>
+                        <li>
+                        <a href="javascript:;" class="shadow_btn">Job Sicker
+                        <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                        </a>
+                        </li>
+                        <li>
+                        <a href="javascript:;" class="shadow_btn">News
+                        <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
+                        </a>
+                        </li>
+
+                    </ul>
+                </div> -->
             <div class="contact_form_wrap" data-aos="fade-up" data-aos-duration="1000">
                 <div class="info_block">
                     <h3>Contact Details</h3>
@@ -223,5 +224,5 @@
 @endsection
 
 @push('script')
-<script src="{{ asset('customjs/web/contact/contactUs.js') }}?v={{time()}}"></script>
+    <script src="{{ asset('customjs/web/contact/contactUs.js') }}?v={{ time() }}"></script>
 @endpush

@@ -403,7 +403,9 @@ $(function () {
                                 '">' +
                                 "<p><strong>Date: </strong> " +
                                 formateDate(app_created_date_dateOnly) +
-                                '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></p>' +
+                                '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true" id="view_' +
+                                id +
+                                '"></i></p>' +
                                 "<p><strong>Book Date: </strong> " +
                                 formateDate(app_created_date_booking_date) +
                                 "&nbsp;&nbsp;</p>" +
@@ -527,21 +529,52 @@ $(function () {
                             // $("#show" + i).append('<div class="text-center customBtn" onClick="cancelAppointment(' + id + ')">' + '<a>Cancel</a>' +
                             //     '</div>');
                         }
-
-                        if (response.appointments[i]["status"] === "Booked") {
-                            $(".onHold_btn" + i).hide();
-                        }
-
-                        if (response.appointments[i]["status"] === "on hold") {
-                            $(".onHold_btn" + i).show();
-                        }
-
-                        if (
-                            response.appointments[i]["status"] ===
-                            "CONFIRMED by Salon Owner"
+                        if (response.appointments[i]["status"] == null) {
+                            $("#show" + i).show();
+                            $("#view_" + id).css({
+                                color: "#fdd431",
+                            });
+                        } else if (
+                            response.appointments[i]["status"] != null &&
+                            response.appointments[i]["status"].includes(
+                                "Cancelled by"
+                            )
                         ) {
-                            $(".confirm_btn" + i).show();
+                            $("#show" + i).hide();
+                            $("#view_" + id).css({
+                                color: "red",
+                            });
+                        } else if (
+                            response.appointments[i]["status"] != null &&
+                            response.appointments[i]["status"].includes(
+                                "Booked"
+                            )
+                        ) {
+                            $("#show" + i).show();
+                            $("#view_" + id).css({
+                                color: "green",
+                            });
                         }
+                        // if (
+                        //     response.appointments[i]["status"] != null &&
+                        //     response.appointments[i]["status"] === "Booked"
+                        // ) {
+                        //     $(".onHold_btn" + i).hide();
+                        //     $("#view_" + id).css({
+                        //         color: "green",
+                        //     });
+                        // }
+
+                        // if (response.appointments[i]["status"] === "on hold") {
+                        //     $(".onHold_btn" + i).show();
+                        // }
+
+                        // if (
+                        //     response.appointments[i]["status"] ===
+                        //     "CONFIRMED by Salon Owner"
+                        // ) {
+                        //     $(".confirm_btn" + i).show();
+                        // }
 
                         // $.each(response.appointments[i]["availableDays"], function(d) {
 
