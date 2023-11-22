@@ -244,6 +244,11 @@
     <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <script src="https://kit.fontawesome.com/8389fcfe36.js" crossorigin="anonymous"></script>
     <script>
+	    $(document).ready(function() { // for mobile view
+			if ($(window).width() < 500) {
+	        	$(".text_list").addClass("active");
+	       	}
+		});
         $(window).on("load", function() {
             $(document).on("click", ".btn_list .shadow_btn", function() {
                 let id = $(this).data("id");

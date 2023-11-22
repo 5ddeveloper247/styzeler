@@ -355,24 +355,21 @@
 @push('script')
     <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <script>
+    	$(document).ready(function() { // for mobile view
+//     		if ($(window).width() < 500) {
+//             	$(".text_list").addClass("active");
+//            	}
+    	});
         $(window).on("load", function() {
             $(document).on("click", ".btn_list .shadow_btn", function() {
-            	if ($(window).width() > 767 && $(this).hasClass('special-button')) {
-	                let id = $(this).data("id");
-	                $(".text_list[data-id = " + id + "]").slideToggle();
-            	}
+                let id = $(this).data("id");
+                $(".text_list[data-id = " + id + "]").slideToggle();
             });
             $(document).on("click", ".btns > li > button", function() {
-            	console.log('2');
-            	if ($(window).width() > 767 || !$(this).hasClass('special-button')) {
                 $(this).parent().find(".sub_btns").slideToggle();
-            	}
             });
             $(document).on("click", ".sub_btns > li > button", function() {
-                console.log('3');
-            	if ($(window).width() > 767 || !$(this).hasClass('special-button')) {
-                	$(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
-            	}
+                $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
             });
             $(document).on("click", ".special-button", function() {
                 $(".text_list").removeClass("active");

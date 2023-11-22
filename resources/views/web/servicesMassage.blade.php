@@ -252,6 +252,11 @@
 @push('script')
     <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <script>
+	    $(document).ready(function() { // for mobile view
+// 			if ($(window).width() < 500) {
+// 	        	$(".text_list").addClass("active");
+// 	       	}
+		});
         $(window).on("load", function() {
             $(document).on("click", ".btn_list .shadow_btn", function() {
                 let id = $(this).data("id");
