@@ -65,11 +65,11 @@
                     <h2>You book We deliver</h2>
                     <div class="inner">
                         <div class="btn_list">
-                            <a href="{{ route('servicesBodywaxing') }}" class="shadow_btn" data-id="body_waxing">Body
+                            <a href="{{ route('servicesBodywaxing') }}" class="shadow_btn special-button" data-id="body_waxing">Body
                                 Waxing</a>
-                            <a href="{{ route('servicesEyebrows') }}" class="shadow_btn" data-id="eye_brows">Eyes &
+                            <a href="{{ route('servicesEyebrows') }}" class="shadow_btn special-button" data-id="eye_brows">Eyes &
                                 Brows</a>
-                            <a href="{{ route('servicesManiPedi') }}" class="shadow_btn" data-id="mani_pedi">Mani / Pedi</a>
+                            <a href="{{ route('servicesManiPedi') }}" class="shadow_btn special-button" data-id="mani_pedi">Mani / Pedi</a>
                             <a href="javascript:;" class="shadow_btn" data-id="facial">Facial</a>
                         </div>
                         <div class="text_list" data-id="facial" style="display: block;">
@@ -261,6 +261,9 @@
             });
             $(document).on("click", ".sub_btns > li > button", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
+            });
+            $(document).on("click", ".special-button", function() {
+                $(".text_list").removeClass("active");
             });
             // $(document).on("click", ".shadowbtn", function() {
             //     $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();

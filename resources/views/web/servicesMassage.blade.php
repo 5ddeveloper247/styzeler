@@ -263,6 +263,9 @@
             $(document).on("click", ".sub_btns > li > button", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
             });
+            $(document).on("click", ".special-button", function() {
+                $(".text_list").removeClass("active");
+            });
             // $(document).on("click", ".shadowbtn", function() {
             //     $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
             // });

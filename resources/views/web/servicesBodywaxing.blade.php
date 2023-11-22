@@ -70,10 +70,10 @@
                     <div class="inner">
                         <div class="btn_list">
                             <a href="javascript:;" class="shadow_btn" data-id="body_waxing">Body Waxing</a>
-                            <a href="{{ route('servicesEyebrows') }}" class="shadow_btn" data-id="eye_brows">Eyes &
+                            <a href="{{ route('servicesEyebrows') }}" class="shadow_btn special-button" data-id="eye_brows">Eyes &
                                 Brows</a> <!-- services-beauty2.html -->
-                            <a href="{{ route('servicesManiPedi') }}" class="shadow_btn" data-id="mani_pedi">Mani / Pedi</a>
-                            <a href="{{ route('servicesFacial') }}" class="shadow_btn" data-id="facial">Facial</a>
+                            <a href="{{ route('servicesManiPedi') }}" class="shadow_btn special-button" data-id="mani_pedi">Mani / Pedi</a>
+                            <a href="{{ route('servicesFacial') }}" class="shadow_btn special-button" data-id="facial">Facial</a>
                         </div>
                         <div class="text_list" data-id="body_waxing" style="display:block;">
                             <div class="text_list_inner">
@@ -357,14 +357,25 @@
     <script>
         $(window).on("load", function() {
             $(document).on("click", ".btn_list .shadow_btn", function() {
-                let id = $(this).data("id");
-                $(".text_list[data-id = " + id + "]").slideToggle();
+            	if ($(window).width() > 767 && $(this).hasClass('special-button')) {
+	                let id = $(this).data("id");
+	                $(".text_list[data-id = " + id + "]").slideToggle();
+            	}
             });
             $(document).on("click", ".btns > li > button", function() {
+            	console.log('2');
+            	if ($(window).width() > 767 || !$(this).hasClass('special-button')) {
                 $(this).parent().find(".sub_btns").slideToggle();
+            	}
             });
             $(document).on("click", ".sub_btns > li > button", function() {
-                $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
+                console.log('3');
+            	if ($(window).width() > 767 || !$(this).hasClass('special-button')) {
+                	$(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
+            	}
+            });
+            $(document).on("click", ".special-button", function() {
+                $(".text_list").removeClass("active");
             });
 
             @if (session('error'))

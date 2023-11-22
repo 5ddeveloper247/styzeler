@@ -74,10 +74,10 @@
                     <div class="inner">
                         <div class="btn_list">
 
-                            <a href="{{ route('servicesLadies') }}" class="shadow_btn" data-id="ladies-services">Ladies
+                            <a href="{{ route('servicesLadies') }}" class="shadow_btn special-button" data-id="ladies-services">Ladies
                                 Services</a>
                             <a href="javascript:;" class="shadow_btn" data-id="makeup">Make-up</a>
-                            <a href="{{ route('servicesGents') }}" class="shadow_btn" data-id="gents-services">Gents
+                            <a href="{{ route('servicesGents') }}" class="shadow_btn special-button" data-id="gents-services">Gents
                                 Services</a>
 
                         </div>
@@ -244,6 +244,9 @@
             });
             $(document).on("click", ".sub_btns > li > button", function() {
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
+            });
+            $(document).on("click", ".special-button", function() {
+                $(".text_list").removeClass("active");
             });
             // $(document).on("click", ".shadowbtn", function () {
             // 	$(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
