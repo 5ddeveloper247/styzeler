@@ -216,7 +216,8 @@
                                                 </div>
                                                 <div class="col-11">
                                                     <div class="row">
-                                                        <div id="top_2" class="col-md-8 mb-4">
+                                                        <div id="top_2" class="col-md-8 mb-4"
+                                                            style="text-wrap:nowrap">
                                                             <div class="input_box_wrap d-flex">
                                                                 <p class="input_box my-auto"></p>
                                                                 <span class="add_to_cart p-4" data-time=""
@@ -351,8 +352,8 @@
                                         <div class="right-arrow">
                                             {{-- <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}"> --}}
                                         </div>
-                                        {{-- <div class="btn_block">
-                                            @if (@$tokens > 0)
+                                        <div class="btn_block mt-0">
+                                            {{-- @if (@$tokens > 0)
                                                 <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""> Book a Freelancer
@@ -362,8 +363,8 @@
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""> Book a Freelancer
                                                 </a>
-                                            @endif
-                                            <ul class="check_list">
+                                            @endif --}}
+                                            <ul class="check_list my-3">
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> All candidates are DBS verified</li>
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
@@ -371,7 +372,7 @@
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> Minimum call out &pound;30</li>
                                             </ul>
-                                        </div> --}}
+                                        </div>
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
                                         <input type="hidden" id="userId" name="userId"
@@ -526,17 +527,20 @@
                 $("#top_1,#top_2,#top_3").show();
                 $("#top_1 p").html('Short  60 Minutes  &pound;40').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '40').attr(
-                    'data-service', 'Cut & Blowdry').attr('data-text', 'Short  60 Minutes  �40').attr('data-subtype',
+                    'data-service', 'Cut & Blowdry').attr('data-text', 'Short  60 Minutes  &pound;40').attr(
+                    'data-subtype',
                     subtype);
 
                 $("#top_2 p").html('Medium 60 Minutes  &pound;48').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '48').attr(
-                    'data-service', 'Cut & Blowdry').attr('data-text', 'Medium 60 Minutes  �48').attr('data-subtype',
+                    'data-service', 'Cut & Blowdry').attr('data-text', 'Medium 60 Minutes  &pound;48').attr(
+                    'data-subtype',
                     subtype);
 
                 $("#top_3 p").html('Long 60 Minutes  &pound;56').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '60').attr('data-price', '56').attr(
-                    'data-service', 'Cut & Blowdry').attr('data-text', 'Long 60 Minutes  �56').attr('data-subtype',
+                    'data-service', 'Cut & Blowdry').attr('data-text', 'Long 60 Minutes  &pound;56').attr(
+                    'data-subtype',
                     subtype);
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -547,15 +551,18 @@
                 $("#top_1,#top_2,#top_3").show();
                 $("#top_1 p").html('Medium 45 Minutes &pound;35').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '45').attr('data-price', '35').attr(
-                    'data-service', 'Blowdry').attr('data-text', 'Medium 45 Minutes �35').attr('data-subtype', subtype);
+                    'data-service', 'Blowdry').attr('data-text', 'Medium 45 Minutes &pound;35').attr('data-subtype',
+                    subtype);
 
                 $("#top_2 p").html('Long 60 Minutes  &pound;40').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '40').attr(
-                    'data-service', 'Blowdry').attr('data-text', 'Long 60 Minutes  �40').attr('data-subtype', subtype);
+                    'data-service', 'Blowdry').attr('data-text', 'Long 60 Minutes  &pound;40').attr('data-subtype',
+                    subtype);
 
                 $("#top_3 p").html('B+Updo 90 Minutes &pound;72').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '90').attr('data-price', '72').attr(
-                    'data-service', 'Blowdry').attr('data-text', 'B+Updo 90 Minutes �72').attr('data-subtype', subtype);
+                    'data-service', 'Blowdry').attr('data-text', 'B+Updo 90 Minutes &pound;72').attr('data-subtype',
+                    subtype);
 
 
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
@@ -569,12 +576,14 @@
                 $("#description").hide();
                 $("#top_1 p").html('Roots +Length  90 Minutes  &pound;48').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '48')
-                    .attr('data-service', 'Colour').attr('data-text', 'Roots +Length  90 Minutes  �48').attr('data-subtype',
+                    .attr('data-service', 'Colour').attr('data-text', 'Roots +Length  90 Minutes  &pound;48').attr(
+                        'data-subtype',
                         subtype);
 
                 $("#top_2 p").html('Roots  60 Minutes   &pound;40').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '40').attr(
-                    'data-service', 'Colour').attr('data-text', 'Roots  60 Minutes   �40').attr('data-subtype', subtype);
+                    'data-service', 'Colour').attr('data-text', 'Roots  60 Minutes   &pound;40').attr('data-subtype',
+                    subtype);
 
                 $("#top_3 p").html('+ Blow-Dry').attr('onclick', "caseCat('Blowdry')");
                 $("#top_3 span").hide().attr('data-time', '').attr('data-price', '').attr(
@@ -593,22 +602,26 @@
 
                 $("#top_1 p").html('T-sectiom 60 Minutes  &pound;48').attr('onclick', "");;
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '48').attr(
-                    'data-service', 'Highlights').attr('data-text', 'T-sectiom 60 Minutes  �48').attr('data-subtype',
+                    'data-service', 'Highlights').attr('data-text', 'T-sectiom 60 Minutes  &pound;48').attr(
+                    'data-subtype',
                     subtype);
 
                 $("#top_2 p").html('Half Head  90 Minutes  &pound;88').attr('onclick', "");;
                 $("#top_2 span").show().attr('data-time', '90').attr('data-price', '88').attr(
-                    'data-service', 'Highlights').attr('data-text', 'Half Head  90 Minutes  �88').attr('data-subtype',
+                    'data-service', 'Highlights').attr('data-text', 'Half Head  90 Minutes  &pound;88').attr(
+                    'data-subtype',
                     subtype);
 
                 $("#top_3 p").html('Full Head 120 Minutes &pound;104').attr('onclick', "");;
                 $("#top_3 span").show().attr('data-time', '120').attr('data-price', '104')
-                    .attr('data-service', 'Highlights').attr('data-text', 'Full Head 120 Minutes �104').attr('data-subtype',
+                    .attr('data-service', 'Highlights').attr('data-text', 'Full Head 120 Minutes &pound;104').attr(
+                        'data-subtype',
                         subtype);
 
                 $("#top_4 p").html('+ Toner  10 Minutes  &pound;15').attr('onclick', "");;
                 $("#top_4 span").show().attr('data-time', '10').attr('data-price', '15').attr(
-                    'data-service', 'Highlights').attr('data-text', '+ Toner  10 Minutes  �15').attr('data-subtype',
+                    'data-service', 'Highlights').attr('data-text', '+ Toner  10 Minutes  &pound;15').attr(
+                    'data-subtype',
                     subtype);
 
                 $("#top_5 p").html('+ Colour').attr('onclick', "caseCat('Color')");
@@ -633,23 +646,25 @@
 
                 $("#top_1 p").html('Half Head  60 Minutes  &pound;96').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '96').attr(
-                    'data-service', 'Balayage').attr('data-text', 'Half Head  60 Minutes  �96').attr('data-subtype',
+                    'data-service', 'Balayage').attr('data-text', 'Half Head  60 Minutes  &pound;96').attr(
+                    'data-subtype',
                     subtype);
 
                 $("#top_2 p").html('Full Head  90 Minutes  &pound;112').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '90').attr('data-price', '112')
-                    .attr('data-service', 'Balayage').attr('data-text', 'Full Head  90 Minutes  �112').attr('data-subtype',
+                    .attr('data-service', 'Balayage').attr('data-text', 'Full Head  90 Minutes  &pound;112').attr(
+                        'data-subtype',
                         subtype);
 
                 $("#top_3 p").html('+ Root shadow 30 Minutes  &pound;30').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '30').attr('data-price', '30')
-                    .attr('data-service', 'Balayage').attr('data-text', '+ Root shadow 30 Minutes  �30').attr(
+                    .attr('data-service', 'Balayage').attr('data-text', '+ Root shadow 30 Minutes  &pound;30').attr(
                         'data-subtype',
                         subtype);
 
                 $("#top_4 p").html('+ Toner 15 Minutes &pound;15').attr('onclick', "");
                 $("#top_4 span").show().attr('data-time', '15').attr('data-price', '15').attr(
-                    'data-service', 'Balayage').attr('data-text', '+ Toner 15 Minutes �15').attr('data-subtype',
+                    'data-service', 'Balayage').attr('data-text', '+ Toner 15 Minutes &pound;15').attr('data-subtype',
                     subtype);
 
                 $("#top_5 p").html('+ Colour').attr('onclick', "caseCat('Color')");
@@ -675,33 +690,37 @@
                 $("#top_1,#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").show();
                 $("#top_1 p").html('Short  90 Minutes  &pound;80').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '80').attr(
-                    'data-service', 'Full head bleach').attr('data-text', 'Short  90 Minutes  �80').attr('data-subtype',
+                    'data-service', 'Full head bleach').attr('data-text', 'Short  90 Minutes  &pound;80').attr(
+                    'data-subtype',
                     subtype);
 
                 $("#top_2 p").html('Medium 90 Minutes  &pound;100').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '90').attr('data-price', '100').attr(
-                    'data-service', 'Full head bleach').attr('data-text', 'Medium 90 Minutes  �100').attr(
+                    'data-service', 'Full head bleach').attr('data-text', 'Medium 90 Minutes  &pound;100').attr(
                     'data-subtype',
                     subtype);
 
                 $("#top_3 p").html('Long 120 Minutes  &pound;140').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '120').attr('data-price', '140').attr(
-                    'data-service', 'Full head bleach').attr('data-text', 'Long 120 Minutes  �140').attr('data-subtype',
+                    'data-service', 'Full head bleach').attr('data-text', 'Long 120 Minutes  &pound;140').attr(
+                    'data-subtype',
                     subtype);
 
                 $("#top_4 p").html('Roots Bleach  90 Minutes  &pound;50').attr('onclick', "");
                 $("#top_4 span").show().attr('data-time', '90').attr('data-price', '50')
-                    .attr('data-service', 'Full head bleach').attr('data-text', 'Roots Bleach  90 Minutes  �50').attr(
+                    .attr('data-service', 'Full head bleach').attr('data-text', 'Roots Bleach  90 Minutes  &pound;50').attr(
                         'data-subtype', subtype);
 
                 $("#top_5 p").html('+ Rots  Toner  15 Minutes  &pound;16').attr('onclick', "");
                 $("#top_5 span").show().attr('data-time', '15').attr('data-price', '16')
-                    .attr('data-service', 'Full head bleach').attr('data-text', '+ Rots  Toner  15 Minutes  �16').attr(
+                    .attr('data-service', 'Full head bleach').attr('data-text', '+ Rots  Toner  15 Minutes  &pound;16')
+                    .attr(
                         'data-subtype', subtype);
 
                 $("#top_6 p").html('+ Full Head Toner 45 Minutes  &pound;40').attr('onclick', "");
                 $("#top_6 span").show().attr('data-time', '45').attr('data-price', '40')
-                    .attr('data-service', 'Full head bleach').attr('data-text', '+ Full Head Toner 45 Minutes  �40').attr(
+                    .attr('data-service', 'Full head bleach').attr('data-text', '+ Full Head Toner 45 Minutes  &pound;40')
+                    .attr(
                         'data-subtype', subtype);
 
                 $("#top_7 p").html('+ Cut- Blow-Dry').attr('onclick', "caseCat('Cut_Blowdry')");
@@ -719,9 +738,9 @@
 
             if (i == 'Colour_Correction') {
                 $("#top_1,#top_2,#top_3").show();
-                $("#top_1 p").html('From &pound;100 Minutes 90');
+                $("#top_1 p").html('90 Minutes &pound;100');
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '100').attr(
-                    'data-service', 'Colour Correction').attr('data-text', 'From &pound;100 Minutes 90').attr(
+                    'data-service', 'Colour Correction').attr('data-text', '90 Minutes &pound;100').attr(
                     'data-subtype', subtype);
 
                 $("#top_2 p").html('+ Cut- Blow-Dry').attr('onclick', "caseCat('Cut_Blowdry')");
@@ -742,16 +761,19 @@
                 $("#top_1,#top_2,#top_3,#top_4,#top_5").show();
                 $("#top_1 p").html('Short  60 minutes  &pound;64').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '64').attr(
-                    'data-service', 'Perm').attr('data-text', 'Short  60 minutes  �64').attr('data-subtype', subtype);
+                    'data-service', 'Perm').attr('data-text', 'Short  60 minutes  &pound;64').attr('data-subtype',
+                    subtype);
 
 
                 $("#top_2 p").html('Medium 60 minutes  &pound;88').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '88').attr(
-                    'data-service', 'Perm').attr('data-text', 'Medium 60 minutes  �88').attr('data-subtype', subtype);
+                    'data-service', 'Perm').attr('data-text', 'Medium 60 minutes  &pound;88').attr('data-subtype',
+                    subtype);
 
                 $("#top_3 p").html('Long 90 minutes  &pound;104').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '90').attr('data-price', '104').attr(
-                    'data-service', 'Perm').attr('data-text', 'Long 90 minutes  �104').attr('data-subtype', subtype);
+                    'data-service', 'Perm').attr('data-text', 'Long 90 minutes  &pound;104').attr('data-subtype',
+                    subtype);
 
                 $("#top_4 p").html('+ Cut- Blow-Dry').attr('onclick', "caseCat('Cut_Blowdry')");
                 $("#top_4 span").hide().attr('data-time', '').attr('data-price', '').attr(
@@ -771,19 +793,19 @@
 
                 $("#top_1 p").html('Short  60 Minutes  &pound;70').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '70').attr(
-                    'data-service', 'Brazilian Blow-dry').attr('data-text', 'Short  60 Minutes  �70').attr(
+                    'data-service', 'Brazilian Blow-dry').attr('data-text', 'Short  60 Minutes  &pound;70').attr(
                     'data-subtype',
                     subtype);
 
                 $("#top_2 p").html('Medium 60 Minutes  &pound;90').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '60').attr('data-price', '90').attr(
-                    'data-service', 'Brazilian Blow-dry').attr('data-text', 'Medium 60 Minutes  �90').attr(
+                    'data-service', 'Brazilian Blow-dry').attr('data-text', 'Medium 60 Minutes  &pound;90').attr(
                     'data-subtype',
                     subtype);
 
                 $("#top_3 p").html('Long 60 Minutes  &pound;100').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '60').attr('data-price', '100').attr(
-                    'data-service', 'Brazilian Blow-dry').attr('data-text', 'Long 60 Minutes  �100').attr(
+                    'data-service', 'Brazilian Blow-dry').attr('data-text', 'Long 60 Minutes  &pound;100').attr(
                     'data-subtype',
                     subtype);
 
@@ -800,18 +822,19 @@
                 $("#top_1,#top_2,#top_3").show();
                 $("#top_1 p").html('Short  90 Minutes  &pound;80').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '90').attr('data-price', '80').attr(
-                    'data-service', 'Keratin Treatment').attr('data-text', 'Short  90 Minutes  �80').attr(
+                    'data-service', 'Keratin Treatment').attr('data-text', 'Short  90 Minutes  &pound;80').attr(
                     'data-subtype',
                     subtype);
 
                 $("#top_2 p").html('Medium 120 Minutes  &pound;120').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '120').attr('data-price', '120').attr(
-                    'data-service', 'Keratin Treatment').attr('data-text', 'Medium 120 Minutes  �120').attr(
+                    'data-service', 'Keratin Treatment').attr('data-text', 'Medium 120 Minutes  &pound;120').attr(
                     'data-subtype', subtype);
 
                 $("#top_3 p").html('Long 150 Minutes  &pound;140').attr('onclick', "");
                 $("#top_3 span").show().attr('data-time', '150').attr('data-price', '140').attr(
-                    'data-service', 'Keratin Treatment').attr('data-text', 'Long 150 Minutes �140').attr('data-subtype',
+                    'data-service', 'Keratin Treatment').attr('data-text', 'Long 150 Minutes &pound;140').attr(
+                    'data-subtype',
                     subtype);
 
                 $("#top_4,#top_5,#top_6,#top_7,#top_8").hide();
@@ -826,11 +849,12 @@
                 $("#top_1,#top_2").show();
                 $("#top_1 p").html('Add-on 20 Minutes &pound;30').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '20').attr('data-price', '30').attr(
-                    'data-service', 'Olaplex').attr('data-text', 'Add-on 20 Minutes �30').attr('data-subtype', subtype);
+                    'data-service', 'Olaplex').attr('data-text', 'Add-on 20 Minutes &pound;30').attr('data-subtype',
+                    subtype);
 
                 $("#top_2 p").html('Stand alone service 30 Minutes &pound;40').attr('onclick', "");
                 $("#top_2 span").show().attr('data-time', '30').attr('data-price', '40').attr(
-                    'data-service', 'Olaplex').attr('data-text', 'Stand alone service 30 Minutes �40').attr(
+                    'data-service', 'Olaplex').attr('data-text', 'Stand alone service 30 Minutes &pound;40').attr(
                     'data-subtype', subtype);
 
                 $("#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
@@ -845,7 +869,7 @@
                 $("#top_1").show();
                 $("#top_1 p").html('60 Minutes  &pound;50').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '60').attr('data-price', '50').attr(
-                    'data-service', 'Up-do').attr('data-text', '60 Minutes  �50').attr('data-subtype', subtype);
+                    'data-service', 'Up-do').attr('data-text', '60 Minutes  &pound;50').attr('data-subtype', subtype);
 
                 $("#top_2,#top_3,#top_4,#top_5,#top_6,#top_7,#top_8").hide();
                 $("#descHeading").hide().text('');
@@ -864,9 +888,9 @@
             if (i == 'Tape_in_Hair') {
 
                 $("#top_1").show();
-                $("#top_1 p").html('From &pound;350 Minutes 120').attr('onclick', "");
+                $("#top_1 p").html('120 Minutes &pound;350').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '120').attr('data-price', '350').attr(
-                    'data-service', 'Hair Extension Tape-in-Hair').attr('data-text', 'From �350 Minutes 120').attr(
+                    'data-service', 'Hair Extension Tape-in-Hair').attr('data-text', '120 Minutes &pound;350').attr(
                     'data-subtype',
                     subtype);
 
@@ -879,9 +903,9 @@
             if (i == 'Bonded_Hair') {
 
                 $("#top_1").show();
-                $("#top_1 p").html('From &pound;650 Minutes 240').attr('onclick', "");
+                $("#top_1 p").html('240 Minutes &pound;650').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '240').attr('data-price', '650').attr(
-                    'data-service', 'Hair Extension Bonded Hair').attr('data-text', 'From �650 Minutes 240').attr(
+                    'data-service', 'Hair Extension Bonded Hair').attr('data-text', '240 Minutes &pound;650').attr(
                     'data-subtype',
                     subtype);
 
@@ -894,9 +918,9 @@
             if (i == 'Micro_Ring') {
 
                 $("#top_1").show();
-                $("#top_1 p").html('From &pound;450 Minutes 180').attr('onclick', "");
+                $("#top_1 p").html('180 Minutes &pound;450').attr('onclick', "");
                 $("#top_1 span").show().attr('data-time', '180').attr('data-price', '450').attr(
-                    'data-service', 'Hair Extension Micro Ring').attr('data-text', 'From �450 Minutes 180').attr(
+                    'data-service', 'Hair Extension Micro Ring').attr('data-text', '180 Minutes &pound;450').attr(
                     'data-subtype',
                     subtype);
 

@@ -103,9 +103,9 @@
                                                 alt=""></button>
                                     </li>
                                     <!-- <li>
-                                                                      <button type="button" class="shadow_btn shaddowbtn1"   onclick="caseCat('Bridal_Make_up')">Bridal Make-up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+                                                                                  <button type="button" class="shadow_btn shaddowbtn1"   onclick="caseCat('Bridal_Make_up')">Bridal Make-up <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
 
-                                                                     </li> -->
+                                                                                 </li> -->
                                 </ul>
                                 <div class="txt_wrap scrollbar" id="showbox">
                                     <form action="" method="post" id="inner_form">
@@ -148,8 +148,8 @@
                                         <div class="right-arrow">
                                             {{-- <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}"> --}}
                                         </div>
-                                        {{-- <div class="btn_block">
-                                            @if (@$tokens > 0)
+                                        <div class="btn_block mt-0">
+                                            {{-- @if (@$tokens > 0)
                                                 <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""> Book a Freelancer
@@ -159,8 +159,8 @@
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""> Book a Freelancer
                                                 </a>
-                                            @endif
-                                            <ul class="check_list">
+                                            @endif --}}
+                                            <ul class="check_list my-3">
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> All candidates are DBS verified</li>
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
@@ -168,10 +168,11 @@
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> Minimum call out &pound;30</li>
                                             </ul>
-                                        </div> --}}
+                                        </div>
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
-                                        <input type="hidden" id="userId" name="userId" value="{{ @Auth::user()->id }}">
+                                        <input type="hidden" id="userId" name="userId"
+                                            value="{{ @Auth::user()->id }}">
                                         <input type="hidden" id="userType" name="userType"
                                             value="{{ @Auth::user()->type }}">
                                         <input type="hidden" id="item_text" name="item_text" value="">

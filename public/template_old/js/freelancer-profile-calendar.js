@@ -125,7 +125,7 @@ jQuery(document).ready(function () {
                                 "On Call": "On Call",
                                 // Add more mappings as needed
                             };
-                            console.log(showResponse);
+                            // console.log(showResponse, statusToTitle,status);
                             var title = statusToTitle[status] || status; // Use the mapping or the status as the title
                             events.push({
                                 title: title,

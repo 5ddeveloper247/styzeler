@@ -34,12 +34,8 @@
                             style="width:28px;"><!-- heart_icon.jpg -->
                         <div class="dropdown-menu position-absolute" aria-labelledby="navbarDropdown">
                             {{-- <div class="user-profile"></div> --}}
-                            @if (auth()->user()->type != 'client')
-                                <a class="dropdown-item" href="{{ route('freelancerBookingHistory') }}">Your Booking
-                                    History</a>
-                            @endif
-
                             <a class="dropdown-item" href="{{ route('Profile') }}">Profile</a>
+
                             @if (auth()->user()->type == 'client')
                                 <a class="dropdown-item" href="{{ route('clientBooking') }}">Your
                                     Booking</a>
@@ -49,6 +45,8 @@
                             @else
                                 <a class="dropdown-item" href="{{ route('freelancerBooking') }}">Your
                                     Booking</a>
+                                <a class="dropdown-item" href="{{ route('freelancerBookingHistory') }}">Your Booking
+                                    History</a>
                             @endif
                             @if (auth()->user()->type == 'beautySalon' || auth()->user()->type == 'hairdressingSalon')
                                 <a class="dropdown-item oldredirect" href="{{ route('chairListing') }}">Your Chair

@@ -235,8 +235,6 @@ $(function () {
 var cancel_btn = "";
 
 function getfreelancerBookings() {
-    console.log("first function");
-
     //Ajax call - getappointments
     $.ajax({
         type: "post",
@@ -318,7 +316,9 @@ function getfreelancerBookings() {
                                 '">' +
                                 "<p><strong>Date: </strong> " +
                                 formateDate(app_created_date_dateOnly) +
-                                '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true"></i></p>' +
+                                '&nbsp;&nbsp;<i class="fa fa-eye" aria-hidden="true" id="view_' +
+                                id +
+                                '"></i></p>' +
                                 "<p><strong>Book Date: </strong> " +
                                 formateDate(app_created_date_booking_date) +
                                 "&nbsp;&nbsp;</p>" +
@@ -416,12 +416,9 @@ function getfreelancerBookings() {
                                 "</div>"
                         );
                         if (owner_status.includes("Cancelled by")) {
-                            console.log("first", owner_status, cancel_btn);
                             // cancel_btn = "d-none";
                             $("#cancelAppBtn_" + id).addClass("d-none");
                         } else {
-                            console.log("second", owner_status, cancel_btn);
-
                             // cancel_btn = "d-block";
                             $("#cancelAppBtn_" + id).addClass("d-block");
                         }
@@ -459,13 +456,26 @@ function getfreelancerBookings() {
                             // $("#show" + i).append('<div class="text-center customBtn" onClick="cancelAppointment(' + id + ')">' + '<a>Cancel</a>' +
                             //     '</div>');
                         }
-
-                        if (response.appointments[i]["status"] === "Booked") {
+                        console.log(response.appointments[i]["status"]);
+                        if (response.appointments[i]["status"] == null) {
+                            $("#show" + i).show();
+                            $("#view_" + id).css({
+                                color: "#fdd431",
+                            });
+                        } else if (
+                            response.appointments[i]["status"] === "Booked"
+                        ) {
                             $(".onHold_btn" + i).hide();
-                        }
-
-                        if (response.appointments[i]["status"] === "on hold") {
+                            $("#view_" + id).css({
+                                color: "green",
+                            });
+                        } else if (
+                            response.appointments[i]["status"] === "on hold"
+                        ) {
                             $(".onHold_btn" + i).show();
+                            $("#view_" + id).css({
+                                color: "#fdd431",
+                            });
                         }
 
                         if (

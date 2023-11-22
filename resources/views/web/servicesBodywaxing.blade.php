@@ -268,8 +268,8 @@
                                         <div class="right-arrow">
                                             {{-- <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}"> --}}
                                         </div>
-                                        {{-- <div class="btn_block">
-                                            @if (@$tokens > 0)
+                                        <div class="btn_block mt-0">
+                                            {{-- @if (@$tokens > 0)
                                                 <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""> Book a Freelancer
@@ -279,8 +279,8 @@
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""> Book a Freelancer
                                                 </a>
-                                            @endif
-                                            <ul class="check_list">
+                                            @endif --}}
+                                            <ul class="check_list my-3">
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> All candidates are DBS verified</li>
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
@@ -288,7 +288,7 @@
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> Minimum call out &pound;0</li>
                                             </ul>
-                                        </div> --}}
+                                        </div>
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
                                         <input type="hidden" id="userId" name="userId"
@@ -538,7 +538,7 @@
                 $("#top_1 p").html(
                     '<span class="my-auto">30 Minutes &pound;24</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
                 ).attr('data-time', '30').attr('data-price', '24').attr(
-                    'data-subtype', subtype).attr('data-service', 'French Bikini<');
+                    'data-subtype', subtype).attr('data-service', 'French Bikini');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text(
                     "This waxing method removes hair from your labia and pubic bone, leaving a small rectangular strip (also known as a 'landing strip') on the front of your pubic area. This type of wax is similar to a Brazilian, but hair from the buttocks area isn't removed."

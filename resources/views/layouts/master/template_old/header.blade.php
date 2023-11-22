@@ -54,13 +54,7 @@
                                         <img src="{{ asset('template_new/assets/images/user-icon.png') }}"
                                             alt="" style="width:28px;"><!-- heart_icon.jpg -->
                                         <div class="dropdown-menu position-absolute" aria-labelledby="navbarDropdown">
-                                            {{-- <div class="user-profile"></div> --}}
-                                            @if (!empty(auth()->user()->type) && auth()->user()->type != 'client')
-                                                <a class="dropdown-item oldredirect"
-                                                    href="{{ route('freelancerBookingHistory') }}">Your
-                                                    Booking
-                                                    History</a>
-                                            @endif
+
 
                                             <a class="dropdown-item oldredirect"
                                                 href="{{ route('Profile') }}">Profile</a>
@@ -76,6 +70,10 @@
                                                 <a class="dropdown-item oldredirect"
                                                     href="{{ route('freelancerBooking') }}">Your
                                                     Booking</a>
+                                                <a class="dropdown-item oldredirect"
+                                                    href="{{ route('freelancerBookingHistory') }}">Your
+                                                    Booking
+                                                    History</a>
                                             @endif
                                             @if (auth()->user()->type == 'beautySalon' || auth()->user()->type == 'hairdressingSalon')
                                                 <a class="dropdown-item oldredirect"
@@ -150,11 +148,7 @@
                                             <div class="dropdown-menu position-absolute"
                                                 aria-labelledby="navbarDropdown">
                                                 <div class="user-profile"></div>
-                                                @if (!empty(auth()->user()->type) && auth()->user()->type != 'client')
-                                                    <a class="dropdown-item oldredirect"
-                                                        href="{{ route('freelancerBookingHistory') }}">Your
-                                                        Booking History</a>
-                                                @endif
+
                                                 <a class="dropdown-item oldredirect"
                                                     href="{{ route('Profile') }}">Profile</a>
                                                 @if (!empty(auth()->user()->type) && auth()->user()->type == 'client')
@@ -165,6 +159,9 @@
                                                     <a class="dropdown-item oldredirect"
                                                         href="{{ route('freelancerBooking') }}">Your
                                                         Booking</a>
+                                                    <a class="dropdown-item oldredirect"
+                                                        href="{{ route('freelancerBookingHistory') }}">Your
+                                                        Booking History</a>
                                                 @endif
                                                 <a class="dropdown-item oldredirect"
                                                     href="{{ route('termAndConditions') }}">Terms &

@@ -11,7 +11,7 @@
 @section('content')
     <section id="candidates">
         <!-- <img src="{{ asset('template_new/assets/images/candidate_main.jpg') }}" alt="" class="main_img desktop">
-            <img src="{{ asset('template_new/assets/images/styzeler-candidate-banner.JPG') }}" alt="" class="main_img mobile"> -->
+                <img src="{{ asset('template_new/assets/images/styzeler-candidate-banner.JPG') }}" alt="" class="main_img mobile"> -->
 
         <img src="{{ asset('template_new/assets/images/candidate-banner.png') }}" alt="" class="main_img desktop">
         <img src="{{ asset('template_new/assets/images/candidate-banner-mb.png') }}" alt="" class="main_img mobile">
@@ -25,7 +25,7 @@
                         class="shadow_btn {{ @!Auth::user() ? 'show_message' : '' }}"
                         style="font-size: 1.7rem; padding: 0 1rem;
                 	justify-content: space-between;text-align: left;">Hair
-                        Stylistes
+                        Stylists
                         <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                     </a>
                 </li>
@@ -50,7 +50,7 @@
                         class="shadow_btn {{ @!Auth::user() ? 'show_message' : '' }}"
                         style="font-size: 1.7rem; padding: 0 1rem;
                 		justify-content: space-between;text-align: left;">Wedding
-                        Stylistes
+                        Stylists
                         <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                     </a>
                 </li>
@@ -76,7 +76,7 @@
                             difference straight away, taking the pressure off overstretched permanent personnel</p>
                     </div>
                     <div class="btn_blk d-flex justify-content-end mt-5 pt-4">
-                        <a href="{{ route('register') }}" class="site_btn" {!! Auth::user() ? 'style="pointer-events: none"' : '' !!}>Register 
+                        <a href="{{ route('register') }}" class="site_btn" {!! Auth::user() ? 'style="pointer-events: none"' : '' !!}>Register
                             <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="">
                         </a>
                     </div>

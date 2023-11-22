@@ -21,15 +21,22 @@
             }
         }
 
-        #circle {
-            width: auto;
-            /* Adjust the width and height as needed */
-            height: 25px;
-            background-color: #fdd431;
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+
+
+        #cart_line_table {
+            font-size: 1.6rem;
+        }
+
+        .check_list li {
+            font-size: 2rem !important;
+        }
+
+        #cart_services a {
+            font-size: 3rem !important;
+        }
+
+        .freelancer_btn img {
+            margin-left: 6px !important;
         }
     </style>
 @endpush
@@ -39,24 +46,26 @@
     </script>
     <div class="booking my-5">
         <div class="container">
-            <div style="display: flex; justify-content: center;">
-                <h1 class="color-1 m-4 mx-4 my-4 text-center">Your Cart</h1>
-                <div id="circle" class="my-4">
-                    <a href="{{ url()->previous() }}" style="height: auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" style="color: black"
-                            class="icon icon-tabler icon-tabler-arrow-left" width="25" height="25"
-                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                            <path d="M5 12l14 0"></path>
-                            <path d="M5 12l6 6"></path>
-                            <path d="M5 12l6 -6"></path>
-                        </svg>
-                    </a>
+            <div class="row justify-content-center">
+                <div class="booking-box col-lg-8" style="border: 1px solid #c9b9b0;padding: 0px 5px;">
+                    <div class="d-flex justify-content-center" style="border: 1px solid gray;margin: 5px 0px;">
+                        <div id="circle" class="m-4">
+                            <a href="{{ url()->previous() }}" style="height: auto" cla>
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-player-play-filled mx-2 my-2" width="20"
+                                    height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round" style="transform: rotate(180deg);">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path
+                                        d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z"
+                                        stroke-width="0" fill="currentColor" />
+                                </svg>
+                            </a>
+                        </div>
+                        <h1 class="color-1 my-auto text-center">Your Cart</h1>
+                    </div>
                 </div>
-            </div>
-            <div class="row justify-content-center" id="content_row">
-                <div class="booking-box col-lg-8">
+                <div class="booking-box col-lg-8" id="content_row">
                     {{-- <div class="row text-center">
                         <div class="col-4">
                             <h4 class="month-of-year">Date
@@ -85,14 +94,14 @@
                                 Freelancer
                             </a>
                         @endif
-                        <ul class="check_list">
+                        {{-- <ul class="check_list">
                             <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}" alt=""> All
                                 candidates are DBS verified</li>
                             <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}" alt=""> At - Home
                                 service 24/7</li>
                             <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}" alt=""> Minimum call
                                 out &pound;30</li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     {{-- <a class="logon_btn my-5" id="back-btn" href="{{ url()->previous() }}"
                         style="

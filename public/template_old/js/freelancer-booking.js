@@ -810,6 +810,7 @@ function getfreelancerBookings() {
                         let id = response.appointments[i]["id"];
                         let book_slot_id = "";
                         var status;
+                        var check_status;
                         if (
                             response.appointments[i]["status"] != null &&
                             response.appointments[i]["status"].includes(
@@ -846,6 +847,14 @@ function getfreelancerBookings() {
                             response.appointments[i].confirmed_by != null
                         ) {
                             status = "Confirm by Business Owner";
+                        } else if (
+                            response.appointments[i].status != null &&
+                            response.appointments[i].confirmed_by == null &&
+                            response.appointments[i].status.includes(
+                                "Cancelled Due to Time Expire"
+                            )
+                        ) {
+                            status = response.appointments[i].status;
                         }
                         let emailId = response.appointments[i]["_SalonEmail"];
 
@@ -925,9 +934,15 @@ function getfreelancerBookings() {
                             owner_category =
                                 response.appointments[i]["client_user"]["type"];
                         }
-
-                        owner_status = status;
-                        var check_status = owner_status.toLowerCase();
+                        console.log(status);
+                        if (
+                            status != "" ||
+                            status != null ||
+                            status != undefined
+                        ) {
+                            owner_status = status;
+                            check_status = owner_status.toLowerCase();
+                        }
                         slot_time = response.appointments[i]["booking_time"];
                         let app_created_date_dateOnly =
                             app_created_date.split("T")[0];

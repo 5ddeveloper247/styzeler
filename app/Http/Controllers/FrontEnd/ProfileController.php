@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\FrontEnd;
 
+use Log;
 use Countable;
 use Carbon\Carbon;
 use App\Models\Cart;
@@ -381,7 +382,6 @@ class ProfileController extends Controller
                 ]
             )
                 ->count();
-            // dd($appoExistBooked);
             if ($tokens == 0 && $appoExist == 0) {
                 return response()->json([
                     'status' => 404,
@@ -413,7 +413,6 @@ class ProfileController extends Controller
                 } else {
                     $totalServiceTime = $cartServiceTimeMin;
                 }
-                // dd($totalServiceTime);
 
                 $serviceStartTime = Carbon::createFromFormat('H:i', $slotDetails->start_time);
                 $serviceEndTime = $serviceStartTime->addMinutes($totalServiceTime)->format('H:i');
@@ -504,7 +503,6 @@ class ProfileController extends Controller
                         ]
                     );
                 } else {
-                    // dd($totalServiceTime, $serviceEndTime);
                     if ($totalServiceTime > 540) { // if user will chekout after 9 then restrict user to add services less then nxt morning 6 O'clock
                         return response()->json(
                             [
@@ -979,60 +977,54 @@ class ProfileController extends Controller
     {
         $currentDate = now()->toDateString();
         $allowedTypes = ['client', 'beautySalon', 'hairdressingSalon'];
-
         if (in_array(Auth::user()->type, $allowedTypes)) {
 
             $getProfileData = Appointments::where(
                 [
                     ['booking_user_id', Auth::id()],
-                    ['booking_date', '>=', $currentDate],
+                    ['created_at', '>=', $currentDate],
                 ]
-
-            )
-                ->where('status', 'not like', '%Cancelled%')
+            )->where(function ($query) {
+                $query->where('status', 'not like', '%Cancelled%')
+                    ->orWhereNull('status')
+                    ->orWhere('status', '');
+            })
                 ->has('userBookingSlots')
                 ->with(
                     [
                         'userBookingSlots',
-                        //  => function ($q) {
-                        //     $q->where('status', '!=', 'Available');
-                        // },
                         'clientUser',
                         'freelancerAppUser',
-                        // 'userBookingSlots',
-                        // 'userBookingSlots.bookings',
-                        // 'userBookingSlots.bookings.FreelancerUser'
                     ]
                 )
                 ->orderBy('created_at', 'desc')
                 ->get();
         } else {
-
             $getProfileData = Appointments::where(
                 [
                     ['freelancer_user_id', Auth::id()],
-                    ['booking_date', '>=', $currentDate],
-
+                    ['created_at', '>=', $currentDate],
                 ]
-            )
-                ->where('status', 'not like', '%Cancelled%')
+            )->where(function ($query) {
+                $query->where('status', 'not like', '%Cancelled%')
+                    ->orWhereNull('status')
+                    ->orWhere('status', '');
+            })
                 ->has('userBookingSlots')
                 ->with(
                     [
                         'userBookingSlots',
-                        // => function ($q) {
-                        //     $q->where('status', '!=', 'Available');
-                        // },
                         'clientAppUser',
-                        'freelancerUser'
+                        'freelancerUser',
                     ]
                 )
                 ->orderBy('created_at', 'desc')
                 ->get();
         }
+        // Log::info('SQL Query: ' . $getProfileData->toSql());
+        // Log::info('Bindings: ' . json_encode($getProfileData->getBindings()));
+
         // dd($getProfileData, Auth::id());
-
-
         return response()->json(
             [
                 'status' => 200,
@@ -1051,39 +1043,56 @@ class ProfileController extends Controller
 
         if (in_array(Auth::user()->type, $allowedTypes)) {
 
-            $getProfileData = Appointments::where(
-                [
-                    ['booking_user_id', Auth::id()],
-                    ['created_at', '<', $currentDate]
-                ]
+            // $getProfileData = Appointments::where(
+            //     [
+            //         ['booking_user_id', Auth::id()],
+            //         ['created_at', '<=', $currentDate]
+            //     ]
 
-            )
-                ->with(
-                    [
-                        'clientUser',
-                        'freelancerAppUser',
-                        'userBookingSlots',
-                        // 'userBookingSlots.bookings.FreelancerUser'
-                    ]
-                )
+            // )
+            //     ->with(
+            //         [
+            //             'clientUser',
+            //             'freelancerAppUser',
+            //             'userBookingSlots',
+            //         ]
+            //     )
+            //     ->orderBy('created_at', 'desc')
+            //     ->get();
+
+            $getProfileData = Appointments::where(function ($query) use ($currentDate) {
+                $query->where([
+                    ['booking_user_id', Auth::id()],
+                    ['created_at', '<=', $currentDate],
+                ])->orWhere([
+                    ['booking_user_id', Auth::id()],
+                    ['status', 'like', '%Cancelled%'],
+                ]);
+            })
+                ->whereNotNull('status')
+                ->with([
+                    'clientUser',
+                    'freelancerAppUser',
+                    'userBookingSlots',
+                ])
                 ->orderBy('created_at', 'desc')
                 ->get();
         } else {
-            $getProfileData = Appointments::where(
-                [
+            $getProfileData = Appointments::where(function ($query) use ($currentDate) {
+                $query->where([
                     ['freelancer_user_id', Auth::id()],
-                    ['created_at', '<', $currentDate]
-                ]
-
-            )
-                ->with(
-                    [
-                        'clientAppUser',
-                        'freelancerUser',
-                        'userBookingSlots',
-                        // 'userBookingSlots.bookings.FreelancerUser'
-                    ]
-                )
+                    ['created_at', '<=', $currentDate],
+                ])->orWhere([
+                    ['freelancer_user_id', Auth::id()],
+                    ['status', 'like', '%Cancelled%'],
+                ]);
+            })
+                ->whereNotNull('status')
+                ->with([
+                    'clientAppUser',
+                    'freelancerUser',
+                    'userBookingSlots',
+                ])
                 ->orderBy('created_at', 'desc')
                 ->get();
         }
@@ -1373,7 +1382,6 @@ class ProfileController extends Controller
         //     ]
         // )
         //     ->count();
-        // dd($request->all());
         $appoExistBooked = Appointments::where(
             [
                 'booking_user_id' => $getAppointmentBookingUserId,
@@ -1382,7 +1390,6 @@ class ProfileController extends Controller
             ]
         )
             ->count();
-        // dd($appoExistBooked);
         if ($appoExistBooked == 1 && ($getAppointmentData->status == 'Booked' || $clientUser->type == 'client')) {
             User::where('id', $clientUser->id)->update(
                 [
@@ -1804,44 +1811,92 @@ class ProfileController extends Controller
 
     public function checkOnHold()
     {
-        $check_appointment = Appointments::has('userBookingSlots')
-            ->with(
-                [
-                    'userBookingSlots' => function ($q) {
-                        $q->where(
-                            [
-                                'slots_time' => '07:00 AM - 09:00 PM',
-                                'status' => 'Confirmed by Freelancer'
-                            ]
-                        );
-                    }
-                ]
-            )
-            ->get();
-        foreach ($check_appointment as $appointment) {
+        $body1 = "<table>
+                    <tr>
+                        <td>Business Owner Name: Kamran</td>
+                    </tr>
+                    <tr>
+                        <td>Freelancer Name: Usman</td>
+                    </tr>
+                    <tr>
+                        <td>Business Owner Email: kamran@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>Freelancer Email: usman@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <td>Booking Date: 22-11-2023</td>
+                    </tr>
+                    <tr>
+                        <td>Slot time: 9:00</td>
+                    </tr>
+                    <tr>
+                        <td>Status: Cancelled Due to Time Expiry</td>
+                    </tr>
+                </table>";
 
-            $appointment_date = date('Y-m-d', strtotime($appointment->created_at . " +36 hours"));
-            // $time1 = (Carbon::now()->format('2023-11-20 12:00'));
-            // $time2 = ($appointment_date . " 12:00");
-            // if ($time1 == $time2) {
-            //     # code...
-            //     echo "$time1 == $time2 <br>";
-            // } else {
-            //     echo "Not Matched<br>";
-            // }
+        // $sendEmailTo = [
+        //     'admin',
+        //     'owner',
+        //     'freelancer'
+        // ];
 
-            // var_dump(Carbon::now()->format('Y-m-d H:i') > $appointment_date . " 12:00");
-            if (Carbon::now()->format('Y-m-d H:i') > $appointment_date . " 12:00") {
-                $bookingSlot = $appointment->userBookingSlots;
-                // print_r($bookingSlot);
-                // dd(Carbon::now()->format('Y-m-d H:i') > $appointment_date . " 12:00", $appointment);
-                if ($bookingSlot) {
-                    $bookingSlot->status = 'Cancelled Due to Time Expire';
-                    $bookingSlot->slots_time = null;
-                    $bookingSlot->save();
-                }
-            }
+        // foreach ($sendEmailTo as $user_type) {
+        //     if ($user_type == 'admin') {
+        //         $admin = User::where('type', $user_type)->first();
+        //         sendMail($admin->name, $admin->email, "Booking Confirm", "Booking Confirm Email", $body1);
+        //     } else if ($user_type == 'freelancer') {
+        //         $freelancer = User::findOrFail($appointment->freelancer_user_id);
+        //         sendMail($freelancer->name, $freelancer->email, "Booking Confirm", "Booking Confirm Email", $body1);
+        //     } else if ($user_type == 'owner') {
+        //         $freelancer = User::findOrFail($appointment->booking_user_id);
+        //         sendMail($freelancer->name, $freelancer->email, "Booking Confirm", "Booking Confirm Email", $body1);
+        //     }
+        sendMail('Usman', 'misterkamran93@gmail.com', "Booking Confirm", "Booking Confirm Email", $body1);
         }
+
+        // $check_appointment = Appointments::has('userBookingSlots')
+        //     ->with(
+        //         [
+        //             'userBookingSlots' => function ($q) {
+        //                 $q->where(
+        //                     [
+        //                         'slots_time' => '07:00 AM - 09:00 PM',
+        //                         'status' => 'Confirmed by Freelancer'
+        //                     ]
+        //                 );
+        //             },
+        //             'userBookingSlots.bookings'
+        //         ]
+        //     )
+        //     ->get();
+
+
+        // foreach ($check_appointment as $appointment) {
+
+        //     $appointment_date = date('Y-m-d', strtotime($appointment->created_at . " +36 hours"));
+
+        //     $time_now = Carbon::now()->format('Y-m-d H:i');
+        //     $time_next = $appointment_date . " 12:00";
+        //     $diff_in_time = Carbon::parse($time_now)->diffInHours($time_next);
+
+        //     if ($diff_in_time < 36) {
+        //         $bookingSlot = $appointment->userBookingSlots ?? null;
+        //         $bookings = $appointment->userBookingSlots->bookings ?? null;
+
+        //         if (!is_null($bookingSlot) && !is_null($bookings)) {
+        //             $bookingSlot->status = 'Available';
+        //             $bookingSlot->slots_time = null;
+        //             $bookingSlot->save();
+
+        //             $bookings->status = 'Available';
+        //             $bookings->save();
+
+        //             $appointment->status = 'Cancelled Due to Time Expire';
+        //             $appointment->save();
+        //         }
+        //     }
+        // }
     }
 }
 
