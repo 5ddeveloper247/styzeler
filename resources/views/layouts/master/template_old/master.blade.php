@@ -406,6 +406,19 @@
             font-size: 14px !important;
             font-weight: 500 !important;
         }
+
+        #circle {
+            width: 30px;
+            height: auto;
+            max-height: 30px;
+            min-height: 30px;
+            background-color: #fdd431;
+            border-radius: 20%;
+        }
+
+        #circle svg {
+            color: black !important;
+        }
     </style>
     @stack('css')
 </head>

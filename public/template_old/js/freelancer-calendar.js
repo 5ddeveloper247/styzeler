@@ -106,7 +106,7 @@ function removeDuplicates(data) {
                         var changeSlot = "";
                         var html = "";
                         var slot_time_html = ``;
-
+                        var isBooked = "";
                         $(".timeSlots").empty();
                         $(".total_time_slots").empty();
                         var profileStatus =
@@ -114,14 +114,26 @@ function removeDuplicates(data) {
                         $.each(showResponse.data, function (i) {
                             var status = showResponse.data[i]["status"];
 
+                            if (user_type == "client") {
+                                isBooked = "Booked";
+                            } else {
+                                isBooked = "Available";
+                            }
                             // Define a mapping of status values to titles
                             var statusToTitle = {
                                 Available: "Available",
                                 Hold: "Hold",
+                                Booked: isBooked,
                                 Off: "Off",
                                 "On Call": "On Call",
                                 // Add more mappings as needed
                             };
+                            console.log(
+                                showResponse,
+                                statusToTitle,
+                                status,
+                                user_type
+                            );
 
                             var title = statusToTitle[status] || status; // Use the mapping or the status as the title
                             events.push({

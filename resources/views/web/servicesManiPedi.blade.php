@@ -179,9 +179,9 @@
                                                 alt=""></button>
                                     </li>
                                     <!-- <li>
-                                                                                                                                                                                                                                                                                                                                      <button type="button" class="shadow_btn shaddowbtn1" onclick="caseCat('Hard_Gel')">Hard Gel <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
-                                                                                                                                                                                                                                                                                                                                     </li>
-                                                                                                                                                                                                                                                                                                                                     -->
+                                                                                                                                                                                                                                                                                                                                                          <button type="button" class="shadow_btn shaddowbtn1" onclick="caseCat('Hard_Gel')">Hard Gel <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></button>
+                                                                                                                                                                                                                                                                                                                                                         </li>
+                                                                                                                                                                                                                                                                                                                                                         -->
                                 </ul>
                                 <div class="txt_wrap scrollbar" id="showbox">
                                     <form action="" method="post" id="inner_form">
@@ -232,8 +232,8 @@
                                         <div class="right-arrow">
                                             {{-- <img src="{{ asset('template_new/assets/images/arrow-234.svg') }}"> --}}
                                         </div>
-                                        {{-- <div class="btn_block">
-                                            @if (@$tokens > 0)
+                                        <div class="btn_block mt-0">
+                                            {{-- @if (@$tokens > 0)
                                                 <a href="{{ route('bookFreelancer') }}" class="book_freelance_btn">
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""> Book a Freelancer
@@ -243,8 +243,8 @@
                                                     <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                         alt=""> Book a Freelancer
                                                 </a>
-                                            @endif
-                                            <ul class="check_list">
+                                            @endif --}}
+                                            <ul class="check_list my-3">
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> All candidates are DBS verified</li>
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
@@ -252,7 +252,7 @@
                                                 <li><img src="{{ asset('template_new/assets/images/tick2.svg') }}"
                                                         alt=""> Minimum call out &pound;30</li>
                                             </ul>
-                                        </div> --}}
+                                        </div>
                                     </form>
                                     <form id="addtocart_form" style="display: none;">
                                         <input type="hidden" id="userId" name="userId"
@@ -522,7 +522,7 @@
                     'data-service', 'Gel Manicure/Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
-                    'A gel manicure or pedicure involves a manicurist applying two coats of gel then set and hardening under UV (ultra-violet) light using a small, portable UV machine. Application may involve up to three coats of gel, and each coat needs to be set or �cured� under the light'
+                    'A gel manicure or pedicure involves a manicurist applying two coats of gel then set and hardening under UV (ultra-violet) light using a small, portable UV machine. Application may involve up to three coats of gel, and each coat needs to be set or cured under the light'
                 );
             }
 
@@ -535,7 +535,7 @@
                     'data-service', 'Gel Manicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
-                    'A gel manicure involves a manicurist applying two coats of gel and then set and hardening under UV (ultra-violet) light using a small, portable UV machine. Application may involve up to three coats of gel, and each coat needs to be set or �cured� under the light'
+                    'A gel manicure involves a manicurist applying two coats of gel and then set and hardening under UV (ultra-violet) light using a small, portable UV machine. Application may involve up to three coats of gel, and each coat needs to be set or cured under the light'
                 );
             }
 
@@ -548,7 +548,7 @@
                     'data-service', 'Gel Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
-                    'A gel pedicure involves a manicurist applying two coats of gel and then set and hardening under UV (ultra-violet) light using a small, portable UV machine. Application may involve up to three coats of gel, and each coat needs to be set or �cured� under the light'
+                    'A gel pedicure involves a manicurist applying two coats of gel and then set and hardening under UV (ultra-violet) light using a small, portable UV machine. Application may involve up to three coats of gel, and each coat needs to be set or cured under the light'
                 );
             }
 
@@ -604,7 +604,7 @@
             if (i == 'Nail_Art_Gel_Pedi') {
                 $("#top_1").show();
                 $("#top_1 p").html(
-                    '<span class="my-auto">s60 Minutes &pound;45</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
+                    '<span class="my-auto">60 Minutes &pound;45</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
                 ).attr('data-time', '60').attr('data-price', '45').attr(
                     'data-service', 'Nail Art + Gel Pedi').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
@@ -622,7 +622,7 @@
                     'data-service', 'Gel Manicure/Pedicure').attr('data-subtype', subtype);
                 $("#top_2,#top_3").hide();
                 $("#description").text(
-                    'A gel manicure or pedicure involves a manicurist applying two coats of gel then set and hardening under UV (ultra-violet) light using a small, portable UV machine. Application may involve up to three coats of gel, and each coat needs to be set or �cured� under the light'
+                    'A gel manicure or pedicure involves a manicurist applying two coats of gel then set and hardening under UV (ultra-violet) light using a small, portable UV machine. Application may involve up to three coats of gel, and each coat needs to be set or cured under the light'
                 );
             }
         }
