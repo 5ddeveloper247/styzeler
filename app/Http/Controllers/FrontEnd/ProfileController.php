@@ -453,13 +453,6 @@ class ProfileController extends Controller
                             );
                         }
 
-                        // if ($firstindexSlots->slots_time != $lastindexSlots->slots_time) {
-                        //     return response()->json([
-                        //         'status' => 422,
-                        //         'message' => 'There is a break between the slots, kindly choose different time.',
-                        //     ]);
-                        // }
-
                         $hasBookedSlot = $slots->contains(function ($slot) {
                             return $slot->status !== 'Available';
                         });
@@ -640,11 +633,8 @@ class ProfileController extends Controller
             }
 
             $checkSlot = $checkSlot->where('booking_slots_id', $request->slot_book_id)->first();
-            // $check_status = '';
-            // if ($checkSlot && $checkSlot->userBookingSlots) {
-            //     $check_status = $checkSlot->userBookingSlots->status;
-            // }
-            if ($checkSlot && !str_contains(strtolower($checkSlot->status), 'cancelled by')) {
+
+            if ($checkSlot && !str_contains(strtolower($checkSlot->status), 'cancelled')) {
                 return response()->json([
                     'status' => 422,
                     'message' => 'Slot is Already Booked.',
@@ -1021,10 +1011,7 @@ class ProfileController extends Controller
                 ->orderBy('created_at', 'desc')
                 ->get();
         }
-        // Log::info('SQL Query: ' . $getProfileData->toSql());
-        // Log::info('Bindings: ' . json_encode($getProfileData->getBindings()));
 
-        // dd($getProfileData, Auth::id());
         return response()->json(
             [
                 'status' => 200,
@@ -1828,7 +1815,6 @@ class ProfileController extends Controller
             )
             ->get();
 
-        // dd($check_appointment);
         foreach ($check_appointment as $appointment) {
             $freelancer_user = User::where('id', $appointment->freelancer_user_id)->first();
             $booking_user = User::where('id', $appointment->booking_user_id)->first();
@@ -1839,7 +1825,7 @@ class ProfileController extends Controller
             $time_next = $appointment_date . " 12:00";
             $diff_in_time = Carbon::parse($time_now)->diffInHours($time_next);
 
-            if ($diff_in_time < 36) {
+            if ($diff_in_time < 12) {
                 $bookingSlot = $appointment->userBookingSlots ?? null;
                 $bookings = $appointment->userBookingSlots->bookings ?? null;
 

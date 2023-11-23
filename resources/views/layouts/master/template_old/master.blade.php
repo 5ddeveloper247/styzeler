@@ -407,17 +407,26 @@
             font-weight: 500 !important;
         }
 
+
         #circle {
             width: 30px;
             height: auto;
             max-height: 30px;
             min-height: 30px;
-            background-color: #fdd431;
             border-radius: 20%;
+            background-image: linear-gradient(to bottom, #fdd431, #604f0b);
+            transition: 0.5s;
+            background-size: 200% auto;
         }
 
         #circle svg {
             color: black !important;
+        }
+
+        .circle:hover {
+            background-position: bottom center;
+            color: #fff;
+            text-decoration: none;
         }
     </style>
     @stack('css')

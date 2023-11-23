@@ -438,7 +438,7 @@
                                     @if (@count($appointments))
                                         @forelse ($appointments as $row)
                                             {{-- @dd($row) --}}
-                                            @if (!empty($row) && str_contains(strtolower($row->status), 'cancelled by'))
+                                            @if (!empty($row) && str_contains(strtolower($row->status), 'cancelled'))
                                                 @php
                                                     $creationDate = date('d-M-Y', strtotime(@$row->created_at));
                                                     $bookDate = date('d-M-Y', strtotime(@$row->booking_date));

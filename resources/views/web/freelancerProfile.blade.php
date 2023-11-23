@@ -432,7 +432,7 @@
                     </div>
                     <div class="book-off col-6 col-md-4 col-lg-2 text-center">
                         <div class="option off customBtnNotSelected">
-                            <a onClick="avaliableAppointmentDate('Off')">Off</a>
+                            <a id="off_btn" onClick="avaliableAppointmentDate('Off')">Off</a>
                         </div>
                     </div>
                     {{-- <div class="book-on-call col-6 col-md-4 col-lg-2 text-center">

@@ -41,7 +41,6 @@ jQuery(document).ready(function () {
 });
 
 function convertTo12HourFormat(time24) {
-    // console.log(time24);
     // Split the time string into hours and minutes
     const [hours, minutes] = time24.split(":");
 
@@ -102,7 +101,6 @@ function removeDuplicates(data) {
                     data: {},
                     success: function (showResponse) {
                         var events = [];
-
                         var changeSlot = "";
                         var html = "";
                         var slot_time_html = ``;
@@ -128,12 +126,6 @@ function removeDuplicates(data) {
                                 "On Call": "On Call",
                                 // Add more mappings as needed
                             };
-                            console.log(
-                                showResponse,
-                                statusToTitle,
-                                status,
-                                user_type
-                            );
 
                             var title = statusToTitle[status] || status; // Use the mapping or the status as the title
                             events.push({
@@ -408,7 +400,7 @@ function removeDuplicates(data) {
                 // $("#options").show();
                 optionBtns(convert(dateText));
                 let d = convert(dateText);
-                // console.log(d);
+
                 evezz.push({
                     //   title: 'B',
                     // color: "#0decfc",
@@ -439,7 +431,7 @@ function removeDuplicates(data) {
                     url: "/showAppointmentDates",
                     data: JSON.stringify({}),
                     success: function (showResponse) {
-                        // console.log(showResponse)
+                        console.log(showResponse.data);
                         if (
                             user_type == "hairdressingSalon" ||
                             user_type == "beautySalon" ||
@@ -455,7 +447,6 @@ function removeDuplicates(data) {
                                 convert(dateText)
                             ) {
                                 var status = showResponse.data[i]["status"];
-                                // console.log(status);
 
                                 if (status == "Off") {
                                     changeSlot = "customBtnNotSelected";
@@ -502,7 +493,12 @@ function removeDuplicates(data) {
                                                 showResponse.data[i][
                                                     "booking_time_slots"
                                                 ][j]["status"];
-
+                                            console.log(
+                                                status,
+                                                showResponse.data[i][
+                                                    "booking_time_slots"
+                                                ][j]["start_time"]
+                                            );
                                             if (status != null) {
                                                 status_for_hold =
                                                     status.toLowerCase();
@@ -530,9 +526,12 @@ function removeDuplicates(data) {
                                                     "checked",
                                                     true
                                                 );
-                                                $("#after_nine_slot").attr(
-                                                    "disabled",
+                                                $("#after_nine_slot").prop(
+                                                    "checked",
                                                     true
+                                                );
+                                                $("#off_btn").removeAttr(
+                                                    "onclick"
                                                 );
                                             } else {
                                                 // alert('123')
@@ -613,7 +612,6 @@ function removeDuplicates(data) {
                                 }
                                 var filtered_times =
                                     removeDuplicates(slots_times);
-                                // console.log(filtered_times);
                                 if (slots_times != "") {
                                     $.each(filtered_times, function (k) {
                                         if (filtered_times[k] != "After_Nine") {
