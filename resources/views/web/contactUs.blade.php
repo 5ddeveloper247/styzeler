@@ -179,7 +179,7 @@
                     <h3>Contact Details</h3>
                     <p>Styzeler Kemp House,152-160 <br> City Road London. EC1V 2NX</p>
                     <br>
-                    <p><a href="tel:0207 566 3989">0207 566 3989</a></p>
+                    {{-- <p><a href="tel:0207 566 3989">0207 566 3989</a></p> --}}
                     <br>
                     <br>
                     <br>

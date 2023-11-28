@@ -341,7 +341,7 @@ class FrontEndController extends Controller
     {
         $data['blogs'] = Blog::where('status', 'active')->get();
         return view('web.blogs')->with($data);
-    }
+    } 
 
     public function servicesBodywaxing()
     {
@@ -375,14 +375,35 @@ class FrontEndController extends Controller
         return view('web.servicesFacial')->with($data);
     }
 
-    public function servicesMassage()
+    public function servicesMassage(Request $request)
     {
-        $serviceArray = ['Massage'];
-        $this->removeNonServiceCartLines($serviceArray);
+           //dd("jalkdjfklsajf");
+           // $request->dd();
+            $serviceArray = ['Message'];
+            $this->removeNonServiceCartLines($serviceArray);
+            $user = User::where('id', Auth::user()->id)->first();
+            $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
+            return view('web.servicesMassage')->with($data);
+        
+        //  $urlCheck=url('/cart');
+        //  $url = request()->url();
+        //  $previousUrl = url()->previous();
+       
+        // if($previousUrl== $urlCheck){
+        //  $user = User::where('id', Auth::user()->id)->first();
+        // $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
+        // return view('web.servicesMassage')->with($data);
+        // }
+        // else{
+        //     $serviceArray = ['Massage'];
+        //     $this->removeNonServiceCartLines($serviceArray);
+        //     $user = User::where('id', Auth::user()->id)->first();
+        //     $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
+        //     return view('web.servicesMassage')->with($data);
+        // }
+       
 
-        $user = User::where('id', Auth::user()->id)->first();
-        $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
-        return view('web.servicesMassage')->with($data);
+       
     }
 
     public function servicesLadies()
@@ -412,7 +433,7 @@ class FrontEndController extends Controller
     public function bookFreelancer()
     {
         if (!isset(Auth::user()->id)) {
-            return redirect()->back();;
+            return redirect()->back();
         }
 
         $cart = Cart::with('cart_lines')->where('user_id', Auth::user()->id)->where('status', 'active')->first();
@@ -523,7 +544,9 @@ class FrontEndController extends Controller
     }
 
     public function cart()
-    {
+
+    { 
+        //dd("kajdflkajs");
         $user = User::where('id', Auth::user()->id)->first();
         $data['tokens'] = (isset($user->total_tokens) && $user->total_tokens != null) ? $user->total_tokens : 0;
         return view('web.cart')->with($data);
@@ -567,7 +590,7 @@ class FrontEndController extends Controller
             'user_id' => Auth::user()->id,
             'status' => 'active'
         ])->with('cart_lines')->first();
-
+       //dd($exists);
         if (!empty($exists) && count($exists->cart_lines)) {
             foreach ($exists->cart_lines as $cart_line) {
                 if (!in_array($cart_line->item_type, $serviceArray)) {

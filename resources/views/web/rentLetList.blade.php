@@ -75,9 +75,9 @@
                                                     info!</span>
                                             </span>
                                         </p>
-                                        {{-- <p>
+                                        <p>
                                             <strong>Mobile: </strong>{{ $rentLet->phone }}
-                                        </p> --}}
+                                        </p>
                                         <p>
                                             <strong>Postal Code: </strong>{{ $rentLet->post_code }}
                                         </p>

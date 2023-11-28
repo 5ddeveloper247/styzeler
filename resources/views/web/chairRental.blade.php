@@ -89,10 +89,10 @@
                                         aria-describedby="salonCountryCode" name="salonCountryCode" placeholder="Post code"
                                         autocomplete="nope" required>
                                 </div>
-                                {{-- <div class="form-group">
+                                <div class="form-group">
                                     <input type="text" class="form-control change" id="salonMobile" name="salonMobile"
                                         aria-describedby="salon-mobile" placeholder="Phone" autocomplete="nope" required>
-                                </div> --}}
+                                </div>
                                 <div class="form-group">
                                     <textarea class="form-control change" id="spaceDescription" name="spaceDescription" name="space-description"
                                         style="height:8vw;" placeholder="Space Description" autocomplete="nope" required></textarea>

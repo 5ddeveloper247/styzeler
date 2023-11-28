@@ -4,6 +4,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\FrontEnd\ProfileController;
 
 Route::get('/', function () {
     return view('index');
@@ -156,6 +157,10 @@ Route::group(['namespace' => 'FrontEnd'], function () {
 
     Route::post('/saveContactUsEnquiry', 'ContactController@saveContactUsEnquiry')->name('saveContactUsEnquiry');
     Route::get('/getClientTokens', 'ProfileController@getClientTokens')->name('getClientTokens');
+   // Route::get('/checkOnHold', 'ProfileController@checkOnHold')->name('checkOnHold');
+    Route::get('/checkOnHoldLog', 'ProfileController@checkOnHoldLog')->name('checkOnHoldLog');
+    
+
 });
 
 
@@ -244,6 +249,10 @@ Route::group(['prefix' => 'admin'], function () {
         });
     });
 });
+
+
+
+
 
 
 Route::get('/sendMail', 'App\Http\Controllers\MailController@sendMail');

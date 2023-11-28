@@ -11,7 +11,7 @@
                 <span><a target="_blank" href="https://g.page/r/CbZ4IkhN9ROREAE"><i class="fa fa-google color-1" aria-hidden="true"></i></a></span>
             </div>
         </div>
-        <div class="num"><a href="tel:0207 566 3989">0207 566 3989</a></div>
+        {{-- <div class="num"><a href="tel:0207 566 3989">0207 566 3989</a></div> --}}
         <div class="email">
             <a href="mailto:wearestyzeler@gmail.com">wearestyzeler@gmail.com</a>
         </div>

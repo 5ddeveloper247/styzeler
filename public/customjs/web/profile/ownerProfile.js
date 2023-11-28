@@ -44,9 +44,9 @@ function editName() {
     $(".name-modal").modal("show");
 }
 
-// function editMobile() {
-//     $(".mobile-modal").modal('show');
-// }
+function editMobile() {
+    $(".mobile-modal").modal('show');
+}
 
 function editAddress() {
     $(".address-modal").modal("show");
@@ -172,7 +172,7 @@ function profileResponse(response) {
             // For name,surname,phone
             profilename = data.name;
             surname = data.surname;
-            // phone = data.phone;
+             phone = data.phone;
             address = data.address;
             post_code = data.post_code;
 
@@ -197,14 +197,14 @@ function profileResponse(response) {
                     "</a>"
             );
 
-            // $("#owner-phone").text(phone);
-            // $("#owner-phone").append('<a class="text-center btn" onclick="editMobile()" title="Edit">' + "✎" + "</a>");
+            $("#owner-phone").text(phone);
+            $("#owner-phone").append('<a class="text-center btn" onclick="editMobile()" title="Edit">' + "✎" + "</a>");
 
             $("#owner-email").text(email);
 
             $("#stylist-name").val(profilename);
             $("#stylist-surname").val(surname);
-            // $('#stylist-mobile').val(phone);
+            $('#stylist-mobile').val(phone);
             $("#stylist-address").val(address);
             $("#stylist-postcode").val(post_code);
 

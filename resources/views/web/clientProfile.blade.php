@@ -155,9 +155,9 @@
                 <div class="Postcode row"><label class="color-1 col-lg-3">Client's postcode : </label>
                     <p class="col-lg-9" id="owner-postcode"></p>
                 </div>
-                {{-- <div class="phone row"><label class="color-1 col-lg-3">Client's Phone : </label>
+                <div class="phone row"><label class="color-1 col-lg-3">Client's Phone : </label>
                     <p class="col-lg-9" id="owner-phone"></p>
-                </div> --}}
+                </div>
                 <div class="email row"><label class="color-1 col-lg-3">Email : </label>
                     <p class="col-lg-9" id="owner-email"></p>
                 </div>
@@ -267,7 +267,7 @@
                 </div>
             </div>
             <!-- edit mobile number -->
-            {{-- <div class="modal mobile-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
+            <div class="modal mobile-modal" tabindex="-1" role="dialog" data-keyboard="false" data-backdrop="static">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                     <div class="modal-content bg-dark">
                         <div class="modal-header"><button type="button" class="close" data-dismiss="modal"
@@ -287,7 +287,7 @@
                         <div class="modal-footer text-center"></div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <!-- edit address -->
             <div class="modal address-modal" tabindex="-1" role="dialog" data-keyboard="false"
                 data-backdrop="static">

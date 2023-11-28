@@ -71,9 +71,9 @@ $(document).ready(function () {
     });
 });
 
-// function editName() {
-//     $(".name-mobile-modal").modal("show");
-// }
+function editName() {
+    $(".name-mobile-modal").modal("show");
+}
 function addTimeSlots() {
     $("#slot_id").val("");
     $("#start_time").val("");
@@ -239,11 +239,11 @@ function profileResponse(response) {
             surname = data.surname;
             phone = data.phone;
 
-            // if (phone) {
-            //     var cleanedPhone = phone.replace(/\D/g, '');
-            // } else {
-            //     var cleanedPhone = '-'
-            // }
+            if (phone) {
+                var cleanedPhone = phone.replace(/\D/g, '');
+            } else {
+                var cleanedPhone = '-'
+            }
 
             $("#ownerName").text(profilename + " " + surname);
             $("#ownerName").append(
@@ -252,7 +252,7 @@ function profileResponse(response) {
 
             $("#stylist-name").val(profilename);
             $("#stylist-surname").val(surname);
-            // $('#stylist-mobile').val(phone);
+             $('#stylist-mobile').val(phone);
 
             // for age
             age = data.age;

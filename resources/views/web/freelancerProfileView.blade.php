@@ -701,10 +701,10 @@
                             <input type="text" class="form-control" id="stylist-surname" name="stylist_surname"
                                 aria-describedby="stylist-surname" placeholder="Surname">
                         </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <input type="tel" class="form-control" id="stylist-mobile" name="stylist_mobile"
                                 aria-describedby="stylist-mobile" placeholder="Mobile">
-                        </div> --}}
+                        </div>
                         </p>
                         <button type="button" class="btn customBtn updateBasicInfoProfile"
                             data-dismiss="modal">Okay</button>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\FrontEnd;
 
 use Log;
+use Illuminate\Support\Facades\File;
 use Countable;
 use Carbon\Carbon;
 use App\Models\Cart;
@@ -306,6 +307,11 @@ class ProfileController extends Controller
         return response()->json($responseData);
     }
 
+
+
+
+
+
     public function showAppointmentDates(Request $req)
     {
 
@@ -432,7 +438,8 @@ class ProfileController extends Controller
                         ->whereBetween(
                             'start_time',
                             [
-                                $slotDetails->start_time, date('H:i', strtotime('-1 minutes', strtotime($serviceEndTime)))
+                                $slotDetails->start_time,
+                                date('H:i', strtotime('-1 minutes', strtotime($serviceEndTime)))
                             ]
                         )
                         ->orderBy('start_time', 'asc')
@@ -704,7 +711,7 @@ class ProfileController extends Controller
             }
             // Create a new appointment
 
-            $get_last_time =  Appointments::create(
+            $get_last_time = Appointments::create(
                 [
                     'booking_slots_id' => $request->slot_book_id,
                     'freelancer_user_id' => $request->user_id,
@@ -795,7 +802,7 @@ class ProfileController extends Controller
         $startTime = $request->start_time;
         $endTime = $request->end_time;
 
-        $validator =  Validator::make($request->all(), [
+        $validator = Validator::make($request->all(), [
             'start_time' => 'required',
             'end_time' => 'required',
 
@@ -918,7 +925,8 @@ class ProfileController extends Controller
 
         $booking = Bookings::where(
             [
-                'date' => $availableDays, 'user_id' => Auth::id()
+                'date' => $availableDays,
+                'user_id' => Auth::id()
             ]
         )
             ->first();
@@ -941,7 +949,7 @@ class ProfileController extends Controller
                 'bookings_id' => $newBookingId,
                 'start_time' => $bookingSlot,
                 'end_time' => date('H:i', strtotime('+30 minutes', strtotime($bookingSlot))),
-                'slots_time' => $start_slot_time . " - " .  $end_slot_time,
+                'slots_time' => $start_slot_time . " - " . $end_slot_time,
                 'status' => 'Available',
             ];
             $bookingSlot = BookingSlots::create($data);
@@ -1052,9 +1060,9 @@ class ProfileController extends Controller
                     ['booking_user_id', Auth::id()],
                     ['created_at', '<=', $currentDate],
                 ])->orWhere([
-                    ['booking_user_id', Auth::id()],
-                    ['status', 'like', '%Cancelled%'],
-                ]);
+                            ['booking_user_id', Auth::id()],
+                            ['status', 'like', '%Cancelled%'],
+                        ]);
             })
                 ->whereNotNull('status')
                 ->with([
@@ -1070,9 +1078,9 @@ class ProfileController extends Controller
                     ['freelancer_user_id', Auth::id()],
                     ['created_at', '<=', $currentDate],
                 ])->orWhere([
-                    ['freelancer_user_id', Auth::id()],
-                    ['status', 'like', '%Cancelled%'],
-                ]);
+                            ['freelancer_user_id', Auth::id()],
+                            ['status', 'like', '%Cancelled%'],
+                        ]);
             })
                 ->whereNotNull('status')
                 ->with([
@@ -1292,7 +1300,7 @@ class ProfileController extends Controller
 
     public function cancelAppointment(Request $request)
     {
-        $appId =  $request->app_id;
+        $appId = $request->app_id;
         $cancel_time = $request->cancel_time;
         $cancel_by = formatUserType($request->cancel_by);
 
@@ -1617,7 +1625,8 @@ class ProfileController extends Controller
             $user->update();
 
             $message = 'On Hold Booked Successfully!';
-        };
+        }
+        ;
 
         if ($appointment) {
 
@@ -1664,11 +1673,12 @@ class ProfileController extends Controller
                 ->json(
                     [
                         'status' => 200,
-                        'message' => $message, 'data' =>
-                        [
-                            'app_id' => $request->app_id,
-                            'status' => $request->status
-                        ]
+                        'message' => $message,
+                        'data' =>
+                            [
+                                'app_id' => $request->app_id,
+                                'status' => $request->status
+                            ]
                     ]
                 );
         } else {
@@ -1725,7 +1735,8 @@ class ProfileController extends Controller
             $user->tokens = $user->tokens - 1;
             $user->update();
             $message = 'Booking Confirmed Successfully!';
-        };
+        }
+        ;
 
         if ($appointment) {
 
@@ -1778,10 +1789,10 @@ class ProfileController extends Controller
                         'status' => 200,
                         'message' => $message,
                         'data' =>
-                        [
-                            'app_id' => $request->app_id,
-                            'status' => $request->status
-                        ]
+                            [
+                                'app_id' => $request->app_id,
+                                'status' => $request->status
+                            ]
                     ]
                 );
         } else {
@@ -1796,91 +1807,283 @@ class ProfileController extends Controller
         }
     }
 
+
+
+
+
+
+
+
+
+
     public function checkOnHold()
     {
-
-        $check_appointment = Appointments::has('userBookingSlots')
-            ->with(
-                [
-                    'userBookingSlots' => function ($q) {
-                        $q->where(
-                            [
-                                'slots_time' => '07:00 AM - 09:00 PM',
-                                'status' => 'Confirmed by Freelancer'
-                            ]
-                        );
-                    },
-                    'userBookingSlots.bookings'
-                ]
-            )
+        $i=0;
+        Log::channel('custom')->info($i+1);
+       // $logFilePath = storage_path('logs/custom.log');
+        Log::channel('custom')->info('checkOnHold function started.');
+        Log::channel('custom')->info('Cron Start date and time: ' . now('Asia/Karachi'));
+        $check_appointment = Appointments::whereHas('userBookingSlots', function ($q) {
+            $q->where('status', 'Confirmed by Freelancer');   
+        })
+            ->with(['userBookingSlots.bookings'])
             ->get();
-
+        // dd($check_appointment); 
         foreach ($check_appointment as $appointment) {
-            $freelancer_user = User::where('id', $appointment->freelancer_user_id)->first();
-            $booking_user = User::where('id', $appointment->booking_user_id)->first();
-
-            $appointment_date = date('Y-m-d', strtotime($appointment->created_at . " +36 hours"));
-
-            $time_now = Carbon::now()->format('Y-m-d H:i');
-            $time_next = $appointment_date . " 12:00";
-            $diff_in_time = Carbon::parse($time_now)->diffInHours($time_next);
-
-            if ($diff_in_time < 12) {
-                $bookingSlot = $appointment->userBookingSlots ?? null;
-                $bookings = $appointment->userBookingSlots->bookings ?? null;
-
+            $freelancer_user = User::find($appointment->freelancer_user_id);
+            $booking_user = User::find($appointment->booking_user_id);
+            $appointment_date = Carbon::parse($appointment->created_at)->addHours(36);
+             //dd($appointment_date); 
+            $diff_in_time = now()->diffInHours($appointment_date);
+            // dd($diff_in_time );
+            if ($diff_in_time < 12){
+                // echo("if");
+                Log::channel('custom')->info("Booking cancelled successfully. Appointment details: " . json_encode($appointment));
+                $bookingSlot = $appointment->userBookingSlots->first();
+                $bookings = $bookingSlot->bookings;
                 if (!is_null($bookingSlot) && !is_null($bookings)) {
                     $bookingSlot->status = 'Available';
                     $bookingSlot->slots_time = null;
                     $bookingSlot->save();
-
                     $bookings->status = 'Available';
                     $bookings->save();
-
-                    $appointment->status = 'Cancelled Due to Time Expire';
+                    $appointment->status = 'Cancelled Due to Expiry of Time';
                     $appointment->save();
-
                     $body1 = "<table>
-                    <tr>
-                        <td>Business Owner Name: $booking_user->name </td>
-                    </tr>
-                    <tr>
-                        <td>Freelancer Name: $freelancer_user->name</td>
-                    </tr>
-                    <tr>
-                        <td>Business Owner Email: $booking_user->email</td>
-                    </tr>
-                    <tr>
-                        <td>Freelancer Email: $freelancer_user->email</td>
-                    </tr>
-                    <tr>
-                        <td>Booking Date: $appointment->booking_date</td>
-                    </tr>
-                    <tr>
-                        <td>Status: Cancelled Due to Time Expire</td>
-                    </tr>
-                </table>";
-
-                    $sendEmailTo = [
-                        'admin',
-                        'owner',
-                        'freelancer'
-                    ];
-
+                        <tr>
+                            <td>Business Owner Name: $booking_user->name </td>
+                        </tr>
+                        <tr>
+                            <td>Freelancer Name: $freelancer_user->name</td>
+                        </tr>
+                        <tr>
+                            <td>Business Owner Email: $booking_user->email</td>
+                        </tr>
+                        <tr>
+                            <td>Freelancer Email: $freelancer_user->email</td>
+                        </tr>
+                        <tr>
+                            <td>Booking Date: $appointment->booking_date</td>
+                        </tr>
+                        <tr>
+                            <td>Status: Cancelled Due to Time Expire</td>
+                        </tr>
+                    </table>";
+                    $sendEmailTo = ['admin', 'owner', 'freelancer'];
                     foreach ($sendEmailTo as $user_type) {
                         if ($user_type == 'admin') {
                             $admin = User::where('type', $user_type)->first();
                             sendMail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
-                        } else if ($user_type == 'freelancer') {
+                        } elseif ($user_type == 'freelancer') {
                             sendMail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
-                        } else if ($user_type == 'owner') {
+                        } elseif ($user_type == 'owner') {
                             sendMail($booking_user->name, $booking_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
                         }
                     }
                 }
+            } 
+            else {
+                Log::channel('custom')->info("Booking not cancelled. Time difference: $diff_in_time hours. Appointment details: " . json_encode($appointment));
             }
         }
+        // Log outside the foreach loop to ensure it's not repeated
+        Log::channel('custom')->info('Cron end date and time: ' . now('Asia/Karachi'));
+        Log::channel('custom')->info('checkOnHold function finished.');
+        Log::channel('custom')->info($i);
     }
+    
+    
+
+
+
+    // public function checkOnHold()
+    // {
+    //     $check_appointment = Appointments::whereHas('userBookingSlots', function ($q) {
+    //         $q->where('status', 'Cancelled by Freelancer');
+    //     })
+    //         ->with(['userBookingSlots.bookings'])
+    //         ->get();
+
+    //  dd($check_appointment);
+    //     foreach ($check_appointment as $appointment) {
+
+    //         $freelancer_user = User::where('id', $appointment->freelancer_user_id)->first();
+    //         $booking_user = User::where('id', $appointment->booking_user_id)->first();
+
+    //         $appointment_date = date('Y-m-d', strtotime($appointment->created_at . " +36 hours"));
+    //         //dd( $appointment_date);
+    //         $time_now = Carbon::now()->format('Y-m-d H:i');
+    //         $time_next = $appointment_date . " 12:00";
+
+    //         $diff_in_time = Carbon::parse($time_now)->diffInHours($time_next);
+    //         // echo( $diff_in_time);
+    //         // echo("jdsldjs");
+
+    //         //dd(  $diff_in_time,   $appointment_date);
+    //         if ($diff_in_time < 12) {
+    //             // echo("in if");
+    //             $bookingSlot = $appointment->userBookingSlots ?? null;
+    //             $bookings = $appointment->userBookingSlots->bookings ?? null;
+
+    //             if (!is_null($bookingSlot) && !is_null($bookings)) {
+    //                 $bookingSlot->status = 'Available';
+    //                 $bookingSlot->slots_time = null;
+    //                 $bookingSlot->save();
+
+    //                 $bookings->status = 'Available';
+    //                 $bookings->save();
+
+    //                 $appointment->status = 'Cancelled Due to Time Expire';
+    //                 $appointment->save();
+
+    //                 $body1 = "<table>
+    //                 <tr>
+    //                     <td>Business Owner Name: $booking_user->name </td>
+    //                 </tr>
+    //                 <tr>
+    //                     <td>Freelancer Name: $freelancer_user->name</td>
+    //                 </tr>
+    //                 <tr>
+    //                     <td>Business Owner Email: $booking_user->email</td>
+    //                 </tr>
+    //                 <tr>
+    //                     <td>Freelancer Email: $freelancer_user->email</td>
+    //                 </tr>
+    //                 <tr>
+    //                     <td>Booking Date: $appointment->booking_date</td>
+    //                 </tr>
+    //                 <tr>
+    //                     <td>Status: Cancelled Due to Time Expire</td>
+    //                 </tr>
+    //             </table>";
+
+    //                 $sendEmailTo = [
+    //                     'admin',
+    //                     'owner',
+    //                     'freelancer'
+    //                 ];
+
+    //                 foreach ($sendEmailTo as $user_type) {
+    //                     if ($user_type == 'admin') {
+    //                         $admin = User::where('type', $user_type)->first();
+    //                         sendMail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+    //                     } else if ($user_type == 'freelancer') {
+    //                         sendMail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+    //                     } else if ($user_type == 'owner') {
+    //                         sendMail($booking_user->name, $booking_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+    //                     }
+    //                 }
+
+    //             }
+    //         } else {
+    //             echo ("out if");
+    //         }
+    //     }
+    // }
+
+
+
+
+    //     public function checkOnHold()
+//     {
+
+    //         $check_appointment = Appointments::has('userBookingSlots')
+//             ->with(
+//                 [
+//                     'userBookingSlots' => function ($q) {
+//                         $q->where(
+//                             [
+//                                 'slots_time' => '07:00 AM - 09:00 PM',
+//                                 'status' => 'Confirmed by Freelancer'
+//                             ]
+//                         );
+//                     },
+//                     'userBookingSlots.bookings'
+//                 ]
+//             )
+//             ->get();
+//            // dd($check_appointment);
+
+    //         foreach ($check_appointment as $appointment) {
+//             $freelancer_user = User::where('id', $appointment->freelancer_user_id)->first();
+//             $booking_user = User::where('id', $appointment->booking_user_id)->first();
+
+    //             $appointment_date = date('Y-m-d', strtotime($appointment->created_at . " +36 hours"));
+// //dd( $appointment_date);
+//             $time_now = Carbon::now()->format('Y-m-d H:i');
+//             $time_next = $appointment_date . " 12:00";
+
+    //             $diff_in_time = Carbon::parse($time_now)->diffInHours($time_next);
+
+    // //dd(  $diff_in_time,   $appointment_date);
+//             if ($diff_in_time < 12) {
+//                 $bookingSlot = $appointment->userBookingSlots ?? null;
+//                 $bookings = $appointment->userBookingSlots->bookings ?? null;
+
+    //                 if (!is_null($bookingSlot) && !is_null($bookings)) {
+//                     $bookingSlot->status = 'Available';
+//                     $bookingSlot->slots_time = null;
+//                     $bookingSlot->save();
+
+    //                     $bookings->status = 'Available';
+//                     $bookings->save();
+
+    //                     $appointment->status = 'Cancelled Due to Time Expire';
+//                     $appointment->save();
+
+    //                     $body1 = "<table>
+//                     <tr>
+//                         <td>Business Owner Name: $booking_user->name </td>
+//                     </tr>
+//                     <tr>
+//                         <td>Freelancer Name: $freelancer_user->name</td>
+//                     </tr>
+//                     <tr>
+//                         <td>Business Owner Email: $booking_user->email</td>
+//                     </tr>
+//                     <tr>
+//                         <td>Freelancer Email: $freelancer_user->email</td>
+//                     </tr>
+//                     <tr>
+//                         <td>Booking Date: $appointment->booking_date</td>
+//                     </tr>
+//                     <tr>
+//                         <td>Status: Cancelled Due to Time Expire</td>
+//                     </tr>
+//                 </table>";
+
+    //                     $sendEmailTo = [
+//                         'admin',
+//                         'owner',
+//                         'freelancer'
+//                     ];
+
+    //                     foreach ($sendEmailTo as $user_type) {
+//                         if ($user_type == 'admin') {
+//                             $admin = User::where('type', $user_type)->first();
+//                             sendMail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+//                         } else if ($user_type == 'freelancer') {
+//                             sendMail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+//                         } else if ($user_type == 'owner') {
+//                             sendMail($booking_user->name, $booking_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+//                         }
+//                     }
+//                 }
+//             }
+//         }
+//     }
+
+
+
+public function checkOnHoldLog(Request $request){
+    $logFilePath = storage_path('logs/custom.log');
+    $logContent = File::get($logFilePath);
+
+    return view('log', ['logContent' => $logContent]);
+
+}
+
+
 }
 
 
@@ -1904,46 +2107,46 @@ class ProfileController extends Controller
 
 
 // $availableDays = $request->availableDate;
-        // $startTime  = $request->start_time;
-        // $endTime  = $request->end_time;
-        // $status = 'Available';
+// $startTime  = $request->start_time;
+// $endTime  = $request->end_time;
+// $status = 'Available';
 
-        // $startDateTime = Carbon::createFromFormat('Y-m-d H:i', $availableDays . ' ' . $startTime);
-        // $endDateTime = Carbon::createFromFormat('Y-m-d H:i', $availableDays . ' ' . $endTime);
+// $startDateTime = Carbon::createFromFormat('Y-m-d H:i', $availableDays . ' ' . $startTime);
+// $endDateTime = Carbon::createFromFormat('Y-m-d H:i', $availableDays . ' ' . $endTime);
 
-        // //Check if 'start time' is less then 'end time'
-        // if ($startDateTime > $endDateTime) {
+// //Check if 'start time' is less then 'end time'
+// if ($startDateTime > $endDateTime) {
 
-        //     $message = 'End Time must be greater than Start Time';
-        //     return response()->json([
-        //         'status' => 422,
-        //         'message' => $message,
-        //     ]);
-        // }
+//     $message = 'End Time must be greater than Start Time';
+//     return response()->json([
+//         'status' => 422,
+//         'message' => $message,
+//     ]);
+// }
 
-        // // getting booking date from request
-        // $booking = Bookings::where(['date' => $availableDays, 'user_id' => Auth::id()])->first();
+// // getting booking date from request
+// $booking = Bookings::where(['date' => $availableDays, 'user_id' => Auth::id()])->first();
 
-        // $existingBooking = [];
+// $existingBooking = [];
 
-        // if ($booking) {
-        //     $existingBooking = BookingSlots::where('bookings_id', $booking->id)
-        //         // ->whereNotIn('id', [$request->slot_id])
-        //         ->where(function ($query) use ($startDateTime, $endDateTime) {
-        //             $query->where(function ($query) use ($startDateTime, $endDateTime) {
-        //                 $query->whereBetween('start_time', [$startDateTime, $endDateTime])
-        //                     ->orWhereBetween('end_time', [$startDateTime, $endDateTime]);
-        //             });
-        //         })
-        //         ->get();
-        // }
+// if ($booking) {
+//     $existingBooking = BookingSlots::where('bookings_id', $booking->id)
+//         // ->whereNotIn('id', [$request->slot_id])
+//         ->where(function ($query) use ($startDateTime, $endDateTime) {
+//             $query->where(function ($query) use ($startDateTime, $endDateTime) {
+//                 $query->whereBetween('start_time', [$startDateTime, $endDateTime])
+//                     ->orWhereBetween('end_time', [$startDateTime, $endDateTime]);
+//             });
+//         })
+//         ->get();
+// }
 
-        // // check booking is already created with in given time frame
-        // if ($existingBooking) {
-        //     // Time range overlap found, return an error response
-        //     $message = 'Time range already booked on the specified date';
-        //     return response()->json([
-        //         'status' => 422,
-        //         'message' => $message,
-        //     ]);
-        // }
+// // check booking is already created with in given time frame
+// if ($existingBooking) {
+//     // Time range overlap found, return an error response
+//     $message = 'Time range already booked on the specified date';
+//     return response()->json([
+//         'status' => 422,
+//         'message' => $message,
+//     ]);
+// }

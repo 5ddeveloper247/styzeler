@@ -538,10 +538,10 @@
                             <input type="text" class="form-control" id="stylist-surname" name="stylist_surname"
                                 aria-describedby="stylist-surname" placeholder="Surname">
                         </div>
-                        {{-- <div class="form-group">
+                        <div class="form-group">
                             <input type="tel" class="form-control" id="stylist-mobile" name="stylist_mobile"
                                 aria-describedby="stylist-mobile" placeholder="Mobile">
-                        </div> --}}
+                        </div>
                         </p>
                         <button type="button" class="btn customBtn updateBasicInfoProfile"
                             data-dismiss="modal">Okay</button>
@@ -1919,7 +1919,9 @@
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" id="biophora-deep-cleansing"
                                         value="Biophora deep cleansing" name="salonFacialServices[]">
-                                    <label class="form-check-label" for="biophora-deep-cleansing">Biophora deep
+                                    <label class="form-check-la
+                                    
+                                    bel" for="biophora-deep-cleansing">Biophora deep
                                         cleansing</label>
                                 </div>
                                 <div class="form-check">

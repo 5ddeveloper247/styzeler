@@ -44,9 +44,9 @@ function editName() {
     $(".name-modal").modal("show");
 }
 
-// function editMobile() {
-//     $(".mobile-modal").modal("show");
-// }
+function editMobile() {
+    $(".mobile-modal").modal("show");
+}
 
 function editAddress() {
     $(".address-modal").modal("show");
@@ -185,16 +185,16 @@ function profileResponse(response) {
             //            $("#owner-address").append('<a class="text-center btn" onclick="editAddress()" title="Edit">' + "✎" + "</a>");
 
             $("#owner-postcode").text(post_code);
-            //            $("#owner-postcode").append('<a class="text-center btn" onclick="editPostcode()" title="Edit">' + "✎" + "</a>");
+                       $("#owner-postcode").append('<a class="text-center btn" onclick="editPostcode()" title="Edit">' + "✎" + "</a>");
 
-            // $("#owner-phone").text(phone);
-            //            $("#owner-phone").append('<a class="text-center btn" onclick="editMobile()" title="Edit">' + "✎" + "</a>");
+            $("#owner-phone").text(phone);
+                       $("#owner-phone").append('<a class="text-center btn" onclick="editMobile()" title="Edit">' + "✎" + "</a>");
 
             $("#owner-email").text(email);
 
             $("#stylist-name").val(profilename);
             $("#stylist-surname").val(surname);
-            // $('#stylist-mobile').val(phone);
+            $('#stylist-mobile').val(phone);
             $("#stylist-address").val(address);
             $("#stylist-postcode").val(post_code);
 

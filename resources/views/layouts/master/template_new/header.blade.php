@@ -109,6 +109,7 @@
                     <a href="javascript:void(0)" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Candidate</a>
                     <ul class="sub" style="border: 0px; display: none;">
+                        <li class="dropdown-item"><a href="{{ route('candidate') }}?type=freelancer">Candidate</a></li>
                         <li class="dropdown-item"><a href="{{ route('candidate') }}?type=freelancer">Freelance</a></li>
                         <li class="dropdown-item"><a href="{{ route('candidate') }}?type=jobseeker">Job Seeker</a></li>
                     </ul>
@@ -124,6 +125,7 @@
                     <a href="javascript:void(0)" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">News</a>
                     <ul class="sub" style="border: 0px; display: none;">
+                        <li class="dropdown-item"><a href="{{ route('news') }}">News</a></li>
                         <li class="dropdown-item"><a href="{{ route('blogs') }}">Styzeler Feeds</a></li>
                         <li class="dropdown-item"><a href="{{ route('jobs') }}">Styzeler Jobs</a></li>
                     </ul>
@@ -143,6 +145,7 @@
                     <a href="javascript:void(0)" type="button" id="dropdownMenuButton" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Rent & Let</a>
                     <ul class="sub" style="border: 0px; display: none;">
+                        <li class="dropdown-item"><a href="{{ route('rentAndLet') }}">Rent & Let</a></li>
                         <li class="dropdown-item"><a href="{{ route('rentAndLet') }}">Hourly</a></li>
                         <li class="dropdown-item"><a href="{{ route('rentAndLet') }}">Daily</a></li>
                         <li class="dropdown-item"><a href="{{ route('rentAndLet') }}">Monthly</a></li>

@@ -334,6 +334,7 @@
                 <div class="modal-content border-warning border"
                     style="background-color: black; color: white; max-height: 400px; overflow-y: auto;">
                     <div class="modal-header" style="border-bottom: 5px solid #766d48;">
+                       {{-- <div class="modal-header" style="border-bottom: 5px solid #766d48;"> --}}
                         <h4 class="modal-title">Confirmation</h4>
                         <i class="close-modal closeCartConfirm" style="font-size: 2rem;cursor:pointer;"><b>&times;</b></i>
                     </div>

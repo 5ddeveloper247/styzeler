@@ -37,10 +37,10 @@
                         <input type="text" class="form-control col-lg-6 " id="owner-postcode" name="owner_postcode"
                             aria-describedby="owner-postcode" placeholder="Postcode">
                     </div>
-                    {{-- <div class="form-group">
+                    <div class="form-group">
                         <input type="text" class="form-control col-lg-6 " id="owner-telephone" name="owner_telephone"
                             aria-describedby="owner-telephone" placeholder="Telephone">
-                    </div> --}}
+                    </div>
                     <div class="form-group">
                         <input type="text" class="form-control col-lg-6 " id="owner-email" name="owner_email"
                             aria-describedby="owner-email" placeholder="Email">

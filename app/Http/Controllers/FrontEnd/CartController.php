@@ -107,7 +107,7 @@ class CartController extends Controller
                 $cart_line->item_text = $request->item_text;
                 $cart_line->item_time_min = $request->item_time;
                 $cart_line->item_price = $request->item_price;
-                $cart_line->item_type = $request->item_type;
+                $cart_line->item_type = $request->item_type; 
                 $cart_line->item_sub_type = $request->item_subtype;
                 $cart_line->item_service = $request->item_service;
                 $cart_line->date = date('Y-m-d');

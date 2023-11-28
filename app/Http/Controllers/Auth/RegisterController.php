@@ -84,7 +84,6 @@ class RegisterController extends Controller
             'cv' => '/pdf/wedding',
             'image_gallery' => '/images/wedding',
             'public_liability_insurance' => '/images/wedding',
-
             //for hairdressing business owner & beauty business owner
             'owner_picture' => '/images/hairdressing',
         ];
@@ -121,7 +120,6 @@ class RegisterController extends Controller
             'stylist_picture',
             'agree',
             'utr_number'
-
             // Add other common fields here...
         ];
 

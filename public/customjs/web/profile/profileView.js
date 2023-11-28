@@ -93,9 +93,9 @@ $(document).ready(function () {
     });
 });
 
-// function editName() {
-//     $(".name-mobile-modal").modal("show");
-// }
+function editName() {
+   $(".name-mobile-modal").modal("show");
+}
 
 function editAge() {
     $(".age-modal").modal("show");
@@ -254,26 +254,26 @@ function profileResponse(response) {
             // For name,surname,phone
             profilename = data.name;
             surname = data.surname;
-            // phone = data.phone;
+             phone = data.phone;
 
-            // if (phone) {
-            //     var cleanedPhone = phone.replace(/\D/g, '');
-            // } else {
-            //     var cleanedPhone = '-'
-            // }
+            if (phone) {
+                var cleanedPhone = phone.replace(/\D/g, '');
+            } else {
+                var cleanedPhone = '-'
+            }
 
             $("#ownerName").text(profilename + " " + surname);
             //            $('#ownerName').append('<a class="text-center btn" onclick="editName()" title="Edit">✎</a>');
 
             $("#stylist-name").val(profilename);
             $("#stylist-surname").val(surname);
-            // $("#stylist-mobile").val(phone);
+            $("#stylist-mobile").val(phone);
 
             // for age
             age = data.age;
 
             $("#ownerAge").text(age);
-            //            $('#ownerAge').append('<a class="text-center btn" onclick = "editAge()" title = "Edit" >✎</a >');
+            //$('#ownerAge').append('<a class="text-center btn" onclick = "editAge()" title = "Edit" >✎</a >');
 
             $(`input[name='stylist_age'][value='${age}']`).prop(
                 "checked",

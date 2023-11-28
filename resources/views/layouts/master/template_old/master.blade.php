@@ -459,4 +459,24 @@
     });
 </script>
 
+<script>
+    // $('.small_screen').on('click', function() {
+    //     console.log(this)
+    //      $('.small_screen').find('.sub').hide();
+        
+    //         $(this).find('.sub').toggle();
+          
+          
+    //  });
+   
+
+     $('.small_screen').on('click', function() {
+        // Hide all other .sub elements
+        $('.small_screen .sub').not($(this).find('.sub')).hide();
+        
+        // Toggle the current .sub element
+        $(this).find('.sub').toggle();
+    });
+ </script>
+
 </html>
