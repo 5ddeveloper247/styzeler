@@ -1821,7 +1821,7 @@ class ProfileController extends Controller
         $i=0;
         Log::channel('custom')->info($i+1);
        // $logFilePath = storage_path('logs/custom.log');
-        Log::channel('custom')->info('checkOnHold function started.');
+        Log::channel('custom')->info('checkOnHold Cron started.');
         Log::channel('custom')->info('Cron Start date and time: ' . now('Asia/Karachi'));
         $check_appointment = Appointments::whereHas('userBookingSlots', function ($q) {
             $q->where('status', 'Confirmed by Freelancer');   
@@ -1888,7 +1888,7 @@ class ProfileController extends Controller
         }
         // Log outside the foreach loop to ensure it's not repeated
         Log::channel('custom')->info('Cron end date and time: ' . now('Asia/Karachi'));
-        Log::channel('custom')->info('checkOnHold function finished.');
+        Log::channel('custom')->info('checkOnHold Cron finished.');
         Log::channel('custom')->info($i);
     }
     
