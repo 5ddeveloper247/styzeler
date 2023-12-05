@@ -577,7 +577,7 @@ class ProfileController extends Controller
                 $userEmailsSend[] = $bookedUserDetails['email'];
                 $userEmailsSend[] = 'admin@styzeler.co.uk';
 
-                sendMail($userDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
+               // sendMail($userDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
 
                 $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)
                     ->with(
@@ -785,7 +785,7 @@ class ProfileController extends Controller
             $userEmailsSend[] = $bookedUserDetails['email'];
             $userEmailsSend[] = 'admin@styzeler.co.uk';
 
-            sendMail($bookedUserDetails['name'], $userEmailsSend, $heading1, $heading2, $body);
+           // sendMail($bookedUserDetails['name'], $userEmailsSend, $heading1, $heading2, $body);
 
             return response()->json(
                 [
@@ -1203,7 +1203,7 @@ class ProfileController extends Controller
 			            </table>";
             $userEmailsSend[] = $weddingUserDetails->email;
 
-            sendMail($userDetails->name, $userEmailsSend, 'Booking', 'Booking Contact Email', $body);
+            //sendMail($userDetails->name, $userEmailsSend, 'Booking', 'Booking Contact Email', $body);
 
             $body1 = "<table>
 			                <tr>
@@ -1221,7 +1221,7 @@ class ProfileController extends Controller
 			           	</table>";
             $userEmailsSend1[] = $userDetails->email;
 
-            sendMail($userDetails->name, $userEmailsSend1, 'Contact', 'Contact Email', $body1);
+           // sendMail($userDetails->name, $userEmailsSend1, 'Contact', 'Contact Email', $body1);
         }
 
         return response()
@@ -1418,7 +1418,7 @@ class ProfileController extends Controller
 
         $userEmailsSend = $clientUser->email;
 
-        sendMail($clientUser->name, $userEmailsSend, 'Cancel Booking', 'Cancel Booking Email', $body);
+      //  sendMail($clientUser->name, $userEmailsSend, 'Cancel Booking', 'Cancel Booking Email', $body);
 
         $body1 = "<table>
                     <tr>
@@ -1440,7 +1440,7 @@ class ProfileController extends Controller
 
         $userEmailsSend1 = $freelancerUser->email;
 
-        sendMail($clientUser->name, $userEmailsSend1, 'Cancel Booking', 'Cancel Booking Email', $body1);
+       // sendMail($clientUser->name, $userEmailsSend1, 'Cancel Booking', 'Cancel Booking Email', $body1);
 
         $body1 = "<table>
                     <tr>
@@ -1468,7 +1468,7 @@ class ProfileController extends Controller
 
         $userEmailsSend2 = 'admin@styzeler.co.uk';
 
-        sendMail($clientUser->name, $userEmailsSend2, 'Cancel Booking', 'Cancel Booking Email', $body1);
+      //  sendMail($clientUser->name, $userEmailsSend2, 'Cancel Booking', 'Cancel Booking Email', $body1);
 
         return response()->json([
             'status' => 200,
@@ -1659,13 +1659,13 @@ class ProfileController extends Controller
             foreach ($sendEmailTo as $user_type) {
                 if ($user_type == 'admin') {
                     $admin = User::where('type', $user_type)->first();
-                    sendMail($admin->name, $admin->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
+                  //  sendMail($admin->name, $admin->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
                 } else if ($user_type == 'freelancer') {
                     $freelancer = User::findOrFail($appointment->freelancer_user_id);
-                    sendMail($freelancer->name, $freelancer->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
+                   // sendMail($freelancer->name, $freelancer->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
                 } else if ($user_type == 'owner') {
                     $freelancer = User::findOrFail($appointment->booking_user_id);
-                    sendMail($freelancer->name, $freelancer->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
+                  //  sendMail($freelancer->name, $freelancer->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
                 }
             }
 
@@ -1693,6 +1693,10 @@ class ProfileController extends Controller
         }
     }
 
+
+
+
+    
     public function confirmBooking(Request $request)
     {
         $appointment = Appointments::where('id', $request->app_id)
@@ -1773,13 +1777,13 @@ class ProfileController extends Controller
             foreach ($sendEmailTo as $user_type) {
                 if ($user_type == 'admin') {
                     $admin = User::where('type', $user_type)->first();
-                    sendMail($admin->name, $admin->email, "Booking Confirm", "Booking Confirm Email", $body1);
+                  //  sendMail($admin->name, $admin->email, "Booking Confirm", "Booking Confirm Email", $body1);
                 } else if ($user_type == 'freelancer') {
                     $freelancer = User::findOrFail($appointment->freelancer_user_id);
-                    sendMail($freelancer->name, $freelancer->email, "Booking Confirm", "Booking Confirm Email", $body1);
+                  //  sendMail($freelancer->name, $freelancer->email, "Booking Confirm", "Booking Confirm Email", $body1);
                 } else if ($user_type == 'owner') {
                     $freelancer = User::findOrFail($appointment->booking_user_id);
-                    sendMail($freelancer->name, $freelancer->email, "Booking Confirm", "Booking Confirm Email", $body1);
+                   // sendMail($freelancer->name, $freelancer->email, "Booking Confirm", "Booking Confirm Email", $body1);
                 }
             }
 
@@ -1817,82 +1821,252 @@ class ProfileController extends Controller
 
 
     public function checkOnHold()
-    {
-        $i=0;
-        Log::channel('custom')->info($i+1);
-       // $logFilePath = storage_path('logs/custom.log');
-        Log::channel('custom')->info('checkOnHold Cron started.');
-        Log::channel('custom')->info('Cron Start date and time: ' . now('Asia/Karachi'));
-        $check_appointment = Appointments::whereHas('userBookingSlots', function ($q) {
-            $q->where('status', 'Confirmed by Freelancer');   
-        })
-            ->with(['userBookingSlots.bookings'])
-            ->get();
-        // dd($check_appointment); 
+{
+
+    $logFilePath = storage_path('logs/custom.log');
+    Log::channel('custom')->info('1');
+    Log::channel('custom')->info('checkOnHold Cron started.');
+    Log::channel('custom')->info('Cron Start date and time: ' . now('Asia/Karachi'));
+
+    $check_appointment = Appointments::whereHas('userBookingSlots', function ($q) {
+        // $q->where('status', 'Confirmed by Freelancer');
+         $q->where('status', 'Cancelled by Freelancer');
+    })->with(['userBookingSlots.bookings'])->get();
+     // dd($check_appointment);
+    // if (true) {
+ 
+    if ($check_appointment->isNotEmpty()) {
         foreach ($check_appointment as $appointment) {
-            $freelancer_user = User::find($appointment->freelancer_user_id);
+            $freelancer_user = User::find($appointment->freelancer_user_id); 
             $booking_user = User::find($appointment->booking_user_id);
             $appointment_date = Carbon::parse($appointment->created_at)->addHours(36);
-             //dd($appointment_date); 
             $diff_in_time = now()->diffInHours($appointment_date);
-            // dd($diff_in_time );
-            if ($diff_in_time < 12){
-                // echo("if");
-                Log::channel('custom')->info("Booking cancelled successfully. Appointment details: " . json_encode($appointment));
-                $bookingSlot = $appointment->userBookingSlots->first();
+
+            if ( true) {
+                $bookingSlot = $appointment->userBookingSlots;
                 $bookings = $bookingSlot->bookings;
+                // dd($bookings);
+
+                if (!is_null($bookingSlot) && !is_null($bookings)) {
+                    $bookingSlot->update(['status' => 'Available', 'slots_time' => null]);
+                    $bookings->update(['status' => 'Available']);
+                    $appointment->update(['status' => 'Cancelled Due to Expiry of Time']);
+
+                    Log::channel('custom')->info("Booking cancelled successfully. Appointment details: " . json_encode($appointment));
+
+                    $body1 = "<table>
+                        <tr><td>Business Owner Name: $booking_user->name </td></tr>
+                        <tr><td>Freelancer Name: $freelancer_user->name</td></tr>
+                        <tr><td>Business Owner Email: $booking_user->email</td></tr>
+                        <tr><td>Freelancer Email: $freelancer_user->email</td></tr>
+                        <tr><td>Booking Date: $appointment->booking_date</td></tr>
+                        <tr><td>Status: Cancelled Due to Time Expire</td></tr>
+                    </table>";
+
+                    $sendEmailTo = ['admin', 'owner', 'freelancer'];
+
+                    foreach ($sendEmailTo as $user_type) {
+                        if ($user_type == 'admin') {
+                            $admin = User::where('type', $user_type)->first();
+                          //  sendMail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                            Log::channel('custom')->info("Email Sent to Admin");
+                        } else if ($user_type == 'freelancer') {
+                         //   sendMail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                            Log::channel('custom')->info("Email Sent to freelancer");
+                        } else if ($user_type == 'owner') {
+                        //    sendMail($booking_user->name, $booking_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                            Log::channel('custom')->info("Email Sent to Owner");
+                        }
+                    }   
+                } 
+                else{
+                    Log::channel('custom')->info("Booking not cancelled. Booking slots and booking information is missing: " .   Log::channel('custom')->info("Booking not cancelled. due to difference in time Appointment details: " . "Difference in time" . $diff_in_time . " Appointment Detail" . json_encode($appointment)));
+                } 
+            }
+            // else {
+            //     Log::channel('custom')->info("Booking not cancelled. due to difference in time Appointment details: " . "Difference in time" . $diff_in_time . " Appointment Detail" . json_encode($appointment));
+            // }
+        }
+    } 
+
+    else {
+        Log::channel('custom')->info("No Appointments found, No data found for cancellation");
+    }
+
+    Log::channel('custom')->info('Cron end date and time: ' . now('Asia/Karachi'));
+    Log::channel('custom')->info('checkOnHold Cron finished.');
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+public function checkOnPending()
+{
+    //dd(now());
+    Log::channel('custom')->info('2');
+    Log::channel('custom')->info('checkOnPendidng Cron started.');
+    Log::channel('custom')->info('Cron Start date and time: ' . now('Asia/Karachi'));
+    $appointments = Appointments::where('status', null)
+        ->whereHas('userBookingSlots', function ($query) {
+            $query->whereHas('bookings', function ($query) {
+                $query->where('status', 'pending');
+            });
+        })
+        ->with(['userBookingSlots.bookings', 'userBookingSlots'])
+        ->get();
+       // dd($appointments);
+
+
+    if ($appointments->isNotEmpty()) {
+        
+      
+        foreach ($appointments as $appointment) {
+         //   dd($appointment->created_at);
+            $freelancer_user = User::find($appointment->freelancer_user_id);
+            $booking_user = User::find($appointment->booking_user_id);
+            $appointment_date = Carbon::parse($appointment->created_at)->addHours(3);
+        //  dd($appointment_date->lessThan(now()) && $appointment->userBookingSlots->bookings->status == 'Pending');
+               
+            if ($appointment_date->lessThan(now()) && $appointment->userBookingSlots->bookings->status == 'Pending') {
+              
+                $bookingSlot = $appointment->userBookingSlots;
+                $bookings = $bookingSlot->bookings;
+           // dd( $bookings->status);
+
                 if (!is_null($bookingSlot) && !is_null($bookings)) {
                     $bookingSlot->status = 'Available';
-                    $bookingSlot->slots_time = null;
                     $bookingSlot->save();
-                    $bookings->status = 'Available';
-                    $bookings->save();
-                    $appointment->status = 'Cancelled Due to Expiry of Time';
-                    $appointment->save();
+
+                    $bookings->status='Available';
+                    $bookings->save(); 
+
+                    $appointment->update(['status' => ' cancelled Due to Expiry of Time']);
+                 
+                    Log::channel('custom')->info("Booking cancelled successfully. Appointment details: " . json_encode($appointment));
+
                     $body1 = "<table>
-                        <tr>
-                            <td>Business Owner Name: $booking_user->name </td>
-                        </tr>
-                        <tr>
-                            <td>Freelancer Name: $freelancer_user->name</td>
-                        </tr>
-                        <tr>
-                            <td>Business Owner Email: $booking_user->email</td>
-                        </tr>
-                        <tr>
-                            <td>Freelancer Email: $freelancer_user->email</td>
-                        </tr>
-                        <tr>
-                            <td>Booking Date: $appointment->booking_date</td>
-                        </tr>
-                        <tr>
-                            <td>Status: Cancelled Due to Time Expire</td>
-                        </tr>
+                        <tr><td>Business Owner Name: $booking_user->name </td></tr>
+                        <tr><td>Freelancer Name: $freelancer_user->name</td></tr>
+                        <tr><td>Business Owner Email: $booking_user->email</td></tr>
+                        <tr><td>Freelancer Email: $freelancer_user->email</td></tr>
+                        <tr><td>Booking Date: $appointment->booking_date</td></tr>
+                        <tr><td>Status: Cancelled Due to Expiry of Time</td></tr>
                     </table>";
+
                     $sendEmailTo = ['admin', 'owner', 'freelancer'];
                     foreach ($sendEmailTo as $user_type) {
                         if ($user_type == 'admin') {
                             $admin = User::where('type', $user_type)->first();
-                            sendMail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                           // sendMail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                            Log::channel('custom')->info("Email Sent to Admin");
                         } elseif ($user_type == 'freelancer') {
-                            sendMail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                          //  sendMail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                            Log::channel('custom')->info("Email Sent to Freelancer");
                         } elseif ($user_type == 'owner') {
-                            sendMail($booking_user->name, $booking_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                          //  sendMail($booking_user->name, $booking_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                            Log::channel('custom')->info("Email Sent to Owner");
                         }
                     }
+                } 
+
+                else {
+                    Log::channel('custom')->info("Booking not cancelled. Booking slots and booking information is missing: " . "Difference in time Appointment details");
                 }
             } 
-            else {
-                Log::channel('custom')->info("Booking not cancelled. Time difference: $diff_in_time hours. Appointment details: " . json_encode($appointment));
-            }
         }
-        // Log outside the foreach loop to ensure it's not repeated
-        Log::channel('custom')->info('Cron end date and time: ' . now('Asia/Karachi'));
-        Log::channel('custom')->info('checkOnHold Cron finished.');
-        Log::channel('custom')->info($i);
     }
-    
-    
+     else {
+        Log::channel('custom')->info("Booking not cancelled. empty record found for cancellation: ");
+    }
+    Log::channel('custom')->info('Cron end date and time: ' . now('Asia/Karachi'));
+    Log::channel('custom')->info('checkOnPending Cron finished.');
+}
+
+
+
+
+
+
+//             if ( $diff_in_time < 12) {
+//                 $bookingSlot = $appointment->userBookingSlots->first();
+//                 $bookings = $bookingSlot->bookings;
+
+//                 if (!is_null($bookingSlot) && !is_null($bookings)) {
+//                     $bookingSlot->update(['status' => 'Available', 'slots_time' => null]);
+//                     $bookings->update(['status' => 'Available']);
+//                     $appointment->update(['status' => 'Cancelled Due to Expiry of Time']);
+
+//                     Log::channel('custom')->info("Booking cancelled successfully. Appointment details: " . json_encode($appointment));
+
+//                     $body1 = "<table>
+//                         <tr><td>Business Owner Name: $booking_user->name </td></tr>
+//                         <tr><td>Freelancer Name: $freelancer_user->name</td></tr>
+//                         <tr><td>Business Owner Email: $booking_user->email</td></tr>
+//                         <tr><td>Freelancer Email: $freelancer_user->email</td></tr>
+//                         <tr><td>Booking Date: $appointment->booking_date</td></tr>
+//                         <tr><td>Status: Cancelled Due to Time Expire</td></tr>
+//                     </table>";
+
+//                     $sendEmailTo = ['admin', 'owner', 'freelancer'];
+
+//                     foreach ($sendEmailTo as $user_type) {
+//                         if ($user_type == 'admin') {
+//                             $admin = User::where('type', $user_type)->first();
+//                             sendMail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+//                             Log::channel('custom')->info("Email Sent to Admin");
+//                         } else if ($user_type == 'freelancer') {
+//                             sendMail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+//                             Log::channel('custom')->info("Email Sent to freelancer");
+//                         } else if ($user_type == 'owner') {
+//                             sendMail($booking_user->name, $booking_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+//                             Log::channel('custom')->info("Email Sent to Owner");
+//                         }
+//                     }   
+//                 } 
+//                 else{
+//                     Log::channel('custom')->info("Booking not cancelled. Booking slots and booking information is missing: " .   Log::channel('custom')->info("Booking not cancelled. due to difference in time Appointment details: " . "Difference in time" . $diff_in_time . " Appointment Detail" . json_encode($appointment)));
+//                 } 
+//             }
+//             else {
+//                 Log::channel('custom')->info("Booking not cancelled. due to difference in time Appointment details: " . "Difference in time" . $diff_in_time . " Appointment Detail" . json_encode($appointment));
+//             }
+//         }
+//     } 
+
+//     else {
+//         Log::channel('custom')->info("No Appointments found, No data found for cancellation");
+//     }
+
+//     Log::channel('custom')->info('Cron end date and time: ' . now('Asia/Karachi'));
+//     Log::channel('custom')->info('checkOnHold Cron finished.');
+// }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -2075,13 +2249,23 @@ class ProfileController extends Controller
 
 
 
-public function checkOnHoldLog(Request $request){
-    $logFilePath = storage_path('logs/custom.log');
-    $logContent = File::get($logFilePath);
+    public function cronLog(Request $request)
+    {
+        $logFilePath = storage_path('logs/custom.log');
+        $logContent = File::get($logFilePath);
+        dd($logContent);
 
-    return view('log', ['logContent' => $logContent]);
+        return view('log', ['logContent' => $logContent]);
 
-}
+    } 
+
+
+
+
+
+
+
+    
 
 
 }

@@ -18,7 +18,7 @@ class DemoEmail extends Mailable
      */
     public $demo;
 
-    /** 
+    /**  
      * Create a new message instance. 
      * 
      * @return void 

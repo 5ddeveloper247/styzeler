@@ -69,7 +69,9 @@
                             alt=""></div>
                 </div>
                 <div class="content_blk"
-                    style="background-image: url('{{ asset('template_new/') }}assets/images/service_main.jpg');">
+                style="background-image: url('{{ asset('template_new/assets/images/service_main.jpg') }}');">
+                  
+                    
                     <h2>You book We deliver</h2>
                     <div class="inner">
                         <div class="btn_list">

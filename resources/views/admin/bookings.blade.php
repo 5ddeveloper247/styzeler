@@ -112,10 +112,10 @@
                                                                 <p style="cursor: pointer;">
                                                                     <strong>Book Date: </strong> {{ @$bookDate }}
                                                                 </p>
-                                                                <p style="cursor: pointer;">
+                                                                {{-- <p style="cursor: pointer;">
                                                                     <strong>Slot Time: </strong>
                                                                     {{ $row->booking_time }}
-                                                                </p>
+                                                                </p> --}}
                                                             </a>
                                                         </div>
                                                     </span>
@@ -229,10 +229,10 @@
                                                                 <p style="cursor: pointer;">
                                                                     <strong>Book Date: </strong> {{ @$bookDate }}
                                                                 </p>
-                                                                <p style="cursor: pointer;">
+                                                                {{-- <p style="cursor: pointer;">
                                                                     <strong>Slot Time: </strong>
                                                                     {{ $row->booking_time }}
-                                                                </p>
+                                                                </p> --}}
                                                             </a>
                                                         </div>
                                                     </span>
@@ -344,10 +344,10 @@
                                                                 <p style="cursor: pointer;">
                                                                     <strong>Book Date: </strong> {{ @$bookDate }}
                                                                 </p>
-                                                                <p style="cursor: pointer;">
+                                                                {{-- <p style="cursor: pointer;">
                                                                     <strong>Slot Time: </strong>
                                                                     {{ $row->booking_time }}
-                                                                </p>
+                                                                </p> --}}
                                                             </a>
                                                         </div>
                                                     </span>
@@ -456,10 +456,10 @@
                                                                 <p style="cursor: pointer;">
                                                                     <strong>Book Date: </strong> {{ @$bookDate }}
                                                                 </p>
-                                                                <p style="cursor: pointer;">
+                                                                {{-- <p style="cursor: pointer;">
                                                                     <strong>Slot Time: </strong>
                                                                     {{ $row->booking_time }}
-                                                                </p>
+                                                                </p> --}}
                                                             </a>
                                                         </div>
                                                     </span>

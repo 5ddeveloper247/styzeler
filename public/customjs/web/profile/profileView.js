@@ -70,6 +70,7 @@ $(document).ready(function () {
     });
 
     $("#book").click(function () {
+        //alert("clicked")
         $("#showBook").show();
         $("#showProfile").hide();
         $("#showReviews").hide();
@@ -81,8 +82,8 @@ $(document).ready(function () {
 
         $("#book").removeClass("customBtn").addClass("customBtnSelected");
         onCall = tomorrow;
-        // localStorage.removeItem(SELECTEDSTATUSDATE);
-        // $("#calendar").fullCalendar('refetchEvents');
+        localStorage.removeItem(SELECTEDSTATUSDATE);        //uncommented this line to remove booked slots from business owner booking view
+        $("#calendar").fullCalendar('refetchEvents');       //uncommented this line to remove booked slots from business owner booking view
     });
 
     $(".show_message").click(function () {
@@ -983,8 +984,9 @@ $(document).on("click", "#book-slots", function (e) {
 function bookSlotsResponse(response) {
     if (response.status == 200 || response.status == "200") {
         $("#calendar").fullCalendar("refetchEvents");
-
+        console.log(response)
         var bookings = response.data;
+       // console.log(bookings); 
         var slots = bookings["booking_time_slots"];
         var status = bookings["status"];
         var changeSlot = "";

@@ -172,7 +172,9 @@ function profileResponse(response) {
             // For name,surname,phone
             profilename = data.name;
             surname = data.surname;
-             phone = data.phone;
+            // phone = data.phone; previous is like this but now showing the telephone on owenr profile
+             phone = data.data.owner_telephone;
+         
             address = data.address;
             post_code = data.post_code;
 

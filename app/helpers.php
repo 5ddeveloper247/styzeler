@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use App\Mail\MyEmail;
 
 if (!function_exists('saveMultipleImages')) {
 
@@ -107,14 +108,13 @@ if (!function_exists('deleteImage')) {
 if (!function_exists('sendMail')) {
     function sendMail($send_to_name, $send_to_email, $email_from_name, $subject, $body)
     {
-
         try {
             $mail_val = [
                 'send_to_name' => $send_to_name,
                 'send_to' => $send_to_email,
                 'email_from' => 'noreply@styzeler.co.uk',
-                // 'email_from' => 'misterkamran93@gmail.com',
                 'email_from_name' => $email_from_name,
+                // 'email_from' => 'misterkamran93@gmail.com',
                 'subject' => $subject,
             ];
 
@@ -124,7 +124,8 @@ if (!function_exists('sendMail')) {
                 $send->to($mail_val['send_to'], $mail_val['send_to_name'])->subject($mail_val['subject']);
             });
             return true;
-        } catch (\Exception $e) {
+        } 
+        catch (\Exception $e) {
             Log::error($e->getMessage());
             echo "An error occurred while sending the email: " . $e->getMessage();
             return false;

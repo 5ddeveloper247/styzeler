@@ -76,6 +76,10 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::post('/showAppointmentDatesFreelancer', 'ProfileController@showAppointmentDatesFreelancer')->name('showAppointmentDatesFreelancer');
     Route::post('/bookSlots', 'ProfileController@bookSlots')->name('bookSlots');
     Route::get('/checkOnHold', 'ProfileController@checkOnHold')->name('checkOnHold');
+    Route::get('/checkOnPending', 'ProfileController@checkOnPending')->name('checkOnPending');
+
+
+
     Route::get('/useOwnerTokens', 'ProfileController@useOwnerTokens')->name('useOwnerTokens');
     Route::post('/submitFeedbackOwner', 'ProfileController@submitFeedbackOwner')->name('submitFeedbackOwner');
     Route::get('/loadFeedbackFreelancer', 'ProfileController@loadFeedbackFreelancer')->name('loadFeedbackFreelancer');
@@ -158,7 +162,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::post('/saveContactUsEnquiry', 'ContactController@saveContactUsEnquiry')->name('saveContactUsEnquiry');
     Route::get('/getClientTokens', 'ProfileController@getClientTokens')->name('getClientTokens');
    // Route::get('/checkOnHold', 'ProfileController@checkOnHold')->name('checkOnHold');
-    Route::get('/checkOnHoldLog', 'ProfileController@checkOnHoldLog')->name('checkOnHoldLog');
+    Route::get('/cronLog', 'ProfileController@cronLog')->name('checkOnHoldLog');
     
 
 });

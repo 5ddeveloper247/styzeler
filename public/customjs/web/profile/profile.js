@@ -66,8 +66,8 @@ $(document).ready(function () {
 
         $("#book").removeClass("customBtn").addClass("customBtnSelected");
         onCall = tomorrow;
-        // localStorage.removeItem(SELECTEDSTATUSDATE);
-        // $("#calendar").fullCalendar('refetchEvents');
+        localStorage.removeItem(SELECTEDSTATUSDATE);     //uncommented line to remove slots from freelancer calendar
+        $("#calendar").fullCalendar('refetchEvents');    //uncommented line to remove slots from freelancer calendar
     });
 });
 

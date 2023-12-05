@@ -500,10 +500,11 @@ class FrontEndController extends Controller
         } else {
             $membership = 0;
         }
+      //  dd($user["data"]["owner_telephone"]);
         return customView(
             'web.freelancerProfile',
-            'web.ownerProfile',
-            'web.clientProfile',
+            'web.ownerProfile', 
+            'web.clientProfile', 
             $data->type,
             get_defined_vars()
         );

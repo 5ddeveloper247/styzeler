@@ -17,3 +17,13 @@
    
 </body>
 </html>
+<script>
+    // Function to scroll the page to the bottom
+    function scrollPageToBottom() {
+        // Scroll to the total height of the document
+        window.scrollTo(0, document.body.scrollHeight);
+    }
+
+    // Attach the function to the window.onload event
+    window.onload = scrollPageToBottom;
+</script>
