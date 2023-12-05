@@ -173,12 +173,18 @@ function profileResponse(response) {
             profilename = data.name;
             surname = data.surname;
             // phone = data.phone; previous is like this but now showing the telephone on owenr profile
-             phone = data.data.owner_telephone;
+             phone = data.phone;
          
             address = data.address;
             post_code = data.post_code;
 
             email = data.email;
+
+            if (phone) {
+                var cleanedPhone = phone.replace(/\D/g, '');
+            } else {
+                var cleanedPhone = '-'
+            }
 
             $("#ownerName").text(profilename + " " + surname);
             $("#ownerName").append(
@@ -199,7 +205,7 @@ function profileResponse(response) {
                     "</a>"
             );
 
-            $("#owner-phone").text(phone);
+            $("#owner-phone").text(cleanedPhone);
             $("#owner-phone").append('<a class="text-center btn" onclick="editMobile()" title="Edit">' + "✎" + "</a>");
 
             $("#owner-email").text(email);

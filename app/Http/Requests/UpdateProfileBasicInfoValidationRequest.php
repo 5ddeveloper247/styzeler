@@ -28,7 +28,7 @@ class UpdateProfileBasicInfoValidationRequest extends FormRequest
             'video' => 'sometimes|nullable|url',
             'stylist_surname' => 'required_if:type,wedding,hairStylist,beautician,barber',
             'stylist_resume' => 'required_if:type,wedding,hairStylist,beautician,barber',
-            // 'stylist_mobile' => 'required_if:type,wedding,hairStylist,beautician,barber',
+            'stylist_mobile' => 'required_if:type,wedding,hairStylist,beautician,barber',
             'stylist_age' => 'required_if:type,wedding,hairStylist,beautician,barber',
             'qualification' => 'required_if:type,wedding,hairStylist,beautician,barber',
             'utr_number' => 'required_if:type,wedding,hairStylist,beautician,barber',
@@ -39,7 +39,7 @@ class UpdateProfileBasicInfoValidationRequest extends FormRequest
             'owner_surname' => 'required_if:type,hairdressingSalon,beautySalon,client',
             'owner_address' => 'required_if:type,hairdressingSalon,beautySalon,client',
             'owner_postcode' => 'required_if:type,hairdressingSalon,beautySalon,client',
-            // 'owner_telephone' => 'required_if:type,hairdressingSalon,beautySalon,client',
+            'owner_telephone' => 'required_if:type,hairdressingSalon,beautySalon,client',
 
         ];
     }
@@ -51,7 +51,7 @@ class UpdateProfileBasicInfoValidationRequest extends FormRequest
             'stylist_surname.required_if' => 'Surname is required!',
             'stylist_resume.required_if' => 'Tell us a bit about you and your brief working history in RESUME!',
 
-            // 'stylist_mobile.required_if' => 'Mobile Number is required!',
+            'stylist_mobile.required_if' => 'Mobile Number is required!',
             'stylist_age.required_if' => 'Please select your age group!',
             'utr_number.required_if' => 'Please enter your utr number!',
             'qualification.required_if' => 'Please Select Qualification',
@@ -63,7 +63,7 @@ class UpdateProfileBasicInfoValidationRequest extends FormRequest
             'owner_surname.required_if' => 'Surname is required!',
             'owner_address.required_if' => 'Address is required!',
             'owner_postcode.required_if' => 'PostCode is required!',
-            // 'owner_telephone.required_if' => 'Mobile Number is required!',
+            'owner_telephone.required_if' => 'Mobile Number is required!',
         ];
     }
 }

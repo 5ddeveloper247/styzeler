@@ -209,18 +209,18 @@ function profileResponse(response) {
             surname = data.surname;
             phone = data.phone;
 
-            // if (phone) {
-            //     var cleanedPhone = phone.replace(/\D/g, '');
-            // } else {
-            //     var cleanedPhone = '-'
-            // }
+            if (phone) {
+                var cleanedPhone = phone.replace(/\D/g, '');
+            } else {
+                var cleanedPhone = '-'
+            }
 
             $('#ownerName').text(profilename + ' ' + surname);
             $('#ownerName').append('<a class="text-center btn" onclick="editName()" title="Edit">✎</a>');
 
             $('#stylist-name').val(profilename);
             $('#stylist-surname').val(surname);
-            $('#stylist-mobile').val(phone);
+            $('#stylist-mobile').val(cleanedPhone);
 
             // for age
             age = data.age

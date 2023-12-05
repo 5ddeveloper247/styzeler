@@ -110,7 +110,7 @@ function profileResponse(response) {
 
             $("#stylist-name").val(profilename);
             $("#stylist-surname").val(surname);
-            $("#stylist-mobile").val(cleanedPhone:);
+            $("#stylist-mobile").val(cleanedPhone);
             $("#stylist-address").val(address);
             $("#stylist-postcode").val(post_code);
 

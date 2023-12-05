@@ -215,13 +215,13 @@ class ProfileController extends Controller
                 'zone' => $request->zone,
                 'trade_video' => $request->video,
                 'resume' => $request->stylist_resume,
-                // 'phone' => $request->stylist_mobile,
+                'phone' => $request->stylist_mobile,
 
             ],
             'hairdressingSalon', 'beautySalon', 'client' => [
                 'name' => $request->owner_name,
                 'surname' => $request->owner_surname,
-                // 'phone' => $request->owner_telephone,
+                'phone' => $request->owner_telephone,
                 'post_code' => $request->owner_postcode,
                 'status' => $request->owner_status,
                 'utr_number' => $request->utr_number,
