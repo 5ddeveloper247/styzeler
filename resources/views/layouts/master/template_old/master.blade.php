@@ -135,8 +135,11 @@
         .toggle.active>span {
             opacity: 0;
         }
-        header { /* Rent and Let page image margin */
+        header {                        /* Rent and Let page image margin */
             margin-bottom: 4rem;
+        }
+        .btn1 {                        /* Padding to the register modal button */
+            padding: 0.375rem 0.75rem;
         }
         header #nav {
             display: -webkit-box;
