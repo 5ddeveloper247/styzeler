@@ -274,7 +274,7 @@
                         <li class="drop large_screen">
                             <a href="{{ route('aboutUs') }}">About us</a>
                             <ul class="sub">
-                                <li><a href="{{ route('contactUs') }}">About Us</a></li>
+                                {{-- <li><a href="{{ route('contactUs') }}">About Us</a></li> --}} 
                                 <li><a href="{{ route('contactUs') }}">Contact us</a></li>
                             </ul>
                         </li>

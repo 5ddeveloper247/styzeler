@@ -135,7 +135,9 @@
         .toggle.active>span {
             opacity: 0;
         }
-
+        header { /* Rent and Let page image margin */
+            margin-bottom: 4rem;
+        }
         header #nav {
             display: -webkit-box;
             display: -ms-flexbox;
@@ -470,7 +472,7 @@
     //  });
    
 
-     $('.small_screen').on('click', function() {
+    $('.small_screen').on('click', function() {
         // Hide all other .sub elements
         $('.small_screen .sub').not($(this).find('.sub')).hide();
         
