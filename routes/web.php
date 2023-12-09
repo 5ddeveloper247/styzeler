@@ -38,6 +38,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
 
         //Profile
         Route::get('/Profile', 'FrontEndController@Profile')->name('Profile');
+        Route::get('/getUserCounter', 'FrontEndController@getUserCounter')->name('getUserCounter');
         Route::get('/freelancerBooking', 'FrontEndController@freelancerBooking')->name('freelancerBooking');
         Route::get('/clientBooking', 'FrontEndController@freelancerBooking')->name('clientBooking');
         Route::get('/clientBookingHistory', 'FrontEndController@freelancerBookingHistory')->name('clientBookingHistory');
@@ -260,4 +261,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 
 Route::get('/sendMail', 'App\Http\Controllers\MailController@sendMail');
+
+Route::get('/clear-config-cache', 'App\Http\Controllers\MailController@clearConfigCache');
+Route::get('/clear-application-cache', 'App\Http\Controllers\MailController@clearApplicationCache');
 // Route::post('/registration', 'App\Http\Controllers\Auth\RegisterController@register')->name('registration');

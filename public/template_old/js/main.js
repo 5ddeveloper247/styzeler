@@ -119,3 +119,29 @@ $(function () {
 
 });
 
+
+function countLoadClient() {
+      // e.preventDefault();
+
+      let type = 'GET';
+      let url = 'getUserCounter';
+      let message = '';
+      let form = '';
+      let data = '';
+
+  
+      // PASSING DATA TO FUNCTION
+      SendAjaxRequestToServer(type, url, data, '', profileResponse, 'spinner_button', 'submit_button');
+}
+countLoadClient();
+
+function profileResponse(response) {
+
+  // SHOWING MESSAGE ACCORDING TO RESPONSE
+  if (response.status == 200) {
+      //saving response data in data var
+      $('#cart_count').text(response.data);
+
+  }
+
+}

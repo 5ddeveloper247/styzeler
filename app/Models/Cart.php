@@ -34,4 +34,9 @@ class Cart extends Model
     {
         return $this->belongsTo(BookingSlots::class, 'slot_id', 'id');
     }
+    public function cartLines()
+    {
+        return $this->hasMany(Cart_line::class, 'cart_id', 'id');
+    }
+
 }

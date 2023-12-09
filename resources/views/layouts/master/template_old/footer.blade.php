@@ -122,10 +122,11 @@
 <!-- Animation CDN -->
 <script src="{{ asset('template_old/js/aos/aos.js') }}"></script>
 
-<script src="{{ asset('template_old/js/main.js') }}?v={{ time() }}"></script>
 <!-- chat links -->
 <script src="{{ asset('customjs/web/register/common.js') }}?v={{ time() }}"></script>
+<script src="{{ asset('template_old/js/main.js') }}?v={{ time() }}"></script>
 <script src="{{ asset('customjs/web/chat/chat.js') }}?v={{ time() }}"></script>
+<script src="{{ asset('customjs/web/chat/counter.js') }}?v={{ time() }}"></script>
 
 <script>
     $(function() {

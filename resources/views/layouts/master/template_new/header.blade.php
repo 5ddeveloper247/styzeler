@@ -1,4 +1,10 @@
 <header>
+    <style>
+        .top-0{
+            top: -11px !important;
+            right: -8px;
+        }
+    </style>
     <div class="contain">
         <div class="top">
             <div class="logo">
@@ -20,9 +26,9 @@
                             <button type="submit" class="logon_btn">Sign Out</button>
                         </form>
                         @if (!isset(auth()->user()->profile_type) && !in_array(auth()->user()->type, ['beautySalon', 'hairdressingSalon']))
-                            <a href="{{ route('cart') }}" class="logon_btn heart_btn">
+                            <a href="{{ route('cart') }}" class="logon_btn heart_btn position-relative">
                                 <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt=""
-                                    style="width:28px;">
+                                    style="width:28px;"> <span class="badge badge-secondary position-absolute top-0 right-0 p-2" id="cart_count" style="background: #bbbbbb;color:#860101;font-weight:bold">0</span>
                             </a>
                         @endif
                     @endauth

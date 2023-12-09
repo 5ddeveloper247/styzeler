@@ -154,16 +154,16 @@ class FrontEndController extends Controller
         if (isset(Auth::user()->type) && in_array(Auth::user()->type, ['hairdressingSalon', 'beautySalon', 'wedding', 'hairStylist', 'beautician', 'barber'])) {
 
             if ($type != '') {
-                $users = User::where('status', 'Active')->whereIn('type', ['barber'])->where('profile_type', '!=', 'Home Service')->where('profile_type', $type)->get();
+                $users = User::where('status', 'Active')->where('id', '!=',Auth::id())->whereIn('type', ['barber'])->where('profile_type', '!=', 'Home Service')->where('profile_type', $type)->get();
             } else {
-                $users = User::where('status', 'Active')->whereIn('type', ['barber'])->where('profile_type', '!=', 'Home Service')->get();
+                $users = User::where('status', 'Active')->where('id', '!=',Auth::id())->whereIn('type', ['barber'])->where('profile_type', '!=', 'Home Service')->get();
             }
         } else if (isset(Auth::user()->type) && in_array(Auth::user()->type, ['client'])) {
 
-            $users = User::where('status', 'Active')->whereIn('type', ['barber'])->where('profile_type', 'Home Service')->get();
+            $users = User::where('status', 'Active')->where('id', '!=',Auth::id())->whereIn('type', ['barber'])->where('profile_type', 'Home Service')->get();
         } else {
 
-            $users = User::where('status', 'Active')->whereIn('type', ['barber'])->get();
+            $users = User::where('status', 'Active')->where('id', '!=',Auth::id())->whereIn('type', ['barber'])->get();
         }
 
         $data['users'] = $users;
@@ -180,9 +180,9 @@ class FrontEndController extends Controller
         if (isset(Auth::user()->type) && in_array(Auth::user()->type, ['hairdressingSalon', 'beautySalon', 'wedding', 'hairStylist', 'beautician', 'barber'])) {
 
             if ($type != '') {
-                $users = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->where('profile_type', '!=', 'Home Service')->where('profile_type', $type)->get();
+                $users = User::where('status', 'Active')->where('id', '!=',Auth::id())->whereIn('type', ['hairStylist'])->where('profile_type', '!=', 'Home Service')->where('profile_type', $type)->get();
             } else {
-                $users = User::where('status', 'Active')->whereIn('type', ['hairStylist'])->where('profile_type', '!=', 'Home Service')->get();
+                $users = User::where('status', 'Active')->where('id', '!=',Auth::id())->whereIn('type', ['hairStylist'])->where('profile_type', '!=', 'Home Service')->get();
             }
         } else if (isset(Auth::user()->type) && in_array(Auth::user()->type, ['client'])) {
 
@@ -197,7 +197,7 @@ class FrontEndController extends Controller
     }
 
     public function beautician(Request $request)
-    {
+    {   
         if (isset($request->type)) {
             $type = $request->type;
         } else {
@@ -206,9 +206,9 @@ class FrontEndController extends Controller
         if (isset(Auth::user()->type) && in_array(Auth::user()->type, ['hairdressingSalon', 'beautySalon', 'wedding', 'hairStylist', 'beautician', 'barber'])) {
 
             if ($type != '') {
-                $users = User::where('status', 'Active')->whereIn('type', ['beautician'])->where('profile_type', '!=', 'Home Service')->where('profile_type', $type)->get();
+                $users = User::where('status', 'Active')->where('id', '!=',Auth::id())->whereIn('type', ['beautician'])->where('profile_type', '!=', 'Home Service')->where('profile_type', $type)->get();
             } else {
-                $users = User::where('status', 'Active')->whereIn('type', ['beautician'])->where('profile_type', '!=', 'Home Service')->get();
+                $users = User::where('status', 'Active')->where('id', '!=',Auth::id())->whereIn('type', ['beautician'])->where('profile_type', '!=', 'Home Service')->get();
             }
         } else if (isset(Auth::user()->type) && in_array(Auth::user()->type, ['client'])) {
 
@@ -230,7 +230,7 @@ class FrontEndController extends Controller
     public function weddingStylist()
     {
 
-        $users = User::where('status', 'Active')->whereIn('type', ['wedding'])->get();
+        $users = User::where('status', 'Active')->where('id', '!=',Auth::id())->whereIn('type', ['wedding'])->get();
 
         $data['users'] = $users;
         return view('web.weddingStylist')->with($data);
@@ -238,7 +238,7 @@ class FrontEndController extends Controller
 
     public function salonOwner()
     {
-        $data['users'] = User::where('status', 'Active')->whereIn('type', ['hairdressingSalon', 'beautySalon'])->get();
+        $data['users'] = User::where('status', 'Active')->where('id', '!=',Auth::id())->whereIn('type', ['hairdressingSalon', 'beautySalon'])->get();
         return view('web.salonOwner')->with($data);
     }
 
@@ -599,5 +599,19 @@ class FrontEndController extends Controller
                 }
             }
         }
+    }
+
+    public function getUserCounter(){
+        $cartId = Cart::where(['user_id'=> Auth::id(),'status'=>'active'])->first();
+        $cartCount = Cart_line::where('cart_id', $cartId->id)->count();
+
+        return response()->json(
+            [
+                'status' => 200,
+                'message' => 'Successfully Deleted!',
+                'data' => $cartCount
+            ]
+        );
+        
     }
 }

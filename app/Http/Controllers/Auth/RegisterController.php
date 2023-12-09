@@ -246,7 +246,7 @@ class RegisterController extends Controller
             }
             $body .= "</table>";
 
-           // sendMail($userData['name'], $email_send_to, $email_for, $email_subject, $body);
+           sendMail($userData['name'], $email_send_to, $email_for, $email_subject, $body);
         }
         return response()->json(['status' => 200, 'message' => 'Registration Succsessfull!', 'data' => '']);
     }

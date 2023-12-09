@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
+use Illuminate\Http\Request;
 use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+use PHPMailer\PHPMailer\PHPMailer;
+use Illuminate\Support\Facades\Artisan;
 
 // require '../vendor/autoload.php';
 
@@ -18,8 +19,23 @@ class MailController extends Controller
     public function sendMail()
     {
     
-        sendMail("Welcome styzeler","adnanyar143@gmail.com","adnanyar143@gmail.com","Subject of the email","this is the body of the email");
+        sendMail("Welcome styzeler","meabdulrehmanazeem@gmail.com","name from","Subject of the email","this is the body of the email");
        
+    }
+    public function clearConfigCache()
+    {
+        // Clear configuration cache
+        Artisan::call('config:clear');
+
+        return 'Configuration cache cleared successfully.';
+    }
+
+    public function clearApplicationCache()
+    {
+        // Clear application cache
+        Artisan::call('cache:clear');
+
+        return 'Application cache cleared successfully.';
     }
 }
 

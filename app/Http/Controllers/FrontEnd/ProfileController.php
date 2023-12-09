@@ -368,7 +368,6 @@ class ProfileController extends Controller
                 ]
             );
         }
-
         $userDetails = User::where('id', Auth::user()->id)->first();
 
         $tokens = $userDetails->tokens != null ? $userDetails->tokens : 0;
@@ -577,7 +576,7 @@ class ProfileController extends Controller
                 $userEmailsSend[] = $bookedUserDetails['email'];
                 $userEmailsSend[] = 'admin@styzeler.co.uk';
 
-               // sendMail($userDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
+               sendMail($userDetails['name'], $userEmailsSend, 'Booking', 'Booking Email', $body);
 
                 $bookingDetails = Bookings::where('id', $slotDetails->bookings_id)
                     ->with(
@@ -678,6 +677,7 @@ class ProfileController extends Controller
             $date_data = '';
             $email_user_name = '';
             $email_user_book_user = '';
+
             if (!empty($request->on_hold)) {
                 $message = "On Hold";
                 $heading1 = 'Booking On Hold';
@@ -687,11 +687,10 @@ class ProfileController extends Controller
                 $email_user_book_user = 'On Hold Freelancer Name';
 
                 $userSelectedDate = Carbon::parse($request->book_date . ' ' . Carbon::now()->format('H:i'));
-
                 $currentDateTime = Carbon::now();
                 $modifiedDateTime = $currentDateTime->copy()->addHours(48); // Add 48 hours to a copy of the current date and time
 
-                if ($userSelectedDate->lt($modifiedDateTime->format('Y-m-d'))) {
+                if ($userSelectedDate->lt($modifiedDateTime)) {
                     return response()->json(
                         [
                             'status' => 403,
@@ -785,7 +784,7 @@ class ProfileController extends Controller
             $userEmailsSend[] = $bookedUserDetails['email'];
             $userEmailsSend[] = 'admin@styzeler.co.uk';
 
-           // sendMail($bookedUserDetails['name'], $userEmailsSend, $heading1, $heading2, $body);
+           sendMail($bookedUserDetails['name'], $userEmailsSend, $heading1, $heading2, $body);
 
             return response()->json(
                 [
@@ -980,7 +979,8 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(
                 [
                     ['booking_user_id', Auth::id()],
-                    ['created_at', '>=', $currentDate],
+                    // ['created_at', '>=', $currentDate],
+                    ['booking_date', '>=', $currentDate],
                 ]
             )->where(function ($query) {
                 $query->where('status', 'not like', '%Cancelled%')
@@ -1001,7 +1001,8 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(
                 [
                     ['freelancer_user_id', Auth::id()],
-                    ['created_at', '>=', $currentDate],
+                    ['booking_date', '>=', $currentDate],
+                    // ['created_at', '>=', $currentDate],
                 ]
             )->where(function ($query) {
                 $query->where('status', 'not like', '%Cancelled%')
@@ -1058,7 +1059,8 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(function ($query) use ($currentDate) {
                 $query->where([
                     ['booking_user_id', Auth::id()],
-                    ['created_at', '<=', $currentDate],
+                    ['booking_date', '<', $currentDate],
+                    // ['created_at', '<=', $currentDate],
                 ])->orWhere([
                             ['booking_user_id', Auth::id()],
                             ['status', 'like', '%Cancelled%'],
@@ -1076,7 +1078,8 @@ class ProfileController extends Controller
             $getProfileData = Appointments::where(function ($query) use ($currentDate) {
                 $query->where([
                     ['freelancer_user_id', Auth::id()],
-                    ['created_at', '<=', $currentDate],
+                    ['booking_date', '<', $currentDate],
+                    // ['created_at', '<=', $currentDate],
                 ])->orWhere([
                             ['freelancer_user_id', Auth::id()],
                             ['status', 'like', '%Cancelled%'],
@@ -1203,7 +1206,7 @@ class ProfileController extends Controller
 			            </table>";
             $userEmailsSend[] = $weddingUserDetails->email;
 
-            //sendMail($userDetails->name, $userEmailsSend, 'Booking', 'Booking Contact Email', $body);
+            sendmail($userDetails->name, $userEmailsSend, 'Booking', 'Booking Contact Email', $body);
 
             $body1 = "<table>
 			                <tr>
@@ -1221,7 +1224,7 @@ class ProfileController extends Controller
 			           	</table>";
             $userEmailsSend1[] = $userDetails->email;
 
-           // sendMail($userDetails->name, $userEmailsSend1, 'Contact', 'Contact Email', $body1);
+           sendmail($userDetails->name, $userEmailsSend1, 'Contact', 'Contact Email', $body1);
         }
 
         return response()
@@ -1325,21 +1328,6 @@ class ProfileController extends Controller
         $getAppointmentBookingTime = $getAppointmentData->booking_time;
         $getAppointmentBookingUserId = $getAppointmentData->booking_user_id;
 
-        // $token_not_remove = BookingSlots::where('id', $getAppointmentData->booking_slots_id)->value('status');
-        $timeNow = now();
-        $hoursDifference = $timeNow->diffInHours($getAppointmentCreatedTime);
-
-        if ($hoursDifference > 24) {
-            return response()
-                ->json(
-                    [
-                        'status' => 403,
-                        'message' => 'You Cannot Cancel This Booking!',
-                        'data' => ''
-                    ]
-                );
-        }
-
         $getAppointmentDataArray = explode(',', $getAppointmentData->booking_slots_id);
         $bookinkSlots = BookingSlots::whereIn('id', $getAppointmentDataArray);
         if ($cancel_time == '21') {
@@ -1385,7 +1373,11 @@ class ProfileController extends Controller
             ]
         )
             ->count();
-        if ($appoExistBooked == 1 && ($getAppointmentData->status == 'Booked' || $clientUser->type == 'client')) {
+             // $token_not_remove = BookingSlots::where('id', $getAppointmentData->booking_slots_id)->value('status');
+        $timeNow = now();
+        $hoursDifference = $timeNow->diffInHours($getAppointmentCreatedTime);
+    
+        if ($appoExistBooked == 1 && ($getAppointmentData->status == 'Booked' || $clientUser->type == 'client') && $hoursDifference < 24) {
             User::where('id', $clientUser->id)->update(
                 [
                     'tokens' => $clientUser->tokens + 1
@@ -1418,7 +1410,7 @@ class ProfileController extends Controller
 
         $userEmailsSend = $clientUser->email;
 
-      //  sendMail($clientUser->name, $userEmailsSend, 'Cancel Booking', 'Cancel Booking Email', $body);
+      sendmail($clientUser->name, $userEmailsSend, 'Cancel Booking', 'Cancel Booking Email', $body);
 
         $body1 = "<table>
                     <tr>
@@ -1440,7 +1432,7 @@ class ProfileController extends Controller
 
         $userEmailsSend1 = $freelancerUser->email;
 
-       // sendMail($clientUser->name, $userEmailsSend1, 'Cancel Booking', 'Cancel Booking Email', $body1);
+       sendmail($clientUser->name, $userEmailsSend1, 'Cancel Booking', 'Cancel Booking Email', $body1);
 
         $body1 = "<table>
                     <tr>
@@ -1468,7 +1460,7 @@ class ProfileController extends Controller
 
         $userEmailsSend2 = 'admin@styzeler.co.uk';
 
-      //  sendMail($clientUser->name, $userEmailsSend2, 'Cancel Booking', 'Cancel Booking Email', $body1);
+      sendmail($clientUser->name, $userEmailsSend2, 'Cancel Booking', 'Cancel Booking Email', $body1);
 
         return response()->json([
             'status' => 200,
@@ -1659,13 +1651,13 @@ class ProfileController extends Controller
             foreach ($sendEmailTo as $user_type) {
                 if ($user_type == 'admin') {
                     $admin = User::where('type', $user_type)->first();
-                  //  sendMail($admin->name, $admin->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
+                  sendmail($admin->name, $admin->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
                 } else if ($user_type == 'freelancer') {
                     $freelancer = User::findOrFail($appointment->freelancer_user_id);
-                   // sendMail($freelancer->name, $freelancer->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
+                   sendmail($freelancer->name, $freelancer->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
                 } else if ($user_type == 'owner') {
                     $freelancer = User::findOrFail($appointment->booking_user_id);
-                  //  sendMail($freelancer->name, $freelancer->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
+                  sendmail($freelancer->name, $freelancer->email, "Booking $on_hold", "Booking $on_hold Email", $body1);
                 }
             }
 
@@ -1777,13 +1769,13 @@ class ProfileController extends Controller
             foreach ($sendEmailTo as $user_type) {
                 if ($user_type == 'admin') {
                     $admin = User::where('type', $user_type)->first();
-                  //  sendMail($admin->name, $admin->email, "Booking Confirm", "Booking Confirm Email", $body1);
+                  sendmail($admin->name, $admin->email, "Booking Confirm", "Booking Confirm Email", $body1);
                 } else if ($user_type == 'freelancer') {
                     $freelancer = User::findOrFail($appointment->freelancer_user_id);
-                  //  sendMail($freelancer->name, $freelancer->email, "Booking Confirm", "Booking Confirm Email", $body1);
+                  sendmail($freelancer->name, $freelancer->email, "Booking Confirm", "Booking Confirm Email", $body1);
                 } else if ($user_type == 'owner') {
                     $freelancer = User::findOrFail($appointment->booking_user_id);
-                   // sendMail($freelancer->name, $freelancer->email, "Booking Confirm", "Booking Confirm Email", $body1);
+                   sendmail($freelancer->name, $freelancer->email, "Booking Confirm", "Booking Confirm Email", $body1);
                 }
             }
 
@@ -1829,20 +1821,18 @@ class ProfileController extends Controller
     Log::channel('custom')->info('Cron Start date and time: ' . now('Asia/Karachi'));
 
     $check_appointment = Appointments::whereHas('userBookingSlots', function ($q) {
-        // $q->where('status', 'Confirmed by Freelancer');
-         $q->where('status', 'Cancelled by Freelancer');
+        $q->where('status', 'Confirmed by Freelancer');
+        //  $q->where('status', 'Cancelled by Freelancer');
     })->with(['userBookingSlots.bookings'])->get();
      // dd($check_appointment);
     // if (true) {
- 
-    if ($check_appointment->isNotEmpty()) {
-        foreach ($check_appointment as $appointment) {
-            $freelancer_user = User::find($appointment->freelancer_user_id); 
-            $booking_user = User::find($appointment->booking_user_id);
-            $appointment_date = Carbon::parse($appointment->created_at)->addHours(36);
-            $diff_in_time = now()->diffInHours($appointment_date);
+        if ($check_appointment->isNotEmpty()) {
+            foreach ($check_appointment as $appointment) {
+                $freelancer_user = User::find($appointment->freelancer_user_id); 
+                $booking_user = User::find($appointment->booking_user_id);
+                $appointment_date = Carbon::parse($appointment->booking_date)->subHours(36);
 
-            if ( true) {
+            if ($appointment_date < now() ) {
                 $bookingSlot = $appointment->userBookingSlots;
                 $bookings = $bookingSlot->bookings;
                 // dd($bookings);
@@ -1868,13 +1858,13 @@ class ProfileController extends Controller
                     foreach ($sendEmailTo as $user_type) {
                         if ($user_type == 'admin') {
                             $admin = User::where('type', $user_type)->first();
-                          //  sendMail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                          sendmail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
                             Log::channel('custom')->info("Email Sent to Admin");
                         } else if ($user_type == 'freelancer') {
-                         //   sendMail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                           sendMail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
                             Log::channel('custom')->info("Email Sent to freelancer");
                         } else if ($user_type == 'owner') {
-                        //    sendMail($booking_user->name, $booking_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                           sendMail($booking_user->name, $booking_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
                             Log::channel('custom')->info("Email Sent to Owner");
                         }
                     }   
@@ -1919,6 +1909,7 @@ public function checkOnPending()
     Log::channel('custom')->info('2');
     Log::channel('custom')->info('checkOnPendidng Cron started.');
     Log::channel('custom')->info('Cron Start date and time: ' . now('Asia/Karachi'));
+
     $appointments = Appointments::where('status', null)
         ->whereHas('userBookingSlots', function ($query) {
             $query->whereHas('bookings', function ($query) {
@@ -1927,26 +1918,22 @@ public function checkOnPending()
         })
         ->with(['userBookingSlots.bookings', 'userBookingSlots'])
         ->get();
-       // dd($appointments);
 
-
-    if ($appointments->isNotEmpty()) {
-        
-      
-        foreach ($appointments as $appointment) {
-         //   dd($appointment->created_at);
+        if ($appointments->isNotEmpty()) {
+            foreach ($appointments as $appointment) {
+           
             $freelancer_user = User::find($appointment->freelancer_user_id);
             $booking_user = User::find($appointment->booking_user_id);
             $appointment_date = Carbon::parse($appointment->created_at)->addHours(3);
-        //  dd($appointment_date->lessThan(now()) && $appointment->userBookingSlots->bookings->status == 'Pending');
-               
-            if ($appointment_date->lessThan(now()) && $appointment->userBookingSlots->bookings->status == 'Pending') {
+            
+            if ($appointment_date->greaterThan(now()) && $appointment->userBookingSlots->bookings->status == 'Pending') {
               
                 $bookingSlot = $appointment->userBookingSlots;
                 $bookings = $bookingSlot->bookings;
            // dd( $bookings->status);
 
                 if (!is_null($bookingSlot) && !is_null($bookings)) {
+                    
                     $bookingSlot->status = 'Available';
                     $bookingSlot->save();
 
@@ -1970,13 +1957,13 @@ public function checkOnPending()
                     foreach ($sendEmailTo as $user_type) {
                         if ($user_type == 'admin') {
                             $admin = User::where('type', $user_type)->first();
-                           // sendMail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                           sendmail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
                             Log::channel('custom')->info("Email Sent to Admin");
                         } elseif ($user_type == 'freelancer') {
-                          //  sendMail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                          sendmail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
                             Log::channel('custom')->info("Email Sent to Freelancer");
                         } elseif ($user_type == 'owner') {
-                          //  sendMail($booking_user->name, $booking_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                          sendmail($booking_user->name, $booking_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
                             Log::channel('custom')->info("Email Sent to Owner");
                         }
                     }

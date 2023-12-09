@@ -175,9 +175,10 @@ if(isset($userDetails->type)){
 	                    		
 	                    		@if(count(@$userDetails->data))
 	                    		@php $prodFlag =  'false'; @endphp
+								{{-- @dd($userDetails->data) --}}
 	                    		@foreach(@$userDetails->data as $row)
 	                    			
-	                    			@if(!in_array(@$row['heading'], ['Hair-Cutting','Wedding-Styles']))
+	                    			@if(is_array($row) && !in_array(@$row['heading'], ['Hair-Cutting','Wedding-Styles']))
 	                    		
 	                    				@if(@$row['heading'] == 'Barber Male Grooming')
 	                    					<p id="prod_heading">{{@$row['heading']}}</p>
@@ -297,7 +298,7 @@ if(isset($userDetails->type)){
           <div class="modal-content bg-dark">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
+                <span aria-hidden="true">ï¿½</span>
               </button>
             </div>
             <div class="modal-body">

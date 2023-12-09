@@ -7,7 +7,7 @@ var tomorrow = currentdate.toJSON().slice(0, 10);
 var calHeight = 600;
 var currentHour = currentdate.getHours();
 var availableSelectDate = localStorage.getItem(SELECTEDSTATUSDATE);
-// localStorage.removeItem("selectedstatusdate");
+localStorage.removeItem("selectedstatusdate");
 var evezz = [];
 var today = (today = new Date(
     new Date().getFullYear(),
@@ -100,6 +100,8 @@ jQuery(document).ready(function () {
                         var changeSlot = "";
                         var html = "";
                         var isBooked = "";
+                        
+                        console.log(user_type);
                         if (
                             user_type == "hairdressingSalon" ||
                             user_type == "beautySalon" ||
@@ -125,7 +127,7 @@ jQuery(document).ready(function () {
                                 "On Call": "On Call",
                                 // Add more mappings as needed
                             };
-                            // console.log(showResponse, statusToTitle,status);
+                            
                             var title = statusToTitle[status] || status; // Use the mapping or the status as the title
                             events.push({
                                 title: title,
@@ -164,14 +166,14 @@ jQuery(document).ready(function () {
                                 );
                                 evezz = [];
                                 var status = showResponse.data[i]["status"];
-                                if (status == "Off") {
-                                    changeSlot = "customBtnNotSelected";
+                                if (status == "Available") {
                                     $(".book-appointment").removeClass(
                                         "defaultStatus"
-                                    );
-                                    $(".on-Hold").removeClass("defaultStatus");
-                                    $(".off").addClass("defaultStatus");
-                                } else {
+                                        );
+                                        $(".on-Hold").removeClass("defaultStatus");
+                                        $(".off").addClass("defaultStatus");
+                                    } else {
+                                    changeSlot = "customBtnNotSelected";
                                     $(".book-appointment").addClass(
                                         "defaultStatus"
                                     );
@@ -329,18 +331,26 @@ jQuery(document).ready(function () {
                                     );
                                     changeSlot = "";
                                 }
-                            }
-                            if (status != "Off") {
-                                $(".timeSlots").html(html);
-                            } else {
-                                $(".timeSlots").empty();
-                            }
-                            $("#p_status").text(showResponse.data[i]["status"]);
-                            $(
-                                "[data-date=" +
-                                    showResponse.data[i]["date"] +
-                                    "]"
-                            ).css("color", "#ffdb59");
+                                if (user_type == "client" && (status == 'Available' || status == 'Booked')) {
+                                    
+                                    $("#p_status").text("Available");
+                                } else {
+                                    
+                                    $("#p_status").text(showResponse.data[i]["status"]);
+
+                                }
+                                if (status != "Off") {
+                                    $(".timeSlots").html(html);
+                                } else {
+                                    console.log('123')
+                                    $(".timeSlots").empty();
+                                }
+                                $(
+                                    "[data-date=" +
+                                        showResponse.data[i]["date"] +
+                                        "]"
+                                ).css("color", "#ffdb59");
+                                }
                         });
 
                         callback(events);
@@ -418,9 +428,19 @@ jQuery(document).ready(function () {
                             ) {
                                 var status = showResponse.data[i]["status"];
 
-                                if (status == "Off") {
-                                    changeSlot = "defaultStatus";
-                                    $(".addTimeSlots").addClass("d-none");
+                                if (status == "Available") {
+                                    $(".book-appointment").removeClass(
+                                        "defaultStatus"
+                                        );
+                                        $(".on-Hold").removeClass("defaultStatus");
+                                        $(".off").addClass("defaultStatus");
+                                    } else {
+                                    // changeSlot = "customBtnNotSelected";
+                                    $(".book-appointment").addClass(
+                                        "defaultStatus"
+                                    );
+                                    $(".on-Hold").addClass("defaultStatus");
+                                    $(".off").removeClass("defaultStatus");
                                 }
 
                                 if (
@@ -541,7 +561,6 @@ jQuery(document).ready(function () {
 
                                 //   $(".book-appointment").removeClass("defaultStatus");
                                 // }
-
                                 if (status != "Off") {
                                     $(".timeSlots").html(html);
                                     if (
@@ -559,10 +578,17 @@ jQuery(document).ready(function () {
                                 } else {
                                     $(".timeSlots").empty();
                                 }
+                                if (user_type == "client" && (status == 'Available' || status == 'Booked')) {
+                                    
+                                    $("#p_status").text("Available");
+                                } else {
+                                    
+                                    $("#p_status").text(showResponse.data[i]["status"]);
 
-                                $("#p_status").text(
-                                    showResponse.data[i]["status"]
-                                );
+                                }
+                                // $("#p_status").text(
+                                //     showResponse.data[i]["status"]
+                                // );
                                 $(".appointment-status").show();
                                 found = true;
                                 // $(".book-appointment").addClass(

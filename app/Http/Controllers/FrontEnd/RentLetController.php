@@ -44,7 +44,7 @@ class RentLetController extends Controller
         $rent_let->country = $request->salonCountry;
         $rent_let->county = $request->salonCounty;
         $rent_let->post_code = $request->salonCountryCode;
-        // $rent_let->phone = $request->salonMobile;
+        $rent_let->phone = $request->salonMobile;
         $rent_let->space_description = $request->spaceDescription;
         $rent_let->category = $request->rentalCategory;
         $rent_let->rent_let_category = $request->rentLetCategory;

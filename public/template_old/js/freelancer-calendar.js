@@ -112,10 +112,10 @@ function removeDuplicates(data) {
                         $.each(showResponse.data, function (i) {
                             var status = showResponse.data[i]["status"];
 
-                            if (user_type == "client") {
-                                isBooked = "Booked";
-                            } else {
+                            if (profileStatus == "Home Service") {
                                 isBooked = "Available";
+                            } else {
+                                isBooked = "Booked";
                             }
                             // Define a mapping of status values to titles
                             var statusToTitle = {
@@ -306,15 +306,23 @@ function removeDuplicates(data) {
                                 }
 
                                 changeSlot = "";
+                                if (profileStatus == "Home Service" && (status == 'Available' || status == 'Booked')) {
+                                    
+                                    $("#p_status").text("Available");
+                                } else {
+                                    
+                                    $("#p_status").text(showResponse.data[i]["status"]);
+
+                                }
+                                // $("#p_status").text(showResponse.data[i]["status"]);
+                                
+                                $(
+                                    "[data-date=" +
+                                        showResponse.data[i]["date"] +
+                                        "]"
+                                ).css("color", "#ffdb59");
                             }
                             $(".appointment-status").show();
-
-                            $("#p_status").text(showResponse.data[i]["status"]);
-                            $(
-                                "[data-date=" +
-                                    showResponse.data[i]["date"] +
-                                    "]"
-                            ).css("color", "#ffdb59");
                         });
 
                         var filtered_times = removeDuplicates(slots_times);
@@ -372,7 +380,7 @@ function removeDuplicates(data) {
                         if (profileStatus != "Freelancer") {
                             $(".total_time_slots").append(slot_time_html);
                         }
-
+                        
                         $(".timeSlots").html(html);
                         callback(events);
                     },
@@ -431,7 +439,7 @@ function removeDuplicates(data) {
                     url: "/showAppointmentDates",
                     data: JSON.stringify({}),
                     success: function (showResponse) {
-                        console.log(showResponse.data);
+                        // console.log(showResponse.data);
                         if (
                             user_type == "hairdressingSalon" ||
                             user_type == "beautySalon" ||
@@ -446,6 +454,7 @@ function removeDuplicates(data) {
                                 showResponse.data[i]["date"] ===
                                 convert(dateText)
                             ) {
+                                
                                 var status = showResponse.data[i]["status"];
 
                                 if (status == "Off") {
@@ -493,12 +502,7 @@ function removeDuplicates(data) {
                                                 showResponse.data[i][
                                                     "booking_time_slots"
                                                 ][j]["status"];
-                                            console.log(
-                                                status,
-                                                showResponse.data[i][
-                                                    "booking_time_slots"
-                                                ][j]["start_time"]
-                                            );
+                                            
                                             if (status != null) {
                                                 status_for_hold =
                                                     status.toLowerCase();
@@ -509,6 +513,7 @@ function removeDuplicates(data) {
                                                     "cancelled by"
                                                 )
                                             ) {
+                                                // console.log(status,'disable');
                                                 html +=
                                                     `<div title="" class="` +
                                                     changeSlot +
@@ -578,7 +583,7 @@ function removeDuplicates(data) {
                                                         "checked",
                                                         false
                                                     );
-
+                                                        
                                                     html +=
                                                         `<div title="" class="` +
                                                         changeSlot +
@@ -669,10 +674,20 @@ function removeDuplicates(data) {
                                         slot_time_html
                                     );
                                 }
+                               
                                 $(".timeSlots").html(html);
-                                $("#p_status").text(
-                                    showResponse.data[i]["status"]
-                                );
+                                
+                                if (profileStatus == "Home Service" && (status == 'Available' || status == 'Booked')) {
+                                    
+                                    $("#p_status").text("Available");
+                                } else {
+                                    
+                                    $("#p_status").text(showResponse.data[i]["status"]);
+
+                                }
+                                // $("#p_status").text(
+                                //     showResponse.data[i]["status"]
+                                // );
                                 $(".appointment-status").show();
                                 found = true;
                                 if (

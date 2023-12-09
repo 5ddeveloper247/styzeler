@@ -108,11 +108,11 @@ if (!function_exists('deleteImage')) {
 if (!function_exists('sendMail')) {
     function sendMail($send_to_name, $send_to_email, $email_from_name, $subject, $body)
     {
-        try {
+        // try {
             $mail_val = [
                 'send_to_name' => $send_to_name,
                 'send_to' => $send_to_email,
-                'email_from' => 'noreply@styzeler.co.uk',
+                'email_from' => 'no_reply@styzeler.co.uk',
                 'email_from_name' => $email_from_name,
                 // 'email_from' => 'misterkamran93@gmail.com',
                 'subject' => $subject,
@@ -124,12 +124,12 @@ if (!function_exists('sendMail')) {
                 $send->to($mail_val['send_to'], $mail_val['send_to_name'])->subject($mail_val['subject']);
             });
             return true;
-        } 
-        catch (\Exception $e) {
-            Log::error($e->getMessage());
-            echo "An error occurred while sending the email: " . $e->getMessage();
-            return false;
-        }
+        // } 
+        // catch (\Exception $e) {
+        //     Log::error($e->getMessage());
+        //     echo "An error occurred while sending the email: " . $e->getMessage();
+        //     return false;
+        // }
     }
 }
 

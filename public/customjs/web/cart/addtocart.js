@@ -74,7 +74,7 @@ function addToCartResponse(response) {
         toastr.success(response.message, '', {
             timeOut: 3000
         });
-        
+        countLoadClient();
         if($("#item_type").val() == 'Make-up' && $("#item_service").val() == 'Bridal Make-up'){
         	
         	window.location.href = weddingRoute;

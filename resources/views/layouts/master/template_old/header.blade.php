@@ -1,4 +1,10 @@
 <header>
+    <style>
+        .top-0{
+            top:-11px;
+            right: -3px
+        }
+    </style>
     <section class="header mx-auto">
         <nav class="navbar navbar-expand-lg navbar-light">
 
@@ -40,9 +46,9 @@
                                                 Out</button>
                                         </form>
                                         @if (!isset(auth()->user()->profile_type) && !in_array(auth()->user()->type, ['beautySalon', 'hairdressingSalon']))
-                                            <a href="{{ route('cart') }}" class="logon_btn heart_btn">
-                                                <img src="{{ asset('template_new/assets/images/cart-round.png') }}"
-                                                    alt="" style="width:28px;">
+                                            <a href="{{ route('cart') }}" class="logon_btn heart_btn position-relative">
+                                                <img src="{{ asset('template_new/assets/images/cart-round.png') }}" class=""
+                                                    alt="" style="width:28px;"> <span class="badge badge-secondary position-absolute top-0 right-0 p-2" id="cart_count" style="background: #bbbbbb;color:#860101;font-weight:bold">0</span>
                                             </a>
                                         @endif
                                     @endauth
