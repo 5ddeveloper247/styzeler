@@ -21,7 +21,7 @@
                 <br>
                 <a href="{{ route('rentLetBeautyTherapist') }}"
                     class="btn hairstylistBtn {{ @$page == 'beauty-therapist' ? 'customBtnSelected' : 'customBtn' }} mb-4">Beauty
-                    therapist Chair</a>
+                    Therapist Chair</a>
             </div>
             <div class="row chair-row my-lg-5">
                 @if (count($rentLetList))
@@ -65,7 +65,7 @@
                                         </p>
                                         <p>
                                             <strong>Email: </strong>
-                                            <a href="mailto:{{ @$rentLet->user->email }}">{{ @$rentLet->user->email }}</a>
+                                            <a style="word-break: break-all" href="mailto:{{ @$rentLet->user->email }}">{{ @$rentLet->user->email }}</a>
                                             <span class="customTooltip">
                                                 <span class="exclamation">
                                                     <i class="fa fa-exclamation" aria-hidden="true"></i>&nbsp;&nbsp;

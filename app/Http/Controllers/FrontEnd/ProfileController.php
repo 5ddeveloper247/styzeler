@@ -1858,7 +1858,7 @@ class ProfileController extends Controller
                     foreach ($sendEmailTo as $user_type) {
                         if ($user_type == 'admin') {
                             $admin = User::where('type', $user_type)->first();
-                          sendmail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                          sendmail($admin->name, 'admin@styzeler.co.uk', "Booking Cancelled", "Booking Cancelled Email", $body1);
                             Log::channel('custom')->info("Email Sent to Admin");
                         } else if ($user_type == 'freelancer') {
                            sendMail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
@@ -1905,11 +1905,6 @@ class ProfileController extends Controller
 
 public function checkOnPending()
 {
-    //dd(now());
-    Log::channel('custom')->info('2');
-    Log::channel('custom')->info('checkOnPendidng Cron started.');
-    Log::channel('custom')->info('Cron Start date and time: ' . now('Asia/Karachi'));
-
     $appointments = Appointments::where('status', null)
         ->whereHas('userBookingSlots', function ($query) {
             $query->whereHas('bookings', function ($query) {
@@ -1925,8 +1920,7 @@ public function checkOnPending()
             $freelancer_user = User::find($appointment->freelancer_user_id);
             $booking_user = User::find($appointment->booking_user_id);
             $appointment_date = Carbon::parse($appointment->created_at)->addHours(3);
-            
-            if ($appointment_date->greaterThan(now()) && $appointment->userBookingSlots->bookings->status == 'Pending') {
+            if ($appointment_date->lessThan(now()) && $appointment->userBookingSlots->bookings->status == 'Pending') {
               
                 $bookingSlot = $appointment->userBookingSlots;
                 $bookings = $bookingSlot->bookings;
@@ -1940,9 +1934,7 @@ public function checkOnPending()
                     $bookings->status='Available';
                     $bookings->save(); 
 
-                    $appointment->update(['status' => ' cancelled Due to Expiry of Time']);
-                 
-                    Log::channel('custom')->info("Booking cancelled successfully. Appointment details: " . json_encode($appointment));
+                    $appointment->update(['status' => 'Cancelled Due to Expiry of Time']);
 
                     $body1 = "<table>
                         <tr><td>Business Owner Name: $booking_user->name </td></tr>
@@ -1957,7 +1949,8 @@ public function checkOnPending()
                     foreach ($sendEmailTo as $user_type) {
                         if ($user_type == 'admin') {
                             $admin = User::where('type', $user_type)->first();
-                           sendmail($admin->name, $admin->email, "Booking Cancelled", "Booking Cancelled Email", $body1);
+                           sendmail($admin->name, 'admin@styzeler.co.uk', "Booking Cancelled", "Booking Cancelled Email", $body1);
+                            
                             Log::channel('custom')->info("Email Sent to Admin");
                         } elseif ($user_type == 'freelancer') {
                           sendmail($freelancer_user->name, $freelancer_user->email, "Booking Cancelled", "Booking Cancelled Email", $body1);

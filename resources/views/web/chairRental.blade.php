@@ -178,15 +178,15 @@
 
                                     <div class="form-group">
                                         <input type="file" id="chair-picture-1" name="chairPicture1"
-                                            class="form-control" accept=".jpg, .jpeg, .png" multiple="false">
+                                            class="form-control" accept=".jpg, .jpeg, .png" >
                                     </div>
                                     <div class="form-group">
                                         <input type="file" id="chair-picture-2" name="chairPicture2"
-                                            class="form-control" accept=".jpg, .jpeg, .png" multiple="false">
+                                            class="form-control" accept=".jpg, .jpeg, .png" >
                                     </div>
                                     <div class="form-group">
                                         <input type="file" id="chair-picture-3" name="chairPicture3"
-                                            class="form-control" accept=".jpg, .jpeg, .png" multiple="false">
+                                            class="form-control" accept=".jpg, .jpeg, .png">
                                     </div>
                                     <div class="col-12">
                                         <canvas id="canvas"></canvas>
@@ -196,10 +196,10 @@
                                             <input name="code" />
                                         </div>
                                         <div class="col-md-6 mt-2">
-                                            <button type="button" id="valid">Verify</button>
+                                            <button class="btn border border-secondary" type="button" id="valid">Verify</button>
                                         </div>
                                         <div class="col-md-6 mt-2 text-right">
-                                            <button type="button" id="saveRentAndLet">Submit</button>
+                                            <button class="btn border border-secondary" type="button" id="saveRentAndLet">Submit</button>
                                         </div>
                                     </div>
 

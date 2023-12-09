@@ -11,7 +11,9 @@
     --font-open-sans: "Open Sans", sans-serif;
     --transition: all ease 0.3s;
 }
-
+select.form-control:not([size]):not([multiple]) {
+    height: calc(2.5rem + 2px);
+}
 /*========Common=========*/
 body {
     margin: 0;
@@ -526,7 +528,7 @@ header .logon_btn.heart_btn {
 
 .hairstylistBtn,
 .beautyTherapistBtn {
-    width: 230px;
+    width: 238px;
 }
 
 .jobBtn,
