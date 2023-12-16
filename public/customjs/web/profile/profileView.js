@@ -913,7 +913,7 @@ function formateDate(dateText) {
     return [day, month, year].join("-");
 }
 
-function selectSlot(id, start_time, end_time, date) {
+function selectSlot(id, start_time, end_time, date,onhold='') {
     var starttimeAMPM = convertTo12HourFormat(start_time);
 
     if (end_time == "null" || end_time == null) {
@@ -935,6 +935,7 @@ function selectSlot(id, start_time, end_time, date) {
     $("#book_slot_end").html(endtimeAMPM);
 
     $("#book_slot_date").html(convertedDate);
+    $("#on_call").val(onhold);
 }
 
 $(document).on("click", ".select_option", function (e) {

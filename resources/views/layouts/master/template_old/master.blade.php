@@ -26,6 +26,7 @@
 
     <!-- chat links -->
     <link rel="stylesheet" href="{{ asset('template_new/assets/css/chat_style.css') }}?v={{ time() }}" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.ckeditor.com/4.5.1/standard/skins/moono/editor.css?t=F62B">
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
     <link rel="stylesheet"
@@ -449,6 +450,7 @@
 </body>
 
 <script src="{{ asset('customjs/web/checkModalEvent.js') }}?v={{ time() }}"></script>
+<script src="https://cdn.ckeditor.com/4.5.1/standard/ckeditor.js"></script>
 <script>
     $(document).ready(function() {
         // var parent = $('.sub');

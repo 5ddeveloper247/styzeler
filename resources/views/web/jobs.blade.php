@@ -28,32 +28,39 @@
 
     <div class="jobs">
         <div class="container">
+            @if(auth()->check())
             <h1 class="text-uppercase color-1 text-center" style="margin-left: 10px;">Jobs</h1>
 
             @if (in_array(@Auth::user()->type, ['hairdressingSalon', 'beautySalon']))
                 <a id="postjob" onclick="postNewJob();" class="btn"
                     style="width: 100%; margin-top: 5px; background: url({{ asset('template_old/images/postjob.png') }}); no-repeat scroll -2px 0 transparent; background-position: center; height: 80px; border: none;"></a>
             @endif
-            <div class="all-jobs row" data-aos="fade-up">
+                <div class="all-jobs row" data-aos="fade-up">
+                    {{-- @dd($jobs) --}}
+                    @if (count($jobs))
+                        @foreach ($jobs as $row)
+                            <div class="col-12 mt-4">
+                                <div class="card card-body color-1">
+                                    <h4>{{ @$row->job_title }}</h4>
+                                    <div><?php echo $row->description; ?></div>
+                                    <!-- 						<p>Job Types: Temporary, Contract, &pound;25,000.00-&pound;30,000.00+ per year</p> -->
 
-                @if (count($jobs))
-                    @foreach ($jobs as $row)
-                        <div class="col-12 mt-4">
-                            <div class="card card-body color-1">
-                                <h4>{{ @$row->job_title }}</h4>
-                                <div><?php echo $row->description; ?></div>
-                                <!-- 						<p>Job Types: Temporary, Contract, &pound;25,000.00-&pound;30,000.00+ per year</p> -->
-
-                                <a id="1" href="javascript:;" class="btn customBtn"
-                                    onclick="applyJob({{ $row->id }});">Apply</a>
+                                    <a id="1" href="javascript:;" class="btn customBtn"
+                                        onclick="applyJob({{ $row->id }},'{{ Auth::user()->profile_type }}');">Apply</a>
+                                </div>
                             </div>
-                        </div>
-                    @endforeach
+                        @endforeach
+                    @else
+                    <div class="col-12 mt-4">
+                       <p class="text-center customBtn p-3">No jobs available. Please check back later!</p>
+                    </div>
+                    @endif
+                   
+                </div>
+                @else
+                <a href="{{ route('login') }}" class="btn customBtn w-100">Please login first to view jobs</a>
                 @endif
-
-
-
-            </div>
+           
         </div>
     </div>
 
@@ -165,9 +172,25 @@
                     "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content")
                 }
             });
+            CKEDITOR.editorConfig = function (config) {
+                config.language = 'es';
+                config.uiColor = '#F7B42C';
+                config.height = 300;
+                config.toolbarCanCollapse = true;
+
+            };
+            CKEDITOR.replace('description');
         });
 
-        function applyJob(id) {
+        function applyJob(id,type) {
+            
+            if(type != 'Jobseeker'){
+                toastr.error('Login as Jobseeker', '', {
+                    timeOut: 3000
+                });
+                return false;
+            }
+
             $("#jobId").val(id);
             setTimeout(function() {
                 $("#jobApplyForm").submit();

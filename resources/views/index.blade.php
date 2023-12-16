@@ -243,8 +243,8 @@
             }
 
             #hiree .content_mobile button {
-                max-width: 18rem;
-                margin-right: 109px;
+                max-width: 15rem;
+                /* margin-right: 109px; */
             }
 
             #hiree .content_mobile h1 {
@@ -274,10 +274,11 @@
                 text-align: center;
             }
 
-            .img-set-hire {
+            /* .img-set-hire {
                 position: relative;
-                bottom: 48px;
-                left: 120px;
+                bottom: 172px;
+                left: 108px;
+            } */
             }
 
             #categ .inner p {
@@ -474,7 +475,7 @@
 
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
 
-            <div class="flexRow" style="padding: 0px 38px">
+            <div class="flexRow" style="">
                 <div class="col">
                     <div class="inner"
                         style="background-image: url('{{ asset('template_new/assets/images/categ_bg_block.jpg') }}'">
@@ -654,13 +655,13 @@
                         seen as highly skilled professionals with valuable abilities that
                         can take any business forward.</p>
                 </div>
-                <div class="col-md-12 mt-5">
-                    <img src="{{ asset('template_new/assets/images/homepage-2.png') }}" alt="" />
+                <div class="col-md-12 mt-5" style="background: url('{{ asset('template_new/assets/images/homepage-2.png') }}');background-size: 100% 100%;text-align:center;height:105px">
+                    {{-- <img src="{{ asset('template_new/assets/images/homepage-2.png') }}" alt="" /> --}}
                     <button type="button" class="img-set-hire"
                         style="max-width: 15rem; background: transparent;
 	                        /* padding: 0; */ border: 0; margin: 0 auto;">
                         <a href="{{ route('businessOwner') . '#to_hire' }}" type="button"
-                            style="background: transparent; border: 0; margin-top: 100px">
+                            style="background: transparent; border: 0; margin-top: 19px">
                             <img width="60" height="60"
                                 src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="">
                         </a>

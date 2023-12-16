@@ -43,8 +43,11 @@
         <section class="content-category">
             <div class="container">
                 <div class="content-category-header">
-                    <h1>Hairstylist</h1>
-
+                    @if(count($users) > 1)
+                        <h1>Freelancer(s) For Home Service</h1>
+                    @else
+                        <h1>Freelancer For Home Service</h1>
+                    @endif
                     <div class="line line-1"></div>
                     <div class="line line-2"></div>
                     <div class="line line-3"></div>

@@ -96,8 +96,17 @@
         .item .in h4>a {
             color: #926847;
         }
+        #packages .package_blk {
+                background: #cecfaa;
+                padding-right: 2rem;
+                padding-left: 2rem;
+                padding-bottom: 2rem;
+            }
 
         @media only screen and (max-width: 600px) {
+            #business .btn_list li .shadow_btn {
+                min-width: 24rem;
+            }
             #business img.top_banner {
                 min-height: unset;
                 object-fit: contain !important;
@@ -386,7 +395,7 @@
                                 <br> Recrutining
                                 Freelancers All level
                             </div>
-                            <h2>United to Succseed <span>Best Value</span></h2>
+                            <h2>United to Succeed <span>Best Value</span></h2>
                             <div class="inner">
                                 <div class="txt">
                                     <div class="token"><span>12</span> Tokens</div>

@@ -2206,8 +2206,7 @@ footer .icon-container {
 
 #packages .package_blk {
     background: #cecfaa;
-    padding-right: 2rem;
-    padding-bottom: 2rem;
+    padding: 2rem;
 }
 
 #packages .package_blk .sm {
@@ -2623,8 +2622,8 @@ footer .icon-container {
 #services .text_list .txt_wrap {
     display: none;
     width: calc(75% - -0.3rem);
-    min-height: 44rem;
-    max-height: 44rem;
+    /* min-height: 44rem;
+    max-height: 44rem; */
     overflow: hidden;
     overflow-y: auto;
     margin-right: -1.3rem;

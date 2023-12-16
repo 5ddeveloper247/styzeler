@@ -1,4 +1,4 @@
-function cancelAppointment(app_id, cancel_time, cancel_by) {
+function cancelAppointment(app_id, cancel_time, cancel_by,pending_on_hold = '') {
     let type = "POST";
     let url = "/cancelAppointment";
     let message = "";
@@ -7,6 +7,7 @@ function cancelAppointment(app_id, cancel_time, cancel_by) {
     data.append("app_id", app_id);
     data.append("cancel_time", cancel_time);
     data.append("cancel_by", cancel_by);
+    data.append("pending_on_hold", pending_on_hold);
     // if ($(this).text() == 'Submit') {
     //     url = url;
     // }

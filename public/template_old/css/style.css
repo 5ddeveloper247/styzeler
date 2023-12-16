@@ -299,6 +299,10 @@ header .logon_btn.heart_btn {
     font-size: 1rem;
     font-weight: 700;
 }
+button.fc-prev-button.btn.btn-primary,
+button.fc-next-button.btn.btn-primary {
+    padding: 6px 14px !important;
+}
 
 @media screen and (max-width: 375px) {
     .header .subtitle-small {
@@ -362,9 +366,9 @@ header .logon_btn.heart_btn {
     .fc-basic-view .fc-week-number,
     .fc-basic-view .fc-day-number {
         padding: 0px !important;
-        color: #ffbd59;
-        font-size: 12px;
-        font-weight: 600;
+        color: #ffbd59 !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
     }
 
     .appointment-status > h3,
@@ -380,20 +384,14 @@ header .logon_btn.heart_btn {
     }
 
     .fc th.fc-day-header {
-        padding: 0px;
-        font-weight: 600;
-        color: #ffbd59;
-        font-size: 14px;
-    }
-
-    .fc .fc-row .fc-content-skeleton table,
-    .fc .fc-row .fc-content-skeleton td,
-    .fc .fc-row .fc-helper-skeleton td {
         padding: 0px !important;
+        font-weight: 600 !important;
+        color: #ffbd59 !important;
+        font-size: 14px !important;
     }
 
     .appointment-status {
-        margin-top: 200px !important;
+        margin-top: 121px !important;
         margin-left: 15px !important;
         margin-bottom: -180px !important;
     }
@@ -597,6 +595,17 @@ header .logon_btn.heart_btn {
 
     .customBtnSelected {
         font-size: 14px;
+    }
+    .fc-basic-view .fc-week-number,
+    .fc-basic-view .fc-day-number,
+    .fc-content {
+        /* padding: 5px 5px !important;
+        font-weight: 500 !important; */
+        font-size: 0.7rem !important;
+    }
+    .fc-event .fc-title {
+        font-weight: 900;
+        font-size: 7px;
     }
 }
 

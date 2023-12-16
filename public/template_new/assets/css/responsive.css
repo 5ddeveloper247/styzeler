@@ -980,6 +980,7 @@
 		font-size: 2rem;
 		max-width: 20rem;
 		margin: auto;
+		text-align: center;
 	}
 	#booking .flex_row h3 {
 		font-size: 3rem;
@@ -1019,7 +1020,7 @@
 	}
 	#services .text_list .txt_wrap {
 		width: 100%;
-		min-height: initial;
+		/* min-height: initial; */
 		font-size: 1.6rem;
 		margin-top: 2rem;
 	}
@@ -1060,7 +1061,7 @@
 		text-align: center !important;
 	}
 	#browse .btn_list > li .shadow_btn {
-		min-width: 24rem;
+		min-width: 26rem;
 	}
 	#booking .flex_row .btn_blk {
 		text-align: center;
@@ -1167,7 +1168,7 @@
 		flex-direction: column;
 	}
 	#services .content_blk > h2 {
-		padding-top: 2rem;
+		padding-top: 1rem;
 	}
 	#services .content_blk .inner {
 		-webkit-box-flex: 1;
@@ -1212,7 +1213,7 @@
 		pointer-events: auto;
 	}
 	#services .text_list.flow {
-		overflow: hidden;
+		overflow: auto;
 	}
 	#services .text_list::-webkit-scrollbar {
 		width: 0.8rem;
@@ -1253,7 +1254,7 @@
 		max-width: none !important;
 		min-width: 10rem !important;
 		padding: 0 1.4rem;
-		font-size: 1.4rem;
+		font-size: 1rem;
 	}
 	#services .text_list ul.sub_btns > li {
 		width: 100%;

@@ -430,11 +430,17 @@
                             <a onClick="avaliableAppointmentDate('Available')">Available</a>
                         </div>
                     </div>
+                    <div class="book-oncall col-6 col-md-4 col-lg-2 text-center">
+                        <div class="option oncall customBtnNotSelected">
+                            <a id="on_call_btn" onClick="avaliableAppointmentDate('On Call')">On Call</a>
+                        </div>
+                    </div>
                     <div class="book-off col-6 col-md-4 col-lg-2 text-center">
                         <div class="option off customBtnNotSelected">
                             <a id="off_btn" onClick="avaliableAppointmentDate('Off')">Off</a>
                         </div>
                     </div>
+                    
                     {{-- <div class="book-on-call col-6 col-md-4 col-lg-2 text-center">
                         <div class="option on-call customBtnNotSelected">
                             <a onClick="avaliableAppointmentDate('On Call')">On Call</a>

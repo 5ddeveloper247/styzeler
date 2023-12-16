@@ -473,25 +473,29 @@ jQuery(document).ready(function () {
                                             } else {
                                                 var endtimeAMPM = "";
                                             }
+
                                             var slots_time =
                                                 showResponse.data[i][
                                                     "booking_time_slots"
                                                 ][j]["slots_time"];
+
                                             var status1 =
                                                 showResponse.data[i][
                                                     "booking_time_slots"
                                                 ][j]["status"];
+
                                             if (status1 != null) {
                                                 status_for_hold =
                                                     status1.toLowerCase();
                                             }
-
+                                            
                                             if (
-                                                status1 != "Available" &&
+                                                status1 != "Available" && status1 != "On Call" &&
                                                 !status_for_hold.includes(
                                                     "cancelled by"
                                                 )
                                             ) {
+                                                console.log('123');
                                                 html +=
                                                     `<div title="" class="` +
                                                     changeSlot +
@@ -500,7 +504,40 @@ jQuery(document).ready(function () {
                                                     ` - ` +
                                                     endtimeAMPM +
                                                     `</del></div>`;
-                                            } else {
+                                            } else if(status1 == "On Call"){
+                                                console.log('456')
+                                                if(status == 'On Call'){
+                                                    var onHoldSlot = true
+                                                 }else{
+                                                     var onHoldSlot = false
+                                                 }
+                                                 html +=
+                                                     `<div title="Edit Slot" id="slots_btn" class="` +
+                                                     changeSlot +
+                                                     ` select_option option col-md-2 mr-2 ${status1}" onclick = selectSlot(` +
+                                                     showResponse.data[i][
+                                                         "booking_time_slots"
+                                                     ][j]["id"] +
+                                                     `,'` +
+                                                     showResponse.data[i][
+                                                         "booking_time_slots"
+                                                     ][j]["start_time"] +
+                                                     `','` +
+                                                     showResponse.data[i][
+                                                         "booking_time_slots"
+                                                     ][j]["end_time"] +
+                                                     `','` +
+                                                     showResponse.data[i][
+                                                         "date"
+                                                     ] +
+                                                     `','` + onHoldSlot
+                                                     +
+                                                     `')>` +
+                                                     starttimeAMPM +
+                                                     ` - ` +
+                                                     endtimeAMPM +
+                                                     `</div>`;
+                                            }else {
                                                 if (
                                                     slots_time == "After_Nine"
                                                 ) {
@@ -525,6 +562,12 @@ jQuery(document).ready(function () {
                                                         ] +
                                                         `')>After 9</div>`; //` + starttimeAMPM + ` -
                                                 } else {
+                                                    console.log(status);
+                                                    if(status == 'On Call'){
+                                                       var onHoldSlot = true
+                                                    }else{
+                                                        var onHoldSlot = false
+                                                    }
                                                     html +=
                                                         `<div title="Edit Slot" id="slots_btn" class="` +
                                                         changeSlot +
@@ -544,6 +587,8 @@ jQuery(document).ready(function () {
                                                         showResponse.data[i][
                                                             "date"
                                                         ] +
+                                                        `','` + onHoldSlot
+                                                        +
                                                         `')>` +
                                                         starttimeAMPM +
                                                         ` - ` +
@@ -569,6 +614,10 @@ jQuery(document).ready(function () {
                                         profile_type == "Freelancer"
                                     ) {
                                         $("#slots_btn").click();
+                                        $(".book-appointment").removeClass(
+                                            "defaultStatus"
+                                        );
+                                        $(".on-Hold").removeClass("defaultStatus");
                                     } else {
                                         $(".book-appointment").addClass(
                                             "defaultStatus"

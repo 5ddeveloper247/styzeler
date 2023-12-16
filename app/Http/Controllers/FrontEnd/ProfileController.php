@@ -261,10 +261,28 @@ class ProfileController extends Controller
 
     public function saveAvaibleDate(Request $request)
     {
+                
         $request = json_decode(file_get_contents('php://input'), true);
 
         $availableDays = $request['availableDays'];
         $status = $request['Status'];
+
+        $cutoffTime = Carbon::now()->setTime(19, 0, 0);
+
+        // Check the status and current time
+        if (($status == "Available" && $cutoffTime->isPast()) ||
+            ($status == "On Call" && $cutoffTime->isFuture())) {
+
+            $message = ($status == "Available") ? "You cannot Available slot after 07:00 PM" : "This slot is available for On Call after 07:00 PM";
+
+            $responseData = [
+                'status' => 422,
+                'message' => $message,
+                'data' => ''
+            ];
+
+            return response()->json($responseData);
+        }
 
         $booking = Bookings::where(['date' => $availableDays, 'user_id' => Auth::id()])->first();
 
@@ -359,6 +377,7 @@ class ProfileController extends Controller
     }
     public function bookSlots(Request $request)
     {
+        // $request->dd();
         // Check if the user is not logged in
         if (!Auth::check()) {
             return response()->json(
@@ -720,11 +739,19 @@ class ProfileController extends Controller
                     'booking_user_id' => Auth::id(),
                 ]
             );
+            if (!empty($request->on_hold)) {
+                $b_status = $request->on_hold;
+                
+            } else if ($request->on_call == 'true') {
+                $b_status = 'Pending On Call';
+            }else{
+                $b_status = 'Pending';
+            }
 
             BookingSlots::where('id', $request->slot_book_id)->update(
                 [
                     'slots_time' => '07:00 AM - 09:00 PM',
-                    'status' => $request->on_hold ?? 'Pending',
+                    'status' => $b_status,
                 ]
             );
 
@@ -747,7 +774,10 @@ class ProfileController extends Controller
             if (!empty($request->on_hold)) {
                 $bookingDetails->status = 'On Hold';
                 $bookingDetails->save();
-            } else {
+            } else if ($request->on_call == 'true') {
+                $bookingDetails->status = 'Pending On Call';
+                $bookingDetails->save();
+            }else{
                 $bookingDetails->status = 'Pending';
                 $bookingDetails->save();
             }
@@ -1306,16 +1336,17 @@ class ProfileController extends Controller
         $appId = $request->app_id;
         $cancel_time = $request->cancel_time;
         $cancel_by = formatUserType($request->cancel_by);
+        $status_book = isset($request->pending_on_hold) == 'Pending On Call' ? 'On Call' : 'Available';
 
         $getAppointmentData = Appointments::where('id', $appId)
             ->has('userBookingSlots')
             ->with(
                 [
                     'userBookingSlots.bookings'
-                    => function ($q) {
+                    => function ($q) use ($status_book) {
                         $q->update(
                             [
-                                'status' => 'Available'
+                                'status' => $status_book
                             ]
                         );
                     }
@@ -1342,7 +1373,7 @@ class ProfileController extends Controller
             if ($cancel_by != 'Client' || $cancel_by != 'client') {
                 $bookinkSlots = $bookinkSlots->update(
                     [
-                        "status" => "Available",
+                        "status" => $status_book,
                     ]
                 );
             } else {

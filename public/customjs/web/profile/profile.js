@@ -838,7 +838,7 @@ function saveAvaibleDate(response) {
         }
     } else {
         // CALLING OUR FUNCTION ERROR & SUCCESS HANDLING
-        toastr.error(error, "", {
+        toastr.error(response.message, "", {
             timeOut: 3000,
         });
     }

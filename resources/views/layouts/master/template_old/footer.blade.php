@@ -2,7 +2,7 @@
     <div class="contain" data-aos="fade-up" data-aos-duration="1000">
         <div class="d-flex txt icon-container">
             <span> 
-                Kemp House,152-160 City Road London. EC1V 2NX
+                Styzeler Kemp House,152-160 City Road London. EC1V 2NX
             </span>
             <div class="d-flex social-media">
                 <span><a target="_blank" href="https://www.instagram.com/styzeler/"><i class="fa fa-instagram color-1" aria-hidden="true"></i></a></span>

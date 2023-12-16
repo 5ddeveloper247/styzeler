@@ -47,6 +47,8 @@ $(document).on('click', '#postJob', function (e) {
 	let message = '';
 	let form = $('#post_job');
 	let data = new FormData(form[0]);
+    data.delete('description');
+    data.append('description',CKEDITOR.instances.description.getData());
 	// if ($(this).text() == 'Submit') {
 	//     url = url;
 	// }

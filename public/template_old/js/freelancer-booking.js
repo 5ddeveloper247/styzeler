@@ -272,6 +272,7 @@ function confirmAppointment(id, btn) {
                     "d-none"
                 );
             }
+            getfreelancerBookings();
             toastr.success(response.message, "", {
                 timeOut: 3000,
             });
@@ -1146,7 +1147,7 @@ function getfreelancerBookings() {
                                 cancel_time +
                                 ",'" +
                                 cancel_by +
-                                "')\">" +
+                                "','"+ owner_status +"')\">" +
                                 "<a>Cancel</a>" +
                                 "</div>" +
                                 "</div>"

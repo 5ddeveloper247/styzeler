@@ -172,13 +172,7 @@
                 font-size: 0.7rem !important;
             }
 
-            .fc-basic-view .fc-week-number,
-            .fc-basic-view .fc-day-number,
-            .fc-content {
-                padding: 5px 5px !important;
-                font-weight: 500 !important;
-                font-size: 0.7rem !important;
-            }
+           
 
             .fc-row .fc-week .table-bordered {
                 height: 2em !important;
@@ -2929,6 +2923,7 @@
                         <input type="hidden" id="slot_book_id" name="slot_book_id">
                         <input type="hidden" id="book_date" name="book_date">
                         <input type="hidden" id="on_hold" name="on_hold">
+                        <input type="hidden" id="on_call" name="on_call">
                         @php
                             if (auth()->user()->type == 'client') {
                                 $display = 'd-inline';
