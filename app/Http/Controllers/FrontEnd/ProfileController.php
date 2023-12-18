@@ -1336,7 +1336,7 @@ class ProfileController extends Controller
         $appId = $request->app_id;
         $cancel_time = $request->cancel_time;
         $cancel_by = formatUserType($request->cancel_by);
-        $status_book = isset($request->pending_on_hold) == 'Pending On Call' ? 'On Call' : 'Available';
+        $status_book = $request->pending_on_hold == 'Pending On Call' ? 'On Call' : 'Available';
 
         $getAppointmentData = Appointments::where('id', $appId)
             ->has('userBookingSlots')
@@ -1370,6 +1370,7 @@ class ProfileController extends Controller
                 ]
             );
         } else {
+            
             if ($cancel_by != 'Client' || $cancel_by != 'client') {
                 $bookinkSlots = $bookinkSlots->update(
                     [
@@ -1377,6 +1378,7 @@ class ProfileController extends Controller
                     ]
                 );
             } else {
+                
                 $bookinkSlots = $bookinkSlots->update(
                     [
                         "status" => "Available",

@@ -51,6 +51,11 @@
             border: 1px solid #fdd431;
             border-radius: 50%;
         }
+        @media (max-width: 576px) {
+            .special-button {
+                font-size: 1rem;
+            }
+        }
     </style>
 @endpush
 
@@ -69,11 +74,11 @@
                     <h2>You book We deliver</h2>
                     <div class="inner">
                         <div class="btn_list">
-                            <a href="javascript:;" class="shadow_btn" data-id="body_waxing" style="font-size: 1rem">Body Waxing</a>
-                            <a href="{{ route('servicesEyebrows') }}" class="shadow_btn special-button" data-id="eye_brows" style="font-size: 1rem">Eyes &
+                            <a href="javascript:;" class="shadow_btn special-button" data-id="body_waxing" style="">Body Waxing</a>
+                            <a href="{{ route('servicesEyebrows') }}" class="shadow_btn special-button" data-id="eye_brows" style="">Eyes &
                                 Brows</a> <!-- services-beauty2.html -->
-                            <a href="{{ route('servicesManiPedi') }}" class="shadow_btn special-button" data-id="mani_pedi" style="font-size: 1rem">Mani / Pedi</a>
-                            <a href="{{ route('servicesFacial') }}" class="shadow_btn special-button" data-id="facial" style="font-size: 1rem">Facial</a>
+                            <a href="{{ route('servicesManiPedi') }}" class="shadow_btn special-button" data-id="mani_pedi" style="">Mani / Pedi</a>
+                            <a href="{{ route('servicesFacial') }}" class="shadow_btn special-button" data-id="facial" style="">Facial</a>
                         </div>
                         <div class="text_list" data-id="body_waxing" style="display:block;">
                             <div class="text_list_inner">

@@ -308,7 +308,7 @@
             }
 
             #startup .image_blk {
-                margin-bottom: 1rem;
+                /* margin-bottom: 1rem; */
             }
 
             #browse .line {
@@ -325,7 +325,7 @@
 @endpush
 @section('content')
     <!-- header -->
-    <section class="d-none d-md-block" id="banner"
+    <section class="" id="banner"
         style="background-image: url('{{ asset('template_new/assets/images/banner (1).jpg') }}')">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="content">
@@ -342,9 +342,9 @@
             </div>
         </div>
     </section>
-    <section class="d-lg-none d-md-none">
+    {{-- <section class="d-lg-none d-md-none">
         <img src="{{ asset('template_new/assets/images/new_home_1_new.jpg') }}" alt="" />
-    </section>
+    </section> --}}
     <!-- banner -->
     <section id="browse">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
@@ -408,311 +408,318 @@
             </div>
 
             <!-- for desktop -->
-            <div class="reg_line d-none d-md-block">
-                <div class="d-flex justify-content-between">
-                    <p>Freelancers Help Small Businesses Grow</p>
-                    <a href="{{ route('register') }}" class="site_btn"
-                        style="border: #000000;
-                        @if (Auth::user()) pointer-events: none; @endif">Register
-                        <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
-                    </a>
+            <div class="for-popup d-none">
+                <div class="reg_line d-none d-md-block">
+                    <div class="d-flex justify-content-between">
+                        <p>Freelancers Help Small Businesses Grow</p>
+                        <a href="{{ route('register') }}" class="site_btn"
+                            style="border: #000000;
+                            @if (Auth::user()) pointer-events: none; @endif">Register
+                            <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
+                        </a>
+                    </div>
+                    <img src="{{ asset('template_new/assets/images/line_yellow.jpg') }}" alt=""
+                        class="browse_line_yellow" style="margin-top: 32px" /> <span
+                        style="color: #fff; font-size: 20px; display: block; width: 50%; margin-top: 15px;">
+                        By working full-time for a long time often employees run out of new
+                        ideas. On the other hand, freelancers can bring a new perspective to
+                        the team. They work with different clients across different
+                        projects. Hence, they can effectively brainstorm creativity and
+                        motivate full-time employees </span>
                 </div>
-                <img src="{{ asset('template_new/assets/images/line_yellow.jpg') }}" alt=""
-                    class="browse_line_yellow" style="margin-top: 32px" /> <span
-                    style="color: #fff; font-size: 20px; display: block; width: 50%; margin-top: 15px;">
-                    By working full-time for a long time often employees run out of new
-                    ideas. On the other hand, freelancers can bring a new perspective to
-                    the team. They work with different clients across different
-                    projects. Hence, they can effectively brainstorm creativity and
-                    motivate full-time employees </span>
+    
+                <div class="txt">
+                    <h3>Specialist in Hair & Beauty Hire London Uk</h3>
+                    <p class="">Before onboarding a freelancer, you can look at their
+                        work portfolio, check product knowledge and skillset and interview
+                        them to ensure they are the right fit for your project</p>
+                </div>
             </div>
-
-            <div class="txt">
-                <h3>Specialist in Hair & Beauty Hire London Uk</h3>
-                <p class="">Before onboarding a freelancer, you can look at their
-                    work portfolio, check product knowledge and skillset and interview
-                    them to ensure they are the right fit for your project</p>
-            </div>
+           
         </div>
     </section>
     <!-- browse -->
-    <section class="d-none d-md-block" id="hire"
-        style="background-image: url('{{ asset('template_new/assets/images/hire.jpg ') }}'">
-        <div class="contain" data-aos="fade-up" data-aos-duration="1000">
-            <div class="content">
-                <h2>
-                    <span>Get Styzeler <br /> membership !!
-                    </span>
-                </h2>
-                <h1>To Hire</h1>
+    <fieldset class="for-popup d-none">
+        <section class="d-none d-md-block" id="hire"
+                style="background-image: url('{{ asset('template_new/assets/images/hire.jpg ') }}'">
+                <div class="contain" data-aos="fade-up" data-aos-duration="1000">
+                <div class="content">
+                    <h2>
+                        <span>Get Styzeler <br /> membership !!
+                        </span>
+                    </h2>
+                    <h1>To Hire</h1>
 
-                <a type="button" href="{{ route('businessOwner') . '#inr' }}"> <!-- packages2.html -->
-                    <img src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="" />
-                </a>
-            </div>
-        </div>
-    </section>
-    <section class="d-lg-none d-md-none mt-4" id="hiree"
-        style="background-image: url('{{ asset('template_new/assets/images/recompre-min.JPG') }}'; margin-top: 45px !important;">
-        <div class="contain" data-aos="fade-up" data-aos-duration="1000">
-            <div class="content_mobile">
-                <h2>
-                    <span>Get Styzeler <br /> membership !!
-                    </span>
-                </h2>
-                <h1>To Hire</h1>
-                <button type="button" style="display: flex; justify-content: center; align-items: center">
                     <a type="button" href="{{ route('businessOwner') . '#inr' }}"> <!-- packages2.html -->
                         <img src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="" />
                     </a>
-                </button>
-            </div>
-        </div>
-    </section>
-    <!-- hire -->
-    <section id="categ">
-
-
-        <div class="contain" data-aos="fade-up" data-aos-duration="1000">
-
-            <div class="flexRow" style="">
-                <div class="col">
-                    <div class="inner"
-                        style="background-image: url('{{ asset('template_new/assets/images/categ_bg_block.jpg') }}'">
-                        <h4>Hairdressers</h4>
-                        <div class="image">
-                            <img src="{{ asset('template_new/assets/images/categ_photo_02.jpg') }}" alt="" />
-                        </div>
-                        <div class="txt">
-                            <p class="d-inline">freelancers focus on getting a good review and expanding their
-                                portfolio, they strive to maintain industry-standard quality
-                                aligned with your expectations</p>
-                            <a class="link-light btn-read-more btn-sm ms-2" href="{{ route('hairstylist') }}">Read
-                                more</a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="inner"
-                        style="background-image: url('{{ asset('template_new/assets/images/categ_bg_block.jpg') }}')">
-                        <h4>Beauticians</h4>
-                        <div class="image">
-                            <img src="{{ asset('template_new/assets/images/categ_photo_03.jpg') }}" alt="" />
-                        </div>
-                        <div class="txt">
-                            <p class="d-inline">Spending hours freelancing across various roles you can learn
-                                new skills and enrich your CV</p>
-                            <a class="link-light btn-read-more btn-sm ms-2" href="{{ route('beautician') }}">Read
-                                more</a>
-
-                        </div>
-                    </div>
-                </div>
-                <div class="col">
-                    <div class="inner"
-                        style="background-image: url('{{ asset('template_new/assets/images/categ_bg_block.jpg') }}')">
-                        <h4>Male grooming</h4>
-                        <div class="image">
-                            <img src="{{ asset('template_new/assets/images/categ_photo_01.jpg') }}" alt="" />
-                        </div>
-                        <div class="txt">
-                            <p class="d-inline">Styzeler is the leading male grooming agency across London & UK
-                                we offer master barbers to craft art for our clients</p>
-                            <a class="link-light btn-read-more btn-sm ms-2" href="{{ route('barber') }}">Read more</a>
-
-                        </div>
-                    </div>
                 </div>
             </div>
-            <div class="btm" style="margin-right: 6px">
-                <img src="{{ asset('template_new/assets/images/line_purple.jpg') }}" alt="" />
-                <a href="{{ route('registration') }}" class="site_btn" {!! Auth::user() ? 'style="pointer-events: none"' : '' !!}>Register
-                    <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
-                </a>
-            </div>
-        </div>
-    </section>
-    <section id="categ-0" class="d-none d-md-block mt-5">
-        <div class="contain px-4" data-aos="fade-up" data-aos-duration="1000"
-            style="background-image: url('{{ asset('template_new/assets/images/sec_bg_1.png') }}');background-size:100% 100%">
-            <div class="row">
-                <div class="col-4">
-                    <h2>Male Grooming</h2>
-                    <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_01.jpg') }}"
-                        alt="" width="100" height="200" style="width: 300px;object-fit: cover;">
-                    <p class="mt-2">Styzeler is the leading male grooming agency across London & UK we offer master
-                        barbers to craft art for our clients
-                        <a class="link-light btn-read-more btn-sm" href="{{ route('barber') }}">Read more</a>
-                    </p>
-                </div>
-                {{-- <div class="col-1"></div> --}}
-                <div class="col-4">
-                    <h2>Hairdressers</h2>
-                    <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_02.jpg') }}"
-                        alt="" width="100" height="200" style="width: 300px;object-fit: cover;">
-                    <p class="mt-2">Freelancers focus on getting a good review and expanding their portfolio, they strive
-                        to maintain industry- standard quality aligned with your expectations
-                        <a class="link-light btn-read-more btn-sm" href="{{ route('hairstylist') }}">Read more</a>
-                    </p>
-                </div>
-                <div class="col-4">
-                    <h2>Beauticians</h2>
-                    <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_03.jpg') }}"
-                        alt="" width="100" height="200" style="width: 300px;object-fit: cover;">
-                    <p class="mt-2">Spending hours freelancing across various roles you can learn new skills and enrich
-                        your CV
-                        <a class="link-light btn-read-more btn-sm" href="{{ route('beautician') }}">Read more</a>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- categ -->
-    <section id="startup">
-        <div class="contain" data-aos="fade-up" data-aos-duration="1000">
-            <div class="image_blk">
-                <img src="{{ asset('template_new/assets/images/startup_image_00.jpg') }}" alt=""
-                    class="desktop" /> <img src="{{ asset('template_new/assets/images/styzeler home-freedom.JPG') }}"
-                    alt="" class="mobile" />
-                <div class="txt">
-                    <img class="d-block d-md-none" id="home_section_logo" width="40" height="40"
-                        src="{{ asset('template_new/assets/images/home_next_logo.jpg') }}" alt="" />
-                    <div>
-                        <p>Freelancers are great help for Start up Businesses</p>
-                    </div>
-                    <img src="{{ asset('template_new/assets/images/line_gray.jpg') }}" alt="" />
-                </div>
-            </div>
-            <div class="data">
-                <p>For Start-up businesses it is unpredictable to quantify the volume
-                    of work in the early days, you don't want to miss on that walk-in
-                    Costumer, Hiring freelancers for help in the early days allows the
-                    business owner to grow the business organically, allowing the
-                    freedom of booking. and ease up the pressure of fixed wages.</p>
-                <p>
-                    <a href="?"> <u>Can offer a full-time position to any freelancer
-                            that suits the company policy</u>
-                    </a>
-                </p>
-            </div>
-        </div>
-        <img src="{{ asset('template_new/assets/images/STYZELER-homepage-3.JPG') }}" alt="" class="img-fluid" />
-    </section>
-    <!-- startup -->
-    <section class="d-none d-md-block" id="membership">
-        <div class="contain" data-aos="fade-up" data-aos-duration="1000">
-            <div class="flexRow">
-                <div class="col-12">
-                    <div class="data">
-                        <h2>
-                            Styzeler membership <br /> buy it now !!
-                        </h2>
-                    </div>
-                </div>
-                <div class="col col1">
-                    <img src="{{ asset('template_new/assets/images/membership_01.jpg') }}" alt=""
-                        class="img1" />
-                    <p>There are many reasons companies are turning to freelancers
-                        rather than hiring full-time staff.</p>
-                    <p>Freelancers are increasingly seen as highly skilled professionals
-                        with valuable abilities that can take any business forward</p>
-                </div>
-                <div class="col col2" style="text-align: center">
-
-                    <a href="{{ route('businessOwner') . '#to_hire' }}" type="button"
-                        style="background: transparent; border: 0; margin-top: 134px"> <img
-                            src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="" />
-                    </a>
-                </div>
-                <div class="col col3">
-                    <img src="{{ asset('template_new/assets/images/membership_02.jpg') }}" alt=""
-                        class="img2" />
-                    <p>Freelancers create an opportunity to expand the diversity of your
-                        company. Diversity helps increase the flow of ideas and often leads
-                        to better business solutions.</p>
-                </div>
-            </div>
-            <div class="strip">
-                <span class="title">Styzeler Agency</span> <span>The winning formula
-                    for both</span> <span>Businesses Owner & Freelancer</span>
-            </div>
-        </div>
-    </section>
-    <section class="d-block d-lg-none d-md-none" id="membership">
-        <div class="contain">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="data mt-2 text-center">
-                        <h2>
-                            Styzeler membership <br /> buy it now !!
-                        </h2>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <p>There are many reasons companies are turning to freelancers
-                        rather than hiring full-time staff.Freelancers are increasingly
-                        seen as highly skilled professionals with valuable abilities that
-                        can take any business forward.</p>
-                </div>
-                <div class="col-md-12 mt-5" style="background: url('{{ asset('template_new/assets/images/homepage-2.png') }}');background-size: 100% 100%;text-align:center;height:105px">
-                    {{-- <img src="{{ asset('template_new/assets/images/homepage-2.png') }}" alt="" /> --}}
-                    <button type="button" class="img-set-hire"
-                        style="max-width: 15rem; background: transparent;
-	                        /* padding: 0; */ border: 0; margin: 0 auto;">
-                        <a href="{{ route('businessOwner') . '#to_hire' }}" type="button"
-                            style="background: transparent; border: 0; margin-top: 19px">
-                            <img width="60" height="60"
-                                src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="">
+        </section>
+        <section class="d-lg-none d-md-none mt-4" id="hiree"
+            style="background-image: url('{{ asset('template_new/assets/images/recompre-min.JPG') }}'; margin-top: 45px !important;">
+            <div class="contain" data-aos="fade-up" data-aos-duration="1000">
+                <div class="content_mobile">
+                    <h2>
+                        <span>Get Styzeler <br /> membership !!
+                        </span>
+                    </h2>
+                    <h1>To Hire</h1>
+                    <button type="button" style="display: flex; justify-content: center; align-items: center">
+                        <a type="button" href="{{ route('businessOwner') . '#inr' }}"> <!-- packages2.html -->
+                            <img src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="" />
                         </a>
                     </button>
                 </div>
-                <div class="col-md-12">
-                    <p>Freelancers create an opportunity to expand the diversity of your
-                        company. Diversity helps increase the flow of ideas and often leads
-                        to better business solutions.</p>
-                </div>
-                <div class="col-md-12">
-                    <div class="strip">
-                        <span class="title">Styzeler Agency</span> <span>The winning
-                            formula for both</span> <span>Businesses Owner & Freelancer</span>
-                    </div>
-                </div>
             </div>
-        </div>
-    </section>
-    <!-- membership -->
-    <section id="get_job">
-        <div class="contain" data-aos="fade-up" data-aos-duration="1000">
-            <div class="image">
-                <img src="{{ asset('template_new/assets/images/get_job.jpg') }}" alt="" />
-                <div class="txt">
-                    <p>Through freelancing , people who wouldn’t normally get the job
-                    </p>
-                    <h2>get the job</h2>
-                </div>
-            </div>
-        </div>
+        </section>
+        <!-- hire -->
+        <section id="categ">
 
-        <div class="modal fade bd-example-modal-md" id="popupInfo-modal" role="dialog">
-            <div class="modal-dialog modal-dialog-centered modal-md" style="width: fit-content  ">
-                <div class="modal-content border-warning border"
-                    style="background-color: black; color: white; max-height: 1000px; overflow-y: auto; margin-top: 30%">
-                    <div class="modal-header" style="border-bottom: 5px solid #766d48">
-                        <h4 class="modal-title fs-1">Alert</h4>
-                        <i class="close-modal" style="font-size: 2rem; cursor: pointer"><b>&times;</b></i>
+
+            <div class="contain" data-aos="fade-up" data-aos-duration="1000">
+
+                <div class="flexRow" style="">
+                    <div class="col">
+                        <div class="inner"
+                            style="background-image: url('{{ asset('template_new/assets/images/categ_bg_block.jpg') }}'">
+                            <h4>Hairdressers</h4>
+                            <div class="image">
+                                <img src="{{ asset('template_new/assets/images/categ_photo_02.jpg') }}" alt="" />
+                            </div>
+                            <div class="txt">
+                                <p class="d-inline">freelancers focus on getting a good review and expanding their
+                                    portfolio, they strive to maintain industry-standard quality
+                                    aligned with your expectations</p>
+                                <a class="link-light btn-read-more btn-sm ms-2" href="{{ route('hairstylist') }}">Read
+                                    more</a>
+
+                            </div>
+                        </div>
                     </div>
-                    <div class="modal-body my-5">
-                        <p class="fs-2">To continue browsing the pages, please choose a
-                            category</p>
+                    <div class="col">
+                        <div class="inner"
+                            style="background-image: url('{{ asset('template_new/assets/images/categ_bg_block.jpg') }}')">
+                            <h4>Beauticians</h4>
+                            <div class="image">
+                                <img src="{{ asset('template_new/assets/images/categ_photo_03.jpg') }}" alt="" />
+                            </div>
+                            <div class="txt">
+                                <p class="d-inline">Spending hours freelancing across various roles you can learn
+                                    new skills and enrich your CV</p>
+                                <a class="link-light btn-read-more btn-sm ms-2" href="{{ route('beautician') }}">Read
+                                    more</a>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="inner"
+                            style="background-image: url('{{ asset('template_new/assets/images/categ_bg_block.jpg') }}')">
+                            <h4>Male grooming</h4>
+                            <div class="image">
+                                <img src="{{ asset('template_new/assets/images/categ_photo_01.jpg') }}" alt="" />
+                            </div>
+                            <div class="txt">
+                                <p class="d-inline">Styzeler is the leading male grooming agency across London & UK
+                                    we offer master barbers to craft art for our clients</p>
+                                <a class="link-light btn-read-more btn-sm ms-2" href="{{ route('barber') }}">Read more</a>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="btm" style="margin-right: 6px">
+                    <img src="{{ asset('template_new/assets/images/line_purple.jpg') }}" alt="" />
+                    <a href="{{ route('registration') }}" class="site_btn" {!! Auth::user() ? 'style="pointer-events: none"' : '' !!}>Register
+                        <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section id="categ-0" class="d-none d-md-block mt-5">
+            <div class="contain px-4" data-aos="fade-up" data-aos-duration="1000"
+                style="background-image: url('{{ asset('template_new/assets/images/sec_bg_1.png') }}');background-size:100% 100%">
+                <div class="row">
+                    <div class="col-4">
+                        <h2>Male Grooming</h2>
+                        <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_01.jpg') }}"
+                            alt="" width="100" height="200" style="width: 300px;object-fit: cover;">
+                        <p class="mt-2">Styzeler is the leading male grooming agency across London & UK we offer master
+                            barbers to craft art for our clients
+                            <a class="link-light btn-read-more btn-sm" href="{{ route('barber') }}">Read more</a>
+                        </p>
+                    </div>
+                    {{-- <div class="col-1"></div> --}}
+                    <div class="col-4">
+                        <h2>Hairdressers</h2>
+                        <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_02.jpg') }}"
+                            alt="" width="100" height="200" style="width: 300px;object-fit: cover;">
+                        <p class="mt-2">Freelancers focus on getting a good review and expanding their portfolio, they strive
+                            to maintain industry- standard quality aligned with your expectations
+                            <a class="link-light btn-read-more btn-sm" href="{{ route('hairstylist') }}">Read more</a>
+                        </p>
+                    </div>
+                    <div class="col-4">
+                        <h2>Beauticians</h2>
+                        <img class="mt-3" src="{{ asset('template_new/assets/images/categ_photo_03.jpg') }}"
+                            alt="" width="100" height="200" style="width: 300px;object-fit: cover;">
+                        <p class="mt-2">Spending hours freelancing across various roles you can learn new skills and enrich
+                            your CV
+                            <a class="link-light btn-read-more btn-sm" href="{{ route('beautician') }}">Read more</a>
+                        </p>
                     </div>
                 </div>
             </div>
+        </section>
+        <!-- categ -->
+        <section id="startup">
+            <div class="contain" data-aos="fade-up" data-aos-duration="1000">
+                <div class="image_blk">
+                    <img src="{{ asset('template_new/assets/images/startup_image_00.jpg') }}" alt=""
+                        class="desktop" /> <img src="{{ asset('template_new/assets/images/styzeler home-freedom.JPG') }}"
+                        alt="" class="mobile" />
+                    <div class="txt">
+                        <img class="d-block d-md-none" id="home_section_logo" width="40" height="40"
+                            src="{{ asset('template_new/assets/images/home_next_logo.jpg') }}" alt="" />
+                        <div>
+                            <p>Freelancers are great help for Start up Businesses</p>
+                        </div>
+                        <img src="{{ asset('template_new/assets/images/line_gray.jpg') }}" alt="" />
+                    </div>
+                </div>
+                <div class="data">
+                    <p>For Start-up businesses it is unpredictable to quantify the volume
+                        of work in the early days, you don't want to miss on that walk-in
+                        Costumer, Hiring freelancers for help in the early days allows the
+                        business owner to grow the business organically, allowing the
+                        freedom of booking. and ease up the pressure of fixed wages.</p>
+                    <p>
+                        <a href="?"> <u>Can offer a full-time position to any freelancer
+                                that suits the company policy</u>
+                        </a>
+                    </p>
+                </div>
+            </div>
+            <img src="{{ asset('template_new/assets/images/STYZELER-homepage-3.JPG') }}" alt="" class="img-fluid" />
+        </section>
+        <!-- startup -->
+        <section class="d-none d-md-block" id="membership">
+            <div class="contain" data-aos="fade-up" data-aos-duration="1000">
+                <div class="flexRow">
+                    <div class="col-12">
+                        <div class="data">
+                            <h2>
+                                Styzeler membership <br /> buy it now !!
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col col1">
+                        <img src="{{ asset('template_new/assets/images/membership_01.jpg') }}" alt=""
+                            class="img1" />
+                        <p>There are many reasons companies are turning to freelancers
+                            rather than hiring full-time staff.</p>
+                        <p>Freelancers are increasingly seen as highly skilled professionals
+                            with valuable abilities that can take any business forward</p>
+                    </div>
+                    <div class="col col2" style="text-align: center">
+
+                        <a href="{{ route('businessOwner') . '#to_hire' }}" type="button"
+                            style="background: transparent; border: 0; margin-top: 134px"> <img
+                                src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="" />
+                        </a>
+                    </div>
+                    <div class="col col3">
+                        <img src="{{ asset('template_new/assets/images/membership_02.jpg') }}" alt=""
+                            class="img2" />
+                        <p>Freelancers create an opportunity to expand the diversity of your
+                            company. Diversity helps increase the flow of ideas and often leads
+                            to better business solutions.</p>
+                    </div>
+                </div>
+                <div class="strip">
+                    <span class="title">Styzeler Agency</span> <span>The winning formula
+                        for both</span> <span>Businesses Owner & Freelancer</span>
+                </div>
+            </div>
+        </section>
+        <section class="d-block d-lg-none d-md-none" id="membership">
+            <div class="contain">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="data mt-2 text-center">
+                            <h2>
+                                Styzeler membership <br /> buy it now !!
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <p>There are many reasons companies are turning to freelancers
+                            rather than hiring full-time staff.Freelancers are increasingly
+                            seen as highly skilled professionals with valuable abilities that
+                            can take any business forward.</p>
+                    </div>
+                    <div class="col-md-12 mt-5" style="background: url('{{ asset('template_new/assets/images/homepage-2.png') }}');background-size: 100% 100%;text-align:center;height:105px">
+                        {{-- <img src="{{ asset('template_new/assets/images/homepage-2.png') }}" alt="" /> --}}
+                        <button type="button" class="img-set-hire"
+                            style="max-width: 15rem; background: transparent;
+                                /* padding: 0; */ border: 0; margin: 0 auto;">
+                            <a href="{{ route('businessOwner') . '#to_hire' }}" type="button"
+                                style="background: transparent; border: 0; margin-top: 19px">
+                                <img width="60" height="60"
+                                    src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="">
+                            </a>
+                        </button>
+                    </div>
+                    <div class="col-md-12">
+                        <p>Freelancers create an opportunity to expand the diversity of your
+                            company. Diversity helps increase the flow of ideas and often leads
+                            to better business solutions.</p>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="strip">
+                            <span class="title">Styzeler Agency</span> <span>The winning
+                                formula for both</span> <span>Businesses Owner & Freelancer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- membership -->
+        <section id="get_job">
+            <div class="contain" data-aos="fade-up" data-aos-duration="1000">
+                <div class="image">
+                    <img src="{{ asset('template_new/assets/images/get_job.jpg') }}" alt="" />
+                    <div class="txt">
+                        <p>Through freelancing , people who wouldn’t normally get the job
+                        </p>
+                        <h2>get the job</h2>
+                    </div>
+                </div>
+            </div>
+
+           
+        </section>
+    </fieldset>
+    <div class="modal fade bd-example-modal-md" id="popupInfo-modal" role="dialog">
+        <div class="modal-dialog modal-dialog-centered modal-md" style="width: fit-content  ">
+            <div class="modal-content border-warning border"
+                style="background-color: black; color: white; max-height: 1000px; overflow-y: auto; margin-top: 30%">
+                <div class="modal-header" style="border-bottom: 5px solid #766d48">
+                    <h4 class="modal-title fs-1">Alert</h4>
+                    <i class="close-modal" style="font-size: 2rem; cursor: pointer"><b>&times;</b></i>
+                </div>
+                <div class="modal-body my-5">
+                    <p class="fs-2">To continue browsing the pages, please choose a
+                        category</p>
+                </div>
+            </div>
         </div>
-    </section>
+    </div>
 
     <!-- get_job -->
-    @endsection @push('script')
+    @endsection 
+    @push('script')
     <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
     <script>
         function setLocalStorageWithExpiration(key, value, expirationInHours) {
@@ -757,8 +764,14 @@
 
         $(function() {
             const retrievedData = getLocalStorageWithExpiration("flag");
+           
             if (retrievedData != 'true') {
                 $("#popupInfo-modal").modal("show");
+                $('.for-popup').addClass('d-none');
+                $('footer').addClass('d-none');
+            }else{
+                $('.for-popup').removeClass('d-none');
+                $('footer').removeClass('d-none');
             }
         });
 
@@ -806,7 +819,7 @@
                         const retrievedData = getLocalStorageWithExpiration("flag");
                         if (retrievedData != 'true') {
                             $("html").css({
-                                "overflow-y": "hidden"
+                                // "overflow-y": "hidden"
                             });
                         }
 
@@ -821,6 +834,8 @@
             $("html").css({
                 "overflow-y": "auto"
             });
+            $('footer').removeClass('d-none');
+            $('.for-popup').removeClass('d-none');
             $(".modal").modal("hide");
         });
     </script>
