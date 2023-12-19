@@ -2220,6 +2220,7 @@ footer .icon-container {
     color: var(--dark);
     max-width: 26rem;
     margin-left: auto;
+    margin-bottom: 27px;
 }
 
 #packages .package_blk h2 {
@@ -2409,7 +2410,7 @@ footer .icon-container {
     background-position: center;
     background-repeat: no-repeat;
     font-size: 3rem;
-    padding: 7rem 20rem 16rem 4rem;
+    padding: 6rem 20rem 16rem 3.5rem;
     margin-right: -12rem;
 }
 
@@ -2420,7 +2421,7 @@ footer .icon-container {
     /* background: var(--dark); */
     color: #fdd431;
     font-weight: 700;
-    font-size: 4.4rem;
+    font-size: 4.2rem;
     margin: 0 0 2rem -3rem;
     padding: 1rem 3rem;
 }

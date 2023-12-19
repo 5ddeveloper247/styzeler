@@ -158,7 +158,15 @@ function profileResponse(response) {
 // SHOWING MESSAGE ACCORDING TO RESPONSE
 if (response.status == 200) {
     //saving response data in data var
-    $('.cart_count').text(response.data);
+
+    if(response.data > 0){
+
+        $('.cart_count').text(response.data);
+        $('.cart_count').removeClass('d-none');
+
+    }else{
+        $('.cart_count').addClass('d-none');
+    }
 
 }
 

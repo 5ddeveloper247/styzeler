@@ -89,7 +89,7 @@
         }
 
         #startup .image_blk .txt p {
-            font-size: 4rem;
+            font-size: 4rem !important;
             margin: 0 150px 25rem;
             color: #c4b9b0;
             text-align: center;
@@ -222,6 +222,21 @@
         }
 
         @media only screen and (max-width: 600px) {
+             
+            #banner .content h1 {
+                font-size: 2rem;
+            }
+            #banner .content h2 {
+                font-size: 1.4rem;
+            }
+            #banner .content h1 > small {
+                font-size: 1.6rem;
+            }
+            #banner .content .logo {
+                max-width: 5rem;
+                height: 5rem;
+                margin: 1rem auto 0;
+            }
             #membership p {
                 color: #cecfaa;
                 font-size: 1.9rem;
@@ -279,6 +294,16 @@
                 bottom: 172px;
                 left: 108px;
             } */
+
+            #startup .image_blk .txt p {
+                font-size: 2.4rem !important;
+                margin: 0 0 4rem;
+                color: #fff;
+                text-align: left;
+                max-width: 46rem;
+                text-align: center;
+                margin-top: -72px;
+            }
             }
 
             #categ .inner p {
@@ -297,15 +322,7 @@
                 text-align: left;
             }
 
-            #startup .image_blk .txt p {
-                font-size: 2.4rem !important;
-                margin: 0 0 4rem;
-                color: #fff;
-                text-align: left;
-                max-width: 46rem;
-                text-align: center;
-                margin-top: -72px;
-            }
+           
 
             #startup .image_blk {
                 /* margin-bottom: 1rem; */
@@ -315,7 +332,7 @@
                 padding: 2rem 0 2rem 1rem;
                 font-size: 1.9rem !important;
             }
-        }
+        
     </style>
     <script>
         var scrollPosition = window.scrollY;
@@ -616,7 +633,7 @@
                     </div>
                     <div class="col col1">
                         <img src="{{ asset('template_new/assets/images/membership_01.jpg') }}" alt=""
-                            class="img1" />
+                            class="img1 " style="object-fit: cover;height:262px"/>
                         <p>There are many reasons companies are turning to freelancers
                             rather than hiring full-time staff.</p>
                         <p>Freelancers are increasingly seen as highly skilled professionals
@@ -631,7 +648,7 @@
                     </div>
                     <div class="col col3">
                         <img src="{{ asset('template_new/assets/images/membership_02.jpg') }}" alt=""
-                            class="img2" />
+                            class="img2" style="object-fit: cover;height:262px"/>
                         <p>Freelancers create an opportunity to expand the diversity of your
                             company. Diversity helps increase the flow of ideas and often leads
                             to better business solutions.</p>

@@ -85,7 +85,7 @@ function confirmDelete(id) {
                     $("#cart_services").addClass("d-none");
                     // $("#services .check_list").addClass("d-none");
                 }
-
+                countLoadClient()
                 toastr.success(response.message, "", {
                     timeOut: 3000,
                 });

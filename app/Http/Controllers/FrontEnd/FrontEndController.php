@@ -602,13 +602,17 @@ class FrontEndController extends Controller
     }
 
     public function getUserCounter(){
-        $cartId = Cart::where(['user_id'=> Auth::id(),'status'=>'active'])->first();
-        $cartCount = Cart_line::where('cart_id', $cartId->id)->count();
 
+        $cartId = Cart::where(['user_id'=> Auth::id(),'status'=>'active'])->first();
+        if($cartId){
+            $cartCount = Cart_line::where('cart_id', $cartId->id)->count();
+        }else{
+            $cartCount = 0;
+        }
+        
         return response()->json(
             [
                 'status' => 200,
-                'message' => 'Successfully Deleted!',
                 'data' => $cartCount
             ]
         );

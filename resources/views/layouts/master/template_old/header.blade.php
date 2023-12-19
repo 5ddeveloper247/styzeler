@@ -48,7 +48,7 @@
                                         @if (!isset(auth()->user()->profile_type) && !in_array(auth()->user()->type, ['beautySalon', 'hairdressingSalon']))
                                             <a href="{{ route('cart') }}" class="logon_btn heart_btn position-relative">
                                                 <img src="{{ asset('template_new/assets/images/cart-round.png') }}" class=""
-                                                    alt="" style="width:28px;"> <span class="badge badge-secondary position-absolute top-0 right-0 p-1 cart_count" id="cart_count" style="background: #bbbbbb;color:#860101;font-weight:bold">0</span>
+                                                    alt="" style="width:28px;"> <span class="badge badge-secondary mr-1 cart_count d-none" id="cart_count" style="background: #bbbbbb;color:#860101;font-weight:bold">0</span>
                                             </a>
                                         @endif
                                     @endauth
@@ -142,7 +142,7 @@
                                             </form>
                                             <a href="{{ route('cart') }}" class="logon_btn heart_btn position-relative">
                                                 <img src="{{ asset('template_new/assets/images/cart-round.png') }}"
-                                                    alt="" style="width:28px;"> <span class="badge badge-secondary position-absolute top-0 right-0 p-1 cart_count" id="cart_count1" style="background: #bbbbbb;color:#860101;font-weight:bold">0</span>
+                                                    alt="" style="width:28px;"> <span class="badge badge-secondary p-1 cart_count d-none" id="cart_count1" style="background: #bbbbbb;color:#860101;font-weight:bold">0</span>
                                             </a>
                                         @endauth
                                         <button href="javascript:void(0)" class="logon_btn heart_btn dropdown-toggle"
