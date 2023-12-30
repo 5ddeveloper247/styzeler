@@ -104,7 +104,9 @@ $(window).on("load", function () {
                 "click",
                 "#services .text_list > .back_button",
                 function () {
+                    
                     $("#services .text_list").removeClass("active");
+    
                 }
             );
             $(document).on(
@@ -119,6 +121,15 @@ $(window).on("load", function () {
                 "click",
                 "#services .text_list .txt_wrap > .back_button",
                 function () {
+                    var check__btn = $('#check_btn');
+                    ser_btn = check__btn.val();
+                    
+                    if (ser_btn === 'Female wax') {
+                        // If the condition is true, click the button
+                        $('button:contains("Female wax")').click();
+                    }else{
+                        $('button:contains("Male wax")').click();
+                    }
                     $("#services .text_list").removeClass("flow");
                     $("#services .text_list .txt_wrap").removeClass("active");
                 }

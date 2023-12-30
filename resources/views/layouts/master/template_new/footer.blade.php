@@ -117,7 +117,7 @@
 <script src="{{ asset('template_new/assets/js/animation.min.js') }}"></script>
 <script src="{{ asset('template_new/assets/js/toastr.min.js') }}"></script>
 <script src="{{ asset('customjs/web/register/common.js') }}?v={{ time() }}"></script>
-<script src="{{ asset('template_new/assets/js/main.js') }}"></script>
+<script src="{{ asset('template_new/assets/js/main.js') }}?v={{ time() }}"></script>
 <script src="{{ asset('customjs/web/chat/chat.js') }}?v={{ time() }}"></script>
 <script>
     $(".dropdown-toggle").click(function() {

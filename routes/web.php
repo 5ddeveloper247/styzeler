@@ -38,7 +38,6 @@ Route::group(['namespace' => 'FrontEnd'], function () {
 
         //Profile
         Route::get('/Profile', 'FrontEndController@Profile')->name('Profile');
-        Route::get('/getUserCounter', 'FrontEndController@getUserCounter')->name('getUserCounter');
         Route::get('/freelancerBooking', 'FrontEndController@freelancerBooking')->name('freelancerBooking');
         Route::get('/clientBooking', 'FrontEndController@freelancerBooking')->name('clientBooking');
         Route::get('/clientBookingHistory', 'FrontEndController@freelancerBookingHistory')->name('clientBookingHistory');
@@ -164,7 +163,7 @@ Route::group(['namespace' => 'FrontEnd'], function () {
     Route::get('/getClientTokens', 'ProfileController@getClientTokens')->name('getClientTokens');
    // Route::get('/checkOnHold', 'ProfileController@checkOnHold')->name('checkOnHold');
     Route::get('/cronLog', 'ProfileController@cronLog')->name('checkOnHoldLog');
-    
+    Route::get('/getUserCounter', 'FrontEndController@getUserCounter')->name('getUserCounter');
 
 });
 

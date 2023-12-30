@@ -51,17 +51,14 @@
             border: 1px solid #fdd431;
             border-radius: 50%;
         }
-        @media (max-width: 576px) {
-            .special-button {
-                font-size: 1rem;
-            }
-        }
+       
     </style>
 @endpush
 
 @section('content')
     <section id="services">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
+            <input type="hidden" name="check_btn" id="check_btn">
             <div class="outer">
                 <div class="image_blk">
                     <div class="image"><img src="{{ asset('template_new/assets/images1/bodywax1.1.webp') }}" alt="">
@@ -362,12 +359,13 @@
     <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <script>
     	$(document).ready(function() { // for mobile view
-//     		if ($(window).width() < 500) {
-//             	$(".text_list").addClass("active");
-//            	}
+    		if ($(window).width() < 500) {
+            	// $(".text_list").addClass("active");
+           	}
     	});
         $(window).on("load", function() {
             $(document).on("click", ".btn_list .shadow_btn", function() {
+              
                 let id = $(this).data("id");
                 $(".text_list[data-id = " + id + "]").slideToggle();
             });
@@ -378,7 +376,12 @@
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn(); //.fadeToggle();
             });
             $(document).on("click", ".special-button", function() {
-                $(".text_list").removeClass("active");
+                $(".sub_btns").hide();
+               var body_wax = $(this).text();
+               if(body_wax !== 'Body Waxing'){
+                   $(".text_list").removeClass("active");
+               }
+                
             });
 
             @if (session('error'))
@@ -391,11 +394,11 @@
             @endif
 
         });
-
+        
         var addtocartType = 'Body Waxing';
 
         function caseCat(i, subtype = '') {
-
+            
             if (i == 'upperLip') {
                 $("#top_1").show();
                 $("#top_1 p").html(
@@ -412,7 +415,7 @@
                 $("#top_1").show();
                 $("#top_1 p").html(
                     '<span class="my-auto">10 Minutes &pound;8</span> <img src="{{ asset('template_new/assets/images/cart-round.png') }}" alt="" class="cart_icon"/>'
-                ).attr('data-time', '10').attr('data-price', '8').attr(
+                    ).attr('data-time', '10').attr('data-price', '8').attr(
                     'data-subtype', subtype).attr('data-service', 'Full Lip');
                 $("#top_2,#top_3").hide();
                 $("#category_description").text("Hair is removed above the upper lip and sides of the mouth.");
@@ -652,7 +655,11 @@
                     "A Manzilian involves complete hair removal surrounding the upper thighs, pubic mound, genitalia, and butt crack."
                 );
             }
-           $('.sub_btns').hide();
+            if ($(window).width() < 500) {
+                $(".sub_btns").hide();
+           	}
+            var check__btn = $('#check_btn');
+            check__btn.val(subtype);
         }
        
     </script>

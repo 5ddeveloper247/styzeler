@@ -52,6 +52,7 @@
 
 @section('content')
     <section id="services">
+        <input type="hidden" name="check_btn" id="check_btn">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="outer">
                 <div class="image_blk">
@@ -252,11 +253,17 @@
 @push('script')
     <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <script>
+        var addtocartType = 'Message';
+        $.extend($.expr[":"], {
+            "containsExact": function (a, i, m) {
+                return jQuery(a).text() === m[3];
+            }
+        });
 	    $(document).ready(function() { // for mobile view
 // 			if ($(window).width() < 500) {
 // 	        	$(".text_list").addClass("active");
 // 	       	}
-		});
+});
         $(window).on("load", function() {
             $(document).on("click", ".btn_list .shadow_btn", function() {
                 let id = $(this).data("id");
@@ -269,7 +276,11 @@
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
             });
             $(document).on("click", ".special-button", function() {
-                $(".text_list").removeClass("active");
+                $(".sub_btns").hide();
+                var body_wax = $(this).text();
+                if(body_wax !== 'Massage'){
+                    $(".text_list").removeClass("active");
+                }
             });
             // $(document).on("click", ".shadowbtn", function() {
             //     $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
@@ -327,6 +338,14 @@
                     'z-index': 99999999999,
                     'display': 'none',
                 });
+
+                var check__btn = $('#check_btn');
+                ser_btn = check__btn.val();
+                
+                if (ser_btn === 'Massage') {
+                    $('.shadow_btn:containsExact("Massage")').click();
+                    check__btn.val('')
+                }
             });
 
             @if (session('error'))
@@ -338,7 +357,6 @@
                 toastr.success("{{ session('success') }}");
             @endif
         });
-        var addtocartType = 'Message';
 
         function caseCat(i, subtype = '') {
             if (i == 'Swedish_Massag') {
@@ -498,6 +516,9 @@
                     "Reflexology, also known as zone therapy, is an alternative medical practice involving the application of pressure to specific points on the feet, ears, and/or hands. This is done using thumb, finger, and hand massage techniques without the use of oil or lotion. It is based on a system of zones and reflex areas that reflect an area of the body on the feet and hands, with the premise that such work on the feet and hands causes a physical change to the supposedly related areas of the body."
                 );
             }
+
+            var check__btn = $('#check_btn');
+            check__btn.val('Massage');
         }
     </script>
 @endpush

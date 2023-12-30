@@ -52,6 +52,7 @@
 
 @section('content')
     <section id="services">
+        <input type="hidden" name="check_btn" id="check_btn">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="outer">
                 <div class="image_blk">
@@ -318,6 +319,7 @@
     <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <!-- <script src="{{ asset('template_new/assets/js/main.js') }}"></script> -->
     <script>
+        var addtocartType = 'Mani / Pedi';
 	    $(document).ready(function() { // for mobile view
 			if ($(window).width() < 500) {
 	        	$(".text_list").addClass("active");
@@ -393,6 +395,14 @@
                     'z-index': 99999999999,
                     'display': 'none',
                 });
+
+                var check__btn = $('#check_btn');
+                ser_btn = check__btn.val();
+               
+                if (ser_btn === addtocartType) {
+                    $('.shadow_btn:contains('+addtocartType+')').click();
+                    check__btn.val('')
+                }
             });
 
             @if (session('error'))
@@ -405,7 +415,6 @@
             @endif
         });
 
-        var addtocartType = 'Mani / Pedi';
 
         function caseCat(i, subtype = '') {
             if (i == 'HydraRegular_Mani_Pedicurefacial') {
@@ -633,6 +642,8 @@
                     'A gel manicure or pedicure involves a manicurist applying two coats of gel then set and hardening under UV (ultra-violet) light using a small, portable UV machine. Application may involve up to three coats of gel, and each coat needs to be set or cured under the light'
                 );
             }
+            var check__btn = $('#check_btn');
+            check__btn.val(addtocartType);
         }
     </script>
 @endpush

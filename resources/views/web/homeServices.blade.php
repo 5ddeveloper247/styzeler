@@ -330,7 +330,7 @@
             </div>
             <div class="column2 d-none d-md-block">
                 <div class="text_block"
-                    style="background-image: url('{{ asset('template_new/assets/images/booking_img.PNG') }}')">
+                    style="background-image: url('{{ asset('template_new/assets/images/deliver.PNG') }}')">
                     <h3>You book We deliver</h3>
                     <p>
                         Are you fed up with the hard sale that you face every time you
@@ -343,7 +343,7 @@
             </div>
             <div class="column2 d-block d-md-none">
                 <div class="text_block"
-                    style="background-image: url('{{ asset('template_new/assets/images/booking_img.PNG') }}')">
+                    style="background-image: url('{{ asset('template_new/assets/images/deliver.PNG') }}')">
                     <h3>
                         You book <br />We deliver
                     </h3>

@@ -602,6 +602,14 @@ class FrontEndController extends Controller
     }
 
     public function getUserCounter(){
+        if(Auth::check() == false){
+            return response()->json(
+                [
+                    'status' => 200,
+                    'data' => 0
+                ]
+            );
+        }
 
         $cartId = Cart::where(['user_id'=> Auth::id(),'status'=>'active'])->first();
         if($cartId){

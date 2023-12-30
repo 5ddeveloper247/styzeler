@@ -69,6 +69,8 @@
 
 @section('content')
     <section id="services">
+        <input type="hidden" name="check_btn" id="check_btn">
+
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="outer">
                 <div class="image_blk">
@@ -439,6 +441,7 @@
     <script src="https://kit.fontawesome.com/8389fcfe36.js" crossorigin="anonymous"></script>
     <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <script>
+        var addtocartType = 'Ladies Services';
 	    $(document).ready(function() { // for mobile view
 // 			if ($(window).width() < 500) {
 // 	        	$(".text_list").addClass("active");
@@ -511,6 +514,14 @@
                     'z-index': 99999999999,
                     'display': 'none',
                 });
+
+                var check__btn = $('#check_btn');
+                ser_btn = check__btn.val();
+               
+                if (ser_btn === addtocartType) {
+                    $('.shadow_btn:contains('+addtocartType+')').click();
+                    check__btn.val('')
+                }
             });
 
             @if (session('error'))
@@ -525,7 +536,6 @@
 
         var bookFrelancerRoute = "{{ route('bookFreelancer') }}";
 
-        var addtocartType = 'Ladies Services';
 
         function caseCat(i, subtype = '') {
             if (i == 'Cut_Blowdry') {
@@ -935,6 +945,8 @@
                     'Micro rings are small metal rings that hair extensions are threaded through, along with some of your own hair. Once they have been positioned correctly the micro rings are clamped into place, securing the hair extensions to your hair'
                 );
             }
+            var check__btn = $('#check_btn');
+            check__btn.val(addtocartType);
         }
     </script>
 @endpush

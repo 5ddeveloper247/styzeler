@@ -90,10 +90,11 @@
 
         #startup .image_blk .txt p {
             font-size: 4rem !important;
-            margin: 0 150px 25rem;
+            /* margin: 0 150px 25rem; */
+            margin: unset;
             color: #c4b9b0;
             text-align: center;
-            max-width: 46rem;
+            max-width: 43rem;
         }
 
         #hire .content a {
@@ -220,17 +221,28 @@
         .cta2 a:hover {
             transform: translate(-50%, -50%) scale(1.1);
         }
+        #banner .content h2{
+            font-size: 3rem;
+            color: #fff
+        }
+        #banner .content h1 > small {
+            font-size: 4rem;
+            display: block;
+        }
 
         @media only screen and (max-width: 600px) {
              
             #banner .content h1 {
-                font-size: 2rem;
+                font-size: 2.4rem;
+                font-weight: bold;
+                margin-bottom: 0px
             }
             #banner .content h2 {
-                font-size: 1.4rem;
+                font-size: 1rem;
             }
             #banner .content h1 > small {
-                font-size: 1.6rem;
+                font-size: 1.2rem;
+                font-weight: normal;
             }
             #banner .content .logo {
                 max-width: 5rem;
@@ -347,9 +359,9 @@
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="content">
                 <h1>
-                    Styzeler <small>Agency</small>
+                    Styzeler <small>Hair & Beauty</small>
                 </h1>
-                <h2>Hair & Beauty</h2>
+                <h2>Agency</h2>
                 <div class="logo mylogodiv">
                     <a href="{{ url('/') }}"> <img src="{{ asset('template_new/assets/images/logo.png') }}"
                             alt="" />
@@ -405,7 +417,7 @@
             </div>
             <img src="{{ asset('template_new/assets/images/line_gray.jpg') }}" alt=""
                 class="browse_line_gray none-modal" />
-            <div class="d-block d-md-none">
+            <div class="for-popup d-md-none">
                 <div class="reg_line">
                     <span style="font-size: 3rem; color: #c4b9b0">Freelancers Help Small
                         Businesses Grow</span>
@@ -547,7 +559,7 @@
                     </div>
                 </div>
                 <div class="btm" style="margin-right: 6px">
-                    <img src="{{ asset('template_new/assets/images/line_purple.jpg') }}" alt="" />
+                    <img class="mb-5" src="{{ asset('template_new/assets/images/line_purple.jpg') }}" alt="" />
                     <a href="{{ route('registration') }}" class="site_btn" {!! Auth::user() ? 'style="pointer-events: none"' : '' !!}>Register
                         <img src="{{ asset('template_new/assets/images/eye.svg') }}" alt="" />
                     </a>
@@ -602,7 +614,7 @@
                         <div>
                             <p>Freelancers are great help for Start up Businesses</p>
                         </div>
-                        <img src="{{ asset('template_new/assets/images/line_gray.jpg') }}" alt="" />
+                        <img style="margin-top: 91px;" src="{{ asset('template_new/assets/images/line_gray.jpg') }}" alt="" />
                     </div>
                 </div>
                 <div class="data">
@@ -642,7 +654,7 @@
                     <div class="col col2" style="text-align: center">
 
                         <a href="{{ route('businessOwner') . '#to_hire' }}" type="button"
-                            style="background: transparent; border: 0; margin-top: 134px"> <img
+                            style="background: transparent; border: 0; margin-top: 56px"> <img
                                 src="{{ asset('template_new/assets/images/hire_play_btn.jpg') }}" alt="" />
                         </a>
                     </div>
@@ -827,7 +839,7 @@
         window.addEventListener("scroll", function() {
 
             if (isScrolledToClass(targetClass)) {
-                console.log(targetClass);
+                // console.log(targetClass);
                 if (flag == "0") {
 
                     if ($("#popupInfo-modal").is(":visible")) {

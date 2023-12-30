@@ -65,6 +65,7 @@
 
 @section('content')
     <section id="services">
+        <input type="hidden" name="check_btn" id="check_btn">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="outer">
                 <div class="image_blk">
@@ -303,6 +304,7 @@
 @push('script')
     <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <script>
+         var addtocartType = 'Eyes & Brows';
 	    $(document).ready(function() { // for mobile view
 			if ($(window).width() < 500) {
 	        	$(".text_list").addClass("active");
@@ -369,6 +371,7 @@
                 }
             });
             $(document).on('click', '.back_button', function() {
+               
                 $('#list_btns').removeClass('d-none');
 
                 $('#showbox').addClass('d-none').removeClass('d-block');
@@ -378,6 +381,14 @@
                     'z-index': 99999999999,
                     'display': 'none',
                 });
+
+                var check__btn = $('#check_btn');
+                ser_btn = check__btn.val();
+               
+                if (ser_btn === addtocartType) {
+                    $('.shadow_btn:contains('+addtocartType+')').click();
+                    check__btn.val('')
+                }
             });
 
             @if (session('error'))
@@ -390,7 +401,7 @@
             @endif
         });
 
-        var addtocartType = 'Eyes & Brows';
+       
 
         function caseCat(i, subtype = '') {
             if (i == 'Brow_Lamination') {
@@ -563,6 +574,9 @@
                     'The therapist will run the gel remover through the lashes. let it set for three to five minutes, while doing so we want to make sure our client has their eyes closed tightly.'
                 );
             }
+            var check__btn = $('#check_btn');
+            check__btn.val(addtocartType);
+            
         }
     </script>
 @endpush

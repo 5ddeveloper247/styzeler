@@ -52,6 +52,7 @@
 
 @section('content')
     <section id="services">
+        <input type="hidden" name="check_btn" id="check_btn">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="outer">
                 <div class="image_blk">
@@ -238,7 +239,7 @@
                     </div>
                     <div class="modal-footer text-center">
                         <a type="" href="javascript:;" class="btn1 customBtn"
-                            onclick="addToCartConfirm();">Yes</a>
+                        onclick="addToCartConfirm();">Yes</a>
                         <a type="button" class="btn1 customBtn closeCartConfirm" data-dismiss="modal">Close</a>
                     </div>
                 </div>
@@ -251,9 +252,15 @@
 @push('script')
     <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <script>
+        var addtocartType = 'Facial';
+        $.extend($.expr[":"], {
+            "containsExact": function (a, i, m) {
+                return jQuery(a).text() === m[3];
+            }
+        });
 	    $(document).ready(function() { // for mobile view
 			if ($(window).width() < 500) {
-	        	$(".text_list").addClass("active");
+	        	// $(".text_list").addClass("active");
 	       	}
 		});
         $(window).on("load", function() {
@@ -268,7 +275,11 @@
                 $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
             });
             $(document).on("click", ".special-button", function() {
-                $(".text_list").removeClass("active");
+                $(".sub_btns").hide();
+                var body_wax = $(this).text();
+                if(body_wax !== 'Facial'){
+                    $(".text_list").removeClass("active");
+                }
             });
             // $(document).on("click", ".shadowbtn", function() {
             //     $(this).parents(".text_list_inner").find(".txt_wrap").fadeIn();
@@ -326,6 +337,14 @@
                     'z-index': 99999999999,
                     'display': 'none',
                 });
+
+                var check__btn = $('#check_btn');
+                ser_btn = check__btn.val();
+               
+                if (ser_btn === addtocartType) {
+                    $('.shadow_btn:containsExact('+addtocartType+')').click();
+                    check__btn.val('')
+                }
             });
             @if (session('error'))
                 // Display Toastr notification
@@ -337,7 +356,6 @@
             @endif
         });
 
-        var addtocartType = 'Facial';
 
         function caseCat(i, subtype = '') {
             if (i == 'Hydrafacial') {
@@ -432,7 +450,8 @@
                     'Acne facials reduce acne symptoms by cleansing the skin, removing impurities, debris, and oil. unclogging pores using exfoliation, which is the removal of dead skin cells. reducing oil production and inflammation of the skin. reducing irritation.'
                 );
             }
-
+            var check__btn = $('#check_btn');
+            check__btn.val('Facial');
         }
     </script>
 @endpush

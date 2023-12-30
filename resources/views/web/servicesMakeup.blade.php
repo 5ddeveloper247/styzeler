@@ -59,7 +59,8 @@
 @endpush
 
 @section('content')
-    <section id="services">
+<section id="services">
+        <input type="hidden" name="check_btn" id="check_btn">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="outer">
                 <div class="image_blk">
@@ -234,9 +235,10 @@
     <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <script src="https://kit.fontawesome.com/8389fcfe36.js" crossorigin="anonymous"></script>
     <script>
+        var addtocartType = 'Make-up';
 	    $(document).ready(function() { // for mobile view
 			if ($(window).width() < 500) {
-	        	$(".text_list").addClass("active");
+	        	// $(".text_list").addClass("active");
 	       	}
 		});
         $(window).on("load", function() {
@@ -310,6 +312,16 @@
                     'z-index': 99999999999,
                     'display': 'none',
                 });
+                
+                var check__btn = $('#check_btn');
+                ser_btn = check__btn.val();
+               
+                if (ser_btn === addtocartType) {
+                    $('.shadow_btn:contains('+addtocartType+')').click();
+                    check__btn.val('')
+                }
+
+
             });
 
             @if (session('error'))
@@ -322,7 +334,6 @@
             @endif
         });
 
-        var addtocartType = 'Make-up';
         var weddingRoute = "{{ route('wedding') }}";
 
         function caseCat(i, subtype = '') {
@@ -374,6 +385,8 @@
                     'data-service', 'Bridal Make-Up').attr('data-subtype', subtype);
                 $("#description").text('the bridal makeup needs to be linked with the bridal page');
             }
+            var check__btn = $('#check_btn');
+            check__btn.val(addtocartType);
         }
     </script>
 @endpush

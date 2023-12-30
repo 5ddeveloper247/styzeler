@@ -52,8 +52,8 @@
 
         }
 
-        .option a:hover {
-            background-color: #c4b9b0;
+        .option:hover {
+            /* background-color: #c4b9b0; */
             color: white;
             text-decoration: none;
         }

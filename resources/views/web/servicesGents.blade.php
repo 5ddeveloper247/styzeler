@@ -60,6 +60,7 @@
 
 @section('content')
     <section id="services">
+        <input type="hidden" name="check_btn" id="check_btn">
         <div class="contain" data-aos="fade-up" data-aos-duration="1000">
             <div class="outer">
                 <div class="image_blk">
@@ -69,7 +70,7 @@
                             alt=""></div>
                 </div>
                 <div class="content_blk"
-                style="background-image: url('{{ asset('template_new/assets/images/service_main.jpg') }}');">
+                    style="background-image: url('{{ asset('template_new/assets/images/service_main.jpg') }}');">
                   
                     
                     <h2>You book We deliver</h2>
@@ -231,7 +232,7 @@
                     </div>
                     <div class="modal-footer text-center">
                         <a type="" href="javascript:;" class="btn1 customBtn"
-                            onclick="addToCartConfirm();">Yes</a>
+                        onclick="addToCartConfirm();">Yes</a>
                         <a type="button" class="btn1 customBtn closeCartConfirm" data-dismiss="modal">Close</a>
                     </div>
                 </div>
@@ -246,9 +247,15 @@
     <script src="{{ asset('customjs/web/cart/addtocart.js') }}?v={{ time() }}"></script>
     <script src="https://kit.fontawesome.com/8389fcfe36.js" crossorigin="anonymous"></script>
     <script>
+        var addtocartType = 'Gents Services';
+        $.extend($.expr[":"], {
+            "containsExact": function (a, i, m) {
+                return jQuery(a).text() === m[3];
+            }
+        });
 	    $(document).ready(function() { // for mobile view
 			if ($(window).width() < 500) {
-	        	$(".text_list").addClass("active");
+	        	// $(".text_list").addClass("active");
 	       	}
 		});
         $(window).on("load", function() {
@@ -321,6 +328,14 @@
                     'z-index': 99999999999,
                     'display': 'none',
                 });
+
+                var check__btn = $('#check_btn');
+                ser_btn = check__btn.val();
+               
+                if (ser_btn === addtocartType) {
+                    $('.shadow_btn:containsExact('+addtocartType+')').click();
+                    check__btn.val('')
+                }
             });
 
             @if (session('error'))
@@ -333,7 +348,6 @@
             @endif
         });
 
-        var addtocartType = 'Gents Services';
 
         function caseCat(i, subtype = '') {
 
@@ -398,6 +412,8 @@
                     'A shape-up is a groming style that involves "line-up and shape-up" with the goal of creating a perfectly straight edge'
                 );
             }
+            var check__btn = $('#check_btn');
+            check__btn.val(addtocartType);
         }
     </script>
 @endpush
