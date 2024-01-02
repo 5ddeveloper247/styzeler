@@ -307,7 +307,7 @@
          var addtocartType = 'Eyes & Brows';
 	    $(document).ready(function() { // for mobile view
 			if ($(window).width() < 500) {
-	        	$(".text_list").addClass("active");
+	        	// $(".text_list").addClass("active");
 	       	}
 		});
         $(window).on("load", function() {

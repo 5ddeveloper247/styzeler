@@ -535,15 +535,15 @@
 @media (max-width: 767px) {
 	.shadow_btn {
 		height: 5rem;
-		font-size: 1.4rem;
+		font-size: 1.1rem;
 		min-width: 14rem;
 		padding: 0 2rem;
 		margin-right: 0.4rem;
 	}
 	.shadow_btn > img {
-		width: 2.4rem;
-		min-width: 2.4rem;
-		height: 1.8rem;
+		width: 2rem;
+		min-width: 2rem;
+		height: 1.4rem;
 	}
 	.site_btn {
 		height: 5rem;
@@ -1254,7 +1254,7 @@
 		max-width: none !important;
 		min-width: 10rem !important;
 		padding: 0 1.4rem;
-		font-size: 1.4rem;
+		font-size: 1rem;
 	}
 	#services .text_list ul.sub_btns > li {
 		width: 100%;

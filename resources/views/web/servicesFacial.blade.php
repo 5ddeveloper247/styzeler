@@ -109,7 +109,7 @@
                                     </li>
                                     <li>
                                         <button type="button" class="shadow_btn shaddowbtn1"
-                                            onclick="caseCat('Acne_Reduction_Facial')" style="font-size: 1.5rem;">Acne
+                                            onclick="caseCat('Acne_Reduction_Facial')" >Acne
                                             Reduction Facial <img src="{{ asset('template_new/assets/images/eye.svg') }}"
                                                 alt=""></button>
                                     </li>
