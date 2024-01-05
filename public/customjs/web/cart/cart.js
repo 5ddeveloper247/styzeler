@@ -13,7 +13,9 @@ $(function () {
                 $("#cart_line_table").append(
                     '<div class="col-12 text-center">You Have No Items in Cart!</div>'
                 );
+                check_cart_total = true;
             } else {
+                check_cart_total = false;
                 $("#cart_services").removeClass("d-none");
                 var cart_line_table = "";
                 $.each(response.cart, function (i) {
@@ -83,6 +85,7 @@ function confirmDelete(id) {
                         '<div class="col-12 text-center">You Have No Items in Cart!</div>'
                     );
                     $("#cart_services").addClass("d-none");
+                    check_cart_total = true;
                     // $("#services .check_list").addClass("d-none");
                 }
                 countLoadClient()

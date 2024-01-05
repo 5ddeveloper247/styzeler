@@ -1,5 +1,7 @@
 @extends('layouts.master.template_new.master')
-
+<script>
+    localStorage.setItem('currentUrl', window.location.href);
+</script>
 @push('css')
     <style>
         #services .text_list .btns .shadow_btn {

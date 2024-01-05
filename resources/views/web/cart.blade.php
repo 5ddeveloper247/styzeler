@@ -50,7 +50,7 @@
                 <div class="booking-box col-lg-8" style="border: 1px solid #c9b9b0;padding: 0px 5px;">
                     <div class="d-flex justify-content-center" style="border: 1px solid gray;margin: 5px 0px;">
                         <div id="circle" class="m-4">
-                            <a href="{{ url()->previous() }}" style="height: auto" cla>
+                            <a onclick="changePage()" style="height: auto">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="icon icon-tabler icon-tabler-player-play-filled mx-2 my-2" width="20"
                                     height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#000" fill="none"
@@ -129,7 +129,7 @@
                 </div>
                 <div class="modal-footer text-center">
                     <a type="" href="javascript:;" class="btn1 customBtn" id="confirm_delete">Yes</a>
-                    <a type="button" class="btn1 customBtn closeCartConfirm" data-dismiss="modal">Close</a>
+                    <a type="button" class="btn1 customBtn closeCartConfirm" data-bs-dismiss="modal">Close</a>
                 </div>
             </div>
         </div>
@@ -173,6 +173,7 @@
 @endsection
 @push('script')
     <script>
+        var check_cart_total='';
         $(function() {
 
             $(document).on("click", ".error-booking", function() {
@@ -195,10 +196,25 @@
                 }
             });
         });
+        
     </script>
     <script src="{{ asset('customjs/web/cart/cart.js') }}?v={{ time() }}"></script>
+    <script>
+        function changePage(){
+            var check_page = localStorage.getItem('currentUrl');
+           
+            if(check_cart_total === false && check_page != null){
+                
+                window.location.href = check_page;
+            }else{
+                window.location.href = "{{ url('/homeServices') }}#booking";
+            }
+
+        }
+    </script>
     @if (auth()->user()->type == 'client')
     @else
         {{-- <script src="{{ asset('template_old/js/freelancer-booking.js') }}?v={{ time() }}"></script> --}}
     @endif
+
 @endpush

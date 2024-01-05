@@ -122,7 +122,7 @@
                 </div>
             </div>
             <div class="video_block d-none d-md-block">
-                <img src="{{ asset('template_new/assets/images/styzeler_can.png') }}" style="height: 391px"
+                <img src="{{ asset('template_new/assets/images/styzeler_can.png') }}" style="height: 441px"
                     alt="" />
                 <div class="txt" data-aos="fade-up" data-aos-duration="1000">
                     <p>

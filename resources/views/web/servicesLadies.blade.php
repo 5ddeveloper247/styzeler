@@ -1,5 +1,7 @@
 @extends('layouts.master.template_new.master')
-
+<script>
+    localStorage.setItem('currentUrl', window.location.href);
+</script>
 @push('css')
     <style>
         #services .text_list .btns .shadow_btn {
@@ -443,9 +445,9 @@
     <script>
         var addtocartType = 'Ladies Services';
 	    $(document).ready(function() { // for mobile view
-// 			if ($(window).width() < 500) {
-// 	        	$(".text_list").addClass("active");
-// 	       	}
+			if ($(window).width() < 500) {
+	        	$(".text_list").addClass("active");
+	       	}
 		});
         $(window).on("load", function() {
             $(document).on("click", ".btn_list > .shadow_btn", function() {

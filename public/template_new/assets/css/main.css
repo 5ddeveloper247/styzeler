@@ -1267,8 +1267,8 @@ footer .icon-container {
     color: #cbe8e8;
     font-size: 3rem;
     position: relative;
-    bottom: 379px;
-    left: 18px;
+    bottom: 433px;
+    /* left: 18px; */
 }
 
 #about .video_block .txt button {

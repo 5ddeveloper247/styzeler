@@ -106,6 +106,7 @@
             background-image: linear-gradient(to bottom, #fdd431, #604f0b);
             transition: 0.5s;
             background-size: 200% auto;
+            cursor: pointer;
         }
 
         #circle svg {

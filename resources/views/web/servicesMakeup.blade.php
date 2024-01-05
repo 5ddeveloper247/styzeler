@@ -1,5 +1,7 @@
 @extends('layouts.master.template_new.master')
-
+<script>
+    localStorage.setItem('currentUrl', window.location.href);
+</script>
 @push('css')
     <style>
         #services .text_list .btns .shadow_btn {
@@ -238,7 +240,7 @@
         var addtocartType = 'Make-up';
 	    $(document).ready(function() { // for mobile view
 			if ($(window).width() < 500) {
-	        	// $(".text_list").addClass("active");
+	        	$(".text_list").addClass("active");
 	       	}
 		});
         $(window).on("load", function() {

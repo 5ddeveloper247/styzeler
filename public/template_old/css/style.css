@@ -1881,10 +1881,10 @@ button[type="submit"]:disabled {
         top: 40%;
     }
 }
-div[role=tooltip] {
+/* div[role=tooltip] {
     width: fit-content;
     left: 50.3% !important;
     margin-top: 10px;
-}
+} */
 /******* Code End: Muhammad Umer *******/
 /* Links inside the dropdown */

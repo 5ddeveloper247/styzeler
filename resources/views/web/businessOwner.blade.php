@@ -332,7 +332,7 @@
                                 </div>
                                 <div class="btn_blk">
                                     <a href="javascript:void(0)" class="site_btn" onclick="paymentModal('16','1')">Buy</a>
-                                    <a href="javascript:void(0)" class="eye_btn popup-pkg1"><img
+                                    <a href="javascript:void(0)" class="eye_btn"><img
                                             src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
                                 </div>
                             </div>
@@ -383,7 +383,9 @@
                                 </div>
                                 <div class="btn_blk">
                                     <a href="javascript:;" class="site_btn" onclick="paymentModal('96','8')">Buy</a>
-                                    <a href="javascript:void(0)" class="eye_btn popup-pkg2"><img
+                                    <a href="javascript:void(0)" class="eye_btn">
+                                        {{-- popup-pkg1 --}}
+                                        <img
                                             src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
                                 </div>
                             </div>
@@ -438,7 +440,7 @@
                                 </div>
                                 <div class="btn_blk">
                                     <a href="javascript:;" class="site_btn" onclick="paymentModal('125','12')">Buy</a>
-                                    <a href="javascript:void(0)" class="eye_btn popup-pkg3"><img
+                                    <a href="javascript:void(0)" class="eye_btn"><img
                                             src="{{ asset('template_new/assets/images/eye.svg') }}" alt=""></a>
                                 </div>
                             </div>
